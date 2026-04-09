@@ -114,11 +114,11 @@ class PipelineTests(unittest.TestCase):
         self.assertEqual(result["pool_lookup"], {})
         self.assertEqual(result["section_chunk_ids"], {})
 
-    def test_stage1_signal_scores_allow_decimals(self):
+    def test_stage1_signal_scores_remain_integers(self):
         payload = {
             "general": {
                 "g.1": {
-                    "signals": {"g.1.a": 1.75},
+                    "signals": {"g.1.a": 1},
                     "needed_section_ids": ["S04", "S07"],
                 }
             }
@@ -131,8 +131,54 @@ class PipelineTests(unittest.TestCase):
             judge=FallbackJudge(),
         )
         criterion = result["features"]["general"]["sub_criteria"][0]
-        self.assertEqual(criterion["signals"][0]["score_0to2_raw"], 1.75)
+        self.assertEqual(criterion["signals"][0]["score_0to2_raw"], 1)
         self.assertGreater(criterion["score_10"], 0)
+
+    def test_plausibility_multipliers_are_stricter_for_4_and_3(self):
+        payload = {
+            "general": {
+                "g.10": {
+                    "signals": {
+                        "g.10.a": 2,
+                        "g.10.b": 2,
+                        "g.10.c": 2,
+                        "g.10.d": 2
+                    },
+                    "needed_section_ids": ["S07"]
+                }
+            }
+        }
+
+        class StubJudge:
+            model_name = "stub-judge"
+
+            def judge_section(self, section_key, payload):  # noqa: ANN001
+                del section_key, payload
+                return {
+                    "judgments": [
+                        {"sid": "g.10.a", "plausibility": 4},
+                        {"sid": "g.10.b", "plausibility": 3},
+                        {"sid": "g.10.c", "plausibility": 2},
+                        {"sid": "g.10.d", "plausibility": 5},
+                    ]
+                }
+
+        result = score_application_base(
+            application=sample_application(),
+            criteria_path=CRITERIA_PATH,
+            doc_id="multiplier_doc",
+            stage1_client=FakeStage1Client(payload),
+            judge=StubJudge(),
+        )
+        criterion = next(
+            item for item in result["features"]["general"]["sub_criteria"]
+            if item["sub_id"] == "g.10"
+        )
+        weighted_scores = {signal["sid"]: signal["score_0to2_weighted"] for signal in criterion["signals"]}
+        self.assertEqual(weighted_scores["g.10.a"], 1.8)
+        self.assertEqual(weighted_scores["g.10.b"], 1.6)
+        self.assertEqual(weighted_scores["g.10.c"], 1.2)
+        self.assertEqual(weighted_scores["g.10.d"], 2.0)
 
     def test_invalid_section_ids_zero_out_positive_scores(self):
         payload = {

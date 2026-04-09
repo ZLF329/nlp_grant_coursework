@@ -967,6 +967,32 @@
       const stem = (s || 'review').replace(/\.json$/i, '').replace(/[^\w.-]+/g, '_').replace(/^_+|_+$/g, '');
       return stem || 'review';
     }
+    function buildDownloadSummary(review) {
+      return {
+        doc_id: review.docId || review.label || 'review',
+        run_info: {
+          ran_at_utc: review.runInfo?.ranAt || null,
+          model: review.runInfo?.model || null,
+          judge_model: review.runInfo?.judgeModel || null
+        },
+        sections: (review.sections || []).map(section => ({
+          section_id: section.id,
+          section_name: section.name,
+          average_score_10: Number(section.overall?.score10 || 0),
+          sub_criteria: (section.criteria || []).map(criterion => ({
+            sub_id: criterion.id,
+            name: criterion.name,
+            group_name: criterion.groupName || null,
+            score_10: Number(criterion.score || 0),
+            signals: (criterion.signals || []).map(signal => ({
+              sid: signal.sid,
+              score_0to2: Number(signal.rawScore || 0),
+              note: signal.note || ''
+            }))
+          }))
+        }))
+      };
+    }
     function pillClassFromDelta(delta) {
       if (delta > 0.01) return 'delta-pill delta-positive';
       if (delta < -0.01) return 'delta-pill delta-negative';
@@ -1899,14 +1925,14 @@
       document.getElementById('downloadJsonBtn').addEventListener('click', () => {
         const review = getPrimaryReview();
         if (!review) return;
-        const payload = review.raw || {};
+        const payload = buildDownloadSummary(review);
         const text = JSON.stringify(payload, null, 2);
         const blob = new Blob([text], { type: 'application/json;charset=utf-8' });
         const url = URL.createObjectURL(blob);
         const anchor = document.createElement('a');
         const fileBase = safeFileStem(review.docId || review.label || 'review');
         anchor.href = url;
-        anchor.download = `${fileBase}.json`;
+        anchor.download = `${fileBase}_summary.json`;
         document.body.appendChild(anchor);
         anchor.click();
         anchor.remove();
