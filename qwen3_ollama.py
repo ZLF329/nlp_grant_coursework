@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import json
 import os
+from concurrent.futures import ThreadPoolExecutor
 from typing import Any
 
 import requests
@@ -26,8 +27,9 @@ from qwen3_vllm import (
 )
 
 OLLAMA_HOST = os.environ.get("OLLAMA_HOST", "http://127.0.0.1:11434").rstrip("/")
-OLLAMA_MODEL = os.environ.get("OLLAMA_MODEL", "qwen3.5:27b")
+OLLAMA_MODEL = os.environ.get("OLLAMA_MODEL", "qwen3:30b")
 OLLAMA_TIMEOUT = float(os.environ.get("OLLAMA_TIMEOUT", "600"))
+OLLAMA_PARALLEL = int(os.environ.get("OLLAMA_PARALLEL", "2"))
 
 
 class _Scorer:
@@ -61,51 +63,60 @@ class _Scorer:
         data = r.json()
         return (data.get("message") or {}).get("content", "")
 
+    def _score_one(self, job: tuple[str, str, list[dict]],
+                   always_text: str,
+                   evidence_map: dict[str, str]) -> tuple[str, list[dict]]:
+        crit_key, name, sub_items = job
+        messages = _build_section_messages(
+            name, sub_items, always_text, evidence_map.get(crit_key, ""))
+        schema = _section_schema(len(sub_items))
+        max_tokens = 512 + 256 * len(sub_items)
+
+        try:
+            text = self._chat(messages, schema, max_tokens).strip()
+            if text.startswith("```"):
+                text = text.strip("`")
+                if "\n" in text:
+                    text = text.split("\n", 1)[1]
+                if text.endswith("```"):
+                    text = text[:-3]
+            parsed = json.loads(text)
+            arr = parsed.get("sub_items", [])
+            if not isinstance(arr, list) or len(arr) != len(sub_items):
+                raise ValueError(
+                    f"expected {len(sub_items)} sub_items, got "
+                    f"{len(arr) if isinstance(arr, list) else 'non-list'}")
+            scored: list[dict] = []
+            for it, sub in zip(arr, sub_items):
+                if not isinstance(it, dict):
+                    scored.append(_empty_criterion_result(
+                        sub["name"], "ollama returned non-dict sub_item"))
+                    continue
+                it["name"] = sub["name"]
+                it.setdefault("exists", "no")
+                it.setdefault("quality", "missing")
+                it.setdefault("quality_score_0to10", 0)
+                it.setdefault("rubric_subscores_0to2",
+                              {"coverage": 0, "specificity": 0, "strength": 0})
+                it.setdefault("evidence", [])
+                it.setdefault("evidence_ids", [])
+                it.setdefault("rationale", "")
+                scored.append(it)
+        except Exception as e:
+            scored = [_empty_criterion_result(s["name"], f"ollama error: {e}")
+                      for s in sub_items]
+        return crit_key, scored
+
     def score_sections(self,
                        jobs: list[tuple[str, str, list[dict]]],
                        always_text: str,
                        evidence_map: dict[str, str]) -> dict[str, list[dict]]:
         results: dict[str, list[dict]] = {}
-        for (crit_key, name, sub_items) in jobs:
-            messages = _build_section_messages(
-                name, sub_items, always_text, evidence_map.get(crit_key, ""))
-            schema = _section_schema(len(sub_items))
-            max_tokens = 512 + 256 * len(sub_items)
-
-            try:
-                text = self._chat(messages, schema, max_tokens).strip()
-                if text.startswith("```"):
-                    text = text.strip("`")
-                    if "\n" in text:
-                        text = text.split("\n", 1)[1]
-                    if text.endswith("```"):
-                        text = text[:-3]
-                parsed = json.loads(text)
-                arr = parsed.get("sub_items", [])
-                if not isinstance(arr, list) or len(arr) != len(sub_items):
-                    raise ValueError(
-                        f"expected {len(sub_items)} sub_items, got "
-                        f"{len(arr) if isinstance(arr, list) else 'non-list'}")
-                scored: list[dict] = []
-                for it, sub in zip(arr, sub_items):
-                    if not isinstance(it, dict):
-                        scored.append(_empty_criterion_result(
-                            sub["name"], "ollama returned non-dict sub_item"))
-                        continue
-                    it["name"] = sub["name"]
-                    it.setdefault("exists", "no")
-                    it.setdefault("quality", "missing")
-                    it.setdefault("quality_score_0to10", 0)
-                    it.setdefault("rubric_subscores_0to2",
-                                  {"coverage": 0, "specificity": 0, "strength": 0})
-                    it.setdefault("evidence", [])
-                    it.setdefault("evidence_ids", [])
-                    it.setdefault("rationale", "")
-                    scored.append(it)
-            except Exception as e:
-                scored = [_empty_criterion_result(s["name"], f"ollama error: {e}")
-                          for s in sub_items]
-            results[crit_key] = scored
+        max_workers = max(1, min(OLLAMA_PARALLEL, len(jobs)))
+        with ThreadPoolExecutor(max_workers=max_workers) as ex:
+            for crit_key, scored in ex.map(
+                    lambda j: self._score_one(j, always_text, evidence_map), jobs):
+                results[crit_key] = scored
         return results
 
 
