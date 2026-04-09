@@ -39,7 +39,8 @@ from pathlib import Path
 from typing import Any
 
 # ── config ────────────────────────────────────────────────────────────────────
-MODEL_NAME = os.environ.get("QWEN3_MODEL", "Qwen/Qwen3-30B-A3B")
+MODEL_NAME = os.environ.get("QWEN3_MODEL", "cyankiwi/Qwen3-30B-A3B-Instruct-2507-AWQ-4bit")
+QUANTIZATION = os.environ.get("QWEN3_QUANTIZATION", "awq_marlin")  # awq_marlin / gptq_marlin / None
 TARGET_EVIDENCE_PER_ITEM = 2
 
 # Maps the human-readable section names in criteria_points.json to the short
@@ -53,8 +54,8 @@ SECTION_KEY_MAP = {
     "Application Form": "application_form",
 }
 
-# JSON schema used for vLLM guided decoding — one criterion at a time.
-CRITERION_SCHEMA: dict = {
+# JSON schema used for vLLM guided decoding — one sub-item at a time.
+SUBITEM_SCHEMA: dict = {
     "type": "object",
     "properties": {
         "exists": {"type": "string", "enum": ["yes", "no", "partial"]},
@@ -122,31 +123,46 @@ def _flatten_section(section_name: str, section_value: Any) -> list[dict]:
     return items
 
 
-def _truncate_application(app_text: str, max_chars: int = 60000) -> str:
-    if len(app_text) <= max_chars:
-        return app_text
-    return app_text[:max_chars] + "\n\n[…truncated…]"
+def _section_schema(n_subitems: int) -> dict:
+    return {
+        "type": "object",
+        "properties": {
+            "sub_items": {
+                "type": "array",
+                "minItems": n_subitems,
+                "maxItems": n_subitems,
+                "items": SUBITEM_SCHEMA,
+            }
+        },
+        "required": ["sub_items"],
+    }
 
 
-def _build_messages(application_json: dict, section_name: str, criterion: dict) -> list[dict]:
+def _build_section_messages(criterion_name: str, sub_items: list[dict],
+                            always_text: str, evidence_text: str) -> list[dict]:
     sys_prompt = (
         "You are a meticulous reviewer of UK NIHR grant applications. "
-        "You will receive ONE scoring criterion plus the parsed application. "
-        "Score it, extract verbatim evidence, and reply with a single JSON "
-        "object that matches the supplied schema. Do not include any prose "
-        "outside the JSON."
+        "You will receive ONE rubric criterion (with multiple sub-items) plus "
+        "context drawn from the application. Score every sub-item, extract "
+        "verbatim evidence from the supplied excerpts, and reply with a single "
+        "JSON object whose `sub_items` array has exactly N entries, in the same "
+        "order as listed. Do not include any prose outside the JSON."
+    )
+    items_block = "\n".join(
+        f"{i+1}. {it['name']}\n   Definition: {it.get('definition','')}\n"
+        f"   Signals: {json.dumps(it.get('signals', []), ensure_ascii=False)}"
+        for i, it in enumerate(sub_items)
     )
     user_prompt = (
-        f"Section: {section_name}\n"
-        f"Criterion: {criterion['name']}\n"
-        f"Definition: {criterion['definition']}\n"
-        f"Signals to look for: {json.dumps(criterion['signals'], ensure_ascii=False)}\n\n"
-        f"Application JSON:\n{_truncate_application(json.dumps(application_json, ensure_ascii=False, indent=2))}\n\n"
-        "Score `quality_score_0to10` 0=missing, 5=present but weak, 8=clear and "
-        "well-supported, 10=excellent and comprehensive. Each rubric sub-score "
-        "is 0/1/2 (absent/partial/strong). Quote evidence verbatim from the "
-        "application; leave the array empty if nothing supports the criterion. "
-        "Return ONLY the JSON object."
+        f"Criterion: {criterion_name}\n\n"
+        f"Sub-items to score (return scores in this exact order):\n{items_block}\n\n"
+        f"Application context (always-included):\n{always_text or '(none)'}\n\n"
+        f"Retrieved evidence:\n{evidence_text}\n\n"
+        "Score `quality_score_0to10` 0=missing, 5=present but weak, 8=clear "
+        "and well-supported, 10=excellent and comprehensive. Each rubric "
+        "sub-score is 0/1/2 (absent/partial/strong). Quote evidence verbatim "
+        "from the supplied excerpts; leave the array empty if nothing supports "
+        "the sub-item. Return ONLY the JSON object with the `sub_items` array."
     )
     return [
         {"role": "system", "content": sys_prompt},
@@ -241,19 +257,23 @@ class _Scorer:
         self.model_name = model_name
 
         print(f"[qwen3_vllm] loading {model_name} via vLLM…", flush=True)
-        self.llm = LLM(
+        llm_kwargs = dict(
             model=model_name,
             trust_remote_code=True,
             dtype="auto",
             gpu_memory_utilization=float(os.environ.get("QWEN3_GPU_UTIL", "0.9")),
             max_model_len=int(os.environ.get("QWEN3_MAX_LEN", "16384")),
         )
+        if QUANTIZATION and QUANTIZATION.lower() != "none":
+            llm_kwargs["quantization"] = QUANTIZATION
+            print(f"[qwen3_vllm] using quantization={QUANTIZATION}", flush=True)
+        self.llm = LLM(**llm_kwargs)
         self.tokenizer = self.llm.get_tokenizer()
 
-    def _sampling_params(self):
-        kwargs = dict(temperature=0.2, top_p=0.9, max_tokens=1024)
-        if self._GuidedDecodingParams is not None:
-            kwargs["guided_decoding"] = self._GuidedDecodingParams(json=CRITERION_SCHEMA)
+    def _sampling_params(self, schema: dict | None = None, max_tokens: int = 2048):
+        kwargs = dict(temperature=0.2, top_p=0.9, max_tokens=max_tokens)
+        if schema is not None and self._GuidedDecodingParams is not None:
+            kwargs["guided_decoding"] = self._GuidedDecodingParams(json=schema)
         return self._SamplingParams(**kwargs)
 
     def _format_prompt(self, messages: list[dict]) -> str:
@@ -264,23 +284,32 @@ class _Scorer:
             enable_thinking=False,
         )
 
-    def score_batch(self, jobs: list[tuple[str, str, dict]], application: dict) -> dict:
+    def score_sections(self,
+                       jobs: list[tuple[str, str, list[dict]]],
+                       always_text: str,
+                       evidence_map: dict[str, str]) -> dict[str, list[dict]]:
         """
-        jobs: list of (section_key, section_name, criterion)
-        Returns: {section_key: [criterion_result, ...]} preserving job order.
+        jobs: list of (criterion_key, criterion_name, sub_items).
+        Returns: {criterion_key: [scored_sub_item, ...]} in sub_item order.
         """
-        prompts = [
-            self._format_prompt(_build_messages(application, sn, crit))
-            for (_, sn, crit) in jobs
-        ]
-        sp = self._sampling_params()
-        outputs = self.llm.generate(prompts, sp)
+        prompts: list[str] = []
+        sps = []
+        for (_key, name, sub_items) in jobs:
+            messages = _build_section_messages(
+                name, sub_items, always_text, evidence_map.get(_key, ""))
+            prompts.append(self._format_prompt(messages))
+            schema = _section_schema(len(sub_items))
+            sps.append(self._sampling_params(schema=schema,
+                                             max_tokens=512 + 256 * len(sub_items)))
+
+        # vLLM accepts a single SamplingParams or a list aligned with prompts.
+        outputs = self.llm.generate(prompts, sps)
 
         results: dict[str, list[dict]] = {}
-        for (sec_key, _sec_name, crit), out in zip(jobs, outputs):
+        for (crit_key, _name, sub_items), out in zip(jobs, outputs):
             text = out.outputs[0].text.strip()
+            scored: list[dict]
             try:
-                # Strip any leading/trailing fences just in case.
                 if text.startswith("```"):
                     text = text.strip("`")
                     if "\n" in text:
@@ -288,11 +317,20 @@ class _Scorer:
                     if text.endswith("```"):
                         text = text[:-3]
                 parsed = json.loads(text)
-                parsed["name"] = crit["name"]
-                parsed.setdefault("evidence_ids", [])
+                arr = parsed.get("sub_items", [])
+                if not isinstance(arr, list) or len(arr) != len(sub_items):
+                    raise ValueError(
+                        f"expected {len(sub_items)} sub_items, got "
+                        f"{len(arr) if isinstance(arr, list) else 'non-list'}")
+                scored = []
+                for it, sub in zip(arr, sub_items):
+                    it["name"] = sub["name"]
+                    it.setdefault("evidence_ids", [])
+                    scored.append(it)
             except Exception as e:
-                parsed = _empty_criterion_result(crit["name"], f"parse error: {e}")
-            results.setdefault(sec_key, []).append(parsed)
+                scored = [_empty_criterion_result(s["name"], f"parse error: {e}")
+                          for s in sub_items]
+            results[crit_key] = scored
         return results
 
 
@@ -303,25 +341,39 @@ def score_application(application: dict, criteria_path: str | Path,
                       scorer: _Scorer | None = None) -> dict:
     rubric = json.loads(Path(criteria_path).read_text(encoding="utf-8"))
 
-    jobs: list[tuple[str, str, dict]] = []
-    for section_name, section_value in rubric.items():
-        if section_name not in SECTION_KEY_MAP:
+    # Build per-criterion jobs (one LLM call per top-level rubric criterion).
+    jobs: list[tuple[str, str, list[dict]]] = []
+    for crit_name, crit_value in rubric.items():
+        if crit_name not in SECTION_KEY_MAP:
             continue
-        section_key = SECTION_KEY_MAP[section_name]
-        for crit in _flatten_section(section_name, section_value):
-            jobs.append((section_key, section_name, crit))
+        sub_items = _flatten_section(crit_name, crit_value)
+        if sub_items:
+            jobs.append((SECTION_KEY_MAP[crit_name], crit_name, sub_items))
 
+    # ── RAG: per-criterion evidence retrieval ─────────────────────────────────
+    from src.rag.retriever import retrieve_for_application
+    from src.rag.stitcher import stitch_chunks
+
+    rag_criteria = [
+        {"key": k, "name": n, "sub_items": s} for (k, n, s) in jobs
+    ]
+    total_budget = int(os.environ.get("RAG_TOTAL_BUDGET", "40000"))
+    always_text, chunk_map = retrieve_for_application(
+        application, rag_criteria, total_budget=total_budget)
+    evidence_map = {k: stitch_chunks(chunks) for k, chunks in chunk_map.items()}
+
+    # ── LLM scoring (one call per criterion, batched through vLLM) ────────────
     own_scorer = scorer is None
     if own_scorer:
         scorer = _Scorer()
-    section_results = scorer.score_batch(jobs, application)
+    section_results = scorer.score_sections(jobs, always_text, evidence_map)
 
     features: dict = {}
-    for section_key in SECTION_KEY_MAP.values():
-        crits = section_results.get(section_key, [])
+    for (crit_key, _name, _sub) in jobs:
+        crits = section_results.get(crit_key, [])
         if not crits:
             continue
-        features[section_key] = {
+        features[crit_key] = {
             "criteria": crits,
             "overall": _aggregate_section(crits),
         }

@@ -41,6 +41,7 @@ PAGE_FOOTER_TOP:    float = 805.0  # discard lines whose top    > this
 SECTION_APP_SUMMARY:  str = "Application Summary Information"
 SECTION_PES:          str = "Plain English Summary of Research"
 SECTION_ABSTRACT:     str = "Scientific Abstract"
+SECTION_PLAN:         str = "Detailed Research Plan"
 SECTION_PPI:          str = "Patient & Public Involvement"
 SECTION_BUDGET:       str = "Detailed Budget"
 SECTION_PARTICIPANTS: str = "Participants and Signatories"
@@ -446,15 +447,19 @@ def parse_application_details(lines: List[Line]) -> dict:
 
     pes_lines = slice_section(lines, SECTION_PES)
     if pes_lines:
-        out["Plain English Summary"] = parse_text_section(pes_lines)
+        out["Plain English Summary of Research"] = parse_text_section(pes_lines)
 
     abstract_lines = slice_section(lines, SECTION_ABSTRACT)
     if abstract_lines:
         out["Scientific Abstract"] = parse_text_section(abstract_lines)
 
+    plan_lines = slice_section(lines, SECTION_PLAN)
+    if plan_lines:
+        out["Detailed Research Plan"] = parse_text_section(plan_lines)
+
     ppi_lines = slice_section(lines, SECTION_PPI)
     if ppi_lines:
-        out["Working with People and Communities Summary"] = parse_text_section(ppi_lines)
+        out["Patient & Public Involvement"] = parse_text_section(ppi_lines)
 
     training_lines = slice_section(lines, SECTION_TRAINING)
     if training_lines:

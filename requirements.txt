@@ -16,3 +16,4 @@ sentence-transformers>=2.7
 textstat>=0.7
 nltk>=3.8
 requests>=2.31
+hnswlib>=0.8.0
