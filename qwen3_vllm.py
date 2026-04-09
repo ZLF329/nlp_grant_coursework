@@ -40,7 +40,7 @@ from typing import Any
 
 # ── config ────────────────────────────────────────────────────────────────────
 MODEL_NAME = os.environ.get("QWEN3_MODEL", "cyankiwi/Qwen3-30B-A3B-Instruct-2507-AWQ-4bit")
-QUANTIZATION = os.environ.get("QWEN3_QUANTIZATION", "awq_marlin")  # awq_marlin / gptq_marlin / None
+QUANTIZATION = os.environ.get("QWEN3_QUANTIZATION", "none")  # auto-detect by default; override with awq_marlin / gptq_marlin / compressed-tensors
 TARGET_EVIDENCE_PER_ITEM = 2
 
 # Maps the human-readable section names in criteria_points.json to the short
