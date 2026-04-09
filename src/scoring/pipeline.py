@@ -2,11 +2,9 @@ from __future__ import annotations
 
 import datetime as dt
 import json
-import re
 from pathlib import Path
 from typing import Any
 
-from src.pool.build_pool import build_chunk_pool, write_pool_artifacts
 from src.verify.faithfulness import FallbackJudge, run_faithfulness_audit
 
 SECTION_KEY_MAP = {
@@ -18,7 +16,6 @@ SECTION_KEY_MAP = {
     "Application Form": "application_form",
 }
 SECTION_NAME_MAP = {value: key for key, value in SECTION_KEY_MAP.items()}
-ID_PATTERN = re.compile(r"^sec[a-z0-9]+__\d{3}(?:_[^\s])?$")
 
 PLAUSIBILITY_TO_MULTIPLIER = {
     5: (1.0, None),
@@ -62,11 +59,94 @@ def load_rubric(criteria_path: str | Path) -> list[dict[str, Any]]:
     return sections
 
 
+def _stringify_leaf(value: Any) -> str:
+    if value is None:
+        return ""
+    if isinstance(value, str):
+        return value.strip()
+    if isinstance(value, (int, float, bool)):
+        return str(value)
+    return json.dumps(value, ensure_ascii=False, indent=2).strip()
+
+
+def _child_path(path: list[str], key: Any) -> list[str]:
+    if isinstance(key, int):
+        return [*path, f"[{key}]"]
+    return [*path, str(key)]
+
+
+def _iter_leaves(value: Any, path: list[str]) -> list[tuple[str, str]]:
+    if isinstance(value, dict):
+        out: list[tuple[str, str]] = []
+        for key, child in value.items():
+            out.extend(_iter_leaves(child, _child_path(path, key)))
+        return out
+    if isinstance(value, list):
+        out: list[tuple[str, str]] = []
+        for idx, child in enumerate(value):
+            out.extend(_iter_leaves(child, _child_path(path, idx)))
+        return out
+
+    text = _stringify_leaf(value)
+    return [(text, " > ".join(path))] if text else []
+
+
+def build_section_index(application: dict[str, Any]) -> dict[str, Any]:
+    ordered_sections: list[str] = []
+    section_text_parts: dict[str, list[str]] = {}
+    section_source_paths: dict[str, list[str]] = {}
+
+    def register_section(parser_section: str) -> None:
+        if parser_section not in section_text_parts:
+            ordered_sections.append(parser_section)
+            section_text_parts[parser_section] = []
+            section_source_paths[parser_section] = []
+
+    for root_key, root_value in application.items():
+        if isinstance(root_value, dict):
+            for child_key, child_value in root_value.items():
+                parser_section = str(child_key)
+                register_section(parser_section)
+                for leaf_text, source_path in _iter_leaves(
+                    child_value,
+                    [str(root_key), str(child_key)],
+                ):
+                    section_text_parts[parser_section].append(leaf_text)
+                    section_source_paths[parser_section].append(source_path)
+        else:
+            parser_section = str(root_key)
+            register_section(parser_section)
+            for leaf_text, source_path in _iter_leaves(root_value, [str(root_key)]):
+                section_text_parts[parser_section].append(leaf_text)
+                section_source_paths[parser_section].append(source_path)
+
+    section_index: dict[str, str] = {}
+    section_name_to_id: dict[str, str] = {}
+    section_text_lookup: dict[str, dict[str, Any]] = {}
+
+    for idx, section_name in enumerate(ordered_sections, start=1):
+        section_id = f"S{idx:02d}"
+        section_index[section_id] = section_name
+        section_name_to_id[section_name] = section_id
+        dedup_source_paths = list(dict.fromkeys(section_source_paths.get(section_name, [])))
+        section_text_lookup[section_id] = {
+            "section": section_name,
+            "text": "\n\n".join(section_text_parts.get(section_name, [])),
+            "source_paths": dedup_source_paths,
+        }
+
+    return {
+        "section_index": section_index,
+        "section_name_to_id": section_name_to_id,
+        "section_text_lookup": section_text_lookup,
+    }
+
+
 def build_stage1_messages(
     *,
     application: dict[str, Any],
     rubric_sections: list[dict[str, Any]],
-    pool_index_text: str,
+    section_index: dict[str, str],
 ) -> list[dict[str, str]]:
     rubric_payload = []
     for section in rubric_sections:
@@ -89,24 +169,24 @@ def build_stage1_messages(
 
     system = (
         "You are scoring a UK NIHR grant application against a rubric. "
-        "Return JSON only. Evidence must be chosen strictly from the provided chunk IDs. "
-        "For each sub-criterion, return exactly five evidence slots in order of support "
-        "strength. If there are fewer than five valid chunks, fill remaining slots with null. "
-        "Never quote evidence text. Score each signal as 0, 1, or 2. Keep each rationale short."
+        "Return JSON only. Use only section IDs from the provided section index. "
+        "Do not output rationale, explanations, section names, or chunk IDs. "
+        "For each signal, return a score of 0, 1, or 2."
     )
     user = (
         "Application JSON:\n"
         f"{json.dumps(application, ensure_ascii=False, indent=2)}\n\n"
+        "Section index:\n"
+        f"{json.dumps(section_index, ensure_ascii=False, indent=2)}\n\n"
         "Rubric:\n"
         f"{json.dumps(rubric_payload, ensure_ascii=False, indent=2)}\n\n"
-        "Chunk pool index:\n"
-        f"{pool_index_text}\n\n"
-        "Rules:\n"
-        "1. Use only chunk IDs that appear in the chunk pool index.\n"
-        "2. `evidence_top5` must always have exactly 5 slots.\n"
-        "3. Use null for unsupported slots instead of inventing evidence.\n"
-        "4. Return sub-criteria in the same order as the rubric.\n"
-        "5. Return signals in the same order as the rubric."
+        "Return format rules:\n"
+        "1. Top-level keys must be rubric section keys.\n"
+        "2. Each sub-criterion must contain `signals` and `needed_section_ids`.\n"
+        "3. `signals` maps signal IDs to scores 0, 1, or 2.\n"
+        "4. `needed_section_ids` must contain only IDs from the section index.\n"
+        "5. If unsupported, use score 0 and an empty `needed_section_ids` array.\n"
+        "6. Return JSON only."
     )
     return [
         {"role": "system", "content": system},
@@ -115,53 +195,53 @@ def build_stage1_messages(
 
 
 def build_stage1_schema(rubric_sections: list[dict[str, Any]]) -> dict[str, Any]:
-    sub_ids = [sub["sub_id"] for section in rubric_sections for sub in section["sub_criteria"]]
-    signal_ids = [
-        signal["sid"]
-        for section in rubric_sections
-        for sub in section["sub_criteria"]
-        for signal in sub["signals"]
-    ]
+    section_properties: dict[str, Any] = {}
+    required_sections: list[str] = []
+    for section in rubric_sections:
+        required_sections.append(section["section_key"])
+        sub_properties: dict[str, Any] = {}
+        required_sub_ids: list[str] = []
+        for sub in section["sub_criteria"]:
+            required_sub_ids.append(sub["sub_id"])
+            signal_properties = {
+                signal["sid"]: {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 2,
+                }
+                for signal in sub["signals"]
+            }
+            sub_properties[sub["sub_id"]] = {
+                "type": "object",
+                "properties": {
+                    "signals": {
+                        "type": "object",
+                        "properties": signal_properties,
+                        "additionalProperties": False,
+                    },
+                    "needed_section_ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "pattern": r"^S\d{2}$",
+                        },
+                        "maxItems": 5,
+                    },
+                },
+                "required": ["signals", "needed_section_ids"],
+                "additionalProperties": False,
+            }
+        section_properties[section["section_key"]] = {
+            "type": "object",
+            "properties": sub_properties,
+            "required": required_sub_ids,
+            "additionalProperties": False,
+        }
     return {
         "type": "object",
-        "properties": {
-            "sub_criteria": {
-                "type": "array",
-                "minItems": len(sub_ids),
-                "maxItems": len(sub_ids),
-                "items": {
-                    "type": "object",
-                    "properties": {
-                        "sub_id": {"type": "string", "enum": sub_ids},
-                        "evidence_top5": {
-                            "type": "array",
-                            "minItems": 5,
-                            "maxItems": 5,
-                            "items": {
-                                "anyOf": [
-                                    {"type": "string", "pattern": ID_PATTERN.pattern},
-                                    {"type": "null"},
-                                ]
-                            },
-                        },
-                        "signals": {
-                            "type": "array",
-                            "items": {
-                                "type": "object",
-                                "properties": {
-                                    "sid": {"type": "string", "enum": signal_ids},
-                                    "score": {"type": "integer", "minimum": 0, "maximum": 2},
-                                    "rationale": {"type": "string"},
-                                },
-                                "required": ["sid", "score", "rationale"],
-                            },
-                        },
-                    },
-                    "required": ["sub_id", "evidence_top5", "signals"],
-                },
-            }
-        },
-        "required": ["sub_criteria"],
+        "properties": section_properties,
+        "required": required_sections,
+        "additionalProperties": False,
     }
 
 
@@ -183,68 +263,83 @@ def _response_preview(text: str, limit: int = 500) -> str:
     return clean[:limit] + "..."
 
 
+def _has_valid_stage1_shape(parsed: dict[str, Any], rubric_sections: list[dict[str, Any]]) -> bool:
+    if isinstance(parsed.get("sub_criteria"), list):
+        return True
+    return any(isinstance(parsed.get(section["section_key"]), dict) for section in rubric_sections)
+
+
 def _normalize_stage1_output(
     parsed: dict[str, Any],
     rubric_sections: list[dict[str, Any]],
-    pool_lookup: dict[str, dict[str, str]],
+    section_data: dict[str, Any],
 ) -> list[dict[str, Any]]:
+    section_index = section_data["section_index"]
     raw_subs = parsed.get("sub_criteria", []) if isinstance(parsed, dict) else []
-    by_sub_id = {}
+    legacy_by_sub_id: dict[str, dict[str, Any]] = {}
     for entry in raw_subs:
         if isinstance(entry, dict) and isinstance(entry.get("sub_id"), str):
-            by_sub_id.setdefault(entry["sub_id"], entry)
+            legacy_by_sub_id.setdefault(entry["sub_id"], entry)
 
     normalized_sections: list[dict[str, Any]] = []
     for section in rubric_sections:
+        raw_section = parsed.get(section["section_key"], {}) if isinstance(parsed, dict) else {}
+        if not isinstance(raw_section, dict):
+            raw_section = {}
+
         section_subs: list[dict[str, Any]] = []
         for expected_sub in section["sub_criteria"]:
-            raw_sub = by_sub_id.get(expected_sub["sub_id"], {})
-            raw_signals = raw_sub.get("signals", []) if isinstance(raw_sub, dict) else []
-            raw_signal_map = {}
-            for item in raw_signals:
-                if isinstance(item, dict) and isinstance(item.get("sid"), str):
-                    raw_signal_map.setdefault(item["sid"], item)
+            raw_sub = raw_section.get(expected_sub["sub_id"], {})
+            if not isinstance(raw_sub, dict):
+                raw_sub = {}
+            if not raw_sub and expected_sub["sub_id"] in legacy_by_sub_id:
+                raw_sub = legacy_by_sub_id[expected_sub["sub_id"]]
 
-            evidence_slots = raw_sub.get("evidence_top5", []) if isinstance(raw_sub, dict) else []
-            evidence_slots = list(evidence_slots)[:5]
-            while len(evidence_slots) < 5:
-                evidence_slots.append(None)
+            raw_signals = raw_sub.get("signals", {})
+            raw_signal_map: dict[str, Any] = {}
+            if isinstance(raw_signals, dict):
+                raw_signal_map = raw_signals
+            elif isinstance(raw_signals, list):
+                for item in raw_signals:
+                    if isinstance(item, dict) and isinstance(item.get("sid"), str):
+                        raw_signal_map[item["sid"]] = item.get("score", 0)
 
-            seen_ids: set[str] = set()
-            normalized_slots: list[str | None] = []
-            evidence_ids: list[str] = []
-            for slot in evidence_slots:
-                if not isinstance(slot, str) or not ID_PATTERN.match(slot) or slot not in pool_lookup:
-                    normalized_slots.append(None)
+            scalar_score = raw_sub.get("score")
+            scalar_score = scalar_score if isinstance(scalar_score, int) else None
+
+            raw_needed_ids = raw_sub.get("needed_section_ids", [])
+            if not isinstance(raw_needed_ids, list):
+                raw_needed_ids = []
+
+            seen_section_ids: set[str] = set()
+            needed_section_ids: list[str] = []
+            for section_id in raw_needed_ids:
+                if not isinstance(section_id, str) or section_id not in section_index:
                     continue
-                if slot in seen_ids:
-                    normalized_slots.append(None)
+                if section_id in seen_section_ids:
                     continue
-                seen_ids.add(slot)
-                normalized_slots.append(slot)
-                evidence_ids.append(slot)
+                seen_section_ids.add(section_id)
+                needed_section_ids.append(section_id)
 
             signals = []
             has_positive = False
             for expected_signal in expected_sub["signals"]:
-                raw_signal = raw_signal_map.get(expected_signal["sid"], {})
-                raw_score = int(raw_signal.get("score", 0)) if isinstance(raw_signal.get("score", 0), int) else 0
+                raw_score = raw_signal_map.get(expected_signal["sid"], scalar_score if scalar_score is not None else 0)
+                raw_score = raw_score if isinstance(raw_score, int) else 0
                 raw_score = max(0, min(raw_score, 2))
-                rationale = raw_signal.get("rationale", "") if isinstance(raw_signal.get("rationale"), str) else ""
                 signals.append({
                     "sid": expected_signal["sid"],
                     "signal_text": expected_signal["text"],
                     "weight": expected_signal["weight"],
                     "score_0to2_raw": raw_score,
-                    "rationale": rationale.strip(),
                 })
                 has_positive = has_positive or raw_score > 0
 
-            empty_zero_evidence = len(evidence_ids) == 0 and not has_positive
+            empty_zero_evidence = len(needed_section_ids) == 0 and not has_positive
             evidence_status = "ok"
-            if len(evidence_ids) == 0 and has_positive:
+            if len(needed_section_ids) == 0 and has_positive:
                 evidence_status = "invalid_evidence"
-            elif 0 < len(evidence_ids) <= 2:
+            elif 0 < len(needed_section_ids) <= 1:
                 evidence_status = "sparse_evidence"
 
             if evidence_status == "invalid_evidence" and has_positive:
@@ -256,9 +351,8 @@ def _normalize_stage1_output(
                 "name": expected_sub["name"],
                 "definition": expected_sub["definition"],
                 "weight": expected_sub["weight"],
-                "evidence_top5": normalized_slots,
-                "evidence_ids": evidence_ids,
-                "evidence_count": len(evidence_ids),
+                "needed_section_ids": needed_section_ids,
+                "evidence_count": len(needed_section_ids),
                 "evidence_status": evidence_status,
                 "empty_zero_evidence": empty_zero_evidence,
                 "signals": signals,
@@ -273,40 +367,24 @@ def _normalize_stage1_output(
     return normalized_sections
 
 
-def _section_audit_payload(section: dict[str, Any], pool_lookup: dict[str, dict[str, str]]) -> dict[str, Any]:
-    referenced_ids: set[str] = set()
+def _section_audit_payload(section: dict[str, Any], section_data: dict[str, Any]) -> dict[str, Any]:
+    section_text_lookup = section_data["section_text_lookup"]
+    referenced_ids: list[str] = []
+    seen_ids: set[str] = set()
     for sub in section["sub_criteria"]:
-        for chunk_id in sub["evidence_ids"]:
-            referenced_ids.add(chunk_id)
+        for section_id in sub["needed_section_ids"]:
+            if section_id in seen_ids:
+                continue
+            seen_ids.add(section_id)
+            referenced_ids.append(section_id)
 
     section_blocks: list[str] = []
-    parser_section_order: list[str] = []
-    seen_sections: set[str] = set()
-    for chunk_id, meta in pool_lookup.items():
-        if chunk_id not in referenced_ids:
+    for section_id in referenced_ids:
+        meta = section_text_lookup.get(section_id)
+        if not meta:
             continue
-        parser_section = meta["parser_section"]
-        if parser_section not in seen_sections:
-            seen_sections.add(parser_section)
-            parser_section_order.append(parser_section)
-
-    for parser_section in parser_section_order:
-        parts: list[str] = [f"[{parser_section}]"]
-        seen_selected = False
-        in_gap = False
-        for chunk_id, meta in pool_lookup.items():
-            if meta["parser_section"] != parser_section:
-                continue
-            if chunk_id in referenced_ids:
-                if seen_selected and in_gap:
-                    parts.append("...")
-                parts.append(meta["text"])
-                seen_selected = True
-                in_gap = False
-            elif seen_selected:
-                in_gap = True
-        parts.append(f"[{parser_section}]")
-        section_blocks.append("\n".join(parts))
+        label = f"{section_id}: {meta['section']}"
+        section_blocks.append(f"[{label}]\n{meta['text']}\n[{label}]")
 
     return {
         "evidence_context": "\n\n".join(section_blocks),
@@ -316,12 +394,12 @@ def _section_audit_payload(section: dict[str, Any], pool_lookup: dict[str, dict[
                 "sub_id": sub["sub_id"],
                 "sub_criterion": sub["name"],
                 "evidence_status": sub["evidence_status"],
+                "needed_section_ids": sub["needed_section_ids"],
                 "signals": [
                     {
                         "sid": signal["sid"],
                         "signal_text": signal["signal_text"],
                         "stage1_score": signal["score_0to2_raw"],
-                        "stage1_rationale": signal["rationale"],
                     }
                     for signal in sub["signals"]
                 ],
@@ -354,7 +432,8 @@ def _apply_plausibility(section: dict[str, Any], audited: dict[str, dict[str, An
             signal["score_0to2_weighted"] = round(signal["score_0to2_raw"] * multiplier, 4)
 
 
-def _aggregate_sub_criterion(sub: dict[str, Any], pool_lookup: dict[str, dict[str, str]]) -> dict[str, Any]:
+def _aggregate_sub_criterion(sub: dict[str, Any], section_data: dict[str, Any]) -> dict[str, Any]:
+    section_text_lookup = section_data["section_text_lookup"]
     total_weight = sum(signal["weight"] for signal in sub["signals"]) or 1.0
     weighted_sum = sum(signal["score_0to2_weighted"] * signal["weight"] for signal in sub["signals"])
     score_10 = round((weighted_sum / (2 * total_weight)) * 10, 2)
@@ -363,16 +442,18 @@ def _aggregate_sub_criterion(sub: dict[str, Any], pool_lookup: dict[str, dict[st
         2,
     )
     weak_signal_count = sum(1 for signal in sub["signals"] if signal["plausibility_0to5"] <= 1)
-    evidence = [
-        {
-            "id": chunk_id,
-            "text": pool_lookup[chunk_id]["text"],
-            "section": pool_lookup[chunk_id]["parser_section"],
-            "source_path": pool_lookup[chunk_id]["source_path"],
-        }
-        for chunk_id in sub["evidence_ids"]
-        if chunk_id in pool_lookup
-    ]
+    evidence = []
+    for section_id in sub["needed_section_ids"]:
+        meta = section_text_lookup.get(section_id)
+        if not meta:
+            continue
+        evidence.append({
+            "id": section_id,
+            "section_id": section_id,
+            "text": "",
+            "section": meta["section"],
+            "source_path": " | ".join(meta.get("source_paths", [])),
+        })
     return {
         **sub,
         "score_10": score_10,
@@ -389,9 +470,9 @@ def _aggregate_sub_criterion(sub: dict[str, Any], pool_lookup: dict[str, dict[st
     }
 
 
-def _aggregate_section(section: dict[str, Any], pool_lookup: dict[str, dict[str, str]]) -> dict[str, Any]:
+def _aggregate_section(section: dict[str, Any], section_data: dict[str, Any]) -> dict[str, Any]:
     sub_criteria = [
-        _aggregate_sub_criterion(sub, pool_lookup) for sub in section["sub_criteria"]
+        _aggregate_sub_criterion(sub, section_data) for sub in section["sub_criteria"]
     ]
     total_weight = sum(sub["weight"] for sub in sub_criteria) or 1.0
     weighted_score = sum(sub["score_10"] * sub["weight"] for sub in sub_criteria)
@@ -488,6 +569,45 @@ def _aggregate_overall(features: dict[str, dict[str, Any]], section_weights: dic
     }
 
 
+def _write_stage1_artifacts(
+    *,
+    artifacts_dir: str | Path | None,
+    doc_id: str,
+    section_index: dict[str, str],
+    raw_response: str,
+    parsed: dict[str, Any],
+    normalized_sections: list[dict[str, Any]],
+) -> dict[str, str]:
+    if artifacts_dir is None:
+        return {}
+
+    artifacts_path = Path(artifacts_dir)
+    artifacts_path.mkdir(parents=True, exist_ok=True)
+
+    raw_path = artifacts_path / f"{doc_id}_stage1_raw.txt"
+    parsed_path = artifacts_path / f"{doc_id}_stage1_parsed.json"
+    normalized_path = artifacts_path / f"{doc_id}_stage1_normalized.json"
+    section_index_path = artifacts_path / f"{doc_id}_section_index.json"
+
+    raw_path.write_text(raw_response, encoding="utf-8")
+    parsed_path.write_text(json.dumps(parsed, ensure_ascii=False, indent=2), encoding="utf-8")
+    normalized_path.write_text(
+        json.dumps(normalized_sections, ensure_ascii=False, indent=2),
+        encoding="utf-8",
+    )
+    section_index_path.write_text(
+        json.dumps(section_index, ensure_ascii=False, indent=2),
+        encoding="utf-8",
+    )
+
+    return {
+        "stage1_raw_response": str(raw_path),
+        "stage1_parsed_response": str(parsed_path),
+        "stage1_normalized_response": str(normalized_path),
+        "section_index": str(section_index_path),
+    }
+
+
 def score_application_base(
     *,
     application: dict[str, Any],
@@ -498,19 +618,12 @@ def score_application_base(
     artifacts_dir: str | Path | None = None,
 ) -> dict[str, Any]:
     rubric_sections = load_rubric(criteria_path)
-    pool = build_chunk_pool(application)
-    if artifacts_dir is not None:
-        write_pool_artifacts(
-            pool_lookup=pool["pool_lookup"],
-            pool_index_text=pool["pool_index_text"],
-            artifacts_dir=artifacts_dir,
-            doc_id=doc_id or "unknown",
-        )
+    section_data = build_section_index(application)
 
     messages = build_stage1_messages(
         application=application,
         rubric_sections=rubric_sections,
-        pool_index_text=pool["pool_index_text"],
+        section_index=section_data["section_index"],
     )
     schema = build_stage1_schema(rubric_sections)
     raw_response = stage1_client.generate_json(messages, schema=schema, max_tokens=8192)
@@ -522,17 +635,25 @@ def score_application_base(
             f"Response preview: {_response_preview(raw_response)!r}"
         ) from exc
 
-    if not isinstance(parsed, dict) or not isinstance(parsed.get("sub_criteria"), list):
+    if not isinstance(parsed, dict) or not _has_valid_stage1_shape(parsed, rubric_sections):
         raise ValueError(
-            "Stage 1 scorer returned JSON without a valid `sub_criteria` array. "
+            "Stage 1 scorer returned JSON without a valid section-object or `sub_criteria` structure. "
             f"Response preview: {_response_preview(raw_response)!r}"
         )
 
-    sections = _normalize_stage1_output(parsed, rubric_sections, pool["pool_lookup"])
+    sections = _normalize_stage1_output(parsed, rubric_sections, section_data)
+    artifact_paths = _write_stage1_artifacts(
+        artifacts_dir=artifacts_dir,
+        doc_id=doc_id or "unknown",
+        section_index=section_data["section_index"],
+        raw_response=raw_response,
+        parsed=parsed,
+        normalized_sections=sections,
+    )
 
     judge = judge or FallbackJudge()
     audit_payloads = {
-        section["section_key"]: _section_audit_payload(section, pool["pool_lookup"])
+        section["section_key"]: _section_audit_payload(section, section_data)
         for section in sections
     }
     audited = run_faithfulness_audit(audit_payloads, judge)
@@ -540,7 +661,7 @@ def score_application_base(
         _apply_plausibility(section, audited.get(section["section_key"], {}))
 
     features = {
-        section["section_key"]: _aggregate_section(section, pool["pool_lookup"])
+        section["section_key"]: _aggregate_section(section, section_data)
         for section in sections
     }
     section_weights = {section["section_key"]: section["weight"] for section in sections}
@@ -548,13 +669,18 @@ def score_application_base(
     return {
         "doc_id": doc_id or "unknown",
         "run_info": {
-            "ran_at_utc": dt.datetime.utcnow().isoformat() + "Z",
+            "ran_at_utc": dt.datetime.now(dt.UTC).isoformat().replace("+00:00", "Z"),
             "model": getattr(stage1_client, "model_name", "unknown"),
             "judge_model": getattr(judge, "model_name", getattr(judge, "__class__", type(judge)).__name__),
         },
-        "pool_size": len(pool["pool_lookup"]),
-        "pool_lookup": pool["pool_lookup"],
-        "section_chunk_ids": pool["section_chunk_ids"],
+        "pool_size": 0,
+        "pool_lookup": {},
+        "section_chunk_ids": {},
+        "section_index": section_data["section_index"],
         "features": features,
         "overall": _aggregate_overall(features, section_weights),
+        "debug": {
+            "stage1_contract_version": "section_ids_v1",
+            "artifacts": artifact_paths,
+        },
     }

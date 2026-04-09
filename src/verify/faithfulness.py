@@ -15,7 +15,7 @@ JUDGE_PARALLEL = int(os.environ.get("OLLAMA_JUDGE_PARALLEL", "4"))
 
 def build_judge_messages(section_key: str, payload: dict[str, Any]) -> list[dict[str, str]]:
     system = (
-        "You are auditing whether cited evidence chunk IDs actually support grant-scoring "
+        "You are auditing whether cited section references actually support grant-scoring "
         "judgments. Be lenient. Only assign low plausibility when the cited evidence clearly "
         "fails to support the judgment. Score each signal from 0 to 5. Do not rescore the "
         "application itself. Reply with JSON only."
@@ -27,8 +27,8 @@ def build_judge_messages(section_key: str, payload: dict[str, Any]) -> list[dict
     }
     user = (
         f"Section key: {section_key}\n\n"
-        "Evidence context in original order. `...` means omitted gap between cited chunks. "
-        "Each parser section is wrapped by matching `[Section Name]` markers.\n\n"
+        "Evidence context in original order. Each cited section is wrapped by matching "
+        "[Section ID: Section Name] markers.\n\n"
         f"{evidence_context}\n\n"
         "Audit package:\n"
         f"{json.dumps(audit_package, ensure_ascii=False, indent=2)}\n\n"
