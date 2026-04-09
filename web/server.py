@@ -247,14 +247,28 @@ def _warmup():
         from src.verify.faithfulness import JUDGE_MODEL
         for model_name in (OLLAMA_MODEL, JUDGE_MODEL):
             print(f"[server] warming up Ollama model {model_name}…", flush=True)
-            r = requests.post(
-                f"{OLLAMA_HOST.rstrip('/')}/api/generate",
-                json={"model": model_name, "prompt": "", "stream": False,
-                      "keep_alive": "30m"},
+            response = requests.post(
+                f"{OLLAMA_HOST.rstrip('/')}/api/chat",
+                json={
+                    "model": model_name,
+                    "messages": [{"role": "user", "content": " "}],
+                    "stream": False,
+                    "keep_alive": "30m",
+                    "think": False,
+                    "options": {"num_predict": 1},
+                },
                 timeout=600,
             )
-            r.raise_for_status()
+            response.raise_for_status()
         print("[server] Ollama models loaded", flush=True)
+    except requests.HTTPError as e:
+        detail = ""
+        if e.response is not None:
+            body = e.response.text.strip()
+            detail = f" status={e.response.status_code}"
+            if body:
+                detail += f" body={body[:200]}"
+        print(f"[server] Ollama warmup failed: {e}.{detail}", flush=True)
     except Exception as e:
         print(f"[server] Ollama warmup failed: {e}", flush=True)
 
