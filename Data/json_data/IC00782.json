@@ -145,7 +145,15 @@
         "duplication_score": 0.0
       },
       "impact_and_dissemination": null,
-      "inclusive_design": null
+      "inclusive_design": null,
+      "references": {
+        "count": 1,
+        "sample": [
+          "10.1097/CCM.0b013e3181e6ce8f. [DOI] [PubMed] UKHSA (2023) Point prevalence survey on HCAI, AMU and AMS in England 2023: report Point prevalence survey on HCAI, AMU and AMS in England 2023: report - GO"
+        ],
+        "inline_citation_count": 2,
+        "has_reference_section": true
+      }
     },
     "training": {
       "overall_plan": null,

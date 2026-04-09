@@ -92,6 +92,12 @@
         "word_count": 99,
         "over_word_limit": false,
         "duplication_score": 0.0
+      },
+      "references": {
+        "count": 0,
+        "sample": [],
+        "inline_citation_count": 0,
+        "has_reference_section": false
       }
     },
     "training": {

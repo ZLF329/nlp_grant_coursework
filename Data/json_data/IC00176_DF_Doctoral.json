@@ -104,6 +104,12 @@
         "word_count": 57,
         "over_word_limit": false,
         "duplication_score": 0.0
+      },
+      "references": {
+        "count": 9,
+        "sample": [],
+        "inline_citation_count": 9,
+        "has_reference_section": false
       }
     },
     "training": {

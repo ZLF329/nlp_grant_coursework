@@ -114,6 +114,18 @@
         "word_count": 17,
         "over_word_limit": false,
         "duplication_score": 0.0
+      },
+      "references": {
+        "count": 62,
+        "sample": [
+          "1. Russell MD, Galloway JB, Andrews CD, et al. Incidence and management of inflammatory arthritis in England before and during the COVID-19 pandemic: a population-level cohort study using OpenSAFELY. ",
+          "2. Russell MD, Massey J, Roddy E, et al. Gout incidence and management during the COVID-19 pandemic in England, UK: a nationwide observational study using OpenSAFELY. The Lancet Rheumatology 2023; 5(1",
+          "3. NICE. Measuring the use of NICE guidance. 2024. https://www.nice.org.uk/about/what-we- do/into-practice/measuring-the-uptake-of-nice-guidance",
+          "4. Yates M, Bechman K, Dennison EM, et al. Data quality predicts care quality: findings from a national clinical audit. Arthritis Res Ther 2020; 22(1): 87.",
+          "5. National Institute for Health and Care Research. New vision for harnessing the full potential of data-enabled trials published. 2021. https://www.nihr.ac.uk/news/new-vision-for-harnessing-the- full"
+        ],
+        "inline_citation_count": 0,
+        "has_reference_section": true
       }
     },
     "training": {

@@ -280,6 +280,82 @@ def _extract_training_items(text: str) -> List[str]:
     return items[:25]
 
 
+def _extract_references(input_path: str) -> Dict[str, Any]:
+    """Extract reference count and sample references from a PDF or DOCX file.
+
+    Returns a dict with:
+      - count: number of references found
+      - sample: first 5 references as strings (for model to assess recency/relevance)
+      - inline_citation_count: number of inline [N] or (Author, Year) citations in body text
+      - has_reference_section: whether a formal reference section was found
+    """
+    ext = Path(input_path).suffix.lower()
+    full_text = ""
+
+    if ext == ".pdf":
+        try:
+            import pdfplumber
+            with pdfplumber.open(input_path) as pdf:
+                full_text = "\n".join(p.extract_text() or "" for p in pdf.pages)
+        except Exception:
+            return {"count": 0, "sample": [], "inline_citation_count": 0, "has_reference_section": False}
+    elif ext in (".docx", ".doc"):
+        try:
+            import docx
+            doc = docx.Document(input_path)
+            full_text = "\n".join(p.text for p in doc.paragraphs)
+        except Exception:
+            return {"count": 0, "sample": [], "inline_citation_count": 0, "has_reference_section": False}
+    else:
+        return {"count": 0, "sample": [], "inline_citation_count": 0, "has_reference_section": False}
+
+    lines = full_text.splitlines()
+
+    # ── Find formal reference section ────────────────────────────────────────
+    ref_start_idx = None
+    for i, line in enumerate(lines):
+        if re.match(r"^\s*references?\s*$", line.strip(), re.I):
+            ref_start_idx = i
+            break
+
+    numbered_refs: List[str] = []
+    if ref_start_idx is not None:
+        # Collect numbered entries: lines starting with "1." "2." etc.
+        current: List[str] = []
+        for line in lines[ref_start_idx + 1:]:
+            stripped = line.strip()
+            if not stripped:
+                continue
+            # New numbered reference starts
+            if re.match(r"^\d{1,3}\.", stripped):
+                if current:
+                    numbered_refs.append(" ".join(current))
+                current = [stripped]
+            elif current:
+                current.append(stripped)
+            # Stop if we hit another major section heading
+            if re.match(r"^(appendix|figure|table|acknowledgement|abbreviation)", stripped, re.I) and not current:
+                break
+        if current:
+            numbered_refs.append(" ".join(current))
+
+    # ── Fallback: count inline citations in body text ─────────────────────────
+    body_text = "\n".join(lines[:ref_start_idx]) if ref_start_idx else full_text
+    inline_numeric   = re.findall(r"\[\d+(?:[,–\-]\d+)*\]", body_text)
+    inline_author    = re.findall(r"\([A-Z][a-z]+(?:\s+et\s+al\.?)?,?\s+\d{4}\)", body_text)
+    inline_count     = len(set(inline_numeric)) + len(set(inline_author))
+
+    count = len(numbered_refs) if numbered_refs else inline_count
+    sample = [r[:200] for r in numbered_refs[:5]]
+
+    return {
+        "count": count,
+        "sample": sample,
+        "inline_citation_count": inline_count,
+        "has_reference_section": ref_start_idx is not None,
+    }
+
+
 def _extract_underserved_groups(*texts: str) -> List[str]:
     combined = "\n".join(text for text in texts if text)
     hits = []
@@ -701,6 +777,7 @@ def build_scoring_ready(input_path: str, unified_data: Dict[str, Any]) -> Dict[s
         confidence=0.67,
     )
 
+    references = _extract_references(input_path)
     pes_payload = _record_payload(rec_pes, app_details.get("Plain English Summary", ""))
     abstract_payload = _record_payload(rec_abstract, app_details.get("Scientific Abstract", ""))
     training_payload = _record_payload(rec_training, app_details.get("Training & Development and Research Support", ""))
@@ -806,6 +883,7 @@ def build_scoring_ready(input_path: str, unified_data: Dict[str, Any]) -> Dict[s
                     if re.search(r"\b(inclusive|diverse|underserved|accessib|co-design|co design|equity|equality)\b", sentence, re.I)
                 )
             ),
+            "references": references,
         },
         "training": {
             "overall_plan": training_payload or training_bundle,

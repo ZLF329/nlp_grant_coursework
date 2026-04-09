@@ -123,7 +123,13 @@
         "over_word_limit": false,
         "duplication_score": 0.0
       },
-      "inclusive_design": null
+      "inclusive_design": null,
+      "references": {
+        "count": 3,
+        "sample": [],
+        "inline_citation_count": 3,
+        "has_reference_section": false
+      }
     },
     "training": {
       "overall_plan": {

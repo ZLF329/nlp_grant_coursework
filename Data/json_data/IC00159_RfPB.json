@@ -86,7 +86,19 @@
         "duplication_score": 0.033
       },
       "impact_and_dissemination": null,
-      "inclusive_design": null
+      "inclusive_design": null,
+      "references": {
+        "count": 35,
+        "sample": [
+          "1. Corazza M, Schettini N, Zedde P, Borghi A. Vulvar Lichen Sclerosus from Pathophysiology to Therapeutic Approaches: Evidence and Prospects. Biomedicines. 2021 Aug 3;9(8).",
+          "2. Goldstein AT, Marinoff SC, Christopher K, Srodon M. Prevalence of vulvar lichen sclerosus in a general gynecology practice. J Reprod Med. 2005 Jul;50(7):477–80.",
+          "3. Leibovitz A, Kaplun V, Saposhnicov N, Habot B. Vulvovaginal examinations in elderly nursing home women residents. Arch Gerontol Geriatr [Internet]. 2000 Aug [cited 2023 Nov 19];31(1):1–4. Available",
+          "4. Cooper SM, Gao XH, Powell JJ, Wojnarowska F. Does Treatment of Vulvar Lichen Sclerosus Influence Its Prognosis? Arch Dermatol. 2004 Jun 1;140(6).",
+          "5. Goldstein AT, Mitchell L, Govind V, Heller D. A randomized double-blind placebo-controlled trial of autologous platelet-rich plasma intradermal injections for the treatment of vulvar lichen scleros"
+        ],
+        "inline_citation_count": 0,
+        "has_reference_section": true
+      }
     },
     "training": {
       "overall_plan": null,
