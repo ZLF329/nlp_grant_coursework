@@ -27,12 +27,13 @@ SECTION_ID_PREFIX = {
 
 PLAUSIBILITY_TO_MULTIPLIER = {
     5: (1.0, None),
-    4: (0.9, None),
-    3: (0.8, "low_confidence"),
-    2: (0.6, "low_confidence"),
-    1: (0.4, "weak_evidence"),
+    4: (0.85, None),
+    3: (0.65, "low_confidence"),
+    2: (0.35, "low_confidence"),
+    1: (0.15, "weak_evidence"),
     0: (0.0, "hallucination"),
 }
+STAGE1_ALLOWED_SCORES = (0.0, 0.5, 1.0, 1.5, 2.0)
 
 
 def load_rubric(criteria_path: str | Path) -> list[dict[str, Any]]:
@@ -258,7 +259,7 @@ def build_stage1_messages(
         "Return JSON only.\n\n"
         "Use only section IDs from the provided section index.\n"
         "Do not output rationale, explanations, prose, markdown, section names, or chunk IDs.\n"
-        "For each signal, return exactly one integer score chosen from 0, 1, or 2.\n\n"
+        "For each signal, return exactly one score chosen from 0, 0.5, 1, 1.5, or 2.\n\n"
         "Important:\n"
         "Inside each rubric section, the sub-criteria must be stored as object properties keyed by sub_id.\n"
         "Do not use arrays for sub-criteria."
@@ -276,7 +277,7 @@ def build_stage1_messages(
         "3. Each sub-criterion object must contain:\n"
         "   - `signals`\n"
         "   - `needed_section_ids`\n"
-        "4. `signals` maps signal IDs to scores chosen only from 0, 1, or 2.\n"
+        "4. `signals` maps signal IDs to scores chosen only from 0, 0.5, 1, 1.5, or 2.\n"
         "5. `needed_section_ids` must contain only IDs from the section index.\n"
         "6. If unsupported, use score 0 and an empty `needed_section_ids` array.\n"
         "7. Return JSON only.\n\n"
@@ -291,7 +292,7 @@ def build_stage1_messages(
         "    },\n"
         '    "g.2": {\n'
         '      "signals": {\n'
-        '        "g.2.a": 1\n'
+        '        "g.2.a": 0.5\n'
         "      },\n"
         '      "needed_section_ids": ["S10"]\n'
         "    }\n"
@@ -300,7 +301,7 @@ def build_stage1_messages(
         '    "pr.1": {\n'
         '      "signals": {\n'
         '        "pr.1.a": 0,\n'
-        '        "pr.1.b": 1,\n'
+        '        "pr.1.b": 1.5,\n'
         '        "pr.1.c": 2\n'
         "      },\n"
         '      "needed_section_ids": ["S08", "S10"]\n'
@@ -326,9 +327,8 @@ def build_stage1_schema(rubric_sections: list[dict[str, Any]]) -> dict[str, Any]
             required_sub_ids.append(sub["sub_id"])
             signal_properties = {
                 signal["sid"]: {
-                    "type": "integer",
-                    "minimum": 0,
-                    "maximum": 2,
+                    "type": "number",
+                    "enum": list(STAGE1_ALLOWED_SCORES),
                 }
                 for signal in sub["signals"]
             }
@@ -384,6 +384,13 @@ def _response_preview(text: str, limit: int = 500) -> str:
     return clean[:limit] + "..."
 
 
+def _normalize_stage1_score(value: Any) -> float:
+    if isinstance(value, bool) or not isinstance(value, (int, float)):
+        return 0.0
+    score = round(float(value), 4)
+    return score if score in STAGE1_ALLOWED_SCORES else 0.0
+
+
 def _has_valid_stage1_shape(parsed: dict[str, Any], rubric_sections: list[dict[str, Any]]) -> bool:
     if isinstance(parsed.get("sub_criteria"), list):
         return True
@@ -426,7 +433,11 @@ def _normalize_stage1_output(
                         raw_signal_map[item["sid"]] = item.get("score", 0)
 
             scalar_score = raw_sub.get("score")
-            scalar_score = int(scalar_score) if isinstance(scalar_score, int) else None
+            scalar_score = (
+                _normalize_stage1_score(scalar_score)
+                if isinstance(scalar_score, (int, float)) and not isinstance(scalar_score, bool)
+                else None
+            )
 
             raw_needed_ids = raw_sub.get("needed_section_ids", [])
             if not isinstance(raw_needed_ids, list):
@@ -446,8 +457,7 @@ def _normalize_stage1_output(
             has_positive = False
             for expected_signal in expected_sub["signals"]:
                 raw_score = raw_signal_map.get(expected_signal["sid"], scalar_score if scalar_score is not None else 0)
-                raw_score = int(raw_score) if isinstance(raw_score, int) else 0
-                raw_score = max(0, min(raw_score, 2))
+                raw_score = _normalize_stage1_score(raw_score)
                 signals.append({
                     "sid": expected_signal["sid"],
                     "signal_text": expected_signal["text"],

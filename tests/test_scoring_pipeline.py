@@ -114,11 +114,11 @@ class PipelineTests(unittest.TestCase):
         self.assertEqual(result["pool_lookup"], {})
         self.assertEqual(result["section_chunk_ids"], {})
 
-    def test_stage1_signal_scores_remain_integers(self):
+    def test_stage1_signal_scores_use_five_point_half_steps(self):
         payload = {
             "general": {
                 "g.1": {
-                    "signals": {"g.1.a": 1},
+                    "signals": {"g.1.a": 1.5},
                     "needed_section_ids": ["S04", "S07"],
                 }
             }
@@ -131,10 +131,30 @@ class PipelineTests(unittest.TestCase):
             judge=FallbackJudge(),
         )
         criterion = result["features"]["general"]["sub_criteria"][0]
-        self.assertEqual(criterion["signals"][0]["score_0to2_raw"], 1)
+        self.assertEqual(criterion["signals"][0]["score_0to2_raw"], 1.5)
         self.assertGreater(criterion["score_10"], 0)
 
-    def test_plausibility_multipliers_are_stricter_for_4_and_3(self):
+    def test_stage1_signal_scores_reject_non_step_values(self):
+        payload = {
+            "general": {
+                "g.1": {
+                    "signals": {"g.1.a": 1.2},
+                    "needed_section_ids": ["S04", "S07"],
+                }
+            }
+        }
+        result = score_application_base(
+            application=sample_application(),
+            criteria_path=CRITERIA_PATH,
+            doc_id="invalid_step_doc",
+            stage1_client=FakeStage1Client(payload),
+            judge=FallbackJudge(),
+        )
+        criterion = result["features"]["general"]["sub_criteria"][0]
+        self.assertEqual(criterion["signals"][0]["score_0to2_raw"], 0)
+        self.assertEqual(criterion["score_10"], 0)
+
+    def test_plausibility_multipliers_are_harsher(self):
         payload = {
             "general": {
                 "g.10": {
@@ -175,9 +195,9 @@ class PipelineTests(unittest.TestCase):
             if item["sub_id"] == "g.10"
         )
         weighted_scores = {signal["sid"]: signal["score_0to2_weighted"] for signal in criterion["signals"]}
-        self.assertEqual(weighted_scores["g.10.a"], 1.8)
-        self.assertEqual(weighted_scores["g.10.b"], 1.6)
-        self.assertEqual(weighted_scores["g.10.c"], 1.2)
+        self.assertEqual(weighted_scores["g.10.a"], 1.7)
+        self.assertEqual(weighted_scores["g.10.b"], 1.3)
+        self.assertEqual(weighted_scores["g.10.c"], 0.7)
         self.assertEqual(weighted_scores["g.10.d"], 2.0)
 
     def test_invalid_section_ids_zero_out_positive_scores(self):
