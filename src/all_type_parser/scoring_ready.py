@@ -306,13 +306,11 @@ def _build_evidence(
     word_limit = _detect_word_limit(raw)
     payload: Dict[str, Any] = {
         "text": cleaned,
-        "raw_text": raw,
         "source_section": source_section,
         "page_start": page_start,
         "page_end": page_end,
         "confidence": round(confidence, 2),
         "word_count": _word_count(cleaned),
-        "detected_word_limit": word_limit,
         "over_word_limit": bool(word_limit and _word_count(cleaned) > word_limit),
         "duplication_score": _duplication_score(cleaned),
         "likely_contains_guidance": cleaned == raw and any(
@@ -506,6 +504,40 @@ def _is_prompt_like_payload(payload: Optional[Dict[str, Any]]) -> bool:
     return False
 
 
+def _parse_award_type(input_path: str) -> str:
+    """Extract award type from filename, e.g. 'IC00001_DF_Doctoral' -> 'DF_Doctoral'."""
+    stem = Path(input_path).stem
+    parts = stem.split("_", 1)
+    return parts[1] if len(parts) > 1 else stem
+
+
+def _dedup_payload(
+    payload: Optional[Dict[str, Any]],
+    *references: Optional[Dict[str, Any]],
+) -> Optional[Dict[str, Any]]:
+    """Return None if payload text is identical to any reference payload's text."""
+    if not payload:
+        return None
+    text = payload.get("text", "")
+    for ref in references:
+        if ref and ref.get("text", "") == text:
+            return None
+    return payload
+
+
+def _strip_internal_fields(obj: Any) -> Any:
+    """Recursively remove internal/debug fields before final output."""
+    if isinstance(obj, dict):
+        return {
+            k: _strip_internal_fields(v)
+            for k, v in obj.items()
+            if k != "likely_contains_guidance"
+        }
+    if isinstance(obj, list):
+        return [_strip_internal_fields(item) for item in obj]
+    return obj
+
+
 def _bundle_payload(
     records: List[Dict[str, Any]],
     *,
@@ -561,6 +593,7 @@ def build_scoring_ready(input_path: str, unified_data: Dict[str, Any]) -> Dict[s
     team = unified_data.get("LEAD APPLICANT & RESEARCH TEAM", {})
     app_details = unified_data.get("APPLICATION DETAILS", {})
     budget_text = unified_data.get("SUMMARY BUDGET", "")
+    support_mentorship_text = unified_data.get("SUPPORT AND MENTORSHIP", "")
 
     rec_summary = _pick_record(records, "application summary information", "summary")
     rec_pes = _pick_record(records, "plain english summary")
@@ -626,7 +659,7 @@ def build_scoring_ready(input_path: str, unified_data: Dict[str, Any]) -> Dict[s
     budget_payload = _record_payload(rec_budget, budget_text)
     research_plan_payload = _record_payload(rec_plan) or research_bundle
     cv_payload = _record_payload(rec_cv)
-    support_payload = _record_payload(rec_support) or support_bundle
+    support_payload = _record_payload(rec_support) or support_bundle or _build_evidence(support_mentorship_text, source_section="SUPPORT AND MENTORSHIP", confidence=0.70)
     host_payload = _record_payload(rec_host, team.get("Host Organisation", "") if isinstance(team, dict) else "")
 
     if pes_payload and pes_payload.get("word_count", 0) < 40 and pes_payload.get("likely_contains_guidance"):
@@ -693,6 +726,7 @@ def build_scoring_ready(input_path: str, unified_data: Dict[str, Any]) -> Dict[s
         "parser_strategy": strategy,
         "award_meta": {
             "application_title": summary_info.get("Application Title", ""),
+            "award_type": _parse_award_type(input_path),
             "contracting_organisation": summary_info.get("Contracting Organisation", ""),
             "start_date": summary_info.get("Start Date", ""),
             "duration_months": summary_info.get("Duration (months)", ""),
@@ -727,10 +761,19 @@ def build_scoring_ready(input_path: str, unified_data: Dict[str, Any]) -> Dict[s
         "training": {
             "overall_plan": training_payload or training_bundle,
             "gap_analysis": _build_evidence(training_splits.get("gap_analysis", "")) if training_splits.get("gap_analysis") else None,
-            "training_plan": _build_evidence(training_splits.get("training_plan", "")) if training_splits.get("training_plan") else (training_payload or training_bundle),
-            "research_support": _build_evidence(training_splits.get("research_support", "")) if training_splits.get("research_support") else support_payload,
+            "training_plan": _dedup_payload(
+                _build_evidence(training_splits.get("training_plan", "")) if training_splits.get("training_plan") else (training_payload or training_bundle),
+                training_payload or training_bundle,
+            ),
+            "research_support": _dedup_payload(
+                _build_evidence(training_splits.get("research_support", "")) if training_splits.get("research_support") else support_payload,
+                training_payload or training_bundle,
+            ),
             "practice_development": _build_evidence(training_splits.get("practice_development", "")) if training_splits.get("practice_development") else None,
-            "leadership_development": _build_evidence(training_splits.get("leadership_development", "")) if training_splits.get("leadership_development") else None,
+            "leadership_development": _dedup_payload(
+                _build_evidence(training_splits.get("leadership_development", "")) if training_splits.get("leadership_development") else None,
+                training_payload or training_bundle,
+            ),
             "training_items": training_items,
         },
         "support": {
@@ -747,7 +790,10 @@ def build_scoring_ready(input_path: str, unified_data: Dict[str, Any]) -> Dict[s
         },
         "ppi_and_inclusion": {
             "overall_ppi": ppi_payload,
-            "prior_involvement": _build_evidence(ppi_splits.get("prior_involvement", "")) if ppi_splits.get("prior_involvement") else ppi_payload,
+            "prior_involvement": _dedup_payload(
+                _build_evidence(ppi_splits.get("prior_involvement", "")) if ppi_splits.get("prior_involvement") else ppi_payload,
+                ppi_payload,
+            ),
             "planned_involvement": _build_evidence(ppi_splits.get("planned_involvement", "")) if ppi_splits.get("planned_involvement") else None,
             "underserved_groups_mentioned": underserved_groups,
             "costed_inclusion_present": bool(re.search(r"patient\s+and\s+public\s+involvement|ppi", _text_from_payload(budget_payload), re.I)),
@@ -769,4 +815,4 @@ def build_scoring_ready(input_path: str, unified_data: Dict[str, Any]) -> Dict[s
     }
 
     scoring_ready["form_quality"] = _form_quality_payload(evidence_map)
-    return scoring_ready
+    return _strip_internal_fields(scoring_ready)
