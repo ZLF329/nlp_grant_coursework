@@ -13,6 +13,7 @@ Keys in output (only present if content found):
 from __future__ import annotations
 
 import json
+import re
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
@@ -48,12 +49,15 @@ _ABSTRACT_KW = [
     "project summary", "summary", "research plan", "research area",
     "research question", "aims", "objectives", "background",
     "overview", "introduction", "project description",
+    "planned application", "training and development programme",
+    "training and development and research support",
 ]
 
 _BUDGET_KW = [
     "budget", "cost", "financial", "finance",
     "funding breakdown", "expenditure", "resources requested",
     "direct costs", "indirect costs", "staff costs",
+    "budget summary", "summary of costs",
 ]
 
 _LEAD_KW = [
@@ -66,8 +70,9 @@ _COAPPLICANT_KW = [
 ]
 _SUPERVISOR_KW = [
     "supervisor", "academic supervisor", "primary supervisor",
+    "research support",
 ]
-_MENTOR_KW = ["mentor"]
+_MENTOR_KW = ["mentor", "mentorship", "support and mentorship"]
 _HOST_KW   = ["host organisation", "host organization"]
 
 _SUMMARY_INFO_KW = [
@@ -122,8 +127,18 @@ def _sections_to_blocks(sections: List[dict]) -> List[dict]:
 
 # ──────────────────────────── Keyword helpers ─────────────────────────────────
 
+_WORD_LIMIT_RE = re.compile(r"\s*[-–]\s*\d+\s*word\s+limit\b.*$", re.I)
+
+def _clean_heading(heading: str) -> str:
+    h = (heading or "").strip()
+    h = re.sub(r'^\d+\.\s+', '', h)
+    h = _WORD_LIMIT_RE.sub('', h)
+    h = re.sub(r'\(\s*word\s+limit[^)]*\)', '', h, flags=re.I)
+    h = re.sub(r'\s+', ' ', h)
+    return h.strip(' :-').lower()
+
 def _matches(heading: str, keywords: List[str]) -> bool:
-    h = heading.lower()
+    h = _clean_heading(heading)
     return any(kw in h for kw in keywords)
 
 
@@ -141,6 +156,84 @@ def _app_details_subkey(heading: str) -> Optional[str]:
     if _matches(heading, _ABSTRACT_KW):
         return KEY_ABSTRACT
     return None
+
+
+def _parse_simple_fields(content: str) -> Dict[str, str]:
+    info: Dict[str, str] = {}
+    current_key: Optional[str] = None
+
+    for raw_line in content.splitlines():
+        line = raw_line.strip()
+        if not line:
+            continue
+
+        if ":" in line:
+            key, _, value = line.partition(":")
+            key = key.strip()
+            value = value.strip()
+            if key and value:
+                info[key] = value
+                current_key = key
+            continue
+
+        if current_key == "Description of Support Provided":
+            info[current_key] = info[current_key] + " " + line
+            continue
+
+        for key in (
+            "Title", "First Name", "Last Name", "Full Name", "Organisation",
+            "Department", "ORCID iD", "ORCID", "Email Address", "Role",
+            "Position", "Description of Support Provided",
+        ):
+            prefix = key + " "
+            if line.startswith(prefix):
+                value = line[len(prefix):].strip()
+                if value:
+                    info[key] = value
+                    current_key = key
+                break
+
+    return info
+
+
+def _parse_person_from_block(content: str, default_role: str) -> Optional[Dict[str, str]]:
+    info = _parse_simple_fields(content)
+
+    full_name = info.get("Full Name", "").strip()
+    if not full_name:
+        name_parts = [
+            info.get("Title", "").strip(),
+            info.get("First Name", "").strip(),
+            info.get("Last Name", "").strip(),
+        ]
+        full_name = " ".join(part for part in name_parts if part).strip()
+
+    if not full_name and "lead applicant" not in default_role.lower():
+        return None
+
+    return {
+        "Full Name": full_name,
+        "Organisation": info.get("Organisation", "").strip(),
+        "Department": info.get("Department", "").strip(),
+        "Proposed Role": info.get("Role", "").strip() or default_role,
+        "ORCID": info.get("ORCID", "").strip() or info.get("ORCID iD", "").strip(),
+        "% FTE Commitment": "",
+    }
+
+
+def _parse_support_people(content: str, default_role: str) -> List[Dict[str, str]]:
+    chunks = re.split(r'(?=Full Name\s+)', content)
+    people: List[Dict[str, str]] = []
+
+    for chunk in chunks:
+        chunk = chunk.strip()
+        if not chunk:
+            continue
+        person = _parse_person_from_block(chunk, default_role)
+        if person and person.get("Full Name"):
+            people.append(person)
+
+    return people
 
 
 # ──────────────────────────── Section extractors ─────────────────────────────
@@ -183,15 +276,18 @@ def _extract_lead_team(blocks: List[dict]) -> Optional[dict]:
         c = block["content"]
 
         if _matches(h, _LEAD_KW):
-            result["Lead Applicant"] = c
+            result["Lead Applicant"] = _parse_person_from_block(c, "Lead Applicant") or c
         elif _matches(h, _COAPPLICANT_KW):
             result.setdefault("Co-Applicants", [])
             result["Co-Applicants"].append(c)
         elif _matches(h, _SUPERVISOR_KW):
-            result.setdefault("Supervisors", [])
-            result["Supervisors"].append(c)
+            result.setdefault("Co-Applicants", [])
+            people = _parse_support_people(c, "Supervisor")
+            result["Co-Applicants"].extend(people or [c])
         elif _matches(h, _MENTOR_KW):
-            result["Mentor"] = c
+            result.setdefault("Co-Applicants", [])
+            people = _parse_support_people(c, "Mentor")
+            result["Co-Applicants"].extend(people or [c])
         elif _matches(h, _HOST_KW):
             result["Host Organisation"] = c
 

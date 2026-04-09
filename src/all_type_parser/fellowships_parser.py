@@ -43,9 +43,12 @@ SECTION_PES:          str = "Plain English Summary of Research"
 SECTION_ABSTRACT:     str = "Scientific Abstract"
 SECTION_PPI:          str = "Patient & Public Involvement"
 SECTION_BUDGET:       str = "Detailed Budget"
+SECTION_BUDGET_SUMMARY: str = "Budget Summary"
 SECTION_PARTICIPANTS: str = "Participants and Signatories"
 SECTION_APPLICANT_CV: str = "Applicant CV"
 SECTION_TRAINING:     str = "Training & Development and Research Support"
+SECTION_LEAD_APPLICANT: str = "Lead Applicant"
+SECTION_SUPPORT_MENTORSHIP: str = "Support and Mentorship"
 
 _STRIP_NUMBER_RE = re.compile(r'^\d+\.\s+')
 
@@ -240,6 +243,13 @@ def _get_section_raw_text(pdf_path: str, target_heading: str) -> str:
     return "\n".join(pages_text)
 
 
+def _get_page1_raw_text(pdf_path: str) -> str:
+    with pdfplumber.open(pdf_path) as pdf:
+        if pdf.pages:
+            return pdf.pages[0].extract_text() or ""
+    return ""
+
+
 def parse_summary_information(pdf_path: str) -> dict:
     """
     Parse 'Application Summary Information' into a SUMMARY INFORMATION dict.
@@ -263,6 +273,10 @@ def parse_summary_information(pdf_path: str) -> dict:
         # Skip lines that are part of the label (e.g. "applicable)")
         if candidate and not re.match(r'^[Pp]artner|^applicable', candidate):
             out["Contracting Organisation"] = candidate
+    else:
+        m = re.search(r'Contracting\s*\n([^\n]+)\nOrganisation', raw)
+        if m:
+            out["Contracting Organisation"] = m.group(1).strip()
 
     # Application Title: appears split around the "Research Title" label.
     # extract_text order: value-part-1 \n Research Title \n value-part-2
@@ -273,11 +287,24 @@ def parse_summary_information(pdf_path: str) -> dict:
         # part1 may also contain a trailing field-label line — keep only the last line
         part1_last_line = part1.split("\n")[-1].strip()
         out["Application Title"] = (part1_last_line + " " + part2).strip()
+    else:
+        page1_raw = _get_page1_raw_text(pdf_path)
+        m = re.search(r'Research Title\s+(.+?)\s+Total Research Cost', page1_raw, re.DOTALL)
+        if m:
+            out["Application Title"] = re.sub(r'\s+', ' ', m.group(1)).strip()
+        else:
+            first_line = next((ln.strip() for ln in raw.splitlines() if ln.strip()), "")
+            if first_line and first_line != SECTION_APP_SUMMARY:
+                out["Application Title"] = first_line
 
     # Duration (months): first stand-alone integer after the "Duration" block description
     m = re.search(r'\bDuration\b[\s\S]*?\n(\d+)\s*\n', raw)
     if m:
         out["Duration (months)"] = m.group(1)
+    else:
+        m = re.search(r'\bDuration\b\s+(\d+)\b', raw)
+        if m:
+            out["Duration (months)"] = m.group(1)
 
     # Start Date: date (dd/mm/yyyy) that appears after "Proposed start date"
     m = re.search(
@@ -286,6 +313,10 @@ def parse_summary_information(pdf_path: str) -> dict:
     )
     if m:
         out["Start Date"] = m.group(1)
+    else:
+        m = re.search(r'\bStart Date\b\s+([0-9]{2}/[0-9]{2}/[0-9]{4})', raw)
+        if m:
+            out["Start Date"] = m.group(1)
 
     return out
 
@@ -381,11 +412,67 @@ def _parse_participants_raw(pdf_path: str) -> List[dict]:
     return people
 
 
+def _extract_lead_applicant_section_details(pdf_path: str) -> dict:
+    raw = _get_section_raw_text(pdf_path, SECTION_LEAD_APPLICANT)
+    if not raw:
+        return {}
+
+    info: dict = {}
+
+    m = re.search(r'Title\s+(\S+)\s*\nFirst Name\s+(.+?)\s*\nLast Name\s+(.+?)\s*\n', raw, re.DOTALL)
+    if m:
+        info["Full Name"] = " ".join(part.strip() for part in m.groups() if part.strip())
+
+    for field in ("Organisation", "Department"):
+        m = re.search(rf'{field}\s+(.+?)(?:\n|$)', raw)
+        if m:
+            info[field] = m.group(1).strip()
+
+    m = re.search(r'([0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9X]{4})', raw)
+    if m:
+        info["ORCID"] = m.group(1)
+
+    return info
+
+
+def _parse_support_and_mentorship_raw(pdf_path: str) -> List[dict]:
+    raw = _get_section_raw_text(pdf_path, SECTION_SUPPORT_MENTORSHIP)
+    if not raw:
+        return []
+
+    people: List[dict] = []
+    pattern = re.compile(
+        r'Full Name\s+(.+?)\s*\n'
+        r'Organisation\s+(.+?)\s*\n'
+        r'Email Address\s+(.+?)\s*\n'
+        r'Role\s+(.+?)\s*\n'
+        r'Description of Support Provided\s+(.+?)(?=\n(?:/ EDIT SUPPORT AND MENTORSHIP|\d+\.\s|\Z))',
+        re.DOTALL,
+    )
+
+    for match in pattern.finditer(raw):
+        full_name, organisation, _, role, description = match.groups()
+        people.append({
+            "Full Name": re.sub(r'\s+', ' ', full_name).strip(),
+            "Proposed Role": re.sub(r'\s+', ' ', role).strip() or "Mentor",
+            "Organisation": re.sub(r'\s+', ' ', organisation).strip(),
+            "Department": "",
+            "ORCID": "",
+            "Position": re.sub(r'\s+', ' ', description).strip(),
+        })
+
+    return people
+
+
 def _extract_orcid_from_cv(pdf_path: str) -> str:
     """Extract the Lead Applicant's ORCID iD from the 'Applicant CV' section."""
     raw = _get_section_raw_text(pdf_path, SECTION_APPLICANT_CV)
     m = re.search(r'ORCID\s+iD\s+(\S+)', raw)
-    return m.group(1) if m else ""
+    if m:
+        return m.group(1)
+
+    section_details = _extract_lead_applicant_section_details(pdf_path)
+    return section_details.get("ORCID", "")
 
 
 def parse_lead_applicant_research_team(pdf_path: str) -> dict:
@@ -396,6 +483,9 @@ def parse_lead_applicant_research_team(pdf_path: str) -> dict:
     Co-Applicants:  supervisors from section 11.
     """
     lead_name = _get_page1_lead_applicant(pdf_path)
+    lead_section_details = _extract_lead_applicant_section_details(pdf_path)
+    if not lead_name:
+        lead_name = lead_section_details.get("Full Name", "")
 
     # Get organisation from section 1 raw text
     raw_s1 = _get_section_raw_text(pdf_path, SECTION_APP_SUMMARY)
@@ -405,19 +495,23 @@ def parse_lead_applicant_research_team(pdf_path: str) -> dict:
         candidate = m.group(1).strip()
         if candidate and not re.match(r'^[Pp]artner|^applicable', candidate):
             organisation = candidate
+    if not organisation:
+        organisation = lead_section_details.get("Organisation", "")
 
     orcid = _extract_orcid_from_cv(pdf_path)
 
     lead_applicant = {
         "Full Name":        lead_name,
         "Organisation":     organisation,
-        "Department":       "",
+        "Department":       lead_section_details.get("Department", ""),
         "Proposed Role":    "Lead Applicant",
         "ORCID":            orcid,
         "% FTE Commitment": "",
     } if lead_name else None
 
     co_applicants = _parse_participants_raw(pdf_path)
+    if not co_applicants:
+        co_applicants = _parse_support_and_mentorship_raw(pdf_path)
 
     return {
         "Lead Applicant":       lead_applicant,
@@ -493,10 +587,14 @@ def extract_all_sections(pdf_path: str) -> dict:
     if app_details:
         out["APPLICATION DETAILS"] = app_details
 
-    # SUMMARY BUDGET — join all lines from section 9
-    budget_lines = slice_section(lines, SECTION_BUDGET)
-    if budget_lines:
-        out["SUMMARY BUDGET"] = parse_text_section(budget_lines)
+    # SUMMARY BUDGET — prefer concise summary if present, then append detailed budget
+    budget_parts: List[str] = []
+    for section_title in (SECTION_BUDGET_SUMMARY, SECTION_BUDGET):
+        budget_lines = slice_section(lines, section_title)
+        if budget_lines:
+            budget_parts.append(parse_text_section(budget_lines))
+    if budget_parts:
+        out["SUMMARY BUDGET"] = "\n\n".join(part for part in budget_parts if part)
 
     return out
 

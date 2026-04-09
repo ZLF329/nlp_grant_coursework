@@ -5,6 +5,9 @@ from typing import List, Dict, Any, Optional
 from dataclasses import dataclass
 from pathlib import Path
 import json
+import re
+from zipfile import ZipFile
+from xml.etree import ElementTree as ET
 import pdfplumber
 
 from .base import DocumentParser, ParsedDocument, ParsedSection
@@ -50,9 +53,11 @@ class HybridDocumentParser(DocumentParser):
 
     def _normalize_title(self, title: str) -> str:
         """规范化标题：去掉数字前缀（如 "1. " 或 "10. "）"""
-        import re
-        # 匹配开头的数字和点（如 "1. " 或 "10. "）
-        normalized = re.sub(r'^\d+\.\s+', '', title.strip())
+        normalized = title.strip()
+        normalized = re.sub(r'^\d+\.\s+', '', normalized)
+        normalized = re.sub(r'\s*[-–]\s*\d+\s*word\s+limit\b.*$', '', normalized, flags=re.I)
+        normalized = re.sub(r'\(\s*word\s+limit[^)]*\)', '', normalized, flags=re.I)
+        normalized = re.sub(r'\s+', ' ', normalized).strip(' :-')
         return normalized
 
     def _is_title(self, text: str) -> bool:
@@ -164,8 +169,8 @@ class HybridDocumentParser(DocumentParser):
                 # 添加标题
                 blocks.append(ContentBlock(
                     block_type="title",
-                    content=line,
-                    metadata={"page": page_num}
+                    content=self._normalize_title(line),
+                    metadata={"page": page_num, "raw_title": line}
                 ))
                 current_title = line
             else:
@@ -244,7 +249,10 @@ class HybridDocumentParser(DocumentParser):
 
     def _parse_docx(self, file_path: str) -> List[ContentBlock]:
         """解析DOCX"""
-        from docx import Document
+        try:
+            from docx import Document
+        except ModuleNotFoundError:
+            return self._parse_docx_without_python_docx(file_path)
 
         blocks = []
 
@@ -283,10 +291,10 @@ class HybridDocumentParser(DocumentParser):
                     # 添加标题
                     blocks.append(ContentBlock(
                         block_type="title",
-                        content=text,
-                        metadata={}
+                        content=self._normalize_title(text),
+                        metadata={"raw_title": text}
                     ))
-                    current_title = text
+                    current_title = self._normalize_title(text)
                 else:
                     # 文本
                     current_text.append(text)
@@ -315,7 +323,93 @@ class HybridDocumentParser(DocumentParser):
         except Exception as e:
             if self.debug:
                 print(f"❌ DOCX解析失败: {e}")
+            return self._parse_docx_without_python_docx(file_path)
 
+        return blocks
+
+    def _parse_docx_without_python_docx(self, file_path: str) -> List[ContentBlock]:
+        """无 python-docx 依赖的 DOCX 兜底解析。"""
+        ns = {"w": "http://schemas.openxmlformats.org/wordprocessingml/2006/main"}
+        blocks: List[ContentBlock] = []
+        current_title: Optional[str] = None
+        current_text: List[str] = []
+
+        def flush_text() -> None:
+            nonlocal current_text
+            if current_title and current_text:
+                blocks.append(ContentBlock(
+                    block_type="text",
+                    content="\n".join(current_text),
+                    metadata={"title": current_title, "method": "docx-xml"}
+                ))
+            current_text = []
+
+        def paragraph_text(paragraph) -> str:
+            texts: List[str] = []
+            for node in paragraph.iter():
+                if node.tag == f"{{{ns['w']}}}t" and node.text:
+                    texts.append(node.text)
+                elif node.tag == f"{{{ns['w']}}}tab":
+                    texts.append("\t")
+                elif node.tag == f"{{{ns['w']}}}br":
+                    texts.append("\n")
+            return "".join(texts).strip()
+
+        def paragraph_style(paragraph) -> str:
+            style = paragraph.find("./w:pPr/w:pStyle", ns)
+            return style.get(f"{{{ns['w']}}}val", "") if style is not None else ""
+
+        def paragraph_is_bold(paragraph) -> bool:
+            return paragraph.find(".//w:rPr/w:b", ns) is not None
+
+        try:
+            with ZipFile(file_path) as docx_zip:
+                root = ET.fromstring(docx_zip.read("word/document.xml"))
+        except Exception as e:
+            if self.debug:
+                print(f"❌ DOCX XML解析失败: {e}")
+            return []
+
+        for paragraph in root.findall(".//w:body/w:p", ns):
+            text = paragraph_text(paragraph)
+            if not text:
+                continue
+
+            style_name = paragraph_style(paragraph)
+            normalized_title = self._normalize_title(text)
+            outline_level = paragraph.find("./w:pPr/w:outlineLvl", ns)
+            has_border = paragraph.find("./w:pPr/w:pBdr", ns) is not None
+            is_numbered = paragraph.find("./w:pPr/w:numPr", ns) is not None
+            is_bold = paragraph_is_bold(paragraph)
+
+            is_title = False
+            if style_name.startswith("Heading"):
+                is_title = True
+            elif self._is_title(text):
+                is_title = True
+            elif outline_level is not None and len(text) <= 180:
+                is_title = True
+            elif is_bold and not has_border and len(text) <= 120 and len(text.split()) <= 12:
+                is_title = True
+            elif is_numbered and self._is_title(text):
+                is_title = True
+
+            if is_title:
+                flush_text()
+                blocks.append(ContentBlock(
+                    block_type="title",
+                    content=normalized_title,
+                    metadata={
+                        "raw_title": text,
+                        "method": "docx-xml",
+                        "style": style_name,
+                    }
+                ))
+                current_title = normalized_title
+            else:
+                current_text.append(text)
+
+        flush_text()
         return blocks
 
     def _parse_pptx(self, file_path: str) -> List[ContentBlock]:
@@ -329,11 +423,16 @@ class HybridDocumentParser(DocumentParser):
 
         for block in blocks:
             title = block.block_type
+            if block.metadata and block.metadata.get("title"):
+                title = block.metadata["title"]
+            elif block.block_type == "title" and isinstance(block.content, str):
+                title = block.content
 
             sections.append(ParsedSection(
                 title=title,
                 content=block.content,
-                type=block.block_type
+                type=block.block_type,
+                metadata=block.metadata or {}
             ))
 
         return sections

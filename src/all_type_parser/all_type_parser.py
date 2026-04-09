@@ -56,6 +56,19 @@ def _save_json(data: dict, path: str) -> None:
         json.dump(data, f, ensure_ascii=False, indent=2)
 
 
+def _attach_scoring_ready(input_path: str, result: dict) -> dict:
+    if _is_empty(result):
+        return result
+    try:
+        from .scoring_ready import build_scoring_ready
+        enriched = dict(result)
+        enriched["SCORING_READY"] = build_scoring_ready(input_path, result)
+        return enriched
+    except Exception as e:
+        print(f"[all_type_parser] scoring_ready build failed: {e}")
+        return result
+
+
 # ──────────────────────────── stage 1 — fellowships_parser ───────────────────
 
 def _try_fellowships_parser(pdf_path: str) -> dict:
@@ -116,6 +129,7 @@ def _try_document_then_all_other(input_path: str) -> dict:
                     "title": sec.title,
                     "type":  sec.type,
                     "content": sec.content,
+                    "metadata": sec.metadata or {},
                 }
                 for sec in parsed.sections
             ],
@@ -175,26 +189,26 @@ def parse(input_path: str) -> dict:
             result = _try_rfpb_parser(input_path)
             if not _is_empty(result):
                 print("[all_type_parser] ✓ RfPB_parser succeeded")
-                return result
+                return _attach_scoring_ready(input_path, result)
             print("[all_type_parser] RfPB_parser returned empty — falling back to document_parser")
         else:
             # Stage 1: fellowship blue-box parser
             result = _try_fellowships_parser(input_path)
             if not _is_empty(result):
                 print("[all_type_parser] ✓ fellowships_parser succeeded")
-                return result
+                return _attach_scoring_ready(input_path, result)
 
             # Stage 2: generic big-box PDF parser
             result = _try_pdf_parser(input_path)
             if not _is_empty(result):
                 print("[all_type_parser] ✓ pdf_parser succeeded")
-                return result
+                return _attach_scoring_ready(input_path, result)
 
             # Stage 3: RfPB Stage 2 parser (fallback for non-RfPB PDFs)
             result = _try_rfpb_parser(input_path)
             if not _is_empty(result):
                 print("[all_type_parser] ✓ RfPB_parser succeeded")
-                return result
+                return _attach_scoring_ready(input_path, result)
 
             print("[all_type_parser] all PDF parsers returned empty — falling back to document_parser")
 
@@ -202,6 +216,7 @@ def parse(input_path: str) -> dict:
     result = _try_document_then_all_other(input_path)
     if not _is_empty(result):
         print("[all_type_parser] ✓ document_parser + all_other_parser succeeded")
+        return _attach_scoring_ready(input_path, result)
     else:
         print("[all_type_parser] ✗ all parsers returned empty")
     return result
@@ -259,8 +274,13 @@ if __name__ == "__main__":
     # Run as a module so relative imports work:
     #   python -m all_type_parser.all_type_parser <file>
     if len(_sys.argv) < 2:
-        print("Usage: python -m all_type_parser.all_type_parser <input_file> [output.json]")
+        print("Usage: python -m all_type_parser.all_type_parser <input_file_or_folder> [output.json]")
         _sys.exit(1)
 
-    out = parse_and_save(_sys.argv[1], _sys.argv[2] if len(_sys.argv) > 2 else None)
-    print(f"Done: {out}")
+    input_path = Path(_sys.argv[1])
+    if input_path.is_dir():
+        outputs = parse_folder(str(input_path))
+        print(f"Done: {len(outputs)} file(s)")
+    else:
+        out = parse_and_save(str(input_path), _sys.argv[2] if len(_sys.argv) > 2 else None)
+        print(f"Done: {out}")
