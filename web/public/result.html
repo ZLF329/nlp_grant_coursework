@@ -728,6 +728,7 @@
             <button class="ghost-btn" id="loadOneBtn" type="button">Load 1 JSON</button>
             <button class="ghost-btn" id="loadTwoBtn" type="button">Load 2 JSONs</button>
             <button class="ghost-btn" id="copyJsonBtn" type="button">Copy JSON</button>
+            <button class="ghost-btn" id="downloadJsonBtn" type="button">Download JSON</button>
           </div>
           <input class="hidden" id="singleFileInput" type="file" accept=".json,application/json" />
           <input class="hidden" id="multiFileInput" type="file" multiple accept=".json,application/json" />
@@ -961,6 +962,10 @@
     }
     function slugify(s) {
       return (s || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+    }
+    function safeFileStem(s) {
+      const stem = (s || 'review').replace(/\.json$/i, '').replace(/[^\w.-]+/g, '_').replace(/^_+|_+$/g, '');
+      return stem || 'review';
     }
     function pillClassFromDelta(delta) {
       if (delta > 0.01) return 'delta-pill delta-positive';
@@ -1889,6 +1894,23 @@
         } catch (err) {
           alert('Copy failed: ' + err.message);
         }
+      });
+
+      document.getElementById('downloadJsonBtn').addEventListener('click', () => {
+        const review = getPrimaryReview();
+        if (!review) return;
+        const payload = review.raw || {};
+        const text = JSON.stringify(payload, null, 2);
+        const blob = new Blob([text], { type: 'application/json;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        const anchor = document.createElement('a');
+        const fileBase = safeFileStem(review.docId || review.label || 'review');
+        anchor.href = url;
+        anchor.download = `${fileBase}.json`;
+        document.body.appendChild(anchor);
+        anchor.click();
+        anchor.remove();
+        URL.revokeObjectURL(url);
       });
 
       document.getElementById('loadOneBtn').addEventListener('click', () => document.getElementById('singleFileInput').click());

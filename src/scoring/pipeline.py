@@ -258,7 +258,7 @@ def build_stage1_messages(
         "Return JSON only.\n\n"
         "Use only section IDs from the provided section index.\n"
         "Do not output rationale, explanations, prose, markdown, section names, or chunk IDs.\n"
-        "For each signal, return a score of 0, 1, or 2.\n\n"
+        "For each signal, return a numeric score from 0 to 2. Decimals are allowed.\n\n"
         "Important:\n"
         "Inside each rubric section, the sub-criteria must be stored as object properties keyed by sub_id.\n"
         "Do not use arrays for sub-criteria."
@@ -276,7 +276,7 @@ def build_stage1_messages(
         "3. Each sub-criterion object must contain:\n"
         "   - `signals`\n"
         "   - `needed_section_ids`\n"
-        "4. `signals` maps signal IDs to scores 0, 1, or 2.\n"
+        "4. `signals` maps signal IDs to numeric scores from 0 to 2. Decimals are allowed.\n"
         "5. `needed_section_ids` must contain only IDs from the section index.\n"
         "6. If unsupported, use score 0 and an empty `needed_section_ids` array.\n"
         "7. Return JSON only.\n\n"
@@ -285,13 +285,13 @@ def build_stage1_messages(
         '  "general": {\n'
         '    "g.1": {\n'
         '      "signals": {\n'
-        '        "g.1.a": 2\n'
+        '        "g.1.a": 1.8\n'
         "      },\n"
         '      "needed_section_ids": ["S09", "S12"]\n'
         "    },\n"
         '    "g.2": {\n'
         '      "signals": {\n'
-        '        "g.2.a": 1\n'
+        '        "g.2.a": 1.0\n'
         "      },\n"
         '      "needed_section_ids": ["S10"]\n'
         "    }\n"
@@ -299,9 +299,9 @@ def build_stage1_messages(
         '  "proposed_research": {\n'
         '    "pr.1": {\n'
         '      "signals": {\n'
-        '        "pr.1.a": 1,\n'
-        '        "pr.1.b": 2,\n'
-        '        "pr.1.c": 2\n'
+        '        "pr.1.a": 0.5,\n'
+        '        "pr.1.b": 1.5,\n'
+        '        "pr.1.c": 2.0\n'
         "      },\n"
         '      "needed_section_ids": ["S08", "S10"]\n'
         "    }\n"
@@ -326,7 +326,7 @@ def build_stage1_schema(rubric_sections: list[dict[str, Any]]) -> dict[str, Any]
             required_sub_ids.append(sub["sub_id"])
             signal_properties = {
                 signal["sid"]: {
-                    "type": "integer",
+                    "type": "number",
                     "minimum": 0,
                     "maximum": 2,
                 }
@@ -426,7 +426,7 @@ def _normalize_stage1_output(
                         raw_signal_map[item["sid"]] = item.get("score", 0)
 
             scalar_score = raw_sub.get("score")
-            scalar_score = scalar_score if isinstance(scalar_score, int) else None
+            scalar_score = float(scalar_score) if isinstance(scalar_score, (int, float)) else None
 
             raw_needed_ids = raw_sub.get("needed_section_ids", [])
             if not isinstance(raw_needed_ids, list):
@@ -446,13 +446,13 @@ def _normalize_stage1_output(
             has_positive = False
             for expected_signal in expected_sub["signals"]:
                 raw_score = raw_signal_map.get(expected_signal["sid"], scalar_score if scalar_score is not None else 0)
-                raw_score = raw_score if isinstance(raw_score, int) else 0
-                raw_score = max(0, min(raw_score, 2))
+                raw_score = float(raw_score) if isinstance(raw_score, (int, float)) else 0.0
+                raw_score = max(0.0, min(raw_score, 2.0))
                 signals.append({
                     "sid": expected_signal["sid"],
                     "signal_text": expected_signal["text"],
                     "weight": expected_signal["weight"],
-                    "score_0to2_raw": raw_score,
+                    "score_0to2_raw": round(raw_score, 4),
                 })
                 has_positive = has_positive or raw_score > 0
 

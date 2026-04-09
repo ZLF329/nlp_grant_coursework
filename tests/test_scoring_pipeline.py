@@ -114,6 +114,26 @@ class PipelineTests(unittest.TestCase):
         self.assertEqual(result["pool_lookup"], {})
         self.assertEqual(result["section_chunk_ids"], {})
 
+    def test_stage1_signal_scores_allow_decimals(self):
+        payload = {
+            "general": {
+                "g.1": {
+                    "signals": {"g.1.a": 1.75},
+                    "needed_section_ids": ["S04", "S07"],
+                }
+            }
+        }
+        result = score_application_base(
+            application=sample_application(),
+            criteria_path=CRITERIA_PATH,
+            doc_id="decimal_doc",
+            stage1_client=FakeStage1Client(payload),
+            judge=FallbackJudge(),
+        )
+        criterion = result["features"]["general"]["sub_criteria"][0]
+        self.assertEqual(criterion["signals"][0]["score_0to2_raw"], 1.75)
+        self.assertGreater(criterion["score_10"], 0)
+
     def test_invalid_section_ids_zero_out_positive_scores(self):
         payload = {
             "general": {
