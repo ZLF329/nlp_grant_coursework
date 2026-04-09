@@ -19,7 +19,7 @@ from src.scoring.pipeline import score_application_base
 from src.verify.faithfulness import OllamaFaithfulnessJudge
 
 OLLAMA_HOST = os.environ.get("OLLAMA_HOST", "http://127.0.0.1:11434").rstrip("/")
-OLLAMA_MODEL = os.environ.get("OLLAMA_MODEL", "qwen3:30b")
+OLLAMA_MODEL = os.environ.get("OLLAMA_MODEL", "qwen3.5:35b")
 OLLAMA_TIMEOUT = float(os.environ.get("OLLAMA_TIMEOUT", "1200"))
 
 
@@ -42,11 +42,23 @@ class _Scorer:
             },
             "think": False,
         }
-        response = requests.post(
-            f"{self.host}/api/chat",
-            json=payload,
-            timeout=OLLAMA_TIMEOUT,
-        )
+        try:
+            response = requests.post(
+                f"{self.host}/api/chat",
+                json=payload,
+                timeout=OLLAMA_TIMEOUT,
+            )
+        except requests.exceptions.ConnectionError as exc:
+            raise RuntimeError(
+                "Could not connect to Ollama at "
+                f"{self.host}. Start the Ollama server or set OLLAMA_HOST to the correct "
+                "endpoint before running scoring."
+            ) from exc
+        except requests.exceptions.Timeout as exc:
+            raise RuntimeError(
+                "Timed out waiting for Ollama at "
+                f"{self.host}. Increase OLLAMA_TIMEOUT or check whether the model server is healthy."
+            ) from exc
         response.raise_for_status()
         body = response.json()
         return ((body.get("message") or {}).get("content") or "").strip()

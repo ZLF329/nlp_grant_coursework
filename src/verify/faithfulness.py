@@ -88,11 +88,22 @@ class OllamaFaithfulnessJudge:
             },
             "think": False,
         }
-        response = requests.post(
-            f"{self.host}/api/chat",
-            json=payload,
-            timeout=JUDGE_TIMEOUT,
-        )
+        try:
+            response = requests.post(
+                f"{self.host}/api/chat",
+                json=payload,
+                timeout=JUDGE_TIMEOUT,
+            )
+        except requests.exceptions.ConnectionError as exc:
+            raise RuntimeError(
+                "Could not connect to the Ollama judge endpoint at "
+                f"{self.host}. Start Ollama or set OLLAMA_HOST to the correct endpoint."
+            ) from exc
+        except requests.exceptions.Timeout as exc:
+            raise RuntimeError(
+                "Timed out waiting for the Ollama judge endpoint at "
+                f"{self.host}. Increase OLLAMA_JUDGE_TIMEOUT or check the server health."
+            ) from exc
         response.raise_for_status()
         body = response.json()
         content = ((body.get("message") or {}).get("content") or "").strip()
