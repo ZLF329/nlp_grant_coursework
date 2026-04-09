@@ -1,0 +1,1920 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Grant Review Workspace</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --canvas: #f1f5f9;
+      --canvas-2: #f8fafc;
+      --surface: #ffffff;
+      --surface-soft: #f8fafc;
+      --border: rgba(15,23,42,.07);
+      --divider: rgba(15,23,42,.05);
+      --text: #0f172a;
+      --text-2: #475569;
+      --text-3: #94a3b8;
+      --brand: #1d4ed8;
+      --brand-soft: #eff6ff;
+      --brand-hover: #dbeafe;
+      --positive: #059669;
+      --positive-bg: #ecfdf5;
+      --negative: #dc2626;
+      --negative-bg: #fef2f2;
+      --warning: #d97706;
+      --warning-bg: #fffbeb;
+      --neutral: #64748b;
+      --neutral-bg: #f1f5f9;
+      --shadow-1: 0 1px 3px rgba(15,23,42,.05), 0 8px 24px rgba(15,23,42,.05);
+      --shadow-2: 0 2px 6px rgba(15,23,42,.06), 0 18px 44px rgba(15,23,42,.07);
+      --radius-s: 12px;
+      --radius-m: 16px;
+      --radius-l: 20px;
+      --radius-xl: 24px;
+      --pill: 999px;
+      --nav-h: 60px;
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: "Inter", "SF Pro Display", system-ui, -apple-system, sans-serif;
+      color: var(--text);
+      background: var(--canvas);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Top nav ── */
+    .top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      height: var(--nav-h);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 28px;
+      background: rgba(8,14,31,.9);
+      backdrop-filter: blur(16px) saturate(1.4);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 15px;
+      letter-spacing: -.02em;
+    }
+    .nav-logo {
+      width: 28px; height: 28px;
+      background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+      border-radius: 7px;
+      display: grid;
+      place-items: center;
+      font-size: 14px;
+      font-weight: 900;
+      color: #fff;
+      box-shadow: 0 2px 8px rgba(29,78,216,.4);
+    }
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .nav-link {
+      padding: 6px 12px;
+      border-radius: var(--pill);
+      color: rgba(255,255,255,.5);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      transition: color .15s, background .15s;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+    }
+    .nav-link:hover { color: #fff; background: rgba(255,255,255,.08); }
+
+    .page {
+      max-width: 1460px;
+      margin: 0 auto;
+      padding: 24px 28px 48px;
+      display: grid;
+      gap: 20px;
+    }
+    .panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-2);
+    }
+    .header {
+      display: grid;
+      grid-template-columns: 1.25fr .95fr;
+      gap: 24px;
+      padding: 28px;
+      align-items: start;
+      background: linear-gradient(135deg, #fff 0%, #f8faff 55%, #f0f6ff 100%);
+      border-bottom: 1px solid var(--border);
+      border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+    }
+    .eyebrow {
+      margin: 0 0 8px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--brand);
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(26px, 2.5vw, 36px);
+      line-height: 1.1;
+      letter-spacing: -.04em;
+      font-weight: 800;
+    }
+    .subtitle {
+      margin: 8px 0 0;
+      font-size: 13px;
+      color: var(--text-2);
+      max-width: 600px;
+      line-height: 1.6;
+    }
+    .meta-strip {
+      margin-top: 14px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .meta-pill, .delta-pill, .status-pill, .risk-badge, .evidence-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 5px 10px;
+      border-radius: var(--pill);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      border: 1px solid transparent;
+      white-space: nowrap;
+    }
+    .meta-pill {
+      background: var(--surface-soft);
+      border-color: var(--border);
+      color: var(--text-2);
+    }
+    .header-controls {
+      display: grid;
+      gap: 14px;
+      min-width: min(100%, 510px);
+    }
+    .control-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: flex-end;
+      align-items: flex-end;
+    }
+    .control-group {
+      display: grid;
+      gap: 6px;
+      min-width: 170px;
+      flex: 1 1 170px;
+    }
+    label.control-label {
+      font-size: 11px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      font-weight: 700;
+    }
+    select, .tabs, .ghost-btn, .primary-btn {
+      border-radius: var(--pill);
+      border: 1px solid var(--border);
+      font: 500 13px/1 "Inter", system-ui, sans-serif;
+    }
+    select {
+      width: 100%;
+      padding: 10px 14px;
+      background: var(--surface);
+      color: var(--text);
+      outline: none;
+      box-shadow: var(--shadow-1);
+    }
+    .tabs {
+      display: inline-flex;
+      padding: 3px;
+      background: var(--canvas);
+      gap: 2px;
+      flex-wrap: wrap;
+      border: 1px solid var(--border);
+    }
+    .tab {
+      appearance: none;
+      border: 0;
+      background: transparent;
+      color: var(--text-2);
+      padding: 7px 13px;
+      border-radius: var(--pill);
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 12px;
+      letter-spacing: .01em;
+      transition: background .15s, color .15s, box-shadow .15s;
+    }
+    .tab.active {
+      background: var(--surface);
+      color: var(--text);
+      box-shadow: 0 1px 4px rgba(15,23,42,.08), 0 2px 8px rgba(15,23,42,.05);
+    }
+    .primary-btn, .ghost-btn {
+      padding: 9px 16px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 13px;
+      transition: transform .15s, box-shadow .15s;
+      background: var(--surface);
+      color: var(--text);
+    }
+    .primary-btn {
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      color: #fff;
+      border-color: transparent;
+      box-shadow: 0 4px 12px rgba(29,78,216,.3);
+    }
+    .primary-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(29,78,216,.38); }
+    .ghost-btn:hover { transform: translateY(-1px); background: var(--surface-soft); box-shadow: var(--shadow-1); }
+    .upload-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .kpis {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .kpi-card {
+      padding: 20px;
+      border-radius: var(--radius-l);
+      border: 1px solid var(--border);
+      background: var(--surface);
+      box-shadow: var(--shadow-1);
+      display: grid;
+      gap: 10px;
+      min-height: 130px;
+      transition: transform .15s, box-shadow .15s;
+    }
+    .kpi-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-2); }
+    .label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      color: var(--text-3);
+    }
+    .kpi-main {
+      display: flex;
+      align-items: end;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .kpi-value {
+      font-size: 28px;
+      line-height: 1;
+      font-weight: 800;
+      letter-spacing: -.04em;
+      color: var(--text);
+    }
+    .muted { color: var(--text-2); }
+    .delta-positive, .status-positive { background: var(--positive-bg); color: var(--positive); }
+    .delta-negative, .status-negative { background: var(--negative-bg); color: var(--negative); }
+    .delta-neutral, .status-neutral { background: var(--neutral-bg); color: var(--neutral); }
+    .risk-low { background: var(--positive-bg); color: var(--positive); }
+    .risk-medium { background: var(--warning-bg); color: var(--warning); }
+    .risk-high { background: var(--negative-bg); color: var(--negative); }
+    .workspace {
+      display: grid;
+      grid-template-columns: 250px minmax(0, 1fr) 340px;
+      gap: 18px;
+      align-items: start;
+    }
+    .rail, .drawer, .center-stack > .card, .table-card {
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.94);
+      box-shadow: var(--shadow-1);
+    }
+    .rail {
+      padding: 10px;
+      display: grid;
+      gap: 6px;
+      position: sticky;
+      top: calc(var(--nav-h) + 12px);
+      background: var(--surface);
+    }
+    .rail-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 8px 14px;
+      border-bottom: 1px solid var(--divider);
+      margin-bottom: 2px;
+      gap: 12px;
+    }
+    .rail-item {
+      border: 1px solid transparent;
+      background: transparent;
+      border-radius: 14px;
+      padding: 12px;
+      display: grid;
+      gap: 8px;
+      cursor: pointer;
+      text-align: left;
+      transition: all .15s ease;
+      width: 100%;
+    }
+    .rail-item:hover {
+      transform: translateY(-1px);
+      border-color: var(--border);
+      background: var(--surface-soft);
+    }
+    .rail-item.active {
+      background: var(--brand-soft);
+      border-color: rgba(29,78,216,.15);
+      box-shadow: 0 4px 16px rgba(29,78,216,.08);
+    }
+    .rail-item.active .rail-title { color: var(--brand); }
+    .rail-top, .card-top, .drawer-head, .table-head, .split-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      gap: 12px;
+    }
+    .rail-title, .card-title, .section-title, .table-title {
+      margin: 0;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .rail-sub, .small-copy, .snippet-source, .table-sub, .metric-sub, .narrative-copy, .confidence-copy, .empty-copy {
+      font-size: 12px;
+      color: var(--text-2);
+      line-height: 1.55;
+    }
+    .score-track, .metric-track, .split-bar {
+      position: relative;
+      height: 9px;
+      border-radius: 999px;
+      overflow: hidden;
+      background: rgba(24,34,53,.08);
+    }
+    .score-fill, .metric-fill-before, .metric-fill-after, .split-before, .split-after {
+      position: absolute;
+      top: 0; bottom: 0;
+      border-radius: inherit;
+    }
+    .score-fill {
+      left: 0;
+      background: linear-gradient(90deg, #bfdbfe, #60a5fa 45%, #1d4ed8);
+    }
+    .center-stack {
+      display: grid;
+      gap: 16px;
+    }
+    .card { padding: 22px; }
+    .hero-card {
+      background: linear-gradient(135deg, #fff 0%, #f5f8ff 55%, #eef4ff 100%);
+      border: 1px solid rgba(29,78,216,.1) !important;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.12fr .88fr;
+      gap: 18px;
+      align-items: center;
+      margin-top: 14px;
+    }
+    .section-title {
+      font-size: clamp(26px, 3vw, 34px);
+      letter-spacing: -.04em;
+      line-height: 1.05;
+    }
+    .hero-values {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+      margin: 18px 0 14px;
+    }
+    .hero-score {
+      font-size: clamp(40px, 4vw, 56px);
+      line-height: .95;
+      letter-spacing: -.06em;
+      font-weight: 800;
+      color: var(--text);
+    }
+    .hero-arrow { font-size: 28px; color: var(--text-3); margin-top: 8px; }
+    .hero-right {
+      display: grid;
+      gap: 16px;
+      align-items: center;
+    }
+    .split-bar {
+      height: 18px;
+      background: linear-gradient(90deg, rgba(24,34,53,.06), rgba(24,34,53,.1));
+    }
+    .split-before {
+      left: 0;
+      background: linear-gradient(90deg, #bfdbfe, #93c5fd);
+      opacity: .9;
+    }
+    .split-after {
+      left: 0;
+      background: linear-gradient(90deg, rgba(29,78,216,.3), #2563eb 55%, #1e40af);
+      opacity: .95;
+    }
+    .chart-scale {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      color: var(--text-3);
+      margin-top: 8px;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+    }
+    .compare-legend {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .legend-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: var(--text-2);
+    }
+    .legend-dot {
+      width: 10px; height: 10px; border-radius: 50%;
+    }
+    .legend-before { background: #93c5fd; }
+    .legend-after { background: #1d4ed8; }
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .metric-card {
+      padding: 16px;
+      border-radius: var(--radius-m);
+      border: 1px solid var(--border);
+      background: #fff;
+      display: grid;
+      gap: 10px;
+      transition: .18s ease;
+    }
+    .metric-card:hover { transform: translateY(-1px); }
+    .metric-title-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: center;
+    }
+    .metric-name {
+      margin: 0;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .metric-values {
+      display: flex;
+      align-items: end;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .metric-value {
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -.04em;
+    }
+    .metric-track { height: 10px; }
+    .metric-fill-before {
+      left: 0;
+      background: linear-gradient(90deg, #bfdbfe, #93c5fd);
+      opacity: .9;
+    }
+    .metric-fill-after {
+      left: 0;
+      background: linear-gradient(90deg, rgba(29,78,216,.3), #2563eb 55%, #1e40af);
+    }
+    .narrative-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 14px;
+    }
+    .soft-block {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-l);
+      background: linear-gradient(180deg, #fffefb, #fff);
+      padding: 16px;
+      display: grid;
+      gap: 12px;
+    }
+    .soft-block ul {
+      margin: 0;
+      padding-left: 18px;
+      display: grid;
+      gap: 8px;
+      color: var(--text);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+    .drawer {
+      padding: 20px;
+      position: sticky;
+      top: calc(var(--nav-h) + 12px);
+      display: grid;
+      gap: 16px;
+      background: var(--surface);
+    }
+    .drawer-section {
+      display: grid;
+      gap: 12px;
+    }
+    .evidence-list {
+      display: grid;
+      gap: 12px;
+    }
+    .snippet-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-s);
+      padding: 14px;
+      background: var(--surface);
+      display: grid;
+      gap: 10px;
+      box-shadow: var(--shadow-1);
+      transition: transform .15s, box-shadow .15s;
+    }
+    .snippet-card:hover { transform: translateY(-1px); box-shadow: var(--shadow-2); }
+    .snippet-text {
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--text);
+      margin: 0;
+    }
+    .snippet-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .evidence-tag.positive { background: var(--positive-bg); color: var(--positive); }
+    .evidence-tag.warning { background: var(--warning-bg); color: var(--warning); }
+    .evidence-tag.negative { background: var(--negative-bg); color: var(--negative); }
+    .evidence-tag.neutral { background: var(--neutral-bg); color: var(--neutral); }
+    .confidence-box {
+      border: 1px dashed #d7d0c5;
+      background: var(--surface-soft);
+      border-radius: var(--radius-m);
+      padding: 14px;
+      display: grid;
+      gap: 8px;
+    }
+    .table-card { padding: 20px; }
+    .table-scroll { overflow-x: auto; margin-top: 14px; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 940px;
+      font-size: 13px;
+    }
+    th, td {
+      padding: 14px 12px;
+      border-top: 1px solid var(--divider);
+      text-align: left;
+      vertical-align: top;
+    }
+    thead th {
+      border-top: 0;
+      color: var(--text-3);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      font-weight: 700;
+      background: var(--canvas);
+    }
+    tbody tr:hover { background: var(--brand-soft); }
+    .row-clickable { cursor: pointer; }
+    .empty-state {
+      border: 1px dashed var(--border);
+      border-radius: var(--radius-l);
+      padding: 18px;
+      background: var(--surface-soft);
+    }
+    .no-data-banner {
+      text-align: center;
+      padding: 48px 24px;
+      color: var(--text-2);
+    }
+    .no-data-banner h2 { margin: 0 0 10px; font-size: 22px; color: var(--text); }
+    .no-data-banner p { margin: 0 0 18px; }
+    .footer-note {
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-3);
+      padding-bottom: 10px;
+    }
+    .hidden { display:none !important; }
+    .mono {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 12px;
+    }
+    @media (max-width: 1240px) {
+      .workspace {
+        grid-template-columns: 240px minmax(0, 1fr);
+      }
+      .drawer {
+        grid-column: 1 / -1;
+        position: static;
+      }
+    }
+    @media (max-width: 980px) {
+      .page { padding: 18px; }
+      .header { grid-template-columns: 1fr; }
+      .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .workspace { grid-template-columns: 1fr; }
+      .rail { position: static; }
+      .hero-grid, .narrative-grid, .metric-grid { grid-template-columns: 1fr; }
+      .control-row { justify-content: stretch; }
+    }
+    @media (max-width: 640px) {
+      .kpis { grid-template-columns: 1fr; }
+      .hero-values { gap: 10px; }
+      .hero-score { font-size: 40px; }
+      .section-title { font-size: 28px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Top navigation bar -->
+  <nav class="top-nav">
+    <a class="nav-brand" href="/">
+      <div class="nav-logo">G</div>
+      Grant AI
+    </a>
+    <div class="nav-right">
+      <button class="nav-link" onclick="window.location.href='/'">← Upload new PDF</button>
+    </div>
+  </nav>
+
+  <div class="page">
+    <section class="panel header">
+      <div>
+        <p class="eyebrow">grant review workspace</p>
+        <h1 id="pageTitle">Grant Review Workspace</h1>
+        <p class="subtitle" id="pageSubtitle">Use one JSON for self-scoring review, or load two JSON files to compare before vs after.</p>
+        <div class="meta-strip" id="metaStrip"></div>
+      </div>
+      <div class="header-controls">
+        <div class="control-row">
+          <div class="tabs" id="workspaceTabs" aria-label="Workspace mode">
+            <button class="tab active" data-workspace="single">Single review</button>
+            <button class="tab" data-workspace="compare">Compare drafts</button>
+          </div>
+        </div>
+        <div class="control-row">
+          <div class="control-group">
+            <label class="control-label" for="beforeSelect">Review A</label>
+            <select id="beforeSelect"></select>
+          </div>
+          <div class="control-group">
+            <label class="control-label" for="afterSelect">Review B / current</label>
+            <select id="afterSelect"></select>
+          </div>
+        </div>
+        <div class="control-row" style="align-items:center;">
+          <div class="tabs" id="modeTabs" aria-label="Display mode">
+            <button class="tab active" data-mode="absolute">Absolute</button>
+            <button class="tab" data-mode="delta">Delta</button>
+            <button class="tab" data-mode="evidence">Evidence</button>
+          </div>
+          <button class="ghost-btn" id="shareBtn" type="button">Copy summary</button>
+          <button class="primary-btn" id="exportBtn" type="button">Print / PDF</button>
+        </div>
+        <div class="control-row">
+          <div class="upload-wrap">
+            <button class="ghost-btn" id="loadOneBtn" type="button">Load 1 JSON</button>
+            <button class="ghost-btn" id="loadTwoBtn" type="button">Load 2 JSONs</button>
+            <button class="ghost-btn" id="copyJsonBtn" type="button">Copy JSON</button>
+          </div>
+          <input class="hidden" id="singleFileInput" type="file" accept=".json,application/json" />
+          <input class="hidden" id="multiFileInput" type="file" multiple accept=".json,application/json" />
+        </div>
+      </div>
+    </section>
+
+    <section id="noDataBanner" class="panel no-data-banner hidden">
+      <h2>No review data loaded</h2>
+      <p>Upload a PDF on the home page, or load a JSON file using the buttons above.</p>
+      <button class="ghost-btn" onclick="window.location.href='/'">← Go back to upload</button>
+    </section>
+
+    <section class="kpis" id="kpiRow"></section>
+
+    <!-- NLP Features Panel -->
+    <section class="panel hidden" id="nlpPanel" style="padding:28px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+        <div>
+          <p class="eyebrow">nlp analysis</p>
+          <h2 style="margin:0;font-size:22px;font-weight:800;letter-spacing:-.03em;">NLP Feature Metrics</h2>
+          <p style="margin:6px 0 0;font-size:13px;color:var(--text-2);">Readability, coherence, dependency, applicant, and budget features extracted from the document.</p>
+        </div>
+        <button class="ghost-btn" id="nlpToggleBtn" type="button" style="white-space:nowrap;">Collapse</button>
+      </div>
+      <div id="nlpContent">
+        <!-- Writing Quality -->
+        <div style="margin-bottom:20px;">
+          <h3 style="margin:0 0 12px;font-size:15px;font-weight:700;color:var(--text);">Writing Quality</h3>
+          <div class="kpis" id="nlpWritingKpis" style="grid-template-columns:repeat(auto-fit,minmax(150px,1fr));"></div>
+        </div>
+        <!-- Plain English Analysis -->
+        <div style="margin-bottom:20px;">
+          <h3 style="margin:0 0 12px;font-size:15px;font-weight:700;color:var(--text);">Plain English Summary Analysis</h3>
+          <div class="kpis" id="nlpReadabilityKpis" style="grid-template-columns:repeat(auto-fit,minmax(150px,1fr));"></div>
+        </div>
+        <!-- Applicant Features -->
+        <div style="margin-bottom:20px;" id="nlpApplicantSection">
+          <h3 style="margin:0 0 12px;font-size:15px;font-weight:700;color:var(--text);">Applicant Features</h3>
+          <div class="kpis" id="nlpApplicantKpis" style="grid-template-columns:repeat(auto-fit,minmax(150px,1fr));"></div>
+        </div>
+        <!-- Budget Features -->
+        <div id="nlpBudgetSection">
+          <h3 style="margin:0 0 12px;font-size:15px;font-weight:700;color:var(--text);">Budget Features</h3>
+          <div class="kpis" id="nlpBudgetKpis" style="grid-template-columns:repeat(auto-fit,minmax(150px,1fr));"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="workspace" id="workspaceSection">
+      <aside class="rail" id="sectionRail"></aside>
+
+      <main class="center-stack">
+        <section class="card hero-card">
+          <div class="card-top">
+            <div>
+              <p class="eyebrow" id="heroEyebrow">section review</p>
+              <h2 class="section-title" id="heroTitle">Section</h2>
+            </div>
+            <span class="status-pill" id="heroStatus">Status</span>
+          </div>
+
+          <div class="hero-grid">
+            <div>
+              <p class="small-copy" id="heroSummary"></p>
+              <div class="hero-values">
+                <span class="hero-score" id="beforeScore">—</span>
+                <span class="hero-arrow" id="heroArrow">→</span>
+                <span class="hero-score" id="afterScore">—</span>
+                <span class="delta-pill" id="heroDelta">0 pts</span>
+                <span class="status-pill" id="heroConfidence">Confidence: High</span>
+              </div>
+              <p class="small-copy" id="heroInterpretation"></p>
+            </div>
+
+            <div class="hero-right">
+              <div>
+                <div class="compare-legend">
+                  <span class="legend-item"><span class="legend-dot legend-before"></span><span id="legendBeforeLabel">Review A</span></span>
+                  <span class="legend-item"><span class="legend-dot legend-after"></span><span id="legendAfterLabel">Review B</span></span>
+                </div>
+                <div style="margin-top:14px; display:grid; gap:12px;">
+                  <div>
+                    <div class="split-head" style="margin-bottom:6px;"><span class="small-copy" id="beforeBarTitle">Review A score</span><strong id="beforeChartLabel">0 / 100</strong></div>
+                    <div class="split-bar"><div class="split-before" id="beforeBar"></div></div>
+                  </div>
+                  <div>
+                    <div class="split-head" style="margin-bottom:6px;"><span class="small-copy" id="afterBarTitle">Review B score</span><strong id="afterChartLabel">0 / 100</strong></div>
+                    <div class="split-bar"><div class="split-after" id="afterBar"></div></div>
+                  </div>
+                </div>
+                <div class="chart-scale"><span>0</span><span>50</span><span>100</span></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="card">
+          <div class="card-top">
+            <div>
+              <p class="eyebrow" id="metricEyebrow">section metrics</p>
+              <h3 class="card-title" id="metricTitle">Metric strip</h3>
+            </div>
+            <p class="small-copy" id="metricSubtitle">Scored metrics derived from your current JSON structure.</p>
+          </div>
+          <div class="metric-grid" id="metricGrid"></div>
+        </section>
+
+        <section class="card">
+          <div class="card-top">
+            <div>
+              <p class="eyebrow" id="narrativeEyebrow">narrative summary</p>
+              <h3 class="card-title" id="narrativeTitle">What looks strong vs what needs attention</h3>
+            </div>
+          </div>
+          <div class="narrative-grid">
+            <div class="soft-block">
+              <div class="card-top">
+                <h4 class="card-title" id="improvedTitle">What looks strong</h4>
+                <span class="status-pill status-positive" id="improvedBadge">Strengths</span>
+              </div>
+              <ul id="improvedList"></ul>
+            </div>
+            <div class="soft-block">
+              <div class="card-top">
+                <h4 class="card-title" id="riskTitle">What needs attention</h4>
+                <span class="risk-badge risk-medium" id="riskBadge">Attention</span>
+              </div>
+              <ul id="riskList"></ul>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <aside class="drawer" id="evidenceDrawer">
+        <div class="drawer-head">
+          <div>
+            <p class="eyebrow" id="drawerEyebrow">criterion drawer</p>
+            <h3 class="card-title" id="drawerTitle">Criterion evidence</h3>
+          </div>
+          <span class="delta-pill" id="drawerDelta">0 pts</span>
+        </div>
+
+        <section class="drawer-section">
+          <div class="card-top">
+            <h4 class="card-title">Summary</h4>
+            <span class="status-pill" id="drawerStatus">High confidence</span>
+          </div>
+          <p class="narrative-copy" id="drawerSummary"></p>
+        </section>
+
+        <section class="drawer-section">
+          <div class="card-top">
+            <h4 class="card-title">Evidence</h4>
+            <span class="evidence-tag neutral" id="metricFocusTag">Criterion view</span>
+          </div>
+          <div class="evidence-list" id="evidenceList"></div>
+        </section>
+
+        <section class="drawer-section">
+          <h4 class="card-title" id="concernHeading">Notes / concerns</h4>
+          <div class="evidence-list" id="concernList"></div>
+        </section>
+
+        <section class="confidence-box">
+          <div class="card-top">
+            <h4 class="card-title">Model rationale</h4>
+            <span class="status-pill" id="confidencePill">Confidence: High</span>
+          </div>
+          <p class="confidence-copy" id="confidenceText"></p>
+        </section>
+      </aside>
+    </section>
+
+    <section class="table-card" id="tableSection">
+      <div class="table-head">
+        <div>
+          <p class="eyebrow" id="tableEyebrow">criteria table</p>
+          <h3 class="table-title" id="tableTitle">Criteria inside this section</h3>
+        </div>
+        <p class="table-sub" id="tableSub">Click a row to inspect that criterion in the drawer.</p>
+      </div>
+      <div class="table-scroll">
+        <table>
+          <thead id="tableHead"></thead>
+          <tbody id="comparisonTable"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <div class="footer-note" style="font-family:'Inter',system-ui,sans-serif;">Grant AI Review Workspace · Load a processed result or use the file buttons to load 1–2 JSONs for comparison.</div>
+  </div>
+
+  <script>
+    const state = {
+      workspaceMode: 'single',
+      displayMode: 'absolute',
+      loadedReviews: [],
+      selectedBeforeId: null,
+      selectedAfterId: null,
+      selectedSectionId: null,
+      selectedCriterionName: null
+    };
+
+    const sectionNameMap = {
+      wpcc: 'Working with People & Communities',
+      proposed_research: 'Proposed Research',
+      application_form: 'Application Form',
+      general: 'General',
+      training_development: 'Training & Development',
+      sites_support: 'Sites & Support'
+    };
+
+    function clamp(n, min, max) {
+      return Math.min(max, Math.max(min, n));
+    }
+    function round1(n) {
+      return Math.round((Number(n || 0) + Number.EPSILON) * 10) / 10;
+    }
+    function round2(n) {
+      return Math.round((Number(n || 0) + Number.EPSILON) * 100) / 100;
+    }
+    function prettyDate(s) {
+      if (!s) return 'Unknown run time';
+      const d = new Date(s);
+      if (Number.isNaN(d.getTime())) return s;
+      return d.toLocaleString(undefined, { year:'numeric', month:'short', day:'numeric', hour:'2-digit', minute:'2-digit' });
+    }
+    function titleFromKey(key) {
+      return sectionNameMap[key] || key.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+    }
+    function slugify(s) {
+      return (s || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+    }
+    function pillClassFromDelta(delta) {
+      if (delta > 0.01) return 'delta-pill delta-positive';
+      if (delta < -0.01) return 'delta-pill delta-negative';
+      return 'delta-pill delta-neutral';
+    }
+    function statusClassFromRisk(risk) {
+      if (risk === 'Low') return 'risk-badge risk-low';
+      if (risk === 'High') return 'risk-badge risk-high';
+      return 'risk-badge risk-medium';
+    }
+    function confidenceFromSection(section) {
+      const o = section.overall;
+      if (!o) return 'Low';
+      const strongEvidence = (o.evidenceCount || 0) >= Math.max(2, (o.totalItems || 1) * 2);
+      if ((o.coverage || 0) >= 95 && (o.quality || 0) >= 80 && strongEvidence) return 'High';
+      if ((o.coverage || 0) >= 70 && (o.quality || 0) >= 60) return 'Medium';
+      return 'Low';
+    }
+    function riskFromScore(score) {
+      if (score >= 85) return 'Low';
+      if (score >= 65) return 'Medium';
+      return 'High';
+    }
+    function deepClone(obj) {
+      return JSON.parse(JSON.stringify(obj));
+    }
+
+    // Accept both raw top-level format and { features_json: {...} } wrapper from the server
+    function unwrapRaw(raw) {
+      if (raw && raw.features_json && typeof raw.features_json === 'object') {
+        return raw.features_json;
+      }
+      return raw;
+    }
+
+    function normalizeReview(rawInput, fallbackLabel) {
+      const raw = unwrapRaw(rawInput);
+      const features = raw.features || {};
+      const sections = Object.entries(features)
+        .filter(([key]) => key !== 'orcid')
+        .map(([key, section]) => {
+          const overall = section.overall || {};
+          const criteria = Array.isArray(section.criteria) ? section.criteria : [];
+          return {
+            id: key, key,
+            name: titleFromKey(key),
+            overall: {
+              finalScore: Number(overall.final_score_0to100 || 0),
+              coverage: Number(overall.coverage_score_0to100 || 0),
+              quality: Number(overall.quality_score_0to100 || 0),
+              evidence: Number(overall.evidence_score_0to100 || 0),
+              qualityAvg: Number(overall.quality_score_avg_0to10 || 0),
+              totalItems: Number(overall.total_items || criteria.length || 0),
+              goodItems: Number(overall.good_items || 0),
+              positiveItems: Number(overall.positive_items || 0),
+              expectedItems: Number(overall.expected_items || criteria.length || 0),
+              evidenceCount: Number(overall.evidence_count || 0),
+              targetEvidencePerItem: Number(overall.target_evidence_per_item || raw?.overall?.target_evidence_per_item || 2)
+            },
+            criteria: criteria.map((c, idx) => {
+              const rubric = c.rubric_subscores_0to2 || {};
+              const rubricValues = Object.values(rubric).map(Number);
+              const rubricAvg = rubricValues.length ? rubricValues.reduce((a,b)=>a+b,0) / rubricValues.length : 0;
+              return {
+                id: c.id || slugify(c.name || ('criterion-' + idx)),
+                name: c.name || `Criterion ${idx+1}`,
+                exists: c.exists || 'unknown',
+                qualityLabel: c.quality || 'unknown',
+                score: Number(c.quality_score_0to10 || 0),
+                evidence: Array.isArray(c.evidence) ? c.evidence : [],
+                evidenceCount: Array.isArray(c.evidence) ? c.evidence.length : Number((c.evidence_ids || []).length || 0),
+                evidenceIds: c.evidence_ids || [],
+                rubricSubscores: rubric,
+                rubricAvg,
+                rubricText: rubricValues.length ? `${round1(rubricAvg)} / 2 avg rubric` : 'No rubric detail'
+              };
+            })
+          };
+        });
+
+      const overall = raw.overall || {};
+      return {
+        id: slugify(raw.doc_id || fallbackLabel || 'review-' + Math.random().toString(36).slice(2,7)),
+        label: fallbackLabel || raw.doc_id || 'Loaded review',
+        docId: raw.doc_id || fallbackLabel || 'Unknown doc',
+        raw: rawInput,
+        runInfo: {
+          ranAt: raw.run_info?.ran_at_utc || null,
+          model: raw.run_info?.model || 'Unknown model',
+        },
+        overall: {
+          finalScore: Number(overall.final_score_0to100 || 0),
+          coverage: Number(overall.coverage_score_0to100 || 0),
+          quality: Number(overall.quality_score_0to100 || 0),
+          evidence: Number(overall.evidence_score_0to100 || 0),
+          qualityAvg: Number(overall.quality_score_avg_0to10 || 0),
+          totalItems: Number(overall.total_items || 0),
+          goodItems: Number(overall.good_items || 0),
+          positiveItems: Number(overall.positive_items || 0),
+          expectedItems: Number(overall.expected_items || 0),
+          evidenceCount: Number(overall.evidence_count || 0),
+          targetEvidencePerItem: Number(overall.target_evidence_per_item || 2)
+        },
+        sections,
+        orcid: raw.features?.orcid || null,
+        errors: Array.isArray(raw.errors) ? raw.errors : []
+      };
+    }
+
+    function synthesizeBaseline(norm) {
+      const cloned = deepClone(norm);
+      cloned.id = cloned.id + '-synthetic-before';
+      cloned.label = (norm.docId || norm.label) + ' · Synthetic baseline';
+      cloned.docId = (norm.docId || norm.label) + '_synthetic_before';
+      cloned.synthetic = true;
+      const penalties = [12, 8, 10, 6, 9, 7];
+      cloned.sections = cloned.sections.map((section, index) => {
+        const penalty = penalties[index % penalties.length];
+        section.overall.finalScore = clamp(round1(section.overall.finalScore - penalty), 0, 100);
+        section.overall.quality = clamp(round1(section.overall.quality - penalty * 0.95), 0, 100);
+        section.overall.evidence = clamp(round1(section.overall.evidence - penalty * 0.8), 0, 100);
+        section.overall.coverage = clamp(round1(section.overall.coverage - Math.min(18, penalty * 0.9)), 0, 100);
+        section.overall.goodItems = Math.max(0, section.overall.goodItems - Math.max(1, Math.round(section.criteria.length / 3)));
+        section.overall.positiveItems = Math.max(0, section.overall.positiveItems - Math.max(0, Math.round(section.criteria.length / 4)));
+        section.overall.evidenceCount = Math.max(0, section.overall.evidenceCount - Math.max(2, Math.round(section.criteria.length * 0.8)));
+        section.overall.qualityAvg = clamp(round1(section.overall.qualityAvg - penalty / 12), 0, 10);
+        section.criteria = section.criteria.map((criterion, idx) => {
+          const cPenalty = [1.6, 1.0, 1.2, 0.8][idx % 4];
+          criterion.score = clamp(round1(criterion.score - cPenalty), 0, 10);
+          criterion.qualityLabel = criterion.score >= 7.5 ? 'good' : (criterion.score >= 5 ? 'mixed' : 'weak');
+          const rubricKeys = Object.keys(criterion.rubricSubscores || {});
+          rubricKeys.forEach((key, ridx) => {
+            criterion.rubricSubscores[key] = clamp(round1(Number(criterion.rubricSubscores[key] || 0) - (ridx % 2 === 0 ? 0.4 : 0.2)), 0, 2);
+          });
+          const rubricVals = Object.values(criterion.rubricSubscores || {}).map(Number);
+          criterion.rubricAvg = rubricVals.length ? rubricVals.reduce((a,b)=>a+b,0) / rubricVals.length : 0;
+          criterion.rubricText = rubricVals.length ? `${round1(criterion.rubricAvg)} / 2 avg rubric` : 'No rubric detail';
+          criterion.evidence = (criterion.evidence || []).slice(0, Math.max(1, (criterion.evidence || []).length - 1));
+          criterion.evidenceCount = criterion.evidence.length;
+          return criterion;
+        });
+        return section;
+      });
+      recomputeOverall(cloned);
+      return cloned;
+    }
+
+    function recomputeOverall(review) {
+      const sections = review.sections || [];
+      const totalItems = sections.reduce((sum, s) => sum + (s.overall.totalItems || 0), 0);
+      const expectedItems = sections.reduce((sum, s) => sum + (s.overall.expectedItems || 0), 0);
+      const goodItems = sections.reduce((sum, s) => sum + (s.overall.goodItems || 0), 0);
+      const positiveItems = sections.reduce((sum, s) => sum + (s.overall.positiveItems || 0), 0);
+      const evidenceCount = sections.reduce((sum, s) => sum + (s.overall.evidenceCount || 0), 0);
+      const weighted = (field) => {
+        const denom = sections.reduce((sum, s) => sum + (s.overall.totalItems || 0), 0) || 1;
+        return sections.reduce((sum, s) => sum + (Number(s.overall[field] || 0) * (s.overall.totalItems || 0)), 0) / denom;
+      };
+      review.overall = {
+        finalScore: round2(weighted('finalScore')),
+        coverage: round2(weighted('coverage')),
+        quality: round2(weighted('quality')),
+        evidence: round2(weighted('evidence')),
+        qualityAvg: round2(sections.reduce((sum, s) => sum + Number(s.overall.qualityAvg || 0) * (s.overall.totalItems || 0), 0) / (totalItems || 1)),
+        totalItems, expectedItems, goodItems, positiveItems, evidenceCount,
+        targetEvidencePerItem: review.overall?.targetEvidencePerItem || 2
+      };
+    }
+
+    function getBeforeReview() {
+      return state.loadedReviews.find(r => r.id === state.selectedBeforeId) || null;
+    }
+    function getAfterReview() {
+      return state.loadedReviews.find(r => r.id === state.selectedAfterId) || null;
+    }
+    function getCurrentMode() {
+      const hasCompare = Boolean(getBeforeReview() && getAfterReview() && getBeforeReview().id !== getAfterReview().id);
+      if (state.workspaceMode === 'compare' && hasCompare) return 'compare';
+      return 'single';
+    }
+    function getPrimaryReview() {
+      return getAfterReview() || getBeforeReview() || null;
+    }
+    function emptySection(id) {
+      return {
+        id, name: titleFromKey(id),
+        overall: { finalScore:0, coverage:0, quality:0, evidence:0, qualityAvg:0, totalItems:0, goodItems:0, positiveItems:0, expectedItems:0, evidenceCount:0, targetEvidencePerItem:2 },
+        criteria: []
+      };
+    }
+    function emptyCriterion(name) {
+      return { id:slugify(name), name, exists:'missing', qualityLabel:'missing', score:0, evidence:[], evidenceCount:0, evidenceIds:[], rubricSubscores:{}, rubricAvg:0, rubricText:'No rubric detail' };
+    }
+
+    function getSectionUnion() {
+      const mode = getCurrentMode();
+      if (mode === 'single') {
+        return (getPrimaryReview()?.sections || []).map(section => ({ id:section.id, name:section.name, before:section, after:section }));
+      }
+      const beforeMap = new Map((getBeforeReview()?.sections || []).map(s => [s.id, s]));
+      const afterMap = new Map((getAfterReview()?.sections || []).map(s => [s.id, s]));
+      const ids = Array.from(new Set([...beforeMap.keys(), ...afterMap.keys()]));
+      return ids.map(id => ({
+        id, name:(afterMap.get(id) || beforeMap.get(id) || {name:id}).name,
+        before: beforeMap.get(id) || emptySection(id),
+        after: afterMap.get(id) || emptySection(id)
+      })).sort((a, b) => (b.after.overall.finalScore || 0) - (a.after.overall.finalScore || 0));
+    }
+
+    function getSelectedSectionPair() {
+      const sections = getSectionUnion();
+      let pair = sections.find(s => s.id === state.selectedSectionId);
+      if (!pair && sections.length) {
+        pair = sections[0];
+        state.selectedSectionId = pair.id;
+      }
+      return pair || null;
+    }
+
+    function getSelectedCriterionPair() {
+      const sectionPair = getSelectedSectionPair();
+      if (!sectionPair) return null;
+      const beforeCriteria = new Map((sectionPair.before.criteria || []).map(c => [c.name, c]));
+      const afterCriteria = new Map((sectionPair.after.criteria || []).map(c => [c.name, c]));
+      const names = Array.from(new Set([...beforeCriteria.keys(), ...afterCriteria.keys()]));
+      if (!names.length) return null;
+      let name = state.selectedCriterionName;
+      if (!name || !names.includes(name)) {
+        name = names[0];
+        state.selectedCriterionName = name;
+      }
+      return { name, before: beforeCriteria.get(name) || emptyCriterion(name), after: afterCriteria.get(name) || emptyCriterion(name) };
+    }
+
+    function scoreDelta(a, b) { return round1((Number(b || 0) - Number(a || 0))); }
+    function fmtDelta(n, suffix='pts') {
+      const value = round1(n);
+      if (value > 0) return `+${value} ${suffix}`;
+      if (value < 0) return `${value} ${suffix}`;
+      return `0 ${suffix}`;
+    }
+    function fmtScore(n) { return round1(n).toFixed(1).replace(/\.0$/, ''); }
+    function fmtPercent(n) { return `${round1(n)}%`.replace(/\.0%$/, '%'); }
+
+    function sectionMetrics(section) {
+      const o = section.overall;
+      const evidenceDensity = o.totalItems ? clamp((o.evidenceCount / (o.totalItems * Math.max(1, o.targetEvidencePerItem || 2))) * 100, 0, 100) : 0;
+      const goodRatio = o.totalItems ? (o.goodItems / o.totalItems) * 100 : 0;
+      return [
+        { label:'Final score', before:o.finalScore, after:o.finalScore, valueLabel:'100 scale' },
+        { label:'Coverage', before:o.coverage, after:o.coverage, valueLabel:'100 scale' },
+        { label:'Quality', before:o.quality, after:o.quality, valueLabel:'100 scale' },
+        { label:'Evidence', before:o.evidence, after:o.evidence, valueLabel:'100 scale' },
+        { label:'Avg criterion', before:o.qualityAvg*10, after:o.qualityAvg*10, valueLabel:'derived from 0–10' },
+        { label:'Evidence density', before:evidenceDensity, after:evidenceDensity, valueLabel:'target-adjusted' },
+        { label:'Good criteria', before:goodRatio, after:goodRatio, valueLabel:'share of criteria' },
+        { label:'Evidence count', before:o.evidenceCount, after:o.evidenceCount, valueLabel:'raw count' }
+      ];
+    }
+
+    function sectionMetricPairs(sectionPair) {
+      const before = sectionPair.before.overall;
+      const after = sectionPair.after.overall;
+      const beforeDensity = before.totalItems ? clamp((before.evidenceCount / (before.totalItems * Math.max(1, before.targetEvidencePerItem || 2))) * 100, 0, 100) : 0;
+      const afterDensity = after.totalItems ? clamp((after.evidenceCount / (after.totalItems * Math.max(1, after.targetEvidencePerItem || 2))) * 100, 0, 100) : 0;
+      const beforeGoodRatio = before.totalItems ? (before.goodItems / before.totalItems) * 100 : 0;
+      const afterGoodRatio = after.totalItems ? (after.goodItems / after.totalItems) * 100 : 0;
+      return [
+        { label:'Final score', before:before.finalScore, after:after.finalScore, valueLabel:'100 scale' },
+        { label:'Coverage', before:before.coverage, after:after.coverage, valueLabel:'100 scale' },
+        { label:'Quality', before:before.quality, after:after.quality, valueLabel:'100 scale' },
+        { label:'Evidence', before:before.evidence, after:after.evidence, valueLabel:'100 scale' },
+        { label:'Avg criterion', before:before.qualityAvg*10, after:after.qualityAvg*10, valueLabel:'derived from 0–10' },
+        { label:'Evidence density', before:beforeDensity, after:afterDensity, valueLabel:'target-adjusted' },
+        { label:'Good criteria', before:beforeGoodRatio, after:afterGoodRatio, valueLabel:'share of criteria' },
+        { label:'Evidence count', before:before.evidenceCount, after:after.evidenceCount, valueLabel:'raw count' }
+      ];
+    }
+
+    function buildSingleInsights(section) {
+      const o = section.overall;
+      const top = [...(section.criteria || [])].sort((a,b)=> b.score - a.score);
+      const low = [...(section.criteria || [])].sort((a,b)=> a.score - b.score);
+      const strong = [];
+      strong.push(`${o.goodItems} of ${o.totalItems} criteria are marked good, with an overall section score of ${fmtScore(o.finalScore)} / 100.`);
+      strong.push(`Coverage is ${fmtPercent(o.coverage)} with ${o.evidenceCount} evidence snippets across this section.`);
+      if (top[0]) strong.push(`Top criterion: "${top[0].name}" scored ${fmtScore(top[0].score)} / 10.`);
+      const risks = [];
+      if (o.evidenceCount < o.totalItems * Math.max(1, o.targetEvidencePerItem || 2)) {
+        risks.push(`Evidence density is below the configured target of ${o.targetEvidencePerItem} snippets per item.`);
+      } else {
+        risks.push(`Evidence volume is healthy, but some quotes may still need stronger supporting context.`);
+      }
+      if (low[0]) risks.push(`Lowest-scoring criterion is "${low[0].name}" at ${fmtScore(low[0].score)} / 10.`);
+      if (!section.criteria.length) risks.push('No scored criteria were detected for this module.');
+      return { strong, risks };
+    }
+
+    function buildCompareInsights(sectionPair) {
+      const before = sectionPair.before;
+      const after = sectionPair.after;
+      const delta = scoreDelta(before.overall.finalScore, after.overall.finalScore);
+      const beforeMap = new Map((before.criteria || []).map(c => [c.name, c]));
+      const afterMap = new Map((after.criteria || []).map(c => [c.name, c]));
+      const names = Array.from(new Set([...beforeMap.keys(), ...afterMap.keys()]));
+      const movements = names.map(name => {
+        const b = beforeMap.get(name) || emptyCriterion(name);
+        const a = afterMap.get(name) || emptyCriterion(name);
+        return { name, delta: scoreDelta(b.score, a.score), before: b, after: a };
+      }).sort((a,b) => Math.abs(b.delta) - Math.abs(a.delta));
+      const strong = [];
+      strong.push(`Section score moved from ${fmtScore(before.overall.finalScore)} to ${fmtScore(after.overall.finalScore)} (${fmtDelta(delta)}).`);
+      strong.push(`Quality moved ${fmtDelta(scoreDelta(before.overall.quality, after.overall.quality))}, evidence count moved from ${before.overall.evidenceCount} to ${after.overall.evidenceCount}.`);
+      if (movements[0]) strong.push(`Largest criterion movement: "${movements[0].name}" (${fmtDelta(movements[0].delta, '/10')}).`);
+      const risks = [];
+      const negatives = movements.filter(m => m.delta < 0);
+      if (negatives.length) {
+        risks.push(`At least one criterion weakened: "${negatives[0].name}" changed by ${fmtDelta(negatives[0].delta, '/10')}.`);
+      } else {
+        risks.push('No criterion score regressed in this section.');
+      }
+      if (after.overall.coverage < 100) risks.push(`After-draft coverage is still only ${fmtPercent(after.overall.coverage)}.`);
+      if (after.overall.evidenceCount < after.overall.totalItems * Math.max(1, after.overall.targetEvidencePerItem || 2)) risks.push('After-draft evidence count is still below the configured target density.');
+      return { strong, risks };
+    }
+
+    function renderMeta() {
+      const strip = document.getElementById('metaStrip');
+      const mode = getCurrentMode();
+      const primary = getPrimaryReview();
+      const before = getBeforeReview();
+      const pills = [];
+      pills.push(`<span class="meta-pill">${mode === 'compare' ? 'Compare workspace' : 'Single review workspace'}</span>`);
+      if (primary) pills.push(`<span class="meta-pill mono">${primary.docId}</span>`);
+      if (primary?.runInfo?.model) pills.push(`<span class="meta-pill">${primary.runInfo.model}</span>`);
+      if (primary?.runInfo?.ranAt) pills.push(`<span class="meta-pill">${prettyDate(primary.runInfo.ranAt)}</span>`);
+      if (before?.synthetic) pills.push(`<span class="meta-pill">Demo baseline is synthetic</span>`);
+      strip.innerHTML = pills.join('');
+      document.getElementById('pageTitle').textContent = mode === 'compare' ? 'Grant Comparator' : 'Grant Self-Review';
+      document.getElementById('pageSubtitle').textContent = mode === 'compare'
+        ? 'Compare two scoring JSON files and inspect movement in overall score, section quality, criteria, and evidence.'
+        : 'Inspect one scoring JSON file section by section, with overall scores, criteria, and evidence.';
+    }
+
+    function renderKpis() {
+      const mode = getCurrentMode();
+      const row = document.getElementById('kpiRow');
+      row.innerHTML = '';
+      let cards = [];
+      if (mode === 'single') {
+        const review = getPrimaryReview();
+        const team = review?.orcid?.team_metrics || null;
+        cards = [
+          { label:'Final score', value:`${fmtScore(review.overall.finalScore)}`,
+            pillHtml:`<span class="status-pill status-positive">${riskFromScore(review.overall.finalScore)} risk</span>`,
+            desc:`Quality ${fmtPercent(review.overall.quality)} · Coverage ${fmtPercent(review.overall.coverage)}` },
+          { label:'Evidence count', value:`${review.overall.evidenceCount}`,
+            pillHtml:`<span class="${pillClassFromDelta(review.overall.evidenceCount - review.overall.totalItems * 2)}">${review.overall.evidenceCount >= review.overall.totalItems * 2 ? 'On target' : 'Below target'}</span>`,
+            desc:`${review.overall.totalItems} scored items · target ${review.overall.targetEvidencePerItem} per item` },
+          { label:'Good criteria', value:`${review.overall.goodItems} / ${review.overall.totalItems}`,
+            pillHtml:`<span class="status-pill status-positive">${fmtPercent(review.overall.totalItems ? review.overall.goodItems / review.overall.totalItems * 100 : 0)}</span>`,
+            desc:`Positive items: ${review.overall.positiveItems} · expected: ${review.overall.expectedItems}` },
+          { label:team ? 'Team signals' : 'Run info',
+            value:team ? `${team.team_size} person` : `${review.runInfo.model || 'Unknown model'}`,
+            pillHtml:team ? `<span class="status-pill status-neutral">H-index ${fmtScore(team.avg_h_index || 0)}</span>` : `<span class="status-pill status-neutral">Model</span>`,
+            desc:team ? `Avg citations ${fmtScore(team.avg_citations || 0)} · recent works ${fmtScore(team.avg_works_recent_5y || 0)}` : `${prettyDate(review.runInfo.ranAt)}` }
+        ];
+      } else {
+        const before = getBeforeReview();
+        const after = getAfterReview();
+        const sections = getSectionUnion();
+        const deltas = sections.map(s => ({ name:s.name, delta:scoreDelta(s.before.overall.finalScore, s.after.overall.finalScore) }));
+        const gain = [...deltas].sort((a,b)=> b.delta - a.delta)[0] || { name:'—', delta:0 };
+        const risk = [...sections].sort((a,b)=> a.after.overall.finalScore - b.after.overall.finalScore)[0] || null;
+        cards = [
+          { label:'Overall score', value:`${fmtScore(before.overall.finalScore)} → ${fmtScore(after.overall.finalScore)}`,
+            pillHtml:`<span class="${pillClassFromDelta(scoreDelta(before.overall.finalScore, after.overall.finalScore))}">${fmtDelta(scoreDelta(before.overall.finalScore, after.overall.finalScore))}</span>`,
+            desc:`Coverage ${fmtPercent(before.overall.coverage)} → ${fmtPercent(after.overall.coverage)}` },
+          { label:'Quality movement', value:`${fmtPercent(before.overall.quality)} → ${fmtPercent(after.overall.quality)}`,
+            pillHtml:`<span class="${pillClassFromDelta(scoreDelta(before.overall.quality, after.overall.quality))}">${fmtDelta(scoreDelta(before.overall.quality, after.overall.quality))}</span>`,
+            desc:`Evidence count ${before.overall.evidenceCount} → ${after.overall.evidenceCount}` },
+          { label:'Largest gain', value:gain.name,
+            pillHtml:`<span class="${pillClassFromDelta(gain.delta)}">${fmtDelta(gain.delta)}</span>`,
+            desc:`Best section movement across the loaded pair` },
+          { label:'Highest remaining risk', value:risk ? risk.name : '—',
+            pillHtml:risk ? `<span class="${statusClassFromRisk(riskFromScore(risk.after.overall.finalScore))}">${riskFromScore(risk.after.overall.finalScore)} risk</span>` : '<span class="risk-badge risk-medium">No data</span>',
+            desc:risk ? `After score ${fmtScore(risk.after.overall.finalScore)} / 100` : 'Load two reviews to compare' }
+        ];
+      }
+      row.innerHTML = cards.map(card => `
+        <article class="kpi-card">
+          <div class="label">${card.label}</div>
+          <div class="kpi-main">
+            <div class="kpi-value">${card.value}</div>
+            ${card.pillHtml}
+          </div>
+          <div class="muted small-copy">${card.desc}</div>
+        </article>
+      `).join('');
+    }
+
+    function renderRail() {
+      const rail = document.getElementById('sectionRail');
+      const sections = getSectionUnion();
+      const mode = getCurrentMode();
+      if (!sections.length) {
+        rail.innerHTML = `<div class="empty-state"><div class="empty-copy">No scored sections found in the loaded JSON.</div></div>`;
+        return;
+      }
+      rail.innerHTML = `
+        <div class="rail-head">
+          <div>
+            <div class="label">Sections</div>
+            <div class="small-copy">${mode === 'compare' ? 'Click to compare a section' : 'Click to inspect a section'}</div>
+          </div>
+          <span class="meta-pill">${sections.length}</span>
+        </div>
+        ${sections.map(pair => {
+          const beforeScore = pair.before.overall.finalScore || 0;
+          const afterScore = pair.after.overall.finalScore || 0;
+          const delta = scoreDelta(beforeScore, afterScore);
+          const active = pair.id === state.selectedSectionId ? 'active' : '';
+          const currentScore = mode === 'compare' ? afterScore : beforeScore;
+          const subtitle = mode === 'compare' ? `${fmtScore(beforeScore)} → ${fmtScore(afterScore)}` : `${fmtScore(currentScore)} / 100`;
+          return `
+            <button class="rail-item ${active}" data-section-id="${pair.id}">
+              <div class="rail-top">
+                <h4 class="rail-title">${pair.name}</h4>
+                <span class="${mode === 'compare' ? pillClassFromDelta(delta) : statusClassFromRisk(riskFromScore(currentScore))}">${mode === 'compare' ? fmtDelta(delta) : riskFromScore(currentScore)}</span>
+              </div>
+              <div class="rail-sub">${subtitle}</div>
+              <div class="score-track"><div class="score-fill" style="width:${clamp(currentScore,0,100)}%"></div></div>
+            </button>
+          `;
+        }).join('')}
+      `;
+      rail.querySelectorAll('.rail-item').forEach(btn => {
+        btn.addEventListener('click', () => {
+          state.selectedSectionId = btn.dataset.sectionId;
+          state.selectedCriterionName = null;
+          render();
+        });
+      });
+    }
+
+    function renderHero() {
+      const mode = getCurrentMode();
+      const pair = getSelectedSectionPair();
+      if (!pair) return;
+      const beforeLabel = mode === 'compare' ? (getBeforeReview()?.label || 'Review A') : 'Selected review';
+      const afterLabel = mode === 'compare' ? (getAfterReview()?.label || 'Review B') : 'Selected review';
+      const beforeScore = pair.before.overall.finalScore || 0;
+      const afterScore = mode === 'compare' ? (pair.after.overall.finalScore || 0) : beforeScore;
+      const delta = scoreDelta(beforeScore, afterScore);
+      const risk = riskFromScore(afterScore);
+      const conf = confidenceFromSection(mode === 'compare' ? pair.after : pair.before);
+      document.getElementById('heroEyebrow').textContent = mode === 'compare' ? 'section comparison' : 'section review';
+      document.getElementById('heroTitle').textContent = pair.name;
+      document.getElementById('heroStatus').className = mode === 'compare' ? pillClassFromDelta(delta) : statusClassFromRisk(risk);
+      document.getElementById('heroStatus').textContent = mode === 'compare' ? (delta > 0 ? 'Improved' : delta < 0 ? 'Weakened' : 'Unchanged') : `${risk} risk`;
+      document.getElementById('heroSummary').textContent = mode === 'compare'
+        ? `${pair.name} comparison — use the drawer and criteria table to inspect what changed.`
+        : `${pair.name} as scored in the current JSON.`;
+      document.getElementById('beforeScore').textContent = fmtScore(beforeScore);
+      document.getElementById('afterScore').textContent = fmtScore(afterScore);
+      document.getElementById('heroArrow').style.visibility = mode === 'compare' ? 'visible' : 'hidden';
+      document.getElementById('heroDelta').className = mode === 'compare' ? pillClassFromDelta(delta) : 'status-pill status-neutral';
+      document.getElementById('heroDelta').textContent = mode === 'compare' ? fmtDelta(delta) : `${pair.before.overall.evidenceCount} evidence`;
+      document.getElementById('heroConfidence').className = conf === 'High' ? 'status-pill status-positive' : conf === 'Medium' ? 'status-pill status-neutral' : 'status-pill status-negative';
+      document.getElementById('heroConfidence').textContent = `Confidence: ${conf}`;
+      document.getElementById('heroInterpretation').textContent = mode === 'compare'
+        ? `After-review score is ${fmtScore(afterScore)} / 100, coverage changed by ${fmtDelta(scoreDelta(pair.before.overall.coverage, pair.after.overall.coverage), 'pts')}.`
+        : `Coverage is ${fmtPercent(pair.before.overall.coverage)}, quality is ${fmtPercent(pair.before.overall.quality)}, evidence score is ${fmtPercent(pair.before.overall.evidence)}.`;
+      document.getElementById('legendBeforeLabel').textContent = beforeLabel;
+      document.getElementById('legendAfterLabel').textContent = mode === 'compare' ? afterLabel : 'Selected review';
+      document.getElementById('beforeBarTitle').textContent = mode === 'compare' ? 'Review A score' : 'Section score';
+      document.getElementById('afterBarTitle').textContent = mode === 'compare' ? 'Review B score' : 'Section score';
+      document.getElementById('beforeChartLabel').textContent = `${fmtScore(beforeScore)} / 100`;
+      document.getElementById('afterChartLabel').textContent = `${fmtScore(afterScore)} / 100`;
+      document.getElementById('beforeBar').style.width = `${clamp(beforeScore,0,100)}%`;
+      document.getElementById('afterBar').style.width = `${clamp(afterScore,0,100)}%`;
+    }
+
+    function renderMetrics() {
+      const grid = document.getElementById('metricGrid');
+      const mode = getCurrentMode();
+      const pair = getSelectedSectionPair();
+      if (!pair) return;
+      const metrics = mode === 'compare' ? sectionMetricPairs(pair) : sectionMetrics(pair.before);
+      document.getElementById('metricEyebrow').textContent = mode === 'compare' ? 'section movement metrics' : 'section metrics';
+      document.getElementById('metricTitle').textContent = mode === 'compare' ? 'Score movement inside this section' : 'Section score profile';
+      document.getElementById('metricSubtitle').textContent = state.displayMode === 'delta' && mode === 'compare'
+        ? 'Delta mode highlights the net movement in each derived metric.'
+        : 'These are computed directly from section overall fields in your JSON.';
+      grid.innerHTML = metrics.slice(0, 6).map(metric => {
+        const delta = scoreDelta(metric.before, metric.after);
+        const deltaMode = mode === 'compare' && state.displayMode === 'delta';
+        return `
+          <div class="metric-card">
+            <div class="metric-title-row">
+              <h4 class="metric-name">${metric.label}</h4>
+              <span class="${mode === 'compare' ? pillClassFromDelta(delta) : 'status-pill status-neutral'}">${mode === 'compare' ? fmtDelta(delta) : metric.valueLabel}</span>
+            </div>
+            <div class="metric-values">
+              ${deltaMode
+                ? `<span class="metric-value">${fmtDelta(delta, metric.label === 'Evidence count' ? '' : 'pts')}</span>`
+                : `<span class="metric-value">${fmtScore(metric.before)}</span>${
+                    mode === 'compare'
+                      ? `<span class="hero-arrow" style="font-size:18px; margin-top:0;">→</span><span class="metric-value">${fmtScore(metric.after)}</span>`
+                      : `<span class="small-copy">${metric.valueLabel}</span>`
+                  }`
+              }
+            </div>
+            <div class="metric-track">
+              <div class="metric-fill-before" style="width:${clamp(metric.before,0,100)}%"></div>
+              <div class="metric-fill-after" style="width:${clamp(metric.after,0,100)}%"></div>
+            </div>
+            <div class="metric-sub">${mode === 'compare' ? `Before ${fmtScore(metric.before)} · After ${fmtScore(metric.after)}` : `Current value: ${fmtScore(metric.before)}`}</div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function renderNarrative() {
+      const pair = getSelectedSectionPair();
+      const mode = getCurrentMode();
+      if (!pair) return;
+      const insights = mode === 'compare' ? buildCompareInsights(pair) : buildSingleInsights(pair.before);
+      document.getElementById('narrativeEyebrow').textContent = mode === 'compare' ? 'comparison narrative' : 'review narrative';
+      document.getElementById('narrativeTitle').textContent = mode === 'compare' ? 'What changed vs what still needs attention' : 'What looks strong vs what needs attention';
+      document.getElementById('improvedTitle').textContent = mode === 'compare' ? 'What improved' : 'What looks strong';
+      document.getElementById('riskTitle').textContent = mode === 'compare' ? 'What still needs attention' : 'What needs attention';
+      document.getElementById('improvedList').innerHTML = insights.strong.map(x => `<li>${x}</li>`).join('');
+      document.getElementById('riskList').innerHTML = insights.risks.map(x => `<li>${x}</li>`).join('');
+    }
+
+    function renderDrawer() {
+      const mode = getCurrentMode();
+      const sectionPair = getSelectedSectionPair();
+      const criterionPair = getSelectedCriterionPair();
+      if (!sectionPair) return;
+      const drawerTitle = document.getElementById('drawerTitle');
+      const drawerDelta = document.getElementById('drawerDelta');
+      const drawerStatus = document.getElementById('drawerStatus');
+      const drawerSummary = document.getElementById('drawerSummary');
+      const evidenceList = document.getElementById('evidenceList');
+      const concernList = document.getElementById('concernList');
+      const metricFocusTag = document.getElementById('metricFocusTag');
+      const confidenceText = document.getElementById('confidenceText');
+      const confidencePill = document.getElementById('confidencePill');
+      if (!criterionPair) {
+        drawerTitle.textContent = sectionPair.name + ' summary';
+        drawerDelta.className = 'status-pill status-neutral';
+        drawerDelta.textContent = mode === 'compare' ? fmtDelta(scoreDelta(sectionPair.before.overall.finalScore, sectionPair.after.overall.finalScore)) : `${sectionPair.before.overall.evidenceCount} evidence`;
+        drawerStatus.className = 'status-pill status-neutral';
+        drawerStatus.textContent = 'Section view';
+        drawerSummary.textContent = 'No criterion rows found for this section.';
+        evidenceList.innerHTML = `<div class="empty-state"><div class="empty-copy">No criterion evidence rows found.</div></div>`;
+        concernList.innerHTML = '';
+        metricFocusTag.textContent = 'Section only';
+        confidenceText.textContent = 'Section confidence is based on coverage, evidence count, and section quality.';
+        confidencePill.className = 'status-pill status-neutral';
+        confidencePill.textContent = `Confidence: ${confidenceFromSection(mode === 'compare' ? sectionPair.after : sectionPair.before)}`;
+        return;
+      }
+      const delta = scoreDelta(criterionPair.before.score, criterionPair.after.score);
+      drawerTitle.textContent = criterionPair.name;
+      drawerDelta.className = mode === 'compare' ? pillClassFromDelta(delta) : 'status-pill status-neutral';
+      drawerDelta.textContent = mode === 'compare' ? fmtDelta(delta, '/10') : `${fmtScore(criterionPair.after.score)} / 10`;
+      const afterConf = confidenceFromSection(mode === 'compare' ? sectionPair.after : sectionPair.before);
+      drawerStatus.className = afterConf === 'High' ? 'status-pill status-positive' : afterConf === 'Medium' ? 'status-pill status-neutral' : 'status-pill status-negative';
+      drawerStatus.textContent = `${afterConf} confidence`;
+      drawerSummary.textContent = mode === 'compare'
+        ? `"${criterionPair.name}" moved from ${fmtScore(criterionPair.before.score)} to ${fmtScore(criterionPair.after.score)} / 10 (${fmtDelta(delta, '/10')}). Evidence count changed from ${criterionPair.before.evidenceCount} to ${criterionPair.after.evidenceCount}.`
+        : `"${criterionPair.name}" scored ${fmtScore(criterionPair.after.score)} / 10. It has ${criterionPair.after.evidenceCount} evidence snippet${criterionPair.after.evidenceCount === 1 ? '' : 's'} and rubric detail of ${criterionPair.after.rubricText}.`;
+      metricFocusTag.textContent = mode === 'compare' ? 'Criterion compare' : 'Criterion evidence';
+      let evidences = [];
+      if (mode === 'compare') {
+        evidences = [
+          ...(criterionPair.after.evidence || []).map(ev => ({ tone:'positive', tag:'After evidence', text:ev.quote || ev.text || 'Evidence snippet', source:`${ev.section || sectionPair.name} · ${ev.id || 'no id'}`, impact:'After' })),
+          ...(criterionPair.before.evidence || []).map(ev => ({ tone:'neutral', tag:'Before evidence', text:ev.quote || ev.text || 'Evidence snippet', source:`${ev.section || sectionPair.name} · ${ev.id || 'no id'}`, impact:'Before' }))
+        ];
+      } else {
+        evidences = (criterionPair.after.evidence || []).map(ev => ({ tone:'positive', tag:'Evidence', text:ev.quote || ev.text || 'Evidence snippet', source:`${ev.section || sectionPair.name} · ${ev.id || 'no id'}`, impact:'Current' }));
+      }
+      evidenceList.innerHTML = evidences.length
+        ? evidences.slice(0, 6).map(ev => `
+            <div class="snippet-card">
+              <div class="snippet-meta">
+                <span class="evidence-tag ${ev.tone}">${ev.tag}</span>
+                <span class="snippet-source">${ev.source}</span>
+              </div>
+              <p class="snippet-text">${ev.text}</p>
+              <div class="small-copy">${ev.impact}</div>
+            </div>
+          `).join('')
+        : `<div class="empty-state"><div class="empty-copy">No evidence snippets found for this criterion.</div></div>`;
+      const notes = [];
+      if (mode === 'compare') {
+        if (delta < 0) notes.push({ tone:'warning', tag:'Score dropped', text:`This criterion regressed by ${Math.abs(delta)} point${Math.abs(delta) === 1 ? '' : 's'} on the 0–10 scale.`, source:'Comparison summary' });
+        else if (delta > 0) notes.push({ tone:'positive', tag:'Score improved', text:`This criterion improved by ${delta} point${delta === 1 ? '' : 's'} on the 0–10 scale.`, source:'Comparison summary' });
+        if (criterionPair.after.evidenceCount < criterionPair.before.evidenceCount) notes.push({ tone:'warning', tag:'Less evidence', text:`After review has fewer evidence snippets (${criterionPair.before.evidenceCount} → ${criterionPair.after.evidenceCount}).`, source:'Evidence count' });
+        if (criterionPair.after.evidenceCount > criterionPair.before.evidenceCount) notes.push({ tone:'positive', tag:'More evidence', text:`After review has more evidence snippets (${criterionPair.before.evidenceCount} → ${criterionPair.after.evidenceCount}).`, source:'Evidence count' });
+      } else {
+        if (criterionPair.after.score >= 8) notes.push({ tone:'positive', tag:'Strong criterion', text:'This criterion is currently scoring in a strong range.', source:'Current review' });
+        else notes.push({ tone:'warning', tag:'Could improve', text:'This criterion has room to improve or be supported more explicitly.', source:'Current review' });
+        if (criterionPair.after.evidenceCount < 2) notes.push({ tone:'warning', tag:'Thin evidence', text:'There are fewer than two evidence snippets attached to this criterion.', source:'Evidence count' });
+      }
+      if (!notes.length) notes.push({ tone:'neutral', tag:'No extra note', text:'No additional concerns were generated for this criterion.', source:'System' });
+      concernList.innerHTML = notes.map(note => `
+        <div class="snippet-card">
+          <div class="snippet-meta">
+            <span class="evidence-tag ${note.tone}">${note.tag}</span>
+            <span class="snippet-source">${note.source}</span>
+          </div>
+          <p class="snippet-text">${note.text}</p>
+        </div>
+      `).join('');
+      confidencePill.className = afterConf === 'High' ? 'status-pill status-positive' : afterConf === 'Medium' ? 'status-pill status-neutral' : 'status-pill status-negative';
+      confidencePill.textContent = `Confidence: ${afterConf}`;
+      confidenceText.textContent = 'Confidence is estimated from section quality, coverage, and evidence density — a UI heuristic layered on top of your pipeline outputs.';
+    }
+
+    function renderTable() {
+      const mode = getCurrentMode();
+      const head = document.getElementById('tableHead');
+      const body = document.getElementById('comparisonTable');
+      const pair = getSelectedSectionPair();
+      if (!pair) return;
+      document.getElementById('tableEyebrow').textContent = mode === 'compare' ? 'criterion comparison' : 'criteria table';
+      document.getElementById('tableTitle').textContent = `Criteria inside ${pair.name}`;
+      document.getElementById('tableSub').textContent = 'Click a row to inspect that criterion in the drawer.';
+      const beforeMap = new Map((pair.before.criteria || []).map(c => [c.name, c]));
+      const afterMap = new Map((pair.after.criteria || []).map(c => [c.name, c]));
+      const names = Array.from(new Set([...beforeMap.keys(), ...afterMap.keys()]));
+      if (mode === 'compare') {
+        head.innerHTML = `<tr><th>Criterion</th><th>Before</th><th>After</th><th>Delta</th><th>Evidence</th><th>Rubric</th><th>Status</th></tr>`;
+        body.innerHTML = names.length ? names.map(name => {
+          const before = beforeMap.get(name) || emptyCriterion(name);
+          const after = afterMap.get(name) || emptyCriterion(name);
+          const delta = scoreDelta(before.score, after.score);
+          const active = state.selectedCriterionName === name ? ' style="background:rgba(237,243,255,.6);"' : '';
+          return `<tr class="row-clickable" data-criterion-name="${name}"${active}>
+            <td><strong>${name}</strong></td>
+            <td>${fmtScore(before.score)} / 10</td>
+            <td>${fmtScore(after.score)} / 10</td>
+            <td><span class="${pillClassFromDelta(delta)}">${fmtDelta(delta, '/10')}</span></td>
+            <td>${before.evidenceCount} → ${after.evidenceCount}</td>
+            <td>${after.rubricText}</td>
+            <td><span class="${statusClassFromRisk(riskFromScore(after.score * 10))}">${after.qualityLabel || 'unknown'}</span></td>
+          </tr>`;
+        }).join('') : `<tr><td colspan="7"><div class="empty-copy">No criteria found.</div></td></tr>`;
+      } else {
+        head.innerHTML = `<tr><th>Criterion</th><th>Score</th><th>Exists</th><th>Quality</th><th>Evidence</th><th>Rubric</th><th>Status</th></tr>`;
+        body.innerHTML = names.length ? names.map(name => {
+          const current = afterMap.get(name) || beforeMap.get(name) || emptyCriterion(name);
+          const active = state.selectedCriterionName === name ? ' style="background:rgba(237,243,255,.6);"' : '';
+          return `<tr class="row-clickable" data-criterion-name="${name}"${active}>
+            <td><strong>${name}</strong></td>
+            <td>${fmtScore(current.score)} / 10</td>
+            <td>${current.exists}</td>
+            <td>${current.qualityLabel}</td>
+            <td>${current.evidenceCount}</td>
+            <td>${current.rubricText}</td>
+            <td><span class="${statusClassFromRisk(riskFromScore(current.score * 10))}">${riskFromScore(current.score * 10)} risk</span></td>
+          </tr>`;
+        }).join('') : `<tr><td colspan="7"><div class="empty-copy">No criteria found.</div></td></tr>`;
+      }
+      body.querySelectorAll('.row-clickable').forEach(row => {
+        row.addEventListener('click', () => {
+          state.selectedCriterionName = row.dataset.criterionName;
+          renderDrawer();
+          renderTable();
+        });
+      });
+    }
+
+    function syncTabUi() {
+      const hasCompare = !!(getBeforeReview() && getAfterReview() && getBeforeReview().id !== getAfterReview().id);
+      document.querySelectorAll('#workspaceTabs .tab').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.workspace === state.workspaceMode);
+      });
+      document.querySelectorAll('#modeTabs .tab').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.mode === state.displayMode);
+      });
+      document.querySelector('#workspaceTabs [data-workspace="compare"]').disabled = !hasCompare;
+    }
+
+    function showNoData() {
+      document.getElementById('noDataBanner').classList.remove('hidden');
+      document.getElementById('kpiRow').classList.add('hidden');
+      document.getElementById('workspaceSection').classList.add('hidden');
+      document.getElementById('tableSection').classList.add('hidden');
+    }
+
+    function hideNoData() {
+      document.getElementById('noDataBanner').classList.add('hidden');
+      document.getElementById('kpiRow').classList.remove('hidden');
+      document.getElementById('workspaceSection').classList.remove('hidden');
+      document.getElementById('tableSection').classList.remove('hidden');
+    }
+
+    function render() {
+      if (!state.loadedReviews.length || !getPrimaryReview()) {
+        showNoData();
+        return;
+      }
+      hideNoData();
+      syncTabUi();
+      renderMeta();
+      renderKpis();
+      renderRail();
+      renderHero();
+      renderMetrics();
+      renderNarrative();
+      renderDrawer();
+      renderTable();
+    }
+
+    function populateSelects() {
+      const beforeSelect = document.getElementById('beforeSelect');
+      const afterSelect = document.getElementById('afterSelect');
+      const options = state.loadedReviews.map(review => `<option value="${review.id}">${review.label}</option>`).join('');
+      beforeSelect.innerHTML = options;
+      afterSelect.innerHTML = options;
+      if (!state.selectedBeforeId && state.loadedReviews[0]) state.selectedBeforeId = state.loadedReviews[0].id;
+      if (!state.selectedAfterId && state.loadedReviews[0]) state.selectedAfterId = state.loadedReviews[state.loadedReviews.length - 1].id;
+      if (!state.loadedReviews.find(r => r.id === state.selectedBeforeId)) state.selectedBeforeId = state.loadedReviews[0]?.id || null;
+      if (!state.loadedReviews.find(r => r.id === state.selectedAfterId)) state.selectedAfterId = state.loadedReviews[state.loadedReviews.length - 1]?.id || null;
+      beforeSelect.value = state.selectedBeforeId || '';
+      afterSelect.value = state.selectedAfterId || '';
+    }
+
+    function loadSingleRaw(raw, label) {
+      const norm = normalizeReview(raw, label);
+      state.loadedReviews = [norm];
+      state.selectedBeforeId = norm.id;
+      state.selectedAfterId = norm.id;
+      state.workspaceMode = 'single';
+      state.selectedSectionId = norm.sections[0]?.id || null;
+      state.selectedCriterionName = null;
+      populateSelects();
+      render();
+      renderNlpFeatures(raw);
+    }
+
+    function loadReviewPair(rawA, labelA, rawB, labelB) {
+      const a = normalizeReview(rawA, labelA);
+      const b = normalizeReview(rawB, labelB);
+      state.loadedReviews = [a, b];
+      state.selectedBeforeId = a.id;
+      state.selectedAfterId = b.id;
+      state.workspaceMode = 'compare';
+      state.selectedSectionId = (b.sections[0] || a.sections[0])?.id || null;
+      state.selectedCriterionName = null;
+      populateSelects();
+      render();
+      renderNlpFeatures(rawB);
+    }
+
+    async function readJsonFiles(fileList) {
+      const files = Array.from(fileList || []);
+      const results = [];
+      for (const file of files) {
+        const text = await file.text();
+        results.push({ raw: JSON.parse(text), label: file.name.replace(/\.json$/i, '') });
+      }
+      return results;
+    }
+
+    function initEvents() {
+
+      document.getElementById('beforeSelect').addEventListener('change', (e) => {
+        state.selectedBeforeId = e.target.value;
+        if (getCurrentMode() === 'single') state.selectedAfterId = state.selectedBeforeId;
+        state.selectedSectionId = null;
+        state.selectedCriterionName = null;
+        render();
+      });
+      document.getElementById('afterSelect').addEventListener('change', (e) => {
+        state.selectedAfterId = e.target.value;
+        state.selectedSectionId = null;
+        state.selectedCriterionName = null;
+        render();
+      });
+
+      document.querySelectorAll('#workspaceTabs .tab').forEach(btn => {
+        btn.addEventListener('click', () => {
+          state.workspaceMode = btn.dataset.workspace;
+          if (state.workspaceMode === 'single') state.selectedAfterId = getAfterReview()?.id || state.selectedBeforeId;
+          state.selectedSectionId = null;
+          state.selectedCriterionName = null;
+          render();
+        });
+      });
+
+      document.querySelectorAll('#modeTabs .tab').forEach(btn => {
+        btn.addEventListener('click', () => {
+          state.displayMode = btn.dataset.mode;
+          render();
+        });
+      });
+
+      document.getElementById('exportBtn').addEventListener('click', () => window.print());
+
+      document.getElementById('shareBtn').addEventListener('click', async () => {
+        const mode = getCurrentMode();
+        const pair = getSelectedSectionPair();
+        const text = mode === 'compare'
+          ? `Grant Comparator · ${getBeforeReview()?.label} vs ${getAfterReview()?.label} · Overall ${fmtScore(getBeforeReview()?.overall.finalScore)} → ${fmtScore(getAfterReview()?.overall.finalScore)} · Section: ${pair?.name || '—'}`
+          : `Grant Self-Review · ${getPrimaryReview()?.label} · Overall ${fmtScore(getPrimaryReview()?.overall.finalScore)} / 100 · Section: ${pair?.name || '—'}`;
+        try {
+          await navigator.clipboard.writeText(text);
+          alert('Summary copied to clipboard.');
+        } catch (err) {
+          alert(text);
+        }
+      });
+
+      document.getElementById('copyJsonBtn').addEventListener('click', async () => {
+        const review = getPrimaryReview();
+        if (!review) return;
+        const payload = review.raw || {};
+        const text = JSON.stringify(payload, null, 2);
+        try {
+          if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(text);
+          } else {
+            const ta = document.createElement('textarea');
+            ta.value = text;
+            ta.style.position = 'fixed';
+            ta.style.left = '-9999px';
+            document.body.appendChild(ta);
+            ta.focus();
+            ta.select();
+            document.execCommand('copy');
+            ta.remove();
+          }
+          alert('JSON copied to clipboard.');
+        } catch (err) {
+          alert('Copy failed: ' + err.message);
+        }
+      });
+
+      document.getElementById('loadOneBtn').addEventListener('click', () => document.getElementById('singleFileInput').click());
+      document.getElementById('loadTwoBtn').addEventListener('click', () => document.getElementById('multiFileInput').click());
+
+      document.getElementById('singleFileInput').addEventListener('change', async (e) => {
+        const files = await readJsonFiles(e.target.files);
+        if (files[0]) loadSingleRaw(files[0].raw, files[0].label);
+        e.target.value = '';
+      });
+
+      document.getElementById('multiFileInput').addEventListener('change', async (e) => {
+        const files = await readJsonFiles(e.target.files);
+        if (files.length >= 2) loadReviewPair(files[0].raw, files[0].label, files[1].raw, files[1].label);
+        else if (files[0]) loadSingleRaw(files[0].raw, files[0].label);
+        e.target.value = '';
+      });
+    }
+
+    // ── NLP Features rendering ──
+    function renderNlpKpiCard(label, value, desc) {
+      return `<div class="kpi-card" style="min-height:auto;padding:16px;">
+        <span class="label">${label}</span>
+        <div class="kpi-main"><span class="kpi-value" style="font-size:22px;">${value}</span></div>
+        ${desc ? `<span style="font-size:11px;color:var(--text-3);">${desc}</span>` : ''}
+      </div>`;
+    }
+
+    function renderNlpFeatures(data) {
+      const nlp = data?.nlp_features;
+      const panel = document.getElementById('nlpPanel');
+      if (!nlp || nlp.error) {
+        panel.classList.add('hidden');
+        return;
+      }
+      panel.classList.remove('hidden');
+
+      // Writing Quality
+      const writingEl = document.getElementById('nlpWritingKpis');
+      writingEl.innerHTML = [
+        renderNlpKpiCard('Total Sentences', nlp.total_sentences ?? '—', 'Across all sections'),
+        renderNlpKpiCard('Avg Sentence Length', nlp.avg_sentence_length ?? '—', 'Words per sentence'),
+        renderNlpKpiCard('Long Sentence Ratio', nlp.long_sentence_ratio != null ? (nlp.long_sentence_ratio * 100).toFixed(1) + '%' : '—', 'Sentences with 30+ words'),
+        renderNlpKpiCard('Max Dependency Depth', nlp.max_dependency_depth ?? '—', 'Deepest parse tree'),
+        renderNlpKpiCard('Avg Dependency Depth', nlp.avg_dependency_depth ?? '—', 'Mean parse tree depth'),
+      ].join('');
+
+      // Plain English Readability
+      const readEl = document.getElementById('nlpReadabilityKpis');
+      const pe = nlp.plain_english_analysis || {};
+      if (Object.keys(pe).length) {
+        const cards = Object.entries(pe).map(([k, v]) => {
+          const label = k.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+          const val = typeof v === 'number' ? (Number.isInteger(v) ? v : v.toFixed(2)) : String(v ?? '—');
+          return renderNlpKpiCard(label, val, '');
+        });
+        readEl.innerHTML = cards.join('');
+      } else {
+        readEl.innerHTML = '<p style="font-size:13px;color:var(--text-3);margin:0;">No Plain English Summary found in this document.</p>';
+      }
+
+      // Applicant Features
+      const appEl = document.getElementById('nlpApplicantKpis');
+      const appSection = document.getElementById('nlpApplicantSection');
+      const app = nlp.applicant_features;
+      if (app && typeof app === 'object' && Object.keys(app).length) {
+        appSection.classList.remove('hidden');
+        const cards = Object.entries(app).map(([k, v]) => {
+          const label = k.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+          const val = typeof v === 'number' ? (Number.isInteger(v) ? v : v.toFixed(2)) : (Array.isArray(v) ? v.length + ' items' : String(v ?? '—'));
+          return renderNlpKpiCard(label, val, '');
+        });
+        appEl.innerHTML = cards.join('');
+      } else {
+        appSection.classList.add('hidden');
+      }
+
+      // Budget Features
+      const budEl = document.getElementById('nlpBudgetKpis');
+      const budSection = document.getElementById('nlpBudgetSection');
+      const bud = nlp.budget_features;
+      if (bud && typeof bud === 'object' && Object.keys(bud).length) {
+        budSection.classList.remove('hidden');
+        const cards = Object.entries(bud).map(([k, v]) => {
+          const label = k.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+          const val = typeof v === 'number' ? (Number.isInteger(v) ? v : v.toFixed(2)) : String(v ?? '—');
+          return renderNlpKpiCard(label, val, '');
+        });
+        budEl.innerHTML = cards.join('');
+      } else {
+        budSection.classList.add('hidden');
+      }
+
+      // Toggle button
+      const toggleBtn = document.getElementById('nlpToggleBtn');
+      const nlpContent = document.getElementById('nlpContent');
+      toggleBtn.onclick = () => {
+        const hidden = nlpContent.style.display === 'none';
+        nlpContent.style.display = hidden ? '' : 'none';
+        toggleBtn.textContent = hidden ? 'Collapse' : 'Expand';
+      };
+    }
+
+    function init() {
+      initEvents();
+      // Try to load from localStorage (result of last processed PDF)
+      const raw = localStorage.getItem('features_result');
+      if (raw) {
+        try {
+          const data = JSON.parse(raw);
+          loadSingleRaw(data, data?.features_json?.doc_id || data?.doc_id || 'Last processed result');
+          return;
+        } catch (e) {
+          console.warn('Failed to parse localStorage result:', e);
+        }
+      }
+      // No data — show empty state
+      render();
+    }
+
+    init();
+  </script>
+</body>
+</html>

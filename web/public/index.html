@@ -1,0 +1,726 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Grant AI — PDF Processing Console</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --ink: #0f172a;
+        --ink-2: #334155;
+        --ink-3: #64748b;
+        --ink-4: #94a3b8;
+        --surface: #ffffff;
+        --surface-2: #f8fafc;
+        --surface-3: #f1f5f9;
+        --border: rgba(15,23,42,.07);
+        --border-2: rgba(15,23,42,.12);
+        --accent: #1d4ed8;
+        --accent-2: #1e40af;
+        --accent-glow: rgba(29,78,216,.18);
+        --accent-soft: #eff6ff;
+        --green: #059669;
+        --green-bg: #ecfdf5;
+        --orange: #d97706;
+        --orange-bg: #fffbeb;
+        --red: #dc2626;
+        --red-bg: #fef2f2;
+        --hero-from: #080e1f;
+        --hero-to: #111c40;
+        --shadow-sm: 0 1px 2px rgba(15,23,42,.04), 0 4px 12px rgba(15,23,42,.05);
+        --shadow-md: 0 1px 3px rgba(15,23,42,.05), 0 12px 32px rgba(15,23,42,.08);
+        --shadow-lg: 0 2px 6px rgba(15,23,42,.06), 0 24px 52px rgba(15,23,42,.12);
+        --shadow-glow: 0 0 0 1px rgba(29,78,216,.3), 0 8px 32px rgba(29,78,216,.2);
+        --radius: 14px;
+        --radius-lg: 20px;
+        --radius-xl: 26px;
+        --pill: 999px;
+        --nav-h: 60px;
+      }
+      *, *::before, *::after { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        font-family: "Inter", system-ui, -apple-system, sans-serif;
+        background: var(--surface-2);
+        color: var(--ink);
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      /* ── Nav ── */
+      .nav {
+        position: fixed;
+        top: 0; left: 0; right: 0;
+        height: var(--nav-h);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 28px;
+        background: rgba(8,14,31,.85);
+        backdrop-filter: blur(16px) saturate(1.4);
+        border-bottom: 1px solid rgba(255,255,255,.06);
+        z-index: 100;
+      }
+      .nav-brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: #fff;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 15px;
+        letter-spacing: -.02em;
+      }
+      .nav-logo {
+        width: 28px; height: 28px;
+        background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+        border-radius: 7px;
+        display: grid;
+        place-items: center;
+        font-size: 14px;
+        font-weight: 900;
+        color: #fff;
+        box-shadow: 0 2px 8px rgba(29,78,216,.4);
+      }
+      .nav-links {
+        display: flex;
+        gap: 6px;
+      }
+      .nav-link {
+        padding: 6px 12px;
+        border-radius: var(--pill);
+        color: rgba(255,255,255,.55);
+        text-decoration: none;
+        font-size: 13px;
+        font-weight: 500;
+        transition: color .15s, background .15s;
+      }
+      .nav-link:hover { color: #fff; background: rgba(255,255,255,.08); }
+      .nav-badge {
+        padding: 4px 10px;
+        border-radius: var(--pill);
+        background: rgba(29,78,216,.25);
+        border: 1px solid rgba(59,130,246,.3);
+        color: #93c5fd;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: .06em;
+        text-transform: uppercase;
+      }
+
+      /* ── Hero ── */
+      .hero {
+        min-height: calc(100vh - var(--nav-h));
+        margin-top: var(--nav-h);
+        background:
+          radial-gradient(ellipse 80% 50% at 50% -10%, rgba(29,78,216,.35), transparent),
+          radial-gradient(ellipse 60% 40% at 80% 110%, rgba(16,33,76,.6), transparent),
+          linear-gradient(180deg, var(--hero-from) 0%, var(--hero-to) 100%);
+        display: grid;
+        place-items: center;
+        padding: 60px 24px;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+        background-size: 48px 48px;
+        pointer-events: none;
+      }
+      .hero-inner {
+        position: relative;
+        width: 100%;
+        max-width: 640px;
+        display: grid;
+        gap: 12px;
+        text-align: center;
+      }
+      .hero-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin: 0 auto 4px;
+        padding: 5px 12px;
+        border-radius: var(--pill);
+        background: rgba(29,78,216,.2);
+        border: 1px solid rgba(59,130,246,.25);
+        color: #93c5fd;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: .1em;
+        text-transform: uppercase;
+      }
+      .hero-eyebrow::before {
+        content: '';
+        width: 6px; height: 6px;
+        border-radius: 50%;
+        background: #3b82f6;
+        box-shadow: 0 0 8px #3b82f6;
+        animation: pulse 2s ease-in-out infinite;
+      }
+      @keyframes pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: .4; }
+      }
+      .hero h1 {
+        margin: 0;
+        font-size: clamp(36px, 6vw, 54px);
+        font-weight: 900;
+        letter-spacing: -.04em;
+        line-height: 1.0;
+        color: #fff;
+      }
+      .hero h1 em {
+        font-style: normal;
+        background: linear-gradient(135deg, #60a5fa, #a78bfa);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .hero-sub {
+        margin: 4px 0 0;
+        font-size: 15px;
+        color: rgba(255,255,255,.5);
+        max-width: 420px;
+        margin-inline: auto;
+        line-height: 1.6;
+      }
+
+      /* ── Upload card ── */
+      .upload-card {
+        margin-top: 20px;
+        background: rgba(255,255,255,.04);
+        border: 1px solid rgba(255,255,255,.1);
+        border-radius: var(--radius-xl);
+        backdrop-filter: blur(24px);
+        padding: 28px;
+        display: grid;
+        gap: 16px;
+        text-align: left;
+        box-shadow: 0 32px 64px rgba(0,0,0,.4), inset 0 1px 0 rgba(255,255,255,.08);
+      }
+      .drop-zone {
+        border: 1.5px dashed rgba(255,255,255,.15);
+        border-radius: var(--radius-lg);
+        padding: 32px 24px;
+        text-align: center;
+        display: grid;
+        gap: 10px;
+        cursor: pointer;
+        transition: border-color .2s, background .2s;
+        background: rgba(255,255,255,.02);
+      }
+      .drop-zone:hover { border-color: rgba(59,130,246,.6); background: rgba(29,78,216,.06); }
+      .drop-zone:has(input:focus) { border-color: rgba(59,130,246,.8); }
+      .drop-icon {
+        width: 44px; height: 44px;
+        border-radius: 12px;
+        background: linear-gradient(135deg, rgba(29,78,216,.3), rgba(59,130,246,.2));
+        border: 1px solid rgba(59,130,246,.25);
+        display: grid;
+        place-items: center;
+        margin: 0 auto;
+        font-size: 20px;
+      }
+      .drop-title {
+        font-size: 14px;
+        font-weight: 600;
+        color: rgba(255,255,255,.85);
+      }
+      .drop-sub {
+        font-size: 12px;
+        color: rgba(255,255,255,.35);
+      }
+      .file-label {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 7px 14px;
+        border-radius: var(--pill);
+        background: rgba(29,78,216,.3);
+        border: 1px solid rgba(59,130,246,.35);
+        color: #93c5fd;
+        font-size: 12px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background .15s;
+        margin-top: 4px;
+      }
+      .file-label:hover { background: rgba(29,78,216,.5); }
+      input[type=file] { display: none; }
+      .file-meta {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 14px;
+        border-radius: var(--radius);
+        background: rgba(255,255,255,.04);
+        border: 1px solid rgba(255,255,255,.08);
+        min-height: 44px;
+      }
+      .file-meta .file-icon {
+        width: 28px; height: 28px;
+        border-radius: 7px;
+        background: rgba(29,78,216,.25);
+        border: 1px solid rgba(59,130,246,.2);
+        display: grid;
+        place-items: center;
+        font-size: 13px;
+        flex-shrink: 0;
+      }
+      .file-name { font-size: 13px; font-weight: 500; color: rgba(255,255,255,.75); flex: 1; word-break: break-all; }
+      .file-empty { font-size: 13px; color: rgba(255,255,255,.3); }
+      .btn-row { display: flex; gap: 10px; flex-wrap: wrap; }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 10px 18px;
+        border-radius: var(--pill);
+        border: 0;
+        font: 600 13px/1 "Inter", system-ui, sans-serif;
+        cursor: pointer;
+        transition: transform .15s, box-shadow .15s, opacity .15s;
+        white-space: nowrap;
+      }
+      .btn:hover:not(:disabled) { transform: translateY(-1px); }
+      .btn:active:not(:disabled) { transform: translateY(0); }
+      .btn:disabled { opacity: .45; cursor: not-allowed; }
+      .btn-primary {
+        background: linear-gradient(135deg, #2563eb, #1d4ed8);
+        color: #fff;
+        box-shadow: 0 4px 14px rgba(29,78,216,.35), 0 1px 3px rgba(0,0,0,.2);
+      }
+      .btn-primary:hover:not(:disabled) { box-shadow: 0 6px 20px rgba(29,78,216,.45), 0 2px 6px rgba(0,0,0,.2); }
+      .btn-ghost {
+        background: rgba(255,255,255,.06);
+        color: rgba(255,255,255,.65);
+        border: 1px solid rgba(255,255,255,.1);
+        box-shadow: none;
+      }
+      .btn-ghost:hover:not(:disabled) { background: rgba(255,255,255,.1); color: rgba(255,255,255,.85); }
+      .status-bar {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 12px;
+        color: rgba(255,255,255,.4);
+      }
+      .status-dot {
+        width: 7px; height: 7px;
+        border-radius: 50%;
+        background: rgba(255,255,255,.2);
+        flex-shrink: 0;
+      }
+      .status-dot.idle { background: rgba(255,255,255,.2); }
+      .status-dot.running { background: #f59e0b; box-shadow: 0 0 6px #f59e0b; animation: pulse 1.2s ease-in-out infinite; }
+      .status-dot.done { background: #10b981; box-shadow: 0 0 6px #10b981; }
+      .status-dot.error { background: #ef4444; box-shadow: 0 0 6px #ef4444; }
+
+      /* ── Stats row ── */
+      .stats-section {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 32px 24px 0;
+      }
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 12px;
+      }
+      .stat-card {
+        padding: 16px 18px;
+        border-radius: var(--radius-lg);
+        background: var(--surface);
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow-sm);
+        display: grid;
+        gap: 6px;
+        transition: transform .15s, box-shadow .15s;
+      }
+      .stat-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+      .stat-label { font-size: 11px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: var(--ink-3); }
+      .stat-value { font-size: 22px; font-weight: 800; letter-spacing: -.03em; color: var(--ink); }
+      .stat-sub { font-size: 11px; color: var(--ink-4); }
+
+      /* ── Feature section ── */
+      .features-section {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 48px 24px 64px;
+      }
+      .features-head {
+        text-align: center;
+        margin-bottom: 36px;
+      }
+      .features-head h2 {
+        margin: 0 0 8px;
+        font-size: 26px;
+        font-weight: 800;
+        letter-spacing: -.03em;
+        color: var(--ink);
+      }
+      .features-head p { margin: 0; font-size: 14px; color: var(--ink-3); }
+      .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 16px;
+      }
+      .feature-card {
+        padding: 22px;
+        border-radius: var(--radius-lg);
+        background: var(--surface);
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow-sm);
+        display: grid;
+        gap: 12px;
+        transition: transform .15s, box-shadow .15s;
+      }
+      .feature-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+      .feature-icon {
+        width: 38px; height: 38px;
+        border-radius: 10px;
+        display: grid;
+        place-items: center;
+        font-size: 18px;
+      }
+      .feature-icon.blue { background: #eff6ff; }
+      .feature-icon.purple { background: #f5f3ff; }
+      .feature-icon.green { background: #f0fdf4; }
+      .feature-icon.amber { background: #fffbeb; }
+      .feature-title { margin: 0; font-size: 14px; font-weight: 700; color: var(--ink); }
+      .feature-body { font-size: 13px; color: var(--ink-3); line-height: 1.6; }
+
+      /* ── Progress modal ── */
+      .modal-mask {
+        position: fixed;
+        inset: 0;
+        background: rgba(8,14,31,.72);
+        backdrop-filter: blur(4px);
+        display: grid;
+        place-items: center;
+        z-index: 200;
+        padding: 20px;
+      }
+      .modal {
+        width: min(640px, 100%);
+        background: var(--surface);
+        border-radius: var(--radius-xl);
+        border: 1px solid var(--border-2);
+        box-shadow: 0 32px 80px rgba(8,14,31,.35), 0 0 0 1px rgba(255,255,255,.5) inset;
+        padding: 24px;
+        display: grid;
+        gap: 18px;
+      }
+      .modal-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+      }
+      .modal-title { margin: 0; font-size: 17px; font-weight: 700; letter-spacing: -.02em; color: var(--ink); }
+      .modal-pct {
+        padding: 4px 10px;
+        border-radius: var(--pill);
+        background: var(--accent-soft);
+        color: var(--accent);
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: .04em;
+      }
+      .progress-rail {
+        height: 6px;
+        border-radius: var(--pill);
+        background: var(--surface-3);
+        overflow: hidden;
+      }
+      .progress-fill {
+        height: 100%;
+        border-radius: inherit;
+        background: linear-gradient(90deg, #3b82f6, #1d4ed8);
+        transition: width .45s cubic-bezier(.4,0,.2,1);
+        box-shadow: 0 0 8px rgba(29,78,216,.4);
+      }
+      .modal-detail { margin: 0; font-size: 13px; color: var(--ink-2); }
+      .modal-job { margin: -8px 0 0; font-size: 12px; color: var(--ink-4); font-family: ui-monospace, Menlo, monospace; }
+      .step-list { display: grid; gap: 6px; }
+      .step-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        padding: 8px 12px;
+        border-radius: var(--radius);
+        border: 1px solid var(--border);
+        background: var(--surface-2);
+        font-size: 13px;
+        color: var(--ink-2);
+      }
+      .step-left { display: inline-flex; align-items: center; gap: 10px; }
+      .step-dot {
+        width: 8px; height: 8px;
+        border-radius: 50%;
+        background: var(--surface-3);
+        border: 1.5px solid var(--border-2);
+        flex-shrink: 0;
+      }
+      .step-dot.pending { background: var(--surface-3); border-color: var(--border-2); }
+      .step-dot.running { background: #f59e0b; border-color: #d97706; box-shadow: 0 0 6px rgba(245,158,11,.5); animation: pulse 1s ease-in-out infinite; }
+      .step-dot.done { background: #10b981; border-color: #059669; }
+      .step-dot.error { background: #ef4444; border-color: #dc2626; }
+      .step-dot.skipped { background: var(--ink-4); border-color: var(--ink-4); }
+      .step-state { font-size: 11px; color: var(--ink-4); font-weight: 500; }
+      .modal-actions { display: flex; gap: 10px; }
+
+      /* light buttons for modal */
+      .btn-light {
+        background: var(--surface-2);
+        color: var(--ink-2);
+        border: 1px solid var(--border-2);
+        box-shadow: var(--shadow-sm);
+      }
+      .btn-light:hover:not(:disabled) { background: var(--surface-3); }
+
+      .fade-in { animation: fadeUp .5s cubic-bezier(.4,0,.2,1) both; }
+      @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(16px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .hidden { display: none !important; }
+
+      @media (max-width: 640px) {
+        .nav { padding: 0 16px; }
+        .hero { padding: 40px 16px; }
+        .hero h1 { font-size: 32px; }
+        .upload-card { padding: 18px; }
+        .stats-section, .features-section { padding-left: 16px; padding-right: 16px; }
+        .feature-grid { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Nav -->
+    <nav class="nav">
+      <a class="nav-brand" href="/">
+        <div class="nav-logo">G</div>
+        Grant AI
+      </a>
+      <div class="nav-links" style="display:flex;align-items:center;gap:8px;">
+        <span class="nav-badge">Beta</span>
+      </div>
+    </nav>
+
+    <div id="root"></div>
+
+    <script type="module">
+      import React, { useMemo, useState } from "https://esm.sh/react@18";
+      import { createRoot } from "https://esm.sh/react-dom@18/client";
+
+      function sleep(ms) {
+        return new Promise((resolve) => setTimeout(resolve, ms));
+      }
+
+      function App() {
+        const [file, setFile] = useState(null);
+        const [result, setResult] = useState(null);
+        const [status, setStatus] = useState("Idle");
+        const [uploading, setUploading] = useState(false);
+        const [jobId, setJobId] = useState("");
+        const [showProgress, setShowProgress] = useState(false);
+        const [progressInfo, setProgressInfo] = useState(null);
+
+        const metaText = useMemo(() => {
+          if (!file) return null;
+          return `${file.name} · ${(file.size / 1024).toFixed(1)} KB`;
+        }, [file]);
+
+        const statusDotClass = status === "Idle" ? "idle" : status === "Done" ? "done" : status === "Error" ? "error" : "running";
+
+        async function pollUntilDone(id) {
+          while (true) {
+            const pRes = await fetch(`/progress/${id}`);
+            const pData = await pRes.json().catch(() => ({}));
+            if (!pRes.ok) throw new Error(pData?.error || "Failed to fetch progress");
+            setProgressInfo(pData);
+            if (pData.status === "done") {
+              const rRes = await fetch(`/result/${id}`);
+              const rData = await rRes.json().catch(() => ({}));
+              if (!rRes.ok) throw new Error(rData?.error || "Failed to fetch result");
+              setResult(rData);
+              setStatus("Done");
+              localStorage.setItem("features_result", JSON.stringify(rData));
+              window.location.replace(`/result?ts=${Date.now()}`);
+              return;
+            }
+            if (pData.status === "error") throw new Error(pData.error || "Processing failed");
+            await sleep(1200);
+          }
+        }
+
+        async function handleUpload() {
+          if (!file) return;
+          setUploading(true);
+          setStatus("Processing…");
+          setShowProgress(true);
+          setProgressInfo({
+            progress: 5,
+            phase: "upload",
+            detail: "Uploading file",
+            steps: [
+              { key: "upload", title: "Upload file", status: "running", progress: 5 },
+              { key: "parse_pdf", title: "Parse PDF", status: "pending", progress: 0 },
+              { key: "run_nlp", title: "Run NLP feature extraction", status: "pending", progress: 0 },
+              { key: "prepare_features", title: "Prepare feature extraction", status: "pending", progress: 0 },
+              { key: "run_orcid", title: "Run ORCID extraction", status: "pending", progress: 0 },
+              { key: "run_non_orcid", title: "Run non-ORCID extraction", status: "pending", progress: 0 },
+              { key: "load_features", title: "Load feature output", status: "pending", progress: 0 },
+              { key: "build_checklist", title: "Generate checklist", status: "pending", progress: 0 },
+              { key: "finish", title: "Complete", status: "pending", progress: 0 },
+            ],
+          });
+          const formData = new FormData();
+          formData.append("pdf", file);
+          try {
+            const res = await fetch("/upload", { method: "POST", body: formData });
+            const data = await res.json().catch(() => ({}));
+            if (!res.ok || !data.job_id) throw new Error(data?.error || "Upload failed");
+            setJobId(data.job_id);
+            await pollUntilDone(data.job_id);
+          } catch (err) {
+            setResult({ error: err.message });
+            setStatus("Error");
+            setProgressInfo((prev) => ({ ...(prev || {}), status: "error", detail: err.message, error: err.message }));
+          } finally {
+            setUploading(false);
+          }
+        }
+
+        function handleReset() {
+          setFile(null); setResult(null); setStatus("Idle");
+          setJobId(""); setProgressInfo(null); setShowProgress(false);
+        }
+
+        function renderProgressModal() {
+          if (!showProgress) return null;
+          const info = progressInfo || {};
+          const progress = Number.isFinite(info.progress) ? info.progress : 0;
+          const steps = Array.isArray(info.steps) ? info.steps : [];
+          return React.createElement("div", { className: "modal-mask" },
+            React.createElement("div", { className: "modal fade-in" },
+              React.createElement("div", { className: "modal-head" },
+                React.createElement("h3", { className: "modal-title" }, "Processing your PDF"),
+                React.createElement("div", { className: "modal-pct" }, `${progress}%`)
+              ),
+              React.createElement("div", { className: "progress-rail" },
+                React.createElement("div", { className: "progress-fill", style: { width: `${progress}%` } })
+              ),
+              React.createElement("p", { className: "modal-detail" }, info.detail || "Waiting for updates…"),
+              jobId ? React.createElement("p", { className: "modal-job" }, `Job: ${jobId}`) : null,
+              React.createElement("div", { className: "step-list" },
+                steps.map((step) =>
+                  React.createElement("div", { key: step.key || step.title, className: "step-item" },
+                    React.createElement("div", { className: "step-left" },
+                      React.createElement("span", { className: `step-dot ${step.status || "pending"}` }),
+                      React.createElement("span", null, step.title || step.key)
+                    ),
+                    React.createElement("span", { className: "step-state" }, step.status || "pending")
+                  )
+                )
+              ),
+              React.createElement("div", { className: "modal-actions" },
+                React.createElement("button", {
+                  className: "btn btn-light",
+                  type: "button",
+                  onClick: () => setShowProgress(false),
+                  disabled: uploading,
+                }, "Minimise")
+              )
+            )
+          );
+        }
+
+        return React.createElement(React.Fragment, null,
+          renderProgressModal(),
+          // Hero
+          React.createElement("section", { className: "hero" },
+            React.createElement("div", { className: "hero-inner fade-in" },
+              React.createElement("span", { className: "hero-eyebrow" }, "PDF → Structured Scoring"),
+              React.createElement("h1", null,
+                "Analyse your ", React.createElement("em", null, "grant application"), " with AI"
+              ),
+              React.createElement("p", { className: "hero-sub" },
+                "Upload a grant PDF and receive structured scoring across all criteria in seconds."
+              ),
+              // Upload card
+              React.createElement("div", { className: "upload-card" },
+                React.createElement("label", { className: "drop-zone" },
+                  React.createElement("input", { type: "file", accept: "application/pdf", onChange: (e) => setFile(e.target.files[0] || null) }),
+                  React.createElement("div", { className: "drop-icon" }, "📄"),
+                  React.createElement("div", { className: "drop-title" }, file ? "File selected" : "Drop a PDF or browse"),
+                  React.createElement("div", { className: "drop-sub" }, "PDF files only · max size depends on server settings")
+                ),
+                React.createElement("div", { className: "file-meta" },
+                  file
+                    ? React.createElement(React.Fragment, null,
+                        React.createElement("div", { className: "file-icon" }, "📎"),
+                        React.createElement("span", { className: "file-name" }, metaText)
+                      )
+                    : React.createElement("span", { className: "file-empty" }, "No file selected")
+                ),
+                React.createElement("div", { className: "btn-row" },
+                  React.createElement("button", { className: "btn btn-primary", onClick: handleUpload, disabled: !file || uploading },
+                    uploading ? "Processing…" : "Start Processing"
+                  ),
+                  React.createElement("button", { className: "btn btn-ghost", type: "button", onClick: handleReset }, "Clear"),
+                  result
+                    ? React.createElement("button", {
+                        className: "btn btn-ghost", type: "button",
+                        onClick: () => window.location.href = "/result"
+                      }, "View result →")
+                    : null
+                ),
+                React.createElement("div", { className: "status-bar" },
+                  React.createElement("span", { className: `status-dot ${statusDotClass}` }),
+                  React.createElement("span", null, `Status: ${status}`)
+                )
+              )
+            )
+          ),
+
+          // Features section
+          React.createElement("section", { className: "features-section" },
+            React.createElement("div", { className: "features-head" },
+              React.createElement("h2", null, "What you get"),
+              React.createElement("p", null, "Every PDF is scored against standardised criteria with cited evidence.")
+            ),
+            React.createElement("div", { className: "feature-grid" },
+              [
+                { icon: "🎯", color: "blue", title: "Section scoring", body: "Each section of your grant is scored 0–100 using coverage, quality, and evidence dimensions." },
+                { icon: "🔍", color: "purple", title: "Evidence citations", body: "Every score is backed by exact quotes from your document, so you can trace every decision." },
+                { icon: "👥", color: "green", title: "ORCID team metrics", body: "Researcher h-index, citation counts, and recent publication activity are pulled automatically." },
+                { icon: "📊", color: "amber", title: "Compare drafts", body: "Load two JSON results side-by-side to inspect score movement between draft revisions." },
+              ].map((f) =>
+                React.createElement("div", { key: f.title, className: "feature-card" },
+                  React.createElement("div", { className: `feature-icon ${f.color}` }, f.icon),
+                  React.createElement("h3", { className: "feature-title" }, f.title),
+                  React.createElement("p", { className: "feature-body" }, f.body)
+                )
+              )
+            )
+          )
+        );
+      }
+
+      const root = createRoot(document.getElementById("root"));
+      root.render(React.createElement(App));
+    </script>
+  </body>
+</html>
