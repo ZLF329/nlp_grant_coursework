@@ -18,7 +18,15 @@ def build_judge_messages(section_key: str, payload: dict[str, Any]) -> list[dict
         "You are auditing whether cited section references actually support grant-scoring "
         "judgments. Be lenient. Only assign low plausibility when the cited evidence clearly "
         "fails to support the judgment. Score each signal from 0 to 5. Do not rescore the "
-        "application itself. Reply with JSON only."
+        "application itself. Reply with JSON only.\n\n"
+        "Important:\n"
+        "Return a single JSON object with one key: `judgments`.\n"
+        "The value of `judgments` must be an array of objects.\n"
+        "Each object must contain:\n"
+        "- `sid`\n"
+        "- `plausibility`\n"
+        "- optional `note`\n"
+        "Do not return prose, markdown, or extra keys."
     )
     evidence_context = payload.get("evidence_context", "")
     audit_package = {
@@ -34,7 +42,23 @@ def build_judge_messages(section_key: str, payload: dict[str, Any]) -> list[dict
         f"{json.dumps(audit_package, ensure_ascii=False, indent=2)}\n\n"
         "Return one judgment per signal. `plausibility` meanings: 5=clear support, "
         "4=mostly supported, 3=some jump but acceptable, 2=weakly supported, "
-        "1=barely supported, 0=not supported or contradicted."
+        "1=barely supported, 0=not supported or contradicted.\n\n"
+        "Example:\n"
+        "{\n"
+        '  "judgments": [\n'
+        "    {\n"
+        '      "sid": "g.1.a",\n'
+        '      "plausibility": 4,\n'
+        '      "note": "mostly supported"\n'
+        "    },\n"
+        "    {\n"
+        '      "sid": "g.1.b",\n'
+        '      "plausibility": 2,\n'
+        '      "note": "weak support"\n'
+        "    }\n"
+        "  ]\n"
+        "}\n\n"
+        "Use exactly the same object structure as the example."
     )
     return [
         {"role": "system", "content": system},

@@ -168,10 +168,14 @@ def build_stage1_messages(
         })
 
     system = (
-        "You are scoring a UK NIHR grant application against a rubric. "
-        "Return JSON only. Use only section IDs from the provided section index. "
-        "Do not output rationale, explanations, section names, or chunk IDs. "
-        "For each signal, return a score of 0, 1, or 2."
+        "You are scoring a UK NIHR grant application against a rubric.\n\n"
+        "Return JSON only.\n\n"
+        "Use only section IDs from the provided section index.\n"
+        "Do not output rationale, explanations, prose, markdown, section names, or chunk IDs.\n"
+        "For each signal, return a score of 0, 1, or 2.\n\n"
+        "Important:\n"
+        "Inside each rubric section, the sub-criteria must be stored as object properties keyed by sub_id.\n"
+        "Do not use arrays for sub-criteria."
     )
     user = (
         "Application JSON:\n"
@@ -182,11 +186,42 @@ def build_stage1_messages(
         f"{json.dumps(rubric_payload, ensure_ascii=False, indent=2)}\n\n"
         "Return format rules:\n"
         "1. Top-level keys must be rubric section keys.\n"
-        "2. Each sub-criterion must contain `signals` and `needed_section_ids`.\n"
-        "3. `signals` maps signal IDs to scores 0, 1, or 2.\n"
-        "4. `needed_section_ids` must contain only IDs from the section index.\n"
-        "5. If unsupported, use score 0 and an empty `needed_section_ids` array.\n"
-        "6. Return JSON only."
+        "2. Inside each rubric section, use `sub_id` as the property name.\n"
+        "3. Each sub-criterion object must contain:\n"
+        "   - `signals`\n"
+        "   - `needed_section_ids`\n"
+        "4. `signals` maps signal IDs to scores 0, 1, or 2.\n"
+        "5. `needed_section_ids` must contain only IDs from the section index.\n"
+        "6. If unsupported, use score 0 and an empty `needed_section_ids` array.\n"
+        "7. Return JSON only.\n\n"
+        "Example:\n"
+        "{\n"
+        '  "general": {\n'
+        '    "g.1": {\n'
+        '      "signals": {\n'
+        '        "g.1.a": 2\n'
+        "      },\n"
+        '      "needed_section_ids": ["S09", "S12"]\n'
+        "    },\n"
+        '    "g.2": {\n'
+        '      "signals": {\n'
+        '        "g.2.a": 1\n'
+        "      },\n"
+        '      "needed_section_ids": ["S10"]\n'
+        "    }\n"
+        "  },\n"
+        '  "proposed_research": {\n'
+        '    "pr.1": {\n'
+        '      "signals": {\n'
+        '        "pr.1.a": 1,\n'
+        '        "pr.1.b": 2,\n'
+        '        "pr.1.c": 2\n'
+        "      },\n"
+        '      "needed_section_ids": ["S08", "S10"]\n'
+        "    }\n"
+        "  }\n"
+        "}\n\n"
+        "Use exactly the same object structure as the example."
     )
     return [
         {"role": "system", "content": system},
