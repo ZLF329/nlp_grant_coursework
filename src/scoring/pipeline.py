@@ -18,7 +18,7 @@ SECTION_KEY_MAP = {
     "Application Form": "application_form",
 }
 SECTION_NAME_MAP = {value: key for key, value in SECTION_KEY_MAP.items()}
-ID_PATTERN = re.compile(r"^sec[a-z0-9]+__\d{3}(_[a-z])?$")
+ID_PATTERN = re.compile(r"^sec[a-z0-9]+__\d{3}(?:_[^\s])?$")
 
 PLAUSIBILITY_TO_MULTIPLIER = {
     5: (1.0, None),
@@ -174,6 +174,13 @@ def _safe_json_loads(text: str) -> dict[str, Any]:
         if clean.endswith("```"):
             clean = clean[:-3]
     return json.loads(clean)
+
+
+def _response_preview(text: str, limit: int = 500) -> str:
+    clean = " ".join((text or "").split())
+    if len(clean) <= limit:
+        return clean
+    return clean[:limit] + "..."
 
 
 def _normalize_stage1_output(
@@ -509,8 +516,17 @@ def score_application_base(
     raw_response = stage1_client.generate_json(messages, schema=schema, max_tokens=8192)
     try:
         parsed = _safe_json_loads(raw_response)
-    except Exception:
-        parsed = {}
+    except Exception as exc:
+        raise ValueError(
+            "Stage 1 scorer did not return valid JSON. "
+            f"Response preview: {_response_preview(raw_response)!r}"
+        ) from exc
+
+    if not isinstance(parsed, dict) or not isinstance(parsed.get("sub_criteria"), list):
+        raise ValueError(
+            "Stage 1 scorer returned JSON without a valid `sub_criteria` array. "
+            f"Response preview: {_response_preview(raw_response)!r}"
+        )
 
     sections = _normalize_stage1_output(parsed, rubric_sections, pool["pool_lookup"])
 

@@ -572,18 +572,12 @@
           setShowProgress(true);
           setProgressInfo({
             progress: 5,
-            phase: "upload",
-            detail: "Uploading file",
+            phase: "stage0",
+            detail: "Stage 0: Uploading file",
             steps: [
-              { key: "upload", title: "Upload file", status: "running", progress: 5 },
-              { key: "parse_pdf", title: "Parse PDF", status: "pending", progress: 0 },
-              { key: "run_nlp", title: "Run NLP feature extraction", status: "pending", progress: 0 },
-              { key: "prepare_features", title: "Prepare feature extraction", status: "pending", progress: 0 },
-              { key: "run_orcid", title: "Run ORCID extraction", status: "pending", progress: 0 },
-              { key: "run_non_orcid", title: "Run non-ORCID extraction", status: "pending", progress: 0 },
-              { key: "load_features", title: "Load feature output", status: "pending", progress: 0 },
-              { key: "build_checklist", title: "Generate checklist", status: "pending", progress: 0 },
-              { key: "finish", title: "Complete", status: "pending", progress: 0 },
+              { key: "stage0", title: "Stage 0 · Parse + Base Features", status: "running", progress: 5 },
+              { key: "stage1", title: "Stage 1 · ORCID Enrichment", status: "pending", progress: 0 },
+              { key: "stage2", title: "Stage 2 · Ollama Scoring", status: "pending", progress: 0 },
             ],
           });
           const formData = new FormData();

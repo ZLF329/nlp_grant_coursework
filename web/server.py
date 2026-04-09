@@ -5,8 +5,9 @@ End-to-end flow when the user uploads a PDF:
   1. Save the upload to <project>/data/uploads/.
   2. all_type_parser.parse_and_save → data/uploads/json_data/<stem>.json
   3. nlp_feature.extract_nlp_features on the parsed JSON
-  4. qwen3_vllm.score_application on the parsed JSON (vLLM)
-  5. Combine into a single result JSON and expose via /result/<job_id>.
+  4. ORCID enrichment for team members with valid ORCID IDs
+  5. qwen3_ollama.score_application on the parsed JSON (Ollama)
+  6. Combine into a single result JSON and expose via /result/<job_id>.
 
 The static HTML in web/public is served as-is and drives the flow via:
     POST /upload          → {job_id}
@@ -17,6 +18,7 @@ from __future__ import annotations
 
 import json
 import os
+import re
 import sys
 import threading
 import traceback
@@ -43,11 +45,14 @@ CRITERIA_PATH = PROJECT_ROOT / "criteria_points.json"
 # ── pipeline imports (lazy where heavy) ───────────────────────────────────────
 from src.all_type_parser.all_type_parser import parse_and_save           # noqa: E402
 from src.feature_eng.nlp_feature import extract_nlp_features              # noqa: E402
+from ORCID.orcid_features import compute_features as compute_orcid_features  # noqa: E402
+from ORCID.orcid_features import fetch_orcid_profile                       # noqa: E402
 
-# vLLM scorer is imported lazily — keeping a single shared instance avoids
-# reloading the 30B model on every request.
+# Ollama scorer is imported lazily — keeping a single shared instance avoids
+# reloading the model on every request.
 _scorer_lock = threading.Lock()
 _scorer = None
+ORCID_RE = re.compile(r"\b\d{4}-\d{4}-\d{4}-\d{3}[\dX]\b")
 
 
 def _get_scorer():
@@ -64,16 +69,96 @@ JOBS: dict[str, dict] = {}
 JOBS_LOCK = threading.Lock()
 
 STEP_TEMPLATE = [
-    ("upload",          "Upload file"),
-    ("parse_pdf",       "Parse PDF"),
-    ("run_nlp",         "Run NLP feature extraction"),
-    ("prepare_features", "Prepare LLM scoring"),
-    ("run_orcid",       "Run ORCID extraction"),
-    ("run_non_orcid",   "Run Qwen3 vLLM scoring"),
-    ("load_features",   "Load feature output"),
-    ("build_checklist", "Build checklist"),
-    ("finish",          "Complete"),
+    ("stage0", "Stage 0 · Parse + Base Features"),
+    ("stage1", "Stage 1 · ORCID Enrichment"),
+    ("stage2", "Stage 2 · Ollama Scoring"),
 ]
+
+
+def _extract_team_members(parsed: dict) -> list[dict]:
+    team_section = parsed.get("LEAD APPLICANT & RESEARCH TEAM", {}) or {}
+    members: list[dict] = []
+
+    def add_member(role_group: str, member: dict | None):
+        if not isinstance(member, dict) or not member:
+            return
+        raw_orcid = str(member.get("ORCID") or "").strip()
+        match = ORCID_RE.search(raw_orcid)
+        members.append({
+            "role_group": role_group,
+            "name": str(member.get("Full Name") or "").strip() or role_group,
+            "organisation": str(member.get("Organisation") or "").strip(),
+            "proposed_role": str(member.get("Proposed Role") or "").strip(),
+            "orcid": match.group(0) if match else "",
+        })
+
+    add_member("Lead Applicant", team_section.get("Lead Applicant"))
+    add_member("Joint Lead Applicant", team_section.get("Joint Lead Applicant"))
+    for co_applicant in team_section.get("Co-Applicants", []) or []:
+        add_member("Co-Applicant", co_applicant)
+    return members
+
+
+def _run_orcid_enrichment(parsed: dict) -> dict:
+    members = _extract_team_members(parsed)
+    enriched_members: list[dict] = []
+    works_recent_5y_values: list[float] = []
+    h_index_values: list[float] = []
+    citation_values: list[float] = []
+    success_count = 0
+
+    for member in members:
+        entry = dict(member)
+        orcid = entry.get("orcid") or ""
+        if not orcid:
+            entry["status"] = "missing_orcid"
+            enriched_members.append(entry)
+            continue
+
+        try:
+            profile = fetch_orcid_profile(orcid, max_works=100)
+            features = compute_orcid_features(profile)
+            entry["status"] = "ok"
+            entry["summary"] = {
+                "works_total": features.get("outputs", {}).get("works_total", 0),
+                "works_recent_5y": features.get("outputs", {}).get("works_recent_5y", 0),
+                "funding_total": features.get("recognition", {}).get("funding_total", 0),
+                "h_index": features.get("impact", {}).get("h_index"),
+                "citations_total": features.get("impact", {}).get("citations_total"),
+            }
+            entry["profile"] = profile.get("person", {})
+            success_count += 1
+
+            works_recent_5y = entry["summary"]["works_recent_5y"]
+            works_recent_5y_values.append(float(works_recent_5y or 0))
+
+            h_index = entry["summary"]["h_index"]
+            if h_index is not None:
+                h_index_values.append(float(h_index))
+
+            citations_total = entry["summary"]["citations_total"]
+            if citations_total is not None:
+                citation_values.append(float(citations_total))
+        except Exception as exc:
+            entry["status"] = "error"
+            entry["error"] = str(exc)
+
+        enriched_members.append(entry)
+
+    total_members = len(members)
+    orcid_members = sum(1 for member in members if member.get("orcid"))
+    return {
+        "team_metrics": {
+            "team_size": total_members,
+            "orcid_count": orcid_members,
+            "orcid_coverage_ratio": round(orcid_members / total_members, 2) if total_members else 0.0,
+            "resolved_profiles": success_count,
+            "avg_h_index": round(sum(h_index_values) / len(h_index_values), 2) if h_index_values else 0.0,
+            "avg_citations": round(sum(citation_values) / len(citation_values), 2) if citation_values else 0.0,
+            "avg_works_recent_5y": round(sum(works_recent_5y_values) / len(works_recent_5y_values), 2) if works_recent_5y_values else 0.0,
+        },
+        "members": enriched_members,
+    }
 
 
 def _new_job() -> str:
@@ -82,8 +167,8 @@ def _new_job() -> str:
         JOBS[job_id] = {
             "status": "running",
             "progress": 0,
-            "phase": "upload",
-            "detail": "Receiving file…",
+            "phase": "stage0",
+            "detail": "Stage 0: Receiving file…",
             "steps": [
                 {"key": k, "title": t, "status": "pending", "progress": 0}
                 for k, t in STEP_TEMPLATE
@@ -103,6 +188,7 @@ def _update(job_id: str, *, step_key: str | None = None, step_status: str | None
         if not job:
             return
         if step_key:
+            job["phase"] = step_key
             for s in job["steps"]:
                 if s["key"] == step_key and step_status:
                     s["status"] = step_status
@@ -123,33 +209,29 @@ def _update(job_id: str, *, step_key: str | None = None, step_status: str | None
 
 def _run_pipeline(job_id: str, upload_path: Path):
     try:
-        _update(job_id, step_key="upload", step_status="done",
-                progress=10, detail="File uploaded")
-
-        # 1. Parse PDF → data/uploads/json_data/<stem>.json
-        _update(job_id, step_key="parse_pdf", step_status="running",
-                progress=15, detail="Parsing PDF…")
+        _update(job_id, step_key="stage0", step_status="running",
+                progress=10, detail="Stage 0: Parsing PDF…")
         parsed_path = parse_and_save(str(upload_path))
         parsed = json.loads(Path(parsed_path).read_text(encoding="utf-8"))
-        _update(job_id, step_key="parse_pdf", step_status="done", progress=30)
 
-        # 2. NLP features
-        _update(job_id, step_key="run_nlp", step_status="running",
-                progress=35, detail="Extracting NLP features…")
+        _update(job_id, step_key="stage0", step_status="running",
+                progress=28, detail="Stage 0: Extracting NLP features…")
         try:
             nlp_features = extract_nlp_features(parsed)
         except Exception as e:
             nlp_features = {"error": str(e)}
-        _update(job_id, step_key="run_nlp", step_status="done", progress=50)
+        _update(job_id, step_key="stage0", step_status="done",
+                progress=40, detail="Stage 0 complete")
 
-        # 3. Qwen3 vLLM scoring
-        _update(job_id, step_key="prepare_features", step_status="done",
-                progress=55, detail="Preparing LLM prompts…")
-        _update(job_id, step_key="run_orcid", step_status="skipped",
-                progress=58, detail="ORCID step skipped (not configured)")
+        _update(job_id, step_key="stage1", step_status="running",
+                progress=48, detail="Stage 1: Enriching team ORCID data…")
+        orcid_features = _run_orcid_enrichment(parsed)
+        _update(job_id, step_key="stage1", step_status="done",
+                progress=62,
+                detail=f"Stage 1 complete · {orcid_features['team_metrics']['resolved_profiles']} ORCID profile(s) resolved")
 
-        _update(job_id, step_key="run_non_orcid", step_status="running",
-                progress=60, detail="Scoring with Qwen3 (Ollama)…")
+        _update(job_id, step_key="stage2", step_status="running",
+                progress=70, detail="Stage 2: Scoring with Qwen3 (Ollama)…")
         from qwen3_ollama import score_application
         scorer = _get_scorer()
         scored = score_application(
@@ -159,22 +241,20 @@ def _run_pipeline(job_id: str, upload_path: Path):
             scorer=scorer,
             artifacts_dir=RESULT_DIR,
         )
-        _update(job_id, step_key="run_non_orcid", step_status="done", progress=85)
-
-        # 4. Combine
-        _update(job_id, step_key="load_features", step_status="done", progress=90)
-        _update(job_id, step_key="build_checklist", step_status="done",
-                progress=95, detail="Assembling result…")
+        _update(job_id, step_key="stage2", step_status="done",
+                progress=92, detail="Stage 2 complete · assembling result…")
 
         result = dict(scored)
         result["nlp_features"] = nlp_features
+        result.setdefault("features", {})
+        result["features"]["orcid"] = orcid_features
 
         # Persist for later inspection
         out_path = RESULT_DIR / f"{job_id}.json"
         out_path.write_text(json.dumps(result, ensure_ascii=False, indent=2),
                             encoding="utf-8")
 
-        _update(job_id, step_key="finish", step_status="done", progress=100,
+        _update(job_id, progress=100,
                 detail="Done", status="done",
                 result={"features_json": result, "nlp_features": nlp_features})
     except Exception as e:
