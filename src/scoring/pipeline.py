@@ -27,10 +27,10 @@ SECTION_ID_PREFIX = {
 
 PLAUSIBILITY_TO_MULTIPLIER = {
     5: (1.0, None),
-    4: (0.85, None),
-    3: (0.65, "low_confidence"),
-    2: (0.35, "low_confidence"),
-    1: (0.15, "weak_evidence"),
+    4: (0.9, None),
+    3: (0.8, "low_confidence"),
+    2: (0.6, "low_confidence"),
+    1: (0.4, "weak_evidence"),
     0: (0.0, "hallucination"),
 }
 STAGE1_ALLOWED_SCORES = (0.0, 0.5, 1.0, 1.5, 2.0)

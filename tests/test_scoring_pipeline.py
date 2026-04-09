@@ -154,7 +154,7 @@ class PipelineTests(unittest.TestCase):
         self.assertEqual(criterion["signals"][0]["score_0to2_raw"], 0)
         self.assertEqual(criterion["score_10"], 0)
 
-    def test_plausibility_multipliers_are_harsher(self):
+    def test_plausibility_multipliers_are_stricter_for_4_and_3(self):
         payload = {
             "general": {
                 "g.10": {
@@ -195,9 +195,9 @@ class PipelineTests(unittest.TestCase):
             if item["sub_id"] == "g.10"
         )
         weighted_scores = {signal["sid"]: signal["score_0to2_weighted"] for signal in criterion["signals"]}
-        self.assertEqual(weighted_scores["g.10.a"], 1.7)
-        self.assertEqual(weighted_scores["g.10.b"], 1.3)
-        self.assertEqual(weighted_scores["g.10.c"], 0.7)
+        self.assertEqual(weighted_scores["g.10.a"], 1.8)
+        self.assertEqual(weighted_scores["g.10.b"], 1.6)
+        self.assertEqual(weighted_scores["g.10.c"], 1.2)
         self.assertEqual(weighted_scores["g.10.d"], 2.0)
 
     def test_invalid_section_ids_zero_out_positive_scores(self):
