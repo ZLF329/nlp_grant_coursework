@@ -504,11 +504,60 @@ def _is_prompt_like_payload(payload: Optional[Dict[str, Any]]) -> bool:
     return False
 
 
+def _detect_award_type_from_pdf(pdf_path: str) -> str:
+    """Detect award type by reading the first page of the PDF.
+
+    Returns a canonical type string (e.g. 'DF_Doctoral') or '' if unknown.
+    Pattern order matters: check longer/more-specific strings before short ones
+    so that ACAF is not mis-matched as AF, and DCAF is not mis-matched as DF.
+    """
+    try:
+        import pdfplumber
+        with pdfplumber.open(pdf_path) as pdf:
+            if not pdf.pages:
+                return ""
+            raw = pdf.pages[0].extract_text() or ""
+        # Only inspect the first few lines — the award label is always near the top
+        header = " ".join(raw.splitlines()[:6]).upper()
+    except Exception:
+        return ""
+
+    if "ACAF" in header:
+        return "ACAF_Postdoctoral"
+    if "DCAF" in header:
+        return "DCAF_Doctoral"
+    if re.search(r"\bDF\b", header) or "DOCTORAL FELLOWSHIP" in header:
+        return "DF_Doctoral"
+    if re.search(r"\bAF\b", header) or "ADVANCED FELLOWSHIP" in header:
+        return "AF_Postdoctoral"
+    if "RFPB" in header or "RESEARCH FOR PATIENT BENEFIT" in header:
+        return "RfPB"
+    if "DEVELOPMENT AND SKILLS ENHANCEMENT" in header or re.search(r"\bDSE\b", header):
+        return "DSE_Postdoctoral"
+    if re.search(r"\bRP\b", header) or "RESEARCH PROFESSORSHIP" in header:
+        return "Research_Professorship_Postdoctoral"
+    return ""
+
+
 def _parse_award_type(input_path: str) -> str:
-    """Extract award type from filename, e.g. 'IC00001_DF_Doctoral' -> 'DF_Doctoral'."""
+    """Return award type string.
+
+    Priority:
+    1. Filename suffix after first '_'  (e.g. 'IC00001_DF_Doctoral' -> 'DF_Doctoral')
+    2. Auto-detect from PDF first page  (fallback when filename has no type suffix)
+    """
     stem = Path(input_path).stem
     parts = stem.split("_", 1)
-    return parts[1] if len(parts) > 1 else stem
+    if len(parts) > 1:
+        return parts[1]
+
+    # Filename carries no type info — try reading the PDF
+    if Path(input_path).suffix.lower() == ".pdf":
+        detected = _detect_award_type_from_pdf(input_path)
+        if detected:
+            return detected
+
+    return stem
 
 
 def _dedup_payload(
