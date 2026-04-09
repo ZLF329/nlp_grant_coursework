@@ -226,7 +226,34 @@ def result(job_id: str):
         return jsonify(job["result"])
 
 
+def _warmup():
+    """Preload heavy RAG models so the first upload doesn't pay the cost."""
+    try:
+        from src.rag.retriever import _get_embed_model, _get_reranker
+        _get_embed_model()
+        _get_reranker()
+        print("[server] RAG models warmed up", flush=True)
+    except Exception as e:
+        print(f"[server] RAG warmup failed: {e}", flush=True)
+
+    try:
+        import requests
+        from qwen3_ollama import OLLAMA_HOST, OLLAMA_MODEL
+        print(f"[server] warming up Ollama model {OLLAMA_MODEL}…", flush=True)
+        r = requests.post(
+            f"{OLLAMA_HOST.rstrip('/')}/api/generate",
+            json={"model": OLLAMA_MODEL, "prompt": "", "stream": False,
+                  "keep_alive": "30m"},
+            timeout=600,
+        )
+        r.raise_for_status()
+        print("[server] Ollama model loaded", flush=True)
+    except Exception as e:
+        print(f"[server] Ollama warmup failed: {e}", flush=True)
+
+
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", "8000"))
+    _warmup()
     print(f"[server] Grant AI pipeline listening on http://0.0.0.0:{port}")
     app.run(host="0.0.0.0", port=port, threaded=True)

@@ -88,8 +88,19 @@ class _Scorer:
                         f"{len(arr) if isinstance(arr, list) else 'non-list'}")
                 scored: list[dict] = []
                 for it, sub in zip(arr, sub_items):
+                    if not isinstance(it, dict):
+                        scored.append(_empty_criterion_result(
+                            sub["name"], "ollama returned non-dict sub_item"))
+                        continue
                     it["name"] = sub["name"]
+                    it.setdefault("exists", "no")
+                    it.setdefault("quality", "missing")
+                    it.setdefault("quality_score_0to10", 0)
+                    it.setdefault("rubric_subscores_0to2",
+                                  {"coverage": 0, "specificity": 0, "strength": 0})
+                    it.setdefault("evidence", [])
                     it.setdefault("evidence_ids", [])
+                    it.setdefault("rationale", "")
                     scored.append(it)
             except Exception as e:
                 scored = [_empty_criterion_result(s["name"], f"ollama error: {e}")
