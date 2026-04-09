@@ -54,7 +54,7 @@ def _get_scorer():
     global _scorer
     with _scorer_lock:
         if _scorer is None:
-            from qwen3_vllm import _Scorer  # noqa: WPS433
+            from qwen3_ollama import _Scorer  # noqa: WPS433
             _scorer = _Scorer()
         return _scorer
 
@@ -149,8 +149,8 @@ def _run_pipeline(job_id: str, upload_path: Path):
                 progress=58, detail="ORCID step skipped (not configured)")
 
         _update(job_id, step_key="run_non_orcid", step_status="running",
-                progress=60, detail="Scoring with Qwen3 (vLLM)…")
-        from qwen3_vllm import score_application
+                progress=60, detail="Scoring with Qwen3 (Ollama)…")
+        from qwen3_ollama import score_application
         scorer = _get_scorer()
         scored = score_application(parsed, CRITERIA_PATH,
                                    doc_id=upload_path.stem, scorer=scorer)
