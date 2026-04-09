@@ -152,8 +152,13 @@ def _run_pipeline(job_id: str, upload_path: Path):
                 progress=60, detail="Scoring with Qwen3 (Ollama)…")
         from qwen3_ollama import score_application
         scorer = _get_scorer()
-        scored = score_application(parsed, CRITERIA_PATH,
-                                   doc_id=upload_path.stem, scorer=scorer)
+        scored = score_application(
+            parsed,
+            CRITERIA_PATH,
+            doc_id=upload_path.stem,
+            scorer=scorer,
+            artifacts_dir=RESULT_DIR,
+        )
         _update(job_id, step_key="run_non_orcid", step_status="done", progress=85)
 
         # 4. Combine
@@ -239,15 +244,17 @@ def _warmup():
     try:
         import requests
         from qwen3_ollama import OLLAMA_HOST, OLLAMA_MODEL
-        print(f"[server] warming up Ollama model {OLLAMA_MODEL}…", flush=True)
-        r = requests.post(
-            f"{OLLAMA_HOST.rstrip('/')}/api/generate",
-            json={"model": OLLAMA_MODEL, "prompt": "", "stream": False,
-                  "keep_alive": "30m"},
-            timeout=600,
-        )
-        r.raise_for_status()
-        print("[server] Ollama model loaded", flush=True)
+        from src.verify.faithfulness import JUDGE_MODEL
+        for model_name in (OLLAMA_MODEL, JUDGE_MODEL):
+            print(f"[server] warming up Ollama model {model_name}…", flush=True)
+            r = requests.post(
+                f"{OLLAMA_HOST.rstrip('/')}/api/generate",
+                json={"model": model_name, "prompt": "", "stream": False,
+                      "keep_alive": "30m"},
+                timeout=600,
+            )
+            r.raise_for_status()
+        print("[server] Ollama models loaded", flush=True)
     except Exception as e:
         print(f"[server] Ollama warmup failed: {e}", flush=True)
 
