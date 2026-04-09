@@ -617,6 +617,16 @@
     }
     tbody tr:hover { background: var(--brand-soft); }
     .row-clickable { cursor: pointer; }
+    .group-row td {
+      background: var(--panel);
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 14px 18px 8px;
+      border-bottom: 0;
+    }
     .empty-state {
       border: 1px dashed var(--border);
       border-radius: var(--radius-l);
@@ -1029,6 +1039,7 @@
       return {
         id: c.sub_id || c.id || slugify(c.name || ('criterion-' + idx)),
         name: c.name || `Sub-criterion ${idx + 1}`,
+        groupName: c.group_name || '',
         exists: c.exists || (Number(c.score_10 || c.quality_score_0to10 || 0) > 0 ? 'yes' : 'no'),
         qualityLabel: c.quality || evidenceStatusLabel(c.evidence_status),
         score: Number(c.score_10 || c.quality_score_0to10 || 0),
@@ -1205,7 +1216,18 @@
       };
     }
     function emptyCriterion(name) {
-      return { id:slugify(name), name, exists:'missing', qualityLabel:'missing', score:0, evidence:[], evidenceCount:0, evidenceIds:[], evidenceTop5:[], evidenceStatus:'invalid_evidence', avgPlausibility:0, weakSignalCount:0, signals:[], rubricSubscores:{}, rubricAvg:0, rubricText:'No signal detail' };
+      return { id:slugify(name), name, groupName:'', exists:'missing', qualityLabel:'missing', score:0, evidence:[], evidenceCount:0, evidenceIds:[], evidenceTop5:[], evidenceStatus:'invalid_evidence', avgPlausibility:0, weakSignalCount:0, signals:[], rubricSubscores:{}, rubricAvg:0, rubricText:'No signal detail' };
+    }
+
+    function getOrderedCriterionNames(sectionPair) {
+      const ordered = [];
+      const seen = new Set();
+      [...(sectionPair.before.criteria || []), ...(sectionPair.after.criteria || [])].forEach(c => {
+        if (!c || !c.name || seen.has(c.name)) return;
+        seen.add(c.name);
+        ordered.push(c.name);
+      });
+      return ordered;
     }
 
     function getSectionUnion() {
@@ -1647,15 +1669,21 @@
       document.getElementById('tableSub').textContent = 'Click a row to inspect signals and grounded chunks in the drawer.';
       const beforeMap = new Map((pair.before.criteria || []).map(c => [c.name, c]));
       const afterMap = new Map((pair.after.criteria || []).map(c => [c.name, c]));
-      const names = Array.from(new Set([...beforeMap.keys(), ...afterMap.keys()]));
+      const names = getOrderedCriterionNames(pair);
       if (mode === 'compare') {
         head.innerHTML = `<tr><th>Sub-criterion</th><th>Before</th><th>After</th><th>Delta</th><th>Plausibility</th><th>Weak signals</th><th>Status</th></tr>`;
+        let currentGroup = '';
         body.innerHTML = names.length ? names.map(name => {
           const before = beforeMap.get(name) || emptyCriterion(name);
           const after = afterMap.get(name) || emptyCriterion(name);
           const delta = scoreDelta(before.score, after.score);
           const active = state.selectedCriterionName === name ? ' style="background:rgba(237,243,255,.6);"' : '';
-          return `<tr class="row-clickable" data-criterion-name="${name}"${active}>
+          const groupName = after.groupName || before.groupName || '';
+          const groupRow = groupName && groupName !== currentGroup
+            ? `<tr class="group-row"><td colspan="7">${groupName}</td></tr>`
+            : '';
+          currentGroup = groupName || currentGroup;
+          return `${groupRow}<tr class="row-clickable" data-criterion-name="${name}"${active}>
             <td><strong>${name}</strong></td>
             <td>${fmtScore(before.score)} / 10</td>
             <td>${fmtScore(after.score)} / 10</td>
@@ -1667,10 +1695,16 @@
         }).join('') : `<tr><td colspan="7"><div class="empty-copy">No sub-criteria found.</div></td></tr>`;
       } else {
         head.innerHTML = `<tr><th>Sub-criterion</th><th>Score</th><th>Plausibility</th><th>Weak signals</th><th>Evidence</th><th>Status</th><th>Signals</th></tr>`;
+        let currentGroup = '';
         body.innerHTML = names.length ? names.map(name => {
           const current = afterMap.get(name) || beforeMap.get(name) || emptyCriterion(name);
           const active = state.selectedCriterionName === name ? ' style="background:rgba(237,243,255,.6);"' : '';
-          return `<tr class="row-clickable" data-criterion-name="${name}"${active}>
+          const groupName = current.groupName || '';
+          const groupRow = groupName && groupName !== currentGroup
+            ? `<tr class="group-row"><td colspan="7">${groupName}</td></tr>`
+            : '';
+          currentGroup = groupName || currentGroup;
+          return `${groupRow}<tr class="row-clickable" data-criterion-name="${name}"${active}>
             <td><strong>${name}</strong></td>
             <td>${fmtScore(current.score)} / 10</td>
             <td>${round1(current.avgPlausibility || 0)} / 5</td>

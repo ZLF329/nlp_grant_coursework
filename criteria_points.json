@@ -1,451 +1,320 @@
 {
+  "meta": {
+    "source_document": "Criteria for model.pdf",
+    "generated_on": "2026-02-05",
+    "notes": "Structured checklist points extracted from the provided criteria document."
+  },
   "General": {
-    "weight": 1.0,
-    "sub_criteria": [
+    "common_characteristics_of_good_applications": [
+      "Clear research vision and career trajectory",
+      "Distinctive ideas with an independent direction",
+      "Well-justified training plan",
+      "Strong mentorship and institutional support"
+    ],
+    "tell_us_why_you_need_this_award": [
+      "Explain why this award is the right next step in your career (not just another project grant)",
+      "What difference would securing an award make to your career, and why now?",
+      "How will an award build on your existing experience and what new skills will it enable you to gain?",
+      "How will it develop your research partnerships within the NHS, public health or social care, charity organisations, industry or other organisations?"
+    ],
+    "Applicant": [
       {
-        "sub_id": "g.1",
-        "name": "Common Characteristics Of Good Applications: Clear research vision and career trajectory",
-        "definition": "Clear research vision and career trajectory",
-        "weight": 1.0,
-        "signals": [
-          {"sid": "g.1.a", "text": "Clear research vision and career trajectory", "weight": 1.0}
-        ]
-      },
-      {
-        "sub_id": "g.2",
-        "name": "Common Characteristics Of Good Applications: Distinctive ideas with an independent direction",
-        "definition": "Distinctive ideas with an independent direction",
-        "weight": 1.0,
-        "signals": [
-          {"sid": "g.2.a", "text": "Distinctive ideas with an independent direction", "weight": 1.0}
-        ]
-      },
-      {
-        "sub_id": "g.3",
-        "name": "Common Characteristics Of Good Applications: Well-justified training plan",
-        "definition": "Well-justified training plan",
-        "weight": 1.0,
-        "signals": [
-          {"sid": "g.3.a", "text": "Well-justified training plan", "weight": 1.0}
-        ]
-      },
-      {
-        "sub_id": "g.4",
-        "name": "Common Characteristics Of Good Applications: Strong mentorship and institutional support",
-        "definition": "Strong mentorship and institutional support",
-        "weight": 1.0,
-        "signals": [
-          {"sid": "g.4.a", "text": "Strong mentorship and institutional support", "weight": 1.0}
-        ]
-      },
-      {
-        "sub_id": "g.5",
-        "name": "Tell Us Why You Need This Award: Explain why this award is the right next step in your career (not just another project grant)",
-        "definition": "Explain why this award is the right next step in your career (not just another project grant)",
-        "weight": 1.0,
-        "signals": [
-          {"sid": "g.5.a", "text": "Explain why this award is the right next step in your career (not just another project grant)", "weight": 1.0}
-        ]
-      },
-      {
-        "sub_id": "g.6",
-        "name": "Tell Us Why You Need This Award: What difference would securing an award make to your career, and why now?",
-        "definition": "What difference would securing an award make to your career, and why now?",
-        "weight": 1.0,
-        "signals": [
-          {"sid": "g.6.a", "text": "What difference would securing an award make to your career, and why now?", "weight": 1.0}
-        ]
-      },
-      {
-        "sub_id": "g.7",
-        "name": "Tell Us Why You Need This Award: How will an award build on your existing experience and what new skills will it enable you to gain?",
-        "definition": "How will an award build on your existing experience and what new skills will it enable you to gain?",
-        "weight": 1.0,
-        "signals": [
-          {"sid": "g.7.a", "text": "How will an award build on your existing experience and what new skills will it enable you to gain?", "weight": 1.0}
-        ]
-      },
-      {
-        "sub_id": "g.8",
-        "name": "Tell Us Why You Need This Award: How will it develop your research partnerships within the NHS, public health or social care, charity organisations, industry or other organisations?",
-        "definition": "How will it develop your research partnerships within the NHS, public health or social care, charity organisations, industry or other organisations?",
-        "weight": 1.0,
-        "signals": [
-          {"sid": "g.8.a", "text": "How will it develop your research partnerships within the NHS, public health or social care, charity organisations, industry or other organisations?", "weight": 1.0}
-        ]
-      },
-      {
-        "sub_id": "g.9",
         "name": "Relevant Research Experience and Training",
         "definition": "Demonstrates prior research experience and/or training that prepares the applicant to successfully undertake the proposed award in applied health or social care research.",
-        "weight": 1.0,
         "signals": [
-          {"sid": "g.9.a", "text": "Mentions of previous projects, research methods, or techniques relevant to the proposed study", "weight": 1.0},
-          {"sid": "g.9.b", "text": "Evidence of formal training, courses, or certifications", "weight": 1.0},
-          {"sid": "g.9.c", "text": "Alignment between prior experience and skills required for the proposed project", "weight": 1.0}
+          "Mentions of previous projects, research methods, or techniques relevant to the proposed study",
+          "Evidence of formal training, courses, or certifications",
+          "Alignment between prior experience and skills required for the proposed project"
         ]
       },
       {
-        "sub_id": "g.10",
         "name": "Impactful Research Outputs and Outcomes",
         "definition": "Evidence of meaningful research outputs or outcomes appropriate to the applicant’s career stage, demonstrating contribution to the field.",
-        "weight": 1.0,
         "signals": [
-          {"sid": "g.10.a", "text": "Number and quality of publications, reports, or presentations", "weight": 1.0},
-          {"sid": "g.10.b", "text": "Citation metrics or other indicators of impact (where mentioned)", "weight": 1.0},
-          {"sid": "g.10.c", "text": "Awards, grants, or recognitions linked to prior research", "weight": 1.0},
-          {"sid": "g.10.d", "text": "Description of practical or societal impact of previous work", "weight": 1.0}
+          "Number and quality of publications, reports, or presentations",
+          "Citation metrics or other indicators of impact (where mentioned)",
+          "Awards, grants, or recognitions linked to prior research",
+          "Description of practical or societal impact of previous work"
         ]
       },
       {
-        "sub_id": "g.11",
         "name": "Trajectory Towards Research Leadership",
         "definition": "Demonstrates potential and progression towards becoming a future leader in health or social care research.",
-        "weight": 1.0,
         "signals": [
-          {"sid": "g.11.a", "text": "Statements of career ambitions and long-term goals", "weight": 1.0},
-          {"sid": "g.11.b", "text": "Evidence of increasing responsibility in previous roles (e.g., leading projects, mentoring)", "weight": 1.0},
-          {"sid": "g.11.c", "text": "Participation in leadership or professional development programs", "weight": 1.0},
-          {"sid": "g.11.d", "text": "Recognition by peers or institutions suggesting leadership potential", "weight": 1.0}
+          "Statements of career ambitions and long-term goals",
+          "Evidence of increasing responsibility in previous roles (e.g., leading projects, mentoring)",
+          "Participation in leadership or professional development programs",
+          "Recognition by peers or institutions suggesting leadership potential"
         ]
       },
       {
-        "sub_id": "g.12",
         "name": "Commitment to Practitioner-Academic Career (if applicable)",
         "definition": "For applicants including a clinical or practice element, shows a clear commitment to combining research with professional practice.",
-        "weight": 1.0,
         "signals": [
-          {"sid": "g.12.a", "text": "Explicit statement of practitioner-academic career intentions", "weight": 1.0},
-          {"sid": "g.12.b", "text": "Involvement in clinical or practice-based research", "weight": 1.0},
-          {"sid": "g.12.c", "text": "Evidence of balancing practice responsibilities with research activities", "weight": 1.0},
-          {"sid": "g.12.d", "text": "Participation in relevant professional networks or qualifications", "weight": 1.0}
+          "Explicit statement of practitioner-academic career intentions",
+          "Involvement in clinical or practice-based research",
+          "Evidence of balancing practice responsibilities with research activities",
+          "Participation in relevant professional networks or qualifications"
         ]
       }
     ]
   },
-  "Proposed research": {
-    "weight": 1.0,
-    "sub_criteria": [
-      {
-        "sub_id": "pr.1",
-        "name": "Quality of the Plain English Summary",
-        "definition": "Clear, simple description of the research that a non-specialist audience can understand; explains problem, importance, plan, beneficiaries, and real-world use; avoids jargon; aligns with the detailed proposal.",
-        "weight": 1.0,
-        "signals": [
-          {"sid": "pr.1.a", "text": "Readability scores (e.g., Flesch-Kincaid)", "weight": 1.0},
-          {"sid": "pr.1.b", "text": "Low density of unexplained jargon or technical terms", "weight": 1.0},
-          {"sid": "pr.1.c", "text": "Presence of problem statement, objectives, methods, beneficiaries, and real-world impact", "weight": 1.0},
-          {"sid": "pr.1.d", "text": "Alignment with detailed proposal content", "weight": 1.0},
-          {"sid": "pr.1.e", "text": "Sentence structure and coherence for non-specialist understanding", "weight": 1.0},
-          {"sid": "pr.1.f", "text": "Emphasis on societal or patient relevance", "weight": 1.0}
-        ]
-      },
-      {
-        "sub_id": "pr.2",
-        "name": "Evidence Review Quality & Relevance",
-        "definition": "How comprehensively and critically the application reviews existing literature and evidence.",
-        "weight": 1.0,
-        "signals": [
-          {"sid": "pr.2.a", "text": "Number and relevance of references cited", "weight": 1.0},
-          {"sid": "pr.2.b", "text": "Presence of critical analysis vs. mere summary", "weight": 1.0},
-          {"sid": "pr.2.c", "text": "Identification of knowledge gaps", "weight": 1.0},
-          {"sid": "pr.2.d", "text": "Coherence and logical flow", "weight": 1.0}
-        ]
-      },
-      {
-        "sub_id": "pr.3",
-        "name": "Research Scope & Award Appropriateness",
-        "definition": "Whether the project scope matches the scale and expectations of the proposed award (doctoral, postdoctoral, etc.).",
-        "weight": 1.0,
-        "signals": [
-          {"sid": "pr.3.a", "text": "Alignment of aims with award level", "weight": 1.0},
-          {"sid": "pr.3.b", "text": "Feasibility indicators (time, complexity, tasks)", "weight": 1.0},
-          {"sid": "pr.3.c", "text": "Proportion of work relative to award expectations", "weight": 1.0}
-        ]
-      },
-      {
-        "sub_id": "pr.4",
-        "name": "Research Design & Methodological Rigor",
-        "definition": "Clarity, appropriateness, and robustness of study design to answer the research questions.",
-        "weight": 1.0,
-        "signals": [
-          {"sid": "pr.4.a", "text": "Explicit description of methods", "weight": 1.0},
-          {"sid": "pr.4.b", "text": "Logical alignment between aims and methods", "weight": 1.0},
-          {"sid": "pr.4.c", "text": "Discussion of controls, sample size, or methodology justification", "weight": 1.0},
-          {"sid": "pr.4.d", "text": "Structured methodological sections", "weight": 1.0}
-        ]
-      },
-      {
-        "sub_id": "pr.5",
-        "name": "Potential Impact on Patients, Public, and Health Services",
-        "definition": "Likely benefits or influence of the research on patients, carers, or health and care systems.",
-        "weight": 1.0,
-        "signals": [
-          {"sid": "pr.5.a", "text": "Mentions of direct or indirect patient/public benefits", "weight": 1.0},
-          {"sid": "pr.5.b", "text": "Alignment with health priorities or societal needs", "weight": 1.0},
-          {"sid": "pr.5.c", "text": "Clarity and specificity of expected outcomes", "weight": 1.0}
-        ]
-      },
-      {
-        "sub_id": "pr.6",
-        "name": "Engagement with People & Communities",
-        "definition": "Evidence of meaningful involvement of patients, carers, or communities.",
-        "weight": 1.0,
-        "signals": [
-          {"sid": "pr.6.a", "text": "Use of co-design, participatory methods, or consultations", "weight": 1.0},
-          {"sid": "pr.6.b", "text": "References to ethical considerations and feedback mechanisms", "weight": 1.0},
-          {"sid": "pr.6.c", "text": "Description of involvement at multiple project stages", "weight": 1.0}
-        ]
-      },
-      {
-        "sub_id": "pr.7",
-        "name": "Justification of Resources & Award Costs",
-        "definition": "Appropriateness and clarity of requested resources for the planned work.",
-        "weight": 1.0,
-        "signals": [
-          {"sid": "pr.7.a", "text": "Explicit links between tasks and resources requested", "weight": 1.0},
-          {"sid": "pr.7.b", "text": "Budget proportionality to project scope", "weight": 1.0},
-          {"sid": "pr.7.c", "text": "Clear rationale for funding level", "weight": 1.0}
-        ]
-      },
-      {
-        "sub_id": "pr.8",
-        "name": "Quality of Previous Research (if applicable)",
-        "definition": "Prior relevant research experience demonstrating capability to deliver the proposed project.",
-        "weight": 1.0,
-        "signals": [
-          {"sid": "pr.8.a", "text": "Number and relevance of publications or outputs", "weight": 1.0},
-          {"sid": "pr.8.b", "text": "Evidence of prior successful projects", "weight": 1.0},
-          {"sid": "pr.8.c", "text": "Skills alignment with proposed work", "weight": 1.0}
-        ]
-      },
-      {
-        "sub_id": "pr.9",
-        "name": "Inclusive Research Design",
-        "definition": "Consideration of inclusivity throughout the research lifecycle, including participant diversity and accessibility.",
-        "weight": 1.0,
-        "signals": [
-          {"sid": "pr.9.a", "text": "Explicit strategies for diverse recruitment", "weight": 1.0},
-          {"sid": "pr.9.b", "text": "Adaptive methods or accessibility considerations", "weight": 1.0},
-          {"sid": "pr.9.c", "text": "Equity and participation indicators", "weight": 1.0}
-        ]
-      }
-    ]
-  },
-  "Training and development": {
-    "weight": 1.0,
-    "sub_criteria": [
-      {
-        "sub_id": "td.1",
-        "name": "Quality and Relevance of Proposed Training",
-        "definition": "How well-structured, clear, and relevant the training plan is in relation to the project’s goals and the applicant’s research needs.",
-        "weight": 1.0,
-        "signals": [
-          {"sid": "td.1.a", "text": "Completeness and clarity of training description", "weight": 1.0},
-          {"sid": "td.1.b", "text": "Alignment of training topics with project methods or techniques", "weight": 1.0},
-          {"sid": "td.1.c", "text": "Structured timeline or sequencing of training activities", "weight": 1.0},
-          {"sid": "td.1.d", "text": "Explicit links between training content and skill acquisition", "weight": 1.0}
-        ]
-      },
-      {
-        "sub_id": "td.2",
-        "name": "Suitability to Personal Development and Project Needs",
-        "definition": "How well the proposed training addresses the applicant’s current skills gaps and supports successful project delivery.",
-        "weight": 1.0,
-        "signals": [
-          {"sid": "td.2.a", "text": "Identification of personal skill gaps", "weight": 1.0},
-          {"sid": "td.2.b", "text": "Clear mapping between training activities and project tasks", "weight": 1.0},
-          {"sid": "td.2.c", "text": "Evidence that proposed training is targeted rather than generic", "weight": 1.0},
-          {"sid": "td.2.d", "text": "Mention of mentorship, workshops, or formal courses relevant to development needs", "weight": 1.0}
-        ]
-      },
-      {
-        "sub_id": "td.3",
-        "name": "Support for Career Aspirations",
-        "definition": "The extent to which the training plan, and any professional practice components, contribute to the applicant’s long-term career goals.",
-        "weight": 1.0,
-        "signals": [
-          {"sid": "td.3.a", "text": "Explicit statement of career goals", "weight": 1.0},
-          {"sid": "td.3.b", "text": "Connections between training activities and future career trajectory", "weight": 1.0},
-          {"sid": "td.3.c", "text": "Indications of skill transferability beyond the current project", "weight": 1.0},
-          {"sid": "td.3.d", "text": "Reference to professional practice or experiential learning where applicable", "weight": 1.0}
-        ]
-      }
-    ]
-  },
-  "Sites and support": {
-    "weight": 1.0,
-    "sub_criteria": [
-      {
-        "sub_id": "ss.1",
-        "name": "Track Record of the Contracting Organisation (and Partners)",
-        "definition": "Demonstrated expertise, experience, and research achievements of the organisation(s) in the proposed research area.",
-        "weight": 1.0,
-        "signals": [
-          {"sid": "ss.1.a", "text": "Publication or project history in relevant research fields", "weight": 1.0},
-          {"sid": "ss.1.b", "text": "Previous funding success or awards in similar domains", "weight": 1.0},
-          {"sid": "ss.1.c", "text": "Mention of prior collaborations or partnerships", "weight": 1.0},
-          {"sid": "ss.1.d", "text": "Highlighted achievements or notable outputs", "weight": 1.0}
-        ]
-      },
-      {
-        "sub_id": "ss.2",
-        "name": "Suitability of Supervisory Support and Mentorship Arrangements",
-        "definition": "Quality, clarity, and appropriateness of supervision and mentoring for supporting the applicant’s research and career development.",
-        "weight": 1.0,
-        "signals": [
-          {"sid": "ss.2.a", "text": "Explicit description of supervisor roles and responsibilities", "weight": 1.0},
-          {"sid": "ss.2.b", "text": "Evidence of mentorship plans, meetings, or training support", "weight": 1.0},
-          {"sid": "ss.2.c", "text": "Alignment between supervisor expertise and project needs", "weight": 1.0},
-          {"sid": "ss.2.d", "text": "Presence of structured supervision framework (frequency, format, accountability)", "weight": 1.0}
-        ]
-      },
-      {
-        "sub_id": "ss.3",
-        "name": "Appropriateness of the Contracting Organisation to Support the Award and Career Aspirations",
-        "definition": "How well the organisation (and any partners) can provide the infrastructure, resources, and environment necessary to deliver the project and support the applicant’s career growth.",
-        "weight": 1.0,
-        "signals": [
-          {"sid": "ss.3.a", "text": "Description of facilities, infrastructure, or resources provided", "weight": 1.0},
-          {"sid": "ss.3.b", "text": "Links between organisational support and project success", "weight": 1.0},
-          {"sid": "ss.3.c", "text": "Alignment of organisational focus with applicant’s career trajectory", "weight": 1.0},
-          {"sid": "ss.3.d", "text": "Evidence of tailored support for award type (doctoral, postdoctoral)", "weight": 1.0}
-        ]
-      },
-      {
-        "sub_id": "ss.4",
-        "name": "Commitment to Inclusive and Supportive Research Culture",
-        "definition": "Evidence that the organisation fosters inclusivity, research integrity, and a supportive environment for all researchers.",
-        "weight": 1.0,
-        "signals": [
-          {"sid": "ss.4.a", "text": "Mentions of policies or practices promoting diversity, equity, and inclusion", "weight": 1.0},
-          {"sid": "ss.4.b", "text": "Evidence of inclusive recruitment, mentoring, or support initiatives", "weight": 1.0},
-          {"sid": "ss.4.c", "text": "References to adherence to research integrity principles", "weight": 1.0},
-          {"sid": "ss.4.d", "text": "Statements on organisational culture, training, or initiatives supporting underrepresented groups", "weight": 1.0}
-        ]
-      }
-    ]
-  },
-  "Working with people and communities": {
-    "weight": 1.0,
-    "sub_criteria": [
-      {
-        "sub_id": "wp.1",
-        "name": "Integration of Lived Experience in Research Design",
-        "definition": "How input from patients, carers, or people with relevant lived experience has shaped the research questions, design, and methods.",
-        "weight": 1.0,
-        "signals": [
-          {"sid": "wp.1.a", "text": "Mentions of consultation or co-design activities", "weight": 1.0},
-          {"sid": "wp.1.b", "text": "Specific examples of changes made to study design based on lived experience", "weight": 1.0},
-          {"sid": "wp.1.c", "text": "References to patient or community advisory groups", "weight": 1.0}
-        ]
-      },
-      {
-        "sub_id": "wp.2",
-        "name": "Diversity and Inclusivity of the Research Team",
-        "definition": "Extent to which the research team reflects diversity in terms of skills, experience, and demographic representation.",
-        "weight": 1.0,
-        "signals": [
-          {"sid": "wp.2.a", "text": "Explicit mentions of team composition across gender, ethnicity, age, or other relevant characteristics", "weight": 1.0},
-          {"sid": "wp.2.b", "text": "Statements about inclusion in hiring or team-building", "weight": 1.0},
-          {"sid": "wp.2.c", "text": "Evidence of equitable task allocation and collaboration", "weight": 1.0}
-        ]
-      },
-      {
-        "sub_id": "wp.3",
-        "name": "Commitment to Maximising Public and Patient Benefit",
-        "definition": "Clarity and strength of the plan to ensure research outcomes meaningfully benefit patients, carers, and the public.",
-        "weight": 1.0,
-        "signals": [
-          {"sid": "wp.3.a", "text": "Mentions of dissemination, knowledge translation, or implementation plans", "weight": 1.0},
-          {"sid": "wp.3.b", "text": "Clear links between study objectives and anticipated benefits", "weight": 1.0},
-          {"sid": "wp.3.c", "text": "Emphasis on actionable outcomes or improvements in health/care", "weight": 1.0}
-        ]
-      },
-      {
-        "sub_id": "wp.4",
-        "name": "Representation of Seldom Heard or Underserved Groups",
-        "definition": "Degree to which participants and PPI contributors represent groups historically underrepresented in research, including those facing health inequalities.",
-        "weight": 1.0,
-        "signals": [
-          {"sid": "wp.4.a", "text": "Mention of specific demographic groups (age, race, ethnicity, disability, gender, sexual orientation, religion/belief, location, socioeconomic status)", "weight": 1.0},
-          {"sid": "wp.4.b", "text": "Evidence of targeted recruitment strategies", "weight": 1.0},
-          {"sid": "wp.4.c", "text": "Discussion of barriers to participation and mitigation strategies", "weight": 1.0}
-        ]
-      },
-      {
-        "sub_id": "wp.5",
-        "name": "Inclusivity Across the Research Lifecycle",
-        "definition": "Demonstration that inclusion is considered at all stages of the project: planning, recruitment, conduct, analysis, and dissemination.",
-        "weight": 1.0,
-        "signals": [
-          {"sid": "wp.5.a", "text": "References to inclusion in study design, participant selection, and analysis", "weight": 1.0},
-          {"sid": "wp.5.b", "text": "Consideration of accessibility and equity in all project stages", "weight": 1.0},
-          {"sid": "wp.5.c", "text": "Documented plans for ongoing evaluation and adaptation", "weight": 1.0}
-        ]
-      },
-      {
-        "sub_id": "wp.6",
-        "name": "Costed and Resourced Plan for Research Inclusion",
-        "definition": "Evidence that research inclusion has been properly budgeted and resourced within the proposal.",
-        "weight": 1.0,
-        "signals": [
-          {"sid": "wp.6.a", "text": "Explicit budget line(s) for inclusion activities (PPI, outreach, recruitment support)", "weight": 1.0},
-          {"sid": "wp.6.b", "text": "Mention of staff time, materials, or training dedicated to inclusion", "weight": 1.0},
-          {"sid": "wp.6.c", "text": "Alignment between inclusion plan and allocated resources", "weight": 1.0}
-        ]
-      }
-    ]
-  },
-  "Application Form": {
-    "weight": 1.0,
-    "sub_criteria": [
-      {
-        "sub_id": "af.1",
-        "name": "Use of Formatting, Headings, and Subheadings",
-        "definition": "Effective use of text formatting to make the application clear, navigable, and easy to read.",
-        "weight": 1.0,
-        "signals": [
-          {"sid": "af.1.a", "text": "Presence and consistency of headings and subheadings", "weight": 1.0},
-          {"sid": "af.1.b", "text": "Use of bold or emphasis for key terms", "weight": 1.0},
-          {"sid": "af.1.c", "text": "Structured hierarchy of sections (logical nesting of headings)", "weight": 1.0},
-          {"sid": "af.1.d", "text": "Patterns detected via text parsing for formatting markers", "weight": 1.0}
-        ]
-      },
-      {
-        "sub_id": "af.2",
-        "name": "Adherence to Word/Character Limits",
-        "definition": "Each section stays within specified word or character limits, demonstrating concise writing.",
-        "weight": 1.0,
-        "signals": [
-          {"sid": "af.2.a", "text": "Character/word count per section compared to allowed limits", "weight": 1.0},
-          {"sid": "af.2.b", "text": "Detection of over-length sections", "weight": 1.0},
-          {"sid": "af.2.c", "text": "Indicators of conciseness (average sentence/paragraph length)", "weight": 1.0}
-        ]
-      },
-      {
-        "sub_id": "af.3",
-        "name": "Limited Duplication and Repetition",
-        "definition": "Avoidance of unnecessary repetition within or across sections.",
-        "weight": 1.0,
-        "signals": [
-          {"sid": "af.3.a", "text": "Semantic similarity measures between sentences/paragraphs", "weight": 1.0},
-          {"sid": "af.3.b", "text": "Detection of repeated phrases or ideas", "weight": 1.0},
-          {"sid": "af.3.c", "text": "Novelty score for each section (unique content vs. overlap)", "weight": 1.0}
-        ]
-      },
-      {
-        "sub_id": "af.4",
-        "name": "Logical Flow and Coherence Across Sections",
-        "definition": "The application progresses logically, with a clear thread linking the research question, objectives, and work packages.",
-        "weight": 1.0,
-        "signals": [
-          {"sid": "af.4.a", "text": "Semantic coherence between sections (using embeddings or similarity metrics)", "weight": 1.0},
-          {"sid": "af.4.b", "text": "Explicit linking of objectives to methods and work packages", "weight": 1.0},
-          {"sid": "af.4.c", "text": "Presence of transitional phrases or linking statements", "weight": 1.0},
-          {"sid": "af.4.d", "text": "Detectable narrative thread anchored on research aims", "weight": 1.0}
-        ]
-      }
-    ]
-  }
+  "Proposed research": [
+    {
+      "name": "Quality of the Plain English Summary",
+      "definition": "Clear, simple description of the research that a non-specialist audience can understand; explains problem, importance, plan, beneficiaries, and real-world use; avoids jargon; aligns with the detailed proposal.",
+      "signals": [
+        "Readability scores (e.g., Flesch-Kincaid)",
+        "Low density of unexplained jargon or technical terms",
+        "Presence of problem statement, objectives, methods, beneficiaries, and real-world impact",
+        "Alignment with detailed proposal content",
+        "Sentence structure and coherence for non-specialist understanding",
+        "Emphasis on societal or patient relevance"
+      ]
+    },
+    {
+      "name": "Evidence Review Quality & Relevance",
+      "definition": "How comprehensively and critically the application reviews existing literature and evidence.",
+      "signals": [
+        "Number and relevance of references cited",
+        "Presence of critical analysis vs. mere summary",
+        "Identification of knowledge gaps",
+        "Coherence and logical flow"
+      ]
+    },
+    {
+      "name": "Research Scope & Award Appropriateness",
+      "definition": "Whether the project scope matches the scale and expectations of the proposed award (doctoral, postdoctoral, etc.).",
+      "signals": [
+        "Alignment of aims with award level",
+        "Feasibility indicators (time, complexity, tasks)",
+        "Proportion of work relative to award expectations"
+      ]
+    },
+    {
+      "name": "Research Design & Methodological Rigor",
+      "definition": "Clarity, appropriateness, and robustness of study design to answer the research questions.",
+      "signals": [
+        "Explicit description of methods",
+        "Logical alignment between aims and methods",
+        "Discussion of controls, sample size, or methodology justification",
+        "Structured methodological sections"
+      ]
+    },
+    {
+      "name": "Potential Impact on Patients, Public, and Health Services",
+      "definition": "Likely benefits or influence of the research on patients, carers, or health and care systems.",
+      "signals": [
+        "Mentions of direct or indirect patient/public benefits",
+        "Alignment with health priorities or societal needs",
+        "Clarity and specificity of expected outcomes"
+      ]
+    },
+    {
+      "name": "Engagement with People & Communities",
+      "definition": "Evidence of meaningful involvement of patients, carers, or communities.",
+      "signals": [
+        "Use of co-design, participatory methods, or consultations",
+        "References to ethical considerations and feedback mechanisms",
+        "Description of involvement at multiple project stages"
+      ]
+    },
+    {
+      "name": "Justification of Resources & Award Costs",
+      "definition": "Appropriateness and clarity of requested resources for the planned work.",
+      "signals": [
+        "Explicit links between tasks and resources requested",
+        "Budget proportionality to project scope",
+        "Clear rationale for funding level"
+      ]
+    },
+    {
+      "name": "Quality of Previous Research (if applicable)",
+      "definition": "Prior relevant research experience demonstrating capability to deliver the proposed project.",
+      "signals": [
+        "Number and relevance of publications or outputs",
+        "Evidence of prior successful projects",
+        "Skills alignment with proposed work"
+      ]
+    },
+    {
+      "name": "Inclusive Research Design",
+      "definition": "Consideration of inclusivity throughout the research lifecycle, including participant diversity and accessibility.",
+      "signals": [
+        "Explicit strategies for diverse recruitment",
+        "Adaptive methods or accessibility considerations",
+        "Equity and participation indicators"
+      ]
+    }
+  ],
+  "Training and development": [
+    {
+      "name": "Quality and Relevance of Proposed Training",
+      "definition": "How well-structured, clear, and relevant the training plan is in relation to the project’s goals and the applicant’s research needs.",
+      "signals": [
+        "Completeness and clarity of training description",
+        "Alignment of training topics with project methods or techniques",
+        "Structured timeline or sequencing of training activities",
+        "Explicit links between training content and skill acquisition"
+      ]
+    },
+    {
+      "name": "Suitability to Personal Development and Project Needs",
+      "definition": "How well the proposed training addresses the applicant’s current skills gaps and supports successful project delivery.",
+      "signals": [
+        "Identification of personal skill gaps",
+        "Clear mapping between training activities and project tasks",
+        "Evidence that proposed training is targeted rather than generic",
+        "Mention of mentorship, workshops, or formal courses relevant to development needs"
+      ]
+    },
+    {
+      "name": "Support for Career Aspirations",
+      "definition": "The extent to which the training plan, and any professional practice components, contribute to the applicant’s long-term career goals.",
+      "signals": [
+        "Explicit statement of career goals",
+        "Connections between training activities and future career trajectory",
+        "Indications of skill transferability beyond the current project",
+        "Reference to professional practice or experiential learning where applicable"
+      ]
+    }
+  ],
+  "Sites and support": [
+    {
+      "name": "Track Record of the Contracting Organisation (and Partners)",
+      "definition": "Demonstrated expertise, experience, and research achievements of the organisation(s) in the proposed research area.",
+      "signals": [
+        "Publication or project history in relevant research fields",
+        "Previous funding success or awards in similar domains",
+        "Mention of prior collaborations or partnerships",
+        "Highlighted achievements or notable outputs"
+      ]
+    },
+    {
+      "name": "Suitability of Supervisory Support and Mentorship Arrangements",
+      "definition": "Quality, clarity, and appropriateness of supervision and mentoring for supporting the applicant’s research and career development.",
+      "signals": [
+        "Explicit description of supervisor roles and responsibilities",
+        "Evidence of mentorship plans, meetings, or training support",
+        "Alignment between supervisor expertise and project needs",
+        "Presence of structured supervision framework (frequency, format, accountability)"
+      ]
+    },
+    {
+      "name": "Appropriateness of the Contracting Organisation to Support the Award and Career Aspirations",
+      "definition": "How well the organisation (and any partners) can provide the infrastructure, resources, and environment necessary to deliver the project and support the applicant’s career growth.",
+      "signals": [
+        "Description of facilities, infrastructure, or resources provided",
+        "Links between organisational support and project success",
+        "Alignment of organisational focus with applicant’s career trajectory",
+        "Evidence of tailored support for award type (doctoral, postdoctoral)"
+      ]
+    },
+    {
+      "name": "Commitment to Inclusive and Supportive Research Culture",
+      "definition": "Evidence that the organisation fosters inclusivity, research integrity, and a supportive environment for all researchers.",
+      "signals": [
+        "Mentions of policies or practices promoting diversity, equity, and inclusion",
+        "Evidence of inclusive recruitment, mentoring, or support initiatives",
+        "References to adherence to research integrity principles",
+        "Statements on organisational culture, training, or initiatives supporting underrepresented groups"
+      ]
+    }
+  ],
+  "Working with people and communities": [
+    {
+      "name": "Integration of Lived Experience in Research Design",
+      "definition": "How input from patients, carers, or people with relevant lived experience has shaped the research questions, design, and methods.",
+      "signals": [
+        "Mentions of consultation or co-design activities",
+        "Specific examples of changes made to study design based on lived experience",
+        "References to patient or community advisory groups"
+      ]
+    },
+    {
+      "name": "Diversity and Inclusivity of the Research Team",
+      "definition": "Extent to which the research team reflects diversity in terms of skills, experience, and demographic representation.",
+      "signals": [
+        "Explicit mentions of team composition across gender, ethnicity, age, or other relevant characteristics",
+        "Statements about inclusion in hiring or team-building",
+        "Evidence of equitable task allocation and collaboration"
+      ]
+    },
+    {
+      "name": "Commitment to Maximising Public and Patient Benefit",
+      "definition": "Clarity and strength of the plan to ensure research outcomes meaningfully benefit patients, carers, and the public.",
+      "signals": [
+        "Mentions of dissemination, knowledge translation, or implementation plans",
+        "Clear links between study objectives and anticipated benefits",
+        "Emphasis on actionable outcomes or improvements in health/care"
+      ]
+    },
+    {
+      "name": "Representation of Seldom Heard or Underserved Groups",
+      "definition": "Degree to which participants and PPI contributors represent groups historically underrepresented in research, including those facing health inequalities.",
+      "signals": [
+        "Mention of specific demographic groups (age, race, ethnicity, disability, gender, sexual orientation, religion/belief, location, socioeconomic status)",
+        "Evidence of targeted recruitment strategies",
+        "Discussion of barriers to participation and mitigation strategies"
+      ]
+    },
+    {
+      "name": "Inclusivity Across the Research Lifecycle",
+      "definition": "Demonstration that inclusion is considered at all stages of the project: planning, recruitment, conduct, analysis, and dissemination.",
+      "signals": [
+        "References to inclusion in study design, participant selection, and analysis",
+        "Consideration of accessibility and equity in all project stages",
+        "Documented plans for ongoing evaluation and adaptation"
+      ]
+    },
+    {
+      "name": "Costed and Resourced Plan for Research Inclusion",
+      "definition": "Evidence that research inclusion has been properly budgeted and resourced within the proposal.",
+      "signals": [
+        "Explicit budget line(s) for inclusion activities (PPI, outreach, recruitment support)",
+        "Mention of staff time, materials, or training dedicated to inclusion",
+        "Alignment between inclusion plan and allocated resources"
+      ]
+    }
+  ],
+  "Application Form": [
+    {
+      "name": "Use of Formatting, Headings, and Subheadings",
+      "definition": "Effective use of text formatting to make the application clear, navigable, and easy to read.",
+      "signals": [
+        "Presence and consistency of headings and subheadings",
+        "Use of bold or emphasis for key terms",
+        "Structured hierarchy of sections (logical nesting of headings)",
+        "Patterns detected via text parsing for formatting markers"
+      ]
+    },
+    {
+      "name": "Adherence to Word/Character Limits",
+      "definition": "Each section stays within specified word or character limits, demonstrating concise writing.",
+      "signals": [
+        "Character/word count per section compared to allowed limits",
+        "Detection of over-length sections",
+        "Indicators of conciseness (average sentence/paragraph length)"
+      ]
+    },
+    {
+      "name": "Limited Duplication and Repetition",
+      "definition": "Avoidance of unnecessary repetition within or across sections.",
+      "signals": [
+        "Semantic similarity measures between sentences/paragraphs",
+        "Detection of repeated phrases or ideas",
+        "Novelty score for each section (unique content vs. overlap)"
+      ]
+    },
+    {
+      "name": "Logical Flow and Coherence Across Sections",
+      "definition": "The application progresses logically, with a clear thread linking the research question, objectives, and work packages.",
+      "signals": [
+        "Semantic coherence between sections (using embeddings or similarity metrics)",
+        "Explicit linking of objectives to methods and work packages",
+        "Presence of transitional phrases or linking statements",
+        "Detectable narrative thread anchored on research aims"
+      ]
+    }
+  ]
 }

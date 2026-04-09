@@ -16,6 +16,14 @@ SECTION_KEY_MAP = {
     "Application Form": "application_form",
 }
 SECTION_NAME_MAP = {value: key for key, value in SECTION_KEY_MAP.items()}
+SECTION_ID_PREFIX = {
+    "general": "g",
+    "proposed_research": "pr",
+    "training_development": "td",
+    "sites_support": "ss",
+    "wpcc": "wp",
+    "application_form": "af",
+}
 
 PLAUSIBILITY_TO_MULTIPLIER = {
     5: (1.0, None),
@@ -30,30 +38,107 @@ PLAUSIBILITY_TO_MULTIPLIER = {
 def load_rubric(criteria_path: str | Path) -> list[dict[str, Any]]:
     raw = json.loads(Path(criteria_path).read_text(encoding="utf-8"))
     sections: list[dict[str, Any]] = []
+
+    def build_signal_objects(prefix: str, signal_texts: list[str]) -> list[dict[str, Any]]:
+        return [
+            {
+                "sid": f"{prefix}.{chr(97 + idx)}",
+                "text": signal_text,
+                "weight": 1.0,
+            }
+            for idx, signal_text in enumerate(signal_texts)
+        ]
+
+    def build_sub(
+        *,
+        sub_id: str,
+        name: str,
+        definition: str,
+        signal_texts: list[str],
+        group_name: str | None = None,
+        weight: float = 1.0,
+    ) -> dict[str, Any]:
+        sub = {
+            "sub_id": sub_id,
+            "name": name,
+            "definition": definition,
+            "weight": float(weight),
+            "signals": build_signal_objects(sub_id, signal_texts),
+        }
+        if group_name:
+            sub["group_name"] = group_name
+        return sub
+
     for human_name, payload in raw.items():
+        if human_name == "meta":
+            continue
         section_key = SECTION_KEY_MAP.get(human_name)
         if not section_key:
             continue
         sub_criteria = []
-        for sub in payload.get("sub_criteria", []):
-            signals = []
-            for signal in sub.get("signals", []):
-                signals.append({
-                    "sid": signal["sid"],
-                    "text": signal["text"],
-                    "weight": float(signal.get("weight", 1.0)),
-                })
-            sub_criteria.append({
-                "sub_id": sub["sub_id"],
-                "name": sub["name"],
-                "definition": sub.get("definition", ""),
-                "weight": float(sub.get("weight", 1.0)),
-                "signals": signals,
-            })
+        if isinstance(payload, dict) and isinstance(payload.get("sub_criteria"), list):
+            for sub in payload.get("sub_criteria", []):
+                signals = []
+                for signal in sub.get("signals", []):
+                    signals.append({
+                        "sid": signal["sid"],
+                        "text": signal["text"],
+                        "weight": float(signal.get("weight", 1.0)),
+                    })
+                item = {
+                    "sub_id": sub["sub_id"],
+                    "name": sub["name"],
+                    "definition": sub.get("definition", ""),
+                    "weight": float(sub.get("weight", 1.0)),
+                    "signals": signals,
+                }
+                if sub.get("group_name"):
+                    item["group_name"] = sub["group_name"]
+                sub_criteria.append(item)
+        elif human_name == "General" and isinstance(payload, dict):
+            idx = 1
+            for signal_text in payload.get("common_characteristics_of_good_applications", []):
+                sub_criteria.append(build_sub(
+                    sub_id=f"g.{idx}",
+                    name=f"Common Characteristics Of Good Applications: {signal_text}",
+                    definition=signal_text,
+                    signal_texts=[signal_text],
+                    group_name="Common Characteristics Of Good Applications",
+                ))
+                idx += 1
+            for signal_text in payload.get("tell_us_why_you_need_this_award", []):
+                sub_criteria.append(build_sub(
+                    sub_id=f"g.{idx}",
+                    name=f"Tell Us Why You Need This Award: {signal_text}",
+                    definition=signal_text,
+                    signal_texts=[signal_text],
+                    group_name="Tell Us Why You Need This Award",
+                ))
+                idx += 1
+            for applicant_item in payload.get("Applicant", []):
+                sub_criteria.append(build_sub(
+                    sub_id=f"g.{idx}",
+                    name=applicant_item["name"],
+                    definition=applicant_item.get("definition", ""),
+                    signal_texts=list(applicant_item.get("signals", [])),
+                    group_name="Applicant",
+                ))
+                idx += 1
+        elif isinstance(payload, list):
+            prefix = SECTION_ID_PREFIX[section_key]
+            for idx, sub in enumerate(payload, start=1):
+                sub_criteria.append(build_sub(
+                    sub_id=f"{prefix}.{idx}",
+                    name=sub["name"],
+                    definition=sub.get("definition", ""),
+                    signal_texts=list(sub.get("signals", [])),
+                ))
+        else:
+            continue
         sections.append({
             "human_name": human_name,
             "section_key": section_key,
-            "weight": float(payload.get("weight", 1.0)),
+            "weight": float(payload.get("weight", 1.0)) if isinstance(payload, dict) else 1.0,
             "sub_criteria": sub_criteria,
         })
     return sections
@@ -158,6 +243,7 @@ def build_stage1_messages(
                     "sub_id": sub["sub_id"],
                     "name": sub["name"],
                     "definition": sub["definition"],
+                    "group_name": sub.get("group_name"),
                     "signals": [
                         {"sid": signal["sid"], "text": signal["text"]}
                         for signal in sub["signals"]
@@ -385,6 +471,7 @@ def _normalize_stage1_output(
                 "sub_id": expected_sub["sub_id"],
                 "name": expected_sub["name"],
                 "definition": expected_sub["definition"],
+                "group_name": expected_sub.get("group_name"),
                 "weight": expected_sub["weight"],
                 "needed_section_ids": needed_section_ids,
                 "evidence_count": len(needed_section_ids),
@@ -472,10 +559,9 @@ def _aggregate_sub_criterion(sub: dict[str, Any], section_data: dict[str, Any]) 
     total_weight = sum(signal["weight"] for signal in sub["signals"]) or 1.0
     weighted_sum = sum(signal["score_0to2_weighted"] * signal["weight"] for signal in sub["signals"])
     score_10 = round((weighted_sum / (2 * total_weight)) * 10, 2)
-    avg_plausibility = round(
-        sum(signal["plausibility_0to5"] for signal in sub["signals"]) / max(1, len(sub["signals"])),
-        2,
-    )
+    avg_plausibility = int(round(
+        sum(signal["plausibility_0to5"] for signal in sub["signals"]) / max(1, len(sub["signals"]))
+    ))
     weak_signal_count = sum(1 for signal in sub["signals"] if signal["plausibility_0to5"] <= 1)
     evidence = []
     for section_id in sub["needed_section_ids"]:
@@ -513,10 +599,9 @@ def _aggregate_section(section: dict[str, Any], section_data: dict[str, Any]) ->
     weighted_score = sum(sub["score_10"] * sub["weight"] for sub in sub_criteria)
     score_10 = round(weighted_score / total_weight, 2)
     all_signals = [signal for sub in sub_criteria for signal in sub["signals"]]
-    avg_plausibility = round(
-        sum(signal["plausibility_0to5"] for signal in all_signals) / max(1, len(all_signals)),
-        2,
-    )
+    avg_plausibility = int(round(
+        sum(signal["plausibility_0to5"] for signal in all_signals) / max(1, len(all_signals))
+    ))
     weak_signal_count = sum(1 for signal in all_signals if signal["plausibility_0to5"] <= 1)
     evidence_count = sum(sub["evidence_count"] for sub in sub_criteria)
     total_items = len(sub_criteria)
@@ -581,13 +666,12 @@ def _aggregate_overall(features: dict[str, dict[str, Any]], section_weights: dic
         "positive_items": sum(section["overall"]["positive_items"] for section in features.values()),
         "expected_items": sum(section["overall"]["expected_items"] for section in features.values()),
     }
-    avg_plausibility = round(
+    avg_plausibility = int(round(
         sum(
             section["overall"]["avg_plausibility_0to5"] * section["overall"]["signal_count"]
             for section in features.values()
-        ) / max(1, totals["signal_count"]),
-        2,
-    )
+        ) / max(1, totals["signal_count"])
+    ))
     return {
         "score_10": score_10,
         "final_score_0to100": round(score_10 * 10, 2),

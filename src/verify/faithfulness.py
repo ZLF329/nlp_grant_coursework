@@ -17,7 +17,7 @@ def build_judge_messages(section_key: str, payload: dict[str, Any]) -> list[dict
     system = (
         "You are auditing whether cited section references actually support grant-scoring "
         "judgments. Be lenient. Only assign low plausibility when the cited evidence clearly "
-        "fails to support the judgment. Score each signal from 0 to 5. Do not rescore the "
+        "fails to support the judgment. Score each signal from 0 to 5 using integers only. Do not rescore the "
         "application itself. Reply with JSON only.\n\n"
         "Important:\n"
         "Return a single JSON object with one key: `judgments`.\n"
@@ -40,7 +40,8 @@ def build_judge_messages(section_key: str, payload: dict[str, Any]) -> list[dict
         f"{evidence_context}\n\n"
         "Audit package:\n"
         f"{json.dumps(audit_package, ensure_ascii=False, indent=2)}\n\n"
-        "Return one judgment per signal. `plausibility` meanings: 5=clear support, "
+        "Return one judgment per signal. `plausibility` must be an integer. "
+        "`plausibility` meanings: 5=clear support, "
         "4=mostly supported, 3=some jump but acceptable, 2=weakly supported, "
         "1=barely supported, 0=not supported or contradicted.\n\n"
         "Example:\n"

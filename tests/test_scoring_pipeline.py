@@ -5,7 +5,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from src.scoring.pipeline import build_section_index, score_application_base
+from src.scoring.pipeline import build_section_index, load_rubric, score_application_base
 from src.verify.faithfulness import FallbackJudge
 
 
@@ -66,6 +66,23 @@ class PipelineTests(unittest.TestCase):
                 "S08": "SUMMARY BUDGET",
             },
         )
+
+    def test_load_rubric_expands_grouped_general_structure(self):
+        rubric = load_rubric(CRITERIA_PATH)
+        general = next(section for section in rubric if section["section_key"] == "general")
+        self.assertEqual(len(general["sub_criteria"]), 12)
+        self.assertEqual(general["sub_criteria"][0]["sub_id"], "g.1")
+        self.assertEqual(
+            general["sub_criteria"][0]["group_name"],
+            "Common Characteristics Of Good Applications",
+        )
+        self.assertEqual(general["sub_criteria"][4]["sub_id"], "g.5")
+        self.assertEqual(
+            general["sub_criteria"][4]["group_name"],
+            "Tell Us Why You Need This Award",
+        )
+        self.assertEqual(general["sub_criteria"][8]["sub_id"], "g.9")
+        self.assertEqual(general["sub_criteria"][8]["group_name"], "Applicant")
 
     def test_new_section_object_response_scores_with_section_ids(self):
         payload = {
@@ -160,6 +177,35 @@ class PipelineTests(unittest.TestCase):
             artifacts = result["debug"]["artifacts"]
             for artifact_path in artifacts.values():
                 self.assertTrue(Path(artifact_path).exists(), artifact_path)
+
+    def test_plausibility_outputs_are_integers(self):
+        payload = {
+            "general": {
+                "g.10": {
+                    "signals": {
+                        "g.10.a": 1,
+                        "g.10.b": 1,
+                        "g.10.c": 1,
+                        "g.10.d": 1
+                    },
+                    "needed_section_ids": ["S07"]
+                }
+            }
+        }
+        result = score_application_base(
+            application=sample_application(),
+            criteria_path=CRITERIA_PATH,
+            doc_id="plausibility_doc",
+            stage1_client=FakeStage1Client(payload),
+            judge=FallbackJudge(),
+        )
+        criterion = next(
+            item for item in result["features"]["general"]["sub_criteria"]
+            if item["sub_id"] == "g.10"
+        )
+        self.assertIsInstance(criterion["avg_plausibility_0to5"], int)
+        self.assertIsInstance(result["features"]["general"]["overall"]["avg_plausibility_0to5"], int)
+        self.assertIsInstance(result["overall"]["avg_plausibility_0to5"], int)
 
 
 if __name__ == "__main__":
