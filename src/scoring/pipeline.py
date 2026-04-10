@@ -166,11 +166,19 @@ def load_raw_criteria(criteria_path: str | Path) -> dict[str, Any]:
 def _safe_json_loads(text: str) -> dict[str, Any]:
     clean = (text or "").strip()
     if clean.startswith("```"):
-        clean = clean.strip("`")
+        clean = clean[3:]
+        if clean.startswith("json"):
+            clean = clean[4:]
         if "\n" in clean:
             clean = clean.split("\n", 1)[1]
         if clean.endswith("```"):
             clean = clean[:-3]
+    clean = clean.strip()
+    if clean:
+        first_brace = clean.find("{")
+        last_brace = clean.rfind("}")
+        if first_brace != -1 and last_brace != -1 and last_brace > first_brace:
+            clean = clean[first_brace:last_brace + 1]
     return json.loads(clean)
 
 
@@ -386,6 +394,7 @@ def build_scoring_messages(
         "Return JSON only.\n"
         "Each signal score must be exactly one of: 0, 1, 2.\n"
         "Each `used_chunk_ids` entry must be chosen only from the provided retrieved chunk IDs.\n"
+        f"Each `used_chunk_ids` array must contain between 0 and {USED_CHUNK_MAX} IDs only.\n"
         "For each sub-criterion, include a `rationale` string (1-3 sentences) explaining how you arrived at the scores.\n"
         "Do not output extra keys beyond those specified."
     )
@@ -401,6 +410,8 @@ def build_scoring_messages(
         "- Each sub_id object must contain `signals`, `used_chunk_ids`, and `rationale`.\n"
         "- Each signal score must be 0, 1, or 2.\n"
         "- `used_chunk_ids` must contain only IDs from `retrieved_chunk_ids`.\n"
+        f"- `used_chunk_ids` must contain at most {USED_CHUNK_MAX} chunk IDs.\n"
+        "- Cite only the smallest set of chunks needed; do not dump long ID lists.\n"
         "- If no supporting evidence is shown, score 0 and use an empty `used_chunk_ids` array.\n"
         "- You may only rely on chunk text shown in `evidence_text`; do not infer omitted content from `...`.\n"
         "- Return JSON only.\n\n"
