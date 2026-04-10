@@ -35,6 +35,18 @@ class FakeClient:
         return json.dumps(self.payloads.pop(0), ensure_ascii=False)
 
 
+class RawFakeClient(FakeClient):
+    def generate_json(self, messages, *, schema, max_tokens):  # noqa: ANN001
+        self.calls.append({
+            "messages": messages,
+            "schema": schema,
+            "max_tokens": max_tokens,
+        })
+        if not self.payloads:
+            raise AssertionError(f"{self.model_name} ran out of payloads")
+        return self.payloads.pop(0)
+
+
 def sample_application() -> dict:
     return {
         "SUMMARY INFORMATION": {
@@ -314,6 +326,35 @@ class PipelineTests(unittest.TestCase):
             )
             for artifact_path in result["debug"]["artifacts"].values():
                 self.assertTrue(Path(artifact_path).exists(), artifact_path)
+
+    def test_invalid_json_writes_raw_debug_files(self):
+        application = sample_application()
+        _, scorer_a_payloads, scorer_b_payloads = build_payloads_for_application(application)
+        scorer_a = FakeClient(payloads=scorer_a_payloads, model_name="model-a")
+        scorer_b = RawFakeClient(
+            payloads=[json.dumps(scorer_b_payloads[0], ensure_ascii=False), "```json\n{\"broken\": \n```"],
+            model_name="model-b",
+        )
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            with self.assertRaises(ValueError) as ctx:
+                score_application_base(
+                    application=application,
+                    criteria_path=CRITERIA_PATH,
+                    doc_id="broken_doc",
+                    scorer_client_a=scorer_a,
+                    scorer_client_b=scorer_b,
+                    artifacts_dir=tmpdir,
+                )
+
+            message = str(ctx.exception)
+            self.assertIn("Raw outputs written to:", message)
+            self.assertIn("broken_doc_proposed_research_model_a_raw.txt", message)
+            self.assertIn("broken_doc_proposed_research_model_b_raw.txt", message)
+            self.assertTrue((Path(tmpdir) / "broken_doc_proposed_research_model_a_raw.txt").exists())
+            self.assertTrue((Path(tmpdir) / "broken_doc_proposed_research_model_b_raw.txt").exists())
+            self.assertTrue((Path(tmpdir) / "broken_doc_model_a_raw.json").exists())
+            self.assertTrue((Path(tmpdir) / "broken_doc_model_b_raw.json").exists())
 
 
 if __name__ == "__main__":

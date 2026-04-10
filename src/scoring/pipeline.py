@@ -821,6 +821,47 @@ def _write_artifacts(
     }
 
 
+def _write_failure_artifacts(
+    *,
+    artifacts_dir: str | Path | None,
+    doc_id: str,
+    pool_lookup: dict[str, dict[str, str]],
+    pool_index_text: str,
+    retrieval_raw: str,
+    retrieval_parsed: dict[str, Any],
+    model_a_raw_by_section: dict[str, str],
+    model_b_raw_by_section: dict[str, str],
+    normalized_sections: list[dict[str, Any]],
+    section_key: str,
+    raw_a: str,
+    raw_b: str,
+) -> dict[str, str]:
+    artifact_paths = _write_artifacts(
+        artifacts_dir=artifacts_dir,
+        doc_id=doc_id,
+        pool_lookup=pool_lookup,
+        pool_index_text=pool_index_text,
+        retrieval_raw=retrieval_raw,
+        retrieval_parsed=retrieval_parsed,
+        model_a_raw_by_section=model_a_raw_by_section,
+        model_b_raw_by_section=model_b_raw_by_section,
+        normalized_sections=normalized_sections,
+    )
+    if artifacts_dir is None:
+        return artifact_paths
+
+    artifacts_path = Path(artifacts_dir)
+    section_model_a_path = artifacts_path / f"{doc_id}_{section_key}_model_a_raw.txt"
+    section_model_b_path = artifacts_path / f"{doc_id}_{section_key}_model_b_raw.txt"
+    section_model_a_path.write_text(raw_a, encoding="utf-8")
+    section_model_b_path.write_text(raw_b, encoding="utf-8")
+    return {
+        **artifact_paths,
+        "failed_section_model_a_raw": str(section_model_a_path),
+        "failed_section_model_b_raw": str(section_model_b_path),
+    }
+
+
 def score_application_base(
     *,
     application: dict[str, Any],
@@ -865,16 +906,52 @@ def score_application_base(
         try:
             parsed_a = _safe_json_loads(raw_a)
         except Exception as exc:
+            failure_artifacts = _write_failure_artifacts(
+                artifacts_dir=artifacts_dir,
+                doc_id=doc_id or "unknown",
+                pool_lookup=pool_lookup,
+                pool_index_text=pool_index_text,
+                retrieval_raw=retrieval_raw,
+                retrieval_parsed=retrieval_parsed,
+                model_a_raw_by_section=model_a_raw_by_section,
+                model_b_raw_by_section=model_b_raw_by_section,
+                normalized_sections=sections,
+                section_key=section_key,
+                raw_a=raw_a,
+                raw_b=raw_b,
+            )
             raise ValueError(
                 f"Scorer A returned invalid JSON for section {section_key}. "
-                f"Response preview: {_response_preview(raw_a)!r}"
+                f"Response preview: {_response_preview(raw_a)!r}. "
+                f"Raw outputs written to: model_a={failure_artifacts.get('failed_section_model_a_raw')}, "
+                f"model_b={failure_artifacts.get('failed_section_model_b_raw')}, "
+                f"all_a={failure_artifacts.get('model_a_raw_response')}, "
+                f"all_b={failure_artifacts.get('model_b_raw_response')}"
             ) from exc
         try:
             parsed_b = _safe_json_loads(raw_b)
         except Exception as exc:
+            failure_artifacts = _write_failure_artifacts(
+                artifacts_dir=artifacts_dir,
+                doc_id=doc_id or "unknown",
+                pool_lookup=pool_lookup,
+                pool_index_text=pool_index_text,
+                retrieval_raw=retrieval_raw,
+                retrieval_parsed=retrieval_parsed,
+                model_a_raw_by_section=model_a_raw_by_section,
+                model_b_raw_by_section=model_b_raw_by_section,
+                normalized_sections=sections,
+                section_key=section_key,
+                raw_a=raw_a,
+                raw_b=raw_b,
+            )
             raise ValueError(
                 f"Scorer B returned invalid JSON for section {section_key}. "
-                f"Response preview: {_response_preview(raw_b)!r}"
+                f"Response preview: {_response_preview(raw_b)!r}. "
+                f"Raw outputs written to: model_a={failure_artifacts.get('failed_section_model_a_raw')}, "
+                f"model_b={failure_artifacts.get('failed_section_model_b_raw')}, "
+                f"all_a={failure_artifacts.get('model_a_raw_response')}, "
+                f"all_b={failure_artifacts.get('model_b_raw_response')}"
             ) from exc
 
         normalized_a = _normalize_model_section_output(parsed_a, rubric_section, section_chunk_ids)
