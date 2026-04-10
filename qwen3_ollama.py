@@ -8,6 +8,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import re
 import sys
 from pathlib import Path
 from typing import Any
@@ -40,7 +41,7 @@ class _Scorer:
                 "top_p": 0.9,
                 "num_predict": max_tokens,
             },
-            "think": False,
+            "think": True,
         }
         try:
             response = requests.post(
@@ -61,7 +62,9 @@ class _Scorer:
             ) from exc
         response.raise_for_status()
         body = response.json()
-        return ((body.get("message") or {}).get("content") or "").strip()
+        content = ((body.get("message") or {}).get("content") or "").strip()
+        # Some backends may still inline think tags even when reasoning is also surfaced separately.
+        return re.sub(r"<think>.*?</think>\s*", "", content, flags=re.DOTALL).strip()
 
 
 def score_application(

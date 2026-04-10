@@ -8,6 +8,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import re
 import sys
 from pathlib import Path
 from typing import Any
@@ -49,14 +50,15 @@ class _Scorer:
             messages,
             tokenize=False,
             add_generation_prompt=True,
-            enable_thinking=False,
+            enable_thinking=True,
         )
         kwargs = {"temperature": 0.1, "top_p": 0.9, "max_tokens": max_tokens}
         if self._GuidedDecodingParams is not None:
             kwargs["guided_decoding"] = self._GuidedDecodingParams(json=schema)
         sampling = self._SamplingParams(**kwargs)
         output = self.llm.generate([prompt], sampling)[0]
-        return output.outputs[0].text.strip()
+        text = output.outputs[0].text.strip()
+        return re.sub(r"<think>.*?</think>\s*", "", text, flags=re.DOTALL).strip()
 
 
 def score_application(
