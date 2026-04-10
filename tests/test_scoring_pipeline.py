@@ -6,7 +6,12 @@ import unittest
 from pathlib import Path
 
 from src.pool.build_pool import build_chunk_pool
-from src.scoring.pipeline import build_evidence_text, build_retrieval_messages, load_raw_criteria, load_rubric, score_application_base
+from src.scoring.pipeline import (
+    build_evidence_text,
+    load_rubric,
+    rule_based_retrieval,
+    score_application_base,
+)
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -38,6 +43,7 @@ def sample_application() -> dict:
         },
         "APPLICATION DETAILS": {
             "Plain English Summary of Research": "Clear patient summary for a public audience.",
+            "Scientific Abstract": "Mechanistic abstract with objectives, methods, and outcomes.",
             "Detailed Research Plan": (
                 "Alpha evidence paragraph. " * 80
                 + "\n\n"
@@ -65,19 +71,10 @@ def sample_application() -> dict:
 def build_payloads_for_application(application: dict) -> tuple[dict[str, list[str]], list[dict], list[dict]]:
     rubric = load_rubric(CRITERIA_PATH)
     pool = build_chunk_pool(application)
-    pool_lookup = pool["pool_lookup"]
+    retrieved = rule_based_retrieval(rubric, pool["section_chunk_ids"], pool["pool_lookup"])
 
-    general_chunks = list(pool_lookup)[:2]
-    proposed_chunks = list(pool_lookup)[2:5]
-
-    retrieval_payload = {
-        "general": [general_chunks[0], "missing", general_chunks[0], general_chunks[1]],
-        "proposed_research": [proposed_chunks[2], proposed_chunks[0], proposed_chunks[1]],
-        "training_development": [],
-        "sites_support": [],
-        "wpcc": [],
-        "application_form": [],
-    }
+    general_chunks = retrieved["general"][:2]
+    proposed_chunks = retrieved["proposed_research"][:3]
 
     scorer_a_payloads: list[dict] = []
     scorer_b_payloads: list[dict] = []
@@ -88,79 +85,104 @@ def build_payloads_for_application(application: dict) -> tuple[dict[str, list[st
             payload_a[sub["sub_id"]] = {
                 "signals": {signal["sid"]: 0 for signal in sub["signals"]},
                 "used_chunk_ids": [],
+                "rationale": f"Model A found limited support for {sub['name']}.",
             }
             payload_b[sub["sub_id"]] = {
                 "signals": {signal["sid"]: 0 for signal in sub["signals"]},
                 "used_chunk_ids": [],
+                "rationale": f"Model B found limited support for {sub['name']}.",
             }
 
         if section["section_key"] == "general":
             first_sub = section["sub_criteria"][0]
-            sid = first_sub["signals"][0]["sid"]
             payload_a[first_sub["sub_id"]] = {
-                "signals": {sid: 2},
+                "signals": {signal["sid"]: 2 for signal in first_sub["signals"]},
                 "used_chunk_ids": [general_chunks[0]],
+                "rationale": "Model A found clear evidence across the grouped general signals.",
             }
             payload_b[first_sub["sub_id"]] = {
-                "signals": {sid: 1},
+                "signals": {signal["sid"]: 1 for signal in first_sub["signals"]},
                 "used_chunk_ids": [general_chunks[1]],
+                "rationale": "Model B found partial support across the grouped general signals.",
             }
         elif section["section_key"] == "proposed_research":
             first_sub = section["sub_criteria"][0]
             payload_a[first_sub["sub_id"]] = {
                 "signals": {signal["sid"]: 2 for signal in first_sub["signals"]},
                 "used_chunk_ids": [proposed_chunks[2]],
+                "rationale": "Model A found a strong plain-English summary with clear beneficiaries and purpose.",
             }
             payload_b[first_sub["sub_id"]] = {
                 "signals": {signal["sid"]: 0 for signal in first_sub["signals"]},
                 "used_chunk_ids": [proposed_chunks[0]],
+                "rationale": "Model B found little convincing plain-English support in the cited chunk.",
             }
         elif section["section_key"] == "training_development":
             first_sub = section["sub_criteria"][0]
-            sid = first_sub["signals"][0]["sid"]
             payload_a[first_sub["sub_id"]] = {
-                "signals": {sid: 2},
+                "signals": {signal["sid"]: 2 for signal in first_sub["signals"]},
                 "used_chunk_ids": [],
+                "rationale": "Model A attempted a positive training score without grounding it to any chunk.",
             }
             payload_b[first_sub["sub_id"]] = {
-                "signals": {sid: 2},
+                "signals": {signal["sid"]: 2 for signal in first_sub["signals"]},
                 "used_chunk_ids": [],
+                "rationale": "Model B also attempted a positive training score without evidence.",
             }
 
         scorer_a_payloads.append(payload_a)
         scorer_b_payloads.append(payload_b)
 
-    return retrieval_payload, scorer_a_payloads, scorer_b_payloads
+    return retrieved, scorer_a_payloads, scorer_b_payloads
 
 
 class PipelineTests(unittest.TestCase):
-    def test_retrieval_prompt_uses_raw_criteria_json(self):
-        criteria_payload = load_raw_criteria(CRITERIA_PATH)
-        messages = build_retrieval_messages(
-            criteria_payload=criteria_payload,
-            pool_index_text="chunk_a: example",
-        )
-
-        self.assertEqual(messages[1]["content"].splitlines()[0], "Criteria points JSON:")
-        self.assertIn('"General"', messages[1]["content"])
-        self.assertIn('"Application Form"', messages[1]["content"])
-        self.assertIn('"General": "general"', messages[1]["content"])
-
-    def test_load_rubric_expands_grouped_general_structure(self):
+    def test_load_rubric_general_has_six_subcriteria(self):
         rubric = load_rubric(CRITERIA_PATH)
         general = next(section for section in rubric if section["section_key"] == "general")
-        self.assertEqual(len(general["sub_criteria"]), 12)
-        self.assertEqual(general["sub_criteria"][0]["sub_id"], "g.1")
-        self.assertEqual(general["sub_criteria"][0]["group_name"], "Common Characteristics Of Good Applications")
-        self.assertEqual(general["sub_criteria"][4]["sub_id"], "g.5")
-        self.assertEqual(general["sub_criteria"][4]["group_name"], "Tell Us Why You Need This Award")
-        self.assertEqual(general["sub_criteria"][8]["sub_id"], "g.9")
-        self.assertEqual(general["sub_criteria"][8]["group_name"], "Applicant")
 
-    def test_score_application_uses_chunk_pool_and_dual_model_ensemble(self):
+        self.assertEqual(len(general["sub_criteria"]), 6)
+        self.assertEqual(general["sub_criteria"][0]["sub_id"], "g.1")
+        self.assertEqual(general["sub_criteria"][0]["group_name"], "Common Characteristics of Good Applications")
+        self.assertEqual(len(general["sub_criteria"][0]["signals"]), 4)
+        self.assertEqual(general["sub_criteria"][1]["sub_id"], "g.2")
+        self.assertEqual(general["sub_criteria"][1]["group_name"], "Tell Us Why You Need This Award")
+        self.assertEqual(len(general["sub_criteria"][1]["signals"]), 4)
+        self.assertEqual(general["sub_criteria"][2]["sub_id"], "g.3")
+        self.assertEqual(general["sub_criteria"][2]["group_name"], "Applicant")
+
+    def test_rule_based_retrieval_maps_sections_to_expected_chunks(self):
         application = sample_application()
-        retrieval_payload, scorer_a_payloads, scorer_b_payloads = build_payloads_for_application(application)
-        retrieval_client = FakeClient(payloads=[retrieval_payload], model_name="retrieval-model")
+        rubric = load_rubric(CRITERIA_PATH)
+        pool = build_chunk_pool(application)
+        pool_lookup = pool["pool_lookup"]
+
+        retrieved = rule_based_retrieval(rubric, pool["section_chunk_ids"], pool_lookup)
+        all_chunk_ids = list(pool_lookup)
+
+        self.assertEqual(retrieved["general"], all_chunk_ids)
+        self.assertEqual(retrieved["application_form"], all_chunk_ids)
+
+        training_sections = {pool_lookup[chunk_id]["parser_section"] for chunk_id in retrieved["training_development"]}
+        self.assertEqual(training_sections, {"Training & Development and Research Support"})
+
+        sites_sections = {pool_lookup[chunk_id]["parser_section"] for chunk_id in retrieved["sites_support"]}
+        self.assertEqual(sites_sections, {"Contracting Organisation", "Lead Applicant"})
+
+        proposed_sections = {pool_lookup[chunk_id]["parser_section"] for chunk_id in retrieved["proposed_research"]}
+        self.assertEqual(
+            proposed_sections,
+            {
+                "Plain English Summary of Research",
+                "Scientific Abstract",
+                "Detailed Research Plan",
+                "Patient & Public Involvement",
+            },
+        )
+
+    def test_score_application_uses_rule_based_retrieval_and_dual_model_rationales(self):
+        application = sample_application()
+        retrieved, scorer_a_payloads, scorer_b_payloads = build_payloads_for_application(application)
         scorer_a = FakeClient(payloads=scorer_a_payloads, model_name="model-a")
         scorer_b = FakeClient(payloads=scorer_b_payloads, model_name="model-b")
 
@@ -168,7 +190,6 @@ class PipelineTests(unittest.TestCase):
             application=application,
             criteria_path=CRITERIA_PATH,
             doc_id="dual_doc",
-            retrieval_client=retrieval_client,
             scorer_client_a=scorer_a,
             scorer_client_b=scorer_b,
         )
@@ -176,7 +197,8 @@ class PipelineTests(unittest.TestCase):
         self.assertGreater(result["pool_size"], 0)
         self.assertTrue(result["pool_lookup"])
         self.assertTrue(result["section_chunk_ids"])
-        self.assertNotIn("section_index", result)
+        self.assertEqual(result["run_info"]["retrieval_method"], "rule_based")
+        self.assertEqual(result["debug"]["retrieved_chunks"], retrieved)
 
         general = result["features"]["general"]["sub_criteria"][0]
         self.assertEqual(general["signals"][0]["model_a_score"], 2)
@@ -187,31 +209,14 @@ class PipelineTests(unittest.TestCase):
         self.assertEqual(general["evidence_status"], "ok")
         self.assertEqual(general["evidence_count"], 2)
         self.assertEqual(len(general["evidence"]), 2)
-
-    def test_retrieval_filters_invalid_and_duplicate_chunk_ids(self):
-        application = sample_application()
-        retrieval_payload, scorer_a_payloads, scorer_b_payloads = build_payloads_for_application(application)
-        retrieval_client = FakeClient(payloads=[retrieval_payload], model_name="retrieval-model")
-        scorer_a = FakeClient(payloads=scorer_a_payloads, model_name="model-a")
-        scorer_b = FakeClient(payloads=scorer_b_payloads, model_name="model-b")
-
-        result = score_application_base(
-            application=application,
-            criteria_path=CRITERIA_PATH,
-            doc_id="retrieval_doc",
-            retrieval_client=retrieval_client,
-            scorer_client_a=scorer_a,
-            scorer_client_b=scorer_b,
-        )
-
-        retrieved = result["debug"]["retrieved_chunks"]["general"]
-        self.assertEqual(len(retrieved), 2)
-        self.assertEqual(len(set(retrieved)), 2)
+        self.assertEqual(general["rationale_model_a"], "Model A found clear evidence across the grouped general signals.")
+        self.assertEqual(general["rationale_model_b"], "Model B found partial support across the grouped general signals.")
+        self.assertFalse(general["missing_evidence"])
+        self.assertEqual(general["missing_evidence_models"], [])
 
     def test_scoring_message_uses_original_order_with_ellipsis(self):
         application = sample_application()
-        retrieval_payload, scorer_a_payloads, scorer_b_payloads = build_payloads_for_application(application)
-        retrieval_client = FakeClient(payloads=[retrieval_payload], model_name="retrieval-model")
+        _, scorer_a_payloads, scorer_b_payloads = build_payloads_for_application(application)
         scorer_a = FakeClient(payloads=scorer_a_payloads, model_name="model-a")
         scorer_b = FakeClient(payloads=scorer_b_payloads, model_name="model-b")
 
@@ -219,7 +224,6 @@ class PipelineTests(unittest.TestCase):
             application=application,
             criteria_path=CRITERIA_PATH,
             doc_id="message_doc",
-            retrieval_client=retrieval_client,
             scorer_client_a=scorer_a,
             scorer_client_b=scorer_b,
         )
@@ -229,10 +233,9 @@ class PipelineTests(unittest.TestCase):
         self.assertIn("<", proposed_user)
         self.assertIn("...", proposed_user)
 
-    def test_positive_scores_without_valid_evidence_are_zeroed(self):
+    def test_positive_scores_without_valid_evidence_are_zeroed_and_flagged(self):
         application = sample_application()
-        retrieval_payload, scorer_a_payloads, scorer_b_payloads = build_payloads_for_application(application)
-        retrieval_client = FakeClient(payloads=[retrieval_payload], model_name="retrieval-model")
+        _, scorer_a_payloads, scorer_b_payloads = build_payloads_for_application(application)
         scorer_a = FakeClient(payloads=scorer_a_payloads, model_name="model-a")
         scorer_b = FakeClient(payloads=scorer_b_payloads, model_name="model-b")
 
@@ -240,7 +243,6 @@ class PipelineTests(unittest.TestCase):
             application=application,
             criteria_path=CRITERIA_PATH,
             doc_id="invalid_evidence_doc",
-            retrieval_client=retrieval_client,
             scorer_client_a=scorer_a,
             scorer_client_b=scorer_b,
         )
@@ -249,11 +251,14 @@ class PipelineTests(unittest.TestCase):
         self.assertEqual(training["signals"][0]["score_0to2_raw"], 0.0)
         self.assertEqual(training["evidence_status"], "ok")
         self.assertEqual(training["evidence_count"], 0)
+        self.assertTrue(training["missing_evidence"])
+        self.assertEqual(training["missing_evidence_models"], ["a", "b"])
+        self.assertEqual(training["rationale_model_a"], "Model A attempted a positive training score without grounding it to any chunk.")
+        self.assertEqual(training["rationale_model_b"], "Model B also attempted a positive training score without evidence.")
 
     def test_subcriterion_confidence_is_computed_from_mean_signal_gap(self):
         application = sample_application()
-        retrieval_payload, scorer_a_payloads, scorer_b_payloads = build_payloads_for_application(application)
-        retrieval_client = FakeClient(payloads=[retrieval_payload], model_name="retrieval-model")
+        _, scorer_a_payloads, scorer_b_payloads = build_payloads_for_application(application)
         scorer_a = FakeClient(payloads=scorer_a_payloads, model_name="model-a")
         scorer_b = FakeClient(payloads=scorer_b_payloads, model_name="model-b")
 
@@ -261,7 +266,6 @@ class PipelineTests(unittest.TestCase):
             application=application,
             criteria_path=CRITERIA_PATH,
             doc_id="confidence_doc",
-            retrieval_client=retrieval_client,
             scorer_client_a=scorer_a,
             scorer_client_b=scorer_b,
         )
@@ -295,8 +299,7 @@ class PipelineTests(unittest.TestCase):
 
     def test_artifacts_are_written(self):
         application = sample_application()
-        retrieval_payload, scorer_a_payloads, scorer_b_payloads = build_payloads_for_application(application)
-        retrieval_client = FakeClient(payloads=[retrieval_payload], model_name="retrieval-model")
+        _, scorer_a_payloads, scorer_b_payloads = build_payloads_for_application(application)
         scorer_a = FakeClient(payloads=scorer_a_payloads, model_name="model-a")
         scorer_b = FakeClient(payloads=scorer_b_payloads, model_name="model-b")
 
@@ -305,7 +308,6 @@ class PipelineTests(unittest.TestCase):
                 application=application,
                 criteria_path=CRITERIA_PATH,
                 doc_id="artifact_doc",
-                retrieval_client=retrieval_client,
                 scorer_client_a=scorer_a,
                 scorer_client_b=scorer_b,
                 artifacts_dir=tmpdir,

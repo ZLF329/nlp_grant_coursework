@@ -1,17 +1,25 @@
 {
   "General": {
-    "common_characteristics_of_good_applications": [
-      "Clear research vision and career trajectory",
-      "Distinctive ideas with an independent direction",
-      "Well-justified training plan",
-      "Strong mentorship and institutional support"
-    ],
-    "tell_us_why_you_need_this_award": [
-      "Explain why this award is the right next step in your career (not just another project grant)",
-      "What difference would securing an award make to your career, and why now?",
-      "How will an award build on your existing experience and what new skills will it enable you to gain?",
-      "How will it develop your research partnerships within the NHS, public health or social care, charity organisations, industry or other organisations?"
-    ],
+    "common_characteristics_of_good_applications": {
+      "name": "Common Characteristics of Good Applications",
+      "definition": "The application demonstrates characteristics commonly found in strong grant applications.",
+      "signals": [
+        "Clear research vision and career trajectory",
+        "Distinctive ideas with an independent direction",
+        "Well-justified training plan",
+        "Strong mentorship and institutional support"
+      ]
+    },
+    "tell_us_why_you_need_this_award": {
+      "name": "Tell Us Why You Need This Award",
+      "definition": "The applicant clearly articulates why this specific award is the right next step in their career.",
+      "signals": [
+        "Explain why this award is the right next step in your career (not just another project grant)",
+        "What difference would securing an award make to your career, and why now?",
+        "How will an award build on your existing experience and what new skills will it enable you to gain?",
+        "How will it develop your research partnerships within the NHS, public health or social care, charity organisations, industry or other organisations?"
+      ]
+    },
     "Applicant": [
       {
         "name": "Relevant Research Experience and Training",

@@ -1,7 +1,7 @@
 """
 Qwen3 vLLM grant scorer.
 
-Retrieval and section scoring run via configurable vLLM models.
+Section scoring runs via configurable vLLM models with rule-based retrieval.
 """
 from __future__ import annotations
 
@@ -15,7 +15,6 @@ from typing import Any
 from src.scoring.pipeline import score_application_base
 
 MODEL_NAME = os.environ.get("QWEN3_MODEL", "cyankiwi/Qwen3-30B-A3B-Instruct-2507-AWQ-4bit")
-RETRIEVAL_MODEL = os.environ.get("QWEN3_RETRIEVAL_MODEL", MODEL_NAME)
 MODEL_A = os.environ.get("QWEN3_MODEL_A", MODEL_NAME)
 MODEL_B = os.environ.get("QWEN3_MODEL_B", MODEL_A)
 QUANTIZATION = os.environ.get("QWEN3_QUANTIZATION", "none")
@@ -66,17 +65,11 @@ def score_application(
     *,
     doc_id: str | None = None,
     scorer: _Scorer | None = None,
-    retrieval_client: _Scorer | None = None,
     scorer_client_a: _Scorer | None = None,
     scorer_client_b: _Scorer | None = None,
     artifacts_dir: str | Path | None = None,
 ) -> dict[str, Any]:
     scorer_client_a = scorer_client_a or scorer or _Scorer(model_name=MODEL_A)
-    retrieval_client = retrieval_client or (
-        scorer_client_a
-        if RETRIEVAL_MODEL == getattr(scorer_client_a, "model_name", None)
-        else _Scorer(model_name=RETRIEVAL_MODEL)
-    )
     scorer_client_b = scorer_client_b or (
         scorer_client_a
         if MODEL_B == getattr(scorer_client_a, "model_name", None)
@@ -86,7 +79,6 @@ def score_application(
         application=application,
         criteria_path=criteria_path,
         doc_id=doc_id,
-        retrieval_client=retrieval_client,
         scorer_client_a=scorer_client_a,
         scorer_client_b=scorer_client_b,
         artifacts_dir=artifacts_dir,

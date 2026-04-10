@@ -26,6 +26,30 @@ SECTION_ID_PREFIX = {
 SCORER_ALLOWED_SCORES = (0, 1, 2)
 RETRIEVAL_MAX_CHUNKS = 8
 USED_CHUNK_MAX = 5
+
+SECTION_TO_PARSER_SECTIONS: dict[str, list[str] | None] = {
+    "general": None,
+    "proposed_research": [
+        "Plain English Summary of Research",
+        "Scientific Abstract",
+        "Detailed Research Plan",
+        "Patient & Public Involvement",
+    ],
+    "training_development": [
+        "Training & Development and Research Support",
+    ],
+    "sites_support": [
+        "Lead Applicant",
+        "Joint Lead Applicant",
+        "Co-Applicants",
+        "Contracting Organisation",
+    ],
+    "wpcc": [
+        "Patient & Public Involvement",
+        "Detailed Research Plan",
+    ],
+    "application_form": None,
+}
 CONFIDENCE_TO_SCORE = {
     "low_confidence": 0,
     "medium_confidence": 1,
@@ -95,24 +119,17 @@ def load_rubric(criteria_path: str | Path) -> list[dict[str, Any]]:
                 sub_criteria.append(item)
         elif human_name == "General" and isinstance(payload, dict):
             idx = 1
-            for signal_text in payload.get("common_characteristics_of_good_applications", []):
-                sub_criteria.append(build_sub(
-                    sub_id=f"g.{idx}",
-                    name=f"Common Characteristics Of Good Applications: {signal_text}",
-                    definition=signal_text,
-                    signal_texts=[signal_text],
-                    group_name="Common Characteristics Of Good Applications",
-                ))
-                idx += 1
-            for signal_text in payload.get("tell_us_why_you_need_this_award", []):
-                sub_criteria.append(build_sub(
-                    sub_id=f"g.{idx}",
-                    name=f"Tell Us Why You Need This Award: {signal_text}",
-                    definition=signal_text,
-                    signal_texts=[signal_text],
-                    group_name="Tell Us Why You Need This Award",
-                ))
-                idx += 1
+            for group_key in ("common_characteristics_of_good_applications", "tell_us_why_you_need_this_award"):
+                group_val = payload.get(group_key)
+                if isinstance(group_val, dict):
+                    sub_criteria.append(build_sub(
+                        sub_id=f"g.{idx}",
+                        name=group_val["name"],
+                        definition=group_val.get("definition", ""),
+                        signal_texts=list(group_val.get("signals", [])),
+                        group_name=group_val["name"],
+                    ))
+                    idx += 1
             for applicant_item in payload.get("Applicant", []):
                 sub_criteria.append(build_sub(
                     sub_id=f"g.{idx}",
@@ -276,6 +293,30 @@ def _normalize_retrieval_output(
     return normalized
 
 
+def rule_based_retrieval(
+    rubric_sections: list[dict[str, Any]],
+    section_chunk_ids: dict[str, list[str]],
+    pool_lookup: dict[str, dict[str, str]],
+) -> dict[str, list[str]]:
+    all_chunk_ids = list(pool_lookup)
+    parser_section_to_chunks: dict[str, list[str]] = {}
+    for chunk_id, meta in pool_lookup.items():
+        ps = meta["parser_section"]
+        parser_section_to_chunks.setdefault(ps, []).append(chunk_id)
+
+    result: dict[str, list[str]] = {}
+    for section in rubric_sections:
+        mapping = SECTION_TO_PARSER_SECTIONS.get(section["section_key"])
+        if mapping is None:
+            result[section["section_key"]] = list(all_chunk_ids)
+        else:
+            chunks: list[str] = []
+            for ps_name in mapping:
+                chunks.extend(parser_section_to_chunks.get(ps_name, []))
+            result[section["section_key"]] = _dedupe_preserve_order(chunks)
+    return result
+
+
 def build_evidence_text(
     chunk_ids: list[str],
     pool_lookup: dict[str, dict[str, str]],
@@ -345,7 +386,8 @@ def build_scoring_messages(
         "Return JSON only.\n"
         "Each signal score must be exactly one of: 0, 1, 2.\n"
         "Each `used_chunk_ids` entry must be chosen only from the provided retrieved chunk IDs.\n"
-        "Do not output explanations, prose, markdown, or extra keys."
+        "For each sub-criterion, include a `rationale` string (1-3 sentences) explaining how you arrived at the scores.\n"
+        "Do not output extra keys beyond those specified."
     )
     user = (
         "rubric_section:\n"
@@ -356,7 +398,7 @@ def build_scoring_messages(
         f"{evidence_text}\n\n"
         "return_format_rules:\n"
         "- Top-level keys must be the sub_id values for this rubric section.\n"
-        "- Each sub_id object must contain `signals` and `used_chunk_ids`.\n"
+        "- Each sub_id object must contain `signals`, `used_chunk_ids`, and `rationale`.\n"
         "- Each signal score must be 0, 1, or 2.\n"
         "- `used_chunk_ids` must contain only IDs from `retrieved_chunk_ids`.\n"
         "- If no supporting evidence is shown, score 0 and use an empty `used_chunk_ids` array.\n"
@@ -369,14 +411,16 @@ def build_scoring_messages(
         '      "pr.1.a": 2,\n'
         '      "pr.1.b": 1\n'
         "    },\n"
-        '    "used_chunk_ids": ["secadr__001", "secadr__004"]\n'
+        '    "used_chunk_ids": ["secadr__001", "secadr__004"],\n'
+        '    "rationale": "Strong evidence of clear objectives and methodology."\n'
         "  },\n"
         '  "pr.2": {\n'
         '    "signals": {\n'
         '      "pr.2.a": 0,\n'
         '      "pr.2.b": 1\n'
         "    },\n"
-        '    "used_chunk_ids": ["secadr__004"]\n'
+        '    "used_chunk_ids": ["secadr__004"],\n'
+        '    "rationale": "Limited evidence found for this criterion."\n'
         "  }\n"
         "}"
     )
@@ -412,8 +456,11 @@ def build_scoring_schema(rubric_section: dict[str, Any], retrieved_chunk_ids: li
                     },
                     "maxItems": USED_CHUNK_MAX,
                 },
+                "rationale": {
+                    "type": "string",
+                },
             },
-            "required": ["signals", "used_chunk_ids"],
+            "required": ["signals", "used_chunk_ids", "rationale"],
             "additionalProperties": False,
         }
     return {
@@ -471,10 +518,17 @@ def _normalize_model_section_output(
         elif len(used_chunk_ids) == 1:
             evidence_status = "sparse_evidence"
 
+        rationale = raw_sub.get("rationale", "")
+        if not isinstance(rationale, str):
+            rationale = ""
+
+        missing_evidence = has_positive and not used_chunk_ids
         normalized[sub["sub_id"]] = {
             "signals": signals,
             "used_chunk_ids": used_chunk_ids,
             "evidence_status": evidence_status,
+            "rationale": rationale,
+            "missing_evidence": missing_evidence,
         }
     return normalized
 
@@ -678,6 +732,13 @@ def _ensemble_section(
 
         confidence_gap = round(sum(gaps) / max(1, len(gaps)), 2)
         confidence_label = _confidence_label(confidence_gap)
+        rationale_model_a = model_a_sub.get("rationale", "")
+        rationale_model_b = model_b_sub.get("rationale", "")
+        missing_evidence_models: list[str] = []
+        if model_a_sub.get("missing_evidence"):
+            missing_evidence_models.append("a")
+        if model_b_sub.get("missing_evidence"):
+            missing_evidence_models.append("b")
         section_subs.append({
             "sub_id": sub["sub_id"],
             "name": sub["name"],
@@ -690,6 +751,11 @@ def _ensemble_section(
             "confidence_gap": confidence_gap,
             "confidence_label": confidence_label,
             "signals": signals,
+            "rationale": rationale_model_a,
+            "rationale_model_a": rationale_model_a,
+            "rationale_model_b": rationale_model_b,
+            "missing_evidence": bool(missing_evidence_models),
+            "missing_evidence_models": missing_evidence_models,
         })
 
     return {
@@ -749,32 +815,21 @@ def score_application_base(
     application: dict[str, Any],
     criteria_path: str | Path,
     doc_id: str | None,
-    retrieval_client: Any,
     scorer_client_a: Any,
     scorer_client_b: Any,
     artifacts_dir: str | Path | None = None,
 ) -> dict[str, Any]:
-    criteria_payload = load_raw_criteria(criteria_path)
     rubric_sections = load_rubric(criteria_path)
     pool_data = build_chunk_pool(application, max_chars=MAX_CHARS)
     pool_lookup = pool_data["pool_lookup"]
     pool_index_text = pool_data["pool_index_text"]
     chunk_order = _chunk_order_map(pool_lookup)
 
-    retrieval_messages = build_retrieval_messages(
-        criteria_payload=criteria_payload,
-        pool_index_text=pool_index_text,
+    retrieval_raw = "rule_based"
+    retrieved_chunks = rule_based_retrieval(
+        rubric_sections, pool_data["section_chunk_ids"], pool_lookup,
     )
-    retrieval_schema = build_retrieval_schema(rubric_sections)
-    retrieval_raw = retrieval_client.generate_json(retrieval_messages, schema=retrieval_schema, max_tokens=4096)
-    try:
-        retrieval_parsed = _safe_json_loads(retrieval_raw)
-    except Exception as exc:
-        raise ValueError(
-            "Retrieval model did not return valid JSON. "
-            f"Response preview: {_response_preview(retrieval_raw)!r}"
-        ) from exc
-    retrieved_chunks = _normalize_retrieval_output(retrieval_parsed, rubric_sections, pool_lookup)
+    retrieval_parsed = retrieved_chunks
 
     model_a_raw_by_section: dict[str, str] = {}
     model_b_raw_by_section: dict[str, str] = {}
@@ -843,7 +898,7 @@ def score_application_base(
         "doc_id": doc_id or "unknown",
         "run_info": {
             "ran_at_utc": dt.datetime.now(dt.UTC).isoformat().replace("+00:00", "Z"),
-            "retrieval_model": getattr(retrieval_client, "model_name", "unknown"),
+            "retrieval_method": "rule_based",
             "scorer_model_a": getattr(scorer_client_a, "model_name", "unknown"),
             "scorer_model_b": getattr(scorer_client_b, "model_name", "unknown"),
         },

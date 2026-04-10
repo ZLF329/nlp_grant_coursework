@@ -592,6 +592,65 @@
       display: grid;
       gap: 8px;
     }
+    .rationale-stack {
+      display: grid;
+      gap: 10px;
+    }
+    .rationale-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-s);
+      padding: 12px;
+      background: var(--surface);
+      display: grid;
+      gap: 6px;
+    }
+    .rationale-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--text-3);
+    }
+    .rationale-warning {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 10px;
+      border-radius: var(--radius-s);
+      border: 1px solid rgba(220,38,38,.14);
+      background: var(--negative-bg);
+      color: var(--negative);
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .rationale-heading {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--text-3);
+    }
+    .status-stack, .table-actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .table-action-btn {
+      border: 1px solid var(--border);
+      border-radius: var(--pill);
+      background: var(--surface);
+      color: var(--text);
+      font: 600 12px/1 "Inter", system-ui, sans-serif;
+      padding: 7px 10px;
+      cursor: pointer;
+      transition: background .15s, transform .15s, box-shadow .15s;
+    }
+    .table-action-btn:hover {
+      background: var(--surface-soft);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-1);
+    }
     .table-card { padding: 20px; }
     .table-scroll { overflow-x: auto; margin-top: 14px; }
     table {
@@ -898,7 +957,7 @@
             <h4 class="card-title">Model rationale</h4>
             <span class="status-pill" id="confidencePill">Confidence: High</span>
           </div>
-          <p class="confidence-copy" id="confidenceText"></p>
+          <div class="confidence-copy rationale-stack" id="confidenceText"></div>
         </section>
       </aside>
     </section>
@@ -1038,6 +1097,43 @@
       if (!Array.isArray(list) || !list.length) return 0;
       return list.reduce((sum, item) => sum + Number(selector(item) || 0), 0) / list.length;
     }
+    function escapeHtml(value) {
+      return String(value ?? '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+    function rationaleHtml(text) {
+      const safe = escapeHtml((text || '').trim() || 'No rationale returned.');
+      return safe.replace(/\n/g, '<br>');
+    }
+    function missingEvidenceModelLabel(models) {
+      const normalized = (Array.isArray(models) ? models : [])
+        .map(m => String(m || '').toUpperCase())
+        .filter(Boolean);
+      return normalized.length ? normalized.join(' + ') : 'Unknown';
+    }
+    function missingEvidenceBadge(criterion) {
+      if (!criterion?.missingEvidence) return '';
+      return `<span class="evidence-tag negative">! Missing evidence (${escapeHtml(missingEvidenceModelLabel(criterion.missingEvidenceModels))})</span>`;
+    }
+    function rationaleCardsHtml(criterion, labelPrefix) {
+      const prefix = labelPrefix ? `${labelPrefix} ` : '';
+      const warning = criterion?.missingEvidence
+        ? `<div class="rationale-warning">! Missing evidence / 缺失证据 · Model ${escapeHtml(missingEvidenceModelLabel(criterion.missingEvidenceModels))} returned a positive score without valid chunk evidence.</div>`
+        : '';
+      return `${warning}
+        <div class="rationale-card">
+          <div class="rationale-label">${escapeHtml(prefix)}Model A</div>
+          <div>${rationaleHtml(criterion?.rationaleModelA || criterion?.rationale || '')}</div>
+        </div>
+        <div class="rationale-card">
+          <div class="rationale-label">${escapeHtml(prefix)}Model B</div>
+          <div>${rationaleHtml(criterion?.rationaleModelB || '')}</div>
+        </div>`;
+    }
 
     // Accept both raw top-level format and { features_json: {...} } wrapper from the server
     function unwrapRaw(raw) {
@@ -1090,6 +1186,13 @@
         evidenceIds: Array.isArray(c.evidence_ids) ? c.evidence_ids : [],
         evidenceTop5: Array.isArray(c.evidence_top5) ? c.evidence_top5 : [],
         evidenceStatus: c.evidence_status || 'ok',
+        rationale: c.rationale || c.rationale_model_a || '',
+        rationaleModelA: c.rationale_model_a || c.rationaleModelA || c.rationale || '',
+        rationaleModelB: c.rationale_model_b || c.rationaleModelB || '',
+        missingEvidence: Boolean(c.missing_evidence || c.missingEvidence),
+        missingEvidenceModels: Array.isArray(c.missing_evidence_models)
+          ? c.missing_evidence_models
+          : (Array.isArray(c.missingEvidenceModels) ? c.missingEvidenceModels : []),
         avgModelAScore,
         avgModelBScore,
         avgFinalScore,
@@ -1280,7 +1383,7 @@
       };
     }
     function emptyCriterion(name) {
-      return { id:slugify(name), name, groupName:'', exists:'missing', qualityLabel:'missing', score:0, evidence:[], evidenceCount:0, evidenceIds:[], evidenceTop5:[], evidenceStatus:'invalid_evidence', avgPlausibility:0, avgModelAScore:0, avgModelBScore:0, avgFinalScore:0, weakSignalCount:0, signals:[], rubricSubscores:{}, rubricAvg:0, rubricText:'No signal detail' };
+      return { id:slugify(name), name, groupName:'', exists:'missing', qualityLabel:'missing', score:0, evidence:[], evidenceCount:0, evidenceIds:[], evidenceTop5:[], evidenceStatus:'invalid_evidence', rationale:'', rationaleModelA:'', rationaleModelB:'', missingEvidence:false, missingEvidenceModels:[], avgPlausibility:0, avgModelAScore:0, avgModelBScore:0, avgFinalScore:0, weakSignalCount:0, signals:[], rubricSubscores:{}, rubricAvg:0, rubricText:'No signal detail' };
     }
 
     function getOrderedCriterionNames(sectionPair) {
@@ -1670,6 +1773,9 @@
       drawerSummary.textContent = mode === 'compare'
         ? `"${criterionPair.name}" moved from ${fmtScore(criterionPair.before.score)} to ${fmtScore(criterionPair.after.score)} / 10 (${fmtDelta(delta, '/10')}). Low-confidence items changed ${criterionPair.before.weakSignalCount} → ${criterionPair.after.weakSignalCount}.`
         : `"${criterionPair.name}" scored ${fmtScore(criterionPair.after.score)} / 10. Signal averages are A ${round1(criterionPair.after.avgModelAScore || 0)}, B ${round1(criterionPair.after.avgModelBScore || 0)}, final ${round1(criterionPair.after.avgFinalScore || 0)} with ${criterionPair.after.evidenceCount} cited chunk${criterionPair.after.evidenceCount === 1 ? '' : 's'}.`;
+      if (criterionPair.after.missingEvidence) {
+        drawerSummary.textContent += ` ! Missing evidence / 缺失证据 from model ${missingEvidenceModelLabel(criterionPair.after.missingEvidenceModels)}.`;
+      }
       metricFocusTag.textContent = mode === 'compare' ? 'Sub-criterion compare' : 'Sub-criterion evidence';
       let evidences = [];
       if (mode === 'compare') {
@@ -1704,6 +1810,14 @@
         notes.push({ tone:criterionPair.after.evidenceStatus === 'ok' ? 'positive' : 'warning', tag:'Evidence status', text:`Evidence status is ${evidenceStatusLabel(criterionPair.after.evidenceStatus)} with ${criterionPair.after.evidenceCount} valid chunk id(s).`, source:'Grounding' });
         if (criterionPair.after.evidenceTop5?.length) notes.push({ tone:'neutral', tag:'Top-5 slots', text:`Slots: ${(criterionPair.after.evidenceTop5 || []).map(id => id || 'null').join(', ')}`, source:'Stage 1 output' });
       }
+      if (criterionPair.after.missingEvidence) {
+        notes.push({
+          tone:'warning',
+          tag:'! Missing evidence',
+          text:`Model ${missingEvidenceModelLabel(criterionPair.after.missingEvidenceModels)} returned a positive score without valid chunk evidence.`,
+          source:'Evidence validation'
+        });
+      }
       (criterionPair.after.signals || []).forEach(signal => {
         notes.push({
           tone: Math.abs((signal.modelAScore || 0) - (signal.modelBScore || 0)) >= 2 ? 'warning' : Math.abs((signal.modelAScore || 0) - (signal.modelBScore || 0)) === 1 ? 'neutral' : 'positive',
@@ -1722,9 +1836,17 @@
           <p class="snippet-text">${note.text}</p>
         </div>
       `).join('');
-      confidencePill.className = afterConf === 'High' ? 'status-pill status-positive' : afterConf === 'Medium' ? 'status-pill status-neutral' : 'status-pill status-negative';
-      confidencePill.textContent = `Confidence: ${afterConf}`;
-      confidenceText.textContent = 'Confidence reflects agreement between the two scoring models at sub-criterion level. Signal rows show model A, model B, and the final averaged score.';
+      confidencePill.className = criterionPair.after.missingEvidence
+        ? 'status-pill status-negative'
+        : (afterConf === 'High' ? 'status-pill status-positive' : afterConf === 'Medium' ? 'status-pill status-neutral' : 'status-pill status-negative');
+      confidencePill.textContent = criterionPair.after.missingEvidence ? '! Missing evidence' : `Confidence: ${afterConf}`;
+      confidenceText.innerHTML = mode === 'compare'
+        ? `
+            ${rationaleCardsHtml(criterionPair.after, 'After')}
+            <div class="rationale-heading">Before</div>
+            ${rationaleCardsHtml(criterionPair.before, 'Before')}
+          `
+        : rationaleCardsHtml(criterionPair.after, 'Current');
     }
 
     function renderTable() {
@@ -1740,7 +1862,7 @@
       const afterMap = new Map((pair.after.criteria || []).map(c => [c.name, c]));
       const names = getOrderedCriterionNames(pair);
       if (mode === 'compare') {
-        head.innerHTML = `<tr><th>Sub-criterion</th><th>Before</th><th>After</th><th>Delta</th><th>A / B / Avg</th><th>Low-conf</th><th>Status</th></tr>`;
+        head.innerHTML = `<tr><th>Sub-criterion</th><th>Before</th><th>After</th><th>Delta</th><th>A / B / Avg</th><th>Low-conf</th><th>Status</th><th>Rationale</th></tr>`;
         let currentGroup = '';
         body.innerHTML = names.length ? names.map(name => {
           const before = beforeMap.get(name) || emptyCriterion(name);
@@ -1749,7 +1871,7 @@
           const active = state.selectedCriterionName === name ? ' style="background:rgba(237,243,255,.6);"' : '';
           const groupName = after.groupName || before.groupName || '';
           const groupRow = groupName && groupName !== currentGroup
-            ? `<tr class="group-row"><td colspan="7">${groupName}</td></tr>`
+            ? `<tr class="group-row"><td colspan="8">${groupName}</td></tr>`
             : '';
           currentGroup = groupName || currentGroup;
           return `${groupRow}<tr class="row-clickable" data-criterion-name="${name}"${active}>
@@ -1759,18 +1881,19 @@
             <td><span class="${pillClassFromDelta(delta)}">${fmtDelta(delta, '/10')}</span></td>
             <td>${round1(after.avgModelAScore || 0)} / ${round1(after.avgModelBScore || 0)} / ${round1(after.avgFinalScore || 0)}</td>
             <td>${before.weakSignalCount || 0} → ${after.weakSignalCount || 0}</td>
-            <td><span class="${statusClassFromRisk(riskFromWeakSignals(after.weakSignalCount || 0))}">${evidenceStatusLabel(after.evidenceStatus)}</span></td>
+            <td><div class="status-stack"><span class="${statusClassFromRisk(riskFromWeakSignals(after.weakSignalCount || 0))}">${evidenceStatusLabel(after.evidenceStatus)}</span>${missingEvidenceBadge(after)}</div></td>
+            <td><button class="table-action-btn rationale-btn" type="button" data-criterion-name="${name}">View rationale</button></td>
           </tr>`;
-        }).join('') : `<tr><td colspan="7"><div class="empty-copy">No sub-criteria found.</div></td></tr>`;
+        }).join('') : `<tr><td colspan="8"><div class="empty-copy">No sub-criteria found.</div></td></tr>`;
       } else {
-        head.innerHTML = `<tr><th>Sub-criterion</th><th>Score</th><th>Model A</th><th>Model B</th><th>Avg</th><th>Evidence</th><th>Status</th></tr>`;
+        head.innerHTML = `<tr><th>Sub-criterion</th><th>Score</th><th>Model A</th><th>Model B</th><th>Avg</th><th>Evidence</th><th>Status</th><th>Rationale</th></tr>`;
         let currentGroup = '';
         body.innerHTML = names.length ? names.map(name => {
           const current = afterMap.get(name) || beforeMap.get(name) || emptyCriterion(name);
           const active = state.selectedCriterionName === name ? ' style="background:rgba(237,243,255,.6);"' : '';
           const groupName = current.groupName || '';
           const groupRow = groupName && groupName !== currentGroup
-            ? `<tr class="group-row"><td colspan="7">${groupName}</td></tr>`
+            ? `<tr class="group-row"><td colspan="8">${groupName}</td></tr>`
             : '';
           currentGroup = groupName || currentGroup;
           return `${groupRow}<tr class="row-clickable" data-criterion-name="${name}"${active}>
@@ -1780,14 +1903,22 @@
             <td>${round1(current.avgModelBScore || 0)} / 2</td>
             <td>${round1(current.avgFinalScore || 0)} / 2</td>
             <td>${current.evidenceCount}</td>
-            <td>${evidenceStatusLabel(current.evidenceStatus)}</td>
-            <td><span class="${statusClassFromRisk(riskFromWeakSignals(current.weakSignalCount || 0))}">${current.confidenceLabel || `${(current.signals || []).length} signals`}</span></td>
+            <td><div class="status-stack"><span class="${statusClassFromRisk(riskFromWeakSignals(current.weakSignalCount || 0))}">${current.confidenceLabel || `${(current.signals || []).length} signals`}</span>${missingEvidenceBadge(current)}</div></td>
+            <td><button class="table-action-btn rationale-btn" type="button" data-criterion-name="${name}">View rationale</button></td>
           </tr>`;
-        }).join('') : `<tr><td colspan="7"><div class="empty-copy">No sub-criteria found.</div></td></tr>`;
+        }).join('') : `<tr><td colspan="8"><div class="empty-copy">No sub-criteria found.</div></td></tr>`;
       }
       body.querySelectorAll('.row-clickable').forEach(row => {
         row.addEventListener('click', () => {
           state.selectedCriterionName = row.dataset.criterionName;
+          renderDrawer();
+          renderTable();
+        });
+      });
+      body.querySelectorAll('.rationale-btn').forEach(btn => {
+        btn.addEventListener('click', (event) => {
+          event.stopPropagation();
+          state.selectedCriterionName = btn.dataset.criterionName;
           renderDrawer();
           renderTable();
         });
