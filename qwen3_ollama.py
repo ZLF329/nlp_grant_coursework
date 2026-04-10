@@ -40,23 +40,14 @@ def _extract_json_object(text: str) -> str:
 def _extract_message_content(body: dict[str, Any]) -> str:
     message = body.get("message") or {}
     content = _strip_think_tags((message.get("content") or ""))
-    if content:
-        return content
-
-    for key in ("reasoning_content", "reasoning", "thinking"):
-        fallback = _strip_think_tags((message.get(key) or ""))
-        if not fallback:
-            continue
-        candidate = _extract_json_object(fallback)
-        if candidate:
-            return candidate
-    return ""
+    return _extract_json_object(content)
 
 
 class _Scorer:
     def __init__(self, model_name: str = OLLAMA_MODEL, host: str = OLLAMA_HOST):
         self.model_name = model_name
         self.host = host.rstrip("/")
+        self.last_response_body: dict[str, Any] | None = None
         print(f"[qwen3_ollama] using {self.host} model={self.model_name}", flush=True)
 
     def generate_json(self, messages: list[dict[str, str]], *, schema: dict[str, Any], max_tokens: int) -> str:
@@ -91,6 +82,7 @@ class _Scorer:
             ) from exc
         response.raise_for_status()
         body = response.json()
+        self.last_response_body = body
         return _extract_message_content(body)
 
 

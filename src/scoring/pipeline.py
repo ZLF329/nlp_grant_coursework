@@ -835,6 +835,8 @@ def _write_failure_artifacts(
     section_key: str,
     raw_a: str,
     raw_b: str,
+    scorer_client_a: Any | None = None,
+    scorer_client_b: Any | None = None,
 ) -> dict[str, str]:
     artifact_paths = _write_artifacts(
         artifacts_dir=artifacts_dir,
@@ -855,11 +857,26 @@ def _write_failure_artifacts(
     section_model_b_path = artifacts_path / f"{doc_id}_{section_key}_model_b_raw.txt"
     section_model_a_path.write_text(raw_a, encoding="utf-8")
     section_model_b_path.write_text(raw_b, encoding="utf-8")
-    return {
+    failure_paths = {
         **artifact_paths,
         "failed_section_model_a_raw": str(section_model_a_path),
         "failed_section_model_b_raw": str(section_model_b_path),
     }
+    if getattr(scorer_client_a, "last_response_body", None) is not None:
+        section_model_a_body_path = artifacts_path / f"{doc_id}_{section_key}_model_a_response_body.json"
+        section_model_a_body_path.write_text(
+            json.dumps(scorer_client_a.last_response_body, ensure_ascii=False, indent=2),
+            encoding="utf-8",
+        )
+        failure_paths["failed_section_model_a_response_body"] = str(section_model_a_body_path)
+    if getattr(scorer_client_b, "last_response_body", None) is not None:
+        section_model_b_body_path = artifacts_path / f"{doc_id}_{section_key}_model_b_response_body.json"
+        section_model_b_body_path.write_text(
+            json.dumps(scorer_client_b.last_response_body, ensure_ascii=False, indent=2),
+            encoding="utf-8",
+        )
+        failure_paths["failed_section_model_b_response_body"] = str(section_model_b_body_path)
+    return failure_paths
 
 
 def score_application_base(
@@ -898,9 +915,9 @@ def score_application_base(
         )
         schema = build_scoring_schema(rubric_section, section_chunk_ids)
 
-        raw_a = scorer_client_a.generate_json(messages, schema=schema, max_tokens=4096)
+        raw_a = scorer_client_a.generate_json(messages, schema=schema, max_tokens=12288)
         model_a_raw_by_section[section_key] = raw_a
-        raw_b = scorer_client_b.generate_json(messages, schema=schema, max_tokens=4096)
+        raw_b = scorer_client_b.generate_json(messages, schema=schema, max_tokens=12288)
         model_b_raw_by_section[section_key] = raw_b
 
         try:
