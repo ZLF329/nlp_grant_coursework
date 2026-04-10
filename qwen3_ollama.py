@@ -1,8 +1,7 @@
 """
 Qwen3 Ollama grant scorer.
 
-Stage 1 runs on the configured Qwen3 Ollama model.
-Stage 2 faithfulness auditing runs on the configured Gemma Ollama model.
+Retrieval and section scoring run on configurable Ollama models.
 """
 from __future__ import annotations
 
@@ -16,10 +15,12 @@ from typing import Any
 import requests
 
 from src.scoring.pipeline import score_application_base
-from src.verify.faithfulness import OllamaFaithfulnessJudge
 
 OLLAMA_HOST = os.environ.get("OLLAMA_HOST", "http://127.0.0.1:11434").rstrip("/")
 OLLAMA_MODEL = os.environ.get("OLLAMA_MODEL", "qwen3.5:35b")
+OLLAMA_RETRIEVAL_MODEL = os.environ.get("OLLAMA_RETRIEVAL_MODEL", OLLAMA_MODEL)
+OLLAMA_MODEL_A = os.environ.get("OLLAMA_MODEL_A", OLLAMA_MODEL)
+OLLAMA_MODEL_B = os.environ.get("OLLAMA_MODEL_B", "gemma4:26b")
 OLLAMA_TIMEOUT = float(os.environ.get("OLLAMA_TIMEOUT", "1200"))
 
 
@@ -70,16 +71,29 @@ def score_application(
     *,
     doc_id: str | None = None,
     scorer: _Scorer | None = None,
+    retrieval_client: _Scorer | None = None,
+    scorer_client_a: _Scorer | None = None,
+    scorer_client_b: _Scorer | None = None,
     artifacts_dir: str | Path | None = None,
 ) -> dict[str, Any]:
-    scorer = scorer or _Scorer()
-    judge = OllamaFaithfulnessJudge(host=OLLAMA_HOST)
+    scorer_client_a = scorer_client_a or scorer or _Scorer(model_name=OLLAMA_MODEL_A, host=OLLAMA_HOST)
+    retrieval_client = retrieval_client or (
+        scorer_client_a
+        if OLLAMA_RETRIEVAL_MODEL == getattr(scorer_client_a, "model_name", None)
+        else _Scorer(model_name=OLLAMA_RETRIEVAL_MODEL, host=OLLAMA_HOST)
+    )
+    scorer_client_b = scorer_client_b or (
+        scorer_client_a
+        if OLLAMA_MODEL_B == getattr(scorer_client_a, "model_name", None)
+        else _Scorer(model_name=OLLAMA_MODEL_B, host=OLLAMA_HOST)
+    )
     return score_application_base(
         application=application,
         criteria_path=criteria_path,
         doc_id=doc_id,
-        stage1_client=scorer,
-        judge=judge,
+        retrieval_client=retrieval_client,
+        scorer_client_a=scorer_client_a,
+        scorer_client_b=scorer_client_b,
         artifacts_dir=artifacts_dir,
     )
 

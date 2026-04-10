@@ -1049,6 +1049,8 @@
         text: signal.signal_text || signal.text || `Signal ${idx + 1}`,
         rawScore: Number(signal.score_0to2_raw || 0),
         weightedScore: Number(signal.score_0to2_weighted || signal.score_0to2_raw || 0),
+        modelAScore: Number(signal.model_a_score ?? signal.modelAScore ?? 0),
+        modelBScore: Number(signal.model_b_score ?? signal.modelBScore ?? 0),
         plausibility: Number(signal.plausibility_0to5 ?? 3),
         multiplier: Number(signal.multiplier ?? 1),
         flag: signal.flag || null,
@@ -1071,6 +1073,8 @@
         id: c.sub_id || c.id || slugify(c.name || ('criterion-' + idx)),
         name: c.name || `Sub-criterion ${idx + 1}`,
         groupName: c.group_name || '',
+        confidenceLabel: c.confidence_label || '',
+        confidenceGap: Number(c.confidence_gap ?? 0),
         exists: c.exists || (Number(c.score_10 || c.quality_score_0to10 || 0) > 0 ? 'yes' : 'no'),
         qualityLabel: c.quality || evidenceStatusLabel(c.evidence_status),
         score: Number(c.score_10 || c.quality_score_0to10 || 0),
@@ -1084,7 +1088,7 @@
         signals,
         rubricSubscores: {},
         rubricAvg: avgPlausibility / 2.5,
-        rubricText: `${round1(avgPlausibility)} / 5 plausibility · ${weakSignalCount} weak`
+        rubricText: `${round1(avgPlausibility)} / 5 confidence proxy · ${weakSignalCount} low-confidence items`
       };
     }
 
@@ -1394,8 +1398,8 @@
       strip.innerHTML = pills.join('');
       document.getElementById('pageTitle').textContent = mode === 'compare' ? 'Grant Comparator' : 'Grant Self-Review';
       document.getElementById('pageSubtitle').textContent = mode === 'compare'
-        ? 'Compare two scoring JSON files and inspect movement in section score, plausibility, weak signals, and evidence.'
-        : 'Inspect one scoring JSON file section by section, with sub-criteria, signal-level plausibility, and chunk-grounded evidence.';
+        ? 'Compare two scoring JSON files and inspect movement in section score, model-agreement confidence, low-confidence items, and evidence.'
+        : 'Inspect one scoring JSON file section by section, with sub-criteria, dual-model scores, and chunk-grounded evidence.';
     }
 
     function renderKpis() {
@@ -1518,8 +1522,8 @@
       document.getElementById('heroStatus').className = mode === 'compare' ? pillClassFromDelta(delta) : statusClassFromRisk(risk);
       document.getElementById('heroStatus').textContent = mode === 'compare' ? (delta > 0 ? 'Improved' : delta < 0 ? 'Weakened' : 'Unchanged') : `${risk} risk`;
       document.getElementById('heroSummary').textContent = mode === 'compare'
-        ? `${pair.name} comparison — inspect sub-criteria, signal plausibility, and cited chunks.`
-        : `${pair.name} with sub-criterion scores, signal plausibility, and grounded chunk IDs.`;
+        ? `${pair.name} comparison — inspect sub-criteria, model-agreement confidence, and cited chunks.`
+        : `${pair.name} with sub-criterion scores, dual-model agreement, and grounded chunk IDs.`;
       document.getElementById('beforeScore').textContent = fmtScore(beforeScore);
       document.getElementById('afterScore').textContent = fmtScore(afterScore);
       document.getElementById('heroArrow').style.visibility = mode === 'compare' ? 'visible' : 'hidden';
@@ -1528,8 +1532,8 @@
       document.getElementById('heroConfidence').className = conf === 'High' ? 'status-pill status-positive' : conf === 'Medium' ? 'status-pill status-neutral' : 'status-pill status-negative';
       document.getElementById('heroConfidence').textContent = `Confidence: ${conf}`;
       document.getElementById('heroInterpretation').textContent = mode === 'compare'
-        ? `After-review score is ${fmtScore(afterScore)} / 100, plausibility changed from ${round1(pair.before.overall.avgPlausibility || 0)} to ${round1(pair.after.overall.avgPlausibility || 0)}.`
-        : `Average plausibility is ${round1(pair.before.overall.avgPlausibility || 0)} / 5 with ${pair.before.overall.weakSignalCount || 0} weak signal(s).`;
+        ? `After-review score is ${fmtScore(afterScore)} / 100, confidence proxy changed from ${round1(pair.before.overall.avgPlausibility || 0)} to ${round1(pair.after.overall.avgPlausibility || 0)}.`
+        : `Average confidence proxy is ${round1(pair.before.overall.avgPlausibility || 0)} / 5 with ${pair.before.overall.weakSignalCount || 0} low-confidence item(s).`;
       document.getElementById('legendBeforeLabel').textContent = beforeLabel;
       document.getElementById('legendAfterLabel').textContent = mode === 'compare' ? afterLabel : 'Selected review';
       document.getElementById('beforeBarTitle').textContent = mode === 'compare' ? 'Review A score' : 'Section score';
@@ -1617,7 +1621,7 @@
         evidenceList.innerHTML = `<div class="empty-state"><div class="empty-copy">No chunk evidence rows found.</div></div>`;
         concernList.innerHTML = '';
         metricFocusTag.textContent = 'Section only';
-        confidenceText.textContent = 'Section confidence is based on average plausibility and weak-signal count.';
+        confidenceText.textContent = 'Section confidence is estimated from aggregated sub-criterion agreement between the two scoring models.';
         confidencePill.className = 'status-pill status-neutral';
         confidencePill.textContent = `Confidence: ${confidenceFromSection(mode === 'compare' ? sectionPair.after : sectionPair.before)}`;
         return;
@@ -1627,11 +1631,14 @@
       drawerDelta.className = mode === 'compare' ? pillClassFromDelta(delta) : 'status-pill status-neutral';
       drawerDelta.textContent = mode === 'compare' ? fmtDelta(delta, '/10') : `${fmtScore(criterionPair.after.score)} / 10`;
       const afterConf = confidenceFromSection(mode === 'compare' ? sectionPair.after : sectionPair.before);
+      const criterionConf = criterionPair.after.confidenceLabel
+        ? criterionPair.after.confidenceLabel.replace('_', ' ').replace('_', ' ')
+        : `${afterConf} confidence`;
       drawerStatus.className = afterConf === 'High' ? 'status-pill status-positive' : afterConf === 'Medium' ? 'status-pill status-neutral' : 'status-pill status-negative';
-      drawerStatus.textContent = `${afterConf} confidence`;
+      drawerStatus.textContent = criterionConf;
       drawerSummary.textContent = mode === 'compare'
-        ? `"${criterionPair.name}" moved from ${fmtScore(criterionPair.before.score)} to ${fmtScore(criterionPair.after.score)} / 10 (${fmtDelta(delta, '/10')}). Weak signals changed ${criterionPair.before.weakSignalCount} → ${criterionPair.after.weakSignalCount}.`
-        : `"${criterionPair.name}" scored ${fmtScore(criterionPair.after.score)} / 10 with ${round1(criterionPair.after.avgPlausibility || 0)} / 5 plausibility and ${criterionPair.after.evidenceCount} cited chunk${criterionPair.after.evidenceCount === 1 ? '' : 's'}.`;
+        ? `"${criterionPair.name}" moved from ${fmtScore(criterionPair.before.score)} to ${fmtScore(criterionPair.after.score)} / 10 (${fmtDelta(delta, '/10')}). Low-confidence items changed ${criterionPair.before.weakSignalCount} → ${criterionPair.after.weakSignalCount}.`
+        : `"${criterionPair.name}" scored ${fmtScore(criterionPair.after.score)} / 10 with ${criterionConf} and ${criterionPair.after.evidenceCount} cited chunk${criterionPair.after.evidenceCount === 1 ? '' : 's'}.`;
       metricFocusTag.textContent = mode === 'compare' ? 'Sub-criterion compare' : 'Sub-criterion evidence';
       let evidences = [];
       if (mode === 'compare') {
@@ -1658,8 +1665,8 @@
       if (mode === 'compare') {
         if (delta < 0) notes.push({ tone:'warning', tag:'Score dropped', text:`This sub-criterion regressed by ${Math.abs(delta)} point${Math.abs(delta) === 1 ? '' : 's'} on the 0–10 scale.`, source:'Comparison summary' });
         else if (delta > 0) notes.push({ tone:'positive', tag:'Score improved', text:`This sub-criterion improved by ${delta} point${delta === 1 ? '' : 's'} on the 0–10 scale.`, source:'Comparison summary' });
-        if (criterionPair.after.weakSignalCount > criterionPair.before.weakSignalCount) notes.push({ tone:'warning', tag:'More weak signals', text:`Weak signals increased (${criterionPair.before.weakSignalCount} → ${criterionPair.after.weakSignalCount}).`, source:'Signal audit' });
-        if (criterionPair.after.avgPlausibility > criterionPair.before.avgPlausibility) notes.push({ tone:'positive', tag:'Better grounding', text:`Average plausibility improved (${round1(criterionPair.before.avgPlausibility)} → ${round1(criterionPair.after.avgPlausibility)}).`, source:'Signal audit' });
+        if (criterionPair.after.weakSignalCount > criterionPair.before.weakSignalCount) notes.push({ tone:'warning', tag:'More low-confidence items', text:`Low-confidence items increased (${criterionPair.before.weakSignalCount} → ${criterionPair.after.weakSignalCount}).`, source:'Model agreement' });
+        if (criterionPair.after.avgPlausibility > criterionPair.before.avgPlausibility) notes.push({ tone:'positive', tag:'Better agreement', text:`Confidence proxy improved (${round1(criterionPair.before.avgPlausibility)} → ${round1(criterionPair.after.avgPlausibility)}).`, source:'Model agreement' });
       } else {
         if (criterionPair.after.score >= 8) notes.push({ tone:'positive', tag:'Strong sub-criterion', text:'This sub-criterion is currently scoring in a strong range.', source:'Current review' });
         else notes.push({ tone:'warning', tag:'Could improve', text:'This sub-criterion has room to improve or be supported more explicitly.', source:'Current review' });
@@ -1668,10 +1675,10 @@
       }
       (criterionPair.after.signals || []).forEach(signal => {
         notes.push({
-          tone: signal.flag === 'hallucination' || signal.flag === 'weak_evidence' ? 'warning' : signal.flag === 'low_confidence' ? 'neutral' : 'positive',
-          tag: `${flagBadge(signal.flag, signal.plausibility)} ${signal.sid}`,
-          text: `${signal.text} · raw ${round1(signal.rawScore)} · weighted ${round1(signal.weightedScore)} · ${signal.rationale || 'No rationale provided.'}`,
-          source: signal.note || 'Signal audit'
+          tone: Math.abs((signal.modelAScore || 0) - (signal.modelBScore || 0)) >= 2 ? 'warning' : Math.abs((signal.modelAScore || 0) - (signal.modelBScore || 0)) === 1 ? 'neutral' : 'positive',
+          tag: `${signal.sid} · A ${round1(signal.modelAScore || 0)} / B ${round1(signal.modelBScore || 0)}`,
+          text: `${signal.text} · averaged ${round1(signal.rawScore)} · weighted ${round1(signal.weightedScore)}.`,
+          source: 'Dual-model scoring'
         });
       });
       if (!notes.length) notes.push({ tone:'neutral', tag:'No extra note', text:'No additional concerns were generated for this criterion.', source:'System' });
@@ -1686,7 +1693,7 @@
       `).join('');
       confidencePill.className = afterConf === 'High' ? 'status-pill status-positive' : afterConf === 'Medium' ? 'status-pill status-neutral' : 'status-pill status-negative';
       confidencePill.textContent = `Confidence: ${afterConf}`;
-      confidenceText.textContent = 'Confidence is estimated from average plausibility and weak-signal count — a UI heuristic layered on top of your pipeline outputs.';
+      confidenceText.textContent = 'Confidence reflects agreement between the two scoring models at sub-criterion level, with section-level badges using the aggregated confidence proxy.';
     }
 
     function renderTable() {

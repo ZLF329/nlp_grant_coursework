@@ -5,7 +5,7 @@ import json
 from pathlib import Path
 from typing import Any
 
-from src.verify.faithfulness import FallbackJudge, run_faithfulness_audit
+from src.pool.build_pool import MAX_CHARS, build_chunk_pool, write_pool_artifacts
 
 SECTION_KEY_MAP = {
     "General": "general",
@@ -15,7 +15,6 @@ SECTION_KEY_MAP = {
     "Working with people and communities": "wpcc",
     "Application Form": "application_form",
 }
-SECTION_NAME_MAP = {value: key for key, value in SECTION_KEY_MAP.items()}
 SECTION_ID_PREFIX = {
     "general": "g",
     "proposed_research": "pr",
@@ -24,16 +23,14 @@ SECTION_ID_PREFIX = {
     "wpcc": "wp",
     "application_form": "af",
 }
-
-PLAUSIBILITY_TO_MULTIPLIER = {
-    5: (1.0, None),
-    4: (0.9, None),
-    3: (0.8, "low_confidence"),
-    2: (0.6, "low_confidence"),
-    1: (0.4, "weak_evidence"),
-    0: (0.0, "hallucination"),
+SCORER_ALLOWED_SCORES = (0, 1, 2)
+RETRIEVAL_MAX_CHUNKS = 8
+USED_CHUNK_MAX = 5
+CONFIDENCE_TO_SCORE = {
+    "low_confidence": 0,
+    "medium_confidence": 1,
+    "high_confidence": 2,
 }
-STAGE1_ALLOWED_SCORES = (0.0, 0.5, 1.0, 1.5, 2.0)
 
 
 def load_rubric(criteria_path: str | Path) -> list[dict[str, Any]]:
@@ -145,227 +142,6 @@ def load_rubric(criteria_path: str | Path) -> list[dict[str, Any]]:
     return sections
 
 
-def _stringify_leaf(value: Any) -> str:
-    if value is None:
-        return ""
-    if isinstance(value, str):
-        return value.strip()
-    if isinstance(value, (int, float, bool)):
-        return str(value)
-    return json.dumps(value, ensure_ascii=False, indent=2).strip()
-
-
-def _child_path(path: list[str], key: Any) -> list[str]:
-    if isinstance(key, int):
-        return [*path, f"[{key}]"]
-    return [*path, str(key)]
-
-
-def _iter_leaves(value: Any, path: list[str]) -> list[tuple[str, str]]:
-    if isinstance(value, dict):
-        out: list[tuple[str, str]] = []
-        for key, child in value.items():
-            out.extend(_iter_leaves(child, _child_path(path, key)))
-        return out
-    if isinstance(value, list):
-        out: list[tuple[str, str]] = []
-        for idx, child in enumerate(value):
-            out.extend(_iter_leaves(child, _child_path(path, idx)))
-        return out
-
-    text = _stringify_leaf(value)
-    return [(text, " > ".join(path))] if text else []
-
-
-def build_section_index(application: dict[str, Any]) -> dict[str, Any]:
-    ordered_sections: list[str] = []
-    section_text_parts: dict[str, list[str]] = {}
-    section_source_paths: dict[str, list[str]] = {}
-
-    def register_section(parser_section: str) -> None:
-        if parser_section not in section_text_parts:
-            ordered_sections.append(parser_section)
-            section_text_parts[parser_section] = []
-            section_source_paths[parser_section] = []
-
-    for root_key, root_value in application.items():
-        if isinstance(root_value, dict):
-            for child_key, child_value in root_value.items():
-                parser_section = str(child_key)
-                register_section(parser_section)
-                for leaf_text, source_path in _iter_leaves(
-                    child_value,
-                    [str(root_key), str(child_key)],
-                ):
-                    section_text_parts[parser_section].append(leaf_text)
-                    section_source_paths[parser_section].append(source_path)
-        else:
-            parser_section = str(root_key)
-            register_section(parser_section)
-            for leaf_text, source_path in _iter_leaves(root_value, [str(root_key)]):
-                section_text_parts[parser_section].append(leaf_text)
-                section_source_paths[parser_section].append(source_path)
-
-    section_index: dict[str, str] = {}
-    section_name_to_id: dict[str, str] = {}
-    section_text_lookup: dict[str, dict[str, Any]] = {}
-
-    for idx, section_name in enumerate(ordered_sections, start=1):
-        section_id = f"S{idx:02d}"
-        section_index[section_id] = section_name
-        section_name_to_id[section_name] = section_id
-        dedup_source_paths = list(dict.fromkeys(section_source_paths.get(section_name, [])))
-        section_text_lookup[section_id] = {
-            "section": section_name,
-            "text": "\n\n".join(section_text_parts.get(section_name, [])),
-            "source_paths": dedup_source_paths,
-        }
-
-    return {
-        "section_index": section_index,
-        "section_name_to_id": section_name_to_id,
-        "section_text_lookup": section_text_lookup,
-    }
-
-
-def build_stage1_messages(
-    *,
-    application: dict[str, Any],
-    rubric_sections: list[dict[str, Any]],
-    section_index: dict[str, str],
-) -> list[dict[str, str]]:
-    rubric_payload = []
-    for section in rubric_sections:
-        rubric_payload.append({
-            "section_key": section["section_key"],
-            "section_name": section["human_name"],
-            "sub_criteria": [
-                {
-                    "sub_id": sub["sub_id"],
-                    "name": sub["name"],
-                    "definition": sub["definition"],
-                    "group_name": sub.get("group_name"),
-                    "signals": [
-                        {"sid": signal["sid"], "text": signal["text"]}
-                        for signal in sub["signals"]
-                    ],
-                }
-                for sub in section["sub_criteria"]
-            ],
-        })
-
-    system = (
-        "You are scoring a UK NIHR grant application against a rubric.\n\n"
-        "Return JSON only.\n\n"
-        "Use only section IDs from the provided section index.\n"
-        "Do not output rationale, explanations, prose, markdown, section names, or chunk IDs.\n"
-        "For each signal, return exactly one score chosen from 0, 0.5, 1, 1.5, or 2.\n\n"
-        "Important:\n"
-        "Inside each rubric section, the sub-criteria must be stored as object properties keyed by sub_id.\n"
-        "Do not use arrays for sub-criteria."
-    )
-    user = (
-        "Application JSON:\n"
-        f"{json.dumps(application, ensure_ascii=False, indent=2)}\n\n"
-        "Section index:\n"
-        f"{json.dumps(section_index, ensure_ascii=False, indent=2)}\n\n"
-        "Rubric:\n"
-        f"{json.dumps(rubric_payload, ensure_ascii=False, indent=2)}\n\n"
-        "Return format rules:\n"
-        "1. Top-level keys must be rubric section keys.\n"
-        "2. Inside each rubric section, use `sub_id` as the property name.\n"
-        "3. Each sub-criterion object must contain:\n"
-        "   - `signals`\n"
-        "   - `needed_section_ids`\n"
-        "4. `signals` maps signal IDs to scores chosen only from 0, 0.5, 1, 1.5, or 2.\n"
-        "5. `needed_section_ids` must contain only IDs from the section index.\n"
-        "6. If unsupported, use score 0 and an empty `needed_section_ids` array.\n"
-        "7. Return JSON only.\n\n"
-        "Example:\n"
-        "{\n"
-        '  "general": {\n'
-        '    "g.1": {\n'
-        '      "signals": {\n'
-        '        "g.1.a": 2\n'
-        "      },\n"
-        '      "needed_section_ids": ["S09", "S12"]\n'
-        "    },\n"
-        '    "g.2": {\n'
-        '      "signals": {\n'
-        '        "g.2.a": 0.5\n'
-        "      },\n"
-        '      "needed_section_ids": ["S10"]\n'
-        "    }\n"
-        "  },\n"
-        '  "proposed_research": {\n'
-        '    "pr.1": {\n'
-        '      "signals": {\n'
-        '        "pr.1.a": 0,\n'
-        '        "pr.1.b": 1.5,\n'
-        '        "pr.1.c": 2\n'
-        "      },\n"
-        '      "needed_section_ids": ["S08", "S10"]\n'
-        "    }\n"
-        "  }\n"
-        "}\n\n"
-        "Use exactly the same object structure as the example."
-    )
-    return [
-        {"role": "system", "content": system},
-        {"role": "user", "content": user},
-    ]
-
-
-def build_stage1_schema(rubric_sections: list[dict[str, Any]]) -> dict[str, Any]:
-    section_properties: dict[str, Any] = {}
-    required_sections: list[str] = []
-    for section in rubric_sections:
-        required_sections.append(section["section_key"])
-        sub_properties: dict[str, Any] = {}
-        required_sub_ids: list[str] = []
-        for sub in section["sub_criteria"]:
-            required_sub_ids.append(sub["sub_id"])
-            signal_properties = {
-                signal["sid"]: {
-                    "type": "number",
-                    "enum": list(STAGE1_ALLOWED_SCORES),
-                }
-                for signal in sub["signals"]
-            }
-            sub_properties[sub["sub_id"]] = {
-                "type": "object",
-                "properties": {
-                    "signals": {
-                        "type": "object",
-                        "properties": signal_properties,
-                        "additionalProperties": False,
-                    },
-                    "needed_section_ids": {
-                        "type": "array",
-                        "items": {
-                            "type": "string",
-                            "pattern": r"^S\d{2}$",
-                        },
-                        "maxItems": 5,
-                    },
-                },
-                "required": ["signals", "needed_section_ids"],
-                "additionalProperties": False,
-            }
-        section_properties[section["section_key"]] = {
-            "type": "object",
-            "properties": sub_properties,
-            "required": required_sub_ids,
-            "additionalProperties": False,
-        }
-    return {
-        "type": "object",
-        "properties": section_properties,
-        "required": required_sections,
-        "additionalProperties": False,
-    }
-
-
 def _safe_json_loads(text: str) -> dict[str, Any]:
     clean = (text or "").strip()
     if clean.startswith("```"):
@@ -384,214 +160,371 @@ def _response_preview(text: str, limit: int = 500) -> str:
     return clean[:limit] + "..."
 
 
-def _normalize_stage1_score(value: Any) -> float:
-    if isinstance(value, bool) or not isinstance(value, (int, float)):
-        return 0.0
-    score = round(float(value), 4)
-    return score if score in STAGE1_ALLOWED_SCORES else 0.0
+def _dedupe_preserve_order(values: list[str]) -> list[str]:
+    seen: set[str] = set()
+    ordered: list[str] = []
+    for value in values:
+        if value in seen:
+            continue
+        seen.add(value)
+        ordered.append(value)
+    return ordered
 
 
-def _has_valid_stage1_shape(parsed: dict[str, Any], rubric_sections: list[dict[str, Any]]) -> bool:
-    if isinstance(parsed.get("sub_criteria"), list):
-        return True
-    return any(isinstance(parsed.get(section["section_key"]), dict) for section in rubric_sections)
+def _chunk_order_map(pool_lookup: dict[str, dict[str, str]]) -> dict[str, int]:
+    return {chunk_id: idx for idx, chunk_id in enumerate(pool_lookup)}
 
 
-def _normalize_stage1_output(
+def _sort_chunk_ids(chunk_ids: list[str], chunk_order: dict[str, int]) -> list[str]:
+    return sorted(chunk_ids, key=lambda chunk_id: chunk_order.get(chunk_id, 10**9))
+
+
+def _confidence_label(avg_gap: float) -> str:
+    if avg_gap < 0.5:
+        return "high_confidence"
+    if avg_gap < 1.5:
+        return "medium_confidence"
+    return "low_confidence"
+
+
+def _compat_plausibility(avg_confidence_0to2: float) -> float:
+    return round((avg_confidence_0to2 / 2) * 5, 2)
+
+
+def _compat_evidence_score(avg_confidence_0to2: float) -> float:
+    return round((avg_confidence_0to2 / 2) * 100, 2)
+
+
+def _build_retrieval_payload(rubric_sections: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    return [
+        {
+            "section_key": section["section_key"],
+            "section_name": section["human_name"],
+            "sub_criteria": [
+                {
+                    "sub_id": sub["sub_id"],
+                    "name": sub["name"],
+                    "definition": sub["definition"],
+                    "group_name": sub.get("group_name"),
+                    "signals": [
+                        {"sid": signal["sid"], "text": signal["text"]}
+                        for signal in sub["signals"]
+                    ],
+                }
+                for sub in section["sub_criteria"]
+            ],
+        }
+        for section in rubric_sections
+    ]
+
+
+def build_retrieval_messages(
+    *,
+    rubric_sections: list[dict[str, Any]],
+    pool_index_text: str,
+) -> list[dict[str, str]]:
+    system = (
+        "You are selecting relevant evidence chunks for grant scoring.\n\n"
+        "Return JSON only.\n"
+        "For each rubric section, select only chunk IDs from the provided pool index.\n"
+        "Do not output explanations, prose, or markdown.\n"
+        f"Return at most {RETRIEVAL_MAX_CHUNKS} chunk IDs per rubric section."
+    )
+    user = (
+        "Rubric sections:\n"
+        f"{json.dumps(_build_retrieval_payload(rubric_sections), ensure_ascii=False, indent=2)}\n\n"
+        "Pool index:\n"
+        f"{pool_index_text}\n\n"
+        "Return format:\n"
+        "{\n"
+        '  "general": ["chunk_id_1", "chunk_id_2"],\n'
+        '  "proposed_research": ["chunk_id_3"]\n'
+        "}\n\n"
+        "Return one top-level property per rubric section key."
+    )
+    return [
+        {"role": "system", "content": system},
+        {"role": "user", "content": user},
+    ]
+
+
+def build_retrieval_schema(rubric_sections: list[dict[str, Any]]) -> dict[str, Any]:
+    properties = {
+        section["section_key"]: {
+            "type": "array",
+            "items": {"type": "string"},
+            "maxItems": RETRIEVAL_MAX_CHUNKS,
+        }
+        for section in rubric_sections
+    }
+    return {
+        "type": "object",
+        "properties": properties,
+        "required": list(properties),
+        "additionalProperties": False,
+    }
+
+
+def _normalize_retrieval_output(
     parsed: dict[str, Any],
     rubric_sections: list[dict[str, Any]],
-    section_data: dict[str, Any],
-) -> list[dict[str, Any]]:
-    section_index = section_data["section_index"]
-    raw_subs = parsed.get("sub_criteria", []) if isinstance(parsed, dict) else []
-    legacy_by_sub_id: dict[str, dict[str, Any]] = {}
-    for entry in raw_subs:
-        if isinstance(entry, dict) and isinstance(entry.get("sub_id"), str):
-            legacy_by_sub_id.setdefault(entry["sub_id"], entry)
-
-    normalized_sections: list[dict[str, Any]] = []
+    pool_lookup: dict[str, dict[str, str]],
+) -> dict[str, list[str]]:
+    normalized: dict[str, list[str]] = {}
+    valid_ids = set(pool_lookup)
     for section in rubric_sections:
-        raw_section = parsed.get(section["section_key"], {}) if isinstance(parsed, dict) else {}
-        if not isinstance(raw_section, dict):
-            raw_section = {}
-
-        section_subs: list[dict[str, Any]] = []
-        for expected_sub in section["sub_criteria"]:
-            raw_sub = raw_section.get(expected_sub["sub_id"], {})
-            if not isinstance(raw_sub, dict):
-                raw_sub = {}
-            if not raw_sub and expected_sub["sub_id"] in legacy_by_sub_id:
-                raw_sub = legacy_by_sub_id[expected_sub["sub_id"]]
-
-            raw_signals = raw_sub.get("signals", {})
-            raw_signal_map: dict[str, Any] = {}
-            if isinstance(raw_signals, dict):
-                raw_signal_map = raw_signals
-            elif isinstance(raw_signals, list):
-                for item in raw_signals:
-                    if isinstance(item, dict) and isinstance(item.get("sid"), str):
-                        raw_signal_map[item["sid"]] = item.get("score", 0)
-
-            scalar_score = raw_sub.get("score")
-            scalar_score = (
-                _normalize_stage1_score(scalar_score)
-                if isinstance(scalar_score, (int, float)) and not isinstance(scalar_score, bool)
-                else None
-            )
-
-            raw_needed_ids = raw_sub.get("needed_section_ids", [])
-            if not isinstance(raw_needed_ids, list):
-                raw_needed_ids = []
-
-            seen_section_ids: set[str] = set()
-            needed_section_ids: list[str] = []
-            for section_id in raw_needed_ids:
-                if not isinstance(section_id, str) or section_id not in section_index:
-                    continue
-                if section_id in seen_section_ids:
-                    continue
-                seen_section_ids.add(section_id)
-                needed_section_ids.append(section_id)
-
-            signals = []
-            has_positive = False
-            for expected_signal in expected_sub["signals"]:
-                raw_score = raw_signal_map.get(expected_signal["sid"], scalar_score if scalar_score is not None else 0)
-                raw_score = _normalize_stage1_score(raw_score)
-                signals.append({
-                    "sid": expected_signal["sid"],
-                    "signal_text": expected_signal["text"],
-                    "weight": expected_signal["weight"],
-                    "score_0to2_raw": raw_score,
-                })
-                has_positive = has_positive or raw_score > 0
-
-            empty_zero_evidence = len(needed_section_ids) == 0 and not has_positive
-            evidence_status = "ok"
-            if len(needed_section_ids) == 0 and has_positive:
-                evidence_status = "invalid_evidence"
-            elif 0 < len(needed_section_ids) <= 1:
-                evidence_status = "sparse_evidence"
-
-            if evidence_status == "invalid_evidence" and has_positive:
-                for signal in signals:
-                    signal["score_0to2_raw"] = 0
-
-            section_subs.append({
-                "sub_id": expected_sub["sub_id"],
-                "name": expected_sub["name"],
-                "definition": expected_sub["definition"],
-                "group_name": expected_sub.get("group_name"),
-                "weight": expected_sub["weight"],
-                "needed_section_ids": needed_section_ids,
-                "evidence_count": len(needed_section_ids),
-                "evidence_status": evidence_status,
-                "empty_zero_evidence": empty_zero_evidence,
-                "signals": signals,
-            })
-
-        normalized_sections.append({
-            "human_name": section["human_name"],
-            "section_key": section["section_key"],
-            "weight": section["weight"],
-            "sub_criteria": section_subs,
-        })
-    return normalized_sections
+        raw_ids = parsed.get(section["section_key"], []) if isinstance(parsed, dict) else []
+        if not isinstance(raw_ids, list):
+            raw_ids = []
+        cleaned = [
+            chunk_id
+            for chunk_id in raw_ids
+            if isinstance(chunk_id, str) and chunk_id in valid_ids
+        ]
+        normalized[section["section_key"]] = _dedupe_preserve_order(cleaned)[:RETRIEVAL_MAX_CHUNKS]
+    return normalized
 
 
-def _section_audit_payload(section: dict[str, Any], section_data: dict[str, Any]) -> dict[str, Any]:
-    section_text_lookup = section_data["section_text_lookup"]
-    referenced_ids: list[str] = []
-    seen_ids: set[str] = set()
-    for sub in section["sub_criteria"]:
-        for section_id in sub["needed_section_ids"]:
-            if section_id in seen_ids:
-                continue
-            seen_ids.add(section_id)
-            referenced_ids.append(section_id)
+def build_evidence_text(
+    chunk_ids: list[str],
+    pool_lookup: dict[str, dict[str, str]],
+    chunk_order: dict[str, int],
+) -> str:
+    if not chunk_ids:
+        return "(no retrieved chunks)"
 
-    section_blocks: list[str] = []
-    for section_id in referenced_ids:
-        meta = section_text_lookup.get(section_id)
-        if not meta:
-            continue
-        label = f"{section_id}: {meta['section']}"
-        section_blocks.append(f"[{label}]\n{meta['text']}\n[{label}]")
+    ordered_ids = _sort_chunk_ids(_dedupe_preserve_order(chunk_ids), chunk_order)
+    lines: list[str] = []
+    last_position: int | None = None
+    last_section: str | None = None
 
+    for chunk_id in ordered_ids:
+        position = chunk_order.get(chunk_id, 10**9)
+        meta = pool_lookup[chunk_id]
+        current_section = meta["parser_section"]
+
+        if last_section != current_section:
+            if lines:
+                lines.append("")
+            lines.append(f"===== {current_section} =====")
+            lines.append("")
+
+        if last_position is not None and position - last_position > 1:
+            lines.extend(["", "...", ""])
+        lines.extend([
+            f"<{chunk_id}>",
+            meta["text"],
+            f"<{chunk_id}>",
+            "",
+        ])
+        last_position = position
+        last_section = current_section
+
+    return "\n".join(lines).strip()
+
+
+def _single_section_payload(section: dict[str, Any]) -> dict[str, Any]:
     return {
-        "evidence_context": "\n\n".join(section_blocks),
         "section_key": section["section_key"],
+        "section_name": section["human_name"],
         "sub_criteria": [
             {
                 "sub_id": sub["sub_id"],
-                "sub_criterion": sub["name"],
-                "evidence_status": sub["evidence_status"],
-                "needed_section_ids": sub["needed_section_ids"],
+                "name": sub["name"],
+                "definition": sub["definition"],
+                "group_name": sub.get("group_name"),
                 "signals": [
-                    {
-                        "sid": signal["sid"],
-                        "signal_text": signal["signal_text"],
-                        "stage1_score": signal["score_0to2_raw"],
-                    }
+                    {"sid": signal["sid"], "text": signal["text"]}
                     for signal in sub["signals"]
                 ],
             }
             for sub in section["sub_criteria"]
-            if sub["evidence_status"] != "invalid_evidence" and not sub.get("empty_zero_evidence")
         ],
     }
 
 
-def _apply_plausibility(section: dict[str, Any], audited: dict[str, dict[str, Any]]) -> None:
-    for sub in section["sub_criteria"]:
+def build_scoring_messages(
+    *,
+    rubric_section: dict[str, Any],
+    retrieved_chunk_ids: list[str],
+    evidence_text: str,
+) -> list[dict[str, str]]:
+    system = (
+        "You are scoring one rubric section of a grant application.\n\n"
+        "Return JSON only.\n"
+        "Each signal score must be exactly one of: 0, 1, 2.\n"
+        "Each `used_chunk_ids` entry must be chosen only from the provided retrieved chunk IDs.\n"
+        "Do not output explanations, prose, markdown, or extra keys."
+    )
+    user = (
+        "rubric_section:\n"
+        f"{json.dumps(_single_section_payload(rubric_section), ensure_ascii=False, indent=2)}\n\n"
+        "retrieved_chunk_ids:\n"
+        f"{json.dumps(retrieved_chunk_ids, ensure_ascii=False, indent=2)}\n\n"
+        "evidence_text:\n"
+        f"{evidence_text}\n\n"
+        "return_format_rules:\n"
+        "- Top-level keys must be the sub_id values for this rubric section.\n"
+        "- Each sub_id object must contain `signals` and `used_chunk_ids`.\n"
+        "- Each signal score must be 0, 1, or 2.\n"
+        "- `used_chunk_ids` must contain only IDs from `retrieved_chunk_ids`.\n"
+        "- If no supporting evidence is shown, score 0 and use an empty `used_chunk_ids` array.\n"
+        "- You may only rely on chunk text shown in `evidence_text`; do not infer omitted content from `...`.\n"
+        "- Return JSON only.\n\n"
+        "example_output:\n"
+        "{\n"
+        '  "pr.1": {\n'
+        '    "signals": {\n'
+        '      "pr.1.a": 2,\n'
+        '      "pr.1.b": 1\n'
+        "    },\n"
+        '    "used_chunk_ids": ["secadr__001", "secadr__004"]\n'
+        "  },\n"
+        '  "pr.2": {\n'
+        '    "signals": {\n'
+        '      "pr.2.a": 0,\n'
+        '      "pr.2.b": 1\n'
+        "    },\n"
+        '    "used_chunk_ids": ["secadr__004"]\n'
+        "  }\n"
+        "}"
+    )
+    return [
+        {"role": "system", "content": system},
+        {"role": "user", "content": user},
+    ]
+
+
+def build_scoring_schema(rubric_section: dict[str, Any], retrieved_chunk_ids: list[str]) -> dict[str, Any]:
+    properties: dict[str, Any] = {}
+    for sub in rubric_section["sub_criteria"]:
+        signal_properties = {
+            signal["sid"]: {
+                "type": "integer",
+                "enum": list(SCORER_ALLOWED_SCORES),
+            }
+            for signal in sub["signals"]
+        }
+        properties[sub["sub_id"]] = {
+            "type": "object",
+            "properties": {
+                "signals": {
+                    "type": "object",
+                    "properties": signal_properties,
+                    "additionalProperties": False,
+                },
+                "used_chunk_ids": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "enum": retrieved_chunk_ids,
+                    },
+                    "maxItems": USED_CHUNK_MAX,
+                },
+            },
+            "required": ["signals", "used_chunk_ids"],
+            "additionalProperties": False,
+        }
+    return {
+        "type": "object",
+        "properties": properties,
+        "required": list(properties),
+        "additionalProperties": False,
+    }
+
+
+def _normalize_score(value: Any) -> int:
+    if isinstance(value, bool) or not isinstance(value, (int, float)):
+        return 0
+    normalized = int(value)
+    return normalized if normalized in SCORER_ALLOWED_SCORES and normalized == value else 0
+
+
+def _normalize_model_section_output(
+    parsed: dict[str, Any],
+    rubric_section: dict[str, Any],
+    retrieved_chunk_ids: list[str],
+) -> dict[str, dict[str, Any]]:
+    allowed_ids = set(retrieved_chunk_ids)
+    normalized: dict[str, dict[str, Any]] = {}
+
+    for sub in rubric_section["sub_criteria"]:
+        raw_sub = parsed.get(sub["sub_id"], {}) if isinstance(parsed, dict) else {}
+        if not isinstance(raw_sub, dict):
+            raw_sub = {}
+        raw_signals = raw_sub.get("signals", {})
+        if not isinstance(raw_signals, dict):
+            raw_signals = {}
+        raw_used_ids = raw_sub.get("used_chunk_ids", [])
+        if not isinstance(raw_used_ids, list):
+            raw_used_ids = []
+
+        used_chunk_ids = [
+            chunk_id
+            for chunk_id in raw_used_ids
+            if isinstance(chunk_id, str) and chunk_id in allowed_ids
+        ]
+        used_chunk_ids = _dedupe_preserve_order(used_chunk_ids)[:USED_CHUNK_MAX]
+
+        signals: dict[str, int] = {}
+        has_positive = False
         for signal in sub["signals"]:
-            if sub["evidence_status"] == "invalid_evidence":
-                plausibility = 0
-                note = "invalid_evidence"
-            elif sub.get("empty_zero_evidence"):
-                plausibility = 5
-                note = "no_evidence_for_zero_score"
-            else:
-                result = audited.get(signal["sid"], {})
-                plausibility = int(result.get("plausibility", 3))
-                plausibility = max(0, min(plausibility, 5))
-                note = result.get("note")
-            multiplier, flag = PLAUSIBILITY_TO_MULTIPLIER[plausibility]
-            signal["plausibility_0to5"] = plausibility
-            signal["multiplier"] = multiplier
-            signal["flag"] = flag
-            signal["note"] = note
-            signal["score_0to2_weighted"] = round(signal["score_0to2_raw"] * multiplier, 4)
+            score = _normalize_score(raw_signals.get(signal["sid"], 0))
+            signals[signal["sid"]] = score
+            has_positive = has_positive or score > 0
+
+        evidence_status = "ok"
+        if has_positive and not used_chunk_ids:
+            evidence_status = "invalid_evidence"
+            signals = {sid: 0 for sid in signals}
+        elif len(used_chunk_ids) == 1:
+            evidence_status = "sparse_evidence"
+
+        normalized[sub["sub_id"]] = {
+            "signals": signals,
+            "used_chunk_ids": used_chunk_ids,
+            "evidence_status": evidence_status,
+        }
+    return normalized
 
 
-def _aggregate_sub_criterion(sub: dict[str, Any], section_data: dict[str, Any]) -> dict[str, Any]:
-    section_text_lookup = section_data["section_text_lookup"]
-    total_weight = sum(signal["weight"] for signal in sub["signals"]) or 1.0
-    weighted_sum = sum(signal["score_0to2_weighted"] * signal["weight"] for signal in sub["signals"])
-    score_10 = round((weighted_sum / (2 * total_weight)) * 10, 2)
-    avg_plausibility = int(round(
-        sum(signal["plausibility_0to5"] for signal in sub["signals"]) / max(1, len(sub["signals"]))
-    ))
-    weak_signal_count = sum(1 for signal in sub["signals"] if signal["plausibility_0to5"] <= 1)
+def _build_evidence(
+    used_chunk_ids: list[str],
+    pool_lookup: dict[str, dict[str, str]],
+) -> list[dict[str, Any]]:
     evidence = []
-    for section_id in sub["needed_section_ids"]:
-        meta = section_text_lookup.get(section_id)
+    for chunk_id in used_chunk_ids:
+        meta = pool_lookup.get(chunk_id)
         if not meta:
             continue
         evidence.append({
-            "id": section_id,
-            "section_id": section_id,
-            "text": "",
-            "section": meta["section"],
-            "source_path": " | ".join(meta.get("source_paths", [])),
+            "id": chunk_id,
+            "section_id": chunk_id,
+            "text": meta["text"],
+            "section": meta["parser_section"],
+            "source_path": meta["source_path"],
         })
+    return evidence
+
+
+def _aggregate_sub_criterion(
+    sub: dict[str, Any],
+    pool_lookup: dict[str, dict[str, str]],
+) -> dict[str, Any]:
+    total_weight = sum(signal["weight"] for signal in sub["signals"]) or 1.0
+    weighted_sum = sum(signal["score_0to2_weighted"] * signal["weight"] for signal in sub["signals"])
+    score_10 = round((weighted_sum / (2 * total_weight)) * 10, 2)
+    confidence_score = CONFIDENCE_TO_SCORE[sub["confidence_label"]]
+    avg_plausibility = _compat_plausibility(confidence_score)
+    evidence = _build_evidence(sub["used_chunk_ids"], pool_lookup)
     return {
         **sub,
         "score_10": score_10,
-        "avg_plausibility_0to5": avg_plausibility,
-        "weak_signal_count": weak_signal_count,
-        "evidence": evidence,
         "quality_score_0to10": score_10,
+        "avg_confidence_0to2": float(confidence_score),
+        "avg_plausibility_0to5": avg_plausibility,
+        "weak_signal_count": 1 if sub["confidence_label"] == "low_confidence" else 0,
+        "evidence": evidence,
         "quality": (
             "good" if score_10 >= 7.5 else
             "mixed" if score_10 >= 4 else
@@ -601,44 +534,53 @@ def _aggregate_sub_criterion(sub: dict[str, Any], section_data: dict[str, Any]) 
     }
 
 
-def _aggregate_section(section: dict[str, Any], section_data: dict[str, Any]) -> dict[str, Any]:
-    sub_criteria = [
-        _aggregate_sub_criterion(sub, section_data) for sub in section["sub_criteria"]
-    ]
+def _aggregate_section(section: dict[str, Any], pool_lookup: dict[str, dict[str, str]]) -> dict[str, Any]:
+    sub_criteria = [_aggregate_sub_criterion(sub, pool_lookup) for sub in section["sub_criteria"]]
     total_weight = sum(sub["weight"] for sub in sub_criteria) or 1.0
     weighted_score = sum(sub["score_10"] * sub["weight"] for sub in sub_criteria)
     score_10 = round(weighted_score / total_weight, 2)
-    all_signals = [signal for sub in sub_criteria for signal in sub["signals"]]
-    avg_plausibility = int(round(
-        sum(signal["plausibility_0to5"] for signal in all_signals) / max(1, len(all_signals))
-    ))
-    weak_signal_count = sum(1 for signal in all_signals if signal["plausibility_0to5"] <= 1)
-    evidence_count = sum(sub["evidence_count"] for sub in sub_criteria)
     total_items = len(sub_criteria)
+    signal_count = sum(len(sub["signals"]) for sub in sub_criteria)
+    evidence_count = sum(sub["evidence_count"] for sub in sub_criteria)
     good_items = sum(1 for sub in sub_criteria if sub["score_10"] >= 7.5)
     positive_items = sum(1 for sub in sub_criteria if sub["score_10"] > 0)
-
+    high_confidence_count = sum(1 for sub in sub_criteria if sub["confidence_label"] == "high_confidence")
+    medium_confidence_count = sum(1 for sub in sub_criteria if sub["confidence_label"] == "medium_confidence")
+    low_confidence_count = sum(1 for sub in sub_criteria if sub["confidence_label"] == "low_confidence")
+    avg_confidence_0to2 = round(
+        sum(CONFIDENCE_TO_SCORE[sub["confidence_label"]] for sub in sub_criteria) / max(1, total_items),
+        2,
+    )
+    avg_plausibility = _compat_plausibility(avg_confidence_0to2)
     overall = {
         "score_10": score_10,
         "final_score_0to100": round(score_10 * 10, 2),
         "coverage_score_0to100": round((positive_items / max(1, total_items)) * 100, 2),
         "quality_score_0to100": round(score_10 * 10, 2),
-        "evidence_score_0to100": round((avg_plausibility / 5) * 100, 2),
+        "evidence_score_0to100": _compat_evidence_score(avg_confidence_0to2),
         "quality_score_avg_0to10": score_10,
+        "avg_confidence_0to2": avg_confidence_0to2,
         "avg_plausibility_0to5": avg_plausibility,
-        "weak_signal_count": weak_signal_count,
+        "high_confidence_subcriterion_count": high_confidence_count,
+        "medium_confidence_subcriterion_count": medium_confidence_count,
+        "low_confidence_subcriterion_count": low_confidence_count,
+        "weak_signal_count": low_confidence_count,
         "total_items": total_items,
-        "signal_count": len(all_signals),
+        "signal_count": signal_count,
         "good_items": good_items,
         "positive_items": positive_items,
         "expected_items": total_items,
         "evidence_count": evidence_count,
-        "target_evidence_per_item": 5,
+        "target_evidence_per_item": USED_CHUNK_MAX,
     }
     return {
         "score_10": score_10,
+        "avg_confidence_0to2": avg_confidence_0to2,
         "avg_plausibility_0to5": avg_plausibility,
-        "weak_signal_count": weak_signal_count,
+        "high_confidence_subcriterion_count": high_confidence_count,
+        "medium_confidence_subcriterion_count": medium_confidence_count,
+        "low_confidence_subcriterion_count": low_confidence_count,
+        "weak_signal_count": low_confidence_count,
         "sub_criteria": sub_criteria,
         "criteria": sub_criteria,
         "overall": overall,
@@ -654,86 +596,160 @@ def _aggregate_overall(features: dict[str, dict[str, Any]], section_weights: dic
             "coverage_score_0to100": 0,
             "evidence_score_0to100": 0,
             "quality_score_avg_0to10": 0,
+            "avg_confidence_0to2": 0,
             "avg_plausibility_0to5": 0,
+            "high_confidence_subcriterion_count": 0,
+            "medium_confidence_subcriterion_count": 0,
+            "low_confidence_subcriterion_count": 0,
             "weak_signal_count": 0,
             "total_items": 0,
             "signal_count": 0,
             "evidence_count": 0,
-            "target_evidence_per_item": 5,
+            "target_evidence_per_item": USED_CHUNK_MAX,
         }
 
     total_weight = sum(section_weights.get(key, 1.0) for key in features) or 1.0
-    weighted_score = sum(
-        features[key]["score_10"] * section_weights.get(key, 1.0) for key in features
-    )
+    weighted_score = sum(features[key]["score_10"] * section_weights.get(key, 1.0) for key in features)
     score_10 = round(weighted_score / total_weight, 2)
-    totals = {
-        "total_items": sum(section["overall"]["total_items"] for section in features.values()),
-        "signal_count": sum(section["overall"]["signal_count"] for section in features.values()),
-        "weak_signal_count": sum(section["overall"]["weak_signal_count"] for section in features.values()),
-        "evidence_count": sum(section["overall"]["evidence_count"] for section in features.values()),
-        "good_items": sum(section["overall"]["good_items"] for section in features.values()),
-        "positive_items": sum(section["overall"]["positive_items"] for section in features.values()),
-        "expected_items": sum(section["overall"]["expected_items"] for section in features.values()),
-    }
-    avg_plausibility = int(round(
-        sum(
-            section["overall"]["avg_plausibility_0to5"] * section["overall"]["signal_count"]
-            for section in features.values()
-        ) / max(1, totals["signal_count"])
-    ))
+    total_items = sum(section["overall"]["total_items"] for section in features.values())
+    signal_count = sum(section["overall"]["signal_count"] for section in features.values())
+    evidence_count = sum(section["overall"]["evidence_count"] for section in features.values())
+    good_items = sum(section["overall"]["good_items"] for section in features.values())
+    positive_items = sum(section["overall"]["positive_items"] for section in features.values())
+    high_confidence_count = sum(section["overall"]["high_confidence_subcriterion_count"] for section in features.values())
+    medium_confidence_count = sum(section["overall"]["medium_confidence_subcriterion_count"] for section in features.values())
+    low_confidence_count = sum(section["overall"]["low_confidence_subcriterion_count"] for section in features.values())
+    avg_confidence_0to2 = round(
+        sum(section["overall"]["avg_confidence_0to2"] * section["overall"]["total_items"] for section in features.values())
+        / max(1, total_items),
+        2,
+    )
     return {
         "score_10": score_10,
         "final_score_0to100": round(score_10 * 10, 2),
         "quality_score_0to100": round(score_10 * 10, 2),
-        "coverage_score_0to100": round(
-            (totals["positive_items"] / max(1, totals["total_items"])) * 100,
-            2,
-        ),
-        "evidence_score_0to100": round((avg_plausibility / 5) * 100, 2),
+        "coverage_score_0to100": round((positive_items / max(1, total_items)) * 100, 2),
+        "evidence_score_0to100": _compat_evidence_score(avg_confidence_0to2),
         "quality_score_avg_0to10": score_10,
-        "avg_plausibility_0to5": avg_plausibility,
-        **totals,
-        "target_evidence_per_item": 5,
+        "avg_confidence_0to2": avg_confidence_0to2,
+        "avg_plausibility_0to5": _compat_plausibility(avg_confidence_0to2),
+        "high_confidence_subcriterion_count": high_confidence_count,
+        "medium_confidence_subcriterion_count": medium_confidence_count,
+        "low_confidence_subcriterion_count": low_confidence_count,
+        "weak_signal_count": low_confidence_count,
+        "total_items": total_items,
+        "signal_count": signal_count,
+        "evidence_count": evidence_count,
+        "good_items": good_items,
+        "positive_items": positive_items,
+        "expected_items": total_items,
+        "target_evidence_per_item": USED_CHUNK_MAX,
     }
 
 
-def _write_stage1_artifacts(
+def _ensemble_section(
+    rubric_section: dict[str, Any],
+    model_a_section: dict[str, dict[str, Any]],
+    model_b_section: dict[str, dict[str, Any]],
+    pool_lookup: dict[str, dict[str, str]],
+    chunk_order: dict[str, int],
+) -> dict[str, Any]:
+    section_subs: list[dict[str, Any]] = []
+    for sub in rubric_section["sub_criteria"]:
+        model_a_sub = model_a_section.get(sub["sub_id"], {})
+        model_b_sub = model_b_section.get(sub["sub_id"], {})
+        union_ids = _dedupe_preserve_order([
+            *model_a_sub.get("used_chunk_ids", []),
+            *model_b_sub.get("used_chunk_ids", []),
+        ])
+        union_ids = _sort_chunk_ids(union_ids, chunk_order)[:USED_CHUNK_MAX]
+        evidence_status = "ok"
+        if len(union_ids) == 1:
+            evidence_status = "sparse_evidence"
+
+        signals: list[dict[str, Any]] = []
+        gaps: list[int] = []
+        for signal in sub["signals"]:
+            score_a = int(model_a_sub.get("signals", {}).get(signal["sid"], 0))
+            score_b = int(model_b_sub.get("signals", {}).get(signal["sid"], 0))
+            gap = abs(score_a - score_b)
+            avg_score = round((score_a + score_b) / 2, 4)
+            signals.append({
+                "sid": signal["sid"],
+                "signal_text": signal["text"],
+                "weight": signal["weight"],
+                "model_a_score": score_a,
+                "model_b_score": score_b,
+                "score_0to2_raw": avg_score,
+                "score_0to2_weighted": avg_score,
+            })
+            gaps.append(gap)
+
+        confidence_gap = round(sum(gaps) / max(1, len(gaps)), 2)
+        confidence_label = _confidence_label(confidence_gap)
+        section_subs.append({
+            "sub_id": sub["sub_id"],
+            "name": sub["name"],
+            "definition": sub["definition"],
+            "group_name": sub.get("group_name"),
+            "weight": sub["weight"],
+            "used_chunk_ids": union_ids,
+            "evidence_count": len(union_ids),
+            "evidence_status": evidence_status,
+            "confidence_gap": confidence_gap,
+            "confidence_label": confidence_label,
+            "signals": signals,
+        })
+
+    return {
+        "human_name": rubric_section["human_name"],
+        "section_key": rubric_section["section_key"],
+        "weight": rubric_section["weight"],
+        "sub_criteria": section_subs,
+    }
+
+
+def _write_artifacts(
     *,
     artifacts_dir: str | Path | None,
     doc_id: str,
-    section_index: dict[str, str],
-    raw_response: str,
-    parsed: dict[str, Any],
+    pool_lookup: dict[str, dict[str, str]],
+    pool_index_text: str,
+    retrieval_raw: str,
+    retrieval_parsed: dict[str, Any],
+    model_a_raw_by_section: dict[str, str],
+    model_b_raw_by_section: dict[str, str],
     normalized_sections: list[dict[str, Any]],
 ) -> dict[str, str]:
     if artifacts_dir is None:
         return {}
 
+    artifacts = write_pool_artifacts(
+        pool_lookup=pool_lookup,
+        pool_index_text=pool_index_text,
+        artifacts_dir=artifacts_dir,
+        doc_id=doc_id,
+    )
     artifacts_path = Path(artifacts_dir)
-    artifacts_path.mkdir(parents=True, exist_ok=True)
+    retrieval_raw_path = artifacts_path / f"{doc_id}_retrieval_raw.txt"
+    retrieval_parsed_path = artifacts_path / f"{doc_id}_retrieval_parsed.json"
+    model_a_path = artifacts_path / f"{doc_id}_model_a_raw.json"
+    model_b_path = artifacts_path / f"{doc_id}_model_b_raw.json"
+    ensemble_path = artifacts_path / f"{doc_id}_ensemble_normalized.json"
 
-    raw_path = artifacts_path / f"{doc_id}_stage1_raw.txt"
-    parsed_path = artifacts_path / f"{doc_id}_stage1_parsed.json"
-    normalized_path = artifacts_path / f"{doc_id}_stage1_normalized.json"
-    section_index_path = artifacts_path / f"{doc_id}_section_index.json"
-
-    raw_path.write_text(raw_response, encoding="utf-8")
-    parsed_path.write_text(json.dumps(parsed, ensure_ascii=False, indent=2), encoding="utf-8")
-    normalized_path.write_text(
-        json.dumps(normalized_sections, ensure_ascii=False, indent=2),
-        encoding="utf-8",
-    )
-    section_index_path.write_text(
-        json.dumps(section_index, ensure_ascii=False, indent=2),
-        encoding="utf-8",
-    )
+    retrieval_raw_path.write_text(retrieval_raw, encoding="utf-8")
+    retrieval_parsed_path.write_text(json.dumps(retrieval_parsed, ensure_ascii=False, indent=2), encoding="utf-8")
+    model_a_path.write_text(json.dumps(model_a_raw_by_section, ensure_ascii=False, indent=2), encoding="utf-8")
+    model_b_path.write_text(json.dumps(model_b_raw_by_section, ensure_ascii=False, indent=2), encoding="utf-8")
+    ensemble_path.write_text(json.dumps(normalized_sections, ensure_ascii=False, indent=2), encoding="utf-8")
 
     return {
-        "stage1_raw_response": str(raw_path),
-        "stage1_parsed_response": str(parsed_path),
-        "stage1_normalized_response": str(normalized_path),
-        "section_index": str(section_index_path),
+        **artifacts,
+        "retrieval_raw_response": str(retrieval_raw_path),
+        "retrieval_parsed_response": str(retrieval_parsed_path),
+        "model_a_raw_response": str(model_a_path),
+        "model_b_raw_response": str(model_b_path),
+        "ensemble_normalized_response": str(ensemble_path),
     }
 
 
@@ -742,55 +758,91 @@ def score_application_base(
     application: dict[str, Any],
     criteria_path: str | Path,
     doc_id: str | None,
-    stage1_client: Any,
-    judge: Any | None = None,
+    retrieval_client: Any,
+    scorer_client_a: Any,
+    scorer_client_b: Any,
     artifacts_dir: str | Path | None = None,
 ) -> dict[str, Any]:
     rubric_sections = load_rubric(criteria_path)
-    section_data = build_section_index(application)
+    pool_data = build_chunk_pool(application, max_chars=MAX_CHARS)
+    pool_lookup = pool_data["pool_lookup"]
+    pool_index_text = pool_data["pool_index_text"]
+    chunk_order = _chunk_order_map(pool_lookup)
 
-    messages = build_stage1_messages(
-        application=application,
+    retrieval_messages = build_retrieval_messages(
         rubric_sections=rubric_sections,
-        section_index=section_data["section_index"],
+        pool_index_text=pool_index_text,
     )
-    schema = build_stage1_schema(rubric_sections)
-    raw_response = stage1_client.generate_json(messages, schema=schema, max_tokens=8192)
+    retrieval_schema = build_retrieval_schema(rubric_sections)
+    retrieval_raw = retrieval_client.generate_json(retrieval_messages, schema=retrieval_schema, max_tokens=4096)
     try:
-        parsed = _safe_json_loads(raw_response)
+        retrieval_parsed = _safe_json_loads(retrieval_raw)
     except Exception as exc:
         raise ValueError(
-            "Stage 1 scorer did not return valid JSON. "
-            f"Response preview: {_response_preview(raw_response)!r}"
+            "Retrieval model did not return valid JSON. "
+            f"Response preview: {_response_preview(retrieval_raw)!r}"
         ) from exc
+    retrieved_chunks = _normalize_retrieval_output(retrieval_parsed, rubric_sections, pool_lookup)
 
-    if not isinstance(parsed, dict) or not _has_valid_stage1_shape(parsed, rubric_sections):
-        raise ValueError(
-            "Stage 1 scorer returned JSON without a valid section-object or `sub_criteria` structure. "
-            f"Response preview: {_response_preview(raw_response)!r}"
+    model_a_raw_by_section: dict[str, str] = {}
+    model_b_raw_by_section: dict[str, str] = {}
+    sections: list[dict[str, Any]] = []
+
+    for rubric_section in rubric_sections:
+        section_key = rubric_section["section_key"]
+        section_chunk_ids = retrieved_chunks.get(section_key, [])
+        evidence_text = build_evidence_text(section_chunk_ids, pool_lookup, chunk_order)
+        messages = build_scoring_messages(
+            rubric_section=rubric_section,
+            retrieved_chunk_ids=section_chunk_ids,
+            evidence_text=evidence_text,
         )
+        schema = build_scoring_schema(rubric_section, section_chunk_ids)
 
-    sections = _normalize_stage1_output(parsed, rubric_sections, section_data)
-    artifact_paths = _write_stage1_artifacts(
+        raw_a = scorer_client_a.generate_json(messages, schema=schema, max_tokens=4096)
+        model_a_raw_by_section[section_key] = raw_a
+        raw_b = scorer_client_b.generate_json(messages, schema=schema, max_tokens=4096)
+        model_b_raw_by_section[section_key] = raw_b
+
+        try:
+            parsed_a = _safe_json_loads(raw_a)
+        except Exception as exc:
+            raise ValueError(
+                f"Scorer A returned invalid JSON for section {section_key}. "
+                f"Response preview: {_response_preview(raw_a)!r}"
+            ) from exc
+        try:
+            parsed_b = _safe_json_loads(raw_b)
+        except Exception as exc:
+            raise ValueError(
+                f"Scorer B returned invalid JSON for section {section_key}. "
+                f"Response preview: {_response_preview(raw_b)!r}"
+            ) from exc
+
+        normalized_a = _normalize_model_section_output(parsed_a, rubric_section, section_chunk_ids)
+        normalized_b = _normalize_model_section_output(parsed_b, rubric_section, section_chunk_ids)
+        sections.append(_ensemble_section(
+            rubric_section,
+            normalized_a,
+            normalized_b,
+            pool_lookup,
+            chunk_order,
+        ))
+
+    artifact_paths = _write_artifacts(
         artifacts_dir=artifacts_dir,
         doc_id=doc_id or "unknown",
-        section_index=section_data["section_index"],
-        raw_response=raw_response,
-        parsed=parsed,
+        pool_lookup=pool_lookup,
+        pool_index_text=pool_index_text,
+        retrieval_raw=retrieval_raw,
+        retrieval_parsed=retrieval_parsed,
+        model_a_raw_by_section=model_a_raw_by_section,
+        model_b_raw_by_section=model_b_raw_by_section,
         normalized_sections=sections,
     )
 
-    judge = judge or FallbackJudge()
-    audit_payloads = {
-        section["section_key"]: _section_audit_payload(section, section_data)
-        for section in sections
-    }
-    audited = run_faithfulness_audit(audit_payloads, judge)
-    for section in sections:
-        _apply_plausibility(section, audited.get(section["section_key"], {}))
-
     features = {
-        section["section_key"]: _aggregate_section(section, section_data)
+        section["section_key"]: _aggregate_section(section, pool_lookup)
         for section in sections
     }
     section_weights = {section["section_key"]: section["weight"] for section in sections}
@@ -799,17 +851,18 @@ def score_application_base(
         "doc_id": doc_id or "unknown",
         "run_info": {
             "ran_at_utc": dt.datetime.now(dt.UTC).isoformat().replace("+00:00", "Z"),
-            "model": getattr(stage1_client, "model_name", "unknown"),
-            "judge_model": getattr(judge, "model_name", getattr(judge, "__class__", type(judge)).__name__),
+            "retrieval_model": getattr(retrieval_client, "model_name", "unknown"),
+            "scorer_model_a": getattr(scorer_client_a, "model_name", "unknown"),
+            "scorer_model_b": getattr(scorer_client_b, "model_name", "unknown"),
         },
-        "pool_size": 0,
-        "pool_lookup": {},
-        "section_chunk_ids": {},
-        "section_index": section_data["section_index"],
+        "pool_size": len(pool_lookup),
+        "pool_lookup": pool_lookup,
+        "section_chunk_ids": pool_data["section_chunk_ids"],
         "features": features,
         "overall": _aggregate_overall(features, section_weights),
         "debug": {
-            "stage1_contract_version": "section_ids_v1",
+            "scoring_contract_version": "chunk_retrieval_dual_model_v1",
+            "retrieved_chunks": retrieved_chunks,
             "artifacts": artifact_paths,
         },
     }

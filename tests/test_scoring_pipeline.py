@@ -5,23 +5,29 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from src.scoring.pipeline import build_section_index, load_rubric, score_application_base
-from src.verify.faithfulness import FallbackJudge
+from src.pool.build_pool import build_chunk_pool
+from src.scoring.pipeline import build_evidence_text, load_rubric, score_application_base
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 CRITERIA_PATH = PROJECT_ROOT / "criteria_points.json"
 
 
-class FakeStage1Client:
-    model_name = "fake-stage1"
-
-    def __init__(self, payload: dict):
-        self.payload = payload
+class FakeClient:
+    def __init__(self, *, payloads: list[dict], model_name: str):
+        self.payloads = list(payloads)
+        self.model_name = model_name
+        self.calls: list[dict[str, object]] = []
 
     def generate_json(self, messages, *, schema, max_tokens):  # noqa: ANN001
-        del messages, schema, max_tokens
-        return json.dumps(self.payload, ensure_ascii=False)
+        self.calls.append({
+            "messages": messages,
+            "schema": schema,
+            "max_tokens": max_tokens,
+        })
+        if not self.payloads:
+            raise AssertionError(f"{self.model_name} ran out of payloads")
+        return json.dumps(self.payloads.pop(0), ensure_ascii=False)
 
 
 def sample_application() -> dict:
@@ -31,9 +37,15 @@ def sample_application() -> dict:
             "Application Title": "Test application",
         },
         "APPLICATION DETAILS": {
-            "Plain English Summary of Research": "Clear patient summary.",
-            "Detailed Research Plan": "Detailed plan and methods.",
-            "Patient & Public Involvement": "PPI strategy.",
+            "Plain English Summary of Research": "Clear patient summary for a public audience.",
+            "Detailed Research Plan": (
+                "Alpha evidence paragraph. " * 80
+                + "\n\n"
+                + "Beta methods paragraph. " * 80
+                + "\n\n"
+                + "Gamma implementation paragraph. " * 80
+            ),
+            "Patient & Public Involvement": "PPI strategy with advisory group and co-design feedback.",
         },
         "LEAD APPLICANT & RESEARCH TEAM": {
             "Lead Applicant": {
@@ -45,253 +57,249 @@ def sample_application() -> dict:
             "Training & Development and Research Support": "Training plan and supervisors.",
         },
         "BUDGET": {
-            "SUMMARY BUDGET": "Budget justification.",
+            "SUMMARY BUDGET": "Budget justification and costed support.",
         },
     }
 
 
-class PipelineTests(unittest.TestCase):
-    def test_section_index_is_stable(self):
-        section_data = build_section_index(sample_application())
-        self.assertEqual(
-            section_data["section_index"],
-            {
-                "S01": "Contracting Organisation",
-                "S02": "Application Title",
-                "S03": "Plain English Summary of Research",
-                "S04": "Detailed Research Plan",
-                "S05": "Patient & Public Involvement",
-                "S06": "Lead Applicant",
-                "S07": "Training & Development and Research Support",
-                "S08": "SUMMARY BUDGET",
-            },
-        )
+def build_payloads_for_application(application: dict) -> tuple[dict[str, list[str]], list[dict], list[dict]]:
+    rubric = load_rubric(CRITERIA_PATH)
+    pool = build_chunk_pool(application)
+    pool_lookup = pool["pool_lookup"]
 
+    general_chunks = list(pool_lookup)[:2]
+    proposed_chunks = list(pool_lookup)[2:5]
+
+    retrieval_payload = {
+        "general": [general_chunks[0], "missing", general_chunks[0], general_chunks[1]],
+        "proposed_research": [proposed_chunks[2], proposed_chunks[0], proposed_chunks[1]],
+        "training_development": [],
+        "sites_support": [],
+        "wpcc": [],
+        "application_form": [],
+    }
+
+    scorer_a_payloads: list[dict] = []
+    scorer_b_payloads: list[dict] = []
+    for section in rubric:
+        payload_a: dict[str, dict] = {}
+        payload_b: dict[str, dict] = {}
+        for sub in section["sub_criteria"]:
+            payload_a[sub["sub_id"]] = {
+                "signals": {signal["sid"]: 0 for signal in sub["signals"]},
+                "used_chunk_ids": [],
+            }
+            payload_b[sub["sub_id"]] = {
+                "signals": {signal["sid"]: 0 for signal in sub["signals"]},
+                "used_chunk_ids": [],
+            }
+
+        if section["section_key"] == "general":
+            first_sub = section["sub_criteria"][0]
+            sid = first_sub["signals"][0]["sid"]
+            payload_a[first_sub["sub_id"]] = {
+                "signals": {sid: 2},
+                "used_chunk_ids": [general_chunks[0]],
+            }
+            payload_b[first_sub["sub_id"]] = {
+                "signals": {sid: 1},
+                "used_chunk_ids": [general_chunks[1]],
+            }
+        elif section["section_key"] == "proposed_research":
+            first_sub = section["sub_criteria"][0]
+            payload_a[first_sub["sub_id"]] = {
+                "signals": {signal["sid"]: 2 for signal in first_sub["signals"]},
+                "used_chunk_ids": [proposed_chunks[2]],
+            }
+            payload_b[first_sub["sub_id"]] = {
+                "signals": {signal["sid"]: 0 for signal in first_sub["signals"]},
+                "used_chunk_ids": [proposed_chunks[0]],
+            }
+        elif section["section_key"] == "training_development":
+            first_sub = section["sub_criteria"][0]
+            sid = first_sub["signals"][0]["sid"]
+            payload_a[first_sub["sub_id"]] = {
+                "signals": {sid: 2},
+                "used_chunk_ids": [],
+            }
+            payload_b[first_sub["sub_id"]] = {
+                "signals": {sid: 2},
+                "used_chunk_ids": [],
+            }
+
+        scorer_a_payloads.append(payload_a)
+        scorer_b_payloads.append(payload_b)
+
+    return retrieval_payload, scorer_a_payloads, scorer_b_payloads
+
+
+class PipelineTests(unittest.TestCase):
     def test_load_rubric_expands_grouped_general_structure(self):
         rubric = load_rubric(CRITERIA_PATH)
         general = next(section for section in rubric if section["section_key"] == "general")
         self.assertEqual(len(general["sub_criteria"]), 12)
         self.assertEqual(general["sub_criteria"][0]["sub_id"], "g.1")
-        self.assertEqual(
-            general["sub_criteria"][0]["group_name"],
-            "Common Characteristics Of Good Applications",
-        )
+        self.assertEqual(general["sub_criteria"][0]["group_name"], "Common Characteristics Of Good Applications")
         self.assertEqual(general["sub_criteria"][4]["sub_id"], "g.5")
-        self.assertEqual(
-            general["sub_criteria"][4]["group_name"],
-            "Tell Us Why You Need This Award",
-        )
+        self.assertEqual(general["sub_criteria"][4]["group_name"], "Tell Us Why You Need This Award")
         self.assertEqual(general["sub_criteria"][8]["sub_id"], "g.9")
         self.assertEqual(general["sub_criteria"][8]["group_name"], "Applicant")
 
-    def test_new_section_object_response_scores_with_section_ids(self):
-        payload = {
-            "general": {
-                "g.1": {
-                    "signals": {"g.1.a": 2},
-                    "needed_section_ids": ["S04", "S07"],
-                }
-            }
-        }
+    def test_score_application_uses_chunk_pool_and_dual_model_ensemble(self):
+        application = sample_application()
+        retrieval_payload, scorer_a_payloads, scorer_b_payloads = build_payloads_for_application(application)
+        retrieval_client = FakeClient(payloads=[retrieval_payload], model_name="retrieval-model")
+        scorer_a = FakeClient(payloads=scorer_a_payloads, model_name="model-a")
+        scorer_b = FakeClient(payloads=scorer_b_payloads, model_name="model-b")
+
+        result = score_application_base(
+            application=application,
+            criteria_path=CRITERIA_PATH,
+            doc_id="dual_doc",
+            retrieval_client=retrieval_client,
+            scorer_client_a=scorer_a,
+            scorer_client_b=scorer_b,
+        )
+
+        self.assertGreater(result["pool_size"], 0)
+        self.assertTrue(result["pool_lookup"])
+        self.assertTrue(result["section_chunk_ids"])
+        self.assertNotIn("section_index", result)
+
+        general = result["features"]["general"]["sub_criteria"][0]
+        self.assertEqual(general["signals"][0]["model_a_score"], 2)
+        self.assertEqual(general["signals"][0]["model_b_score"], 1)
+        self.assertEqual(general["signals"][0]["score_0to2_raw"], 1.5)
+        self.assertEqual(general["confidence_label"], "medium_confidence")
+        self.assertEqual(general["confidence_gap"], 1.0)
+        self.assertEqual(general["evidence_status"], "ok")
+        self.assertEqual(general["evidence_count"], 2)
+        self.assertEqual(len(general["evidence"]), 2)
+
+    def test_retrieval_filters_invalid_and_duplicate_chunk_ids(self):
+        application = sample_application()
+        retrieval_payload, scorer_a_payloads, scorer_b_payloads = build_payloads_for_application(application)
+        retrieval_client = FakeClient(payloads=[retrieval_payload], model_name="retrieval-model")
+        scorer_a = FakeClient(payloads=scorer_a_payloads, model_name="model-a")
+        scorer_b = FakeClient(payloads=scorer_b_payloads, model_name="model-b")
+
+        result = score_application_base(
+            application=application,
+            criteria_path=CRITERIA_PATH,
+            doc_id="retrieval_doc",
+            retrieval_client=retrieval_client,
+            scorer_client_a=scorer_a,
+            scorer_client_b=scorer_b,
+        )
+
+        retrieved = result["debug"]["retrieved_chunks"]["general"]
+        self.assertEqual(len(retrieved), 2)
+        self.assertEqual(len(set(retrieved)), 2)
+
+    def test_scoring_message_uses_original_order_with_ellipsis(self):
+        application = sample_application()
+        retrieval_payload, scorer_a_payloads, scorer_b_payloads = build_payloads_for_application(application)
+        retrieval_client = FakeClient(payloads=[retrieval_payload], model_name="retrieval-model")
+        scorer_a = FakeClient(payloads=scorer_a_payloads, model_name="model-a")
+        scorer_b = FakeClient(payloads=scorer_b_payloads, model_name="model-b")
+
+        score_application_base(
+            application=application,
+            criteria_path=CRITERIA_PATH,
+            doc_id="message_doc",
+            retrieval_client=retrieval_client,
+            scorer_client_a=scorer_a,
+            scorer_client_b=scorer_b,
+        )
+
+        proposed_user = scorer_a.calls[1]["messages"][1]["content"]
+        self.assertIn("evidence_text:", proposed_user)
+        self.assertIn("<", proposed_user)
+        self.assertIn("...", proposed_user)
+
+    def test_positive_scores_without_valid_evidence_are_zeroed(self):
+        application = sample_application()
+        retrieval_payload, scorer_a_payloads, scorer_b_payloads = build_payloads_for_application(application)
+        retrieval_client = FakeClient(payloads=[retrieval_payload], model_name="retrieval-model")
+        scorer_a = FakeClient(payloads=scorer_a_payloads, model_name="model-a")
+        scorer_b = FakeClient(payloads=scorer_b_payloads, model_name="model-b")
+
+        result = score_application_base(
+            application=application,
+            criteria_path=CRITERIA_PATH,
+            doc_id="invalid_evidence_doc",
+            retrieval_client=retrieval_client,
+            scorer_client_a=scorer_a,
+            scorer_client_b=scorer_b,
+        )
+
+        training = result["features"]["training_development"]["sub_criteria"][0]
+        self.assertEqual(training["signals"][0]["score_0to2_raw"], 0.0)
+        self.assertEqual(training["evidence_status"], "ok")
+        self.assertEqual(training["evidence_count"], 0)
+
+    def test_subcriterion_confidence_is_computed_from_mean_signal_gap(self):
+        application = sample_application()
+        retrieval_payload, scorer_a_payloads, scorer_b_payloads = build_payloads_for_application(application)
+        retrieval_client = FakeClient(payloads=[retrieval_payload], model_name="retrieval-model")
+        scorer_a = FakeClient(payloads=scorer_a_payloads, model_name="model-a")
+        scorer_b = FakeClient(payloads=scorer_b_payloads, model_name="model-b")
+
+        result = score_application_base(
+            application=application,
+            criteria_path=CRITERIA_PATH,
+            doc_id="confidence_doc",
+            retrieval_client=retrieval_client,
+            scorer_client_a=scorer_a,
+            scorer_client_b=scorer_b,
+        )
+
+        proposed = result["features"]["proposed_research"]["sub_criteria"][0]
+        self.assertEqual(proposed["confidence_gap"], 2.0)
+        self.assertEqual(proposed["confidence_label"], "low_confidence")
+
+        overall = result["overall"]
+        self.assertIn("avg_confidence_0to2", overall)
+        self.assertIn("avg_plausibility_0to5", overall)
+        self.assertIn("weak_signal_count", overall)
+
+    def test_build_evidence_text_inserts_ellipsis_between_non_adjacent_chunks(self):
+        pool = build_chunk_pool(sample_application())
+        pool_lookup = pool["pool_lookup"]
+        chunk_ids = list(pool_lookup)
+        chunk_order = {chunk_id: idx for idx, chunk_id in enumerate(chunk_ids)}
+        text = build_evidence_text([chunk_ids[0], chunk_ids[2]], pool_lookup, chunk_order)
+        self.assertIn(f"<{chunk_ids[0]}>", text)
+        self.assertIn(f"<{chunk_ids[2]}>", text)
+        self.assertIn("\n...\n", text)
+
+    def test_build_evidence_text_inserts_section_dividers(self):
+        pool = build_chunk_pool(sample_application())
+        pool_lookup = pool["pool_lookup"]
+        chunk_ids = list(pool_lookup)
+        chunk_order = {chunk_id: idx for idx, chunk_id in enumerate(chunk_ids)}
+        text = build_evidence_text([chunk_ids[0], chunk_ids[-1]], pool_lookup, chunk_order)
+        self.assertIn("=====", text)
+
+    def test_artifacts_are_written(self):
+        application = sample_application()
+        retrieval_payload, scorer_a_payloads, scorer_b_payloads = build_payloads_for_application(application)
+        retrieval_client = FakeClient(payloads=[retrieval_payload], model_name="retrieval-model")
+        scorer_a = FakeClient(payloads=scorer_a_payloads, model_name="model-a")
+        scorer_b = FakeClient(payloads=scorer_b_payloads, model_name="model-b")
+
         with tempfile.TemporaryDirectory() as tmpdir:
             result = score_application_base(
-                application=sample_application(),
-                criteria_path=CRITERIA_PATH,
-                doc_id="test_doc",
-                stage1_client=FakeStage1Client(payload),
-                judge=FallbackJudge(),
-                artifacts_dir=tmpdir,
-            )
-
-        general = result["features"]["general"]["sub_criteria"][0]
-        self.assertEqual(general["needed_section_ids"], ["S04", "S07"])
-        self.assertGreater(general["score_10"], 0)
-        self.assertEqual(
-            [item["section_id"] for item in general["evidence"]],
-            ["S04", "S07"],
-        )
-        self.assertIn("section_index", result)
-        self.assertEqual(result["pool_lookup"], {})
-        self.assertEqual(result["section_chunk_ids"], {})
-
-    def test_stage1_signal_scores_use_five_point_half_steps(self):
-        payload = {
-            "general": {
-                "g.1": {
-                    "signals": {"g.1.a": 1.5},
-                    "needed_section_ids": ["S04", "S07"],
-                }
-            }
-        }
-        result = score_application_base(
-            application=sample_application(),
-            criteria_path=CRITERIA_PATH,
-            doc_id="decimal_doc",
-            stage1_client=FakeStage1Client(payload),
-            judge=FallbackJudge(),
-        )
-        criterion = result["features"]["general"]["sub_criteria"][0]
-        self.assertEqual(criterion["signals"][0]["score_0to2_raw"], 1.5)
-        self.assertGreater(criterion["score_10"], 0)
-
-    def test_stage1_signal_scores_reject_non_step_values(self):
-        payload = {
-            "general": {
-                "g.1": {
-                    "signals": {"g.1.a": 1.2},
-                    "needed_section_ids": ["S04", "S07"],
-                }
-            }
-        }
-        result = score_application_base(
-            application=sample_application(),
-            criteria_path=CRITERIA_PATH,
-            doc_id="invalid_step_doc",
-            stage1_client=FakeStage1Client(payload),
-            judge=FallbackJudge(),
-        )
-        criterion = result["features"]["general"]["sub_criteria"][0]
-        self.assertEqual(criterion["signals"][0]["score_0to2_raw"], 0)
-        self.assertEqual(criterion["score_10"], 0)
-
-    def test_plausibility_multipliers_are_stricter_for_4_and_3(self):
-        payload = {
-            "general": {
-                "g.10": {
-                    "signals": {
-                        "g.10.a": 2,
-                        "g.10.b": 2,
-                        "g.10.c": 2,
-                        "g.10.d": 2
-                    },
-                    "needed_section_ids": ["S07"]
-                }
-            }
-        }
-
-        class StubJudge:
-            model_name = "stub-judge"
-
-            def judge_section(self, section_key, payload):  # noqa: ANN001
-                del section_key, payload
-                return {
-                    "judgments": [
-                        {"sid": "g.10.a", "plausibility": 4},
-                        {"sid": "g.10.b", "plausibility": 3},
-                        {"sid": "g.10.c", "plausibility": 2},
-                        {"sid": "g.10.d", "plausibility": 5},
-                    ]
-                }
-
-        result = score_application_base(
-            application=sample_application(),
-            criteria_path=CRITERIA_PATH,
-            doc_id="multiplier_doc",
-            stage1_client=FakeStage1Client(payload),
-            judge=StubJudge(),
-        )
-        criterion = next(
-            item for item in result["features"]["general"]["sub_criteria"]
-            if item["sub_id"] == "g.10"
-        )
-        weighted_scores = {signal["sid"]: signal["score_0to2_weighted"] for signal in criterion["signals"]}
-        self.assertEqual(weighted_scores["g.10.a"], 1.8)
-        self.assertEqual(weighted_scores["g.10.b"], 1.6)
-        self.assertEqual(weighted_scores["g.10.c"], 1.2)
-        self.assertEqual(weighted_scores["g.10.d"], 2.0)
-
-    def test_invalid_section_ids_zero_out_positive_scores(self):
-        payload = {
-            "general": {
-                "g.1": {
-                    "signals": {"g.1.a": 2},
-                    "needed_section_ids": ["S99"],
-                }
-            }
-        }
-        result = score_application_base(
-            application=sample_application(),
-            criteria_path=CRITERIA_PATH,
-            doc_id="test_doc",
-            stage1_client=FakeStage1Client(payload),
-            judge=FallbackJudge(),
-        )
-        general = result["features"]["general"]["sub_criteria"][0]
-        self.assertEqual(general["needed_section_ids"], [])
-        self.assertEqual(general["signals"][0]["score_0to2_raw"], 0)
-        self.assertEqual(general["score_10"], 0)
-
-    def test_legacy_subcriteria_payload_is_still_accepted(self):
-        payload = {
-            "sub_criteria": [
-                {
-                    "sub_id": "g.1",
-                    "score": 2,
-                    "needed_section_ids": ["S04", "S07"],
-                }
-            ]
-        }
-        result = score_application_base(
-            application=sample_application(),
-            criteria_path=CRITERIA_PATH,
-            doc_id="legacy_doc",
-            stage1_client=FakeStage1Client(payload),
-            judge=FallbackJudge(),
-        )
-        general = result["features"]["general"]["sub_criteria"][0]
-        self.assertEqual(general["needed_section_ids"], ["S04", "S07"])
-        self.assertEqual(general["signals"][0]["score_0to2_raw"], 2)
-
-    def test_stage1_artifacts_are_written(self):
-        payload = {
-            "general": {
-                "g.1": {
-                    "signals": {"g.1.a": 1},
-                    "needed_section_ids": ["S04"],
-                }
-            }
-        }
-        with tempfile.TemporaryDirectory() as tmpdir:
-            result = score_application_base(
-                application=sample_application(),
+                application=application,
                 criteria_path=CRITERIA_PATH,
                 doc_id="artifact_doc",
-                stage1_client=FakeStage1Client(payload),
-                judge=FallbackJudge(),
+                retrieval_client=retrieval_client,
+                scorer_client_a=scorer_a,
+                scorer_client_b=scorer_b,
                 artifacts_dir=tmpdir,
             )
-            artifacts = result["debug"]["artifacts"]
-            for artifact_path in artifacts.values():
+            for artifact_path in result["debug"]["artifacts"].values():
                 self.assertTrue(Path(artifact_path).exists(), artifact_path)
-
-    def test_plausibility_outputs_are_integers(self):
-        payload = {
-            "general": {
-                "g.10": {
-                    "signals": {
-                        "g.10.a": 1,
-                        "g.10.b": 1,
-                        "g.10.c": 1,
-                        "g.10.d": 1
-                    },
-                    "needed_section_ids": ["S07"]
-                }
-            }
-        }
-        result = score_application_base(
-            application=sample_application(),
-            criteria_path=CRITERIA_PATH,
-            doc_id="plausibility_doc",
-            stage1_client=FakeStage1Client(payload),
-            judge=FallbackJudge(),
-        )
-        criterion = next(
-            item for item in result["features"]["general"]["sub_criteria"]
-            if item["sub_id"] == "g.10"
-        )
-        self.assertIsInstance(criterion["avg_plausibility_0to5"], int)
-        self.assertIsInstance(result["features"]["general"]["overall"]["avg_plausibility_0to5"], int)
-        self.assertIsInstance(result["overall"]["avg_plausibility_0to5"], int)
 
 
 if __name__ == "__main__":
