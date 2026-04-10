@@ -26,6 +26,8 @@ SECTION_ID_PREFIX = {
 SCORER_ALLOWED_SCORES = (0, 1, 2)
 USED_CHUNK_MAX = 5
 SECTION_EVIDENCE_MAX = 3
+STAGE1_MAX_TOKENS = 2048
+STAGE2_MAX_TOKENS = 12288
 
 SECTION_TO_PARSER_SECTIONS: dict[str, list[str] | None] = {
     "general": None,
@@ -367,32 +369,86 @@ def build_section_evidence_messages(
     stripped_criteria: dict[str, Any],
     current_belief_state: dict[str, Any],
 ) -> list[dict[str, str]]:
+    section_name = application_section["section_name"]
     system = (
         "You review one parsed application section at a time.\n\n"
         "Return JSON only.\n"
-        "Input is divided into:\n"
-        "1. application_section\n"
-        "2. criteria\n"
-        "3. current_belief_state\n\n"
-        "Check all subcriteria and signals in criteria, but output only those with clearly relevant evidence "
-        "in the current application_section.\n"
-        "For each returned signal, include:\n"
-        f"- good_evidence_ids (max {SECTION_EVIDENCE_MAX})\n"
-        f"- bad_evidence_ids (max {SECTION_EVIDENCE_MAX})\n"
-        "- implication\n"
-        "Use only evidence IDs from application_section.section_content.\n"
-        "Do not invent IDs.\n"
-        "Do not output irrelevant subcriteria or signals."
+        "Task: inspect the current section only, then return evidence only for signals that are clearly supported or clearly challenged by the current section text.\n"
+        "Do not summarize the full criteria. Do not explain why unrelated signals are irrelevant.\n"
+        "Only use evidence IDs that appear in application_section.section_content.\n"
+        "Never invent IDs.\n"
+        f"For each returned signal, include `good_evidence_ids` (max {SECTION_EVIDENCE_MAX}), "
+        f"`bad_evidence_ids` (max {SECTION_EVIDENCE_MAX}), and `implication`.\n"
+        "A signal is relevant only if the section text gives concrete evidence for or against it.\n"
+        "If the section only contains metadata or weak context, return no findings.\n"
+        "When there is no relevant evidence, return the required empty object shape and stop.\n"
+        "Never return a bare array like `[]`.\n"
+        "Keep implications short and specific to the current section."
     )
     user_payload = {
         "application_section": application_section,
         "criteria": stripped_criteria,
         "current_belief_state": current_belief_state,
     }
+    empty_output_example = {
+        "section_name": section_name,
+        "findings": [],
+        "resolved_signals": [],
+    }
+    non_empty_output_example = {
+        "section_name": section_name,
+        "findings": [
+            {
+                "sub_id": "example.sub",
+                "signals": {
+                    "example.signal": {
+                        "evidence": {
+                            "good_evidence_ids": ["example__001"],
+                            "bad_evidence_ids": [],
+                        },
+                        "implication": f"{section_name}: provides direct support for this signal.",
+                    }
+                },
+            }
+        ],
+        "resolved_signals": ["example.signal"],
+    }
     return [
         {"role": "system", "content": system},
-        {"role": "user", "content": json.dumps(user_payload, ensure_ascii=False, indent=2)},
+        {
+            "role": "user",
+            "content": (
+                f"Current section name: {section_name}\n"
+                "Input JSON:\n"
+                f"{json.dumps(user_payload, ensure_ascii=False, indent=2)}\n\n"
+                "Required behavior:\n"
+                "1. Scan the current section text.\n"
+                "2. Output only relevant subcriteria/signals.\n"
+                "3. Output format example when there is relevant evidence:\n"
+                f"{json.dumps(non_empty_output_example, ensure_ascii=False, indent=2)}\n\n"
+                "4. If none are relevant, return exactly this object shape:\n"
+                f"{json.dumps(empty_output_example, ensure_ascii=False, indent=2)}"
+            ),
+        },
     ]
+
+
+def _response_meta_summary(scorer_client: Any | None) -> str:
+    body = getattr(scorer_client, "last_response_body", None)
+    if not isinstance(body, dict):
+        return ""
+    done_reason = body.get("done_reason")
+    message = body.get("message") or {}
+    content = message.get("content") if isinstance(message, dict) else None
+    thinking = message.get("thinking") if isinstance(message, dict) else None
+    parts: list[str] = []
+    if isinstance(done_reason, str) and done_reason:
+        parts.append(f"done_reason={done_reason}")
+    if isinstance(content, str):
+        parts.append(f"content_len={len(content)}")
+    if isinstance(thinking, str):
+        parts.append(f"thinking_len={len(thinking)}")
+    return ", ".join(parts)
 
 
 def build_section_evidence_schema(
@@ -624,13 +680,15 @@ def build_final_scoring_messages(
     system = (
         "You are scoring one rubric section of a grant application.\n\n"
         "Return JSON only.\n"
-        "Score only the rubric section with section_key "
-        f"`{rubric_section['section_key']}` and section_name `{rubric_section['human_name']}`.\n"
-        "Use both the full application text and the final belief state.\n"
-        "The belief state is a structured evidence index; use the original text to verify or refine judgment.\n"
+        "Score only the target rubric section.\n"
+        f"Target rubric section: section_key=`{rubric_section['section_key']}`, section_name=`{rubric_section['human_name']}`.\n"
+        "Use the final belief state as the primary evidence index.\n"
+        "Use the full application text only to verify, refine, or reject what the belief state suggests.\n"
+        "Do not score subcriteria outside the target rubric section.\n"
         "Each signal score must be exactly one of: 0, 1, 2.\n"
-        f"Each `used_chunk_ids` array must contain between 0 and {USED_CHUNK_MAX} IDs only.\n"
-        "If evidence is insufficient, do not assign a positive signal score."
+        f"`used_chunk_ids` must contain at most {USED_CHUNK_MAX} grounded chunk IDs.\n"
+        "If evidence is missing or weak, give 0 or 1, not 2.\n"
+        "Keep rationales concise and evidence-based."
     )
     user_payload = {
         "full_application_text": full_application_text,
@@ -638,12 +696,25 @@ def build_final_scoring_messages(
         "final_belief_state": final_belief_state,
     }
     user = (
+        "Input JSON:\n"
         f"{json.dumps(user_payload, ensure_ascii=False, indent=2)}\n\n"
-        "Return format rules:\n"
-        f"- Output only subcriteria for rubric section `{rubric_section['section_key']}`.\n"
-        "- Each sub_id object must contain `signals`, `used_chunk_ids`, and `rationale`.\n"
-        "- `used_chunk_ids` must refer to chunk ids grounded in the application text / belief state.\n"
-        "- Return JSON only."
+        "Scoring rules:\n"
+        f"1. Output only subcriteria under rubric section `{rubric_section['section_key']}`.\n"
+        "2. Prefer chunk IDs that already appear in the belief state when they support the score.\n"
+        "3. Use only grounded chunk IDs from the application text / belief state.\n"
+        "4. Each sub_id object must contain `signals`, `used_chunk_ids`, and `rationale`.\n"
+        "5. Return JSON only.\n\n"
+        "Output format example:\n"
+        "{\n"
+        '  "example.sub": {\n'
+        '    "signals": {\n'
+        '      "example.signal.a": 2,\n'
+        '      "example.signal.b": 1\n'
+        "    },\n"
+        '    "used_chunk_ids": ["example__001", "example__002"],\n'
+        '    "rationale": "The evidence clearly supports the first signal and partially supports the second."\n'
+        "  }\n"
+        "}"
     )
     return [
         {"role": "system", "content": system},
@@ -1081,11 +1152,12 @@ def score_application_base(
             current_belief_state=belief_state,
         )
         schema = build_section_evidence_schema(rubric_sections, section_chunk_ids)
-        raw_stage1 = scorer_client.generate_json(messages, schema=schema, max_tokens=12288)
+        raw_stage1 = scorer_client.generate_json(messages, schema=schema, max_tokens=STAGE1_MAX_TOKENS)
         stage1_raw_by_section[section_name] = raw_stage1
         try:
             parsed_stage1 = _safe_json_loads(raw_stage1)
         except Exception as exc:
+            response_meta = _response_meta_summary(scorer_client)
             failure_artifacts = _write_failure_artifacts(
                 artifacts_dir=artifacts_dir,
                 doc_id=doc_id or "unknown",
@@ -1103,6 +1175,7 @@ def score_application_base(
             raise ValueError(
                 f"Stage 1 returned invalid JSON for section {section_name}. "
                 f"Response preview: {_response_preview(raw_stage1)!r}. "
+                f"Response meta: {response_meta or 'unavailable'}. "
                 f"Raw outputs written to: {failure_artifacts.get('failed_raw_response')}"
             ) from exc
         normalized_update = _normalize_section_evidence_output(
@@ -1128,11 +1201,12 @@ def score_application_base(
             full_application_text=full_application_text,
         )
         schema = build_scoring_schema(rubric_section, all_chunk_ids)
-        raw_stage2 = scorer_client.generate_json(messages, schema=schema, max_tokens=12288)
+        raw_stage2 = scorer_client.generate_json(messages, schema=schema, max_tokens=STAGE2_MAX_TOKENS)
         stage2_raw_by_section[section_key] = raw_stage2
         try:
             parsed_stage2 = _safe_json_loads(raw_stage2)
         except Exception as exc:
+            response_meta = _response_meta_summary(scorer_client)
             failure_artifacts = _write_failure_artifacts(
                 artifacts_dir=artifacts_dir,
                 doc_id=doc_id or "unknown",
@@ -1150,6 +1224,7 @@ def score_application_base(
             raise ValueError(
                 f"Stage 2 returned invalid JSON for section {section_key}. "
                 f"Response preview: {_response_preview(raw_stage2)!r}. "
+                f"Response meta: {response_meta or 'unavailable'}. "
                 f"Raw outputs written to: {failure_artifacts.get('failed_raw_response')}"
             ) from exc
 

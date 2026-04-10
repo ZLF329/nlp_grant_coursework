@@ -59,7 +59,7 @@ class _Scorer:
                 "top_p": 0.9,
                 "num_predict": max_tokens,
             },
-            "think": True,
+            "think": False,
         }
         try:
             response = requests.post(
