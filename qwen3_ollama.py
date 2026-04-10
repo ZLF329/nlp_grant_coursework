@@ -24,6 +24,35 @@ OLLAMA_MODEL_B = os.environ.get("OLLAMA_MODEL_B", "gemma4:26b")
 OLLAMA_TIMEOUT = float(os.environ.get("OLLAMA_TIMEOUT", "1200"))
 
 
+def _strip_think_tags(text: str) -> str:
+    return re.sub(r"<think>.*?</think>\s*", "", text or "", flags=re.DOTALL).strip()
+
+
+def _extract_json_object(text: str) -> str:
+    clean = (text or "").strip()
+    first_brace = clean.find("{")
+    last_brace = clean.rfind("}")
+    if first_brace != -1 and last_brace != -1 and last_brace > first_brace:
+        return clean[first_brace:last_brace + 1]
+    return clean
+
+
+def _extract_message_content(body: dict[str, Any]) -> str:
+    message = body.get("message") or {}
+    content = _strip_think_tags((message.get("content") or ""))
+    if content:
+        return content
+
+    for key in ("reasoning_content", "reasoning", "thinking"):
+        fallback = _strip_think_tags((message.get(key) or ""))
+        if not fallback:
+            continue
+        candidate = _extract_json_object(fallback)
+        if candidate:
+            return candidate
+    return ""
+
+
 class _Scorer:
     def __init__(self, model_name: str = OLLAMA_MODEL, host: str = OLLAMA_HOST):
         self.model_name = model_name
@@ -62,9 +91,7 @@ class _Scorer:
             ) from exc
         response.raise_for_status()
         body = response.json()
-        content = ((body.get("message") or {}).get("content") or "").strip()
-        # Some backends may still inline think tags even when reasoning is also surfaced separately.
-        return re.sub(r"<think>.*?</think>\s*", "", content, flags=re.DOTALL).strip()
+        return _extract_message_content(body)
 
 
 def score_application(
