@@ -6,7 +6,7 @@ import unittest
 from pathlib import Path
 
 from src.pool.build_pool import build_chunk_pool
-from src.scoring.pipeline import build_evidence_text, load_rubric, score_application_base
+from src.scoring.pipeline import build_evidence_text, build_retrieval_messages, load_raw_criteria, load_rubric, score_application_base
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -134,6 +134,18 @@ def build_payloads_for_application(application: dict) -> tuple[dict[str, list[st
 
 
 class PipelineTests(unittest.TestCase):
+    def test_retrieval_prompt_uses_raw_criteria_json(self):
+        criteria_payload = load_raw_criteria(CRITERIA_PATH)
+        messages = build_retrieval_messages(
+            criteria_payload=criteria_payload,
+            pool_index_text="chunk_a: example",
+        )
+
+        self.assertEqual(messages[1]["content"].splitlines()[0], "Criteria points JSON:")
+        self.assertIn('"General"', messages[1]["content"])
+        self.assertIn('"Application Form"', messages[1]["content"])
+        self.assertIn('"General": "general"', messages[1]["content"])
+
     def test_load_rubric_expands_grouped_general_structure(self):
         rubric = load_rubric(CRITERIA_PATH)
         general = next(section for section in rubric if section["section_key"] == "general")

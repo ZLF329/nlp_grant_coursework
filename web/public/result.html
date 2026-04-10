@@ -1034,6 +1034,10 @@
     function deepClone(obj) {
       return JSON.parse(JSON.stringify(obj));
     }
+    function avgOf(list, selector) {
+      if (!Array.isArray(list) || !list.length) return 0;
+      return list.reduce((sum, item) => sum + Number(selector(item) || 0), 0) / list.length;
+    }
 
     // Accept both raw top-level format and { features_json: {...} } wrapper from the server
     function unwrapRaw(raw) {
@@ -1063,6 +1067,9 @@
       const signals = Array.isArray(c.signals) ? c.signals.map(normalizeSignal) : [];
       const avgPlausibility = Number(c.avg_plausibility_0to5 ?? (signals.length ? signals.reduce((sum, s) => sum + s.plausibility, 0) / signals.length : 0));
       const weakSignalCount = Number(c.weak_signal_count ?? signals.filter(s => s.plausibility <= 1).length);
+      const avgModelAScore = round2(avgOf(signals, s => s.modelAScore));
+      const avgModelBScore = round2(avgOf(signals, s => s.modelBScore));
+      const avgFinalScore = round2(avgOf(signals, s => s.rawScore));
       const evidence = Array.isArray(c.evidence) ? c.evidence.map(ev => ({
         id: ev.id || '',
         text: ev.text || ev.quote || '',
@@ -1083,12 +1090,15 @@
         evidenceIds: Array.isArray(c.evidence_ids) ? c.evidence_ids : [],
         evidenceTop5: Array.isArray(c.evidence_top5) ? c.evidence_top5 : [],
         evidenceStatus: c.evidence_status || 'ok',
+        avgModelAScore,
+        avgModelBScore,
+        avgFinalScore,
         avgPlausibility,
         weakSignalCount,
         signals,
         rubricSubscores: {},
         rubricAvg: avgPlausibility / 2.5,
-        rubricText: `${round1(avgPlausibility)} / 5 confidence proxy · ${weakSignalCount} low-confidence items`
+        rubricText: `A ${round1(avgModelAScore)} · B ${round1(avgModelBScore)} · Avg ${round1(avgFinalScore)}`
       };
     }
 
@@ -1103,6 +1113,7 @@
             ? section.sub_criteria
             : (Array.isArray(section.criteria) ? section.criteria : []);
           const criteria = criteriaSource.map(normalizeCriterion);
+          const allSignals = criteria.flatMap(c => c.signals || []);
           return {
             id: key, key,
             name: titleFromKey(key),
@@ -1121,13 +1132,17 @@
               evidenceCount: Number(overall.evidence_count || 0),
               targetEvidencePerItem: Number(overall.target_evidence_per_item || raw?.overall?.target_evidence_per_item || 5),
               weakSignalCount: Number(overall.weak_signal_count || section.weak_signal_count || 0),
-              signalCount: Number(overall.signal_count || criteria.reduce((sum, c) => sum + (c.signals || []).length, 0))
+              signalCount: Number(overall.signal_count || criteria.reduce((sum, c) => sum + (c.signals || []).length, 0)),
+              avgModelAScore: round2(avgOf(allSignals, s => s.modelAScore)),
+              avgModelBScore: round2(avgOf(allSignals, s => s.modelBScore)),
+              avgFinalScore: round2(avgOf(allSignals, s => s.rawScore))
             },
             criteria
           };
         });
 
       const overall = raw.overall || {};
+      const reviewSignals = sections.flatMap(s => s.criteria || []).flatMap(c => c.signals || []);
       return {
         id: slugify(raw.doc_id || fallbackLabel || 'review-' + Math.random().toString(36).slice(2,7)),
         label: fallbackLabel || raw.doc_id || 'Loaded review',
@@ -1153,7 +1168,10 @@
           evidenceCount: Number(overall.evidence_count || 0),
           targetEvidencePerItem: Number(overall.target_evidence_per_item || 5),
           weakSignalCount: Number(overall.weak_signal_count || 0),
-          signalCount: Number(overall.signal_count || 0)
+          signalCount: Number(overall.signal_count || 0),
+          avgModelAScore: round2(avgOf(reviewSignals, s => s.modelAScore)),
+          avgModelBScore: round2(avgOf(reviewSignals, s => s.modelBScore)),
+          avgFinalScore: round2(avgOf(reviewSignals, s => s.rawScore))
         },
         sections,
         orcid: raw.features?.orcid || null,
@@ -1181,18 +1199,26 @@
         section.overall.evidenceCount = Math.max(0, section.overall.evidenceCount - Math.max(2, Math.round(section.criteria.length * 0.8)));
         section.overall.weakSignalCount = Math.max(0, section.overall.weakSignalCount + Math.max(1, Math.round(section.criteria.length / 4)));
         section.overall.qualityAvg = clamp(round1(section.overall.qualityAvg - penalty / 12), 0, 10);
+        section.overall.avgModelAScore = clamp(round2((section.overall.avgModelAScore || 0) - 0.2), 0, 2);
+        section.overall.avgModelBScore = clamp(round2((section.overall.avgModelBScore || 0) - 0.3), 0, 2);
+        section.overall.avgFinalScore = clamp(round2((section.overall.avgFinalScore || 0) - 0.25), 0, 2);
         section.criteria = section.criteria.map((criterion, idx) => {
           const cPenalty = [1.6, 1.0, 1.2, 0.8][idx % 4];
           criterion.score = clamp(round1(criterion.score - cPenalty), 0, 10);
           criterion.qualityLabel = evidenceStatusLabel(criterion.evidenceStatus);
           criterion.avgPlausibility = clamp(round1(criterion.avgPlausibility - cPenalty / 5), 0, 5);
           criterion.weakSignalCount = Math.max(0, criterion.weakSignalCount + (idx % 2 === 0 ? 1 : 0));
+          criterion.avgModelAScore = clamp(round2((criterion.avgModelAScore || 0) - 0.2), 0, 2);
+          criterion.avgModelBScore = clamp(round2((criterion.avgModelBScore || 0) - 0.3), 0, 2);
+          criterion.avgFinalScore = clamp(round2((criterion.avgFinalScore || 0) - 0.25), 0, 2);
           criterion.rubricAvg = criterion.avgPlausibility / 2.5;
-          criterion.rubricText = `${round1(criterion.avgPlausibility)} / 5 plausibility · ${criterion.weakSignalCount} weak`;
+          criterion.rubricText = `A ${round1(criterion.avgModelAScore || 0)} · B ${round1(criterion.avgModelBScore || 0)} · Avg ${round1(criterion.avgFinalScore || 0)}`;
           criterion.evidence = (criterion.evidence || []).slice(0, Math.max(1, (criterion.evidence || []).length - 1));
           criterion.evidenceCount = criterion.evidence.length;
           criterion.signals = (criterion.signals || []).map((signal, sidx) => ({
             ...signal,
+            modelAScore: clamp(round1((signal.modelAScore || 0) - (sidx % 2 === 0 ? 0.2 : 0.1)), 0, 2),
+            modelBScore: clamp(round1((signal.modelBScore || 0) - (sidx % 2 === 0 ? 0.3 : 0.1)), 0, 2),
             weightedScore: clamp(round1(signal.weightedScore - (sidx % 2 === 0 ? 0.2 : 0.1)), 0, 2),
             plausibility: clamp(round1(signal.plausibility - (sidx % 3 === 0 ? 1 : 0)), 0, 5),
           }));
@@ -1224,6 +1250,9 @@
         avgPlausibility: round2(sections.reduce((sum, s) => sum + Number(s.overall.avgPlausibility || 0) * (s.overall.signalCount || 0), 0) / (sections.reduce((sum, s) => sum + (s.overall.signalCount || 0), 0) || 1)),
         weakSignalCount: sections.reduce((sum, s) => sum + (s.overall.weakSignalCount || 0), 0),
         signalCount: sections.reduce((sum, s) => sum + (s.overall.signalCount || 0), 0),
+        avgModelAScore: round2(avgOf(sections, s => s.overall.avgModelAScore)),
+        avgModelBScore: round2(avgOf(sections, s => s.overall.avgModelBScore)),
+        avgFinalScore: round2(avgOf(sections, s => s.overall.avgFinalScore)),
         totalItems, expectedItems, goodItems, positiveItems, evidenceCount,
         targetEvidencePerItem: review.overall?.targetEvidencePerItem || 5
       };
@@ -1246,12 +1275,12 @@
     function emptySection(id) {
       return {
         id, name: titleFromKey(id),
-        overall: { finalScore:0, score10:0, coverage:0, quality:0, evidence:0, qualityAvg:0, avgPlausibility:0, totalItems:0, goodItems:0, positiveItems:0, expectedItems:0, evidenceCount:0, targetEvidencePerItem:5, weakSignalCount:0, signalCount:0 },
+        overall: { finalScore:0, score10:0, coverage:0, quality:0, evidence:0, qualityAvg:0, avgPlausibility:0, avgModelAScore:0, avgModelBScore:0, avgFinalScore:0, totalItems:0, goodItems:0, positiveItems:0, expectedItems:0, evidenceCount:0, targetEvidencePerItem:5, weakSignalCount:0, signalCount:0 },
         criteria: []
       };
     }
     function emptyCriterion(name) {
-      return { id:slugify(name), name, groupName:'', exists:'missing', qualityLabel:'missing', score:0, evidence:[], evidenceCount:0, evidenceIds:[], evidenceTop5:[], evidenceStatus:'invalid_evidence', avgPlausibility:0, weakSignalCount:0, signals:[], rubricSubscores:{}, rubricAvg:0, rubricText:'No signal detail' };
+      return { id:slugify(name), name, groupName:'', exists:'missing', qualityLabel:'missing', score:0, evidence:[], evidenceCount:0, evidenceIds:[], evidenceTop5:[], evidenceStatus:'invalid_evidence', avgPlausibility:0, avgModelAScore:0, avgModelBScore:0, avgFinalScore:0, weakSignalCount:0, signals:[], rubricSubscores:{}, rubricAvg:0, rubricText:'No signal detail' };
     }
 
     function getOrderedCriterionNames(sectionPair) {
@@ -1319,11 +1348,12 @@
       const o = section.overall;
       return [
         { label:'Final score', before:o.finalScore, after:o.finalScore, valueLabel:'100 scale' },
-        { label:'Avg plausibility', before:(o.avgPlausibility || 0) * 20, after:(o.avgPlausibility || 0) * 20, valueLabel:'0–5 scaled' },
+        { label:'Model A avg', before:(o.avgModelAScore || 0), after:(o.avgModelAScore || 0), valueLabel:'0–2 scale' },
+        { label:'Model B avg', before:(o.avgModelBScore || 0), after:(o.avgModelBScore || 0), valueLabel:'0–2 scale' },
+        { label:'Final avg', before:(o.avgFinalScore || 0), after:(o.avgFinalScore || 0), valueLabel:'0–2 scale' },
         { label:'Weak signals', before:o.weakSignalCount || 0, after:o.weakSignalCount || 0, valueLabel:'raw count' },
         { label:'Evidence count', before:o.evidenceCount || 0, after:o.evidenceCount || 0, valueLabel:'raw count' },
-        { label:'Sub-criteria', before:o.totalItems || 0, after:o.totalItems || 0, valueLabel:'raw count' },
-        { label:'Signal count', before:o.signalCount || 0, after:o.signalCount || 0, valueLabel:'raw count' }
+        { label:'Sub-criteria', before:o.totalItems || 0, after:o.totalItems || 0, valueLabel:'raw count' }
       ];
     }
 
@@ -1332,11 +1362,12 @@
       const after = sectionPair.after.overall;
       return [
         { label:'Final score', before:before.finalScore, after:after.finalScore, valueLabel:'100 scale' },
-        { label:'Avg plausibility', before:(before.avgPlausibility || 0) * 20, after:(after.avgPlausibility || 0) * 20, valueLabel:'0–5 scaled' },
+        { label:'Model A avg', before:(before.avgModelAScore || 0), after:(after.avgModelAScore || 0), valueLabel:'0–2 scale' },
+        { label:'Model B avg', before:(before.avgModelBScore || 0), after:(after.avgModelBScore || 0), valueLabel:'0–2 scale' },
+        { label:'Final avg', before:(before.avgFinalScore || 0), after:(after.avgFinalScore || 0), valueLabel:'0–2 scale' },
         { label:'Weak signals', before:before.weakSignalCount || 0, after:after.weakSignalCount || 0, valueLabel:'raw count' },
         { label:'Evidence count', before:before.evidenceCount || 0, after:after.evidenceCount || 0, valueLabel:'raw count' },
-        { label:'Sub-criteria', before:before.totalItems || 0, after:after.totalItems || 0, valueLabel:'raw count' },
-        { label:'Signal count', before:before.signalCount || 0, after:after.signalCount || 0, valueLabel:'raw count' }
+        { label:'Sub-criteria', before:before.totalItems || 0, after:after.totalItems || 0, valueLabel:'raw count' }
       ];
     }
 
@@ -1345,12 +1376,12 @@
       const top = [...(section.criteria || [])].sort((a,b)=> b.score - a.score);
       const low = [...(section.criteria || [])].sort((a,b)=> a.score - b.score);
       const strong = [];
-      strong.push(`${section.name} scores ${fmtScore(o.finalScore)} / 100 with average plausibility ${round1(o.avgPlausibility || 0)} / 5.`);
+      strong.push(`${section.name} scores ${fmtScore(o.finalScore)} / 100. Signal averages are A ${round1(o.avgModelAScore || 0)}, B ${round1(o.avgModelBScore || 0)}, final ${round1(o.avgFinalScore || 0)} on the 0–2 scale.`);
       strong.push(`This section contains ${o.totalItems} sub-criteria, ${o.signalCount} signals, and ${o.evidenceCount} cited chunks.`);
       if (top[0]) strong.push(`Top sub-criterion: "${top[0].name}" scored ${fmtScore(top[0].score)} / 10.`);
       const risks = [];
-      if ((o.weakSignalCount || 0) > 0) risks.push(`${o.weakSignalCount} signal(s) are flagged as weak evidence or hallucination.`);
-      if ((o.avgPlausibility || 0) < 3.5) risks.push(`Average plausibility is only ${round1(o.avgPlausibility || 0)} / 5.`);
+      if ((o.weakSignalCount || 0) > 0) risks.push(`${o.weakSignalCount} sub-criteria are low confidence based on model disagreement.`);
+      if ((o.avgFinalScore || 0) < 1) risks.push(`Average final signal score is only ${round1(o.avgFinalScore || 0)} / 2.`);
       if (low[0]) risks.push(`Lowest-scoring sub-criterion is "${low[0].name}" at ${fmtScore(low[0].score)} / 10.`);
       if (!section.criteria.length) risks.push('No scored sub-criteria were detected for this module.');
       return { strong, risks };
@@ -1370,7 +1401,7 @@
       }).sort((a,b) => Math.abs(b.delta) - Math.abs(a.delta));
       const strong = [];
       strong.push(`Section score moved from ${fmtScore(before.overall.finalScore)} to ${fmtScore(after.overall.finalScore)} (${fmtDelta(delta)}).`);
-      strong.push(`Average plausibility moved from ${round1(before.overall.avgPlausibility || 0)} to ${round1(after.overall.avgPlausibility || 0)}, weak signals changed ${before.overall.weakSignalCount || 0} → ${after.overall.weakSignalCount || 0}.`);
+      strong.push(`Signal averages moved A ${round1(before.overall.avgModelAScore || 0)} → ${round1(after.overall.avgModelAScore || 0)}, B ${round1(before.overall.avgModelBScore || 0)} → ${round1(after.overall.avgModelBScore || 0)}, final ${round1(before.overall.avgFinalScore || 0)} → ${round1(after.overall.avgFinalScore || 0)}.`);
       if (movements[0]) strong.push(`Largest sub-criterion movement: "${movements[0].name}" (${fmtDelta(movements[0].delta, '/10')}).`);
       const risks = [];
       const negatives = movements.filter(m => m.delta < 0);
@@ -1379,8 +1410,8 @@
       } else {
         risks.push('No sub-criterion score regressed in this section.');
       }
-      if ((after.overall.weakSignalCount || 0) > 0) risks.push(`After-review still has ${after.overall.weakSignalCount} weak signal(s).`);
-      if ((after.overall.avgPlausibility || 0) < 3.5) risks.push(`After-review plausibility is still only ${round1(after.overall.avgPlausibility || 0)} / 5.`);
+      if ((after.overall.weakSignalCount || 0) > 0) risks.push(`After-review still has ${after.overall.weakSignalCount} low-confidence sub-criteria.`);
+      if ((after.overall.avgFinalScore || 0) < 1) risks.push(`After-review average final signal score is still only ${round1(after.overall.avgFinalScore || 0)} / 2.`);
       return { strong, risks };
     }
 
@@ -1413,7 +1444,7 @@
         cards = [
           { label:'Final score', value:`${fmtScore(review.overall.finalScore)}`,
             pillHtml:`<span class="status-pill status-positive">${riskFromScore(review.overall.finalScore)} risk</span>`,
-            desc:`Avg plausibility ${round1(review.overall.avgPlausibility || 0)} / 5 · ${review.overall.totalItems} sub-criteria` },
+            desc:`A ${round1(review.overall.avgModelAScore || 0)} · B ${round1(review.overall.avgModelBScore || 0)} · Avg ${round1(review.overall.avgFinalScore || 0)} on 0–2 scale` },
           { label:'Weak signals', value:`${review.overall.weakSignalCount || 0}`,
             pillHtml:`<span class="${statusClassFromRisk(riskFromWeakSignals(review.overall.weakSignalCount || 0))}">${riskFromWeakSignals(review.overall.weakSignalCount || 0)} risk</span>`,
             desc:`${review.overall.signalCount || 0} total signals` },
@@ -1435,7 +1466,7 @@
         cards = [
           { label:'Overall score', value:`${fmtScore(before.overall.finalScore)} → ${fmtScore(after.overall.finalScore)}`,
             pillHtml:`<span class="${pillClassFromDelta(scoreDelta(before.overall.finalScore, after.overall.finalScore))}">${fmtDelta(scoreDelta(before.overall.finalScore, after.overall.finalScore))}</span>`,
-            desc:`Avg plausibility ${round1(before.overall.avgPlausibility || 0)} → ${round1(after.overall.avgPlausibility || 0)}` },
+            desc:`Avg ${round1(before.overall.avgFinalScore || 0)} → ${round1(after.overall.avgFinalScore || 0)} on 0–2 scale` },
           { label:'Weak signals', value:`${before.overall.weakSignalCount || 0} → ${after.overall.weakSignalCount || 0}`,
             pillHtml:`<span class="${pillClassFromDelta(scoreDelta(before.overall.weakSignalCount || 0, after.overall.weakSignalCount || 0) * -1)}">${fmtDelta(scoreDelta(after.overall.weakSignalCount || 0, before.overall.weakSignalCount || 0), '')}</span>`,
             desc:`Evidence chunks ${before.overall.evidenceCount} → ${after.overall.evidenceCount}` },
@@ -1532,8 +1563,8 @@
       document.getElementById('heroConfidence').className = conf === 'High' ? 'status-pill status-positive' : conf === 'Medium' ? 'status-pill status-neutral' : 'status-pill status-negative';
       document.getElementById('heroConfidence').textContent = `Confidence: ${conf}`;
       document.getElementById('heroInterpretation').textContent = mode === 'compare'
-        ? `After-review score is ${fmtScore(afterScore)} / 100, confidence proxy changed from ${round1(pair.before.overall.avgPlausibility || 0)} to ${round1(pair.after.overall.avgPlausibility || 0)}.`
-        : `Average confidence proxy is ${round1(pair.before.overall.avgPlausibility || 0)} / 5 with ${pair.before.overall.weakSignalCount || 0} low-confidence item(s).`;
+        ? `After-review score is ${fmtScore(afterScore)} / 100. Signal averages are A ${round1(pair.after.overall.avgModelAScore || 0)}, B ${round1(pair.after.overall.avgModelBScore || 0)}, final ${round1(pair.after.overall.avgFinalScore || 0)}.`
+        : `Signal averages are A ${round1(pair.before.overall.avgModelAScore || 0)}, B ${round1(pair.before.overall.avgModelBScore || 0)}, final ${round1(pair.before.overall.avgFinalScore || 0)} on the 0–2 scale.`;
       document.getElementById('legendBeforeLabel').textContent = beforeLabel;
       document.getElementById('legendAfterLabel').textContent = mode === 'compare' ? afterLabel : 'Selected review';
       document.getElementById('beforeBarTitle').textContent = mode === 'compare' ? 'Review A score' : 'Section score';
@@ -1638,7 +1669,7 @@
       drawerStatus.textContent = criterionConf;
       drawerSummary.textContent = mode === 'compare'
         ? `"${criterionPair.name}" moved from ${fmtScore(criterionPair.before.score)} to ${fmtScore(criterionPair.after.score)} / 10 (${fmtDelta(delta, '/10')}). Low-confidence items changed ${criterionPair.before.weakSignalCount} → ${criterionPair.after.weakSignalCount}.`
-        : `"${criterionPair.name}" scored ${fmtScore(criterionPair.after.score)} / 10 with ${criterionConf} and ${criterionPair.after.evidenceCount} cited chunk${criterionPair.after.evidenceCount === 1 ? '' : 's'}.`;
+        : `"${criterionPair.name}" scored ${fmtScore(criterionPair.after.score)} / 10. Signal averages are A ${round1(criterionPair.after.avgModelAScore || 0)}, B ${round1(criterionPair.after.avgModelBScore || 0)}, final ${round1(criterionPair.after.avgFinalScore || 0)} with ${criterionPair.after.evidenceCount} cited chunk${criterionPair.after.evidenceCount === 1 ? '' : 's'}.`;
       metricFocusTag.textContent = mode === 'compare' ? 'Sub-criterion compare' : 'Sub-criterion evidence';
       let evidences = [];
       if (mode === 'compare') {
@@ -1666,7 +1697,7 @@
         if (delta < 0) notes.push({ tone:'warning', tag:'Score dropped', text:`This sub-criterion regressed by ${Math.abs(delta)} point${Math.abs(delta) === 1 ? '' : 's'} on the 0–10 scale.`, source:'Comparison summary' });
         else if (delta > 0) notes.push({ tone:'positive', tag:'Score improved', text:`This sub-criterion improved by ${delta} point${delta === 1 ? '' : 's'} on the 0–10 scale.`, source:'Comparison summary' });
         if (criterionPair.after.weakSignalCount > criterionPair.before.weakSignalCount) notes.push({ tone:'warning', tag:'More low-confidence items', text:`Low-confidence items increased (${criterionPair.before.weakSignalCount} → ${criterionPair.after.weakSignalCount}).`, source:'Model agreement' });
-        if (criterionPair.after.avgPlausibility > criterionPair.before.avgPlausibility) notes.push({ tone:'positive', tag:'Better agreement', text:`Confidence proxy improved (${round1(criterionPair.before.avgPlausibility)} → ${round1(criterionPair.after.avgPlausibility)}).`, source:'Model agreement' });
+        if (criterionPair.after.avgFinalScore > criterionPair.before.avgFinalScore) notes.push({ tone:'positive', tag:'Higher final avg', text:`Average final signal score improved (${round1(criterionPair.before.avgFinalScore)} → ${round1(criterionPair.after.avgFinalScore)}).`, source:'Dual-model scoring' });
       } else {
         if (criterionPair.after.score >= 8) notes.push({ tone:'positive', tag:'Strong sub-criterion', text:'This sub-criterion is currently scoring in a strong range.', source:'Current review' });
         else notes.push({ tone:'warning', tag:'Could improve', text:'This sub-criterion has room to improve or be supported more explicitly.', source:'Current review' });
@@ -1693,7 +1724,7 @@
       `).join('');
       confidencePill.className = afterConf === 'High' ? 'status-pill status-positive' : afterConf === 'Medium' ? 'status-pill status-neutral' : 'status-pill status-negative';
       confidencePill.textContent = `Confidence: ${afterConf}`;
-      confidenceText.textContent = 'Confidence reflects agreement between the two scoring models at sub-criterion level, with section-level badges using the aggregated confidence proxy.';
+      confidenceText.textContent = 'Confidence reflects agreement between the two scoring models at sub-criterion level. Signal rows show model A, model B, and the final averaged score.';
     }
 
     function renderTable() {
@@ -1709,7 +1740,7 @@
       const afterMap = new Map((pair.after.criteria || []).map(c => [c.name, c]));
       const names = getOrderedCriterionNames(pair);
       if (mode === 'compare') {
-        head.innerHTML = `<tr><th>Sub-criterion</th><th>Before</th><th>After</th><th>Delta</th><th>Plausibility</th><th>Weak signals</th><th>Status</th></tr>`;
+        head.innerHTML = `<tr><th>Sub-criterion</th><th>Before</th><th>After</th><th>Delta</th><th>A / B / Avg</th><th>Low-conf</th><th>Status</th></tr>`;
         let currentGroup = '';
         body.innerHTML = names.length ? names.map(name => {
           const before = beforeMap.get(name) || emptyCriterion(name);
@@ -1726,13 +1757,13 @@
             <td>${fmtScore(before.score)} / 10</td>
             <td>${fmtScore(after.score)} / 10</td>
             <td><span class="${pillClassFromDelta(delta)}">${fmtDelta(delta, '/10')}</span></td>
-            <td>${round1(before.avgPlausibility || 0)} → ${round1(after.avgPlausibility || 0)}</td>
+            <td>${round1(after.avgModelAScore || 0)} / ${round1(after.avgModelBScore || 0)} / ${round1(after.avgFinalScore || 0)}</td>
             <td>${before.weakSignalCount || 0} → ${after.weakSignalCount || 0}</td>
             <td><span class="${statusClassFromRisk(riskFromWeakSignals(after.weakSignalCount || 0))}">${evidenceStatusLabel(after.evidenceStatus)}</span></td>
           </tr>`;
         }).join('') : `<tr><td colspan="7"><div class="empty-copy">No sub-criteria found.</div></td></tr>`;
       } else {
-        head.innerHTML = `<tr><th>Sub-criterion</th><th>Score</th><th>Plausibility</th><th>Weak signals</th><th>Evidence</th><th>Status</th><th>Signals</th></tr>`;
+        head.innerHTML = `<tr><th>Sub-criterion</th><th>Score</th><th>Model A</th><th>Model B</th><th>Avg</th><th>Evidence</th><th>Status</th></tr>`;
         let currentGroup = '';
         body.innerHTML = names.length ? names.map(name => {
           const current = afterMap.get(name) || beforeMap.get(name) || emptyCriterion(name);
@@ -1745,11 +1776,12 @@
           return `${groupRow}<tr class="row-clickable" data-criterion-name="${name}"${active}>
             <td><strong>${name}</strong></td>
             <td>${fmtScore(current.score)} / 10</td>
-            <td>${round1(current.avgPlausibility || 0)} / 5</td>
-            <td>${current.weakSignalCount || 0}</td>
+            <td>${round1(current.avgModelAScore || 0)} / 2</td>
+            <td>${round1(current.avgModelBScore || 0)} / 2</td>
+            <td>${round1(current.avgFinalScore || 0)} / 2</td>
             <td>${current.evidenceCount}</td>
             <td>${evidenceStatusLabel(current.evidenceStatus)}</td>
-            <td><span class="${statusClassFromRisk(riskFromWeakSignals(current.weakSignalCount || 0))}">${(current.signals || []).length} signals</span></td>
+            <td><span class="${statusClassFromRisk(riskFromWeakSignals(current.weakSignalCount || 0))}">${current.confidenceLabel || `${(current.signals || []).length} signals`}</span></td>
           </tr>`;
         }).join('') : `<tr><td colspan="7"><div class="empty-copy">No sub-criteria found.</div></td></tr>`;
       }

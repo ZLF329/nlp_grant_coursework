@@ -142,6 +142,10 @@ def load_rubric(criteria_path: str | Path) -> list[dict[str, Any]]:
     return sections
 
 
+def load_raw_criteria(criteria_path: str | Path) -> dict[str, Any]:
+    return json.loads(Path(criteria_path).read_text(encoding="utf-8"))
+
+
 def _safe_json_loads(text: str) -> dict[str, Any]:
     clean = (text or "").strip()
     if clean.startswith("```"):
@@ -195,47 +199,27 @@ def _compat_evidence_score(avg_confidence_0to2: float) -> float:
     return round((avg_confidence_0to2 / 2) * 100, 2)
 
 
-def _build_retrieval_payload(rubric_sections: list[dict[str, Any]]) -> list[dict[str, Any]]:
-    return [
-        {
-            "section_key": section["section_key"],
-            "section_name": section["human_name"],
-            "sub_criteria": [
-                {
-                    "sub_id": sub["sub_id"],
-                    "name": sub["name"],
-                    "definition": sub["definition"],
-                    "group_name": sub.get("group_name"),
-                    "signals": [
-                        {"sid": signal["sid"], "text": signal["text"]}
-                        for signal in sub["signals"]
-                    ],
-                }
-                for sub in section["sub_criteria"]
-            ],
-        }
-        for section in rubric_sections
-    ]
-
-
 def build_retrieval_messages(
     *,
-    rubric_sections: list[dict[str, Any]],
+    criteria_payload: dict[str, Any],
     pool_index_text: str,
 ) -> list[dict[str, str]]:
     system = (
         "You are selecting relevant evidence chunks for grant scoring.\n\n"
         "Return JSON only.\n"
-        f"For each rubric section, select as many potentially relevant chunk IDs as needed, up to {RETRIEVAL_MAX_CHUNKS}.\n"
+        f"For each output section key, select as many potentially relevant chunk IDs as needed, up to {RETRIEVAL_MAX_CHUNKS}.\n"
         "Bias toward recall over precision: if a chunk may help score any sub-criterion or signal in that rubric section, include it.\n"
         "It is better to include borderline relevant chunks than to miss useful evidence.\n"
+        "Use the criteria JSON exactly as provided.\n"
         "For each rubric section, select only chunk IDs from the provided pool index.\n"
         "Do not output explanations, prose, or markdown.\n"
         f"Return at most {RETRIEVAL_MAX_CHUNKS} chunk IDs per rubric section."
     )
     user = (
-        "Rubric sections:\n"
-        f"{json.dumps(_build_retrieval_payload(rubric_sections), ensure_ascii=False, indent=2)}\n\n"
+        "Criteria points JSON:\n"
+        f"{json.dumps(criteria_payload, ensure_ascii=False, indent=2)}\n\n"
+        "Output section key mapping:\n"
+        f"{json.dumps(SECTION_KEY_MAP, ensure_ascii=False, indent=2)}\n\n"
         "Pool index:\n"
         f"{pool_index_text}\n\n"
         "Return format:\n"
@@ -243,7 +227,8 @@ def build_retrieval_messages(
         '  "general": ["chunk_id_1", "chunk_id_2"],\n'
         '  "proposed_research": ["chunk_id_3"]\n'
         "}\n\n"
-        "Return one top-level property per rubric section key.\n"
+        "Return one top-level property per output section key from the mapping.\n"
+        "Interpret each human-readable criteria section using the output section key mapping.\n"
         "Choose a high-recall set of chunk IDs for each rubric section.\n"
         "Include chunks that may support any sub-criterion or signal in that section.\n"
         "Do not be overly selective."
@@ -769,6 +754,7 @@ def score_application_base(
     scorer_client_b: Any,
     artifacts_dir: str | Path | None = None,
 ) -> dict[str, Any]:
+    criteria_payload = load_raw_criteria(criteria_path)
     rubric_sections = load_rubric(criteria_path)
     pool_data = build_chunk_pool(application, max_chars=MAX_CHARS)
     pool_lookup = pool_data["pool_lookup"]
@@ -776,7 +762,7 @@ def score_application_base(
     chunk_order = _chunk_order_map(pool_lookup)
 
     retrieval_messages = build_retrieval_messages(
-        rubric_sections=rubric_sections,
+        criteria_payload=criteria_payload,
         pool_index_text=pool_index_text,
     )
     retrieval_schema = build_retrieval_schema(rubric_sections)
