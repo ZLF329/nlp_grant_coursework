@@ -18,9 +18,9 @@ import requests
 from src.scoring.pipeline import score_application_base
 
 OLLAMA_HOST = os.environ.get("OLLAMA_HOST", "http://127.0.0.1:11434").rstrip("/")
-OLLAMA_MODEL = os.environ.get("OLLAMA_MODEL", "qwen3.5:35b")
+OLLAMA_MODEL = os.environ.get("OLLAMA_MODEL", "qwen3:30b-a3b")
 OLLAMA_MODEL_A = os.environ.get("OLLAMA_MODEL_A", OLLAMA_MODEL)
-OLLAMA_MODEL_B = os.environ.get("OLLAMA_MODEL_B", "gemma4:26b")
+OLLAMA_MODEL_B = os.environ.get("OLLAMA_MODEL_B", OLLAMA_MODEL)
 OLLAMA_TIMEOUT = float(os.environ.get("OLLAMA_TIMEOUT", "1200"))
 
 
@@ -41,7 +41,7 @@ class _Scorer:
                 "top_p": 0.9,
                 "num_predict": max_tokens,
             },
-            "think": True,
+            "think": False,
         }
         try:
             response = requests.post(

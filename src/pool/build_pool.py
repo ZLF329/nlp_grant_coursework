@@ -8,6 +8,46 @@ from typing import Any
 
 MAX_CHARS = 1200
 
+# Sections to split by numbered headings (1., 2.1., etc.)
+HEADING_SPLIT_SECTIONS = {
+    "Detailed Research Plan",
+}
+
+# Matches lines that are ONLY a numbered heading, e.g. "1. Problem" or "5.1. Phase 1: ..."
+_NUMBERED_HEADING_RE = re.compile(
+    r"(?m)^(\d+(?:\.\d+)*\.?\s{1,3}[A-Z][^\n]{2,})\s*$"
+)
+
+
+def _split_by_headings(text: str) -> list[tuple[str, str]]:
+    """
+    Split text by numbered headings (1., 2., 5.1., etc.).
+    Returns [(num_label, content), ...] e.g. [("1", "Problem text..."), ("5.1", "Phase 1 text...")].
+    Returns [] if fewer than 2 headings found (fall back to normal chunking).
+    """
+    matches = list(_NUMBERED_HEADING_RE.finditer(text))
+    if len(matches) < 2:
+        return []
+
+    result: list[tuple[str, str]] = []
+
+    # Capture any preamble before the first heading
+    preamble = text[: matches[0].start()].strip()
+    if preamble:
+        result.append(("0", preamble))
+
+    for i, match in enumerate(matches):
+        full_heading = match.group(1).strip()
+        num_match = re.match(r"^(\d+(?:\.\d+)*)", full_heading)
+        label = num_match.group(1) if num_match else full_heading[:20]
+        content_start = match.end()
+        content_end = matches[i + 1].start() if i + 1 < len(matches) else len(text)
+        content = text[content_start:content_end].strip()
+        if content:
+            result.append((label, content))
+
+    return result
+
 
 @dataclass(frozen=True)
 class PoolChunk:
@@ -125,6 +165,21 @@ def build_chunk_pool(application: dict[str, Any], max_chars: int = MAX_CHARS) ->
         if isinstance(root_value, dict):
             for child_key, child_value in root_value.items():
                 parser_section = str(child_key)
+                # Attempt heading-based splitting for long structured sections
+                if (
+                    parser_section in HEADING_SPLIT_SECTIONS
+                    and isinstance(child_value, str)
+                ):
+                    sub_sections = _split_by_headings(child_value)
+                    if sub_sections:
+                        for label, content in sub_sections:
+                            sub_name = f"{parser_section} > {label}"
+                            add_leaf(
+                                sub_name,
+                                f"{root_key} > {child_key} > {label}",
+                                content,
+                            )
+                        continue  # skip normal processing for this child
                 for leaf_text, source_path in _iter_leaves(
                     child_value,
                     [str(root_key), str(child_key)],

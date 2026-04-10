@@ -51,17 +51,19 @@ from ORCID.orcid_features import fetch_orcid_profile                       # noq
 # Ollama scorer is imported lazily — keeping a single shared instance avoids
 # reloading the model on every request.
 _scorer_lock = threading.Lock()
-_scorer = None
+_scorer_a = None
+_scorer_b = None
 ORCID_RE = re.compile(r"\b\d{4}-\d{4}-\d{4}-\d{3}[\dX]\b")
 
 
-def _get_scorer():
-    global _scorer
+def _get_scorers():
+    global _scorer_a, _scorer_b
     with _scorer_lock:
-        if _scorer is None:
-            from qwen3_ollama import _Scorer  # noqa: WPS433
-            _scorer = _Scorer()
-        return _scorer
+        if _scorer_a is None or _scorer_b is None:
+            from qwen3_ollama import _Scorer, OLLAMA_MODEL_A, OLLAMA_MODEL_B, OLLAMA_HOST  # noqa: WPS433
+            _scorer_a = _Scorer(model_name=OLLAMA_MODEL_A, host=OLLAMA_HOST)
+            _scorer_b = _Scorer(model_name=OLLAMA_MODEL_B, host=OLLAMA_HOST)
+        return _scorer_a, _scorer_b
 
 
 # ── job state ─────────────────────────────────────────────────────────────────
@@ -233,12 +235,13 @@ def _run_pipeline(job_id: str, upload_path: Path):
         _update(job_id, step_key="stage2", step_status="running",
                 progress=70, detail="Stage 2: Retrieval + dual-model scoring…")
         from qwen3_ollama import score_application
-        scorer = _get_scorer()
+        scorer_a, scorer_b = _get_scorers()
         scored = score_application(
             parsed,
             CRITERIA_PATH,
             doc_id=upload_path.stem,
-            scorer=scorer,
+            scorer_client_a=scorer_a,
+            scorer_client_b=scorer_b,
             artifacts_dir=RESULT_DIR,
         )
         _update(job_id, step_key="stage2", step_status="done",

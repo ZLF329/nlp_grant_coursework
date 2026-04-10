@@ -28,27 +28,68 @@ RETRIEVAL_MAX_CHUNKS = 8
 USED_CHUNK_MAX = 5
 
 SECTION_TO_PARSER_SECTIONS: dict[str, list[str] | None] = {
-    "general": None,
-    "proposed_research": [
-        "Plain English Summary of Research",
-        "Scientific Abstract",
-        "Detailed Research Plan",
-        "Patient & Public Involvement",
-    ],
-    "training_development": [
-        "Training & Development and Research Support",
-    ],
-    "sites_support": [
+    "general": [
+        # SUMMARY INFORMATION
+        "Contracting Organisation",
+        "Application Title",
+        "Duration (months)",
+        "Start Date",
+        # LEAD APPLICANT & RESEARCH TEAM
         "Lead Applicant",
         "Joint Lead Applicant",
         "Co-Applicants",
+        # Training plan + supervisors
+        "Training & Development and Research Support",
+        # Research vision: background, importance, aims, management
+        "Detailed Research Plan > 1",
+        "Detailed Research Plan > 2",
+        "Detailed Research Plan > 4",
+        "Detailed Research Plan > 7",
+    ],
+    "proposed_research": [
+        "Plain English Summary of Research",
+        "Scientific Abstract",
+        # Full research content: background → methods → dissemination
+        "Detailed Research Plan > 1",
+        "Detailed Research Plan > 2",
+        "Detailed Research Plan > 3",
+        "Detailed Research Plan > 4",
+        "Detailed Research Plan > 5",   # matches 5.1, 5.2, 5.3 via prefix
+        "Detailed Research Plan > 6",
+        "Patient & Public Involvement",
+        "SUMMARY BUDGET",
+    ],
+    "training_development": [
+        "Training & Development and Research Support",
+        "SUMMARY BUDGET",
+        "Lead Applicant",
+        "Joint Lead Applicant",
+        "Co-Applicants",
+    ],
+    "sites_support": [
         "Contracting Organisation",
+        "Application Title",
+        "Duration (months)",
+        "Start Date",
+        "Lead Applicant",
+        "Joint Lead Applicant",
+        "Co-Applicants",
+        "Training & Development and Research Support",
     ],
     "wpcc": [
         "Patient & Public Involvement",
-        "Detailed Research Plan",
+        "Plain English Summary of Research",
+        # Project plan phases contain PPI integration details
+        "Detailed Research Plan > 5",   # matches 5.1, 5.2, 5.3 via prefix
+        "SUMMARY BUDGET",
     ],
-    "application_form": None,
+    "application_form": [
+        "Plain English Summary of Research",
+        "Scientific Abstract",
+        "Detailed Research Plan",       # all sub-sections via prefix
+        "Patient & Public Involvement",
+        "Training & Development and Research Support",
+    ],
 }
 CONFIDENCE_TO_SCORE = {
     "low_confidence": 0,
@@ -301,6 +342,31 @@ def _normalize_retrieval_output(
     return normalized
 
 
+def _parser_section_matches(actual: str, pattern: str) -> bool:
+    """
+    Check whether an actual parser_section name matches a mapping pattern.
+
+    Three cases:
+      1. Exact match:            "Lead Applicant" matches "Lead Applicant"
+      2. Parent prefix match:    "Detailed Research Plan > 1" matches "Detailed Research Plan"
+      3. Numeric prefix match:   "Detailed Research Plan > 5.1" matches "Detailed Research Plan > 5"
+                                 (i.e. actual number starts with pattern number followed by ".")
+    """
+    if actual == pattern:
+        return True
+    # Case 2: actual is a sub-section of a plain parent pattern
+    if actual.startswith(pattern + " > "):
+        return True
+    # Case 3: numeric prefix — pattern ends with " > N", actual ends with " > N.x"
+    if " > " in pattern:
+        base, num_prefix = pattern.rsplit(" > ", 1)
+        if actual.startswith(base + " > "):
+            actual_num = actual[len(base) + 3:]  # strip "base > "
+            if actual_num == num_prefix or actual_num.startswith(num_prefix + "."):
+                return True
+    return False
+
+
 def rule_based_retrieval(
     rubric_sections: list[dict[str, Any]],
     section_chunk_ids: dict[str, list[str]],
@@ -320,7 +386,9 @@ def rule_based_retrieval(
         else:
             chunks: list[str] = []
             for ps_name in mapping:
-                chunks.extend(parser_section_to_chunks.get(ps_name, []))
+                for actual_ps, chunk_ids in parser_section_to_chunks.items():
+                    if _parser_section_matches(actual_ps, ps_name):
+                        chunks.extend(chunk_ids)
             result[section["section_key"]] = _dedupe_preserve_order(chunks)
     return result
 

@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ollama list:*)",
+      "Bash(python3 -c ':*)",
+      "Bash(python3 -c \"import json; d = json.load\\(open\\('criteria_points.json'\\)\\); print\\('Has weight fields:', 'weight' in str\\(d\\)\\)\")"
+    ]
+  }
+}
