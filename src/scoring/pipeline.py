@@ -226,6 +226,9 @@ def build_retrieval_messages(
     system = (
         "You are selecting relevant evidence chunks for grant scoring.\n\n"
         "Return JSON only.\n"
+        f"For each rubric section, select as many potentially relevant chunk IDs as needed, up to {RETRIEVAL_MAX_CHUNKS}.\n"
+        "Bias toward recall over precision: if a chunk may help score any sub-criterion or signal in that rubric section, include it.\n"
+        "It is better to include borderline relevant chunks than to miss useful evidence.\n"
         "For each rubric section, select only chunk IDs from the provided pool index.\n"
         "Do not output explanations, prose, or markdown.\n"
         f"Return at most {RETRIEVAL_MAX_CHUNKS} chunk IDs per rubric section."
@@ -240,7 +243,10 @@ def build_retrieval_messages(
         '  "general": ["chunk_id_1", "chunk_id_2"],\n'
         '  "proposed_research": ["chunk_id_3"]\n'
         "}\n\n"
-        "Return one top-level property per rubric section key."
+        "Return one top-level property per rubric section key.\n"
+        "Choose a high-recall set of chunk IDs for each rubric section.\n"
+        "Include chunks that may support any sub-criterion or signal in that section.\n"
+        "Do not be overly selective."
     )
     return [
         {"role": "system", "content": system},

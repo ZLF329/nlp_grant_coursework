@@ -323,9 +323,14 @@ def _warmup():
 
     try:
         import requests
-        from qwen3_ollama import OLLAMA_HOST, OLLAMA_MODEL
-        from src.verify.faithfulness import JUDGE_MODEL
-        for model_name in (OLLAMA_MODEL, JUDGE_MODEL):
+        from qwen3_ollama import OLLAMA_HOST, OLLAMA_RETRIEVAL_MODEL, OLLAMA_MODEL_A, OLLAMA_MODEL_B
+
+        model_names = []
+        for model_name in (OLLAMA_RETRIEVAL_MODEL, OLLAMA_MODEL_A, OLLAMA_MODEL_B):
+            if model_name not in model_names:
+                model_names.append(model_name)
+
+        for model_name in model_names:
             print(f"[server] warming up Ollama model {model_name}…", flush=True)
             response = requests.post(
                 f"{OLLAMA_HOST.rstrip('/')}/api/chat",

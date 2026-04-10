@@ -1,2 +1,0 @@
-"""Faithfulness auditing helpers."""
-
