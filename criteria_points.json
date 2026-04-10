@@ -292,15 +292,6 @@
       ]
     },
     {
-      "name": "Adherence to Word/Character Limits",
-      "definition": "Each section stays within specified word or character limits, demonstrating concise writing.",
-      "signals": [
-        "Character/word count per section compared to allowed limits",
-        "Detection of over-length sections",
-        "Indicators of conciseness (average sentence/paragraph length)"
-      ]
-    },
-    {
       "name": "Limited Duplication and Repetition",
       "definition": "Avoidance of unnecessary repetition within or across sections.",
       "signals": [
