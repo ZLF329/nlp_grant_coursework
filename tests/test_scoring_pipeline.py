@@ -7,6 +7,7 @@ from pathlib import Path
 
 from src.pool.build_pool import build_chunk_pool
 from src.scoring.pipeline import (
+    _is_metadata_like_section,
     build_evidence_text,
     load_rubric,
     rule_based_retrieval,
@@ -98,6 +99,15 @@ def build_payloads_for_application(application: dict) -> tuple[dict[str, list[st
 
     stage1_payloads: list[dict] = []
     for section_name in chunk_ids_by_section:
+        application_section = {
+            "section_name": section_name,
+            "section_content": {
+                chunk_id: pool["pool_lookup"][chunk_id]["text"]
+                for chunk_id in chunk_ids_by_section[section_name]
+            },
+        }
+        if _is_metadata_like_section(application_section):
+            continue
         if section_name == "Plain English Summary of Research":
             first_chunk = chunk_ids_by_section[section_name][0]
             stage1_payloads.append({
@@ -274,8 +284,8 @@ class PipelineTests(unittest.TestCase):
         self.assertEqual(proposed["confidence_label"], "high_confidence")
         self.assertGreater(result["overall"]["final_score_0to100"], 0)
 
-        pr_belief = result["belief_state"]["subcriteria_beliefs"]["pr.1"]["signals"]["pr.1.a"]
-        self.assertIn("Plain English Summary of Research:", pr_belief["implications"][0])
+        pr_belief = result["belief_state"]["subcriteria_beliefs"]["pr.2"]["signals"]["pr.2.b"]
+        self.assertIn("Detailed Research Plan:", pr_belief["implications"][0])
 
     def test_stage1_message_has_three_blocks_and_no_weights(self):
         application = sample_application()
@@ -293,7 +303,9 @@ class PipelineTests(unittest.TestCase):
         self.assertIn('"application_section"', first_user)
         self.assertIn('"criteria"', first_user)
         self.assertIn('"current_belief_state"', first_user)
+        self.assertIn('"signal_implications"', first_user)
         self.assertNotIn('"weight"', first_user)
+        self.assertNotIn('"good_evidence_ids": ["pesr__001"]', first_user)
 
     def test_stage2_message_uses_full_text_belief_and_no_weights(self):
         application = sample_application()
@@ -307,7 +319,7 @@ class PipelineTests(unittest.TestCase):
             scorer_client=scorer,
         )
 
-        first_stage2_call = scorer.calls[len(chunk_ids_by_section)]
+        first_stage2_call = scorer.calls[len(stage1_payloads)]
         user = first_stage2_call["messages"][1]["content"]
         self.assertIn('"full_application_text"', user)
         self.assertIn('"final_belief_state"', user)
@@ -407,7 +419,7 @@ class PipelineTests(unittest.TestCase):
             self.assertIn("Stage 2 returned invalid JSON", message)
             self.assertTrue((Path(tmpdir) / "broken_doc_stage2_general_raw.txt").exists())
             self.assertTrue((Path(tmpdir) / "broken_doc_stage1_raw.json").exists())
-            self.assertEqual(len(chunk_ids_by_section), len(stage1_payloads))
+            self.assertLess(len(stage1_payloads), len(chunk_ids_by_section))
 
 
 if __name__ == "__main__":

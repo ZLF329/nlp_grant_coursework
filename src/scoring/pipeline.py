@@ -28,6 +28,12 @@ USED_CHUNK_MAX = 5
 SECTION_EVIDENCE_MAX = 3
 STAGE1_MAX_TOKENS = 2048
 STAGE2_MAX_TOKENS = 12288
+STAGE1_MAX_FINDINGS = 6
+STAGE1_MAX_SIGNALS_PER_FINDING = 3
+STAGE1_IMPLICATION_MAX_CHARS = 220
+STAGE1_HISTORY_IMPLICATIONS_PER_SIGNAL = 2
+METADATA_SECTION_MAX_TOTAL_CHARS = 120
+METADATA_SECTION_MAX_UNIT_CHARS = 80
 
 SECTION_TO_PARSER_SECTIONS: dict[str, list[str] | None] = {
     "general": None,
@@ -354,19 +360,104 @@ def _section_inputs(
     return sections
 
 
-def _signal_sub_map(rubric_sections: list[dict[str, Any]]) -> dict[str, str]:
-    mapping: dict[str, str] = {}
+def _signal_sub_map(rubric_sections: list[dict[str, Any]]) -> dict[str, dict[str, str]]:
+    mapping: dict[str, dict[str, str]] = {}
     for section in rubric_sections:
         for sub in section["sub_criteria"]:
             for signal in sub["signals"]:
-                mapping[signal["sid"]] = sub["sub_id"]
+                mapping[signal["sid"]] = {
+                    "sub_id": sub["sub_id"],
+                    "sub_name": sub["name"],
+                    "section_key": section["section_key"],
+                    "section_name": section["human_name"],
+                    "signal_text": signal["text"],
+                }
     return mapping
+
+
+def _build_stage1_criteria_view(rubric_sections: list[dict[str, Any]]) -> dict[str, Any]:
+    return {
+        "signals": [
+            {
+                "sid": signal["sid"],
+                "sub_id": sub["sub_id"],
+                "sub_name": sub["name"],
+                "section_name": section["human_name"],
+                "text": signal["text"],
+            }
+            for section in rubric_sections
+            for sub in section["sub_criteria"]
+            for signal in sub["signals"]
+        ]
+    }
+
+
+def _build_stage1_belief_state_view(current_belief_state: dict[str, Any]) -> dict[str, Any]:
+    processed_sections = list(current_belief_state.get("processed_sections", []))
+    missing_signals = list(current_belief_state.get("missing_signals", []))
+    resolved_signal_ids: list[str] = []
+    signal_implications: list[dict[str, Any]] = []
+    subcriteria_beliefs = current_belief_state.get("subcriteria_beliefs", {})
+    if isinstance(subcriteria_beliefs, dict):
+        for sub_entry in subcriteria_beliefs.values():
+            if not isinstance(sub_entry, dict):
+                continue
+            signals = sub_entry.get("signals", {})
+            if not isinstance(signals, dict):
+                continue
+            for signal_id, signal_payload in signals.items():
+                if not isinstance(signal_payload, dict):
+                    continue
+                good_ids = signal_payload.get("good_evidence_ids") or []
+                bad_ids = signal_payload.get("bad_evidence_ids") or []
+                implications = signal_payload.get("implications") or []
+                if good_ids or bad_ids:
+                    resolved_signal_ids.append(signal_id)
+                if isinstance(implications, list):
+                    compact_implications = [
+                        str(item).strip()[:STAGE1_IMPLICATION_MAX_CHARS]
+                        for item in implications
+                        if str(item).strip()
+                    ][:STAGE1_HISTORY_IMPLICATIONS_PER_SIGNAL]
+                    if compact_implications:
+                        signal_implications.append({
+                            "sid": signal_id,
+                            "implications": compact_implications,
+                        })
+    return {
+        "processed_sections": processed_sections[-10:],
+        "processed_section_count": len(processed_sections),
+        "missing_signals": missing_signals,
+        "resolved_signals": _dedupe_preserve_order(resolved_signal_ids),
+        "signal_implications": signal_implications,
+    }
+
+
+def _is_metadata_like_section(application_section: dict[str, Any]) -> bool:
+    section_content = application_section.get("section_content", {})
+    if not isinstance(section_content, dict) or not section_content:
+        return True
+    texts = [str(text).strip() for text in section_content.values() if str(text).strip()]
+    if not texts:
+        return True
+    total_chars = sum(len(text) for text in texts)
+    if total_chars > METADATA_SECTION_MAX_TOTAL_CHARS:
+        return False
+    return all(len(text) <= METADATA_SECTION_MAX_UNIT_CHARS for text in texts)
+
+
+def _empty_section_update(section_name: str) -> dict[str, Any]:
+    return {
+        "section_name": section_name,
+        "findings": [],
+        "resolved_signals": [],
+    }
 
 
 def build_section_evidence_messages(
     *,
     application_section: dict[str, Any],
-    stripped_criteria: dict[str, Any],
+    stage1_criteria: dict[str, Any],
     current_belief_state: dict[str, Any],
 ) -> list[dict[str, str]]:
     section_name = application_section["section_name"]
@@ -376,19 +467,23 @@ def build_section_evidence_messages(
         "Task: inspect the current section only, then return evidence only for signals that are clearly supported or clearly challenged by the current section text.\n"
         "Do not summarize the full criteria. Do not explain why unrelated signals are irrelevant.\n"
         "Only use evidence IDs that appear in application_section.section_content.\n"
+        "The current_belief_state may include prior implications for context, but it does not include prior evidence IDs.\n"
         "Never invent IDs.\n"
         f"For each returned signal, include `good_evidence_ids` (max {SECTION_EVIDENCE_MAX}), "
         f"`bad_evidence_ids` (max {SECTION_EVIDENCE_MAX}), and `implication`.\n"
+        f"Return at most {STAGE1_MAX_FINDINGS} findings total.\n"
+        f"Within each finding, return at most {STAGE1_MAX_SIGNALS_PER_FINDING} signals.\n"
         "A signal is relevant only if the section text gives concrete evidence for or against it.\n"
         "If the section only contains metadata or weak context, return no findings.\n"
         "When there is no relevant evidence, return the required empty object shape and stop.\n"
         "Never return a bare array like `[]`.\n"
-        "Keep implications short and specific to the current section."
+        f"Keep implications short, specific to the current section, and under {STAGE1_IMPLICATION_MAX_CHARS} characters.\n"
+        "Prefer the strongest, most decision-relevant evidence. Omit weaker or duplicative matches."
     )
     user_payload = {
         "application_section": application_section,
-        "criteria": stripped_criteria,
-        "current_belief_state": current_belief_state,
+        "criteria": stage1_criteria,
+        "current_belief_state": _build_stage1_belief_state_view(current_belief_state),
     }
     empty_output_example = {
         "section_name": section_name,
@@ -487,24 +582,26 @@ def build_section_evidence_schema(
         "additionalProperties": False,
     }
     return {
-        "type": "object",
-        "properties": {
-            "section_name": {"type": "string"},
-            "findings": {
-                "type": "array",
-                "items": {
-                    "type": "object",
-                    "properties": {
-                        "sub_id": {"type": "string", "enum": sub_ids},
-                        "signals": {
-                            "type": "object",
-                            "properties": {
-                                sid: signal_payload
-                                for sid in all_signal_ids
+            "type": "object",
+            "properties": {
+                "section_name": {"type": "string"},
+                "findings": {
+                    "type": "array",
+                    "maxItems": STAGE1_MAX_FINDINGS,
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "sub_id": {"type": "string", "enum": sub_ids},
+                            "signals": {
+                                "type": "object",
+                                "properties": {
+                                    sid: signal_payload
+                                    for sid in all_signal_ids
+                                },
+                                "maxProperties": STAGE1_MAX_SIGNALS_PER_FINDING,
+                                "additionalProperties": False,
                             },
-                            "additionalProperties": False,
                         },
-                    },
                     "required": ["sub_id", "signals"],
                     "additionalProperties": False,
                 },
@@ -561,7 +658,10 @@ def _normalize_section_evidence_output(
                 continue
             raw_evidence = raw_signal.get("evidence", {})
             if not isinstance(raw_evidence, dict):
-                raw_evidence = {}
+                raw_evidence = {
+                    "good_evidence_ids": raw_signal.get("good_evidence_ids", []),
+                    "bad_evidence_ids": raw_signal.get("bad_evidence_ids", []),
+                }
             good_ids = raw_evidence.get("good_evidence_ids", [])
             bad_ids = raw_evidence.get("bad_evidence_ids", [])
             if not isinstance(good_ids, list):
@@ -586,7 +686,7 @@ def _normalize_section_evidence_output(
                     "good_evidence_ids": good_ids,
                     "bad_evidence_ids": bad_ids,
                 },
-                "implication": _ensure_implication_prefix(section_name, implication),
+                "implication": _ensure_implication_prefix(section_name, implication)[:STAGE1_IMPLICATION_MAX_CHARS],
             }
             resolved.append(signal_id)
         if signal_entries:
@@ -594,6 +694,8 @@ def _normalize_section_evidence_output(
                 "sub_id": sub_id,
                 "signals": signal_entries,
             })
+        if len(findings_out) >= STAGE1_MAX_FINDINGS:
+            break
 
     return {
         "section_name": section_name,
@@ -1131,6 +1233,7 @@ def score_application_base(
 ) -> dict[str, Any]:
     rubric_sections = load_rubric(criteria_path)
     stripped_criteria = _strip_rubric_for_prompt(rubric_sections)
+    stage1_criteria = _build_stage1_criteria_view(rubric_sections)
     pool_data = build_chunk_pool(application, max_chars=MAX_CHARS)
     pool_lookup = pool_data["pool_lookup"]
     pool_index_text = pool_data["pool_index_text"]
@@ -1146,9 +1249,19 @@ def score_application_base(
     for application_section in stage1_inputs:
         section_name = application_section["section_name"]
         section_chunk_ids = list(application_section["section_content"])
+        if _is_metadata_like_section(application_section):
+            normalized_update = _empty_section_update(section_name)
+            belief_state = _merge_belief_state(belief_state, normalized_update)
+            stage1_updates.append({
+                **normalized_update,
+                "skipped_reason": "metadata_like_section",
+                "missing_signals_after": list(belief_state["missing_signals"]),
+            })
+            stage1_raw_by_section[section_name] = json.dumps(normalized_update, ensure_ascii=False)
+            continue
         messages = build_section_evidence_messages(
             application_section=application_section,
-            stripped_criteria=stripped_criteria,
+            stage1_criteria=stage1_criteria,
             current_belief_state=belief_state,
         )
         schema = build_section_evidence_schema(rubric_sections, section_chunk_ids)
