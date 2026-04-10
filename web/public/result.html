@@ -1532,8 +1532,8 @@
       strip.innerHTML = pills.join('');
       document.getElementById('pageTitle').textContent = mode === 'compare' ? 'Grant Comparator' : 'Grant Self-Review';
       document.getElementById('pageSubtitle').textContent = mode === 'compare'
-        ? 'Compare two scoring JSON files and inspect movement in section score, model-agreement confidence, low-confidence items, and evidence.'
-        : 'Inspect one scoring JSON file section by section, with sub-criteria, dual-model scores, and chunk-grounded evidence.';
+        ? 'Compare two scoring JSON files and inspect movement in section score, confidence, weak signals, and evidence.'
+        : 'Inspect one scoring JSON file section by section, with sub-criteria, signal scores, belief-grounded evidence, and chunk citations.';
     }
 
     function renderKpis() {
@@ -1656,8 +1656,8 @@
       document.getElementById('heroStatus').className = mode === 'compare' ? pillClassFromDelta(delta) : statusClassFromRisk(risk);
       document.getElementById('heroStatus').textContent = mode === 'compare' ? (delta > 0 ? 'Improved' : delta < 0 ? 'Weakened' : 'Unchanged') : `${risk} risk`;
       document.getElementById('heroSummary').textContent = mode === 'compare'
-        ? `${pair.name} comparison — inspect sub-criteria, model-agreement confidence, and cited chunks.`
-        : `${pair.name} with sub-criterion scores, dual-model agreement, and grounded chunk IDs.`;
+        ? `${pair.name} comparison — inspect sub-criteria, confidence, and cited chunks.`
+        : `${pair.name} with sub-criterion scores, belief-grounded evidence, and chunk IDs.`;
       document.getElementById('beforeScore').textContent = fmtScore(beforeScore);
       document.getElementById('afterScore').textContent = fmtScore(afterScore);
       document.getElementById('heroArrow').style.visibility = mode === 'compare' ? 'visible' : 'hidden';

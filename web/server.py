@@ -6,7 +6,7 @@ End-to-end flow when the user uploads a PDF:
   2. all_type_parser.parse_and_save → data/uploads/json_data/<stem>.json
   3. nlp_feature.extract_nlp_features on the parsed JSON
   4. ORCID enrichment for team members with valid ORCID IDs
-  5. qwen3_ollama.score_application on the parsed JSON (retrieval + dual-model scoring)
+  5. qwen3_ollama.score_application on the parsed JSON (section evidence belief + final signal scoring)
   6. Combine into a single result JSON and expose via /result/<job_id>.
 
 The static HTML in web/public is served as-is and drives the flow via:
@@ -71,7 +71,7 @@ JOBS_LOCK = threading.Lock()
 STEP_TEMPLATE = [
     ("stage0", "Stage 0 · Parse + Base Features"),
     ("stage1", "Stage 1 · ORCID Enrichment"),
-    ("stage2", "Stage 2 · Retrieval + Dual-Model Scoring"),
+    ("stage2", "Stage 2 · Section Belief + Final Scoring"),
 ]
 
 
@@ -231,7 +231,7 @@ def _run_pipeline(job_id: str, upload_path: Path):
                 detail=f"Stage 1 complete · {orcid_features['team_metrics']['resolved_profiles']} ORCID profile(s) resolved")
 
         _update(job_id, step_key="stage2", step_status="running",
-                progress=70, detail="Stage 2: Retrieval + dual-model scoring…")
+                progress=70, detail="Stage 2: Section belief + final signal scoring…")
         from qwen3_ollama import score_application
         scorer = _get_scorer()
         scored = score_application(

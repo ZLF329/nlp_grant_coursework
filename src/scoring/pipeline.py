@@ -24,8 +24,8 @@ SECTION_ID_PREFIX = {
     "application_form": "af",
 }
 SCORER_ALLOWED_SCORES = (0, 1, 2)
-RETRIEVAL_MAX_CHUNKS = 8
 USED_CHUNK_MAX = 5
+SECTION_EVIDENCE_MAX = 3
 
 SECTION_TO_PARSER_SECTIONS: dict[str, list[str] | None] = {
     "general": None,
@@ -224,83 +224,6 @@ def _compat_evidence_score(avg_confidence_0to2: float) -> float:
     return round((avg_confidence_0to2 / 2) * 100, 2)
 
 
-def build_retrieval_messages(
-    *,
-    criteria_payload: dict[str, Any],
-    pool_index_text: str,
-) -> list[dict[str, str]]:
-    system = (
-        "You are selecting relevant evidence chunks for grant scoring.\n\n"
-        "Return JSON only.\n"
-        f"For each output section key, select as many potentially relevant chunk IDs as needed, up to {RETRIEVAL_MAX_CHUNKS}.\n"
-        "Bias toward recall over precision: if a chunk may help score any sub-criterion or signal in that rubric section, include it.\n"
-        "It is better to include borderline relevant chunks than to miss useful evidence.\n"
-        "Use the criteria JSON exactly as provided.\n"
-        "For each rubric section, select only chunk IDs from the provided pool index.\n"
-        "Do not output explanations, prose, or markdown.\n"
-        f"Return at most {RETRIEVAL_MAX_CHUNKS} chunk IDs per rubric section."
-    )
-    user = (
-        "Criteria points JSON:\n"
-        f"{json.dumps(criteria_payload, ensure_ascii=False, indent=2)}\n\n"
-        "Output section key mapping:\n"
-        f"{json.dumps(SECTION_KEY_MAP, ensure_ascii=False, indent=2)}\n\n"
-        "Pool index:\n"
-        f"{pool_index_text}\n\n"
-        "Return format:\n"
-        "{\n"
-        '  "general": ["chunk_id_1", "chunk_id_2"],\n'
-        '  "proposed_research": ["chunk_id_3"]\n'
-        "}\n\n"
-        "Return one top-level property per output section key from the mapping.\n"
-        "Interpret each human-readable criteria section using the output section key mapping.\n"
-        "Choose a high-recall set of chunk IDs for each rubric section.\n"
-        "Include chunks that may support any sub-criterion or signal in that section.\n"
-        "Do not be overly selective."
-    )
-    return [
-        {"role": "system", "content": system},
-        {"role": "user", "content": user},
-    ]
-
-
-def build_retrieval_schema(rubric_sections: list[dict[str, Any]]) -> dict[str, Any]:
-    properties = {
-        section["section_key"]: {
-            "type": "array",
-            "items": {"type": "string"},
-            "maxItems": RETRIEVAL_MAX_CHUNKS,
-        }
-        for section in rubric_sections
-    }
-    return {
-        "type": "object",
-        "properties": properties,
-        "required": list(properties),
-        "additionalProperties": False,
-    }
-
-
-def _normalize_retrieval_output(
-    parsed: dict[str, Any],
-    rubric_sections: list[dict[str, Any]],
-    pool_lookup: dict[str, dict[str, str]],
-) -> dict[str, list[str]]:
-    normalized: dict[str, list[str]] = {}
-    valid_ids = set(pool_lookup)
-    for section in rubric_sections:
-        raw_ids = parsed.get(section["section_key"], []) if isinstance(parsed, dict) else []
-        if not isinstance(raw_ids, list):
-            raw_ids = []
-        cleaned = [
-            chunk_id
-            for chunk_id in raw_ids
-            if isinstance(chunk_id, str) and chunk_id in valid_ids
-        ]
-        normalized[section["section_key"]] = _dedupe_preserve_order(cleaned)[:RETRIEVAL_MAX_CHUNKS]
-    return normalized
-
-
 def rule_based_retrieval(
     rubric_sections: list[dict[str, Any]],
     section_chunk_ids: dict[str, list[str]],
@@ -363,6 +286,314 @@ def build_evidence_text(
     return "\n".join(lines).strip()
 
 
+def _build_full_application_text(
+    pool_lookup: dict[str, dict[str, str]],
+    chunk_order: dict[str, int],
+) -> str:
+    return build_evidence_text(list(pool_lookup), pool_lookup, chunk_order)
+
+
+def _strip_rubric_for_prompt(rubric_sections: list[dict[str, Any]]) -> dict[str, Any]:
+    stripped: dict[str, Any] = {}
+    for section in rubric_sections:
+        stripped[section["human_name"]] = {
+            "sub_criteria": [
+                {
+                    "sub_id": sub["sub_id"],
+                    "name": sub["name"],
+                    "definition": sub["definition"],
+                    "group_name": sub.get("group_name"),
+                    "signals": [
+                        {
+                            "sid": signal["sid"],
+                            "text": signal["text"],
+                        }
+                        for signal in sub["signals"]
+                    ],
+                }
+                for sub in section["sub_criteria"]
+            ]
+        }
+    return stripped
+
+
+def _all_signal_ids(rubric_sections: list[dict[str, Any]]) -> list[str]:
+    signal_ids: list[str] = []
+    for section in rubric_sections:
+        for sub in section["sub_criteria"]:
+            for signal in sub["signals"]:
+                signal_ids.append(signal["sid"])
+    return signal_ids
+
+
+def _initial_belief_state(rubric_sections: list[dict[str, Any]]) -> dict[str, Any]:
+    return {
+        "processed_sections": [],
+        "subcriteria_beliefs": {},
+        "missing_signals": _all_signal_ids(rubric_sections),
+    }
+
+
+def _section_inputs(
+    section_chunk_ids: dict[str, list[str]],
+    pool_lookup: dict[str, dict[str, str]],
+    chunk_order: dict[str, int],
+) -> list[dict[str, Any]]:
+    sections: list[dict[str, Any]] = []
+    for section_name, chunk_ids in section_chunk_ids.items():
+        ordered_ids = _sort_chunk_ids(chunk_ids, chunk_order)
+        sections.append({
+            "section_name": section_name,
+            "section_content": {
+                chunk_id: pool_lookup[chunk_id]["text"]
+                for chunk_id in ordered_ids
+            },
+        })
+    return sections
+
+
+def _signal_sub_map(rubric_sections: list[dict[str, Any]]) -> dict[str, str]:
+    mapping: dict[str, str] = {}
+    for section in rubric_sections:
+        for sub in section["sub_criteria"]:
+            for signal in sub["signals"]:
+                mapping[signal["sid"]] = sub["sub_id"]
+    return mapping
+
+
+def build_section_evidence_messages(
+    *,
+    application_section: dict[str, Any],
+    stripped_criteria: dict[str, Any],
+    current_belief_state: dict[str, Any],
+) -> list[dict[str, str]]:
+    system = (
+        "You review one parsed application section at a time.\n\n"
+        "Return JSON only.\n"
+        "Input is divided into:\n"
+        "1. application_section\n"
+        "2. criteria\n"
+        "3. current_belief_state\n\n"
+        "Check all subcriteria and signals in criteria, but output only those with clearly relevant evidence "
+        "in the current application_section.\n"
+        "For each returned signal, include:\n"
+        f"- good_evidence_ids (max {SECTION_EVIDENCE_MAX})\n"
+        f"- bad_evidence_ids (max {SECTION_EVIDENCE_MAX})\n"
+        "- implication\n"
+        "Use only evidence IDs from application_section.section_content.\n"
+        "Do not invent IDs.\n"
+        "Do not output irrelevant subcriteria or signals."
+    )
+    user_payload = {
+        "application_section": application_section,
+        "criteria": stripped_criteria,
+        "current_belief_state": current_belief_state,
+    }
+    return [
+        {"role": "system", "content": system},
+        {"role": "user", "content": json.dumps(user_payload, ensure_ascii=False, indent=2)},
+    ]
+
+
+def build_section_evidence_schema(
+    rubric_sections: list[dict[str, Any]],
+    section_chunk_ids: list[str],
+) -> dict[str, Any]:
+    all_signal_ids = _all_signal_ids(rubric_sections)
+    sub_ids = [
+        sub["sub_id"]
+        for section in rubric_sections
+        for sub in section["sub_criteria"]
+    ]
+    signal_payload = {
+        "type": "object",
+        "properties": {
+            "evidence": {
+                "type": "object",
+                "properties": {
+                    "good_evidence_ids": {
+                        "type": "array",
+                        "items": {"type": "string", "enum": section_chunk_ids},
+                        "maxItems": SECTION_EVIDENCE_MAX,
+                    },
+                    "bad_evidence_ids": {
+                        "type": "array",
+                        "items": {"type": "string", "enum": section_chunk_ids},
+                        "maxItems": SECTION_EVIDENCE_MAX,
+                    },
+                },
+                "required": ["good_evidence_ids", "bad_evidence_ids"],
+                "additionalProperties": False,
+            },
+            "implication": {"type": "string"},
+        },
+        "required": ["evidence", "implication"],
+        "additionalProperties": False,
+    }
+    return {
+        "type": "object",
+        "properties": {
+            "section_name": {"type": "string"},
+            "findings": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "sub_id": {"type": "string", "enum": sub_ids},
+                        "signals": {
+                            "type": "object",
+                            "properties": {
+                                sid: signal_payload
+                                for sid in all_signal_ids
+                            },
+                            "additionalProperties": False,
+                        },
+                    },
+                    "required": ["sub_id", "signals"],
+                    "additionalProperties": False,
+                },
+            },
+            "resolved_signals": {
+                "type": "array",
+                "items": {"type": "string", "enum": all_signal_ids},
+            },
+        },
+        "required": ["section_name", "findings", "resolved_signals"],
+        "additionalProperties": False,
+    }
+
+
+def _ensure_implication_prefix(section_name: str, implication: str) -> str:
+    clean = (implication or "").strip()
+    prefix = f"{section_name}:"
+    if not clean:
+        return prefix
+    return clean if clean.startswith(prefix) else f"{prefix} {clean}"
+
+
+def _normalize_section_evidence_output(
+    parsed: dict[str, Any],
+    rubric_sections: list[dict[str, Any]],
+    section_chunk_ids: list[str],
+    section_name: str,
+) -> dict[str, Any]:
+    allowed_ids = set(section_chunk_ids)
+    signals_by_sub = {
+        sub["sub_id"]: {signal["sid"] for signal in sub["signals"]}
+        for section in rubric_sections
+        for sub in section["sub_criteria"]
+    }
+    findings_out: list[dict[str, Any]] = []
+    resolved: list[str] = []
+    raw_findings = parsed.get("findings", []) if isinstance(parsed, dict) else []
+    if not isinstance(raw_findings, list):
+        raw_findings = []
+
+    for raw_finding in raw_findings:
+        if not isinstance(raw_finding, dict):
+            continue
+        sub_id = raw_finding.get("sub_id")
+        if not isinstance(sub_id, str) or sub_id not in signals_by_sub:
+            continue
+        raw_signals = raw_finding.get("signals", {})
+        if not isinstance(raw_signals, dict):
+            raw_signals = {}
+        signal_entries: dict[str, Any] = {}
+        for signal_id in sorted(signals_by_sub[sub_id]):
+            raw_signal = raw_signals.get(signal_id)
+            if not isinstance(raw_signal, dict):
+                continue
+            raw_evidence = raw_signal.get("evidence", {})
+            if not isinstance(raw_evidence, dict):
+                raw_evidence = {}
+            good_ids = raw_evidence.get("good_evidence_ids", [])
+            bad_ids = raw_evidence.get("bad_evidence_ids", [])
+            if not isinstance(good_ids, list):
+                good_ids = []
+            if not isinstance(bad_ids, list):
+                bad_ids = []
+            good_ids = _dedupe_preserve_order([
+                chunk_id for chunk_id in good_ids
+                if isinstance(chunk_id, str) and chunk_id in allowed_ids
+            ])[:SECTION_EVIDENCE_MAX]
+            bad_ids = _dedupe_preserve_order([
+                chunk_id for chunk_id in bad_ids
+                if isinstance(chunk_id, str) and chunk_id in allowed_ids
+            ])[:SECTION_EVIDENCE_MAX]
+            if not good_ids and not bad_ids:
+                continue
+            implication = raw_signal.get("implication", "")
+            if not isinstance(implication, str):
+                implication = ""
+            signal_entries[signal_id] = {
+                "evidence": {
+                    "good_evidence_ids": good_ids,
+                    "bad_evidence_ids": bad_ids,
+                },
+                "implication": _ensure_implication_prefix(section_name, implication),
+            }
+            resolved.append(signal_id)
+        if signal_entries:
+            findings_out.append({
+                "sub_id": sub_id,
+                "signals": signal_entries,
+            })
+
+    return {
+        "section_name": section_name,
+        "findings": findings_out,
+        "resolved_signals": _dedupe_preserve_order(resolved),
+    }
+
+
+def _merge_belief_state(
+    current_belief_state: dict[str, Any],
+    section_update: dict[str, Any],
+) -> dict[str, Any]:
+    next_state = json.loads(json.dumps(current_belief_state))
+    processed_sections = list(next_state.get("processed_sections", []))
+    section_name = section_update["section_name"]
+    if section_name not in processed_sections:
+        processed_sections.append(section_name)
+    next_state["processed_sections"] = processed_sections
+
+    subcriteria_beliefs = next_state.get("subcriteria_beliefs", {})
+    if not isinstance(subcriteria_beliefs, dict):
+        subcriteria_beliefs = {}
+
+    for finding in section_update.get("findings", []):
+        sub_id = finding["sub_id"]
+        sub_entry = subcriteria_beliefs.setdefault(sub_id, {"signals": {}})
+        signal_beliefs = sub_entry.setdefault("signals", {})
+        for signal_id, signal_payload in finding.get("signals", {}).items():
+            signal_entry = signal_beliefs.setdefault(signal_id, {
+                "good_evidence_ids": [],
+                "bad_evidence_ids": [],
+                "implications": [],
+            })
+            evidence = signal_payload.get("evidence", {})
+            signal_entry["good_evidence_ids"] = _dedupe_preserve_order([
+                *signal_entry.get("good_evidence_ids", []),
+                *evidence.get("good_evidence_ids", []),
+            ])
+            signal_entry["bad_evidence_ids"] = _dedupe_preserve_order([
+                *signal_entry.get("bad_evidence_ids", []),
+                *evidence.get("bad_evidence_ids", []),
+            ])
+            implication = signal_payload.get("implication", "")
+            if isinstance(implication, str) and implication.strip():
+                signal_entry["implications"] = _dedupe_preserve_order([
+                    *signal_entry.get("implications", []),
+                    implication.strip(),
+                ])
+
+    next_state["subcriteria_beliefs"] = subcriteria_beliefs
+    missing_signals = list(next_state.get("missing_signals", []))
+    resolved_signals = set(section_update.get("resolved_signals", []))
+    next_state["missing_signals"] = [sid for sid in missing_signals if sid not in resolved_signals]
+    return next_state
+
+
 def _single_section_payload(section: dict[str, Any]) -> dict[str, Any]:
     return {
         "section_key": section["section_key"],
@@ -383,57 +614,36 @@ def _single_section_payload(section: dict[str, Any]) -> dict[str, Any]:
     }
 
 
-def build_scoring_messages(
+def build_final_scoring_messages(
     *,
     rubric_section: dict[str, Any],
-    retrieved_chunk_ids: list[str],
-    evidence_text: str,
+    stripped_criteria: dict[str, Any],
+    final_belief_state: dict[str, Any],
+    full_application_text: str,
 ) -> list[dict[str, str]]:
     system = (
         "You are scoring one rubric section of a grant application.\n\n"
         "Return JSON only.\n"
+        "Score only the rubric section with section_key "
+        f"`{rubric_section['section_key']}` and section_name `{rubric_section['human_name']}`.\n"
+        "Use both the full application text and the final belief state.\n"
+        "The belief state is a structured evidence index; use the original text to verify or refine judgment.\n"
         "Each signal score must be exactly one of: 0, 1, 2.\n"
-        "Each `used_chunk_ids` entry must be chosen only from the provided retrieved chunk IDs.\n"
         f"Each `used_chunk_ids` array must contain between 0 and {USED_CHUNK_MAX} IDs only.\n"
-        "For each sub-criterion, include a `rationale` string (1-3 sentences) explaining how you arrived at the scores.\n"
-        "Do not output extra keys beyond those specified."
+        "If evidence is insufficient, do not assign a positive signal score."
     )
+    user_payload = {
+        "full_application_text": full_application_text,
+        "criteria": stripped_criteria,
+        "final_belief_state": final_belief_state,
+    }
     user = (
-        "rubric_section:\n"
-        f"{json.dumps(_single_section_payload(rubric_section), ensure_ascii=False, indent=2)}\n\n"
-        "retrieved_chunk_ids:\n"
-        f"{json.dumps(retrieved_chunk_ids, ensure_ascii=False, indent=2)}\n\n"
-        "evidence_text:\n"
-        f"{evidence_text}\n\n"
-        "return_format_rules:\n"
-        "- Top-level keys must be the sub_id values for this rubric section.\n"
+        f"{json.dumps(user_payload, ensure_ascii=False, indent=2)}\n\n"
+        "Return format rules:\n"
+        f"- Output only subcriteria for rubric section `{rubric_section['section_key']}`.\n"
         "- Each sub_id object must contain `signals`, `used_chunk_ids`, and `rationale`.\n"
-        "- Each signal score must be 0, 1, or 2.\n"
-        "- `used_chunk_ids` must contain only IDs from `retrieved_chunk_ids`.\n"
-        f"- `used_chunk_ids` must contain at most {USED_CHUNK_MAX} chunk IDs.\n"
-        "- Cite only the smallest set of chunks needed; do not dump long ID lists.\n"
-        "- If no supporting evidence is shown, score 0 and use an empty `used_chunk_ids` array.\n"
-        "- You may only rely on chunk text shown in `evidence_text`; do not infer omitted content from `...`.\n"
-        "- Return JSON only.\n\n"
-        "example_output:\n"
-        "{\n"
-        '  "pr.1": {\n'
-        '    "signals": {\n'
-        '      "pr.1.a": 2,\n'
-        '      "pr.1.b": 1\n'
-        "    },\n"
-        '    "used_chunk_ids": ["secadr__001", "secadr__004"],\n'
-        '    "rationale": "Strong evidence of clear objectives and methodology."\n'
-        "  },\n"
-        '  "pr.2": {\n'
-        '    "signals": {\n'
-        '      "pr.2.a": 0,\n'
-        '      "pr.2.b": 1\n'
-        "    },\n"
-        '    "used_chunk_ids": ["secadr__004"],\n'
-        '    "rationale": "Limited evidence found for this criterion."\n'
-        "  }\n"
-        "}"
+        "- `used_chunk_ids` must refer to chunk ids grounded in the application text / belief state.\n"
+        "- Return JSON only."
     )
     return [
         {"role": "system", "content": system},
@@ -441,7 +651,7 @@ def build_scoring_messages(
     ]
 
 
-def build_scoring_schema(rubric_section: dict[str, Any], retrieved_chunk_ids: list[str]) -> dict[str, Any]:
+def build_scoring_schema(rubric_section: dict[str, Any], all_chunk_ids: list[str]) -> dict[str, Any]:
     properties: dict[str, Any] = {}
     for sub in rubric_section["sub_criteria"]:
         signal_properties = {
@@ -463,7 +673,7 @@ def build_scoring_schema(rubric_section: dict[str, Any], retrieved_chunk_ids: li
                     "type": "array",
                     "items": {
                         "type": "string",
-                        "enum": retrieved_chunk_ids,
+                        "enum": all_chunk_ids,
                     },
                     "maxItems": USED_CHUNK_MAX,
                 },
@@ -492,9 +702,9 @@ def _normalize_score(value: Any) -> int:
 def _normalize_model_section_output(
     parsed: dict[str, Any],
     rubric_section: dict[str, Any],
-    retrieved_chunk_ids: list[str],
+    all_chunk_ids: list[str],
 ) -> dict[str, dict[str, Any]]:
-    allowed_ids = set(retrieved_chunk_ids)
+    allowed_ids = set(all_chunk_ids)
     normalized: dict[str, dict[str, Any]] = {}
 
     for sub in rubric_section["sub_criteria"]:
@@ -533,13 +743,12 @@ def _normalize_model_section_output(
         if not isinstance(rationale, str):
             rationale = ""
 
-        missing_evidence = has_positive and not used_chunk_ids
         normalized[sub["sub_id"]] = {
             "signals": signals,
             "used_chunk_ids": used_chunk_ids,
             "evidence_status": evidence_status,
             "rationale": rationale,
-            "missing_evidence": missing_evidence,
+            "missing_evidence": has_positive and not used_chunk_ids,
         }
     return normalized
 
@@ -703,70 +912,47 @@ def _aggregate_overall(features: dict[str, dict[str, Any]], section_weights: dic
     }
 
 
-def _ensemble_section(
+def _build_scored_section(
     rubric_section: dict[str, Any],
-    model_a_section: dict[str, dict[str, Any]],
-    model_b_section: dict[str, dict[str, Any]],
-    pool_lookup: dict[str, dict[str, str]],
+    normalized_section: dict[str, dict[str, Any]],
     chunk_order: dict[str, int],
 ) -> dict[str, Any]:
     section_subs: list[dict[str, Any]] = []
     for sub in rubric_section["sub_criteria"]:
-        model_a_sub = model_a_section.get(sub["sub_id"], {})
-        model_b_sub = model_b_section.get(sub["sub_id"], {})
-        union_ids = _dedupe_preserve_order([
-            *model_a_sub.get("used_chunk_ids", []),
-            *model_b_sub.get("used_chunk_ids", []),
-        ])
-        union_ids = _sort_chunk_ids(union_ids, chunk_order)[:USED_CHUNK_MAX]
-        evidence_status = "ok"
-        if len(union_ids) == 1:
-            evidence_status = "sparse_evidence"
-
+        normalized_sub = normalized_section.get(sub["sub_id"], {})
+        used_chunk_ids = _sort_chunk_ids(normalized_sub.get("used_chunk_ids", []), chunk_order)[:USED_CHUNK_MAX]
+        evidence_status = normalized_sub.get("evidence_status", "ok")
         signals: list[dict[str, Any]] = []
-        gaps: list[int] = []
         for signal in sub["signals"]:
-            score_a = int(model_a_sub.get("signals", {}).get(signal["sid"], 0))
-            score_b = int(model_b_sub.get("signals", {}).get(signal["sid"], 0))
-            gap = abs(score_a - score_b)
-            avg_score = round((score_a + score_b) / 2, 4)
+            score = int(normalized_sub.get("signals", {}).get(signal["sid"], 0))
             signals.append({
                 "sid": signal["sid"],
                 "signal_text": signal["text"],
                 "weight": signal["weight"],
-                "model_a_score": score_a,
-                "model_b_score": score_b,
-                "score_0to2_raw": avg_score,
-                "score_0to2_weighted": avg_score,
+                "model_a_score": score,
+                "model_b_score": score,
+                "score_0to2_raw": float(score),
+                "score_0to2_weighted": float(score),
             })
-            gaps.append(gap)
-
-        confidence_gap = round(sum(gaps) / max(1, len(gaps)), 2)
-        confidence_label = _confidence_label(confidence_gap)
-        rationale_model_a = model_a_sub.get("rationale", "")
-        rationale_model_b = model_b_sub.get("rationale", "")
-        missing_evidence_models: list[str] = []
-        if model_a_sub.get("missing_evidence"):
-            missing_evidence_models.append("a")
-        if model_b_sub.get("missing_evidence"):
-            missing_evidence_models.append("b")
+        rationale = normalized_sub.get("rationale", "")
+        missing_evidence = bool(normalized_sub.get("missing_evidence"))
         section_subs.append({
             "sub_id": sub["sub_id"],
             "name": sub["name"],
             "definition": sub["definition"],
             "group_name": sub.get("group_name"),
             "weight": sub["weight"],
-            "used_chunk_ids": union_ids,
-            "evidence_count": len(union_ids),
+            "used_chunk_ids": used_chunk_ids,
+            "evidence_count": len(used_chunk_ids),
             "evidence_status": evidence_status,
-            "confidence_gap": confidence_gap,
-            "confidence_label": confidence_label,
+            "confidence_gap": 0.0,
+            "confidence_label": _confidence_label(0.0),
             "signals": signals,
-            "rationale": rationale_model_a,
-            "rationale_model_a": rationale_model_a,
-            "rationale_model_b": rationale_model_b,
-            "missing_evidence": bool(missing_evidence_models),
-            "missing_evidence_models": missing_evidence_models,
+            "rationale": rationale,
+            "rationale_model_a": rationale,
+            "rationale_model_b": rationale,
+            "missing_evidence": missing_evidence,
+            "missing_evidence_models": ["single"] if missing_evidence else [],
         })
 
     return {
@@ -783,10 +969,10 @@ def _write_artifacts(
     doc_id: str,
     pool_lookup: dict[str, dict[str, str]],
     pool_index_text: str,
-    retrieval_raw: str,
-    retrieval_parsed: dict[str, Any],
-    model_a_raw_by_section: dict[str, str],
-    model_b_raw_by_section: dict[str, str],
+    stage1_raw_by_section: dict[str, str],
+    stage1_updates: list[dict[str, Any]],
+    final_belief_state: dict[str, Any],
+    stage2_raw_by_section: dict[str, str],
     normalized_sections: list[dict[str, Any]],
 ) -> dict[str, str]:
     if artifacts_dir is None:
@@ -799,25 +985,25 @@ def _write_artifacts(
         doc_id=doc_id,
     )
     artifacts_path = Path(artifacts_dir)
-    retrieval_raw_path = artifacts_path / f"{doc_id}_retrieval_raw.txt"
-    retrieval_parsed_path = artifacts_path / f"{doc_id}_retrieval_parsed.json"
-    model_a_path = artifacts_path / f"{doc_id}_model_a_raw.json"
-    model_b_path = artifacts_path / f"{doc_id}_model_b_raw.json"
-    ensemble_path = artifacts_path / f"{doc_id}_ensemble_normalized.json"
+    stage1_raw_path = artifacts_path / f"{doc_id}_stage1_raw.json"
+    stage1_updates_path = artifacts_path / f"{doc_id}_stage1_updates.json"
+    belief_state_path = artifacts_path / f"{doc_id}_belief_state.json"
+    stage2_raw_path = artifacts_path / f"{doc_id}_stage2_raw.json"
+    scored_sections_path = artifacts_path / f"{doc_id}_scored_sections.json"
 
-    retrieval_raw_path.write_text(retrieval_raw, encoding="utf-8")
-    retrieval_parsed_path.write_text(json.dumps(retrieval_parsed, ensure_ascii=False, indent=2), encoding="utf-8")
-    model_a_path.write_text(json.dumps(model_a_raw_by_section, ensure_ascii=False, indent=2), encoding="utf-8")
-    model_b_path.write_text(json.dumps(model_b_raw_by_section, ensure_ascii=False, indent=2), encoding="utf-8")
-    ensemble_path.write_text(json.dumps(normalized_sections, ensure_ascii=False, indent=2), encoding="utf-8")
+    stage1_raw_path.write_text(json.dumps(stage1_raw_by_section, ensure_ascii=False, indent=2), encoding="utf-8")
+    stage1_updates_path.write_text(json.dumps(stage1_updates, ensure_ascii=False, indent=2), encoding="utf-8")
+    belief_state_path.write_text(json.dumps(final_belief_state, ensure_ascii=False, indent=2), encoding="utf-8")
+    stage2_raw_path.write_text(json.dumps(stage2_raw_by_section, ensure_ascii=False, indent=2), encoding="utf-8")
+    scored_sections_path.write_text(json.dumps(normalized_sections, ensure_ascii=False, indent=2), encoding="utf-8")
 
     return {
         **artifacts,
-        "retrieval_raw_response": str(retrieval_raw_path),
-        "retrieval_parsed_response": str(retrieval_parsed_path),
-        "model_a_raw_response": str(model_a_path),
-        "model_b_raw_response": str(model_b_path),
-        "ensemble_normalized_response": str(ensemble_path),
+        "stage1_raw_response": str(stage1_raw_path),
+        "stage1_updates": str(stage1_updates_path),
+        "belief_state": str(belief_state_path),
+        "stage2_raw_response": str(stage2_raw_path),
+        "scored_sections": str(scored_sections_path),
     }
 
 
@@ -827,56 +1013,41 @@ def _write_failure_artifacts(
     doc_id: str,
     pool_lookup: dict[str, dict[str, str]],
     pool_index_text: str,
-    retrieval_raw: str,
-    retrieval_parsed: dict[str, Any],
-    model_a_raw_by_section: dict[str, str],
-    model_b_raw_by_section: dict[str, str],
+    stage1_raw_by_section: dict[str, str],
+    stage1_updates: list[dict[str, Any]],
+    final_belief_state: dict[str, Any],
+    stage2_raw_by_section: dict[str, str],
     normalized_sections: list[dict[str, Any]],
-    section_key: str,
-    raw_a: str,
-    raw_b: str,
-    scorer_client_a: Any | None = None,
-    scorer_client_b: Any | None = None,
+    failure_label: str,
+    raw_response: str,
+    scorer_client: Any | None = None,
 ) -> dict[str, str]:
     artifact_paths = _write_artifacts(
         artifacts_dir=artifacts_dir,
         doc_id=doc_id,
         pool_lookup=pool_lookup,
         pool_index_text=pool_index_text,
-        retrieval_raw=retrieval_raw,
-        retrieval_parsed=retrieval_parsed,
-        model_a_raw_by_section=model_a_raw_by_section,
-        model_b_raw_by_section=model_b_raw_by_section,
+        stage1_raw_by_section=stage1_raw_by_section,
+        stage1_updates=stage1_updates,
+        final_belief_state=final_belief_state,
+        stage2_raw_by_section=stage2_raw_by_section,
         normalized_sections=normalized_sections,
     )
     if artifacts_dir is None:
         return artifact_paths
 
     artifacts_path = Path(artifacts_dir)
-    section_model_a_path = artifacts_path / f"{doc_id}_{section_key}_model_a_raw.txt"
-    section_model_b_path = artifacts_path / f"{doc_id}_{section_key}_model_b_raw.txt"
-    section_model_a_path.write_text(raw_a, encoding="utf-8")
-    section_model_b_path.write_text(raw_b, encoding="utf-8")
-    failure_paths = {
-        **artifact_paths,
-        "failed_section_model_a_raw": str(section_model_a_path),
-        "failed_section_model_b_raw": str(section_model_b_path),
-    }
-    if getattr(scorer_client_a, "last_response_body", None) is not None:
-        section_model_a_body_path = artifacts_path / f"{doc_id}_{section_key}_model_a_response_body.json"
-        section_model_a_body_path.write_text(
-            json.dumps(scorer_client_a.last_response_body, ensure_ascii=False, indent=2),
+    failure_raw_path = artifacts_path / f"{doc_id}_{failure_label}_raw.txt"
+    failure_raw_path.write_text(raw_response, encoding="utf-8")
+    artifact_paths["failed_raw_response"] = str(failure_raw_path)
+    if getattr(scorer_client, "last_response_body", None) is not None:
+        failure_body_path = artifacts_path / f"{doc_id}_{failure_label}_response_body.json"
+        failure_body_path.write_text(
+            json.dumps(scorer_client.last_response_body, ensure_ascii=False, indent=2),
             encoding="utf-8",
         )
-        failure_paths["failed_section_model_a_response_body"] = str(section_model_a_body_path)
-    if getattr(scorer_client_b, "last_response_body", None) is not None:
-        section_model_b_body_path = artifacts_path / f"{doc_id}_{section_key}_model_b_response_body.json"
-        section_model_b_body_path.write_text(
-            json.dumps(scorer_client_b.last_response_body, ensure_ascii=False, indent=2),
-            encoding="utf-8",
-        )
-        failure_paths["failed_section_model_b_response_body"] = str(section_model_b_body_path)
-    return failure_paths
+        artifact_paths["failed_response_body"] = str(failure_body_path)
+    return artifact_paths
 
 
 def score_application_base(
@@ -884,100 +1055,108 @@ def score_application_base(
     application: dict[str, Any],
     criteria_path: str | Path,
     doc_id: str | None,
-    scorer_client_a: Any,
-    scorer_client_b: Any,
+    scorer_client: Any,
     artifacts_dir: str | Path | None = None,
 ) -> dict[str, Any]:
     rubric_sections = load_rubric(criteria_path)
+    stripped_criteria = _strip_rubric_for_prompt(rubric_sections)
     pool_data = build_chunk_pool(application, max_chars=MAX_CHARS)
     pool_lookup = pool_data["pool_lookup"]
     pool_index_text = pool_data["pool_index_text"]
     chunk_order = _chunk_order_map(pool_lookup)
+    all_chunk_ids = list(pool_lookup)
+    full_application_text = _build_full_application_text(pool_lookup, chunk_order)
 
-    retrieval_raw = "rule_based"
-    retrieved_chunks = rule_based_retrieval(
-        rubric_sections, pool_data["section_chunk_ids"], pool_lookup,
-    )
-    retrieval_parsed = retrieved_chunks
+    belief_state = _initial_belief_state(rubric_sections)
+    stage1_inputs = _section_inputs(pool_data["section_chunk_ids"], pool_lookup, chunk_order)
+    stage1_raw_by_section: dict[str, str] = {}
+    stage1_updates: list[dict[str, Any]] = []
 
-    model_a_raw_by_section: dict[str, str] = {}
-    model_b_raw_by_section: dict[str, str] = {}
+    for application_section in stage1_inputs:
+        section_name = application_section["section_name"]
+        section_chunk_ids = list(application_section["section_content"])
+        messages = build_section_evidence_messages(
+            application_section=application_section,
+            stripped_criteria=stripped_criteria,
+            current_belief_state=belief_state,
+        )
+        schema = build_section_evidence_schema(rubric_sections, section_chunk_ids)
+        raw_stage1 = scorer_client.generate_json(messages, schema=schema, max_tokens=12288)
+        stage1_raw_by_section[section_name] = raw_stage1
+        try:
+            parsed_stage1 = _safe_json_loads(raw_stage1)
+        except Exception as exc:
+            failure_artifacts = _write_failure_artifacts(
+                artifacts_dir=artifacts_dir,
+                doc_id=doc_id or "unknown",
+                pool_lookup=pool_lookup,
+                pool_index_text=pool_index_text,
+                stage1_raw_by_section=stage1_raw_by_section,
+                stage1_updates=stage1_updates,
+                final_belief_state=belief_state,
+                stage2_raw_by_section={},
+                normalized_sections=[],
+                failure_label=f"stage1_{section_name.lower().replace(' ', '_')}",
+                raw_response=raw_stage1,
+                scorer_client=scorer_client,
+            )
+            raise ValueError(
+                f"Stage 1 returned invalid JSON for section {section_name}. "
+                f"Response preview: {_response_preview(raw_stage1)!r}. "
+                f"Raw outputs written to: {failure_artifacts.get('failed_raw_response')}"
+            ) from exc
+        normalized_update = _normalize_section_evidence_output(
+            parsed_stage1,
+            rubric_sections,
+            section_chunk_ids,
+            section_name,
+        )
+        belief_state = _merge_belief_state(belief_state, normalized_update)
+        stage1_updates.append({
+            **normalized_update,
+            "missing_signals_after": list(belief_state["missing_signals"]),
+        })
+
+    stage2_raw_by_section: dict[str, str] = {}
     sections: list[dict[str, Any]] = []
-
     for rubric_section in rubric_sections:
         section_key = rubric_section["section_key"]
-        section_chunk_ids = retrieved_chunks.get(section_key, [])
-        evidence_text = build_evidence_text(section_chunk_ids, pool_lookup, chunk_order)
-        messages = build_scoring_messages(
+        messages = build_final_scoring_messages(
             rubric_section=rubric_section,
-            retrieved_chunk_ids=section_chunk_ids,
-            evidence_text=evidence_text,
+            stripped_criteria=stripped_criteria,
+            final_belief_state=belief_state,
+            full_application_text=full_application_text,
         )
-        schema = build_scoring_schema(rubric_section, section_chunk_ids)
-
-        raw_a = scorer_client_a.generate_json(messages, schema=schema, max_tokens=12288)
-        model_a_raw_by_section[section_key] = raw_a
-        raw_b = scorer_client_b.generate_json(messages, schema=schema, max_tokens=12288)
-        model_b_raw_by_section[section_key] = raw_b
-
+        schema = build_scoring_schema(rubric_section, all_chunk_ids)
+        raw_stage2 = scorer_client.generate_json(messages, schema=schema, max_tokens=12288)
+        stage2_raw_by_section[section_key] = raw_stage2
         try:
-            parsed_a = _safe_json_loads(raw_a)
+            parsed_stage2 = _safe_json_loads(raw_stage2)
         except Exception as exc:
             failure_artifacts = _write_failure_artifacts(
                 artifacts_dir=artifacts_dir,
                 doc_id=doc_id or "unknown",
                 pool_lookup=pool_lookup,
                 pool_index_text=pool_index_text,
-                retrieval_raw=retrieval_raw,
-                retrieval_parsed=retrieval_parsed,
-                model_a_raw_by_section=model_a_raw_by_section,
-                model_b_raw_by_section=model_b_raw_by_section,
+                stage1_raw_by_section=stage1_raw_by_section,
+                stage1_updates=stage1_updates,
+                final_belief_state=belief_state,
+                stage2_raw_by_section=stage2_raw_by_section,
                 normalized_sections=sections,
-                section_key=section_key,
-                raw_a=raw_a,
-                raw_b=raw_b,
+                failure_label=f"stage2_{section_key}",
+                raw_response=raw_stage2,
+                scorer_client=scorer_client,
             )
             raise ValueError(
-                f"Scorer A returned invalid JSON for section {section_key}. "
-                f"Response preview: {_response_preview(raw_a)!r}. "
-                f"Raw outputs written to: model_a={failure_artifacts.get('failed_section_model_a_raw')}, "
-                f"model_b={failure_artifacts.get('failed_section_model_b_raw')}, "
-                f"all_a={failure_artifacts.get('model_a_raw_response')}, "
-                f"all_b={failure_artifacts.get('model_b_raw_response')}"
-            ) from exc
-        try:
-            parsed_b = _safe_json_loads(raw_b)
-        except Exception as exc:
-            failure_artifacts = _write_failure_artifacts(
-                artifacts_dir=artifacts_dir,
-                doc_id=doc_id or "unknown",
-                pool_lookup=pool_lookup,
-                pool_index_text=pool_index_text,
-                retrieval_raw=retrieval_raw,
-                retrieval_parsed=retrieval_parsed,
-                model_a_raw_by_section=model_a_raw_by_section,
-                model_b_raw_by_section=model_b_raw_by_section,
-                normalized_sections=sections,
-                section_key=section_key,
-                raw_a=raw_a,
-                raw_b=raw_b,
-            )
-            raise ValueError(
-                f"Scorer B returned invalid JSON for section {section_key}. "
-                f"Response preview: {_response_preview(raw_b)!r}. "
-                f"Raw outputs written to: model_a={failure_artifacts.get('failed_section_model_a_raw')}, "
-                f"model_b={failure_artifacts.get('failed_section_model_b_raw')}, "
-                f"all_a={failure_artifacts.get('model_a_raw_response')}, "
-                f"all_b={failure_artifacts.get('model_b_raw_response')}"
+                f"Stage 2 returned invalid JSON for section {section_key}. "
+                f"Response preview: {_response_preview(raw_stage2)!r}. "
+                f"Raw outputs written to: {failure_artifacts.get('failed_raw_response')}"
             ) from exc
 
-        normalized_a = _normalize_model_section_output(parsed_a, rubric_section, section_chunk_ids)
-        normalized_b = _normalize_model_section_output(parsed_b, rubric_section, section_chunk_ids)
-        sections.append(_ensemble_section(
+        normalized_stage2 = _normalize_model_section_output(parsed_stage2, rubric_section, all_chunk_ids)
+        sections.append(_build_scored_section(
             rubric_section,
-            normalized_a,
-            normalized_b,
-            pool_lookup,
+            normalized_stage2,
             chunk_order,
         ))
 
@@ -986,10 +1165,10 @@ def score_application_base(
         doc_id=doc_id or "unknown",
         pool_lookup=pool_lookup,
         pool_index_text=pool_index_text,
-        retrieval_raw=retrieval_raw,
-        retrieval_parsed=retrieval_parsed,
-        model_a_raw_by_section=model_a_raw_by_section,
-        model_b_raw_by_section=model_b_raw_by_section,
+        stage1_raw_by_section=stage1_raw_by_section,
+        stage1_updates=stage1_updates,
+        final_belief_state=belief_state,
+        stage2_raw_by_section=stage2_raw_by_section,
         normalized_sections=sections,
     )
 
@@ -1003,18 +1182,18 @@ def score_application_base(
         "doc_id": doc_id or "unknown",
         "run_info": {
             "ran_at_utc": dt.datetime.now(dt.UTC).isoformat().replace("+00:00", "Z"),
-            "retrieval_method": "rule_based",
-            "scorer_model_a": getattr(scorer_client_a, "model_name", "unknown"),
-            "scorer_model_b": getattr(scorer_client_b, "model_name", "unknown"),
+            "retrieval_method": "all_sections_belief_then_fulltext_scoring",
+            "scorer_model": getattr(scorer_client, "model_name", "unknown"),
         },
         "pool_size": len(pool_lookup),
         "pool_lookup": pool_lookup,
         "section_chunk_ids": pool_data["section_chunk_ids"],
+        "belief_state": belief_state,
         "features": features,
         "overall": _aggregate_overall(features, section_weights),
         "debug": {
-            "scoring_contract_version": "chunk_retrieval_dual_model_v1",
-            "retrieved_chunks": retrieved_chunks,
+            "scoring_contract_version": "section_evidence_belief_single_model_v1",
+            "stage1_section_updates": stage1_updates,
             "artifacts": artifact_paths,
         },
     }
