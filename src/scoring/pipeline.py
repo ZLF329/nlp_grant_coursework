@@ -970,7 +970,7 @@ def build_final_scoring_messages(
         "Input JSON:\n"
         f"{json.dumps(user_payload, ensure_ascii=False, indent=2)}\n\n"
         "Scoring rules:\n"
-        f"1. Output only subcriteria under rubric section `{rubric_section['section_key']}`. "
+        f"1. Output for all subcriteria under rubric section `{rubric_section['section_key']}`. "
         f"Top-level keys MUST come from: {target_sub_ids}.\n"
         "2. Prefer chunk IDs that already appear in the belief state when they support the score.\n"
         "3. Use only grounded chunk IDs from the application text / belief state.\n"
