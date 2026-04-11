@@ -27,6 +27,8 @@ KEY_ABSTRACT = "Scientific Abstract"
 KEY_PES      = "Plain English Summary"
 KEY_CHANGES  = "Changes from Previous Stage"
 KEY_WPCC     = "Working with People and Communities Summary"
+KEY_APPLICANT_CV = "Applicant CV"
+KEY_APPLICANT_RESEARCH_BACKGROUND = "Applicant Research Background"
 
 # ──────────────────────────── Keyword tables ──────────────────────────────────
 _CHANGES_KW = [
@@ -49,6 +51,8 @@ _ABSTRACT_KW = [
     "research question", "aims", "objectives", "background",
     "overview", "introduction", "project description",
 ]
+_APPLICANT_CV_KW = ["applicant cv"]
+_APPLICANT_RESEARCH_BACKGROUND_KW = ["applicant research background"]
 
 _BUDGET_KW = [
     "budget", "cost", "financial", "finance",
@@ -136,6 +140,10 @@ def _app_details_subkey(heading: str) -> Optional[str]:
         return KEY_CHANGES
     if _matches(heading, _WPCC_KW):
         return KEY_WPCC
+    if _matches(heading, _APPLICANT_CV_KW):
+        return KEY_APPLICANT_CV
+    if _matches(heading, _APPLICANT_RESEARCH_BACKGROUND_KW):
+        return KEY_APPLICANT_RESEARCH_BACKGROUND
     if _matches(heading, _PES_KW):
         return KEY_PES
     if _matches(heading, _ABSTRACT_KW):

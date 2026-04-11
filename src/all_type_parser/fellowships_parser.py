@@ -10,6 +10,8 @@ Section mapping
 "1. Application Summary Information"    -> SUMMARY INFORMATION
 "4. Plain English Summary of Research"  -> APPLICATION DETAILS["Plain English Summary"]
 "5. Scientific Abstract"                -> APPLICATION DETAILS["Scientific Abstract"]
+"2. Applicant CV"                       -> APPLICATION DETAILS["Applicant CV"]
+"3. Applicant Research Background"      -> APPLICATION DETAILS["Applicant Research Background"]
 "7. Patient & Public Involvement"       -> APPLICATION DETAILS["Working with People and Communities Summary"]
 "9. Detailed Budget"                    -> SUMMARY BUDGET
 "11. Participants and Signatories"      -> LEAD APPLICANT & RESEARCH TEAM (supervisors as Co-Applicants)
@@ -46,6 +48,7 @@ SECTION_PPI:          str = "Patient & Public Involvement"
 SECTION_BUDGET:       str = "Detailed Budget"
 SECTION_PARTICIPANTS: str = "Participants and Signatories"
 SECTION_APPLICANT_CV: str = "Applicant CV"
+SECTION_APPLICANT_RESEARCH_BACKGROUND: str = "Applicant Research Background"
 SECTION_TRAINING:     str = "Training & Development and Research Support"
 
 _STRIP_NUMBER_RE = re.compile(r'^\d+\.\s+')
@@ -444,6 +447,14 @@ def parse_application_details(lines: List[Line]) -> dict:
     the pre-filtered lines.
     """
     out: dict = {}
+
+    cv_lines = slice_section(lines, SECTION_APPLICANT_CV)
+    if cv_lines:
+        out["Applicant CV"] = parse_text_section(cv_lines)
+
+    research_background_lines = slice_section(lines, SECTION_APPLICANT_RESEARCH_BACKGROUND)
+    if research_background_lines:
+        out["Applicant Research Background"] = parse_text_section(research_background_lines)
 
     pes_lines = slice_section(lines, SECTION_PES)
     if pes_lines:
