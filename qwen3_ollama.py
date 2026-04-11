@@ -18,7 +18,7 @@ import requests
 from src.scoring.pipeline import score_application_base
 
 OLLAMA_HOST = os.environ.get("OLLAMA_HOST", "http://127.0.0.1:11434").rstrip("/")
-OLLAMA_MODEL = os.environ.get("OLLAMA_MODEL", "qwen3.5:35b")
+OLLAMA_MODEL = os.environ.get("OLLAMA_MODEL", "qwen3.5:27b")
 OLLAMA_TIMEOUT = float(os.environ.get("OLLAMA_TIMEOUT", "1200"))
 
 
