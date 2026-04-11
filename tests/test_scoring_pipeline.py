@@ -8,9 +8,11 @@ from pathlib import Path
 from src.pool.build_pool import (
     APPLICATION_CONTEXT_SECTION,
     APPLICATION_FORM_ANALYSIS_SECTION,
+    PLAIN_ENGLISH_ANALYSIS_SECTION,
     build_chunk_pool,
 )
 from src.scoring.pipeline import (
+    _aggregate_section,
     _cap_perfect_scores_for_caveats,
     _normalize_model_section_output,
     build_evidence_text,
@@ -280,6 +282,50 @@ class PipelineTests(unittest.TestCase):
 
         self.assertEqual(capped, signals)
 
+    def test_if_applicable_subcriteria_do_not_affect_section_average(self):
+        section = {
+            "sub_criteria": [
+                {
+                    "sub_id": "x.1",
+                    "name": "Required criterion",
+                    "definition": "",
+                    "group_name": None,
+                    "weight": 1.0,
+                    "used_chunk_ids": [],
+                    "evidence_count": 0,
+                    "evidence_status": "ok",
+                    "confidence_label": "high_confidence",
+                    "signals": [
+                        {"weight": 1.0, "score_0to5_weighted": 0.0},
+                    ],
+                    "counts_toward_section_average": True,
+                },
+                {
+                    "sub_id": "x.2",
+                    "name": "Optional criterion (if applicable)",
+                    "definition": "",
+                    "group_name": None,
+                    "weight": 1.0,
+                    "used_chunk_ids": [],
+                    "evidence_count": 0,
+                    "evidence_status": "ok",
+                    "confidence_label": "high_confidence",
+                    "signals": [
+                        {"weight": 1.0, "score_0to5_weighted": 5.0},
+                    ],
+                    "counts_toward_section_average": False,
+                },
+            ]
+        }
+
+        aggregated = _aggregate_section(section, {})
+
+        self.assertEqual(aggregated["score_10"], 0)
+        self.assertEqual(aggregated["overall"]["total_items"], 2)
+        self.assertEqual(aggregated["overall"]["scored_items"], 1)
+        self.assertEqual(aggregated["overall"]["expected_items"], 1)
+        self.assertEqual(aggregated["overall"]["coverage_score_0to100"], 0)
+
     def test_stage2_normalizer_requires_missing_signals_and_caps_caveated_fives(self):
         rubric_section = {
             "sub_criteria": [
@@ -325,6 +371,19 @@ class PipelineTests(unittest.TestCase):
 
         sites_sections = {pool_lookup[chunk_id]["parser_section"] for chunk_id in retrieved["sites_support"]}
         self.assertIn("Training & Development and Research Support", sites_sections)
+
+        proposed_sections = {pool_lookup[chunk_id]["parser_section"] for chunk_id in retrieved["proposed_research"]}
+        self.assertIn(PLAIN_ENGLISH_ANALYSIS_SECTION, proposed_sections)
+
+    def test_chunk_pool_adds_plain_english_nlp_analysis(self):
+        pool = build_chunk_pool(sample_application())
+        analysis_ids = pool["section_chunk_ids"][PLAIN_ENGLISH_ANALYSIS_SECTION]
+        analysis_text = pool["pool_lookup"][analysis_ids[0]]["text"]
+
+        self.assertIn("Plain English Summary NLP analysis", analysis_text)
+        self.assertIn("flesch_kincaid_grade_estimate", analysis_text)
+        self.assertIn("unexplained_jargon_proxy_density_pct", analysis_text)
+        self.assertIn("lexical_overlap_with_detailed_research_plan", analysis_text)
 
     def test_chunk_pool_adds_application_form_analysis(self):
         pool = build_chunk_pool(sample_application())
@@ -402,11 +461,17 @@ class PipelineTests(unittest.TestCase):
         )
 
         first_stage2_call = scorer.calls[len(stage1_payloads)]
+        proposed_stage2_call = next(
+            call for call in scorer.calls[len(stage1_payloads):]
+            if "section_key=`proposed_research`" in call["messages"][0]["content"]
+        )
         user = first_stage2_call["messages"][1]["content"]
+        system = proposed_stage2_call["messages"][0]["content"]
         self.assertIn('"application_text"', user)
         self.assertIn('"final_belief_state"', user)
         self.assertIn("`pros` must describe the strongest directly evidenced strengths", user)
         self.assertIn("`drawbacks` must describe missing evidence", user)
+        self.assertIn("You must judge readability, jargon explanation, alignment, and sentence coherence yourself", system)
         self.assertNotIn('"weight"', user)
 
     def test_missing_signals_is_monotonic(self):
@@ -482,11 +547,32 @@ class PipelineTests(unittest.TestCase):
             for artifact_path in result["debug"]["artifacts"].values():
                 self.assertTrue(Path(artifact_path).exists(), artifact_path)
 
+    def test_invalid_stage2_json_retries_once_then_succeeds(self):
+        application = sample_application()
+        _, stage1_payloads, stage2_payloads = build_payloads_for_application(application)
+        raw_payloads = [json.dumps(payload, ensure_ascii=False) for payload in stage1_payloads]
+        raw_payloads.append("```json\n{\"broken\": \n```")
+        raw_payloads.extend(json.dumps(payload, ensure_ascii=False) for payload in stage2_payloads)
+        scorer = RawFakeClient(payloads=raw_payloads, model_name="single-model")
+
+        result = score_application_base(
+            application=application,
+            criteria_path=CRITERIA_PATH,
+            doc_id="retry_doc",
+            scorer_client=scorer,
+        )
+
+        self.assertEqual(len(result["debug"]["json_retry_events"]), 1)
+        self.assertEqual(result["debug"]["json_retry_events"][0]["stage"], "stage2")
+        self.assertEqual(result["debug"]["json_retry_events"][0]["retry_count"], 1)
+        self.assertGreater(result["overall"]["final_score_0to100"], 0)
+
     def test_invalid_json_writes_raw_debug_files(self):
         application = sample_application()
         chunk_ids_by_section, stage1_payloads, _ = build_payloads_for_application(application)
         raw_payloads = [json.dumps(payload, ensure_ascii=False) for payload in stage1_payloads]
         raw_payloads.append("```json\n{\"broken\": \n```")
+        raw_payloads.append("```json\n{\"still_broken\": \n```")
         scorer = RawFakeClient(payloads=raw_payloads, model_name="single-model")
 
         with tempfile.TemporaryDirectory() as tmpdir:

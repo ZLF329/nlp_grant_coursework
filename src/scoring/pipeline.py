@@ -11,6 +11,7 @@ from src.pool.build_pool import (
     APPLICATION_CONTEXT_SECTION,
     APPLICATION_FORM_ANALYSIS_SECTION,
     MAX_CHARS,
+    PLAIN_ENGLISH_ANALYSIS_SECTION,
     build_chunk_pool,
     write_pool_artifacts,
 )
@@ -42,11 +43,13 @@ STAGE1_MAX_FINDINGS = 6
 STAGE1_MAX_SIGNALS_PER_FINDING = 3
 STAGE1_IMPLICATION_MAX_CHARS = 220
 STAGE1_HISTORY_IMPLICATIONS_PER_SIGNAL = 2
+JSON_PARSE_MAX_RETRIES = 1
 
 SECTION_TO_PARSER_SECTIONS: dict[str, list[str] | None] = {
     "general": None,
     "proposed_research": [
         APPLICATION_CONTEXT_SECTION,
+        PLAIN_ENGLISH_ANALYSIS_SECTION,
         "Plain English Summary of Research",
         "Plain English Summary",
         "Scientific Abstract",
@@ -207,6 +210,38 @@ def _safe_json_loads(text: str) -> dict[str, Any]:
     return json.loads(clean)
 
 
+class JsonRetryError(ValueError):
+    def __init__(self, *, raw_response: str, attempts: int, original: Exception):
+        super().__init__(str(original))
+        self.raw_response = raw_response
+        self.attempts = attempts
+        self.original = original
+
+
+def _generate_json_with_parse_retry(
+    scorer_client: Any,
+    messages: list[dict[str, str]],
+    *,
+    schema: dict[str, Any],
+    max_tokens: int,
+    max_retries: int = JSON_PARSE_MAX_RETRIES,
+) -> tuple[str, dict[str, Any], int]:
+    raw_response = ""
+    last_exc: Exception | None = None
+    for attempt_idx in range(max_retries + 1):
+        raw_response = scorer_client.generate_json(messages, schema=schema, max_tokens=max_tokens)
+        try:
+            return raw_response, _safe_json_loads(raw_response), attempt_idx
+        except Exception as exc:  # Retry only malformed model JSON, not transport/model errors.
+            last_exc = exc
+
+    raise JsonRetryError(
+        raw_response=raw_response,
+        attempts=max_retries + 1,
+        original=last_exc or ValueError("unknown JSON parse error"),
+    )
+
+
 def _response_preview(text: str, limit: int = 500) -> str:
     clean = " ".join((text or "").split())
     if len(clean) <= limit:
@@ -247,6 +282,11 @@ def _compat_plausibility(avg_confidence_0to2: float) -> float:
 
 def _compat_evidence_score(avg_confidence_0to2: float) -> float:
     return round((avg_confidence_0to2 / 2) * 100, 2)
+
+
+def _is_if_applicable_subcriterion(sub: dict[str, Any]) -> bool:
+    text = f"{sub.get('name', '')} {sub.get('definition', '')}".lower()
+    return "if applicable" in text
 
 
 def rule_based_retrieval(
@@ -946,6 +986,15 @@ def build_final_scoring_messages(
         if rubric_section["section_key"] == "application_form"
         else ""
     )
+    proposed_research_note = (
+        "For Proposed Research pr.1 Plain English Summary scoring, use any Plain English NLP Analysis metrics "
+        "as supporting evidence, but still read the raw Plain English Summary and Detailed Research Plan in "
+        "application_text. You must judge readability, jargon explanation, alignment, and sentence coherence "
+        "yourself from the text; do not say these cannot be assessed merely because Stage 1 did not provide "
+        "readability/coherence findings.\n"
+        if rubric_section["section_key"] == "proposed_research"
+        else ""
+    )
     system = (
         "You are scoring one rubric section of a grant application.\n\n"
         "Return JSON only.\n"
@@ -956,6 +1005,7 @@ def build_final_scoring_messages(
         "Use the final belief state as the primary evidence index.\n"
         "Use the application text only to verify, refine, or reject what the belief state suggests.\n"
         f"{application_form_note}"
+        f"{proposed_research_note}"
         "Do not score subcriteria outside the target rubric section.\n"
         "Identifier rules (STRICT):\n"
         "  - Top-level JSON keys MUST be parent sub ids from the allowed list (e.g. `g.4`, `pr.2`).\n"
@@ -1295,26 +1345,32 @@ def _aggregate_sub_criterion(
 
 def _aggregate_section(section: dict[str, Any], pool_lookup: dict[str, dict[str, str]]) -> dict[str, Any]:
     sub_criteria = [_aggregate_sub_criterion(sub, pool_lookup) for sub in section["sub_criteria"]]
-    total_weight = sum(sub["weight"] for sub in sub_criteria) or 1.0
-    weighted_score = sum(sub["score_10"] * sub["weight"] for sub in sub_criteria)
+    scored_sub_criteria = [
+        sub for sub in sub_criteria
+        if sub.get("counts_toward_section_average", True)
+    ]
+    scoring_denominator = scored_sub_criteria or sub_criteria
+    total_weight = sum(sub["weight"] for sub in scoring_denominator) or 1.0
+    weighted_score = sum(sub["score_10"] * sub["weight"] for sub in scoring_denominator)
     score_10 = round(weighted_score / total_weight, 2)
     total_items = len(sub_criteria)
+    scored_items = len(scoring_denominator)
     signal_count = sum(len(sub["signals"]) for sub in sub_criteria)
     evidence_count = sum(sub["evidence_count"] for sub in sub_criteria)
-    good_items = sum(1 for sub in sub_criteria if sub["score_10"] >= 7.5)
-    positive_items = sum(1 for sub in sub_criteria if sub["score_10"] > 0)
-    high_confidence_count = sum(1 for sub in sub_criteria if sub["confidence_label"] == "high_confidence")
-    medium_confidence_count = sum(1 for sub in sub_criteria if sub["confidence_label"] == "medium_confidence")
-    low_confidence_count = sum(1 for sub in sub_criteria if sub["confidence_label"] == "low_confidence")
+    good_items = sum(1 for sub in scoring_denominator if sub["score_10"] >= 7.5)
+    positive_items = sum(1 for sub in scoring_denominator if sub["score_10"] > 0)
+    high_confidence_count = sum(1 for sub in scoring_denominator if sub["confidence_label"] == "high_confidence")
+    medium_confidence_count = sum(1 for sub in scoring_denominator if sub["confidence_label"] == "medium_confidence")
+    low_confidence_count = sum(1 for sub in scoring_denominator if sub["confidence_label"] == "low_confidence")
     avg_confidence_0to2 = round(
-        sum(CONFIDENCE_TO_SCORE[sub["confidence_label"]] for sub in sub_criteria) / max(1, total_items),
+        sum(CONFIDENCE_TO_SCORE[sub["confidence_label"]] for sub in scoring_denominator) / max(1, scored_items),
         2,
     )
     avg_plausibility = _compat_plausibility(avg_confidence_0to2)
     overall = {
         "score_10": score_10,
         "final_score_0to100": round(score_10 * 10, 2),
-        "coverage_score_0to100": round((positive_items / max(1, total_items)) * 100, 2),
+        "coverage_score_0to100": round((positive_items / max(1, scored_items)) * 100, 2),
         "quality_score_0to100": round(score_10 * 10, 2),
         "evidence_score_0to100": _compat_evidence_score(avg_confidence_0to2),
         "quality_score_avg_0to10": score_10,
@@ -1325,10 +1381,11 @@ def _aggregate_section(section: dict[str, Any], pool_lookup: dict[str, dict[str,
         "low_confidence_subcriterion_count": low_confidence_count,
         "weak_signal_count": low_confidence_count,
         "total_items": total_items,
+        "scored_items": scored_items,
         "signal_count": signal_count,
         "good_items": good_items,
         "positive_items": positive_items,
-        "expected_items": total_items,
+        "expected_items": scored_items,
         "evidence_count": evidence_count,
         "target_evidence_per_item": USED_CHUNK_MAX,
     }
@@ -1340,6 +1397,7 @@ def _aggregate_section(section: dict[str, Any], pool_lookup: dict[str, dict[str,
         "medium_confidence_subcriterion_count": medium_confidence_count,
         "low_confidence_subcriterion_count": low_confidence_count,
         "weak_signal_count": low_confidence_count,
+        "scored_items": scored_items,
         "sub_criteria": sub_criteria,
         "criteria": sub_criteria,
         "overall": overall,
@@ -1362,6 +1420,7 @@ def _aggregate_overall(features: dict[str, dict[str, Any]], section_weights: dic
             "low_confidence_subcriterion_count": 0,
             "weak_signal_count": 0,
             "total_items": 0,
+            "scored_items": 0,
             "signal_count": 0,
             "evidence_count": 0,
             "target_evidence_per_item": USED_CHUNK_MAX,
@@ -1371,6 +1430,7 @@ def _aggregate_overall(features: dict[str, dict[str, Any]], section_weights: dic
     weighted_score = sum(features[key]["score_10"] * section_weights.get(key, 1.0) for key in features)
     score_10 = round(weighted_score / total_weight, 2)
     total_items = sum(section["overall"]["total_items"] for section in features.values())
+    scored_items = sum(section["overall"].get("scored_items", section["overall"]["total_items"]) for section in features.values())
     signal_count = sum(section["overall"]["signal_count"] for section in features.values())
     evidence_count = sum(section["overall"]["evidence_count"] for section in features.values())
     good_items = sum(section["overall"]["good_items"] for section in features.values())
@@ -1379,15 +1439,19 @@ def _aggregate_overall(features: dict[str, dict[str, Any]], section_weights: dic
     medium_confidence_count = sum(section["overall"]["medium_confidence_subcriterion_count"] for section in features.values())
     low_confidence_count = sum(section["overall"]["low_confidence_subcriterion_count"] for section in features.values())
     avg_confidence_0to2 = round(
-        sum(section["overall"]["avg_confidence_0to2"] * section["overall"]["total_items"] for section in features.values())
-        / max(1, total_items),
+        sum(
+            section["overall"]["avg_confidence_0to2"]
+            * section["overall"].get("scored_items", section["overall"]["total_items"])
+            for section in features.values()
+        )
+        / max(1, scored_items),
         2,
     )
     return {
         "score_10": score_10,
         "final_score_0to100": round(score_10 * 10, 2),
         "quality_score_0to100": round(score_10 * 10, 2),
-        "coverage_score_0to100": round((positive_items / max(1, total_items)) * 100, 2),
+        "coverage_score_0to100": round((positive_items / max(1, scored_items)) * 100, 2),
         "evidence_score_0to100": _compat_evidence_score(avg_confidence_0to2),
         "quality_score_avg_0to10": score_10,
         "avg_confidence_0to2": avg_confidence_0to2,
@@ -1397,11 +1461,12 @@ def _aggregate_overall(features: dict[str, dict[str, Any]], section_weights: dic
         "low_confidence_subcriterion_count": low_confidence_count,
         "weak_signal_count": low_confidence_count,
         "total_items": total_items,
+        "scored_items": scored_items,
         "signal_count": signal_count,
         "evidence_count": evidence_count,
         "good_items": good_items,
         "positive_items": positive_items,
-        "expected_items": total_items,
+        "expected_items": scored_items,
         "target_evidence_per_item": USED_CHUNK_MAX,
     }
 
@@ -1430,6 +1495,7 @@ def _build_scored_section(
         pros = normalized_sub.get("pros", "")
         drawbacks = normalized_sub.get("drawbacks", normalized_sub.get("rationale", ""))
         missing_evidence = bool(normalized_sub.get("missing_evidence"))
+        counts_toward_section_average = not _is_if_applicable_subcriterion(sub)
         section_subs.append({
             "sub_id": sub["sub_id"],
             "name": sub["name"],
@@ -1446,6 +1512,8 @@ def _build_scored_section(
             "drawbacks": drawbacks,
             "rationale": drawbacks,
             "missing_evidence": missing_evidence,
+            "if_applicable": not counts_toward_section_average,
+            "counts_toward_section_average": counts_toward_section_average,
         })
 
     return {
@@ -1564,6 +1632,7 @@ def score_application_base(
     stage1_inputs = _section_inputs(pool_data["section_chunk_ids"], pool_lookup, chunk_order)
     stage1_raw_by_section: dict[str, str] = {}
     stage1_updates: list[dict[str, Any]] = []
+    json_retry_events: list[dict[str, Any]] = []
 
     for application_section in stage1_inputs:
         section_name = application_section["section_name"]
@@ -1574,11 +1643,16 @@ def score_application_base(
             current_belief_state=belief_state,
         )
         schema = build_section_evidence_schema(rubric_sections, section_chunk_ids)
-        raw_stage1 = scorer_client.generate_json(messages, schema=schema, max_tokens=STAGE1_MAX_TOKENS)
-        stage1_raw_by_section[section_name] = raw_stage1
         try:
-            parsed_stage1 = _safe_json_loads(raw_stage1)
-        except Exception as exc:
+            raw_stage1, parsed_stage1, retry_count = _generate_json_with_parse_retry(
+                scorer_client,
+                messages,
+                schema=schema,
+                max_tokens=STAGE1_MAX_TOKENS,
+            )
+        except JsonRetryError as exc:
+            raw_stage1 = exc.raw_response
+            stage1_raw_by_section[section_name] = raw_stage1
             response_meta = _response_meta_summary(scorer_client)
             failure_artifacts = _write_failure_artifacts(
                 artifacts_dir=artifacts_dir,
@@ -1595,11 +1669,18 @@ def score_application_base(
                 scorer_client=scorer_client,
             )
             raise ValueError(
-                f"Stage 1 returned invalid JSON for section {section_name}. "
+                f"Stage 1 returned invalid JSON for section {section_name} after {exc.attempts} attempts. "
                 f"Response preview: {_response_preview(raw_stage1)!r}. "
                 f"Response meta: {response_meta or 'unavailable'}. "
                 f"Raw outputs written to: {failure_artifacts.get('failed_raw_response')}"
-            ) from exc
+            ) from exc.original
+        stage1_raw_by_section[section_name] = raw_stage1
+        if retry_count:
+            json_retry_events.append({
+                "stage": "stage1",
+                "section": section_name,
+                "retry_count": retry_count,
+            })
         normalized_update = _normalize_section_evidence_output(
             parsed_stage1,
             rubric_sections,
@@ -1632,11 +1713,16 @@ def score_application_base(
             scoped_parser_sections=scoped_parser_sections,
         )
         schema = build_scoring_schema(rubric_section, all_chunk_ids)
-        raw_stage2 = scorer_client.generate_json(messages, schema=schema, max_tokens=STAGE2_MAX_TOKENS)
-        stage2_raw_by_section[section_key] = raw_stage2
         try:
-            parsed_stage2 = _safe_json_loads(raw_stage2)
-        except Exception as exc:
+            raw_stage2, parsed_stage2, retry_count = _generate_json_with_parse_retry(
+                scorer_client,
+                messages,
+                schema=schema,
+                max_tokens=STAGE2_MAX_TOKENS,
+            )
+        except JsonRetryError as exc:
+            raw_stage2 = exc.raw_response
+            stage2_raw_by_section[section_key] = raw_stage2
             response_meta = _response_meta_summary(scorer_client)
             failure_artifacts = _write_failure_artifacts(
                 artifacts_dir=artifacts_dir,
@@ -1653,11 +1739,18 @@ def score_application_base(
                 scorer_client=scorer_client,
             )
             raise ValueError(
-                f"Stage 2 returned invalid JSON for section {section_key}. "
+                f"Stage 2 returned invalid JSON for section {section_key} after {exc.attempts} attempts. "
                 f"Response preview: {_response_preview(raw_stage2)!r}. "
                 f"Response meta: {response_meta or 'unavailable'}. "
                 f"Raw outputs written to: {failure_artifacts.get('failed_raw_response')}"
-            ) from exc
+            ) from exc.original
+        stage2_raw_by_section[section_key] = raw_stage2
+        if retry_count:
+            json_retry_events.append({
+                "stage": "stage2",
+                "section": section_key,
+                "retry_count": retry_count,
+            })
 
         normalized_stage2 = _normalize_model_section_output(parsed_stage2, rubric_section, all_chunk_ids)
         sections.append(_build_scored_section(
@@ -1700,6 +1793,7 @@ def score_application_base(
         "debug": {
             "scoring_contract_version": "section_evidence_belief_single_model_v1",
             "stage1_section_updates": stage1_updates,
+            "json_retry_events": json_retry_events,
             "artifacts": artifact_paths,
         },
     }

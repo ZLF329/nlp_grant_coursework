@@ -11,6 +11,7 @@ APPLICATION_DETAILS_KEY = "APPLICATION DETAILS"
 SUMMARY_BUDGET_KEY = "SUMMARY BUDGET"
 APPLICATION_CONTEXT_SECTION = "Application Context"
 APPLICATION_FORM_ANALYSIS_SECTION = "Application Form Analysis"
+PLAIN_ENGLISH_ANALYSIS_SECTION = "Plain English NLP Analysis"
 
 
 @dataclass(frozen=True)
@@ -124,6 +125,148 @@ def _jaccard_similarity(text_a: str, text_b: str) -> float:
     if not words_a or not words_b:
         return 0.0
     return round(len(words_a & words_b) / len(words_a | words_b), 3)
+
+
+def _sentences_for_readability(text: str) -> list[str]:
+    return [
+        sentence.strip()
+        for sentence in re.split(r"(?<=[.!?])\s+|\n+", text or "")
+        if sentence.strip()
+    ]
+
+
+def _words_for_readability(text: str) -> list[str]:
+    return re.findall(r"\b[A-Za-z][A-Za-z'-]*\b", text or "")
+
+
+def _syllable_count(word: str) -> int:
+    clean = re.sub(r"[^a-z]", "", (word or "").lower())
+    if not clean:
+        return 0
+    clean = re.sub(r"e$", "", clean)
+    groups = re.findall(r"[aeiouy]+", clean)
+    return max(1, len(groups))
+
+
+def _flesch_kincaid_grade(text: str) -> float:
+    sentences = _sentences_for_readability(text)
+    words = _words_for_readability(text)
+    if not sentences or not words:
+        return 0.0
+    syllables = sum(_syllable_count(word) for word in words)
+    return round(
+        0.39 * (len(words) / len(sentences))
+        + 11.8 * (syllables / len(words))
+        - 15.59,
+        2,
+    )
+
+
+def _flesch_reading_ease(text: str) -> float:
+    sentences = _sentences_for_readability(text)
+    words = _words_for_readability(text)
+    if not sentences or not words:
+        return 0.0
+    syllables = sum(_syllable_count(word) for word in words)
+    return round(
+        206.835
+        - 1.015 * (len(words) / len(sentences))
+        - 84.6 * (syllables / len(words)),
+        2,
+    )
+
+
+def _technical_terms(text: str) -> list[str]:
+    stopwords = {
+        "because", "between", "different", "important", "research", "summary",
+        "treatment", "patients", "people", "project", "condition", "currently",
+    }
+    terms: list[str] = []
+    for word in _words_for_readability(text):
+        clean = word.lower().strip("'")
+        if len(clean) < 11 or clean in stopwords:
+            continue
+        if clean not in terms:
+            terms.append(clean)
+    return terms
+
+
+def _format_plain_english_analysis(
+    section_chunk_ids: dict[str, list[str]],
+    pool_lookup: dict[str, dict[str, str]],
+) -> str:
+    summary_section = None
+    for candidate in ("Plain English Summary of Research", "Plain English Summary"):
+        if candidate in section_chunk_ids:
+            summary_section = candidate
+            break
+    if not summary_section:
+        return ""
+
+    summary_text = "\n\n".join(
+        pool_lookup[chunk_id]["text"]
+        for chunk_id in section_chunk_ids.get(summary_section, [])
+    )
+    if not summary_text.strip():
+        return ""
+
+    detailed_text = "\n\n".join(
+        pool_lookup[chunk_id]["text"]
+        for chunk_id in section_chunk_ids.get("Detailed Research Plan", [])
+    )
+    words = _words_for_readability(summary_text)
+    sentences = _sentences_for_readability(summary_text)
+    sentence_lengths = [
+        len(_words_for_readability(sentence))
+        for sentence in sentences
+    ]
+    avg_sentence_length = round(sum(sentence_lengths) / len(sentence_lengths), 2) if sentence_lengths else 0.0
+    long_sentence_ratio = round(
+        sum(1 for length in sentence_lengths if length >= 30) / len(sentence_lengths),
+        3,
+    ) if sentence_lengths else 0.0
+    terms = _technical_terms(summary_text)
+    jargon_density = round((len(terms) / len(words)) * 100, 2) if words else 0.0
+    alignment = _jaccard_similarity(summary_text, detailed_text) if detailed_text else 0.0
+    coverage_terms = {
+        "problem": r"\b(problem|condition|burden|currently|uncertainty|need)\b",
+        "objectives": r"\b(aim|objective|will|project|develop|evaluate|identify)\b",
+        "methods": r"\b(method|data|dataset|model|interview|review|analysis|study)\b",
+        "beneficiaries": r"\b(patient|people|clinician|public|service|nhs)\b",
+        "impact": r"\b(benefit|improve|impact|personalised|save|reduce|support)\b",
+    }
+    coverage_hits = [
+        label for label, pattern in coverage_terms.items()
+        if re.search(pattern, summary_text, flags=re.IGNORECASE)
+    ]
+
+    return "\n".join([
+        "Plain English Summary NLP analysis derived from parser output.",
+        "Use these metrics as supporting evidence for pr.1, but also read the raw Plain English Summary and "
+        "Detailed Research Plan in application_text. Do not claim readability, jargon, alignment, or sentence "
+        "coherence evidence is missing solely because Stage 1 did not provide NLP/coherence findings.",
+        "",
+        "Readability and sentence structure metrics:",
+        f"- source_section={summary_section}",
+        f"- word_count={len(words)}",
+        f"- sentence_count={len(sentences)}",
+        f"- avg_sentence_length_words={avg_sentence_length}",
+        f"- long_sentence_ratio_30_words={long_sentence_ratio}",
+        f"- flesch_kincaid_grade_estimate={_flesch_kincaid_grade(summary_text)}",
+        f"- flesch_reading_ease_estimate={_flesch_reading_ease(summary_text)}",
+        "",
+        "Jargon proxy metrics:",
+        f"- unexplained_jargon_proxy_density_pct={jargon_density}",
+        f"- technical_terms_sample={terms[:12]}",
+        "- Jargon proxy is based on long/difficult-looking terms; final scoring must still judge whether terms "
+        "are explained clearly in the summary text.",
+        "",
+        "Alignment and content coverage metrics:",
+        f"- lexical_overlap_with_detailed_research_plan={alignment}",
+        f"- lay_summary_coverage_hits={coverage_hits}",
+        "- Alignment metric is lexical only; final scoring must compare the actual plain-English claims with "
+        "the detailed proposal content.",
+    ])
 
 
 def _format_application_form_analysis(
@@ -295,6 +438,15 @@ def build_chunk_pool(application: dict[str, Any], max_chars: int = MAX_CHARS) ->
             APPLICATION_CONTEXT_SECTION,
             APPLICATION_CONTEXT_SECTION,
             combined_context,
+            split=False,
+        )
+
+    plain_english_analysis = _format_plain_english_analysis(section_chunk_ids, pool_lookup)
+    if plain_english_analysis:
+        add_leaf(
+            PLAIN_ENGLISH_ANALYSIS_SECTION,
+            PLAIN_ENGLISH_ANALYSIS_SECTION,
+            plain_english_analysis,
             split=False,
         )
 
