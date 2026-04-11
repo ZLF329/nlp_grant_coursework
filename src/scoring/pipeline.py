@@ -535,8 +535,17 @@ def build_section_evidence_messages(
         "Only use evidence IDs that appear in application_section.section_content.\n"
         "The current_belief_state may include prior implications for context, but it does not include prior evidence IDs.\n"
         "Never invent IDs.\n"
-        f"For each returned signal, include `good_evidence_ids` (max {SECTION_EVIDENCE_MAX}), "
-        f"`bad_evidence_ids` (max {SECTION_EVIDENCE_MAX}), and `implication`.\n"
+        "Identifier rules (STRICT):\n"
+        "  - Each signal in criteria has a `sub_id` (parent subcriterion, e.g. `g.4`, `pr.2`, `td.1`) "
+        "and a `sid` (full signal id, e.g. `g.4.a`, `pr.2.c`).\n"
+        "  - In each finding, `sub_id` MUST be the parent subcriterion id (`g.4`), NEVER a signal id (`g.4.a`).\n"
+        "  - Group every signal under its parent `sub_id`. If you report `g.4.a` and `g.4.c`, "
+        "return ONE finding with `sub_id`=`g.4` and both signals nested inside its `signals` object.\n"
+        "  - Inside `signals`, use the full signal id (`g.4.a`) as the key. Each value MUST be an object "
+        "with an `evidence` object (containing `good_evidence_ids` and `bad_evidence_ids`) and an "
+        "`implication` string. Do NOT put `good_evidence_ids` directly under the signal. Do NOT put "
+        "`implication` at the finding level.\n"
+        f"Each evidence list holds at most {SECTION_EVIDENCE_MAX} IDs.\n"
         f"Return at most {STAGE1_MAX_FINDINGS} findings total.\n"
         f"Within each finding, return at most {STAGE1_MAX_SIGNALS_PER_FINDING} signals.\n"
         "A signal is relevant only if the section text gives concrete evidence for or against it.\n"
@@ -560,19 +569,26 @@ def build_section_evidence_messages(
         "section_name": section_name,
         "findings": [
             {
-                "sub_id": "example.sub",
+                "sub_id": "g.4",
                 "signals": {
-                    "example.signal": {
+                    "g.4.a": {
                         "evidence": {
-                            "good_evidence_ids": ["example__001"],
+                            "good_evidence_ids": ["secxx__001_a"],
                             "bad_evidence_ids": [],
                         },
-                        "implication": f"{section_name}: provides direct support for this signal.",
-                    }
+                        "implication": f"{section_name}: directly supports signal g.4.a.",
+                    },
+                    "g.4.c": {
+                        "evidence": {
+                            "good_evidence_ids": ["secxx__001_b"],
+                            "bad_evidence_ids": [],
+                        },
+                        "implication": f"{section_name}: directly supports signal g.4.c.",
+                    },
                 },
             }
         ],
-        "resolved_signals": ["example.signal"],
+        "resolved_signals": ["g.4.a", "g.4.c"],
     }
     return [
         {"role": "system", "content": system},
@@ -698,69 +714,134 @@ def _normalize_section_evidence_output(
     section_name: str,
 ) -> dict[str, Any]:
     allowed_ids = set(section_chunk_ids)
-    signals_by_sub = {
+    stage1_sections = _stage1_rubric_sections(rubric_sections)
+    signals_by_sub: dict[str, set[str]] = {
         sub["sub_id"]: {signal["sid"] for signal in sub["signals"]}
-        for section in _stage1_rubric_sections(rubric_sections)
+        for section in stage1_sections
         for sub in section["sub_criteria"]
     }
-    findings_out: list[dict[str, Any]] = []
+    signal_to_sub: dict[str, str] = {
+        signal["sid"]: sub["sub_id"]
+        for section in stage1_sections
+        for sub in section["sub_criteria"]
+        for signal in sub["signals"]
+    }
+    findings_by_sub: dict[str, dict[str, Any]] = {}
     resolved: list[str] = []
     raw_findings = parsed.get("findings", []) if isinstance(parsed, dict) else []
     if not isinstance(raw_findings, list):
         raw_findings = []
 
+    def _coerce_id_list(value: Any) -> list[str]:
+        if not isinstance(value, list):
+            return []
+        return [
+            chunk_id for chunk_id in value
+            if isinstance(chunk_id, str) and chunk_id in allowed_ids
+        ]
+
     for raw_finding in raw_findings:
         if not isinstance(raw_finding, dict):
             continue
-        sub_id = raw_finding.get("sub_id")
-        if not isinstance(sub_id, str) or sub_id not in signals_by_sub:
+        raw_sub_id = raw_finding.get("sub_id")
+        if not isinstance(raw_sub_id, str):
+            continue
+        if raw_sub_id in signals_by_sub:
+            sub_id = raw_sub_id
+            fallback_signal_id: str | None = None
+        elif raw_sub_id in signal_to_sub:
+            sub_id = signal_to_sub[raw_sub_id]
+            fallback_signal_id = raw_sub_id
+        else:
             continue
         raw_signals = raw_finding.get("signals", {})
         if not isinstance(raw_signals, dict):
             raw_signals = {}
-        signal_entries: dict[str, Any] = {}
-        for signal_id in sorted(signals_by_sub[sub_id]):
-            raw_signal = raw_signals.get(signal_id)
+        finding_implication = raw_finding.get("implication", "")
+        if not isinstance(finding_implication, str):
+            finding_implication = ""
+
+        # Gather candidate (signal_id -> raw_signal payload) pairs, tolerating
+        # models that key signals by sub_id, by an unrelated label, or that
+        # bury the evidence at the finding level entirely.
+        signal_candidates: list[tuple[str, Any]] = []
+        for key, value in raw_signals.items():
+            resolved_signal_id: str | None = None
+            if key in signals_by_sub[sub_id]:
+                resolved_signal_id = key
+            elif key in signal_to_sub and signal_to_sub[key] == sub_id:
+                resolved_signal_id = key
+            elif key == sub_id and fallback_signal_id is not None:
+                resolved_signal_id = fallback_signal_id
+            elif fallback_signal_id is not None and len(raw_signals) == 1:
+                resolved_signal_id = fallback_signal_id
+            if resolved_signal_id is None:
+                continue
+            signal_candidates.append((resolved_signal_id, value))
+
+        if not signal_candidates and fallback_signal_id is not None:
+            # Model dropped the nested signals dict entirely and put the
+            # evidence on the finding itself.
+            signal_candidates.append((fallback_signal_id, raw_finding))
+
+        entry = findings_by_sub.setdefault(sub_id, {"sub_id": sub_id, "signals": {}})
+        signal_entries: dict[str, Any] = entry["signals"]
+
+        for signal_id, raw_signal in signal_candidates:
             if not isinstance(raw_signal, dict):
                 continue
-            raw_evidence = raw_signal.get("evidence", {})
-            if not isinstance(raw_evidence, dict):
-                raw_evidence = {
-                    "good_evidence_ids": raw_signal.get("good_evidence_ids", []),
-                    "bad_evidence_ids": raw_signal.get("bad_evidence_ids", []),
-                }
-            good_ids = raw_evidence.get("good_evidence_ids", [])
-            bad_ids = raw_evidence.get("bad_evidence_ids", [])
-            if not isinstance(good_ids, list):
-                good_ids = []
-            if not isinstance(bad_ids, list):
-                bad_ids = []
-            good_ids = _dedupe_preserve_order([
-                chunk_id for chunk_id in good_ids
-                if isinstance(chunk_id, str) and chunk_id in allowed_ids
-            ])[:SECTION_EVIDENCE_MAX]
-            bad_ids = _dedupe_preserve_order([
-                chunk_id for chunk_id in bad_ids
-                if isinstance(chunk_id, str) and chunk_id in allowed_ids
-            ])[:SECTION_EVIDENCE_MAX]
+            raw_evidence = raw_signal.get("evidence")
+            if isinstance(raw_evidence, dict):
+                good_ids = _coerce_id_list(raw_evidence.get("good_evidence_ids"))
+                bad_ids = _coerce_id_list(raw_evidence.get("bad_evidence_ids"))
+            else:
+                good_ids = _coerce_id_list(raw_signal.get("good_evidence_ids"))
+                bad_ids = _coerce_id_list(raw_signal.get("bad_evidence_ids"))
+            good_ids = _dedupe_preserve_order(good_ids)[:SECTION_EVIDENCE_MAX]
+            bad_ids = _dedupe_preserve_order(bad_ids)[:SECTION_EVIDENCE_MAX]
             if not good_ids and not bad_ids:
                 continue
-            implication = raw_signal.get("implication", "")
+
+            implication = raw_signal.get("implication")
+            if not isinstance(implication, str) or not implication.strip():
+                implication = finding_implication
             if not isinstance(implication, str):
                 implication = ""
-            signal_entries[signal_id] = {
-                "evidence": {
-                    "good_evidence_ids": good_ids,
-                    "bad_evidence_ids": bad_ids,
-                },
-                "implication": _ensure_implication_prefix(section_name, implication)[:STAGE1_IMPLICATION_MAX_CHARS],
-            }
-            resolved.append(signal_id)
-        if signal_entries:
-            findings_out.append({
-                "sub_id": sub_id,
-                "signals": signal_entries,
-            })
+
+            existing = signal_entries.get(signal_id)
+            if existing is not None:
+                merged_good = _dedupe_preserve_order([
+                    *existing["evidence"]["good_evidence_ids"],
+                    *good_ids,
+                ])[:SECTION_EVIDENCE_MAX]
+                merged_bad = _dedupe_preserve_order([
+                    *existing["evidence"]["bad_evidence_ids"],
+                    *bad_ids,
+                ])[:SECTION_EVIDENCE_MAX]
+                existing["evidence"] = {
+                    "good_evidence_ids": merged_good,
+                    "bad_evidence_ids": merged_bad,
+                }
+                if implication and not existing["implication"].endswith(implication):
+                    existing["implication"] = _ensure_implication_prefix(
+                        section_name, implication
+                    )[:STAGE1_IMPLICATION_MAX_CHARS]
+            else:
+                signal_entries[signal_id] = {
+                    "evidence": {
+                        "good_evidence_ids": good_ids,
+                        "bad_evidence_ids": bad_ids,
+                    },
+                    "implication": _ensure_implication_prefix(
+                        section_name, implication
+                    )[:STAGE1_IMPLICATION_MAX_CHARS],
+                }
+                resolved.append(signal_id)
+
+    findings_out: list[dict[str, Any]] = []
+    for entry in findings_by_sub.values():
+        if entry["signals"]:
+            findings_out.append(entry)
         if len(findings_out) >= STAGE1_MAX_FINDINGS:
             break
 
@@ -852,15 +933,24 @@ def build_final_scoring_messages(
         if scoped_parser_sections
         else "Application text contains the full application (no scoping applied)."
     )
+    target_sub_ids = [sub["sub_id"] for sub in rubric_section["sub_criteria"]]
     system = (
         "You are scoring one rubric section of a grant application.\n\n"
         "Return JSON only.\n"
         "Score only the target rubric section.\n"
         f"Target rubric section: section_key=`{rubric_section['section_key']}`, section_name=`{rubric_section['human_name']}`.\n"
+        f"Allowed top-level keys (parent sub ids): {target_sub_ids}.\n"
         f"{scope_note}\n"
         "Use the final belief state as the primary evidence index.\n"
         "Use the application text only to verify, refine, or reject what the belief state suggests.\n"
         "Do not score subcriteria outside the target rubric section.\n"
+        "Identifier rules (STRICT):\n"
+        "  - Top-level JSON keys MUST be parent sub ids from the allowed list (e.g. `g.4`, `pr.2`).\n"
+        "  - NEVER use a signal id (e.g. `g.4.a`, `pr.2.b`) as a top-level key.\n"
+        "  - Each top-level sub id maps to an object with `signals`, `used_chunk_ids`, `drawbacks`.\n"
+        "  - Inside `signals`, use the full signal id (e.g. `g.4.a`) as the key and a 0-5 integer as the value.\n"
+        "  - Every signal belonging to a sub must appear under that sub's object — never split a sub's signals "
+        "across multiple top-level keys, and never place signals from other subs here.\n"
         "Each signal score must be an integer from 0 to 5 inclusive (0,1,2,3,4,5).\n"
         "Scoring guide: 0=no evidence, 1=very weak, 2=weak, 3=moderate, 4=strong with only minor gaps, "
         "5=perfectly met: complete, specific, directly evidenced, and with no material caveats or missing detail.\n"
@@ -873,25 +963,29 @@ def build_final_scoring_messages(
         "criteria": stripped_criteria,
         "final_belief_state": final_belief_state,
     }
+    example_sub_id = target_sub_ids[0] if target_sub_ids else "g.4"
+    example_sig_a = f"{example_sub_id}.a"
+    example_sig_b = f"{example_sub_id}.b"
     user = (
         "Input JSON:\n"
         f"{json.dumps(user_payload, ensure_ascii=False, indent=2)}\n\n"
         "Scoring rules:\n"
-        f"1. Output only subcriteria under rubric section `{rubric_section['section_key']}`.\n"
+        f"1. Output only subcriteria under rubric section `{rubric_section['section_key']}`. "
+        f"Top-level keys MUST come from: {target_sub_ids}.\n"
         "2. Prefer chunk IDs that already appear in the belief state when they support the score.\n"
         "3. Use only grounded chunk IDs from the application text / belief state.\n"
         "4. Each sub_id object must contain `signals`, `used_chunk_ids`, and `drawbacks`.\n"
         "5. `drawbacks` must describe missing evidence, weak support, caveats, or limitations. "
         "Mention strengths only when needed to explain why a non-zero score remains justified.\n"
         "6. Return JSON only.\n\n"
-        "Output format example:\n"
+        "Output format example (shape only — use real sub/signal ids from the target section):\n"
         "{\n"
-        '  "example.sub": {\n'
+        f'  "{example_sub_id}": {{\n'
         '    "signals": {\n'
-        '      "example.signal.a": 5,\n'
-        '      "example.signal.b": 3\n'
+        f'      "{example_sig_a}": 5,\n'
+        f'      "{example_sig_b}": 3\n'
         "    },\n"
-        '    "used_chunk_ids": ["example__001", "example__002"],\n'
+        '    "used_chunk_ids": ["secxx__001", "secxx__002"],\n'
         '    "drawbacks": "The first signal is clearly supported, but the second has only partial evidence and lacks feasibility detail."\n'
         "  }\n"
         "}"
@@ -950,6 +1044,36 @@ def _normalize_score(value: Any) -> int:
     return normalized if normalized in SCORER_ALLOWED_SCORES and normalized == value else 0
 
 
+def _collect_stage2_sub_sources(
+    parsed: dict[str, Any],
+    sub: dict[str, Any],
+) -> list[dict[str, Any]]:
+    """Collect all raw top-level entries in `parsed` that belong to this sub.
+
+    Handles the canonical case (key == sub_id) as well as schema drift where
+    the model keys entries by signal id (e.g. `g.4.a`) or nests multiple
+    partial entries across keys for the same sub.
+    """
+    if not isinstance(parsed, dict):
+        return []
+    sources: list[dict[str, Any]] = []
+    sub_id = sub["sub_id"]
+    signal_ids = {signal["sid"] for signal in sub["signals"]}
+    for key, value in parsed.items():
+        if not isinstance(value, dict):
+            continue
+        if key == sub_id:
+            sources.append(value)
+            continue
+        if key in signal_ids:
+            sources.append(value)
+            continue
+        parent = key.rsplit(".", 1)[0] if "." in key else None
+        if parent == sub_id:
+            sources.append(value)
+    return sources
+
+
 def _normalize_model_section_output(
     parsed: dict[str, Any],
     rubric_section: dict[str, Any],
@@ -959,29 +1083,44 @@ def _normalize_model_section_output(
     normalized: dict[str, dict[str, Any]] = {}
 
     for sub in rubric_section["sub_criteria"]:
-        raw_sub = parsed.get(sub["sub_id"], {}) if isinstance(parsed, dict) else {}
-        if not isinstance(raw_sub, dict):
-            raw_sub = {}
-        raw_signals = raw_sub.get("signals", {})
-        if not isinstance(raw_signals, dict):
-            raw_signals = {}
-        raw_used_ids = raw_sub.get("used_chunk_ids", [])
-        if not isinstance(raw_used_ids, list):
-            raw_used_ids = []
+        sources = _collect_stage2_sub_sources(parsed, sub)
 
-        used_chunk_ids = [
-            chunk_id
-            for chunk_id in raw_used_ids
-            if isinstance(chunk_id, str) and chunk_id in allowed_ids
-        ]
-        used_chunk_ids = _dedupe_preserve_order(used_chunk_ids)[:USED_CHUNK_MAX]
+        merged_signals: dict[str, int] = {}
+        used_ids_accum: list[str] = []
+        drawbacks_parts: list[str] = []
+
+        for raw_sub in sources:
+            raw_signals = raw_sub.get("signals", {})
+            if not isinstance(raw_signals, dict):
+                raw_signals = {}
+            for signal in sub["signals"]:
+                sid = signal["sid"]
+                if sid not in raw_signals:
+                    continue
+                score = _normalize_score(raw_signals.get(sid, 0))
+                if score > merged_signals.get(sid, 0):
+                    merged_signals[sid] = score
+
+            raw_used_ids = raw_sub.get("used_chunk_ids", [])
+            if isinstance(raw_used_ids, list):
+                used_ids_accum.extend(
+                    chunk_id
+                    for chunk_id in raw_used_ids
+                    if isinstance(chunk_id, str) and chunk_id in allowed_ids
+                )
+
+            drawbacks = raw_sub.get("drawbacks", raw_sub.get("rationale", ""))
+            if isinstance(drawbacks, str) and drawbacks.strip():
+                drawbacks_parts.append(drawbacks.strip())
 
         signals: dict[str, int] = {}
         has_positive = False
         for signal in sub["signals"]:
-            score = _normalize_score(raw_signals.get(signal["sid"], 0))
+            score = merged_signals.get(signal["sid"], 0)
             signals[signal["sid"]] = score
             has_positive = has_positive or score > 0
+
+        used_chunk_ids = _dedupe_preserve_order(used_ids_accum)[:USED_CHUNK_MAX]
 
         evidence_status = "ok"
         if has_positive and not used_chunk_ids:
@@ -990,9 +1129,7 @@ def _normalize_model_section_output(
         elif len(used_chunk_ids) == 1:
             evidence_status = "sparse_evidence"
 
-        drawbacks = raw_sub.get("drawbacks", raw_sub.get("rationale", ""))
-        if not isinstance(drawbacks, str):
-            drawbacks = ""
+        drawbacks = " ".join(_dedupe_preserve_order(drawbacks_parts))
 
         normalized[sub["sub_id"]] = {
             "signals": signals,
