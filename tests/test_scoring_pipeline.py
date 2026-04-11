@@ -204,7 +204,7 @@ def build_payloads_for_application(application: dict) -> tuple[dict[str, list[st
             payload[sub["sub_id"]] = {
                 "signals": {signal["sid"]: 0 for signal in sub["signals"]},
                 "used_chunk_ids": [],
-                "rationale": f"Limited support for {sub['name']}.",
+                "drawbacks": f"Limited support for {sub['name']}.",
             }
 
         if section["section_key"] == "proposed_research":
@@ -214,7 +214,7 @@ def build_payloads_for_application(application: dict) -> tuple[dict[str, list[st
             payload[proposed_first_sub["sub_id"]] = {
                 "signals": {signal["sid"]: 2 for signal in proposed_first_sub["signals"]},
                 "used_chunk_ids": [pesr_chunk],
-                "rationale": "The application clearly states an important unmet need.",
+                "drawbacks": "The application states an important unmet need, but the evidence remains brief.",
             }
             payload[proposed_second_sub["sub_id"]] = {
                 "signals": {
@@ -222,13 +222,13 @@ def build_payloads_for_application(application: dict) -> tuple[dict[str, list[st
                     proposed_second_sub["signals"][1]["sid"]: 1,
                 },
                 "used_chunk_ids": [abstract_chunk, *drp_chunks[:2]],
-                "rationale": "Methods are clear, but feasibility remains only partially supported.",
+                "drawbacks": "Methods are clear, but feasibility remains only partially supported.",
             }
         elif section["section_key"] == "training_development":
             payload[training_first_sub["sub_id"]] = {
                 "signals": {signal["sid"]: 2 for signal in training_first_sub["signals"]},
                 "used_chunk_ids": [],
-                "rationale": "Training looks strong but this response is intentionally ungrounded.",
+                "drawbacks": "Training looks strong but this response is intentionally ungrounded.",
             }
 
         stage2_payloads.append(payload)
@@ -278,8 +278,9 @@ class PipelineTests(unittest.TestCase):
         self.assertIn("proposed_research", result["features"])
 
         proposed = result["features"]["proposed_research"]["sub_criteria"][0]
-        self.assertEqual(proposed["signals"][0]["model_a_score"], 2)
-        self.assertEqual(proposed["signals"][0]["model_b_score"], 2)
+        self.assertEqual(proposed["signals"][0]["score"], 2)
+        self.assertIn("brief", proposed["drawbacks"])
+        self.assertEqual(proposed["rationale"], proposed["drawbacks"])
         self.assertEqual(proposed["confidence_gap"], 0.0)
         self.assertEqual(proposed["confidence_label"], "high_confidence")
         self.assertGreater(result["overall"]["final_score_0to100"], 0)
@@ -304,8 +305,14 @@ class PipelineTests(unittest.TestCase):
         self.assertIn('"criteria"', first_user)
         self.assertIn('"current_belief_state"', first_user)
         self.assertIn('"signal_implications"', first_user)
+        self.assertNotIn('"Application Form"', first_user)
+        self.assertNotIn('"af.1.a"', first_user)
         self.assertNotIn('"weight"', first_user)
         self.assertNotIn('"good_evidence_ids": ["pesr__001"]', first_user)
+
+        first_schema = scorer.calls[0]["schema"]
+        schema_text = json.dumps(first_schema)
+        self.assertNotIn("af.1", schema_text)
 
     def test_stage2_message_uses_full_text_belief_and_no_weights(self):
         application = sample_application()
@@ -323,6 +330,7 @@ class PipelineTests(unittest.TestCase):
         user = first_stage2_call["messages"][1]["content"]
         self.assertIn('"application_text"', user)
         self.assertIn('"final_belief_state"', user)
+        self.assertIn("`drawbacks` must describe missing evidence", user)
         self.assertNotIn('"weight"', user)
 
     def test_missing_signals_is_monotonic(self):
@@ -338,6 +346,7 @@ class PipelineTests(unittest.TestCase):
         )
 
         updates = result["debug"]["stage1_section_updates"]
+        self.assertFalse(any(sid.startswith("af.") for sid in result["belief_state"]["missing_signals"]))
         previous: set[str] | None = None
         for update in updates:
             current = set(update["missing_signals_after"])
@@ -362,7 +371,6 @@ class PipelineTests(unittest.TestCase):
         self.assertEqual(training["signals"][0]["score_0to5_raw"], 0.0)
         self.assertEqual(training["evidence_count"], 0)
         self.assertTrue(training["missing_evidence"])
-        self.assertEqual(training["missing_evidence_models"], ["single"])
 
     def test_build_evidence_text_inserts_ellipsis_between_non_adjacent_chunks(self):
         pool = build_chunk_pool(sample_application())

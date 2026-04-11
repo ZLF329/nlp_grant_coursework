@@ -71,7 +71,7 @@ JOBS_LOCK = threading.Lock()
 STEP_TEMPLATE = [
     ("stage0", "Stage 0 · Parse + Base Features"),
     ("stage1", "Stage 1 · ORCID Enrichment"),
-    ("stage2", "Stage 2 · Section Belief + Final Scoring"),
+    ("stage2", "Stage 2 · Drawback-Aware Final Scoring"),
 ]
 
 
@@ -231,7 +231,7 @@ def _run_pipeline(job_id: str, upload_path: Path):
                 detail=f"Stage 1 complete · {orcid_features['team_metrics']['resolved_profiles']} ORCID profile(s) resolved")
 
         _update(job_id, step_key="stage2", step_status="running",
-                progress=70, detail="Stage 2: Section belief + final signal scoring…")
+                progress=70, detail="Stage 2: Drawback-aware final signal scoring…")
         from qwen3_ollama import score_application
         scorer = _get_scorer()
         scored = score_application(

@@ -23,6 +23,7 @@ SECTION_ID_PREFIX = {
     "wpcc": "wp",
     "application_form": "af",
 }
+STAGE1_EXCLUDED_SECTION_KEYS = {"application_form"}
 SCORER_ALLOWED_SCORES = (0, 1, 2, 3, 4, 5)
 SCORER_MAX_SCORE = 5
 USED_CHUNK_MAX = 5
@@ -393,11 +394,19 @@ def _all_signal_ids(rubric_sections: list[dict[str, Any]]) -> list[str]:
     return signal_ids
 
 
+def _stage1_rubric_sections(rubric_sections: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    return [
+        section
+        for section in rubric_sections
+        if section["section_key"] not in STAGE1_EXCLUDED_SECTION_KEYS
+    ]
+
+
 def _initial_belief_state(rubric_sections: list[dict[str, Any]]) -> dict[str, Any]:
     return {
         "processed_sections": [],
         "subcriteria_beliefs": {},
-        "missing_signals": _all_signal_ids(rubric_sections),
+        "missing_signals": _all_signal_ids(_stage1_rubric_sections(rubric_sections)),
     }
 
 
@@ -435,6 +444,7 @@ def _signal_sub_map(rubric_sections: list[dict[str, Any]]) -> dict[str, dict[str
 
 
 def _build_stage1_criteria_view(rubric_sections: list[dict[str, Any]]) -> dict[str, Any]:
+    stage1_sections = _stage1_rubric_sections(rubric_sections)
     return {
         "signals": [
             {
@@ -444,7 +454,7 @@ def _build_stage1_criteria_view(rubric_sections: list[dict[str, Any]]) -> dict[s
                 "section_name": section["human_name"],
                 "text": signal["text"],
             }
-            for section in rubric_sections
+            for section in stage1_sections
             for sub in section["sub_criteria"]
             for signal in sub["signals"]
         ]
@@ -609,10 +619,11 @@ def build_section_evidence_schema(
     rubric_sections: list[dict[str, Any]],
     section_chunk_ids: list[str],
 ) -> dict[str, Any]:
-    all_signal_ids = _all_signal_ids(rubric_sections)
+    stage1_sections = _stage1_rubric_sections(rubric_sections)
+    all_signal_ids = _all_signal_ids(stage1_sections)
     sub_ids = [
         sub["sub_id"]
-        for section in rubric_sections
+        for section in stage1_sections
         for sub in section["sub_criteria"]
     ]
     signal_payload = {
@@ -692,7 +703,7 @@ def _normalize_section_evidence_output(
     allowed_ids = set(section_chunk_ids)
     signals_by_sub = {
         sub["sub_id"]: {signal["sid"] for signal in sub["signals"]}
-        for section in rubric_sections
+        for section in _stage1_rubric_sections(rubric_sections)
         for sub in section["sub_criteria"]
     }
     findings_out: list[dict[str, Any]] = []
@@ -857,7 +868,7 @@ def build_final_scoring_messages(
         "Scoring guide: 0=no evidence, 1=very weak, 2=weak, 3=moderate, 4=strong, 5=fully met with clear evidence.\n"
         f"`used_chunk_ids` must contain at most {USED_CHUNK_MAX} grounded chunk IDs.\n"
         "If evidence is missing or weak, give a low score (0-2), not a high one (4-5).\n"
-        "Keep rationales concise and evidence-based."
+        "Keep drawbacks concise and evidence-based."
     )
     user_payload = {
         "application_text": scoped_application_text,
@@ -871,8 +882,10 @@ def build_final_scoring_messages(
         f"1. Output only subcriteria under rubric section `{rubric_section['section_key']}`.\n"
         "2. Prefer chunk IDs that already appear in the belief state when they support the score.\n"
         "3. Use only grounded chunk IDs from the application text / belief state.\n"
-        "4. Each sub_id object must contain `signals`, `used_chunk_ids`, and `rationale`.\n"
-        "5. Return JSON only.\n\n"
+        "4. Each sub_id object must contain `signals`, `used_chunk_ids`, and `drawbacks`.\n"
+        "5. `drawbacks` must describe missing evidence, weak support, caveats, or limitations. "
+        "Mention strengths only when needed to explain why a non-zero score remains justified.\n"
+        "6. Return JSON only.\n\n"
         "Output format example:\n"
         "{\n"
         '  "example.sub": {\n'
@@ -881,7 +894,7 @@ def build_final_scoring_messages(
         '      "example.signal.b": 3\n'
         "    },\n"
         '    "used_chunk_ids": ["example__001", "example__002"],\n'
-        '    "rationale": "The evidence clearly supports the first signal and partially supports the second."\n'
+        '    "drawbacks": "The first signal is clearly supported, but the second has only partial evidence and lacks feasibility detail."\n'
         "  }\n"
         "}"
     )
@@ -917,11 +930,11 @@ def build_scoring_schema(rubric_section: dict[str, Any], all_chunk_ids: list[str
                     },
                     "maxItems": USED_CHUNK_MAX,
                 },
-                "rationale": {
+                "drawbacks": {
                     "type": "string",
                 },
             },
-            "required": ["signals", "used_chunk_ids", "rationale"],
+            "required": ["signals", "used_chunk_ids", "drawbacks"],
             "additionalProperties": False,
         }
     return {
@@ -979,15 +992,16 @@ def _normalize_model_section_output(
         elif len(used_chunk_ids) == 1:
             evidence_status = "sparse_evidence"
 
-        rationale = raw_sub.get("rationale", "")
-        if not isinstance(rationale, str):
-            rationale = ""
+        drawbacks = raw_sub.get("drawbacks", raw_sub.get("rationale", ""))
+        if not isinstance(drawbacks, str):
+            drawbacks = ""
 
         normalized[sub["sub_id"]] = {
             "signals": signals,
             "used_chunk_ids": used_chunk_ids,
             "evidence_status": evidence_status,
-            "rationale": rationale,
+            "drawbacks": drawbacks,
+            "rationale": drawbacks,
             "missing_evidence": has_positive and not used_chunk_ids,
         }
     return normalized
@@ -1169,12 +1183,11 @@ def _build_scored_section(
                 "sid": signal["sid"],
                 "signal_text": signal["text"],
                 "weight": signal["weight"],
-                "model_a_score": score,
-                "model_b_score": score,
+                "score": score,
                 "score_0to5_raw": float(score),
                 "score_0to5_weighted": float(score),
             })
-        rationale = normalized_sub.get("rationale", "")
+        drawbacks = normalized_sub.get("drawbacks", normalized_sub.get("rationale", ""))
         missing_evidence = bool(normalized_sub.get("missing_evidence"))
         section_subs.append({
             "sub_id": sub["sub_id"],
@@ -1188,11 +1201,9 @@ def _build_scored_section(
             "confidence_gap": 0.0,
             "confidence_label": _confidence_label(0.0),
             "signals": signals,
-            "rationale": rationale,
-            "rationale_model_a": rationale,
-            "rationale_model_b": rationale,
+            "drawbacks": drawbacks,
+            "rationale": drawbacks,
             "missing_evidence": missing_evidence,
-            "missing_evidence_models": ["single"] if missing_evidence else [],
         })
 
     return {
