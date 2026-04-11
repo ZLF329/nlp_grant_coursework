@@ -1089,6 +1089,7 @@
             name: criterion.name,
             group_name: criterion.groupName || null,
             score_10: Number(criterion.score || 0),
+            pros: criterion.pros || '',
             drawbacks: criterion.drawbacks || criterion.rationale || '',
             signals: (criterion.signals || []).map(signal => ({
               sid: signal.sid,
@@ -1144,6 +1145,9 @@
       return `<ul class="rationale-list">${rows.map(item => `<li>${rationaleHtml(item)}</li>`).join('')}</ul>`;
     }
     function criterionPros(criterion) {
+      const prosText = (criterion?.pros || '').trim();
+      if (prosText) return [prosText];
+
       const signals = Array.isArray(criterion?.signals) ? criterion.signals : [];
       const pros = signals
         .filter(signal => Number(signal.rawScore || 0) >= 3)
@@ -1219,6 +1223,7 @@
       const weakSignalCount = Number(c.weak_signal_count ?? signals.filter(s => s.plausibility <= 1).length);
       const avgSignalScore = round2(avgOf(signals, s => s.rawScore));
       const avgWeightedScore = round2(avgOf(signals, s => s.weightedScore));
+      const pros = c.pros || c.strengths || '';
       const drawbacks = c.drawbacks || c.rationale || '';
       const evidence = Array.isArray(c.evidence) ? c.evidence.map(ev => ({
         id: ev.id || '',
@@ -1238,6 +1243,7 @@
         evidenceIds: Array.isArray(c.evidence_ids) ? c.evidence_ids : [],
         evidenceTop5: Array.isArray(c.evidence_top5) ? c.evidence_top5 : [],
         evidenceStatus: c.evidence_status || 'ok',
+        pros,
         drawbacks,
         rationale: drawbacks,
         missingEvidence: Boolean(c.missing_evidence || c.missingEvidence),
@@ -1419,7 +1425,7 @@
       };
     }
     function emptyCriterion(name) {
-      return { id:slugify(name), name, groupName:'', exists:'missing', qualityLabel:'missing', score:0, evidence:[], evidenceCount:0, evidenceIds:[], evidenceTop5:[], evidenceStatus:'invalid_evidence', drawbacks:'', rationale:'', missingEvidence:false, missingEvidenceModels:[], avgPlausibility:0, avgSignalScore:0, avgWeightedScore:0, weakSignalCount:0, signals:[], rubricSubscores:{}, rubricAvg:0, rubricText:'No signal detail' };
+      return { id:slugify(name), name, groupName:'', exists:'missing', qualityLabel:'missing', score:0, evidence:[], evidenceCount:0, evidenceIds:[], evidenceTop5:[], evidenceStatus:'invalid_evidence', pros:'', drawbacks:'', rationale:'', missingEvidence:false, missingEvidenceModels:[], avgPlausibility:0, avgSignalScore:0, avgWeightedScore:0, weakSignalCount:0, signals:[], rubricSubscores:{}, rubricAvg:0, rubricText:'No signal detail' };
     }
 
     function getOrderedCriterionNames(sectionPair) {

@@ -7,6 +7,8 @@ from pathlib import Path
 
 from src.pool.build_pool import APPLICATION_CONTEXT_SECTION, build_chunk_pool
 from src.scoring.pipeline import (
+    _cap_perfect_scores_for_caveats,
+    _normalize_model_section_output,
     build_evidence_text,
     load_rubric,
     rule_based_retrieval,
@@ -241,6 +243,66 @@ class PipelineTests(unittest.TestCase):
         self.assertEqual(general["sub_criteria"][0]["group_name"], "Common Characteristics of Good Applications")
         self.assertEqual(len(general["sub_criteria"][0]["signals"]), 4)
 
+    def test_caveated_perfect_scores_are_capped(self):
+        signals = {"x.1.a": 5, "x.1.b": 5, "x.1.c": 4}
+        drawbacks = (
+            "Signal x.1.a is inferred rather than explicit. "
+            "Signal x.1.b is fully supported."
+        )
+
+        capped = _cap_perfect_scores_for_caveats(signals, drawbacks)
+
+        self.assertEqual(capped["x.1.a"], 4)
+        self.assertEqual(capped["x.1.b"], 5)
+        self.assertEqual(capped["x.1.c"], 4)
+
+    def test_general_caveat_caps_all_perfect_scores(self):
+        signals = {"x.1.a": 5, "x.1.b": 5}
+
+        capped = _cap_perfect_scores_for_caveats(
+            signals,
+            "The section is strong, but the evidence is less detailed than ideal.",
+        )
+
+        self.assertEqual(capped, {"x.1.a": 4, "x.1.b": 4})
+
+    def test_benign_no_gap_language_keeps_perfect_scores(self):
+        signals = {"x.1.a": 5, "x.1.b": 4}
+
+        capped = _cap_perfect_scores_for_caveats(
+            signals,
+            "No significant gaps or material caveats were identified.",
+        )
+
+        self.assertEqual(capped, signals)
+
+    def test_stage2_normalizer_requires_missing_signals_and_caps_caveated_fives(self):
+        rubric_section = {
+            "sub_criteria": [
+                {
+                    "sub_id": "x.1",
+                    "signals": [
+                        {"sid": "x.1.a"},
+                        {"sid": "x.1.b"},
+                    ],
+                }
+            ]
+        }
+        parsed = {
+            "x.1": {
+                "signals": {"x.1.a": 5},
+                "used_chunk_ids": ["chunk__001", "unknown__999"],
+                "pros": "Signal x.1.a has relevant support.",
+                "drawbacks": "Signal x.1.a is inferred rather than explicit. Signal x.1.b is missing.",
+            }
+        }
+
+        normalized = _normalize_model_section_output(parsed, rubric_section, ["chunk__001"])
+
+        self.assertEqual(normalized["x.1"]["signals"], {"x.1.a": 4, "x.1.b": 0})
+        self.assertEqual(normalized["x.1"]["used_chunk_ids"], ["chunk__001"])
+        self.assertEqual(normalized["x.1"]["pros"], "Signal x.1.a has relevant support.")
+
     def test_rule_based_retrieval_maps_sections_to_expected_chunks(self):
         application = sample_application()
         rubric = load_rubric(CRITERIA_PATH)
@@ -325,6 +387,7 @@ class PipelineTests(unittest.TestCase):
         user = first_stage2_call["messages"][1]["content"]
         self.assertIn('"application_text"', user)
         self.assertIn('"final_belief_state"', user)
+        self.assertIn("`pros` must describe the strongest directly evidenced strengths", user)
         self.assertIn("`drawbacks` must describe missing evidence", user)
         self.assertNotIn('"weight"', user)
 

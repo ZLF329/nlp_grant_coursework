@@ -3,6 +3,7 @@ from __future__ import annotations
 import datetime as dt
 import json
 import os
+import re
 from pathlib import Path
 from typing import Any
 
@@ -947,25 +948,45 @@ def build_final_scoring_messages(
         "Identifier rules (STRICT):\n"
         "  - Top-level JSON keys MUST be parent sub ids from the allowed list (e.g. `g.4`, `pr.2`).\n"
         "  - NEVER use a signal id (e.g. `g.4.a`, `pr.2.b`) as a top-level key.\n"
-        "  - Each top-level sub id maps to an object with `signals`, `used_chunk_ids`, `drawbacks`.\n"
+        "  - Each top-level sub id maps to an object with `signals`, `used_chunk_ids`, `pros`, `drawbacks`.\n"
         "  - Inside `signals`, use the full signal id (e.g. `g.4.a`) as the key and a 0-5 integer as the value.\n"
         "  - Every signal belonging to a sub must appear under that sub's object — never split a sub's signals "
         "across multiple top-level keys, and never place signals from other subs here.\n"
         "Each signal score must be an integer from 0 to 5 inclusive (0,1,2,3,4,5).\n"
         "Scoring guide: 0=no evidence, 1=very weak, 2=weak, 3=moderate, 4=strong with only minor gaps, "
         "5=perfectly met: complete, specific, directly evidenced, and with no material caveats or missing detail.\n"
+        "If a signal is missing from final_belief_state, you MUST still inspect application_text and score it. "
+        "Do not omit a signal just because Stage 1 did not identify it.\n"
+        "If your drawbacks mention any caveat, inference, missing detail, weak support, or partial support for a signal, "
+        "that signal MUST NOT receive 5; use 4 or lower.\n"
         f"`used_chunk_ids` must contain at most {USED_CHUNK_MAX} grounded chunk IDs.\n"
         "If evidence is missing, give a low score (0-3), not a high one (4-5).\n"
-        "Keep drawbacks concise and evidence-based."
+        "Keep pros and drawbacks concise and evidence-based."
     )
     user_payload = {
         "application_text": scoped_application_text,
         "criteria": stripped_criteria,
         "final_belief_state": final_belief_state,
     }
-    example_sub_id = target_sub_ids[0] if target_sub_ids else "g.4"
-    example_sig_a = f"{example_sub_id}.a"
-    example_sig_b = f"{example_sub_id}.b"
+    example_sub = rubric_section["sub_criteria"][0] if rubric_section["sub_criteria"] else {}
+    example_sub_id = example_sub.get("sub_id") or (target_sub_ids[0] if target_sub_ids else "g.4")
+    example_signal_scores = {
+        signal["sid"]: 5 if idx == 0 else 3
+        for idx, signal in enumerate(example_sub.get("signals", []))
+    } or {
+        f"{example_sub_id}.a": 5,
+        f"{example_sub_id}.b": 3,
+    }
+    example_output = {
+        example_sub_id: {
+            "signals": example_signal_scores,
+            "used_chunk_ids": ["secxx__001", "secxx__002"],
+            "pros": "The first signal is clearly supported by specific, grounded evidence.",
+            "drawbacks": (
+                "Weaker signals have only partial evidence or lack feasibility detail."
+            ),
+        }
+    }
     user = (
         "Input JSON:\n"
         f"{json.dumps(user_payload, ensure_ascii=False, indent=2)}\n\n"
@@ -974,21 +995,14 @@ def build_final_scoring_messages(
         f"Top-level keys MUST come from: {target_sub_ids}.\n"
         "2. Prefer chunk IDs that already appear in the belief state when they support the score.\n"
         "3. Use only grounded chunk IDs from the application text / belief state.\n"
-        "4. Each sub_id object must contain `signals`, `used_chunk_ids`, and `drawbacks`.\n"
-        "5. `drawbacks` must describe missing evidence, weak support, caveats, or limitations. "
+        "4. Each sub_id object must contain `signals`, `used_chunk_ids`, `pros`, and `drawbacks`.\n"
+        "5. The `signals` object must include every signal id listed for that subcriterion, even when the score is 0.\n"
+        "6. `pros` must describe the strongest directly evidenced strengths.\n"
+        "7. `drawbacks` must describe missing evidence, weak support, caveats, or limitations. "
         "Mention strengths only when needed to explain why a non-zero score remains justified.\n"
-        "6. Return JSON only.\n\n"
+        "8. Return JSON only.\n\n"
         "Output format example (shape only — use real sub/signal ids from the target section):\n"
-        "{\n"
-        f'  "{example_sub_id}": {{\n'
-        '    "signals": {\n'
-        f'      "{example_sig_a}": 5,\n'
-        f'      "{example_sig_b}": 3\n'
-        "    },\n"
-        '    "used_chunk_ids": ["secxx__001", "secxx__002"],\n'
-        '    "drawbacks": "The first signal is clearly supported, but the second has only partial evidence and lacks feasibility detail."\n'
-        "  }\n"
-        "}"
+        f"{json.dumps(example_output, ensure_ascii=False, indent=2)}"
     )
     return [
         {"role": "system", "content": system},
@@ -1012,6 +1026,7 @@ def build_scoring_schema(rubric_section: dict[str, Any], all_chunk_ids: list[str
                 "signals": {
                     "type": "object",
                     "properties": signal_properties,
+                    "required": list(signal_properties),
                     "additionalProperties": False,
                 },
                 "used_chunk_ids": {
@@ -1022,11 +1037,14 @@ def build_scoring_schema(rubric_section: dict[str, Any], all_chunk_ids: list[str
                     },
                     "maxItems": USED_CHUNK_MAX,
                 },
+                "pros": {
+                    "type": "string",
+                },
                 "drawbacks": {
                     "type": "string",
                 },
             },
-            "required": ["signals", "used_chunk_ids", "drawbacks"],
+            "required": ["signals", "used_chunk_ids", "pros", "drawbacks"],
             "additionalProperties": False,
         }
     return {
@@ -1042,6 +1060,73 @@ def _normalize_score(value: Any) -> int:
         return 0
     normalized = int(value)
     return normalized if normalized in SCORER_ALLOWED_SCORES and normalized == value else 0
+
+
+_BENIGN_NO_CAVEAT_PHRASES = (
+    "no significant gaps",
+    "no material gaps",
+    "no gaps",
+    "no significant caveats",
+    "no material caveats",
+    "no caveats",
+    "no significant drawbacks",
+    "no material drawbacks",
+    "no significant limitations",
+    "no material limitations",
+    "no limitations",
+    "no weaknesses",
+)
+_MATERIAL_CAVEAT_RE = re.compile(
+    r"\b("
+    r"not explicitly|not explicit|no explicit|not provided|not included|not detailed|"
+    r"not fully|less detailed|missing|lacks?|lacking|limited|partial(?:ly)?|"
+    r"inferred|implied|could be more|could improve|weak|unclear|caveats?|"
+    r"gaps?|limitations?|drawbacks?|however|but"
+    r")\b",
+    flags=re.IGNORECASE,
+)
+
+
+def _has_material_caveat(text: str) -> bool:
+    normalized = (text or "").lower()
+    normalized = re.sub(
+        r"\bno\s+(?:significant|material)?\s*(?:gaps?|caveats?|drawbacks?|limitations?|weaknesses)\b",
+        "",
+        normalized,
+    )
+    normalized = re.sub(
+        r"\bor\s+(?:significant|material)?\s*(?:gaps?|caveats?|drawbacks?|limitations?|weaknesses)\b",
+        "",
+        normalized,
+    )
+    for phrase in _BENIGN_NO_CAVEAT_PHRASES:
+        normalized = normalized.replace(phrase, "")
+    return bool(_MATERIAL_CAVEAT_RE.search(normalized))
+
+
+def _sentence_mentions_signal_with_caveat(drawbacks: str, signal_id: str) -> bool:
+    parts = re.split(r"(?<=[.!?])\s+|\n+", drawbacks or "")
+    signal_re = re.compile(rf"\b{re.escape(signal_id)}\b", flags=re.IGNORECASE)
+    return any(signal_re.search(part) and _has_material_caveat(part) for part in parts)
+
+
+def _cap_perfect_scores_for_caveats(signals: dict[str, int], drawbacks: str) -> dict[str, int]:
+    if not drawbacks or not _has_material_caveat(drawbacks):
+        return signals
+
+    capped = dict(signals)
+    mentioned_signals = [
+        sid
+        for sid in capped
+        if re.search(rf"\b{re.escape(sid)}\b", drawbacks, flags=re.IGNORECASE)
+    ]
+    if mentioned_signals:
+        for sid in mentioned_signals:
+            if capped.get(sid) == 5 and _sentence_mentions_signal_with_caveat(drawbacks, sid):
+                capped[sid] = 4
+        return capped
+
+    return {sid: (4 if score == 5 else score) for sid, score in capped.items()}
 
 
 def _collect_stage2_sub_sources(
@@ -1087,6 +1172,7 @@ def _normalize_model_section_output(
 
         merged_signals: dict[str, int] = {}
         used_ids_accum: list[str] = []
+        pros_parts: list[str] = []
         drawbacks_parts: list[str] = []
 
         for raw_sub in sources:
@@ -1109,6 +1195,10 @@ def _normalize_model_section_output(
                     if isinstance(chunk_id, str) and chunk_id in allowed_ids
                 )
 
+            pros = raw_sub.get("pros", raw_sub.get("strengths", raw_sub.get("advantages", "")))
+            if isinstance(pros, str) and pros.strip():
+                pros_parts.append(pros.strip())
+
             drawbacks = raw_sub.get("drawbacks", raw_sub.get("rationale", ""))
             if isinstance(drawbacks, str) and drawbacks.strip():
                 drawbacks_parts.append(drawbacks.strip())
@@ -1129,12 +1219,15 @@ def _normalize_model_section_output(
         elif len(used_chunk_ids) == 1:
             evidence_status = "sparse_evidence"
 
+        pros = " ".join(_dedupe_preserve_order(pros_parts))
         drawbacks = " ".join(_dedupe_preserve_order(drawbacks_parts))
+        signals = _cap_perfect_scores_for_caveats(signals, drawbacks)
 
         normalized[sub["sub_id"]] = {
             "signals": signals,
             "used_chunk_ids": used_chunk_ids,
             "evidence_status": evidence_status,
+            "pros": pros,
             "drawbacks": drawbacks,
             "rationale": drawbacks,
             "missing_evidence": has_positive and not used_chunk_ids,
@@ -1322,6 +1415,7 @@ def _build_scored_section(
                 "score_0to5_raw": float(score),
                 "score_0to5_weighted": float(score),
             })
+        pros = normalized_sub.get("pros", "")
         drawbacks = normalized_sub.get("drawbacks", normalized_sub.get("rationale", ""))
         missing_evidence = bool(normalized_sub.get("missing_evidence"))
         section_subs.append({
@@ -1336,6 +1430,7 @@ def _build_scored_section(
             "confidence_gap": 0.0,
             "confidence_label": _confidence_label(0.0),
             "signals": signals,
+            "pros": pros,
             "drawbacks": drawbacks,
             "rationale": drawbacks,
             "missing_evidence": missing_evidence,
