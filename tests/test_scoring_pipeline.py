@@ -332,8 +332,9 @@ class PipelineTests(unittest.TestCase):
         analysis_text = pool["pool_lookup"][analysis_ids[0]]["text"]
 
         self.assertIn("Application form structural analysis", analysis_text)
-        self.assertIn("duplicate_sentence_rate", analysis_text)
+        self.assertIn("duplicate_sentence_rate_excluding_budget", analysis_text)
         self.assertIn("transition_phrase_count", analysis_text)
+        self.assertNotIn("chunks=", analysis_text)
 
     def test_score_application_base_builds_belief_state_and_scores(self):
         application = sample_application()

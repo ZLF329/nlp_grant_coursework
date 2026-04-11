@@ -142,8 +142,13 @@ def _format_application_form_analysis(
         return ""
 
     all_text = "\n\n".join(text for _, _, text in section_rows)
+    non_budget_text = "\n\n".join(
+        text
+        for section_name, _, text in section_rows
+        if "budget" not in section_name.lower()
+    ) or all_text
     all_lines = _normalized_lines(all_text)
-    all_sentences = _sentence_tokens(all_text)
+    non_budget_sentences = _sentence_tokens(non_budget_text)
     bullet_marker_count = len(re.findall(r"(?m)^\s*(?:[-*•]|\d+[.)])\s+", all_text))
     numbered_heading_count = len(re.findall(r"(?m)^\s*\d+(?:\.\d+)*[.)]?\s+[A-Z][^\n]{3,120}$", all_text))
     table_like_line_count = len(re.findall(r"(?im)\b(year\s+1|year\s+2|year\s+3|total cost|total \(|£)\b", all_text))
@@ -162,7 +167,7 @@ def _format_application_form_analysis(
     ))
 
     section_summary_lines = [
-        f"- {section_name}: chunks={len(chunk_ids)}, words={_word_count(text)}"
+        f"- {section_name}: words={_word_count(text)}"
         for section_name, chunk_ids, text in section_rows
     ]
 
@@ -195,7 +200,7 @@ def _format_application_form_analysis(
         "section labels, list markers, and table structure as the available evidence.",
         "",
         "Duplication and repetition indicators:",
-        f"- duplicate_sentence_rate={_duplication_rate(all_sentences)}",
+        f"- duplicate_sentence_rate_excluding_budget={_duplication_rate(non_budget_sentences)}",
         f"- repeated_line_rate={_duplication_rate(all_lines)}",
         *overlap_lines,
         "",
