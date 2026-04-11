@@ -10,6 +10,7 @@ MAX_CHARS = 1200
 APPLICATION_DETAILS_KEY = "APPLICATION DETAILS"
 SUMMARY_BUDGET_KEY = "SUMMARY BUDGET"
 APPLICATION_CONTEXT_SECTION = "Application Context"
+APPLICATION_FORM_ANALYSIS_SECTION = "Application Form Analysis"
 
 
 @dataclass(frozen=True)
@@ -87,6 +88,123 @@ def _format_combined_context(entries: list[tuple[str, str]]) -> str:
         for text, source_path in entries
         if text.strip()
     )
+
+
+def _word_count(text: str) -> int:
+    return len(re.findall(r"\b\w+\b", text or ""))
+
+
+def _normalized_lines(text: str) -> list[str]:
+    lines: list[str] = []
+    for line in (text or "").splitlines():
+        clean = re.sub(r"\s+", " ", line).strip().lower()
+        if len(clean.split()) >= 4:
+            lines.append(clean)
+    return lines
+
+
+def _sentence_tokens(text: str) -> list[str]:
+    sentences: list[str] = []
+    for sentence in re.split(r"(?<=[.!?])\s+|\n+", text or ""):
+        clean = re.sub(r"[^a-z0-9 ]+", "", sentence.lower()).strip()
+        if len(clean.split()) >= 5:
+            sentences.append(clean)
+    return sentences
+
+
+def _duplication_rate(items: list[str]) -> float:
+    if not items:
+        return 0.0
+    return round(1 - (len(set(items)) / len(items)), 3)
+
+
+def _jaccard_similarity(text_a: str, text_b: str) -> float:
+    words_a = set(re.findall(r"\b[a-z]{3,}\b", (text_a or "").lower()))
+    words_b = set(re.findall(r"\b[a-z]{3,}\b", (text_b or "").lower()))
+    if not words_a or not words_b:
+        return 0.0
+    return round(len(words_a & words_b) / len(words_a | words_b), 3)
+
+
+def _format_application_form_analysis(
+    section_chunk_ids: dict[str, list[str]],
+    pool_lookup: dict[str, dict[str, str]],
+) -> str:
+    section_rows: list[tuple[str, list[str], str]] = []
+    for section_name, chunk_ids in section_chunk_ids.items():
+        if section_name == APPLICATION_FORM_ANALYSIS_SECTION:
+            continue
+        text = "\n\n".join(pool_lookup[chunk_id]["text"] for chunk_id in chunk_ids)
+        if text.strip():
+            section_rows.append((section_name, chunk_ids, text))
+
+    if not section_rows:
+        return ""
+
+    all_text = "\n\n".join(text for _, _, text in section_rows)
+    all_lines = _normalized_lines(all_text)
+    all_sentences = _sentence_tokens(all_text)
+    bullet_marker_count = len(re.findall(r"(?m)^\s*(?:[-*•]|\d+[.)])\s+", all_text))
+    numbered_heading_count = len(re.findall(r"(?m)^\s*\d+(?:\.\d+)*[.)]?\s+[A-Z][^\n]{3,120}$", all_text))
+    table_like_line_count = len(re.findall(r"(?im)\b(year\s+1|year\s+2|year\s+3|total cost|total \(|£)\b", all_text))
+    emphasis_marker_count = len(re.findall(r"(\*\*|__|<b>|</b>|\b[A-Z][A-Z /&-]{8,}\b)", all_text))
+    transition_count = len(re.findall(
+        r"\b(however|therefore|furthermore|moreover|in addition|to do this|for example|"
+        r"as a result|this will|this project|aligns? with|building on|in phase|phase \d)\b",
+        all_text,
+        flags=re.IGNORECASE,
+    ))
+    objective_method_link_count = len(re.findall(
+        r"\b(aims?|objectives?|research questions?|methods?|workstreams?|work packages?|"
+        r"phase \d|project plan|data analysis|impact|dissemination|budget|justification)\b",
+        all_text,
+        flags=re.IGNORECASE,
+    ))
+
+    section_summary_lines = [
+        f"- {section_name}: chunks={len(chunk_ids)}, words={_word_count(text)}"
+        for section_name, chunk_ids, text in section_rows
+    ]
+
+    overlap_rows: list[tuple[str, str, float]] = []
+    for idx, (section_a, _, text_a) in enumerate(section_rows):
+        for section_b, _, text_b in section_rows[idx + 1:]:
+            score = _jaccard_similarity(text_a, text_b)
+            if score >= 0.18:
+                overlap_rows.append((section_a, section_b, score))
+    overlap_rows = sorted(overlap_rows, key=lambda row: row[2], reverse=True)[:8]
+    overlap_lines = [
+        f"- {section_a} <-> {section_b}: lexical_overlap={score}"
+        for section_a, section_b, score in overlap_rows
+    ] or ["- No high cross-section lexical overlap detected at threshold 0.18."]
+
+    return "\n".join([
+        "Application form structural analysis derived from parser output.",
+        "Use this single derived chunk as evidence for Application Form criteria af.*.",
+        "",
+        "Section coverage and hierarchy:",
+        *section_summary_lines,
+        "",
+        "Formatting and structure indicators:",
+        f"- parser_sections_detected={len(section_rows)}",
+        f"- bullet_or_numbered_list_markers={bullet_marker_count}",
+        f"- numbered_heading_like_lines={numbered_heading_count}",
+        f"- table_like_budget_lines={table_like_line_count}",
+        f"- extracted_emphasis_markers={emphasis_marker_count}",
+        "- Parser limitation: bold/emphasis may be lost during text extraction; use extracted headings, "
+        "section labels, list markers, and table structure as the available evidence.",
+        "",
+        "Duplication and repetition indicators:",
+        f"- duplicate_sentence_rate={_duplication_rate(all_sentences)}",
+        f"- repeated_line_rate={_duplication_rate(all_lines)}",
+        *overlap_lines,
+        "",
+        "Logical flow and coherence indicators:",
+        f"- transition_phrase_count={transition_count}",
+        f"- objective_method_budget_link_terms={objective_method_link_count}",
+        "- Section order moves from applicant/context, plain summary and abstract, research plan, PPI, "
+        "training/support, and budget where those sections are present.",
+    ])
 
 
 def build_chunk_pool(application: dict[str, Any], max_chars: int = MAX_CHARS) -> dict[str, Any]:
@@ -172,6 +290,15 @@ def build_chunk_pool(application: dict[str, Any], max_chars: int = MAX_CHARS) ->
             APPLICATION_CONTEXT_SECTION,
             APPLICATION_CONTEXT_SECTION,
             combined_context,
+            split=False,
+        )
+
+    application_form_analysis = _format_application_form_analysis(section_chunk_ids, pool_lookup)
+    if application_form_analysis:
+        add_leaf(
+            APPLICATION_FORM_ANALYSIS_SECTION,
+            APPLICATION_FORM_ANALYSIS_SECTION,
+            application_form_analysis,
             split=False,
         )
 

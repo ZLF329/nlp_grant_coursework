@@ -9,6 +9,7 @@ from typing import Any
 
 from src.pool.build_pool import (
     APPLICATION_CONTEXT_SECTION,
+    APPLICATION_FORM_ANALYSIS_SECTION,
     MAX_CHARS,
     build_chunk_pool,
     write_pool_artifacts,
@@ -61,6 +62,7 @@ SECTION_TO_PARSER_SECTIONS: dict[str, list[str] | None] = {
     ],
     "sites_support": [
         APPLICATION_CONTEXT_SECTION,
+        "Training & Development and Research Support",
         "SUPPORT AND MENTORSHIP",
     ],
     "wpcc": [
@@ -69,7 +71,9 @@ SECTION_TO_PARSER_SECTIONS: dict[str, list[str] | None] = {
         "Working with People and Communities Summary",
         "Detailed Research Plan",
     ],
-    "application_form": None,
+    "application_form": [
+        APPLICATION_FORM_ANALYSIS_SECTION,
+    ],
 }
 CONFIDENCE_TO_SCORE = {
     "low_confidence": 0,
@@ -935,6 +939,13 @@ def build_final_scoring_messages(
         else "Application text contains the full application (no scoping applied)."
     )
     target_sub_ids = [sub["sub_id"] for sub in rubric_section["sub_criteria"]]
+    application_form_note = (
+        "For Application Form scoring, the application text is a derived structural-analysis chunk. "
+        "Use its metrics for formatting, duplication, and coherence signals; do not penalize missing "
+        "bold/emphasis markers unless the analysis indicates they are absent rather than parser-lost.\n"
+        if rubric_section["section_key"] == "application_form"
+        else ""
+    )
     system = (
         "You are scoring one rubric section of a grant application.\n\n"
         "Return JSON only.\n"
@@ -944,6 +955,7 @@ def build_final_scoring_messages(
         f"{scope_note}\n"
         "Use the final belief state as the primary evidence index.\n"
         "Use the application text only to verify, refine, or reject what the belief state suggests.\n"
+        f"{application_form_note}"
         "Do not score subcriteria outside the target rubric section.\n"
         "Identifier rules (STRICT):\n"
         "  - Top-level JSON keys MUST be parent sub ids from the allowed list (e.g. `g.4`, `pr.2`).\n"

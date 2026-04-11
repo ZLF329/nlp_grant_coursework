@@ -5,7 +5,11 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from src.pool.build_pool import APPLICATION_CONTEXT_SECTION, build_chunk_pool
+from src.pool.build_pool import (
+    APPLICATION_CONTEXT_SECTION,
+    APPLICATION_FORM_ANALYSIS_SECTION,
+    build_chunk_pool,
+)
 from src.scoring.pipeline import (
     _cap_perfect_scores_for_caveats,
     _normalize_model_section_output,
@@ -313,10 +317,23 @@ class PipelineTests(unittest.TestCase):
         all_chunk_ids = list(pool_lookup)
 
         self.assertEqual(retrieved["general"], all_chunk_ids)
-        self.assertEqual(retrieved["application_form"], all_chunk_ids)
+        application_form_sections = {pool_lookup[chunk_id]["parser_section"] for chunk_id in retrieved["application_form"]}
+        self.assertEqual(application_form_sections, {APPLICATION_FORM_ANALYSIS_SECTION})
 
         training_sections = {pool_lookup[chunk_id]["parser_section"] for chunk_id in retrieved["training_development"]}
         self.assertEqual(training_sections, {APPLICATION_CONTEXT_SECTION, "Training & Development and Research Support"})
+
+        sites_sections = {pool_lookup[chunk_id]["parser_section"] for chunk_id in retrieved["sites_support"]}
+        self.assertIn("Training & Development and Research Support", sites_sections)
+
+    def test_chunk_pool_adds_application_form_analysis(self):
+        pool = build_chunk_pool(sample_application())
+        analysis_ids = pool["section_chunk_ids"][APPLICATION_FORM_ANALYSIS_SECTION]
+        analysis_text = pool["pool_lookup"][analysis_ids[0]]["text"]
+
+        self.assertIn("Application form structural analysis", analysis_text)
+        self.assertIn("duplicate_sentence_rate", analysis_text)
+        self.assertIn("transition_phrase_count", analysis_text)
 
     def test_score_application_base_builds_belief_state_and_scores(self):
         application = sample_application()
