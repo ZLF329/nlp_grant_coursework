@@ -365,7 +365,7 @@
       font-weight: 700;
       color: var(--text);
     }
-    .rail-sub, .small-copy, .snippet-source, .table-sub, .metric-sub, .narrative-copy, .confidence-copy, .empty-copy {
+    .rail-sub, .small-copy, .snippet-source, .table-sub, .metric-sub, .narrative-copy, .rationale-copy, .empty-copy {
       font-size: 12px;
       color: var(--text-2);
       line-height: 1.55;
@@ -584,7 +584,7 @@
     .evidence-tag.warning { background: var(--warning-bg); color: var(--warning); }
     .evidence-tag.negative { background: var(--negative-bg); color: var(--negative); }
     .evidence-tag.neutral { background: var(--neutral-bg); color: var(--neutral); }
-    .confidence-box {
+    .rationale-box {
       border: 1px dashed #d7d0c5;
       background: var(--surface-soft);
       border-radius: var(--radius-m);
@@ -629,6 +629,55 @@
       letter-spacing: .08em;
       text-transform: uppercase;
       color: var(--text-3);
+    }
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      background: rgba(15,23,42,.42);
+      backdrop-filter: blur(10px);
+    }
+    .modal-card {
+      width: min(760px, 100%);
+      max-height: min(780px, calc(100vh - 48px));
+      overflow: auto;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-l);
+      background: var(--surface);
+      box-shadow: 0 24px 80px rgba(15,23,42,.22);
+      padding: 20px;
+      display: grid;
+      gap: 16px;
+    }
+    .modal-card .card-top {
+      align-items: flex-start;
+    }
+    .modal-close {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-s);
+      width: 34px;
+      height: 34px;
+      background: var(--surface-soft);
+      color: var(--text);
+      cursor: pointer;
+      font: 800 18px/1 "Inter", system-ui, sans-serif;
+    }
+    .rationale-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .rationale-list {
+      margin: 0;
+      padding-left: 18px;
+      display: grid;
+      gap: 8px;
+      font-size: 13px;
+      line-height: 1.55;
+      color: var(--text);
     }
     .status-stack, .table-actions {
       display: flex;
@@ -733,6 +782,7 @@
       .hero-values { gap: 10px; }
       .hero-score { font-size: 40px; }
       .section-title { font-size: 28px; }
+      .rationale-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -777,7 +827,6 @@
           <div class="tabs" id="modeTabs" aria-label="Display mode">
             <button class="tab active" data-mode="absolute">Absolute</button>
             <button class="tab" data-mode="delta">Delta</button>
-            <button class="tab" data-mode="evidence">Evidence</button>
           </div>
           <button class="ghost-btn" id="shareBtn" type="button">Copy summary</button>
           <button class="primary-btn" id="exportBtn" type="button">Print / PDF</button>
@@ -858,7 +907,6 @@
                 <span class="hero-arrow" id="heroArrow">→</span>
                 <span class="hero-score" id="afterScore">—</span>
                 <span class="delta-pill" id="heroDelta">0 pts</span>
-                <span class="status-pill" id="heroConfidence">Confidence: High</span>
               </div>
               <p class="small-copy" id="heroInterpretation"></p>
             </div>
@@ -926,7 +974,7 @@
         <div class="drawer-head">
           <div>
             <p class="eyebrow" id="drawerEyebrow">criterion drawer</p>
-            <h3 class="card-title" id="drawerTitle">Criterion evidence</h3>
+            <h3 class="card-title" id="drawerTitle">Criterion detail</h3>
           </div>
           <span class="delta-pill" id="drawerDelta">0 pts</span>
         </div>
@@ -934,30 +982,14 @@
         <section class="drawer-section">
           <div class="card-top">
             <h4 class="card-title">Summary</h4>
-            <span class="status-pill" id="drawerStatus">High confidence</span>
+            <span class="status-pill" id="drawerStatus">Selected</span>
           </div>
           <p class="narrative-copy" id="drawerSummary"></p>
         </section>
 
         <section class="drawer-section">
-          <div class="card-top">
-            <h4 class="card-title">Evidence</h4>
-            <span class="evidence-tag neutral" id="metricFocusTag">Criterion view</span>
-          </div>
-          <div class="evidence-list" id="evidenceList"></div>
-        </section>
-
-        <section class="drawer-section">
           <h4 class="card-title" id="concernHeading">Notes / concerns</h4>
           <div class="evidence-list" id="concernList"></div>
-        </section>
-
-        <section class="confidence-box">
-          <div class="card-top">
-            <h4 class="card-title">Stage 2 drawbacks</h4>
-            <span class="status-pill" id="confidencePill">Confidence: High</span>
-          </div>
-          <div class="confidence-copy rationale-stack" id="confidenceText"></div>
         </section>
       </aside>
     </section>
@@ -977,6 +1009,20 @@
         </table>
       </div>
     </section>
+
+    <div class="modal-backdrop hidden" id="rationaleModal" role="dialog" aria-modal="true" aria-labelledby="rationaleModalTitle">
+      <div class="modal-card">
+        <div class="card-top">
+          <div>
+            <p class="eyebrow" id="rationaleModalEyebrow">rationale</p>
+            <h3 class="card-title" id="rationaleModalTitle">Criterion rationale</h3>
+            <p class="small-copy" id="rationaleModalSubtitle"></p>
+          </div>
+          <button class="modal-close" id="rationaleModalClose" type="button" aria-label="Close rationale">×</button>
+        </div>
+        <div class="rationale-stack" id="rationaleModalBody"></div>
+      </div>
+    </div>
 
     <div class="footer-note" style="font-family:'Inter',system-ui,sans-serif;">Grant AI Review Workspace · Load a processed result or use the file buttons to load 1–2 JSONs for comparison.</div>
   </div>
@@ -1063,28 +1109,10 @@
       if (risk === 'High') return 'risk-badge risk-high';
       return 'risk-badge risk-medium';
     }
-    function confidenceFromSection(section) {
-      const o = section.overall;
-      if (!o) return 'Low';
-      if ((o.avgPlausibility || 0) >= 4.2 && (o.weakSignalCount || 0) === 0) return 'High';
-      if ((o.avgPlausibility || 0) >= 3.2) return 'Medium';
-      return 'Low';
-    }
     function riskFromScore(score) {
       if (score >= 85) return 'Low';
       if (score >= 65) return 'Medium';
       return 'High';
-    }
-    function riskFromWeakSignals(count) {
-      if (count <= 1) return 'Low';
-      if (count <= 3) return 'Medium';
-      return 'High';
-    }
-    function flagBadge(flag, plausibility) {
-      if (flag === 'hallucination') return `🔥🔥🔥 p${plausibility}`;
-      if (flag === 'weak_evidence') return `🔥🔥 p${plausibility}`;
-      if (flag === 'low_confidence') return plausibility <= 2 ? `🔥 p${plausibility}` : `🟡 p${plausibility}`;
-      return `p${plausibility}`;
     }
     function evidenceStatusLabel(status) {
       if (status === 'invalid_evidence') return 'invalid';
@@ -1107,22 +1135,58 @@
         .replace(/'/g, '&#39;');
     }
     function rationaleHtml(text) {
-      const safe = escapeHtml((text || '').trim() || 'No drawbacks returned.');
+      const safe = escapeHtml((text || '').trim() || 'No rationale returned.');
       return safe.replace(/\n/g, '<br>');
     }
-    function missingEvidenceBadge(criterion) {
-      if (!criterion?.missingEvidence) return '';
-      return `<span class="evidence-tag negative">! Missing evidence</span>`;
+    function listHtml(items, emptyText) {
+      const rows = (items || []).filter(Boolean);
+      if (!rows.length) return `<p class="rationale-copy">${escapeHtml(emptyText)}</p>`;
+      return `<ul class="rationale-list">${rows.map(item => `<li>${rationaleHtml(item)}</li>`).join('')}</ul>`;
+    }
+    function criterionPros(criterion) {
+      const signals = Array.isArray(criterion?.signals) ? criterion.signals : [];
+      const pros = signals
+        .filter(signal => Number(signal.rawScore || 0) >= 3)
+        .slice(0, 5)
+        .map(signal => {
+          const note = signal.note || signal.rationale || '';
+          return note ? `${signal.text}: ${note}` : signal.text;
+        });
+      if (!pros.length && Number(criterion?.score || 0) >= 7) {
+        pros.push('The score suggests this sub-criterion is comparatively strong.');
+      }
+      return pros;
+    }
+    function criterionCons(criterion) {
+      const signals = Array.isArray(criterion?.signals) ? criterion.signals : [];
+      const cons = [];
+      const drawbackText = (criterion?.drawbacks || criterion?.rationale || '').trim();
+      if (drawbackText) cons.push(drawbackText);
+      signals
+        .filter(signal => Number(signal.rawScore || 0) <= 2)
+        .slice(0, 5)
+        .forEach(signal => {
+          const note = signal.note || signal.rationale || '';
+          cons.push(note ? `${signal.text}: ${note}` : signal.text);
+        });
+      if (!cons.length && Number(criterion?.score || 0) < 7) {
+        cons.push('The score suggests this sub-criterion needs more detail.');
+      }
+      return cons;
     }
     function rationaleCardsHtml(criterion, labelPrefix) {
       const prefix = labelPrefix ? `${labelPrefix} ` : '';
-      const warning = criterion?.missingEvidence
-        ? `<div class="rationale-warning">! Missing evidence / 缺失证据 · The model returned a positive score without valid chunk evidence.</div>`
-        : '';
-      return `${warning}
-        <div class="rationale-card">
-          <div class="rationale-label">${escapeHtml(prefix)}Drawbacks / 缺点</div>
-          <div>${rationaleHtml(criterion?.drawbacks || criterion?.rationale || '')}</div>
+      return `
+        ${prefix ? `<div class="rationale-heading">${escapeHtml(prefix)}review</div>` : ''}
+        <div class="rationale-grid">
+          <div class="rationale-card">
+            <div class="rationale-label">Pros / 优点</div>
+            ${listHtml(criterionPros(criterion), 'No clear strengths were returned for this item.')}
+          </div>
+          <div class="rationale-card">
+            <div class="rationale-label">Cons / 缺点</div>
+            ${listHtml(criterionCons(criterion), 'No clear limitations were returned for this item.')}
+          </div>
         </div>`;
     }
 
@@ -1166,8 +1230,6 @@
         id: c.sub_id || c.id || slugify(c.name || ('criterion-' + idx)),
         name: c.name || `Sub-criterion ${idx + 1}`,
         groupName: c.group_name || '',
-        confidenceLabel: c.confidence_label || '',
-        confidenceGap: Number(c.confidence_gap ?? 0),
         exists: c.exists || (Number(c.score_10 || c.quality_score_0to10 || 0) > 0 ? 'yes' : 'no'),
         qualityLabel: c.quality || evidenceStatusLabel(c.evidence_status),
         score: Number(c.score_10 || c.quality_score_0to10 || 0),
@@ -1426,8 +1488,8 @@
       return [
         { label:'Final score', before:o.finalScore, after:o.finalScore, valueLabel:'100 scale' },
         { label:'Signal avg', before:(o.avgSignalScore || 0), after:(o.avgSignalScore || 0), valueLabel:'0–5 scale' },
-        { label:'Weak signals', before:o.weakSignalCount || 0, after:o.weakSignalCount || 0, valueLabel:'raw count' },
-        { label:'Evidence count', before:o.evidenceCount || 0, after:o.evidenceCount || 0, valueLabel:'raw count' },
+        { label:'Coverage', before:o.coverage || 0, after:o.coverage || 0, valueLabel:'100 scale' },
+        { label:'Quality', before:o.quality || 0, after:o.quality || 0, valueLabel:'100 scale' },
         { label:'Sub-criteria', before:o.totalItems || 0, after:o.totalItems || 0, valueLabel:'raw count' }
       ];
     }
@@ -1438,8 +1500,8 @@
       return [
         { label:'Final score', before:before.finalScore, after:after.finalScore, valueLabel:'100 scale' },
         { label:'Signal avg', before:(before.avgSignalScore || 0), after:(after.avgSignalScore || 0), valueLabel:'0–5 scale' },
-        { label:'Weak signals', before:before.weakSignalCount || 0, after:after.weakSignalCount || 0, valueLabel:'raw count' },
-        { label:'Evidence count', before:before.evidenceCount || 0, after:after.evidenceCount || 0, valueLabel:'raw count' },
+        { label:'Coverage', before:before.coverage || 0, after:after.coverage || 0, valueLabel:'100 scale' },
+        { label:'Quality', before:before.quality || 0, after:after.quality || 0, valueLabel:'100 scale' },
         { label:'Sub-criteria', before:before.totalItems || 0, after:after.totalItems || 0, valueLabel:'raw count' }
       ];
     }
@@ -1450,10 +1512,9 @@
       const low = [...(section.criteria || [])].sort((a,b)=> a.score - b.score);
       const strong = [];
       strong.push(`${section.name} scores ${fmtScore(o.finalScore)} / 100. Signal average is ${round1(o.avgSignalScore || 0)} on the 0–5 scale.`);
-      strong.push(`This section contains ${o.totalItems} sub-criteria, ${o.signalCount} signals, and ${o.evidenceCount} cited chunks.`);
+      strong.push(`This section contains ${o.totalItems} sub-criteria and ${o.signalCount} signals.`);
       if (top[0]) strong.push(`Top sub-criterion: "${top[0].name}" scored ${fmtScore(top[0].score)} / 10.`);
       const risks = [];
-      if ((o.weakSignalCount || 0) > 0) risks.push(`${o.weakSignalCount} sub-criteria are low confidence.`);
       if ((o.avgSignalScore || 0) < 2.5) risks.push(`Average signal score is only ${round1(o.avgSignalScore || 0)} / 5.`);
       if (low[0]) risks.push(`Lowest-scoring sub-criterion is "${low[0].name}" at ${fmtScore(low[0].score)} / 10.`);
       if (!section.criteria.length) risks.push('No scored sub-criteria were detected for this module.');
@@ -1483,7 +1544,6 @@
       } else {
         risks.push('No sub-criterion score regressed in this section.');
       }
-      if ((after.overall.weakSignalCount || 0) > 0) risks.push(`After-review still has ${after.overall.weakSignalCount} low-confidence sub-criteria.`);
       if ((after.overall.avgSignalScore || 0) < 2.5) risks.push(`After-review average signal score is still only ${round1(after.overall.avgSignalScore || 0)} / 5.`);
       return { strong, risks };
     }
@@ -1502,8 +1562,8 @@
       strip.innerHTML = pills.join('');
       document.getElementById('pageTitle').textContent = mode === 'compare' ? 'Grant Comparator' : 'Grant Self-Review';
       document.getElementById('pageSubtitle').textContent = mode === 'compare'
-        ? 'Compare two scoring JSON files and inspect movement in section score, confidence, weak signals, and evidence.'
-        : 'Inspect one scoring JSON file section by section, with sub-criteria, signal scores, belief-grounded evidence, and chunk citations.';
+        ? 'Compare two scoring JSON files and inspect movement in section and sub-criterion scores.'
+        : 'Inspect one scoring JSON file section by section, with sub-criteria, signal scores, and rationale.';
     }
 
     function renderKpis() {
@@ -1518,12 +1578,12 @@
           { label:'Final score', value:`${fmtScore(review.overall.finalScore)}`,
             pillHtml:`<span class="status-pill status-positive">${riskFromScore(review.overall.finalScore)} risk</span>`,
             desc:`Avg signal ${round1(review.overall.avgSignalScore || 0)} on 0–5 scale` },
-          { label:'Weak signals', value:`${review.overall.weakSignalCount || 0}`,
-            pillHtml:`<span class="${statusClassFromRisk(riskFromWeakSignals(review.overall.weakSignalCount || 0))}">${riskFromWeakSignals(review.overall.weakSignalCount || 0)} risk</span>`,
-            desc:`${review.overall.signalCount || 0} total signals` },
-          { label:'Evidence chunks', value:`${review.overall.evidenceCount}`,
-            pillHtml:`<span class="status-pill status-neutral">Top-5 slots</span>`,
-            desc:`Chunk-grounded citations across all sub-criteria` },
+          { label:'Signal average', value:`${round1(review.overall.avgSignalScore || 0)} / 5`,
+            pillHtml:`<span class="status-pill status-neutral">${review.overall.signalCount || 0} signals</span>`,
+            desc:'Scoring signal average across all sub-criteria' },
+          { label:'Sub-criteria', value:`${review.overall.totalItems || 0}`,
+            pillHtml:`<span class="status-pill status-neutral">${review.overall.goodItems || 0} scored</span>`,
+            desc:'Criteria detected across the loaded review' },
           { label:team ? 'Team signals' : 'Run info',
             value:team ? `${team.team_size} person` : `${review.runInfo.model || 'Unknown model'}`,
             pillHtml:team ? `<span class="status-pill status-neutral">H-index ${fmtScore(team.avg_h_index || 0)}</span>` : `<span class="status-pill status-neutral">${review.runInfo.judgeModel || 'Judge'}</span>`,
@@ -1540,14 +1600,14 @@
           { label:'Overall score', value:`${fmtScore(before.overall.finalScore)} → ${fmtScore(after.overall.finalScore)}`,
             pillHtml:`<span class="${pillClassFromDelta(scoreDelta(before.overall.finalScore, after.overall.finalScore))}">${fmtDelta(scoreDelta(before.overall.finalScore, after.overall.finalScore))}</span>`,
             desc:`Avg signal ${round1(before.overall.avgSignalScore || 0)} → ${round1(after.overall.avgSignalScore || 0)} on 0–5 scale` },
-          { label:'Weak signals', value:`${before.overall.weakSignalCount || 0} → ${after.overall.weakSignalCount || 0}`,
-            pillHtml:`<span class="${pillClassFromDelta(scoreDelta(before.overall.weakSignalCount || 0, after.overall.weakSignalCount || 0) * -1)}">${fmtDelta(scoreDelta(after.overall.weakSignalCount || 0, before.overall.weakSignalCount || 0), '')}</span>`,
-            desc:`Evidence chunks ${before.overall.evidenceCount} → ${after.overall.evidenceCount}` },
+          { label:'Signal average', value:`${round1(before.overall.avgSignalScore || 0)} → ${round1(after.overall.avgSignalScore || 0)}`,
+            pillHtml:`<span class="${pillClassFromDelta(scoreDelta(before.overall.avgSignalScore || 0, after.overall.avgSignalScore || 0))}">${fmtDelta(scoreDelta(before.overall.avgSignalScore || 0, after.overall.avgSignalScore || 0), '/5')}</span>`,
+            desc:'Average scoring signal movement' },
           { label:'Largest gain', value:gain.name,
             pillHtml:`<span class="${pillClassFromDelta(gain.delta)}">${fmtDelta(gain.delta)}</span>`,
             desc:`Best section movement across the loaded pair` },
-          { label:'Highest remaining risk', value:risk ? risk.name : '—',
-            pillHtml:risk ? `<span class="${statusClassFromRisk(riskFromWeakSignals(risk.after.overall.weakSignalCount || 0))}">${riskFromWeakSignals(risk.after.overall.weakSignalCount || 0)} weak-signal risk</span>` : '<span class="risk-badge risk-medium">No data</span>',
+          { label:'Lowest section', value:risk ? risk.name : '—',
+            pillHtml:risk ? `<span class="${statusClassFromRisk(riskFromScore(risk.after.overall.finalScore || 0))}">${riskFromScore(risk.after.overall.finalScore || 0)} risk</span>` : '<span class="risk-badge risk-medium">No data</span>',
             desc:risk ? `After score ${fmtScore(risk.after.overall.finalScore)} / 100` : 'Load two reviews to compare' }
         ];
       }
@@ -1585,15 +1645,15 @@
           const delta = scoreDelta(beforeScore, afterScore);
           const active = pair.id === state.selectedSectionId ? 'active' : '';
           const currentScore = mode === 'compare' ? afterScore : beforeScore;
-          const currentWeak = mode === 'compare' ? (pair.after.overall.weakSignalCount || 0) : (pair.before.overall.weakSignalCount || 0);
+          const currentItems = mode === 'compare' ? (pair.after.overall.totalItems || 0) : (pair.before.overall.totalItems || 0);
           const subtitle = mode === 'compare'
-            ? `${fmtScore(beforeScore)} → ${fmtScore(afterScore)} · ${pair.before.overall.weakSignalCount || 0} → ${pair.after.overall.weakSignalCount || 0} weak`
-            : `${fmtScore(currentScore)} / 100 · ${currentWeak} weak`;
+            ? `${fmtScore(beforeScore)} → ${fmtScore(afterScore)} · ${currentItems} sub-criteria`
+            : `${fmtScore(currentScore)} / 100 · ${currentItems} sub-criteria`;
           return `
             <button class="rail-item ${active}" data-section-id="${pair.id}">
               <div class="rail-top">
                 <h4 class="rail-title">${pair.name}</h4>
-                <span class="${mode === 'compare' ? pillClassFromDelta(delta) : statusClassFromRisk(riskFromWeakSignals(currentWeak))}">${mode === 'compare' ? fmtDelta(delta) : riskFromWeakSignals(currentWeak)}</span>
+                <span class="${mode === 'compare' ? pillClassFromDelta(delta) : statusClassFromRisk(riskFromScore(currentScore))}">${mode === 'compare' ? fmtDelta(delta) : riskFromScore(currentScore)}</span>
               </div>
               <div class="rail-sub">${subtitle}</div>
               <div class="score-track"><div class="score-fill" style="width:${clamp(currentScore,0,100)}%"></div></div>
@@ -1619,22 +1679,19 @@
       const beforeScore = pair.before.overall.finalScore || 0;
       const afterScore = mode === 'compare' ? (pair.after.overall.finalScore || 0) : beforeScore;
       const delta = scoreDelta(beforeScore, afterScore);
-      const risk = riskFromWeakSignals(mode === 'compare' ? (pair.after.overall.weakSignalCount || 0) : (pair.before.overall.weakSignalCount || 0));
-      const conf = confidenceFromSection(mode === 'compare' ? pair.after : pair.before);
+      const risk = riskFromScore(afterScore);
       document.getElementById('heroEyebrow').textContent = mode === 'compare' ? 'section comparison' : 'section review';
       document.getElementById('heroTitle').textContent = pair.name;
       document.getElementById('heroStatus').className = mode === 'compare' ? pillClassFromDelta(delta) : statusClassFromRisk(risk);
       document.getElementById('heroStatus').textContent = mode === 'compare' ? (delta > 0 ? 'Improved' : delta < 0 ? 'Weakened' : 'Unchanged') : `${risk} risk`;
       document.getElementById('heroSummary').textContent = mode === 'compare'
-        ? `${pair.name} comparison — inspect sub-criteria, confidence, and cited chunks.`
-        : `${pair.name} with sub-criterion scores, belief-grounded evidence, and chunk IDs.`;
+        ? `${pair.name} comparison by section and sub-criterion score.`
+        : `${pair.name} with sub-criterion scores and rationale.`;
       document.getElementById('beforeScore').textContent = fmtScore(beforeScore);
       document.getElementById('afterScore').textContent = fmtScore(afterScore);
       document.getElementById('heroArrow').style.visibility = mode === 'compare' ? 'visible' : 'hidden';
       document.getElementById('heroDelta').className = mode === 'compare' ? pillClassFromDelta(delta) : 'status-pill status-neutral';
-      document.getElementById('heroDelta').textContent = mode === 'compare' ? fmtDelta(delta) : `${pair.before.overall.evidenceCount} chunks`;
-      document.getElementById('heroConfidence').className = conf === 'High' ? 'status-pill status-positive' : conf === 'Medium' ? 'status-pill status-neutral' : 'status-pill status-negative';
-      document.getElementById('heroConfidence').textContent = `Confidence: ${conf}`;
+      document.getElementById('heroDelta').textContent = mode === 'compare' ? fmtDelta(delta) : `${pair.before.overall.totalItems || 0} items`;
       document.getElementById('heroInterpretation').textContent = mode === 'compare'
         ? `After-review score is ${fmtScore(afterScore)} / 100. Signal average is ${round1(pair.after.overall.avgSignalScore || 0)} on the 0-5 scale.`
         : `Signal average is ${round1(pair.before.overall.avgSignalScore || 0)} on the 0-5 scale.`;
@@ -1670,7 +1727,7 @@
             </div>
             <div class="metric-values">
               ${deltaMode
-                ? `<span class="metric-value">${fmtDelta(delta, metric.label === 'Evidence count' ? '' : 'pts')}</span>`
+                ? `<span class="metric-value">${fmtDelta(delta, metric.valueLabel === 'raw count' ? '' : 'pts')}</span>`
                 : `<span class="metric-value">${fmtScore(metric.before)}</span>${
                     mode === 'compare'
                       ? `<span class="hero-arrow" style="font-size:18px; margin-top:0;">→</span><span class="metric-value">${fmtScore(metric.after)}</span>`
@@ -1710,83 +1767,35 @@
       const drawerDelta = document.getElementById('drawerDelta');
       const drawerStatus = document.getElementById('drawerStatus');
       const drawerSummary = document.getElementById('drawerSummary');
-      const evidenceList = document.getElementById('evidenceList');
       const concernList = document.getElementById('concernList');
-      const metricFocusTag = document.getElementById('metricFocusTag');
-      const confidenceText = document.getElementById('confidenceText');
-      const confidencePill = document.getElementById('confidencePill');
       if (!criterionPair) {
         drawerTitle.textContent = sectionPair.name + ' summary';
         drawerDelta.className = 'status-pill status-neutral';
-        drawerDelta.textContent = mode === 'compare' ? fmtDelta(scoreDelta(sectionPair.before.overall.finalScore, sectionPair.after.overall.finalScore)) : `${sectionPair.before.overall.evidenceCount} chunks`;
+        drawerDelta.textContent = mode === 'compare' ? fmtDelta(scoreDelta(sectionPair.before.overall.finalScore, sectionPair.after.overall.finalScore)) : `${sectionPair.before.overall.totalItems || 0} items`;
         drawerStatus.className = 'status-pill status-neutral';
         drawerStatus.textContent = 'Section view';
         drawerSummary.textContent = 'No sub-criterion rows found for this section.';
-        evidenceList.innerHTML = `<div class="empty-state"><div class="empty-copy">No chunk evidence rows found.</div></div>`;
         concernList.innerHTML = '';
-        metricFocusTag.textContent = 'Section only';
-        confidenceText.textContent = 'Section confidence is estimated from aggregated sub-criterion agreement between the two scoring models.';
-        confidencePill.className = 'status-pill status-neutral';
-        confidencePill.textContent = `Confidence: ${confidenceFromSection(mode === 'compare' ? sectionPair.after : sectionPair.before)}`;
         return;
       }
       const delta = scoreDelta(criterionPair.before.score, criterionPair.after.score);
       drawerTitle.textContent = criterionPair.name;
       drawerDelta.className = mode === 'compare' ? pillClassFromDelta(delta) : 'status-pill status-neutral';
       drawerDelta.textContent = mode === 'compare' ? fmtDelta(delta, '/10') : `${fmtScore(criterionPair.after.score)} / 10`;
-      const afterConf = confidenceFromSection(mode === 'compare' ? sectionPair.after : sectionPair.before);
-      const criterionConf = criterionPair.after.confidenceLabel
-        ? criterionPair.after.confidenceLabel.replace('_', ' ').replace('_', ' ')
-        : `${afterConf} confidence`;
-      drawerStatus.className = afterConf === 'High' ? 'status-pill status-positive' : afterConf === 'Medium' ? 'status-pill status-neutral' : 'status-pill status-negative';
-      drawerStatus.textContent = criterionConf;
+      const criterionRisk = riskFromScore((criterionPair.after.score || 0) * 10);
+      drawerStatus.className = statusClassFromRisk(criterionRisk);
+      drawerStatus.textContent = `${criterionRisk} risk`;
       drawerSummary.textContent = mode === 'compare'
-        ? `"${criterionPair.name}" moved from ${fmtScore(criterionPair.before.score)} to ${fmtScore(criterionPair.after.score)} / 10 (${fmtDelta(delta, '/10')}). Low-confidence items changed ${criterionPair.before.weakSignalCount} → ${criterionPair.after.weakSignalCount}.`
-        : `"${criterionPair.name}" scored ${fmtScore(criterionPair.after.score)} / 10. Signal average is ${round1(criterionPair.after.avgSignalScore || 0)} / 5 with ${criterionPair.after.evidenceCount} cited chunk${criterionPair.after.evidenceCount === 1 ? '' : 's'}.`;
-      if (criterionPair.after.missingEvidence) {
-        drawerSummary.textContent += ` ! Missing evidence / 缺失证据.`;
-      }
-      metricFocusTag.textContent = mode === 'compare' ? 'Sub-criterion compare' : 'Sub-criterion evidence';
-      let evidences = [];
-      if (mode === 'compare') {
-        evidences = [
-          ...(criterionPair.after.evidence || []).map(ev => ({ tone:'positive', tag:'After chunk', text:ev.text || 'Evidence snippet', source:`${ev.section || sectionPair.name} · ${ev.id || 'no id'}`, impact:'After' })),
-          ...(criterionPair.before.evidence || []).map(ev => ({ tone:'neutral', tag:'Before chunk', text:ev.text || 'Evidence snippet', source:`${ev.section || sectionPair.name} · ${ev.id || 'no id'}`, impact:'Before' }))
-        ];
-      } else {
-        evidences = (criterionPair.after.evidence || []).map(ev => ({ tone:'positive', tag:'Chunk', text:ev.text || 'Evidence snippet', source:`${ev.section || sectionPair.name} · ${ev.id || 'no id'}`, impact:'Current' }));
-      }
-      evidenceList.innerHTML = evidences.length
-        ? evidences.slice(0, 6).map(ev => `
-            <div class="snippet-card">
-              <div class="snippet-meta">
-                <span class="evidence-tag ${ev.tone}">${ev.tag}</span>
-                <span class="snippet-source">${ev.source}</span>
-              </div>
-              <p class="snippet-text">${ev.text}</p>
-              <div class="small-copy">${ev.impact}</div>
-            </div>
-          `).join('')
-        : `<div class="empty-state"><div class="empty-copy">No evidence chunks found for this sub-criterion.</div></div>`;
+        ? `"${criterionPair.name}" moved from ${fmtScore(criterionPair.before.score)} to ${fmtScore(criterionPair.after.score)} / 10 (${fmtDelta(delta, '/10')}).`
+        : `"${criterionPair.name}" scored ${fmtScore(criterionPair.after.score)} / 10. Signal average is ${round1(criterionPair.after.avgSignalScore || 0)} / 5.`;
       const notes = [];
       if (mode === 'compare') {
         if (delta < 0) notes.push({ tone:'warning', tag:'Score dropped', text:`This sub-criterion regressed by ${Math.abs(delta)} point${Math.abs(delta) === 1 ? '' : 's'} on the 0–10 scale.`, source:'Comparison summary' });
         else if (delta > 0) notes.push({ tone:'positive', tag:'Score improved', text:`This sub-criterion improved by ${delta} point${delta === 1 ? '' : 's'} on the 0–10 scale.`, source:'Comparison summary' });
-        if (criterionPair.after.weakSignalCount > criterionPair.before.weakSignalCount) notes.push({ tone:'warning', tag:'More low-confidence items', text:`Low-confidence items increased (${criterionPair.before.weakSignalCount} → ${criterionPair.after.weakSignalCount}).`, source:'Stage 2 confidence' });
         if (criterionPair.after.avgSignalScore > criterionPair.before.avgSignalScore) notes.push({ tone:'positive', tag:'Higher signal avg', text:`Average signal score improved (${round1(criterionPair.before.avgSignalScore)} → ${round1(criterionPair.after.avgSignalScore)}).`, source:'Stage 2 scoring' });
       } else {
         if (criterionPair.after.score >= 8) notes.push({ tone:'positive', tag:'Strong sub-criterion', text:'This sub-criterion is currently scoring in a strong range.', source:'Current review' });
         else notes.push({ tone:'warning', tag:'Could improve', text:'This sub-criterion has room to improve or be supported more explicitly.', source:'Current review' });
-        notes.push({ tone:criterionPair.after.evidenceStatus === 'ok' ? 'positive' : 'warning', tag:'Evidence status', text:`Evidence status is ${evidenceStatusLabel(criterionPair.after.evidenceStatus)} with ${criterionPair.after.evidenceCount} valid chunk id(s).`, source:'Grounding' });
-        if (criterionPair.after.evidenceTop5?.length) notes.push({ tone:'neutral', tag:'Top-5 slots', text:`Slots: ${(criterionPair.after.evidenceTop5 || []).map(id => id || 'null').join(', ')}`, source:'Stage 1 output' });
-      }
-      if (criterionPair.after.missingEvidence) {
-        notes.push({
-          tone:'warning',
-          tag:'! Missing evidence',
-          text:'The model returned a positive score without valid chunk evidence.',
-          source:'Evidence validation'
-        });
       }
       (criterionPair.after.signals || []).forEach(signal => {
         notes.push({
@@ -1800,23 +1809,39 @@
       concernList.innerHTML = notes.map(note => `
         <div class="snippet-card">
           <div class="snippet-meta">
-            <span class="evidence-tag ${note.tone}">${note.tag}</span>
-            <span class="snippet-source">${note.source}</span>
+            <span class="evidence-tag ${note.tone}">${escapeHtml(note.tag)}</span>
+            <span class="snippet-source">${escapeHtml(note.source)}</span>
           </div>
-          <p class="snippet-text">${note.text}</p>
+          <p class="snippet-text">${escapeHtml(note.text)}</p>
         </div>
       `).join('');
-      confidencePill.className = criterionPair.after.missingEvidence
-        ? 'status-pill status-negative'
-        : (afterConf === 'High' ? 'status-pill status-positive' : afterConf === 'Medium' ? 'status-pill status-neutral' : 'status-pill status-negative');
-      confidencePill.textContent = criterionPair.after.missingEvidence ? '! Missing evidence' : `Confidence: ${afterConf}`;
-      confidenceText.innerHTML = mode === 'compare'
-        ? `
-            ${rationaleCardsHtml(criterionPair.after, 'After')}
-            <div class="rationale-heading">Before</div>
-            ${rationaleCardsHtml(criterionPair.before, 'Before')}
-          `
-        : rationaleCardsHtml(criterionPair.after, 'Current');
+    }
+
+    function openRationaleModal(criterionName) {
+      state.selectedCriterionName = criterionName;
+      renderDrawer();
+      renderTable();
+      const mode = getCurrentMode();
+      const sectionPair = getSelectedSectionPair();
+      const criterionPair = getSelectedCriterionPair();
+      if (!criterionPair || !sectionPair) return;
+      const modal = document.getElementById('rationaleModal');
+      const title = document.getElementById('rationaleModalTitle');
+      const subtitle = document.getElementById('rationaleModalSubtitle');
+      const body = document.getElementById('rationaleModalBody');
+      title.textContent = criterionPair.name;
+      subtitle.textContent = mode === 'compare'
+        ? `${sectionPair.name} · ${fmtScore(criterionPair.before.score)} → ${fmtScore(criterionPair.after.score)} / 10`
+        : `${sectionPair.name} · ${fmtScore(criterionPair.after.score)} / 10`;
+      body.innerHTML = mode === 'compare'
+        ? `${rationaleCardsHtml(criterionPair.after, 'Current')}${rationaleCardsHtml(criterionPair.before, 'Previous')}`
+        : rationaleCardsHtml(criterionPair.after, '');
+      modal.classList.remove('hidden');
+      document.getElementById('rationaleModalClose').focus();
+    }
+
+    function closeRationaleModal() {
+      document.getElementById('rationaleModal').classList.add('hidden');
     }
 
     function renderTable() {
@@ -1827,12 +1852,12 @@
       if (!pair) return;
       document.getElementById('tableEyebrow').textContent = mode === 'compare' ? 'sub-criterion comparison' : 'sub-criteria table';
       document.getElementById('tableTitle').textContent = `Sub-criteria inside ${pair.name}`;
-      document.getElementById('tableSub').textContent = 'Click a row to inspect signals and grounded chunks in the drawer.';
+      document.getElementById('tableSub').textContent = 'Click a row to inspect signals in the drawer, or open rationale for pros and cons.';
       const beforeMap = new Map((pair.before.criteria || []).map(c => [c.name, c]));
       const afterMap = new Map((pair.after.criteria || []).map(c => [c.name, c]));
       const names = getOrderedCriterionNames(pair);
       if (mode === 'compare') {
-        head.innerHTML = `<tr><th>Sub-criterion</th><th>Before</th><th>After</th><th>Delta</th><th>Signal avg</th><th>Low-conf</th><th>Status</th><th>Drawbacks</th></tr>`;
+        head.innerHTML = `<tr><th>Sub-criterion</th><th>Before</th><th>After</th><th>Delta</th><th>Signal avg</th><th>Rationale</th></tr>`;
         let currentGroup = '';
         body.innerHTML = names.length ? names.map(name => {
           const before = beforeMap.get(name) || emptyCriterion(name);
@@ -1840,42 +1865,42 @@
           const delta = scoreDelta(before.score, after.score);
           const active = state.selectedCriterionName === name ? ' style="background:rgba(237,243,255,.6);"' : '';
           const groupName = after.groupName || before.groupName || '';
+          const safeName = escapeHtml(name);
+          const safeGroupName = escapeHtml(groupName);
           const groupRow = groupName && groupName !== currentGroup
-            ? `<tr class="group-row"><td colspan="8">${groupName}</td></tr>`
+            ? `<tr class="group-row"><td colspan="6">${safeGroupName}</td></tr>`
             : '';
           currentGroup = groupName || currentGroup;
-          return `${groupRow}<tr class="row-clickable" data-criterion-name="${name}"${active}>
-            <td><strong>${name}</strong></td>
+          return `${groupRow}<tr class="row-clickable" data-criterion-name="${safeName}"${active}>
+            <td><strong>${safeName}</strong></td>
             <td>${fmtScore(before.score)} / 10</td>
             <td>${fmtScore(after.score)} / 10</td>
             <td><span class="${pillClassFromDelta(delta)}">${fmtDelta(delta, '/10')}</span></td>
             <td>${round1(after.avgSignalScore || 0)} / 5</td>
-            <td>${before.weakSignalCount || 0} → ${after.weakSignalCount || 0}</td>
-            <td><div class="status-stack"><span class="${statusClassFromRisk(riskFromWeakSignals(after.weakSignalCount || 0))}">${evidenceStatusLabel(after.evidenceStatus)}</span>${missingEvidenceBadge(after)}</div></td>
-            <td><button class="table-action-btn rationale-btn" type="button" data-criterion-name="${name}">View drawbacks</button></td>
+            <td><button class="table-action-btn rationale-btn" type="button" data-criterion-name="${safeName}">View rationale</button></td>
           </tr>`;
-        }).join('') : `<tr><td colspan="8"><div class="empty-copy">No sub-criteria found.</div></td></tr>`;
+        }).join('') : `<tr><td colspan="6"><div class="empty-copy">No sub-criteria found.</div></td></tr>`;
       } else {
-        head.innerHTML = `<tr><th>Sub-criterion</th><th>Score</th><th>Signal avg</th><th>Weighted avg</th><th>Evidence</th><th>Status</th><th>Drawbacks</th></tr>`;
+        head.innerHTML = `<tr><th>Sub-criterion</th><th>Score</th><th>Signal avg</th><th>Weighted avg</th><th>Rationale</th></tr>`;
         let currentGroup = '';
         body.innerHTML = names.length ? names.map(name => {
           const current = afterMap.get(name) || beforeMap.get(name) || emptyCriterion(name);
           const active = state.selectedCriterionName === name ? ' style="background:rgba(237,243,255,.6);"' : '';
           const groupName = current.groupName || '';
+          const safeName = escapeHtml(name);
+          const safeGroupName = escapeHtml(groupName);
           const groupRow = groupName && groupName !== currentGroup
-            ? `<tr class="group-row"><td colspan="7">${groupName}</td></tr>`
+            ? `<tr class="group-row"><td colspan="5">${safeGroupName}</td></tr>`
             : '';
           currentGroup = groupName || currentGroup;
-          return `${groupRow}<tr class="row-clickable" data-criterion-name="${name}"${active}>
-            <td><strong>${name}</strong></td>
+          return `${groupRow}<tr class="row-clickable" data-criterion-name="${safeName}"${active}>
+            <td><strong>${safeName}</strong></td>
             <td>${fmtScore(current.score)} / 10</td>
             <td>${round1(current.avgSignalScore || 0)} / 5</td>
             <td>${round1(current.avgWeightedScore || current.avgSignalScore || 0)} / 5</td>
-            <td>${current.evidenceCount}</td>
-            <td><div class="status-stack"><span class="${statusClassFromRisk(riskFromWeakSignals(current.weakSignalCount || 0))}">${current.confidenceLabel || `${(current.signals || []).length} signals`}</span>${missingEvidenceBadge(current)}</div></td>
-            <td><button class="table-action-btn rationale-btn" type="button" data-criterion-name="${name}">View drawbacks</button></td>
+            <td><button class="table-action-btn rationale-btn" type="button" data-criterion-name="${safeName}">View rationale</button></td>
           </tr>`;
-        }).join('') : `<tr><td colspan="7"><div class="empty-copy">No sub-criteria found.</div></td></tr>`;
+        }).join('') : `<tr><td colspan="5"><div class="empty-copy">No sub-criteria found.</div></td></tr>`;
       }
       body.querySelectorAll('.row-clickable').forEach(row => {
         row.addEventListener('click', () => {
@@ -1887,9 +1912,7 @@
       body.querySelectorAll('.rationale-btn').forEach(btn => {
         btn.addEventListener('click', (event) => {
           event.stopPropagation();
-          state.selectedCriterionName = btn.dataset.criterionName;
-          renderDrawer();
-          renderTable();
+          openRationaleModal(btn.dataset.criterionName);
         });
       });
     }
@@ -2018,6 +2041,14 @@
           state.displayMode = btn.dataset.mode;
           render();
         });
+      });
+
+      document.getElementById('rationaleModalClose').addEventListener('click', closeRationaleModal);
+      document.getElementById('rationaleModal').addEventListener('click', (event) => {
+        if (event.target.id === 'rationaleModal') closeRationaleModal();
+      });
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') closeRationaleModal();
       });
 
       document.getElementById('exportBtn').addEventListener('click', () => window.print());

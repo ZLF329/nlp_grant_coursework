@@ -24,9 +24,10 @@ KEY_BUDGET       = "SUMMARY BUDGET"
 
 # APPLICATION DETAILS sub-keys (must match IC00458_after.json exactly)
 KEY_ABSTRACT = "Scientific Abstract"
-KEY_PES      = "Plain English Summary"
+KEY_PES      = "Plain English Summary of Research"
 KEY_CHANGES  = "Changes from Previous Stage"
-KEY_WPCC     = "Working with People and Communities Summary"
+KEY_WPCC     = "Patient & Public Involvement"
+KEY_DETAILED_RESEARCH_PLAN = "Detailed Research Plan"
 KEY_APPLICANT_CV = "Applicant CV"
 KEY_APPLICANT_RESEARCH_BACKGROUND = "Applicant Research Background"
 
@@ -45,9 +46,13 @@ _PES_KW = [
     "plain english", "plain language", "lay summary",
     "lay abstract", "lay description", "accessible summary",
 ]
+_PLAN_KW = [
+    "detailed research plan", "research plan", "project plan",
+    "methodology", "methods", "work plan", "programme of work",
+]
 _ABSTRACT_KW = [
     "scientific abstract", "abstract", "research summary",
-    "project summary", "summary", "research plan", "research area",
+    "project summary", "summary", "research area",
     "research question", "aims", "objectives", "background",
     "overview", "introduction", "project description",
 ]
@@ -146,6 +151,8 @@ def _app_details_subkey(heading: str) -> Optional[str]:
         return KEY_APPLICANT_RESEARCH_BACKGROUND
     if _matches(heading, _PES_KW):
         return KEY_PES
+    if _matches(heading, _PLAN_KW):
+        return KEY_DETAILED_RESEARCH_PLAN
     if _matches(heading, _ABSTRACT_KW):
         return KEY_ABSTRACT
     return None

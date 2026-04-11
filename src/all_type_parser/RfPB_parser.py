@@ -10,9 +10,10 @@ Section mapping
 Page 1 summary table               -> SUMMARY INFORMATION
 "1. The Research Team"             -> LEAD APPLICANT & RESEARCH TEAM
 "3. Scientific abstract"           -> APPLICATION DETAILS["Scientific Abstract"]
-"4. Plain English Summary"         -> APPLICATION DETAILS["Plain English Summary"]
+"4. Plain English Summary"         -> APPLICATION DETAILS["Plain English Summary of Research"]
 "5. Changes from first stage"      -> APPLICATION DETAILS["Changes from Previous Stage"]
-"7. Patient & Public Involvement"  -> APPLICATION DETAILS["Working with People and Communities Summary"]
+"6. Detailed Research plan"        -> APPLICATION DETAILS["Detailed Research Plan"]
+"7. Patient & Public Involvement"  -> APPLICATION DETAILS["Patient & Public Involvement"]
 "8. Detailed Budget"               -> SUMMARY BUDGET
 
 Key structural difference from fellowships_parser:
@@ -58,6 +59,23 @@ SECTION_RD:       str = "Research & Development office contact"
 SECTION_ACK:      str = "Acknowledgement review and submit"
 SECTION_CV_LEAD:  str = "CV - Lead Applicant(s)"
 SECTION_CV_CO:    str = "CV - Co-applicants"
+KNOWN_SECTION_HEADINGS = {
+    SECTION_TEAM,
+    SECTION_HISTORY,
+    SECTION_ABSTRACT,
+    SECTION_PES,
+    SECTION_CHANGES,
+    SECTION_PLAN,
+    SECTION_PPI,
+    SECTION_BUDGET,
+    SECTION_MGMT,
+    SECTION_UPLOADS,
+    SECTION_ADMIN,
+    SECTION_RD,
+    SECTION_ACK,
+    SECTION_CV_LEAD,
+    SECTION_CV_CO,
+}
 
 
 _STRIP_NUMBER_RE = re.compile(r'^\d+\.\s+')
@@ -65,6 +83,11 @@ _STRIP_NUMBER_RE = re.compile(r'^\d+\.\s+')
 def _strip_number(s: str) -> str:
     """Strip leading 'N. ' prefix from a heading string."""
     return _STRIP_NUMBER_RE.sub('', s.strip())
+
+
+def _heading_key(s: str) -> str:
+    """Normalize headings for robust RfPB section matching."""
+    return re.sub(r'[^a-z0-9]+', '', _strip_number(s).lower())
 
 
 # ---------------------------------------------------------------------------
@@ -189,8 +212,15 @@ def is_rfpb_heading(line: Line) -> bool:
     Requires the line to overlap a wide filled rect AND the text to match a
     known RfPB section heading.
     """
-    # Purely visual — any line inside a wide filled rect is a section heading.
-    return line.in_section_box
+    text = line.text.strip()
+    if not line.in_section_box or not re.match(r'^\d+\.\s+', text):
+        return False
+    key = _heading_key(text)
+    for known in KNOWN_SECTION_HEADINGS:
+        known_key = _heading_key(known)
+        if key == known_key or key.startswith(known_key):
+            return True
+    return False
 
 
 def find_section_ranges(lines: List[Line]) -> List[int]:
@@ -209,11 +239,11 @@ def slice_section(lines: List[Line], section_title: str) -> List[Line]:
     Slice ends at the next section heading (or end of document).
     """
     section_idxs = find_section_ranges(lines)
-    norm_target = re.sub(r'\s+', ' ', section_title.strip())
+    norm_target = _heading_key(section_title)
 
     start_idx: Optional[int] = None
     for idx in section_idxs:
-        if re.sub(r'\s+', ' ', _strip_number(lines[idx].text.strip())) == norm_target:
+        if _heading_key(lines[idx].text.strip()).startswith(norm_target):
             start_idx = idx
             break
 
@@ -479,9 +509,10 @@ def parse_application_details(lines: List[Line]) -> dict:
     Build APPLICATION DETAILS dict from the relevant RfPB sections.
 
     Section 3  -> Scientific Abstract
-    Section 4  -> Plain English Summary
+    Section 4  -> Plain English Summary of Research
     Section 5  -> Changes from Previous Stage
-    Section 7  -> Working with People and Communities Summary
+    Section 6  -> Detailed Research Plan
+    Section 7  -> Patient & Public Involvement
     """
     out: dict = {}
 
@@ -491,15 +522,19 @@ def parse_application_details(lines: List[Line]) -> dict:
 
     pes_lines = slice_section(lines, SECTION_PES)
     if pes_lines:
-        out["Plain English Summary"] = parse_text_section(pes_lines)
+        out["Plain English Summary of Research"] = parse_text_section(pes_lines)
 
     changes_lines = slice_section(lines, SECTION_CHANGES)
     if changes_lines:
         out["Changes from Previous Stage"] = parse_text_section(changes_lines)
 
+    plan_lines = slice_section(lines, SECTION_PLAN)
+    if plan_lines:
+        out["Detailed Research Plan"] = parse_text_section(plan_lines)
+
     ppi_lines = slice_section(lines, SECTION_PPI)
     if ppi_lines:
-        out["Working with People and Communities Summary"] = parse_text_section(ppi_lines)
+        out["Patient & Public Involvement"] = parse_text_section(ppi_lines)
 
     return out
 
@@ -536,7 +571,7 @@ def extract_all_sections(pdf_path: str) -> dict:
     if team.get("Lead Applicant") or team.get("Co-Applicants"):
         out["LEAD APPLICANT & RESEARCH TEAM"] = team
 
-    # APPLICATION DETAILS — sections 3, 4, 5, 7
+    # APPLICATION DETAILS — sections 3, 4, 5, 6, 7
     app_details = parse_application_details(lines)
     if app_details:
         out["APPLICATION DETAILS"] = app_details

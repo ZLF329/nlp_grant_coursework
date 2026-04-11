@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import datetime as dt
 import json
+import os
 from pathlib import Path
 from typing import Any
 
@@ -28,8 +29,8 @@ SCORER_ALLOWED_SCORES = (0, 1, 2, 3, 4, 5)
 SCORER_MAX_SCORE = 5
 USED_CHUNK_MAX = 5
 SECTION_EVIDENCE_MAX = 3
-STAGE1_MAX_TOKENS = 2048
-STAGE2_MAX_TOKENS = 12288
+STAGE1_MAX_TOKENS = int(os.environ.get("STAGE1_MAX_TOKENS", "8192"))
+STAGE2_MAX_TOKENS = int(os.environ.get("STAGE2_MAX_TOKENS", "12288"))
 STAGE1_MAX_FINDINGS = 6
 STAGE1_MAX_SIGNALS_PER_FINDING = 3
 STAGE1_IMPLICATION_MAX_CHARS = 220
@@ -41,21 +42,27 @@ SECTION_TO_PARSER_SECTIONS: dict[str, list[str] | None] = {
     "general": None,
     "proposed_research": [
         "Plain English Summary of Research",
+        "Plain English Summary",
         "Scientific Abstract",
         "Detailed Research Plan",
         "Patient & Public Involvement",
+        "Working with People and Communities Summary",
+        "SUMMARY BUDGET",
     ],
     "training_development": [
         "Training & Development and Research Support",
+        "SUPPORT AND MENTORSHIP",
     ],
     "sites_support": [
         "Lead Applicant",
         "Joint Lead Applicant",
         "Co-Applicants",
         "Contracting Organisation",
+        "SUPPORT AND MENTORSHIP",
     ],
     "wpcc": [
         "Patient & Public Involvement",
+        "Working with People and Communities Summary",
         "Detailed Research Plan",
     ],
     "application_form": None,

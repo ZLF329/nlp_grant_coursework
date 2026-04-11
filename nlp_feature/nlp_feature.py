@@ -41,7 +41,11 @@ def extract_nlp_features(raw_data):
     long_sentence_ratio = len(long_sents) / total_sentences if total_sentences > 0 else 0
 
     # Plain English Specific Analysis
-    summary_text = sections.get("Plain English Summary", "")
+    summary_text = (
+        sections.get("Plain English Summary of Research")
+        or sections.get("Plain English Summary")
+        or ""
+    )
     readability_results = {}
     if summary_text:
         summary_sentences = split_text_into_sentences(summary_text, nlp)

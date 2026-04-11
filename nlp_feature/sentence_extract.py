@@ -6,7 +6,10 @@ import re
 default_structure = {
     "APPLICATION DETAILS": [
         "Scientific Abstract",
+        "Plain English Summary of Research",
         "Plain English Summary",
+        "Detailed Research Plan",
+        "Patient & Public Involvement",
         "Changes from Previous Stage",
         "Working with People and Communities Summary"
     ]
