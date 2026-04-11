@@ -5,9 +5,8 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from src.pool.build_pool import build_chunk_pool
+from src.pool.build_pool import APPLICATION_CONTEXT_SECTION, build_chunk_pool
 from src.scoring.pipeline import (
-    _is_metadata_like_section,
     build_evidence_text,
     load_rubric,
     rule_based_retrieval,
@@ -70,15 +69,13 @@ def sample_application() -> dict:
                 + "Gamma implementation paragraph. " * 80
             ),
             "Patient & Public Involvement": "PPI strategy with advisory group and co-design feedback.",
+            "Training & Development and Research Support": "Training plan and supervisors.",
         },
         "LEAD APPLICANT & RESEARCH TEAM": {
             "Lead Applicant": {
                 "Full Name": "Dr Example",
                 "Organisation": "King's College London",
             }
-        },
-        "TRAINING": {
-            "Training & Development and Research Support": "Training plan and supervisors.",
         },
         "BUDGET": {
             "SUMMARY BUDGET": "Budget justification and costed support.",
@@ -106,8 +103,6 @@ def build_payloads_for_application(application: dict) -> tuple[dict[str, list[st
                 for chunk_id in chunk_ids_by_section[section_name]
             },
         }
-        if _is_metadata_like_section(application_section):
-            continue
         if section_name == "Plain English Summary of Research":
             first_chunk = chunk_ids_by_section[section_name][0]
             stage1_payloads.append({
@@ -259,7 +254,7 @@ class PipelineTests(unittest.TestCase):
         self.assertEqual(retrieved["application_form"], all_chunk_ids)
 
         training_sections = {pool_lookup[chunk_id]["parser_section"] for chunk_id in retrieved["training_development"]}
-        self.assertEqual(training_sections, {"Training & Development and Research Support"})
+        self.assertEqual(training_sections, {APPLICATION_CONTEXT_SECTION, "Training & Development and Research Support"})
 
     def test_score_application_base_builds_belief_state_and_scores(self):
         application = sample_application()
@@ -427,7 +422,7 @@ class PipelineTests(unittest.TestCase):
             self.assertIn("Stage 2 returned invalid JSON", message)
             self.assertTrue((Path(tmpdir) / "broken_doc_stage2_general_raw.txt").exists())
             self.assertTrue((Path(tmpdir) / "broken_doc_stage1_raw.json").exists())
-            self.assertLess(len(stage1_payloads), len(chunk_ids_by_section))
+            self.assertEqual(len(stage1_payloads), len(chunk_ids_by_section))
 
 
 if __name__ == "__main__":

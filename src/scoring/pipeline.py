@@ -6,7 +6,12 @@ import os
 from pathlib import Path
 from typing import Any
 
-from src.pool.build_pool import MAX_CHARS, build_chunk_pool, write_pool_artifacts
+from src.pool.build_pool import (
+    APPLICATION_CONTEXT_SECTION,
+    MAX_CHARS,
+    build_chunk_pool,
+    write_pool_artifacts,
+)
 
 SECTION_KEY_MAP = {
     "General": "general",
@@ -35,12 +40,11 @@ STAGE1_MAX_FINDINGS = 6
 STAGE1_MAX_SIGNALS_PER_FINDING = 3
 STAGE1_IMPLICATION_MAX_CHARS = 220
 STAGE1_HISTORY_IMPLICATIONS_PER_SIGNAL = 2
-METADATA_SECTION_MAX_TOTAL_CHARS = 120
-METADATA_SECTION_MAX_UNIT_CHARS = 80
 
 SECTION_TO_PARSER_SECTIONS: dict[str, list[str] | None] = {
     "general": None,
     "proposed_research": [
+        APPLICATION_CONTEXT_SECTION,
         "Plain English Summary of Research",
         "Plain English Summary",
         "Scientific Abstract",
@@ -50,17 +54,16 @@ SECTION_TO_PARSER_SECTIONS: dict[str, list[str] | None] = {
         "SUMMARY BUDGET",
     ],
     "training_development": [
+        APPLICATION_CONTEXT_SECTION,
         "Training & Development and Research Support",
         "SUPPORT AND MENTORSHIP",
     ],
     "sites_support": [
-        "Lead Applicant",
-        "Joint Lead Applicant",
-        "Co-Applicants",
-        "Contracting Organisation",
+        APPLICATION_CONTEXT_SECTION,
         "SUPPORT AND MENTORSHIP",
     ],
     "wpcc": [
+        APPLICATION_CONTEXT_SECTION,
         "Patient & Public Involvement",
         "Working with People and Communities Summary",
         "Detailed Research Plan",
@@ -507,19 +510,6 @@ def _build_stage1_belief_state_view(current_belief_state: dict[str, Any]) -> dic
         "resolved_signals": _dedupe_preserve_order(resolved_signal_ids),
         "signal_implications": signal_implications,
     }
-
-
-def _is_metadata_like_section(application_section: dict[str, Any]) -> bool:
-    section_content = application_section.get("section_content", {})
-    if not isinstance(section_content, dict) or not section_content:
-        return True
-    texts = [str(text).strip() for text in section_content.values() if str(text).strip()]
-    if not texts:
-        return True
-    total_chars = sum(len(text) for text in texts)
-    if total_chars > METADATA_SECTION_MAX_TOTAL_CHARS:
-        return False
-    return all(len(text) <= METADATA_SECTION_MAX_UNIT_CHARS for text in texts)
 
 
 def _empty_section_update(section_name: str) -> dict[str, Any]:
@@ -1335,16 +1325,6 @@ def score_application_base(
     for application_section in stage1_inputs:
         section_name = application_section["section_name"]
         section_chunk_ids = list(application_section["section_content"])
-        if _is_metadata_like_section(application_section):
-            normalized_update = _empty_section_update(section_name)
-            belief_state = _merge_belief_state(belief_state, normalized_update)
-            stage1_updates.append({
-                **normalized_update,
-                "skipped_reason": "metadata_like_section",
-                "missing_signals_after": list(belief_state["missing_signals"]),
-            })
-            stage1_raw_by_section[section_name] = json.dumps(normalized_update, ensure_ascii=False)
-            continue
         messages = build_section_evidence_messages(
             application_section=application_section,
             stage1_criteria=stage1_criteria,

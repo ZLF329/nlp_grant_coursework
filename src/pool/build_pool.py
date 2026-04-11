@@ -7,6 +7,9 @@ from pathlib import Path
 from typing import Any
 
 MAX_CHARS = 1200
+APPLICATION_DETAILS_KEY = "APPLICATION DETAILS"
+SUMMARY_BUDGET_KEY = "SUMMARY BUDGET"
+APPLICATION_CONTEXT_SECTION = "Application Context"
 
 
 @dataclass(frozen=True)
@@ -78,6 +81,14 @@ def _iter_leaves(value: Any, path: list[str], parser_section: str) -> list[tuple
     return [(text, " > ".join(path))] if text else []
 
 
+def _format_combined_context(entries: list[tuple[str, str]]) -> str:
+    return "\n\n".join(
+        f"{source_path}:\n{text}"
+        for text, source_path in entries
+        if text.strip()
+    )
+
+
 def build_chunk_pool(application: dict[str, Any], max_chars: int = MAX_CHARS) -> dict[str, Any]:
     section_slug_map: dict[str, str] = {}
     used_slugs: dict[str, str] = {}
@@ -103,11 +114,11 @@ def build_chunk_pool(application: dict[str, Any], max_chars: int = MAX_CHARS) ->
                 return section_slug_map[section_name]
             suffix += 1
 
-    def add_leaf(parser_section: str, source_path: str, text: str) -> None:
+    def add_leaf(parser_section: str, source_path: str, text: str, *, split: bool = True) -> None:
         slug = get_slug(parser_section)
         section_counters[slug] = section_counters.get(slug, 0) + 1
         base_id = f"{slug}__{section_counters[slug]:03d}"
-        pieces = _split_long_text(text, max_chars=max_chars)
+        pieces = _split_long_text(text, max_chars=max_chars) if split else [text.strip()]
         ids: list[str] = []
         if len(pieces) == 1:
             ids = [base_id]
@@ -121,20 +132,48 @@ def build_chunk_pool(application: dict[str, Any], max_chars: int = MAX_CHARS) ->
             }
             section_chunk_ids.setdefault(parser_section, []).append(chunk_id)
 
+    combined_context_entries: list[tuple[str, str]] = []
     for root_key, root_value in application.items():
-        if isinstance(root_value, dict):
+        root_name = str(root_key)
+        if root_name == APPLICATION_DETAILS_KEY and isinstance(root_value, dict):
             for child_key, child_value in root_value.items():
                 parser_section = str(child_key)
                 for leaf_text, source_path in _iter_leaves(
                     child_value,
-                    [str(root_key), str(child_key)],
+                    [root_name, str(child_key)],
                     parser_section,
                 ):
                     add_leaf(parser_section, source_path, leaf_text)
+        elif root_name == SUMMARY_BUDGET_KEY:
+            for leaf_text, source_path in _iter_leaves(root_value, [root_name], root_name):
+                add_leaf(root_name, source_path, leaf_text)
+        elif isinstance(root_value, dict):
+            for child_key, child_value in root_value.items():
+                child_name = str(child_key)
+                if child_name == SUMMARY_BUDGET_KEY:
+                    for leaf_text, source_path in _iter_leaves(
+                        child_value,
+                        [root_name, child_name],
+                        child_name,
+                    ):
+                        add_leaf(child_name, source_path, leaf_text)
+                    continue
+                combined_context_entries.extend(
+                    _iter_leaves(child_value, [root_name, child_name], APPLICATION_CONTEXT_SECTION)
+                )
         else:
-            parser_section = str(root_key)
-            for leaf_text, source_path in _iter_leaves(root_value, [str(root_key)], parser_section):
-                add_leaf(parser_section, source_path, leaf_text)
+            combined_context_entries.extend(
+                _iter_leaves(root_value, [root_name], APPLICATION_CONTEXT_SECTION)
+            )
+
+    combined_context = _format_combined_context(combined_context_entries)
+    if combined_context:
+        add_leaf(
+            APPLICATION_CONTEXT_SECTION,
+            APPLICATION_CONTEXT_SECTION,
+            combined_context,
+            split=False,
+        )
 
     pool_index_lines = [
         f'{chunk_id}: {json.dumps(meta["text"], ensure_ascii=False)}'
@@ -172,4 +211,3 @@ def write_pool_artifacts(
         "pool_json": str(pool_json_path),
         "pool_index": str(pool_index_path),
     }
-
