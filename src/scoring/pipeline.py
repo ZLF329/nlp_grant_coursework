@@ -864,9 +864,8 @@ def build_final_scoring_messages(
         "Each signal score must be an integer from 0 to 5 inclusive (0,1,2,3,4,5).\n"
         "Scoring guide: 0=no evidence, 1=very weak, 2=weak, 3=moderate, 4=strong with only minor gaps, "
         "5=perfectly met: complete, specific, directly evidenced, and with no material caveats or missing detail.\n"
-        "Reserve 5 only for genuinely complete signals. If the signal is strong but not flawless, assign 4.\n"
         f"`used_chunk_ids` must contain at most {USED_CHUNK_MAX} grounded chunk IDs.\n"
-        "If evidence is missing or weak, give a low score (0-2), not a high one (4-5).\n"
+        "If evidence is missing, give a low score (0-3), not a high one (4-5).\n"
         "Keep drawbacks concise and evidence-based."
     )
     user_payload = {
