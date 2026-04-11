@@ -321,7 +321,7 @@ class PipelineTests(unittest.TestCase):
 
         first_stage2_call = scorer.calls[len(stage1_payloads)]
         user = first_stage2_call["messages"][1]["content"]
-        self.assertIn('"full_application_text"', user)
+        self.assertIn('"application_text"', user)
         self.assertIn('"final_belief_state"', user)
         self.assertNotIn('"weight"', user)
 
@@ -359,7 +359,7 @@ class PipelineTests(unittest.TestCase):
         )
 
         training = result["features"]["training_development"]["sub_criteria"][0]
-        self.assertEqual(training["signals"][0]["score_0to2_raw"], 0.0)
+        self.assertEqual(training["signals"][0]["score_0to5_raw"], 0.0)
         self.assertEqual(training["evidence_count"], 0)
         self.assertTrue(training["missing_evidence"])
         self.assertEqual(training["missing_evidence_models"], ["single"])

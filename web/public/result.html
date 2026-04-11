@@ -1045,7 +1045,7 @@
             score_10: Number(criterion.score || 0),
             signals: (criterion.signals || []).map(signal => ({
               sid: signal.sid,
-              score_0to2: Number(signal.rawScore || 0),
+              score_0to5: Number(signal.rawScore || 0),
               note: signal.note || ''
             }))
           }))
@@ -1147,8 +1147,8 @@
       return {
         sid: signal.sid || `signal-${idx + 1}`,
         text: signal.signal_text || signal.text || `Signal ${idx + 1}`,
-        rawScore: Number(signal.score_0to2_raw || 0),
-        weightedScore: Number(signal.score_0to2_weighted || signal.score_0to2_raw || 0),
+        rawScore: Number(signal.score_0to5_raw || 0),
+        weightedScore: Number(signal.score_0to5_weighted || signal.score_0to5_raw || 0),
         modelAScore: Number(signal.model_a_score ?? signal.modelAScore ?? 0),
         modelBScore: Number(signal.model_b_score ?? signal.modelBScore ?? 0),
         plausibility: Number(signal.plausibility_0to5 ?? 3),

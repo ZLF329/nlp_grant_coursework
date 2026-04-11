@@ -23,7 +23,8 @@ SECTION_ID_PREFIX = {
     "wpcc": "wp",
     "application_form": "af",
 }
-SCORER_ALLOWED_SCORES = (0, 1, 2)
+SCORER_ALLOWED_SCORES = (0, 1, 2, 3, 4, 5)
+SCORER_MAX_SCORE = 5
 USED_CHUNK_MAX = 5
 SECTION_EVIDENCE_MAX = 3
 STAGE1_MAX_TOKENS = 2048
@@ -299,6 +300,64 @@ def _build_full_application_text(
     chunk_order: dict[str, int],
 ) -> str:
     return build_evidence_text(list(pool_lookup), pool_lookup, chunk_order)
+
+
+def _parser_sections_from_belief(
+    rubric_section: dict[str, Any],
+    belief_state: dict[str, Any],
+    pool_lookup: dict[str, dict[str, str]],
+) -> set[str]:
+    sub_ids = {sub["sub_id"] for sub in rubric_section["sub_criteria"]}
+    subcriteria_beliefs = belief_state.get("subcriteria_beliefs", {})
+    if not isinstance(subcriteria_beliefs, dict):
+        return set()
+    parser_sections: set[str] = set()
+    for sub_id, sub_entry in subcriteria_beliefs.items():
+        if sub_id not in sub_ids or not isinstance(sub_entry, dict):
+            continue
+        signals = sub_entry.get("signals", {})
+        if not isinstance(signals, dict):
+            continue
+        for signal_payload in signals.values():
+            if not isinstance(signal_payload, dict):
+                continue
+            for chunk_id in (
+                *signal_payload.get("good_evidence_ids", []),
+                *signal_payload.get("bad_evidence_ids", []),
+            ):
+                meta = pool_lookup.get(chunk_id)
+                if meta:
+                    parser_sections.add(meta["parser_section"])
+    return parser_sections
+
+
+def _build_scoped_application_text(
+    rubric_section: dict[str, Any],
+    pool_lookup: dict[str, dict[str, str]],
+    chunk_order: dict[str, int],
+    belief_state: dict[str, Any],
+) -> tuple[str, list[str]]:
+    predefined = SECTION_TO_PARSER_SECTIONS.get(rubric_section["section_key"])
+    if predefined is None:
+        return _build_full_application_text(pool_lookup, chunk_order), []
+
+    belief_parser_sections = _parser_sections_from_belief(
+        rubric_section, belief_state, pool_lookup
+    )
+    relevant = set(predefined) | belief_parser_sections
+    scoped_chunk_ids: list[str] = []
+    first_order_by_section: dict[str, int] = {}
+    for chunk_id, meta in pool_lookup.items():
+        parser_section = meta["parser_section"]
+        if parser_section not in relevant:
+            continue
+        scoped_chunk_ids.append(chunk_id)
+        if parser_section not in first_order_by_section:
+            first_order_by_section[parser_section] = chunk_order[chunk_id]
+    if not scoped_chunk_ids:
+        return _build_full_application_text(pool_lookup, chunk_order), []
+    ordered = sorted(first_order_by_section, key=first_order_by_section.get)
+    return build_evidence_text(scoped_chunk_ids, pool_lookup, chunk_order), ordered
 
 
 def _strip_rubric_for_prompt(rubric_sections: list[dict[str, Any]]) -> dict[str, Any]:
@@ -777,23 +836,31 @@ def build_final_scoring_messages(
     rubric_section: dict[str, Any],
     stripped_criteria: dict[str, Any],
     final_belief_state: dict[str, Any],
-    full_application_text: str,
+    scoped_application_text: str,
+    scoped_parser_sections: list[str],
 ) -> list[dict[str, str]]:
+    scope_note = (
+        f"Application text is scoped to parser sections: {scoped_parser_sections}."
+        if scoped_parser_sections
+        else "Application text contains the full application (no scoping applied)."
+    )
     system = (
         "You are scoring one rubric section of a grant application.\n\n"
         "Return JSON only.\n"
         "Score only the target rubric section.\n"
         f"Target rubric section: section_key=`{rubric_section['section_key']}`, section_name=`{rubric_section['human_name']}`.\n"
+        f"{scope_note}\n"
         "Use the final belief state as the primary evidence index.\n"
-        "Use the full application text only to verify, refine, or reject what the belief state suggests.\n"
+        "Use the application text only to verify, refine, or reject what the belief state suggests.\n"
         "Do not score subcriteria outside the target rubric section.\n"
-        "Each signal score must be exactly one of: 0, 1, 2.\n"
+        "Each signal score must be an integer from 0 to 5 inclusive (0,1,2,3,4,5).\n"
+        "Scoring guide: 0=no evidence, 1=very weak, 2=weak, 3=moderate, 4=strong, 5=fully met with clear evidence.\n"
         f"`used_chunk_ids` must contain at most {USED_CHUNK_MAX} grounded chunk IDs.\n"
-        "If evidence is missing or weak, give 0 or 1, not 2.\n"
+        "If evidence is missing or weak, give a low score (0-2), not a high one (4-5).\n"
         "Keep rationales concise and evidence-based."
     )
     user_payload = {
-        "full_application_text": full_application_text,
+        "application_text": scoped_application_text,
         "criteria": stripped_criteria,
         "final_belief_state": final_belief_state,
     }
@@ -810,8 +877,8 @@ def build_final_scoring_messages(
         "{\n"
         '  "example.sub": {\n'
         '    "signals": {\n'
-        '      "example.signal.a": 2,\n'
-        '      "example.signal.b": 1\n'
+        '      "example.signal.a": 5,\n'
+        '      "example.signal.b": 3\n'
         "    },\n"
         '    "used_chunk_ids": ["example__001", "example__002"],\n'
         '    "rationale": "The evidence clearly supports the first signal and partially supports the second."\n'
@@ -950,8 +1017,8 @@ def _aggregate_sub_criterion(
     pool_lookup: dict[str, dict[str, str]],
 ) -> dict[str, Any]:
     total_weight = sum(signal["weight"] for signal in sub["signals"]) or 1.0
-    weighted_sum = sum(signal["score_0to2_weighted"] * signal["weight"] for signal in sub["signals"])
-    score_10 = round((weighted_sum / (2 * total_weight)) * 10, 2)
+    weighted_sum = sum(signal["score_0to5_weighted"] * signal["weight"] for signal in sub["signals"])
+    score_10 = round((weighted_sum / (SCORER_MAX_SCORE * total_weight)) * 10, 2)
     confidence_score = CONFIDENCE_TO_SCORE[sub["confidence_label"]]
     avg_plausibility = _compat_plausibility(confidence_score)
     evidence = _build_evidence(sub["used_chunk_ids"], pool_lookup)
@@ -1104,8 +1171,8 @@ def _build_scored_section(
                 "weight": signal["weight"],
                 "model_a_score": score,
                 "model_b_score": score,
-                "score_0to2_raw": float(score),
-                "score_0to2_weighted": float(score),
+                "score_0to5_raw": float(score),
+                "score_0to5_weighted": float(score),
             })
         rationale = normalized_sub.get("rationale", "")
         missing_evidence = bool(normalized_sub.get("missing_evidence"))
@@ -1239,7 +1306,6 @@ def score_application_base(
     pool_index_text = pool_data["pool_index_text"]
     chunk_order = _chunk_order_map(pool_lookup)
     all_chunk_ids = list(pool_lookup)
-    full_application_text = _build_full_application_text(pool_lookup, chunk_order)
 
     belief_state = _initial_belief_state(rubric_sections)
     stage1_inputs = _section_inputs(pool_data["section_chunk_ids"], pool_lookup, chunk_order)
@@ -1304,14 +1370,23 @@ def score_application_base(
         })
 
     stage2_raw_by_section: dict[str, str] = {}
+    stage2_scope_by_section: dict[str, list[str]] = {}
     sections: list[dict[str, Any]] = []
     for rubric_section in rubric_sections:
         section_key = rubric_section["section_key"]
+        scoped_text, scoped_parser_sections = _build_scoped_application_text(
+            rubric_section=rubric_section,
+            pool_lookup=pool_lookup,
+            chunk_order=chunk_order,
+            belief_state=belief_state,
+        )
+        stage2_scope_by_section[section_key] = scoped_parser_sections
         messages = build_final_scoring_messages(
             rubric_section=rubric_section,
             stripped_criteria=stripped_criteria,
             final_belief_state=belief_state,
-            full_application_text=full_application_text,
+            scoped_application_text=scoped_text,
+            scoped_parser_sections=scoped_parser_sections,
         )
         schema = build_scoring_schema(rubric_section, all_chunk_ids)
         raw_stage2 = scorer_client.generate_json(messages, schema=schema, max_tokens=STAGE2_MAX_TOKENS)
