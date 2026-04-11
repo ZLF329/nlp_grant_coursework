@@ -1163,20 +1163,18 @@
     }
     function criterionCons(criterion) {
       const signals = Array.isArray(criterion?.signals) ? criterion.signals : [];
-      const cons = [];
       const drawbackText = (criterion?.drawbacks || criterion?.rationale || '').trim();
-      if (drawbackText) cons.push(drawbackText);
-      signals
-        .filter(signal => Number(signal.rawScore || 0) <= 2)
-        .slice(0, 5)
-        .forEach(signal => {
-          const note = signal.note || signal.rationale || '';
-          cons.push(note ? `${signal.text}: ${note}` : signal.text);
-        });
-      if (!cons.length && Number(criterion?.score || 0) < 7) {
-        cons.push('The score suggests this sub-criterion needs more detail.');
+      if (drawbackText) return [drawbackText];
+
+      const weakSignal = signals.find(signal => Number(signal.rawScore || 0) <= 2);
+      if (weakSignal) {
+        const note = weakSignal.note || weakSignal.rationale || '';
+        return [note ? `${weakSignal.text}: ${note}` : weakSignal.text];
       }
-      return cons;
+      if (Number(criterion?.score || 0) < 7) {
+        return ['The score suggests this sub-criterion needs more detail.'];
+      }
+      return [];
     }
     function rationaleCardsHtml(criterion, labelPrefix) {
       const prefix = labelPrefix ? `${labelPrefix} ` : '';
