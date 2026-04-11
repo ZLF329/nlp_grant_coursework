@@ -533,7 +533,7 @@ class PipelineTests(unittest.TestCase):
                 self.assertLessEqual(len(current), len(previous))
             previous = current
 
-    def test_positive_scores_without_valid_evidence_are_zeroed_and_flagged(self):
+    def test_positive_scores_without_valid_evidence_are_flagged_not_zeroed(self):
         application = sample_application()
         _, stage1_payloads, stage2_payloads = build_payloads_for_application(application)
         scorer = FakeClient(payloads=[*stage1_payloads, *stage2_payloads], model_name="single-model")
@@ -546,8 +546,9 @@ class PipelineTests(unittest.TestCase):
         )
 
         training = result["features"]["training_development"]["sub_criteria"][0]
-        self.assertEqual(training["signals"][0]["score_0to5_raw"], 0.0)
+        self.assertEqual(training["signals"][0]["score_0to5_raw"], 2.0)
         self.assertEqual(training["evidence_count"], 0)
+        self.assertEqual(training["evidence_status"], "invalid_evidence")
         self.assertTrue(training["missing_evidence"])
 
     def test_build_evidence_text_inserts_ellipsis_between_non_adjacent_chunks(self):

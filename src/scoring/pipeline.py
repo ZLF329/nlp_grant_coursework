@@ -1313,7 +1313,6 @@ def _normalize_model_section_output(
         evidence_status = "ok"
         if has_positive and not used_chunk_ids:
             evidence_status = "invalid_evidence"
-            signals = {sid: 0 for sid in signals}
         elif len(used_chunk_ids) == 1:
             evidence_status = "sparse_evidence"
 
