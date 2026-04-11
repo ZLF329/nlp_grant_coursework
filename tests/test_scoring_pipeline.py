@@ -13,7 +13,6 @@ from src.pool.build_pool import (
 )
 from src.scoring.pipeline import (
     _aggregate_section,
-    _build_scored_section,
     _cap_perfect_scores_for_caveats,
     _normalize_model_section_output,
     build_evidence_text,
@@ -327,30 +326,6 @@ class PipelineTests(unittest.TestCase):
         self.assertEqual(aggregated["overall"]["expected_items"], 1)
         self.assertEqual(aggregated["overall"]["coverage_score_0to100"], 0)
 
-    def test_wpcc_team_diversity_is_visible_but_excluded_from_section_average(self):
-        rubric = load_rubric(CRITERIA_PATH)
-        wpcc = next(section for section in rubric if section["section_key"] == "wpcc")
-        normalized = {}
-        for sub in wpcc["sub_criteria"]:
-            score = 0 if sub["sub_id"] == "wp.2" else 5
-            normalized[sub["sub_id"]] = {
-                "signals": {signal["sid"]: score for signal in sub["signals"]},
-                "used_chunk_ids": [],
-                "pros": "",
-                "drawbacks": "",
-            }
-
-        section = _build_scored_section(wpcc, normalized, {})
-        aggregated = _aggregate_section(section, {})
-        wp2 = next(sub for sub in aggregated["sub_criteria"] if sub["sub_id"] == "wp.2")
-
-        self.assertEqual(wp2["score_10"], 0)
-        self.assertFalse(wp2["counts_toward_section_average"])
-        self.assertEqual(wp2["section_average_exclusion_reason"], "not_routinely_application_scored")
-        self.assertEqual(aggregated["score_10"], 10)
-        self.assertEqual(aggregated["overall"]["total_items"], 6)
-        self.assertEqual(aggregated["overall"]["scored_items"], 5)
-
     def test_stage2_normalizer_requires_missing_signals_and_caps_caveated_fives(self):
         rubric_section = {
             "sub_criteria": [
@@ -501,15 +476,6 @@ class PipelineTests(unittest.TestCase):
         self.assertIn("`drawbacks` must describe missing evidence", user)
         self.assertIn("You must judge readability, jargon explanation, alignment, and sentence coherence yourself", system)
         self.assertNotIn('"weight"', user)
-
-        wpcc_stage2_call = next(
-            call for call in scorer.calls[len(stage1_payloads):]
-            if "section_key=`wpcc`" in call["messages"][0]["content"]
-        )
-        wpcc_system = wpcc_stage2_call["messages"][0]["content"]
-        self.assertIn("do not require every demographic", wpcc_system)
-        self.assertIn("inspect SUMMARY BUDGET evidence", wpcc_system)
-        self.assertIn("do not let missing wp.2 evidence reduce", wpcc_system)
 
     def test_missing_signals_is_monotonic(self):
         application = sample_application()

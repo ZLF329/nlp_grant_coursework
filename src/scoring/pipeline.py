@@ -44,12 +44,6 @@ STAGE1_MAX_SIGNALS_PER_FINDING = 3
 STAGE1_IMPLICATION_MAX_CHARS = 220
 STAGE1_HISTORY_IMPLICATIONS_PER_SIGNAL = 2
 JSON_PARSE_MAX_RETRIES = 1
-SECTION_AVERAGE_EXCLUDED_SUB_IDS = {
-    # Research-team demographic composition is rarely requested in the parsed
-    # application text; keep the item visible, but do not let missing team
-    # demographics dominate Working with People and Communities.
-    "wp.2",
-}
 
 SECTION_TO_PARSER_SECTIONS: dict[str, list[str] | None] = {
     "general": None,
@@ -294,14 +288,6 @@ def _compat_evidence_score(avg_confidence_0to2: float) -> float:
 def _is_if_applicable_subcriterion(sub: dict[str, Any]) -> bool:
     text = f"{sub.get('name', '')} {sub.get('definition', '')}".lower()
     return "if applicable" in text
-
-
-def _section_average_exclusion_reason(sub: dict[str, Any]) -> str | None:
-    if _is_if_applicable_subcriterion(sub):
-        return "if_applicable"
-    if sub.get("sub_id") in SECTION_AVERAGE_EXCLUDED_SUB_IDS:
-        return "not_routinely_application_scored"
-    return None
 
 
 def rule_based_retrieval(
@@ -1010,26 +996,6 @@ def build_final_scoring_messages(
         if rubric_section["section_key"] == "proposed_research"
         else ""
     )
-    wpcc_note = (
-        "For Working with People and Communities scoring:\n"
-        "- For wp.4 Representation of Seldom Heard or Underserved Groups, do not require every demographic "
-        "category listed in the signal text to appear. Explicit evidence of underserved groups such as lower "
-        "socioeconomic classes, ethnic minorities, disability, geography, age, or similar groups can support "
-        "the demographic signal. Targeted recruitment via patient associations, clinics, inclusion toolkits, "
-        "local/community networks, or adapted recruitment routes can support recruitment-strategy signals. "
-        "Virtual attendance, phone-in options, convenient timing, practice calls, and related adjustments can "
-        "support barrier-mitigation/accessibility signals.\n"
-        "- For wp.6 Costed and Resourced Plan for Research Inclusion, inspect SUMMARY BUDGET evidence when "
-        "present. PPI/advisory-group payments, focus-group payments, participant expenses, collaborator "
-        "training, co-facilitation, beta-testing payments, transcription, outreach, or recruitment support can "
-        "all be valid budget/resource evidence when linked to inclusion activities.\n"
-        "- For wp.2 Diversity and Inclusivity of the Research Team, score only explicit research-team evidence "
-        "about demographic composition, inclusive hiring/team-building, or equitable task allocation. Do not "
-        "transfer PPI participant diversity evidence into wp.2, and do not let missing wp.2 evidence reduce "
-        "scores for wp.4, wp.5, or wp.6.\n"
-        if rubric_section["section_key"] == "wpcc"
-        else ""
-    )
     system = (
         "You are scoring one rubric section of a grant application.\n\n"
         "Return JSON only.\n"
@@ -1041,7 +1007,6 @@ def build_final_scoring_messages(
         "Use the application text only to verify, refine, or reject what the belief state suggests.\n"
         f"{application_form_note}"
         f"{proposed_research_note}"
-        f"{wpcc_note}"
         "Do not score subcriteria outside the target rubric section.\n"
         "Identifier rules (STRICT):\n"
         "  - Top-level JSON keys MUST be parent sub ids from the allowed list (e.g. `g.4`, `pr.2`).\n"
@@ -1530,8 +1495,7 @@ def _build_scored_section(
         pros = normalized_sub.get("pros", "")
         drawbacks = normalized_sub.get("drawbacks", normalized_sub.get("rationale", ""))
         missing_evidence = bool(normalized_sub.get("missing_evidence"))
-        exclusion_reason = _section_average_exclusion_reason(sub)
-        counts_toward_section_average = exclusion_reason is None
+        counts_toward_section_average = not _is_if_applicable_subcriterion(sub)
         section_subs.append({
             "sub_id": sub["sub_id"],
             "name": sub["name"],
@@ -1548,8 +1512,7 @@ def _build_scored_section(
             "drawbacks": drawbacks,
             "rationale": drawbacks,
             "missing_evidence": missing_evidence,
-            "if_applicable": exclusion_reason == "if_applicable",
-            "section_average_exclusion_reason": exclusion_reason,
+            "if_applicable": not counts_toward_section_average,
             "counts_toward_section_average": counts_toward_section_average,
         })
 
