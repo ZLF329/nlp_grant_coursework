@@ -54,6 +54,7 @@ SECTION_TO_PARSER_SECTIONS: dict[str, list[str] | None] = {
         "Plain English Summary",
         "Scientific Abstract",
         "Detailed Research Plan",
+        "Changes from Previous Stage",
         "Patient & Public Involvement",
         "Working with People and Communities Summary",
         "SUMMARY BUDGET",
