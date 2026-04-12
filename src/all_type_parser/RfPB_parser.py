@@ -516,6 +516,7 @@ def parse_application_details(lines: List[Line]) -> dict:
     Section 5  -> Changes from Previous Stage
     Section 6  -> Detailed Research Plan
     Section 7  -> Patient & Public Involvement
+    Section 14 -> Applicant CV
     """
     out: dict = {}
 
@@ -538,6 +539,10 @@ def parse_application_details(lines: List[Line]) -> dict:
     ppi_lines = slice_section(lines, SECTION_PPI)
     if ppi_lines:
         out["Patient & Public Involvement"] = parse_text_section(ppi_lines)
+
+    cv_lines = slice_section(lines, SECTION_CV_LEAD)
+    if cv_lines:
+        out["Applicant CV"] = parse_text_section(cv_lines)
 
     return out
 
@@ -562,7 +567,7 @@ def extract_all_sections(pdf_path: str) -> dict:
     if not find_section_ranges(lines):
         return {}
 
-    out: dict = {}
+    out: dict = {"doc_type": "rfpb"}
 
     # SUMMARY INFORMATION — regex on page-1 raw text
     summary_info = parse_summary_information(pdf_path)

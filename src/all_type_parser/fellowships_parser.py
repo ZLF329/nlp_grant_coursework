@@ -495,7 +495,7 @@ def extract_all_sections(pdf_path: str) -> dict:
     lines = extract_lines_pdfplumber(pdf_path)
     lines = filter_fellowship_lines(lines)
 
-    out: dict = {}
+    out: dict = {"doc_type": "fellowship"}
 
     # SUMMARY INFORMATION — regex-based on section 1 raw text
     summary_info = parse_summary_information(pdf_path)

@@ -34,12 +34,27 @@ SECTION_ID_PREFIX = {
 }
 STAGE1_EXCLUDED_SECTION_KEYS = {"application_form"}
 SCORER_ALLOWED_SCORES = (0, 1, 2, 3, 4, 5)
+
+# ── Doc-type exclusions ────────────────────────────────────────────────────────
+# RfPB (Research for Patient Benefit) is a project grant, not a fellowship.
+# It has no training/career-development section, so `training_development` is
+# meaningless and should not drag down the overall score.
+# g.1 ("Common Characteristics of Good Applications") and g.2 ("Tell us why
+# you need this award") are fellowship-oriented sub-criteria that ask about
+# personal career trajectory and need for the award — neither applies when
+# scoring a project grant where the research merit stands on its own.
+OVERALL_EXCLUDED_SECTIONS_BY_DOC_TYPE: dict[str, set[str]] = {
+    "rfpb": {"training_development"},
+}
+SECTION_EXCLUDED_SUB_IDS_BY_DOC_TYPE: dict[str, set[str]] = {
+    "rfpb": {"g.1", "g.2"},
+}
+# ──────────────────────────────────────────────────────────────────────────────
 SCORER_MAX_SCORE = 5
 USED_CHUNK_MAX = 5
 SECTION_EVIDENCE_MAX = 3
 STAGE1_MAX_TOKENS = int(os.environ.get("STAGE1_MAX_TOKENS", "8192"))
 STAGE2_MAX_TOKENS = int(os.environ.get("STAGE2_MAX_TOKENS", "12288"))
-STAGE1_MAX_FINDINGS = 6
 STAGE1_MAX_SIGNALS_PER_FINDING = 3
 STAGE1_IMPLICATION_MAX_CHARS = 220
 STAGE1_HISTORY_IMPLICATIONS_PER_SIGNAL = 2
@@ -373,19 +388,13 @@ def _parser_sections_from_belief(
     for sub_id, sub_entry in subcriteria_beliefs.items():
         if sub_id not in sub_ids or not isinstance(sub_entry, dict):
             continue
-        signals = sub_entry.get("signals", {})
-        if not isinstance(signals, dict):
-            continue
-        for signal_payload in signals.values():
-            if not isinstance(signal_payload, dict):
-                continue
-            for chunk_id in (
-                *signal_payload.get("good_evidence_ids", []),
-                *signal_payload.get("bad_evidence_ids", []),
-            ):
-                meta = pool_lookup.get(chunk_id)
-                if meta:
-                    parser_sections.add(meta["parser_section"])
+        for chunk_id in (
+            *sub_entry.get("good_evidence_ids", []),
+            *sub_entry.get("bad_evidence_ids", []),
+        ):
+            meta = pool_lookup.get(chunk_id)
+            if meta:
+                parser_sections.add(meta["parser_section"])
     return parser_sections
 
 
@@ -442,14 +451,6 @@ def _strip_rubric_for_prompt(rubric_sections: list[dict[str, Any]]) -> dict[str,
     return stripped
 
 
-def _all_signal_ids(rubric_sections: list[dict[str, Any]]) -> list[str]:
-    signal_ids: list[str] = []
-    for section in rubric_sections:
-        for sub in section["sub_criteria"]:
-            for signal in sub["signals"]:
-                signal_ids.append(signal["sid"])
-    return signal_ids
-
 
 def _stage1_rubric_sections(rubric_sections: list[dict[str, Any]]) -> list[dict[str, Any]]:
     return [
@@ -460,10 +461,16 @@ def _stage1_rubric_sections(rubric_sections: list[dict[str, Any]]) -> list[dict[
 
 
 def _initial_belief_state(rubric_sections: list[dict[str, Any]]) -> dict[str, Any]:
+    stage1_sections = _stage1_rubric_sections(rubric_sections)
+    all_sub_ids = [
+        sub["sub_id"]
+        for section in stage1_sections
+        for sub in section["sub_criteria"]
+    ]
     return {
         "processed_sections": [],
         "subcriteria_beliefs": {},
-        "missing_signals": _all_signal_ids(_stage1_rubric_sections(rubric_sections)),
+        "missing_signals": all_sub_ids,   # tracks sub IDs (not signal IDs)
     }
 
 
@@ -521,41 +528,35 @@ def _build_stage1_criteria_view(rubric_sections: list[dict[str, Any]]) -> dict[s
 def _build_stage1_belief_state_view(current_belief_state: dict[str, Any]) -> dict[str, Any]:
     processed_sections = list(current_belief_state.get("processed_sections", []))
     missing_signals = list(current_belief_state.get("missing_signals", []))
-    resolved_signal_ids: list[str] = []
-    signal_implications: list[dict[str, Any]] = []
+    resolved_sub_ids: list[str] = []
+    sub_implications: list[dict[str, Any]] = []
     subcriteria_beliefs = current_belief_state.get("subcriteria_beliefs", {})
     if isinstance(subcriteria_beliefs, dict):
-        for sub_entry in subcriteria_beliefs.values():
+        for sub_id, sub_entry in subcriteria_beliefs.items():
             if not isinstance(sub_entry, dict):
                 continue
-            signals = sub_entry.get("signals", {})
-            if not isinstance(signals, dict):
-                continue
-            for signal_id, signal_payload in signals.items():
-                if not isinstance(signal_payload, dict):
-                    continue
-                good_ids = signal_payload.get("good_evidence_ids") or []
-                bad_ids = signal_payload.get("bad_evidence_ids") or []
-                implications = signal_payload.get("implications") or []
-                if good_ids or bad_ids:
-                    resolved_signal_ids.append(signal_id)
-                if isinstance(implications, list):
-                    compact_implications = [
-                        str(item).strip()[:STAGE1_IMPLICATION_MAX_CHARS]
-                        for item in implications
-                        if str(item).strip()
-                    ][:STAGE1_HISTORY_IMPLICATIONS_PER_SIGNAL]
-                    if compact_implications:
-                        signal_implications.append({
-                            "sid": signal_id,
-                            "implications": compact_implications,
-                        })
+            good_ids = sub_entry.get("good_evidence_ids") or []
+            bad_ids = sub_entry.get("bad_evidence_ids") or []
+            implications = sub_entry.get("implications") or []
+            if good_ids or bad_ids:
+                resolved_sub_ids.append(sub_id)
+            if isinstance(implications, list):
+                compact_implications = [
+                    str(item).strip()[:STAGE1_IMPLICATION_MAX_CHARS]
+                    for item in implications
+                    if str(item).strip()
+                ][:STAGE1_HISTORY_IMPLICATIONS_PER_SIGNAL]
+                if compact_implications:
+                    sub_implications.append({
+                        "sub_id": sub_id,
+                        "implications": compact_implications,
+                    })
     return {
         "processed_sections": processed_sections[-10:],
         "processed_section_count": len(processed_sections),
         "missing_signals": missing_signals,
-        "resolved_signals": _dedupe_preserve_order(resolved_signal_ids),
-        "signal_implications": signal_implications,
+        "resolved_signals": _dedupe_preserve_order(resolved_sub_ids),
+        "signal_implications": sub_implications,
     }
 
 
@@ -577,25 +578,19 @@ def build_section_evidence_messages(
     system = (
         "You review one parsed application section at a time.\n\n"
         "Return JSON only.\n"
-        "Task: inspect the current section only, then return evidence only for signals that are clearly supported or clearly challenged by the current section text.\n"
-        "Do not summarize the full criteria. Do not explain why unrelated signals are irrelevant.\n"
+        "Task: inspect the current section only, then return one finding per sub-criterion that is clearly supported or clearly challenged by the current section text.\n"
+        "Do not summarize the full criteria. Do not explain why unrelated sub-criteria are irrelevant.\n"
         "Only use evidence IDs that appear in application_section.section_content.\n"
         "The current_belief_state may include prior implications for context, but it does not include prior evidence IDs.\n"
         "Never invent IDs.\n"
         "Identifier rules (STRICT):\n"
-        "  - Each signal in criteria has a `sub_id` (parent subcriterion, e.g. `g.4`, `pr.2`, `td.1`) "
-        "and a `sid` (full signal id, e.g. `g.4.a`, `pr.2.c`).\n"
-        "  - In each finding, `sub_id` MUST be the parent subcriterion id (`g.4`), NEVER a signal id (`g.4.a`).\n"
-        "  - Group every signal under its parent `sub_id`. If you report `g.4.a` and `g.4.c`, "
-        "return ONE finding with `sub_id`=`g.4` and both signals nested inside its `signals` object.\n"
-        "  - Inside `signals`, use the full signal id (`g.4.a`) as the key. Each value MUST be an object "
-        "with an `evidence` object (containing `good_evidence_ids` and `bad_evidence_ids`) and an "
-        "`implication` string. Do NOT put `good_evidence_ids` directly under the signal. Do NOT put "
-        "`implication` at the finding level.\n"
+        "  - Each finding has exactly three fields: `sub_id`, `evidence`, `implication`.\n"
+        "  - `sub_id` MUST be the parent subcriterion id (e.g. `g.4`, `pr.2`). NEVER a signal id.\n"
+        "  - `evidence` is an object with `good_evidence_ids` and `bad_evidence_ids` (chunk ID lists).\n"
+        "  - `implication` is a short string summarising what this section reveals about the sub-criterion.\n"
         f"Each evidence list holds at most {SECTION_EVIDENCE_MAX} IDs.\n"
-        f"Return at most {STAGE1_MAX_FINDINGS} findings total.\n"
-        f"Within each finding, return at most {STAGE1_MAX_SIGNALS_PER_FINDING} signals.\n"
-        "A signal is relevant only if the section text gives concrete evidence for or against it.\n"
+        "Return one finding per relevant sub-criterion (no upper limit).\n"
+        "A sub-criterion is relevant only if the section text gives concrete evidence for or against it.\n"
         "If the section only contains metadata or weak context, return no findings.\n"
         "When there is no relevant evidence, return the required empty object shape and stop.\n"
         "Never return a bare array like `[]`.\n"
@@ -617,25 +612,22 @@ def build_section_evidence_messages(
         "findings": [
             {
                 "sub_id": "g.4",
-                "signals": {
-                    "g.4.a": {
-                        "evidence": {
-                            "good_evidence_ids": ["secxx__001_a"],
-                            "bad_evidence_ids": [],
-                        },
-                        "implication": f"{section_name}: directly supports signal g.4.a.",
-                    },
-                    "g.4.c": {
-                        "evidence": {
-                            "good_evidence_ids": ["secxx__001_b"],
-                            "bad_evidence_ids": [],
-                        },
-                        "implication": f"{section_name}: directly supports signal g.4.c.",
-                    },
+                "evidence": {
+                    "good_evidence_ids": ["secxx__001_a", "secxx__001_b"],
+                    "bad_evidence_ids": [],
                 },
-            }
+                "implication": f"{section_name}: lists 7 publications and a PhD, directly supporting g.4.",
+            },
+            {
+                "sub_id": "g.6",
+                "evidence": {
+                    "good_evidence_ids": ["secxx__002"],
+                    "bad_evidence_ids": [],
+                },
+                "implication": f"{section_name}: applicant is a practitioner-researcher, supporting g.6.",
+            },
         ],
-        "resolved_signals": ["g.4.a", "g.4.c"],
+        "resolved_signals": ["g.4", "g.6"],
     }
     return [
         {"role": "system", "content": system},
@@ -680,15 +672,15 @@ def build_section_evidence_schema(
     section_chunk_ids: list[str],
 ) -> dict[str, Any]:
     stage1_sections = _stage1_rubric_sections(rubric_sections)
-    all_signal_ids = _all_signal_ids(stage1_sections)
     sub_ids = [
         sub["sub_id"]
         for section in stage1_sections
         for sub in section["sub_criteria"]
     ]
-    signal_payload = {
+    finding_schema = {
         "type": "object",
         "properties": {
+            "sub_id": {"type": "string", "enum": sub_ids},
             "evidence": {
                 "type": "object",
                 "properties": {
@@ -708,37 +700,20 @@ def build_section_evidence_schema(
             },
             "implication": {"type": "string"},
         },
-        "required": ["evidence", "implication"],
+        "required": ["sub_id", "evidence", "implication"],
         "additionalProperties": False,
     }
     return {
-            "type": "object",
-            "properties": {
-                "section_name": {"type": "string"},
-                "findings": {
-                    "type": "array",
-                    "maxItems": STAGE1_MAX_FINDINGS,
-                    "items": {
-                        "type": "object",
-                        "properties": {
-                            "sub_id": {"type": "string", "enum": sub_ids},
-                            "signals": {
-                                "type": "object",
-                                "properties": {
-                                    sid: signal_payload
-                                    for sid in all_signal_ids
-                                },
-                                "maxProperties": STAGE1_MAX_SIGNALS_PER_FINDING,
-                                "additionalProperties": False,
-                            },
-                        },
-                    "required": ["sub_id", "signals"],
-                    "additionalProperties": False,
-                },
+        "type": "object",
+        "properties": {
+            "section_name": {"type": "string"},
+            "findings": {
+                "type": "array",
+                "items": finding_schema,
             },
             "resolved_signals": {
                 "type": "array",
-                "items": {"type": "string", "enum": all_signal_ids},
+                "items": {"type": "string", "enum": sub_ids},
             },
         },
         "required": ["section_name", "findings", "resolved_signals"],
@@ -762,16 +737,10 @@ def _normalize_section_evidence_output(
 ) -> dict[str, Any]:
     allowed_ids = set(section_chunk_ids)
     stage1_sections = _stage1_rubric_sections(rubric_sections)
-    signals_by_sub: dict[str, set[str]] = {
-        sub["sub_id"]: {signal["sid"] for signal in sub["signals"]}
+    valid_sub_ids: set[str] = {
+        sub["sub_id"]
         for section in stage1_sections
         for sub in section["sub_criteria"]
-    }
-    signal_to_sub: dict[str, str] = {
-        signal["sid"]: sub["sub_id"]
-        for section in stage1_sections
-        for sub in section["sub_criteria"]
-        for signal in sub["signals"]
     }
     findings_by_sub: dict[str, dict[str, Any]] = {}
     resolved: list[str] = []
@@ -790,111 +759,52 @@ def _normalize_section_evidence_output(
     for raw_finding in raw_findings:
         if not isinstance(raw_finding, dict):
             continue
-        raw_sub_id = raw_finding.get("sub_id")
-        if not isinstance(raw_sub_id, str):
+        sub_id = raw_finding.get("sub_id")
+        if not isinstance(sub_id, str) or sub_id not in valid_sub_ids:
             continue
-        if raw_sub_id in signals_by_sub:
-            sub_id = raw_sub_id
-            fallback_signal_id: str | None = None
-        elif raw_sub_id in signal_to_sub:
-            sub_id = signal_to_sub[raw_sub_id]
-            fallback_signal_id = raw_sub_id
+
+        raw_evidence = raw_finding.get("evidence", {})
+        if not isinstance(raw_evidence, dict):
+            raw_evidence = {}
+        good_ids = _dedupe_preserve_order(
+            _coerce_id_list(raw_evidence.get("good_evidence_ids"))
+        )[:SECTION_EVIDENCE_MAX]
+        bad_ids = _dedupe_preserve_order(
+            _coerce_id_list(raw_evidence.get("bad_evidence_ids"))
+        )[:SECTION_EVIDENCE_MAX]
+        if not good_ids and not bad_ids:
+            continue
+
+        implication = raw_finding.get("implication", "")
+        if not isinstance(implication, str):
+            implication = ""
+
+        if sub_id in findings_by_sub:
+            existing = findings_by_sub[sub_id]
+            existing["good_evidence_ids"] = _dedupe_preserve_order([
+                *existing["good_evidence_ids"], *good_ids,
+            ])[:SECTION_EVIDENCE_MAX]
+            existing["bad_evidence_ids"] = _dedupe_preserve_order([
+                *existing["bad_evidence_ids"], *bad_ids,
+            ])[:SECTION_EVIDENCE_MAX]
+            if implication.strip() and not existing["implication"].endswith(implication.strip()):
+                existing["implication"] = _ensure_implication_prefix(
+                    section_name, implication
+                )[:STAGE1_IMPLICATION_MAX_CHARS]
         else:
-            continue
-        raw_signals = raw_finding.get("signals", {})
-        if not isinstance(raw_signals, dict):
-            raw_signals = {}
-        finding_implication = raw_finding.get("implication", "")
-        if not isinstance(finding_implication, str):
-            finding_implication = ""
-
-        # Gather candidate (signal_id -> raw_signal payload) pairs, tolerating
-        # models that key signals by sub_id, by an unrelated label, or that
-        # bury the evidence at the finding level entirely.
-        signal_candidates: list[tuple[str, Any]] = []
-        for key, value in raw_signals.items():
-            resolved_signal_id: str | None = None
-            if key in signals_by_sub[sub_id]:
-                resolved_signal_id = key
-            elif key in signal_to_sub and signal_to_sub[key] == sub_id:
-                resolved_signal_id = key
-            elif key == sub_id and fallback_signal_id is not None:
-                resolved_signal_id = fallback_signal_id
-            elif fallback_signal_id is not None and len(raw_signals) == 1:
-                resolved_signal_id = fallback_signal_id
-            if resolved_signal_id is None:
-                continue
-            signal_candidates.append((resolved_signal_id, value))
-
-        if not signal_candidates and fallback_signal_id is not None:
-            # Model dropped the nested signals dict entirely and put the
-            # evidence on the finding itself.
-            signal_candidates.append((fallback_signal_id, raw_finding))
-
-        entry = findings_by_sub.setdefault(sub_id, {"sub_id": sub_id, "signals": {}})
-        signal_entries: dict[str, Any] = entry["signals"]
-
-        for signal_id, raw_signal in signal_candidates:
-            if not isinstance(raw_signal, dict):
-                continue
-            raw_evidence = raw_signal.get("evidence")
-            if isinstance(raw_evidence, dict):
-                good_ids = _coerce_id_list(raw_evidence.get("good_evidence_ids"))
-                bad_ids = _coerce_id_list(raw_evidence.get("bad_evidence_ids"))
-            else:
-                good_ids = _coerce_id_list(raw_signal.get("good_evidence_ids"))
-                bad_ids = _coerce_id_list(raw_signal.get("bad_evidence_ids"))
-            good_ids = _dedupe_preserve_order(good_ids)[:SECTION_EVIDENCE_MAX]
-            bad_ids = _dedupe_preserve_order(bad_ids)[:SECTION_EVIDENCE_MAX]
-            if not good_ids and not bad_ids:
-                continue
-
-            implication = raw_signal.get("implication")
-            if not isinstance(implication, str) or not implication.strip():
-                implication = finding_implication
-            if not isinstance(implication, str):
-                implication = ""
-
-            existing = signal_entries.get(signal_id)
-            if existing is not None:
-                merged_good = _dedupe_preserve_order([
-                    *existing["evidence"]["good_evidence_ids"],
-                    *good_ids,
-                ])[:SECTION_EVIDENCE_MAX]
-                merged_bad = _dedupe_preserve_order([
-                    *existing["evidence"]["bad_evidence_ids"],
-                    *bad_ids,
-                ])[:SECTION_EVIDENCE_MAX]
-                existing["evidence"] = {
-                    "good_evidence_ids": merged_good,
-                    "bad_evidence_ids": merged_bad,
-                }
-                if implication and not existing["implication"].endswith(implication):
-                    existing["implication"] = _ensure_implication_prefix(
-                        section_name, implication
-                    )[:STAGE1_IMPLICATION_MAX_CHARS]
-            else:
-                signal_entries[signal_id] = {
-                    "evidence": {
-                        "good_evidence_ids": good_ids,
-                        "bad_evidence_ids": bad_ids,
-                    },
-                    "implication": _ensure_implication_prefix(
-                        section_name, implication
-                    )[:STAGE1_IMPLICATION_MAX_CHARS],
-                }
-                resolved.append(signal_id)
-
-    findings_out: list[dict[str, Any]] = []
-    for entry in findings_by_sub.values():
-        if entry["signals"]:
-            findings_out.append(entry)
-        if len(findings_out) >= STAGE1_MAX_FINDINGS:
-            break
+            findings_by_sub[sub_id] = {
+                "sub_id": sub_id,
+                "good_evidence_ids": good_ids,
+                "bad_evidence_ids": bad_ids,
+                "implication": _ensure_implication_prefix(
+                    section_name, implication
+                )[:STAGE1_IMPLICATION_MAX_CHARS],
+            }
+            resolved.append(sub_id)
 
     return {
         "section_name": section_name,
-        "findings": findings_out,
+        "findings": list(findings_by_sub.values()),
         "resolved_signals": _dedupe_preserve_order(resolved),
     }
 
@@ -916,29 +826,25 @@ def _merge_belief_state(
 
     for finding in section_update.get("findings", []):
         sub_id = finding["sub_id"]
-        sub_entry = subcriteria_beliefs.setdefault(sub_id, {"signals": {}})
-        signal_beliefs = sub_entry.setdefault("signals", {})
-        for signal_id, signal_payload in finding.get("signals", {}).items():
-            signal_entry = signal_beliefs.setdefault(signal_id, {
-                "good_evidence_ids": [],
-                "bad_evidence_ids": [],
-                "implications": [],
-            })
-            evidence = signal_payload.get("evidence", {})
-            signal_entry["good_evidence_ids"] = _dedupe_preserve_order([
-                *signal_entry.get("good_evidence_ids", []),
-                *evidence.get("good_evidence_ids", []),
+        sub_entry = subcriteria_beliefs.setdefault(sub_id, {
+            "good_evidence_ids": [],
+            "bad_evidence_ids": [],
+            "implications": [],
+        })
+        sub_entry["good_evidence_ids"] = _dedupe_preserve_order([
+            *sub_entry.get("good_evidence_ids", []),
+            *finding.get("good_evidence_ids", []),
+        ])
+        sub_entry["bad_evidence_ids"] = _dedupe_preserve_order([
+            *sub_entry.get("bad_evidence_ids", []),
+            *finding.get("bad_evidence_ids", []),
+        ])
+        implication = finding.get("implication", "")
+        if isinstance(implication, str) and implication.strip():
+            sub_entry["implications"] = _dedupe_preserve_order([
+                *sub_entry.get("implications", []),
+                implication.strip(),
             ])
-            signal_entry["bad_evidence_ids"] = _dedupe_preserve_order([
-                *signal_entry.get("bad_evidence_ids", []),
-                *evidence.get("bad_evidence_ids", []),
-            ])
-            implication = signal_payload.get("implication", "")
-            if isinstance(implication, str) and implication.strip():
-                signal_entry["implications"] = _dedupe_preserve_order([
-                    *signal_entry.get("implications", []),
-                    implication.strip(),
-                ])
 
     next_state["subcriteria_beliefs"] = subcriteria_beliefs
     missing_signals = list(next_state.get("missing_signals", []))
@@ -1405,7 +1311,12 @@ def _aggregate_section(section: dict[str, Any], pool_lookup: dict[str, dict[str,
     }
 
 
-def _aggregate_overall(features: dict[str, dict[str, Any]], section_weights: dict[str, float]) -> dict[str, Any]:
+def _aggregate_overall(
+    features: dict[str, dict[str, Any]],
+    section_weights: dict[str, float],
+    *,
+    excluded_sections: set[str] | None = None,
+) -> dict[str, Any]:
     if not features:
         return {
             "score_10": 0,
@@ -1427,15 +1338,22 @@ def _aggregate_overall(features: dict[str, dict[str, Any]], section_weights: dic
             "target_evidence_per_item": USED_CHUNK_MAX,
         }
 
-    total_weight = sum(section_weights.get(key, 1.0) for key in features) or 1.0
-    weighted_score = sum(features[key]["score_10"] * section_weights.get(key, 1.0) for key in features)
+    scoring_features = {
+        k: v for k, v in features.items()
+        if k not in (excluded_sections or set())
+    }
+    if not scoring_features:
+        scoring_features = features
+
+    total_weight = sum(section_weights.get(key, 1.0) for key in scoring_features) or 1.0
+    weighted_score = sum(scoring_features[key]["score_10"] * section_weights.get(key, 1.0) for key in scoring_features)
     score_10 = round(weighted_score / total_weight, 2)
     total_items = sum(section["overall"]["total_items"] for section in features.values())
     scored_items = sum(section["overall"].get("scored_items", section["overall"]["total_items"]) for section in features.values())
     signal_count = sum(section["overall"]["signal_count"] for section in features.values())
     evidence_count = sum(section["overall"]["evidence_count"] for section in features.values())
-    good_items = sum(section["overall"]["good_items"] for section in features.values())
-    positive_items = sum(section["overall"]["positive_items"] for section in features.values())
+    good_items = sum(section["overall"]["good_items"] for section in scoring_features.values())
+    positive_items = sum(section["overall"]["positive_items"] for section in scoring_features.values())
     high_confidence_count = sum(section["overall"]["high_confidence_subcriterion_count"] for section in features.values())
     medium_confidence_count = sum(section["overall"]["medium_confidence_subcriterion_count"] for section in features.values())
     low_confidence_count = sum(section["overall"]["low_confidence_subcriterion_count"] for section in features.values())
@@ -1476,6 +1394,8 @@ def _build_scored_section(
     rubric_section: dict[str, Any],
     normalized_section: dict[str, dict[str, Any]],
     chunk_order: dict[str, int],
+    *,
+    excluded_sub_ids: set[str] | None = None,
 ) -> dict[str, Any]:
     section_subs: list[dict[str, Any]] = []
     for sub in rubric_section["sub_criteria"]:
@@ -1496,8 +1416,9 @@ def _build_scored_section(
         pros = normalized_sub.get("pros", "")
         drawbacks = normalized_sub.get("drawbacks", normalized_sub.get("rationale", ""))
         missing_evidence = bool(normalized_sub.get("missing_evidence"))
-        counts_toward_section_average = not _is_if_applicable_subcriterion(sub)
-        section_subs.append({
+        doc_type_excluded = bool(excluded_sub_ids and sub["sub_id"] in excluded_sub_ids)
+        counts_toward_section_average = not _is_if_applicable_subcriterion(sub) and not doc_type_excluded
+        entry: dict[str, Any] = {
             "sub_id": sub["sub_id"],
             "name": sub["name"],
             "definition": sub["definition"],
@@ -1515,7 +1436,10 @@ def _build_scored_section(
             "missing_evidence": missing_evidence,
             "if_applicable": not counts_toward_section_average,
             "counts_toward_section_average": counts_toward_section_average,
-        })
+        }
+        if doc_type_excluded:
+            entry["excluded_reason"] = "not_applicable_for_doc_type"
+        section_subs.append(entry)
 
     return {
         "human_name": rubric_section["human_name"],
@@ -1620,6 +1544,10 @@ def score_application_base(
     scorer_client: Any,
     artifacts_dir: str | Path | None = None,
 ) -> dict[str, Any]:
+    doc_type = (application.get("doc_type") or "").lower()
+    excluded_sections = OVERALL_EXCLUDED_SECTIONS_BY_DOC_TYPE.get(doc_type, set())
+    excluded_sub_ids = SECTION_EXCLUDED_SUB_IDS_BY_DOC_TYPE.get(doc_type, set())
+
     rubric_sections = load_rubric(criteria_path)
     stripped_criteria = _strip_rubric_for_prompt(rubric_sections)
     stage1_criteria = _build_stage1_criteria_view(rubric_sections)
@@ -1758,6 +1686,7 @@ def score_application_base(
             rubric_section,
             normalized_stage2,
             chunk_order,
+            excluded_sub_ids=excluded_sub_ids,
         ))
 
     artifact_paths = _write_artifacts(
@@ -1790,9 +1719,12 @@ def score_application_base(
         "section_chunk_ids": pool_data["section_chunk_ids"],
         "belief_state": belief_state,
         "features": features,
-        "overall": _aggregate_overall(features, section_weights),
+        "overall": _aggregate_overall(features, section_weights, excluded_sections=excluded_sections),
         "debug": {
             "scoring_contract_version": "section_evidence_belief_single_model_v1",
+            "doc_type": doc_type or None,
+            "excluded_sections": sorted(excluded_sections),
+            "excluded_sub_ids": sorted(excluded_sub_ids),
             "stage1_section_updates": stage1_updates,
             "json_retry_events": json_retry_events,
             "artifacts": artifact_paths,
