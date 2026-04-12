@@ -30,6 +30,8 @@ import re
 import os
 import json
 
+from .pdf_utils import is_not_watermark as _is_not_watermark
+
 
 # ---------------------------------------------------------------------------
 # Constants
@@ -156,6 +158,7 @@ def extract_lines_pdfplumber(
 
     with pdfplumber.open(pdf_path) as pdf:
         for pno, page in enumerate(pdf.pages):
+            page = page.filter(_is_not_watermark)
             section_boxes = _page_section_boxes(page)
 
             words = page.extract_words(
@@ -266,7 +269,7 @@ def _get_page1_raw_text(pdf_path: str) -> str:
     """Return pdfplumber extract_text() output for page 1."""
     with pdfplumber.open(pdf_path) as pdf:
         if pdf.pages:
-            return pdf.pages[0].extract_text() or ""
+            return pdf.pages[0].filter(_is_not_watermark).extract_text() or ""
     return ""
 
 
@@ -287,7 +290,7 @@ def _get_section_raw_text(pdf_path: str, target_heading: str) -> str:
 
             if boxes:
                 # Find all section headings on this page
-                words = page.extract_words(x_tolerance=1, y_tolerance=3)
+                words = page.filter(_is_not_watermark).extract_words(x_tolerance=1, y_tolerance=3)
                 headings_found: List[str] = []
                 for box in boxes:
                     box_words = sorted(
@@ -302,12 +305,12 @@ def _get_section_raw_text(pdf_path: str, target_heading: str) -> str:
 
                 if any(norm_target in h for h in headings_found):
                     in_section = True
-                    pages_text.append(page.extract_text() or "")
+                    pages_text.append(page.filter(_is_not_watermark).extract_text() or "")
                 elif in_section:
                     # Any page that opens a new section box ends the current one
                     break
             elif in_section:
-                pages_text.append(page.extract_text() or "")
+                pages_text.append(page.filter(_is_not_watermark).extract_text() or "")
 
     return "\n".join(pages_text)
 

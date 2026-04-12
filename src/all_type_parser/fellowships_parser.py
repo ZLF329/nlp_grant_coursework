@@ -26,6 +26,8 @@ import re
 import os
 import json
 
+from .pdf_utils import is_not_watermark as _is_not_watermark
+
 
 # ---------------------------------------------------------------------------
 # Constants
@@ -106,6 +108,7 @@ def extract_lines_pdfplumber(
         }
 
         for pno, page in enumerate(pdf.pages):
+            page = page.filter(_is_not_watermark)
             words = page.extract_words(
                 x_tolerance=x_tolerance,
                 y_tolerance=y_tolerance,
@@ -223,7 +226,7 @@ def _get_section_raw_text(pdf_path: str, target_heading: str) -> str:
             )
 
             if has_blue_box:
-                words = page.extract_words(x_tolerance=1, y_tolerance=3)
+                words = page.filter(_is_not_watermark).extract_words(x_tolerance=1, y_tolerance=3)
                 heading_words = sorted(
                     [w for w in words
                      if BLUE_BOX_TOP_MIN <= w["top"] <= BLUE_BOX_TOP_MAX],
@@ -233,13 +236,13 @@ def _get_section_raw_text(pdf_path: str, target_heading: str) -> str:
 
                 if heading == target_heading:
                     in_section = True
-                    pages_text.append(page.extract_text() or "")
+                    pages_text.append(page.filter(_is_not_watermark).extract_text() or "")
                 elif in_section:
                     # Reached a new numbered section — stop
                     break
             elif in_section:
                 # Continuation page (no blue box) — still part of this section
-                pages_text.append(page.extract_text() or "")
+                pages_text.append(page.filter(_is_not_watermark).extract_text() or "")
 
     return "\n".join(pages_text)
 
