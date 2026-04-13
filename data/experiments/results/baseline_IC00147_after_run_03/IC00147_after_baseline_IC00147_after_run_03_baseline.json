@@ -4,923 +4,332 @@
   "parsed_json": "d:\\MSc_AI\\SWE_group_project\\nlp_grant_coursework\\data\\experiments\\results\\parsed_cache\\IC00147_after.json",
   "features": {
     "general": {
-      "score_10": 0.0,
+      "score_10": 9.0,
       "weight": 1.0,
       "sub_criteria": [
         {
           "sub_id": "g.1",
           "name": "Common Characteristics of Good Applications",
           "weight": 1.0,
-          "score_10": 0.0,
-          "signals": [
-            {
-              "sid": "g.1.a",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "g.1.b",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "g.1.c",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "g.1.d",
-              "weight": 1.0,
-              "score": 0
-            }
-          ],
+          "score_10": 9.0,
+          "is_na": false,
           "counts_toward_section_average": true
         },
         {
           "sub_id": "g.2",
           "name": "Tell Us Why You Need This Award",
           "weight": 1.0,
-          "score_10": 0.0,
-          "signals": [
-            {
-              "sid": "g.2.a",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "g.2.b",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "g.2.c",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "g.2.d",
-              "weight": 1.0,
-              "score": 0
-            }
-          ],
+          "score_10": 9.0,
+          "is_na": false,
           "counts_toward_section_average": true
         },
         {
           "sub_id": "g.3",
           "name": "Relevant Research Experience and Training",
           "weight": 1.0,
-          "score_10": 0.0,
-          "signals": [
-            {
-              "sid": "g.3.a",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "g.3.b",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "g.3.c",
-              "weight": 1.0,
-              "score": 0
-            }
-          ],
+          "score_10": 9.0,
+          "is_na": false,
           "counts_toward_section_average": true
         },
         {
           "sub_id": "g.4",
           "name": "Impactful Research Outputs and Outcomes",
           "weight": 1.0,
-          "score_10": 0.0,
-          "signals": [
-            {
-              "sid": "g.4.a",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "g.4.b",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "g.4.c",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "g.4.d",
-              "weight": 1.0,
-              "score": 0
-            }
-          ],
+          "score_10": 8.0,
+          "is_na": false,
           "counts_toward_section_average": true
         },
         {
           "sub_id": "g.5",
           "name": "Trajectory Towards Research Leadership",
           "weight": 1.0,
-          "score_10": 0.0,
-          "signals": [
-            {
-              "sid": "g.5.a",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "g.5.b",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "g.5.c",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "g.5.d",
-              "weight": 1.0,
-              "score": 0
-            }
-          ],
+          "score_10": 9.0,
+          "is_na": false,
           "counts_toward_section_average": true
         },
         {
           "sub_id": "g.6",
           "name": "Commitment to Practitioner-Academic Career (if applicable)",
           "weight": 1.0,
-          "score_10": 0.0,
-          "signals": [
-            {
-              "sid": "g.6.a",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "g.6.b",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "g.6.c",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "g.6.d",
-              "weight": 1.0,
-              "score": 0
-            }
-          ],
+          "score_10": 10.0,
+          "is_na": false,
           "counts_toward_section_average": true
         }
       ],
       "overall": {
-        "score_10": 0.0,
-        "final_score_0to100": 0.0,
-        "positive_items": 0,
+        "score_10": 9.0,
+        "final_score_0to100": 90.0,
+        "positive_items": 6,
         "scored_items": 6,
         "total_items": 6,
         "signal_count": 23
       }
     },
     "proposed_research": {
-      "score_10": 0.0,
+      "score_10": 9.0,
       "weight": 1.0,
       "sub_criteria": [
         {
           "sub_id": "pr.1",
           "name": "Quality of the Plain English Summary",
           "weight": 1.0,
-          "score_10": 0.0,
-          "signals": [
-            {
-              "sid": "pr.1.a",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "pr.1.b",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "pr.1.c",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "pr.1.d",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "pr.1.e",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "pr.1.f",
-              "weight": 1.0,
-              "score": 0
-            }
-          ],
+          "score_10": 9.0,
+          "is_na": false,
           "counts_toward_section_average": true
         },
         {
           "sub_id": "pr.2",
           "name": "Evidence Review Quality & Relevance",
           "weight": 1.0,
-          "score_10": 0.0,
-          "signals": [
-            {
-              "sid": "pr.2.a",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "pr.2.b",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "pr.2.c",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "pr.2.d",
-              "weight": 1.0,
-              "score": 0
-            }
-          ],
+          "score_10": 9.0,
+          "is_na": false,
           "counts_toward_section_average": true
         },
         {
           "sub_id": "pr.3",
           "name": "Research Scope & Award Appropriateness",
           "weight": 1.0,
-          "score_10": 0.0,
-          "signals": [
-            {
-              "sid": "pr.3.a",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "pr.3.b",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "pr.3.c",
-              "weight": 1.0,
-              "score": 0
-            }
-          ],
+          "score_10": 9.0,
+          "is_na": false,
           "counts_toward_section_average": true
         },
         {
           "sub_id": "pr.4",
           "name": "Research Design & Methodological Rigor",
           "weight": 1.0,
-          "score_10": 0.0,
-          "signals": [
-            {
-              "sid": "pr.4.a",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "pr.4.b",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "pr.4.c",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "pr.4.d",
-              "weight": 1.0,
-              "score": 0
-            }
-          ],
+          "score_10": 9.0,
+          "is_na": false,
           "counts_toward_section_average": true
         },
         {
           "sub_id": "pr.5",
           "name": "Potential Impact on Patients, Public, and Health Services",
           "weight": 1.0,
-          "score_10": 0.0,
-          "signals": [
-            {
-              "sid": "pr.5.a",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "pr.5.b",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "pr.5.c",
-              "weight": 1.0,
-              "score": 0
-            }
-          ],
+          "score_10": 9.0,
+          "is_na": false,
           "counts_toward_section_average": true
         },
         {
           "sub_id": "pr.6",
           "name": "Engagement with People & Communities",
           "weight": 1.0,
-          "score_10": 0.0,
-          "signals": [
-            {
-              "sid": "pr.6.a",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "pr.6.b",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "pr.6.c",
-              "weight": 1.0,
-              "score": 0
-            }
-          ],
+          "score_10": 10.0,
+          "is_na": false,
           "counts_toward_section_average": true
         },
         {
           "sub_id": "pr.7",
           "name": "Justification of Resources & Award Costs",
           "weight": 1.0,
-          "score_10": 0.0,
-          "signals": [
-            {
-              "sid": "pr.7.a",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "pr.7.b",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "pr.7.c",
-              "weight": 1.0,
-              "score": 0
-            }
-          ],
+          "score_10": 9.0,
+          "is_na": false,
           "counts_toward_section_average": true
         },
         {
           "sub_id": "pr.8",
           "name": "Quality of Previous Research (if applicable)",
           "weight": 1.0,
-          "score_10": 0.0,
-          "signals": [
-            {
-              "sid": "pr.8.a",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "pr.8.b",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "pr.8.c",
-              "weight": 1.0,
-              "score": 0
-            }
-          ],
+          "score_10": 9.0,
+          "is_na": false,
           "counts_toward_section_average": true
         },
         {
           "sub_id": "pr.9",
           "name": "Inclusive Research Design",
           "weight": 1.0,
-          "score_10": 0.0,
-          "signals": [
-            {
-              "sid": "pr.9.a",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "pr.9.b",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "pr.9.c",
-              "weight": 1.0,
-              "score": 0
-            }
-          ],
+          "score_10": 8.0,
+          "is_na": false,
           "counts_toward_section_average": true
         }
       ],
       "overall": {
-        "score_10": 0.0,
-        "final_score_0to100": 0.0,
-        "positive_items": 0,
+        "score_10": 9.0,
+        "final_score_0to100": 90.0,
+        "positive_items": 9,
         "scored_items": 9,
         "total_items": 9,
         "signal_count": 32
       }
     },
     "training_development": {
-      "score_10": 0.0,
+      "score_10": 9.67,
       "weight": 1.0,
       "sub_criteria": [
         {
           "sub_id": "td.1",
           "name": "Quality and Relevance of Proposed Training",
           "weight": 1.0,
-          "score_10": 0.0,
-          "signals": [
-            {
-              "sid": "td.1.a",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "td.1.b",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "td.1.c",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "td.1.d",
-              "weight": 1.0,
-              "score": 0
-            }
-          ],
+          "score_10": 10.0,
+          "is_na": false,
           "counts_toward_section_average": true
         },
         {
           "sub_id": "td.2",
           "name": "Suitability to Personal Development and Project Needs",
           "weight": 1.0,
-          "score_10": 0.0,
-          "signals": [
-            {
-              "sid": "td.2.a",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "td.2.b",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "td.2.c",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "td.2.d",
-              "weight": 1.0,
-              "score": 0
-            }
-          ],
+          "score_10": 10.0,
+          "is_na": false,
           "counts_toward_section_average": true
         },
         {
           "sub_id": "td.3",
           "name": "Support for Career Aspirations",
           "weight": 1.0,
-          "score_10": 0.0,
-          "signals": [
-            {
-              "sid": "td.3.a",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "td.3.b",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "td.3.c",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "td.3.d",
-              "weight": 1.0,
-              "score": 0
-            }
-          ],
+          "score_10": 9.0,
+          "is_na": false,
           "counts_toward_section_average": true
         }
       ],
       "overall": {
-        "score_10": 0.0,
-        "final_score_0to100": 0.0,
-        "positive_items": 0,
+        "score_10": 9.67,
+        "final_score_0to100": 96.7,
+        "positive_items": 3,
         "scored_items": 3,
         "total_items": 3,
         "signal_count": 12
       }
     },
     "sites_support": {
-      "score_10": 0.0,
+      "score_10": 9.75,
       "weight": 1.0,
       "sub_criteria": [
         {
           "sub_id": "ss.1",
           "name": "Track Record of the Contracting Organisation (and Partners)",
           "weight": 1.0,
-          "score_10": 0.0,
-          "signals": [
-            {
-              "sid": "ss.1.a",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "ss.1.b",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "ss.1.c",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "ss.1.d",
-              "weight": 1.0,
-              "score": 0
-            }
-          ],
+          "score_10": 10.0,
+          "is_na": false,
           "counts_toward_section_average": true
         },
         {
           "sub_id": "ss.2",
           "name": "Suitability of Supervisory Support and Mentorship Arrangements",
           "weight": 1.0,
-          "score_10": 0.0,
-          "signals": [
-            {
-              "sid": "ss.2.a",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "ss.2.b",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "ss.2.c",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "ss.2.d",
-              "weight": 1.0,
-              "score": 0
-            }
-          ],
+          "score_10": 10.0,
+          "is_na": false,
           "counts_toward_section_average": true
         },
         {
           "sub_id": "ss.3",
           "name": "Appropriateness of the Contracting Organisation to Support the Award and Career Aspirations",
           "weight": 1.0,
-          "score_10": 0.0,
-          "signals": [
-            {
-              "sid": "ss.3.a",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "ss.3.b",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "ss.3.c",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "ss.3.d",
-              "weight": 1.0,
-              "score": 0
-            }
-          ],
+          "score_10": 10.0,
+          "is_na": false,
           "counts_toward_section_average": true
         },
         {
           "sub_id": "ss.4",
           "name": "Commitment to Inclusive and Supportive Research Culture",
           "weight": 1.0,
-          "score_10": 0.0,
-          "signals": [
-            {
-              "sid": "ss.4.a",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "ss.4.b",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "ss.4.c",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "ss.4.d",
-              "weight": 1.0,
-              "score": 0
-            }
-          ],
+          "score_10": 9.0,
+          "is_na": false,
           "counts_toward_section_average": true
         }
       ],
       "overall": {
-        "score_10": 0.0,
-        "final_score_0to100": 0.0,
-        "positive_items": 0,
+        "score_10": 9.75,
+        "final_score_0to100": 97.5,
+        "positive_items": 4,
         "scored_items": 4,
         "total_items": 4,
         "signal_count": 16
       }
     },
     "wpcc": {
-      "score_10": 0.0,
+      "score_10": 9.0,
       "weight": 1.0,
       "sub_criteria": [
         {
           "sub_id": "wp.1",
           "name": "Integration of Lived Experience in Research Design",
           "weight": 1.0,
-          "score_10": 0.0,
-          "signals": [
-            {
-              "sid": "wp.1.a",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "wp.1.b",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "wp.1.c",
-              "weight": 1.0,
-              "score": 0
-            }
-          ],
+          "score_10": 10.0,
+          "is_na": false,
           "counts_toward_section_average": true
         },
         {
           "sub_id": "wp.2",
           "name": "Diversity and Inclusivity of the Research Team",
           "weight": 1.0,
-          "score_10": 0.0,
-          "signals": [
-            {
-              "sid": "wp.2.a",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "wp.2.b",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "wp.2.c",
-              "weight": 1.0,
-              "score": 0
-            }
-          ],
+          "score_10": 8.0,
+          "is_na": false,
           "counts_toward_section_average": true
         },
         {
           "sub_id": "wp.3",
           "name": "Commitment to Maximising Public and Patient Benefit",
           "weight": 1.0,
-          "score_10": 0.0,
-          "signals": [
-            {
-              "sid": "wp.3.a",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "wp.3.b",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "wp.3.c",
-              "weight": 1.0,
-              "score": 0
-            }
-          ],
+          "score_10": 9.0,
+          "is_na": false,
           "counts_toward_section_average": true
         },
         {
           "sub_id": "wp.4",
           "name": "Representation of Seldom Heard or Underserved Groups",
           "weight": 1.0,
-          "score_10": 0.0,
-          "signals": [
-            {
-              "sid": "wp.4.a",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "wp.4.b",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "wp.4.c",
-              "weight": 1.0,
-              "score": 0
-            }
-          ],
+          "score_10": 8.0,
+          "is_na": false,
           "counts_toward_section_average": true
         },
         {
           "sub_id": "wp.5",
           "name": "Inclusivity Across the Research Lifecycle",
           "weight": 1.0,
-          "score_10": 0.0,
-          "signals": [
-            {
-              "sid": "wp.5.a",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "wp.5.b",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "wp.5.c",
-              "weight": 1.0,
-              "score": 0
-            }
-          ],
+          "score_10": 9.0,
+          "is_na": false,
           "counts_toward_section_average": true
         },
         {
           "sub_id": "wp.6",
           "name": "Costed and Resourced Plan for Research Inclusion",
           "weight": 1.0,
-          "score_10": 0.0,
-          "signals": [
-            {
-              "sid": "wp.6.a",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "wp.6.b",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "wp.6.c",
-              "weight": 1.0,
-              "score": 0
-            }
-          ],
+          "score_10": 10.0,
+          "is_na": false,
           "counts_toward_section_average": true
         }
       ],
       "overall": {
-        "score_10": 0.0,
-        "final_score_0to100": 0.0,
-        "positive_items": 0,
+        "score_10": 9.0,
+        "final_score_0to100": 90.0,
+        "positive_items": 6,
         "scored_items": 6,
         "total_items": 6,
         "signal_count": 18
       }
     },
     "application_form": {
-      "score_10": 0.0,
+      "score_10": 8.33,
       "weight": 1.0,
       "sub_criteria": [
         {
           "sub_id": "af.1",
           "name": "Use of Formatting, Headings, and Subheadings",
           "weight": 1.0,
-          "score_10": 0.0,
-          "signals": [
-            {
-              "sid": "af.1.a",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "af.1.b",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "af.1.c",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "af.1.d",
-              "weight": 1.0,
-              "score": 0
-            }
-          ],
+          "score_10": 8.0,
+          "is_na": false,
           "counts_toward_section_average": true
         },
         {
           "sub_id": "af.2",
           "name": "Limited Duplication and Repetition",
           "weight": 1.0,
-          "score_10": 0.0,
-          "signals": [
-            {
-              "sid": "af.2.a",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "af.2.b",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "af.2.c",
-              "weight": 1.0,
-              "score": 0
-            }
-          ],
+          "score_10": 8.0,
+          "is_na": false,
           "counts_toward_section_average": true
         },
         {
           "sub_id": "af.3",
           "name": "Logical Flow and Coherence Across Sections",
           "weight": 1.0,
-          "score_10": 0.0,
-          "signals": [
-            {
-              "sid": "af.3.a",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "af.3.b",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "af.3.c",
-              "weight": 1.0,
-              "score": 0
-            },
-            {
-              "sid": "af.3.d",
-              "weight": 1.0,
-              "score": 0
-            }
-          ],
+          "score_10": 9.0,
+          "is_na": false,
           "counts_toward_section_average": true
         }
       ],
       "overall": {
-        "score_10": 0.0,
-        "final_score_0to100": 0.0,
-        "positive_items": 0,
+        "score_10": 8.33,
+        "final_score_0to100": 83.3,
+        "positive_items": 3,
         "scored_items": 3,
         "total_items": 3,
         "signal_count": 11
@@ -928,23 +337,42 @@
     }
   },
   "overall": {
-    "score_10": 0.0,
-    "final_score_0to100": 0.0
+    "score_10": 9.12,
+    "final_score_0to100": 91.2
   },
-  "avg_signal_score_0to5": 0.0,
-  "raw_signal_scores": {
-    "patient_and_public_involvement": {
-      "score": 95,
-      "rationale": "The proposal demonstrates exceptional PPIE engagement. It details a specific, established PPIE group (PKU) that has been involved from the inception of the research questions through to the design of the study (recruitment, assessments, resources). The plan includes specific mechanisms for ongoing involvement (Project Advisory Group), financial compensation aligned with NIHR guidance, training for new members, and a commitment to reporting impact using the GRIPP 2 checklist. The involvement is described as active and influential rather than passive."
-    },
-    "training_and_development": {
-      "score": 98,
-      "rationale": "The training plan is comprehensive, well-structured, and directly aligned with the research needs. It covers a wide spectrum including formal study courses, qualitative and quantitative methods, clinical trials, data analysis, governance, PPIE training, and dissemination. Crucially, it includes specific technical training required for the study (ISAK, Ultrasound, IR(ME)R, Phlebotomy) and leverages strong collaborations for skill acquisition (overseas visits to Maastricht and Birmingham). The supervision team is highly experienced and directly relevant to the project scope."
-    },
-    "budget_justification": {
-      "score": 92,
-      "rationale": "The budget is highly detailed with clear justifications for every line item, linking costs directly to the research plan (e.g., specific equipment for assessments, participant compensation, PPIE payments). It accounts for both direct costs (staff, equipment, consumables) and indirect costs (overheads, tuition fees). The inclusion of NHS support costs and the distinction between HEI and NHS costs shows a thorough understanding of funding structures. The only minor deduction is for the high cost of leasing ultrasound equipment, which, while justified, is a significant expense that could be scrutinized, though the detailed breakdown mitigates this."
-    }
+  "avg_signal_score_0to5": 4.5484,
+  "raw_sub_scores": {
+    "g.1": 9,
+    "g.2": 9,
+    "g.3": 9,
+    "g.4": 8,
+    "g.5": 9,
+    "g.6": 10,
+    "pr.1": 9,
+    "pr.2": 9,
+    "pr.3": 9,
+    "pr.4": 9,
+    "pr.5": 9,
+    "pr.6": 10,
+    "pr.7": 9,
+    "pr.8": 9,
+    "pr.9": 8,
+    "td.1": 10,
+    "td.2": 10,
+    "td.3": 9,
+    "ss.1": 10,
+    "ss.2": 10,
+    "ss.3": 10,
+    "ss.4": 9,
+    "wp.1": 10,
+    "wp.2": 8,
+    "wp.3": 9,
+    "wp.4": 8,
+    "wp.5": 9,
+    "wp.6": 10,
+    "af.1": 8,
+    "af.2": 8,
+    "af.3": 9
   },
-  "raw_llm_response": "{\n  \"patient_and_public_involvement\": {\n    \"score\": 95,\n    \"rationale\": \"The proposal demonstrates exceptional PPIE engagement. It details a specific, established PPIE group (PKU) that has been involved from the inception of the research questions through to the design of the study (recruitment, assessments, resources). The plan includes specific mechanisms for ongoing involvement (Project Advisory Group), financial compensation aligned with NIHR guidance, training for new members, and a commitment to reporting impact using the GRIPP 2 checklist. The involvement is described as active and influential rather than passive.\"\n  },\n  \"training_and_development\": {\n    \"score\": 98,\n    \"rationale\": \"The training plan is comprehensive, well-structured, and directly aligned with the research needs. It covers a wide spectrum including formal study courses, qualitative and quantitative methods, clinical trials, data analysis, governance, PPIE training, and dissemination. Crucially, it includes specific technical training required for the study (ISAK, Ultrasound, IR(ME)R, Phlebotomy) and leverages strong collaborations for skill acquisition (overseas visits to Maastricht and Birmingham). The supervision team is highly experienced and directly relevant to the project scope.\"\n  },\n  \"budget_justification\": {\n    \"score\": 92,\n    \"rationale\": \"The budget is highly detailed with clear justifications for every line item, linking costs directly to the research plan (e.g., specific equipment for assessments, participant compensation, PPIE payments). It accounts for both direct costs (staff, equipment, consumables) and indirect costs (overheads, tuition fees). The inclusion of NHS support costs and the distinction between HEI and NHS costs shows a thorough understanding of funding structures. The only minor deduction is for the high cost of leasing ultrasound equipment, which, while justified, is a significant expense that could be scrutinized, though the detailed breakdown mitigates this.\"\n  }\n}"
+  "raw_llm_response": "{\n  \"g.1\": 9,\n  \"g.2\": 9,\n  \"g.3\": 9,\n  \"g.4\": 8,\n  \"g.5\": 9,\n  \"g.6\": 10,\n  \"pr.1\": 9,\n  \"pr.2\": 9,\n  \"pr.3\": 9,\n  \"pr.4\": 9,\n  \"pr.5\": 9,\n  \"pr.6\": 10,\n  \"pr.7\": 9,\n  \"pr.8\": 9,\n  \"pr.9\": 8,\n  \"td.1\": 10,\n  \"td.2\": 10,\n  \"td.3\": 9,\n  \"ss.1\": 10,\n  \"ss.2\": 10,\n  \"ss.3\": 10,\n  \"ss.4\": 9,\n  \"wp.1\": 10,\n  \"wp.2\": 8,\n  \"wp.3\": 9,\n  \"wp.4\": 8,\n  \"wp.5\": 9,\n  \"wp.6\": 10,\n  \"af.1\": 8,\n  \"af.2\": 8,\n  \"af.3\": 9\n}"
 }
