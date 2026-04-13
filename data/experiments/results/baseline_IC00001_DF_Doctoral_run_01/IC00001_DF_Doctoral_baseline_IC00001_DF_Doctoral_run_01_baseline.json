@@ -1,0 +1,1112 @@
+{
+  "doc_id": "IC00001_DF_Doctoral_baseline_IC00001_DF_Doctoral_run_01",
+  "source_pdf": "d:\\MSc_AI\\SWE_group_project\\nlp_grant_coursework\\data\\experiments\\same_pdf\\IC00001_DF_Doctoral.pdf",
+  "parsed_json": "d:\\MSc_AI\\SWE_group_project\\nlp_grant_coursework\\data\\experiments\\results\\parsed_cache\\IC00001_DF_Doctoral.json",
+  "features": {
+    "general": {
+      "score_10": 9.58,
+      "weight": 1.0,
+      "sub_criteria": [
+        {
+          "sub_id": "g.1",
+          "name": "Common Characteristics of Good Applications",
+          "weight": 1.0,
+          "score_10": 10.0,
+          "signals": [
+            {
+              "sid": "g.1.a",
+              "weight": 1.0,
+              "score": 5
+            },
+            {
+              "sid": "g.1.b",
+              "weight": 1.0,
+              "score": 5
+            },
+            {
+              "sid": "g.1.c",
+              "weight": 1.0,
+              "score": 5
+            },
+            {
+              "sid": "g.1.d",
+              "weight": 1.0,
+              "score": 5
+            }
+          ],
+          "counts_toward_section_average": true
+        },
+        {
+          "sub_id": "g.2",
+          "name": "Tell Us Why You Need This Award",
+          "weight": 1.0,
+          "score_10": 10.0,
+          "signals": [
+            {
+              "sid": "g.2.a",
+              "weight": 1.0,
+              "score": 5
+            },
+            {
+              "sid": "g.2.b",
+              "weight": 1.0,
+              "score": 5
+            },
+            {
+              "sid": "g.2.c",
+              "weight": 1.0,
+              "score": 5
+            },
+            {
+              "sid": "g.2.d",
+              "weight": 1.0,
+              "score": 5
+            }
+          ],
+          "counts_toward_section_average": true
+        },
+        {
+          "sub_id": "g.3",
+          "name": "Relevant Research Experience and Training",
+          "weight": 1.0,
+          "score_10": 10.0,
+          "signals": [
+            {
+              "sid": "g.3.a",
+              "weight": 1.0,
+              "score": 5
+            },
+            {
+              "sid": "g.3.b",
+              "weight": 1.0,
+              "score": 5
+            },
+            {
+              "sid": "g.3.c",
+              "weight": 1.0,
+              "score": 5
+            }
+          ],
+          "counts_toward_section_average": true
+        },
+        {
+          "sub_id": "g.4",
+          "name": "Impactful Research Outputs and Outcomes",
+          "weight": 1.0,
+          "score_10": 8.5,
+          "signals": [
+            {
+              "sid": "g.4.a",
+              "weight": 1.0,
+              "score": 5
+            },
+            {
+              "sid": "g.4.b",
+              "weight": 1.0,
+              "score": 3
+            },
+            {
+              "sid": "g.4.c",
+              "weight": 1.0,
+              "score": 5
+            },
+            {
+              "sid": "g.4.d",
+              "weight": 1.0,
+              "score": 4
+            }
+          ],
+          "counts_toward_section_average": true
+        },
+        {
+          "sub_id": "g.5",
+          "name": "Trajectory Towards Research Leadership",
+          "weight": 1.0,
+          "score_10": 9.0,
+          "signals": [
+            {
+              "sid": "g.5.a",
+              "weight": 1.0,
+              "score": 5
+            },
+            {
+              "sid": "g.5.b",
+              "weight": 1.0,
+              "score": 4
+            },
+            {
+              "sid": "g.5.c",
+              "weight": 1.0,
+              "score": 5
+            },
+            {
+              "sid": "g.5.d",
+              "weight": 1.0,
+              "score": 4
+            }
+          ],
+          "counts_toward_section_average": true
+        },
+        {
+          "sub_id": "g.6",
+          "name": "Commitment to Practitioner-Academic Career (if applicable)",
+          "weight": 1.0,
+          "score_10": 10.0,
+          "signals": [
+            {
+              "sid": "g.6.a",
+              "weight": 1.0,
+              "score": 5
+            },
+            {
+              "sid": "g.6.b",
+              "weight": 1.0,
+              "score": 5
+            },
+            {
+              "sid": "g.6.c",
+              "weight": 1.0,
+              "score": 5
+            },
+            {
+              "sid": "g.6.d",
+              "weight": 1.0,
+              "score": 5
+            }
+          ],
+          "counts_toward_section_average": true
+        }
+      ],
+      "overall": {
+        "score_10": 9.58,
+        "final_score_0to100": 95.8,
+        "positive_items": 6,
+        "scored_items": 6,
+        "total_items": 6,
+        "signal_count": 23
+      }
+    },
+    "proposed_research": {
+      "score_10": 10.0,
+      "weight": 1.0,
+      "sub_criteria": [
+        {
+          "sub_id": "pr.1",
+          "name": "Quality of the Plain English Summary",
+          "weight": 1.0,
+          "score_10": 10.0,
+          "signals": [
+            {
+              "sid": "pr.1.a",
+              "weight": 1.0,
+              "score": 5
+            },
+            {
+              "sid": "pr.1.b",
+              "weight": 1.0,
+              "score": 5
+            },
+            {
+              "sid": "pr.1.c",
+              "weight": 1.0,
+              "score": 5
+            },
+            {
+              "sid": "pr.1.d",
+              "weight": 1.0,
+              "score": 5
+            },
+            {
+              "sid": "pr.1.e",
+              "weight": 1.0,
+              "score": 5
+            },
+            {
+              "sid": "pr.1.f",
+              "weight": 1.0,
+              "score": 5
+            }
+          ],
+          "counts_toward_section_average": true
+        },
+        {
+          "sub_id": "pr.2",
+          "name": "Evidence Review Quality & Relevance",
+          "weight": 1.0,
+          "score_10": 10.0,
+          "signals": [
+            {
+              "sid": "pr.2.a",
+              "weight": 1.0,
+              "score": 5
+            },
+            {
+              "sid": "pr.2.b",
+              "weight": 1.0,
+              "score": 5
+            },
+            {
+              "sid": "pr.2.c",
+              "weight": 1.0,
+              "score": 5
+            },
+            {
+              "sid": "pr.2.d",
+              "weight": 1.0,
+              "score": 5
+            }
+          ],
+          "counts_toward_section_average": true
+        },
+        {
+          "sub_id": "pr.3",
+          "name": "Research Scope & Award Appropriateness",
+          "weight": 1.0,
+          "score_10": 10.0,
+          "signals": [
+            {
+              "sid": "pr.3.a",
+              "weight": 1.0,
+              "score": 5
+            },
+            {
+              "sid": "pr.3.b",
+              "weight": 1.0,
+              "score": 5
+            },
+            {
+              "sid": "pr.3.c",
+              "weight": 1.0,
+              "score": 5
+            }
+          ],
+          "counts_toward_section_average": true
+        },
+        {
+          "sub_id": "pr.4",
+          "name": "Research Design & Methodological Rigor",
+          "weight": 1.0,
+          "score_10": 10.0,
+          "signals": [
+            {
+              "sid": "pr.4.a",
+              "weight": 1.0,
+              "score": 5
+            },
+            {
+              "sid": "pr.4.b",
+              "weight": 1.0,
+              "score": 5
+            },
+            {
+              "sid": "pr.4.c",
+              "weight": 1.0,
+              "score": 5
+            },
+            {
+              "sid": "pr.4.d",
+              "weight": 1.0,
+              "score": 5
+            }
+          ],
+          "counts_toward_section_average": true
+        },
+        {
+          "sub_id": "pr.5",
+          "name": "Potential Impact on Patients, Public, and Health Services",
+          "weight": 1.0,
+          "score_10": 10.0,
+          "signals": [
+            {
+              "sid": "pr.5.a",
+              "weight": 1.0,
+              "score": 5
+            },
+            {
+              "sid": "pr.5.b",
+              "weight": 1.0,
+              "score": 5
+            },
+            {
+              "sid": "pr.5.c",
+              "weight": 1.0,
+              "score": 5
+            }
+          ],
+          "counts_toward_section_average": true
+        },
+        {
+          "sub_id": "pr.6",
+          "name": "Engagement with People & Communities",
+          "weight": 1.0,
+          "score_10": 10.0,
+          "signals": [
+            {
+              "sid": "pr.6.a",
+              "weight": 1.0,
+              "score": 5
+            },
+            {
+              "sid": "pr.6.b",
+              "weight": 1.0,
+              "score": 5
+            },
+            {
+              "sid": "pr.6.c",
+              "weight": 1.0,
+              "score": 5
+            }
+          ],
+          "counts_toward_section_average": true
+        },
+        {
+          "sub_id": "pr.7",
+          "name": "Justification of Resources & Award Costs",
+          "weight": 1.0,
+          "score_10": 10.0,
+          "signals": [
+            {
+              "sid": "pr.7.a",
+              "weight": 1.0,
+              "score": 5
+            },
+            {
+              "sid": "pr.7.b",
+              "weight": 1.0,
+              "score": 5
+            },
+            {
+              "sid": "pr.7.c",
+              "weight": 1.0,
+              "score": 5
+            }
+          ],
+          "counts_toward_section_average": true
+        },
+        {
+          "sub_id": "pr.8",
+          "name": "Quality of Previous Research (if applicable)",
+          "weight": 1.0,
+          "score_10": 10.0,
+          "signals": [
+            {
+              "sid": "pr.8.a",
+              "weight": 1.0,
+              "score": 5
+            },
+            {
+              "sid": "pr.8.b",
+              "weight": 1.0,
+              "score": 5
+            },
+            {
+              "sid": "pr.8.c",
+              "weight": 1.0,
+              "score": 5
+            }
+          ],
+          "counts_toward_section_average": true
+        },
+        {
+          "sub_id": "pr.9",
+          "name": "Inclusive Research Design",
+          "weight": 1.0,
+          "score_10": 10.0,
+          "signals": [
+            {
+              "sid": "pr.9.a",
+              "weight": 1.0,
+              "score": 5
+            },
+            {
+              "sid": "pr.9.b",
+              "weight": 1.0,
+              "score": 5
+            },
+            {
+              "sid": "pr.9.c",
+              "weight": 1.0,
+              "score": 5
+            }
+          ],
+          "counts_toward_section_average": true
+        }
+      ],
+      "overall": {
+        "score_10": 10.0,
+        "final_score_0to100": 100.0,
+        "positive_items": 9,
+        "scored_items": 9,
+        "total_items": 9,
+        "signal_count": 32
+      }
+    },
+    "training_development": {
+      "score_10": 10.0,
+      "weight": 1.0,
+      "sub_criteria": [
+        {
+          "sub_id": "td.1",
+          "name": "Quality and Relevance of Proposed Training",
+          "weight": 1.0,
+          "score_10": 10.0,
+          "signals": [
+            {
+              "sid": "td.1.a",
+              "weight": 1.0,
+              "score": 5
+            },
+            {
+              "sid": "td.1.b",
+              "weight": 1.0,
+              "score": 5
+            },
+            {
+              "sid": "td.1.c",
+              "weight": 1.0,
+              "score": 5
+            },
+            {
+              "sid": "td.1.d",
+              "weight": 1.0,
+              "score": 5
+            }
+          ],
+          "counts_toward_section_average": true
+        },
+        {
+          "sub_id": "td.2",
+          "name": "Suitability to Personal Development and Project Needs",
+          "weight": 1.0,
+          "score_10": 10.0,
+          "signals": [
+            {
+              "sid": "td.2.a",
+              "weight": 1.0,
+              "score": 5
+            },
+            {
+              "sid": "td.2.b",
+              "weight": 1.0,
+              "score": 5
+            },
+            {
+              "sid": "td.2.c",
+              "weight": 1.0,
+              "score": 5
+            },
+            {
+              "sid": "td.2.d",
+              "weight": 1.0,
+              "score": 5
+            }
+          ],
+          "counts_toward_section_average": true
+        },
+        {
+          "sub_id": "td.3",
+          "name": "Support for Career Aspirations",
+          "weight": 1.0,
+          "score_10": 10.0,
+          "signals": [
+            {
+              "sid": "td.3.a",
+              "weight": 1.0,
+              "score": 5
+            },
+            {
+              "sid": "td.3.b",
+              "weight": 1.0,
+              "score": 5
+            },
+            {
+              "sid": "td.3.c",
+              "weight": 1.0,
+              "score": 5
+            },
+            {
+              "sid": "td.3.d",
+              "weight": 1.0,
+              "score": 5
+            }
+          ],
+          "counts_toward_section_average": true
+        }
+      ],
+      "overall": {
+        "score_10": 10.0,
+        "final_score_0to100": 100.0,
+        "positive_items": 3,
+        "scored_items": 3,
+        "total_items": 3,
+        "signal_count": 12
+      }
+    },
+    "sites_support": {
+      "score_10": 9.5,
+      "weight": 1.0,
+      "sub_criteria": [
+        {
+          "sub_id": "ss.1",
+          "name": "Track Record of the Contracting Organisation (and Partners)",
+          "weight": 1.0,
+          "score_10": 10.0,
+          "signals": [
+            {
+              "sid": "ss.1.a",
+              "weight": 1.0,
+              "score": 5
+            },
+            {
+              "sid": "ss.1.b",
+              "weight": 1.0,
+              "score": 5
+            },
+            {
+              "sid": "ss.1.c",
+              "weight": 1.0,
+              "score": 5
+            },
+            {
+              "sid": "ss.1.d",
+              "weight": 1.0,
+              "score": 5
+            }
+          ],
+          "counts_toward_section_average": true
+        },
+        {
+          "sub_id": "ss.2",
+          "name": "Suitability of Supervisory Support and Mentorship Arrangements",
+          "weight": 1.0,
+          "score_10": 10.0,
+          "signals": [
+            {
+              "sid": "ss.2.a",
+              "weight": 1.0,
+              "score": 5
+            },
+            {
+              "sid": "ss.2.b",
+              "weight": 1.0,
+              "score": 5
+            },
+            {
+              "sid": "ss.2.c",
+              "weight": 1.0,
+              "score": 5
+            },
+            {
+              "sid": "ss.2.d",
+              "weight": 1.0,
+              "score": 5
+            }
+          ],
+          "counts_toward_section_average": true
+        },
+        {
+          "sub_id": "ss.3",
+          "name": "Appropriateness of the Contracting Organisation to Support the Award and Career Aspirations",
+          "weight": 1.0,
+          "score_10": 10.0,
+          "signals": [
+            {
+              "sid": "ss.3.a",
+              "weight": 1.0,
+              "score": 5
+            },
+            {
+              "sid": "ss.3.b",
+              "weight": 1.0,
+              "score": 5
+            },
+            {
+              "sid": "ss.3.c",
+              "weight": 1.0,
+              "score": 5
+            },
+            {
+              "sid": "ss.3.d",
+              "weight": 1.0,
+              "score": 5
+            }
+          ],
+          "counts_toward_section_average": true
+        },
+        {
+          "sub_id": "ss.4",
+          "name": "Commitment to Inclusive and Supportive Research Culture",
+          "weight": 1.0,
+          "score_10": 8.0,
+          "signals": [
+            {
+              "sid": "ss.4.a",
+              "weight": 1.0,
+              "score": 4
+            },
+            {
+              "sid": "ss.4.b",
+              "weight": 1.0,
+              "score": 4
+            },
+            {
+              "sid": "ss.4.c",
+              "weight": 1.0,
+              "score": 4
+            },
+            {
+              "sid": "ss.4.d",
+              "weight": 1.0,
+              "score": 4
+            }
+          ],
+          "counts_toward_section_average": true
+        }
+      ],
+      "overall": {
+        "score_10": 9.5,
+        "final_score_0to100": 95.0,
+        "positive_items": 4,
+        "scored_items": 4,
+        "total_items": 4,
+        "signal_count": 16
+      }
+    },
+    "wpcc": {
+      "score_10": 9.33,
+      "weight": 1.0,
+      "sub_criteria": [
+        {
+          "sub_id": "wp.1",
+          "name": "Integration of Lived Experience in Research Design",
+          "weight": 1.0,
+          "score_10": 10.0,
+          "signals": [
+            {
+              "sid": "wp.1.a",
+              "weight": 1.0,
+              "score": 5
+            },
+            {
+              "sid": "wp.1.b",
+              "weight": 1.0,
+              "score": 5
+            },
+            {
+              "sid": "wp.1.c",
+              "weight": 1.0,
+              "score": 5
+            }
+          ],
+          "counts_toward_section_average": true
+        },
+        {
+          "sub_id": "wp.2",
+          "name": "Diversity and Inclusivity of the Research Team",
+          "weight": 1.0,
+          "score_10": 6.0,
+          "signals": [
+            {
+              "sid": "wp.2.a",
+              "weight": 1.0,
+              "score": 3
+            },
+            {
+              "sid": "wp.2.b",
+              "weight": 1.0,
+              "score": 3
+            },
+            {
+              "sid": "wp.2.c",
+              "weight": 1.0,
+              "score": 3
+            }
+          ],
+          "counts_toward_section_average": true
+        },
+        {
+          "sub_id": "wp.3",
+          "name": "Commitment to Maximising Public and Patient Benefit",
+          "weight": 1.0,
+          "score_10": 10.0,
+          "signals": [
+            {
+              "sid": "wp.3.a",
+              "weight": 1.0,
+              "score": 5
+            },
+            {
+              "sid": "wp.3.b",
+              "weight": 1.0,
+              "score": 5
+            },
+            {
+              "sid": "wp.3.c",
+              "weight": 1.0,
+              "score": 5
+            }
+          ],
+          "counts_toward_section_average": true
+        },
+        {
+          "sub_id": "wp.4",
+          "name": "Representation of Seldom Heard or Underserved Groups",
+          "weight": 1.0,
+          "score_10": 10.0,
+          "signals": [
+            {
+              "sid": "wp.4.a",
+              "weight": 1.0,
+              "score": 5
+            },
+            {
+              "sid": "wp.4.b",
+              "weight": 1.0,
+              "score": 5
+            },
+            {
+              "sid": "wp.4.c",
+              "weight": 1.0,
+              "score": 5
+            }
+          ],
+          "counts_toward_section_average": true
+        },
+        {
+          "sub_id": "wp.5",
+          "name": "Inclusivity Across the Research Lifecycle",
+          "weight": 1.0,
+          "score_10": 10.0,
+          "signals": [
+            {
+              "sid": "wp.5.a",
+              "weight": 1.0,
+              "score": 5
+            },
+            {
+              "sid": "wp.5.b",
+              "weight": 1.0,
+              "score": 5
+            },
+            {
+              "sid": "wp.5.c",
+              "weight": 1.0,
+              "score": 5
+            }
+          ],
+          "counts_toward_section_average": true
+        },
+        {
+          "sub_id": "wp.6",
+          "name": "Costed and Resourced Plan for Research Inclusion",
+          "weight": 1.0,
+          "score_10": 10.0,
+          "signals": [
+            {
+              "sid": "wp.6.a",
+              "weight": 1.0,
+              "score": 5
+            },
+            {
+              "sid": "wp.6.b",
+              "weight": 1.0,
+              "score": 5
+            },
+            {
+              "sid": "wp.6.c",
+              "weight": 1.0,
+              "score": 5
+            }
+          ],
+          "counts_toward_section_average": true
+        }
+      ],
+      "overall": {
+        "score_10": 9.33,
+        "final_score_0to100": 93.3,
+        "positive_items": 6,
+        "scored_items": 6,
+        "total_items": 6,
+        "signal_count": 18
+      }
+    },
+    "application_form": {
+      "score_10": 9.83,
+      "weight": 1.0,
+      "sub_criteria": [
+        {
+          "sub_id": "af.1",
+          "name": "Use of Formatting, Headings, and Subheadings",
+          "weight": 1.0,
+          "score_10": 9.5,
+          "signals": [
+            {
+              "sid": "af.1.a",
+              "weight": 1.0,
+              "score": 5
+            },
+            {
+              "sid": "af.1.b",
+              "weight": 1.0,
+              "score": 4
+            },
+            {
+              "sid": "af.1.c",
+              "weight": 1.0,
+              "score": 5
+            },
+            {
+              "sid": "af.1.d",
+              "weight": 1.0,
+              "score": 5
+            }
+          ],
+          "counts_toward_section_average": true
+        },
+        {
+          "sub_id": "af.2",
+          "name": "Limited Duplication and Repetition",
+          "weight": 1.0,
+          "score_10": 10.0,
+          "signals": [
+            {
+              "sid": "af.2.a",
+              "weight": 1.0,
+              "score": 5
+            },
+            {
+              "sid": "af.2.b",
+              "weight": 1.0,
+              "score": 5
+            },
+            {
+              "sid": "af.2.c",
+              "weight": 1.0,
+              "score": 5
+            }
+          ],
+          "counts_toward_section_average": true
+        },
+        {
+          "sub_id": "af.3",
+          "name": "Logical Flow and Coherence Across Sections",
+          "weight": 1.0,
+          "score_10": 10.0,
+          "signals": [
+            {
+              "sid": "af.3.a",
+              "weight": 1.0,
+              "score": 5
+            },
+            {
+              "sid": "af.3.b",
+              "weight": 1.0,
+              "score": 5
+            },
+            {
+              "sid": "af.3.c",
+              "weight": 1.0,
+              "score": 5
+            },
+            {
+              "sid": "af.3.d",
+              "weight": 1.0,
+              "score": 5
+            }
+          ],
+          "counts_toward_section_average": true
+        }
+      ],
+      "overall": {
+        "score_10": 9.83,
+        "final_score_0to100": 98.3,
+        "positive_items": 3,
+        "scored_items": 3,
+        "total_items": 3,
+        "signal_count": 11
+      }
+    }
+  },
+  "overall": {
+    "score_10": 9.71,
+    "final_score_0to100": 97.1
+  },
+  "avg_signal_score_0to5": 4.8571,
+  "raw_signal_scores": {
+    "g.1": {
+      "g.1.a": 5,
+      "g.1.b": 5,
+      "g.1.c": 5,
+      "g.1.d": 5
+    },
+    "g.2": {
+      "g.2.a": 5,
+      "g.2.b": 5,
+      "g.2.c": 5,
+      "g.2.d": 5
+    },
+    "g.3": {
+      "g.3.a": 5,
+      "g.3.b": 5,
+      "g.3.c": 5
+    },
+    "g.4": {
+      "g.4.a": 5,
+      "g.4.b": 3,
+      "g.4.c": 5,
+      "g.4.d": 4
+    },
+    "g.5": {
+      "g.5.a": 5,
+      "g.5.b": 4,
+      "g.5.c": 5,
+      "g.5.d": 4
+    },
+    "g.6": {
+      "g.6.a": 5,
+      "g.6.b": 5,
+      "g.6.c": 5,
+      "g.6.d": 5
+    },
+    "pr.1": {
+      "pr.1.a": 5,
+      "pr.1.b": 5,
+      "pr.1.c": 5,
+      "pr.1.d": 5,
+      "pr.1.e": 5,
+      "pr.1.f": 5
+    },
+    "pr.2": {
+      "pr.2.a": 5,
+      "pr.2.b": 5,
+      "pr.2.c": 5,
+      "pr.2.d": 5
+    },
+    "pr.3": {
+      "pr.3.a": 5,
+      "pr.3.b": 5,
+      "pr.3.c": 5
+    },
+    "pr.4": {
+      "pr.4.a": 5,
+      "pr.4.b": 5,
+      "pr.4.c": 5,
+      "pr.4.d": 5
+    },
+    "pr.5": {
+      "pr.5.a": 5,
+      "pr.5.b": 5,
+      "pr.5.c": 5
+    },
+    "pr.6": {
+      "pr.6.a": 5,
+      "pr.6.b": 5,
+      "pr.6.c": 5
+    },
+    "pr.7": {
+      "pr.7.a": 5,
+      "pr.7.b": 5,
+      "pr.7.c": 5
+    },
+    "pr.8": {
+      "pr.8.a": 5,
+      "pr.8.b": 5,
+      "pr.8.c": 5
+    },
+    "pr.9": {
+      "pr.9.a": 5,
+      "pr.9.b": 5,
+      "pr.9.c": 5
+    },
+    "td.1": {
+      "td.1.a": 5,
+      "td.1.b": 5,
+      "td.1.c": 5,
+      "td.1.d": 5
+    },
+    "td.2": {
+      "td.2.a": 5,
+      "td.2.b": 5,
+      "td.2.c": 5,
+      "td.2.d": 5
+    },
+    "td.3": {
+      "td.3.a": 5,
+      "td.3.b": 5,
+      "td.3.c": 5,
+      "td.3.d": 5
+    },
+    "ss.1": {
+      "ss.1.a": 5,
+      "ss.1.b": 5,
+      "ss.1.c": 5,
+      "ss.1.d": 5
+    },
+    "ss.2": {
+      "ss.2.a": 5,
+      "ss.2.b": 5,
+      "ss.2.c": 5,
+      "ss.2.d": 5
+    },
+    "ss.3": {
+      "ss.3.a": 5,
+      "ss.3.b": 5,
+      "ss.3.c": 5,
+      "ss.3.d": 5
+    },
+    "ss.4": {
+      "ss.4.a": 4,
+      "ss.4.b": 4,
+      "ss.4.c": 4,
+      "ss.4.d": 4
+    },
+    "wp.1": {
+      "wp.1.a": 5,
+      "wp.1.b": 5,
+      "wp.1.c": 5
+    },
+    "wp.2": {
+      "wp.2.a": 3,
+      "wp.2.b": 3,
+      "wp.2.c": 3
+    },
+    "wp.3": {
+      "wp.3.a": 5,
+      "wp.3.b": 5,
+      "wp.3.c": 5
+    },
+    "wp.4": {
+      "wp.4.a": 5,
+      "wp.4.b": 5,
+      "wp.4.c": 5
+    },
+    "wp.5": {
+      "wp.5.a": 5,
+      "wp.5.b": 5,
+      "wp.5.c": 5
+    },
+    "wp.6": {
+      "wp.6.a": 5,
+      "wp.6.b": 5,
+      "wp.6.c": 5
+    },
+    "af.1": {
+      "af.1.a": 5,
+      "af.1.b": 4,
+      "af.1.c": 5,
+      "af.1.d": 5
+    },
+    "af.2": {
+      "af.2.a": 5,
+      "af.2.b": 5,
+      "af.2.c": 5
+    },
+    "af.3": {
+      "af.3.a": 5,
+      "af.3.b": 5,
+      "af.3.c": 5,
+      "af.3.d": 5
+    }
+  },
+  "raw_llm_response": "{\n  \"g.1\": {\n    \"g.1.a\": 5,\n    \"g.1.b\": 5,\n    \"g.1.c\": 5,\n    \"g.1.d\": 5\n  },\n  \"g.2\": {\n    \"g.2.a\": 5,\n    \"g.2.b\": 5,\n    \"g.2.c\": 5,\n    \"g.2.d\": 5\n  },\n  \"g.3\": {\n    \"g.3.a\": 5,\n    \"g.3.b\": 5,\n    \"g.3.c\": 5\n  },\n  \"g.4\": {\n    \"g.4.a\": 5,\n    \"g.4.b\": 3,\n    \"g.4.c\": 5,\n    \"g.4.d\": 4\n  },\n  \"g.5\": {\n    \"g.5.a\": 5,\n    \"g.5.b\": 4,\n    \"g.5.c\": 5,\n    \"g.5.d\": 4\n  },\n  \"g.6\": {\n    \"g.6.a\": 5,\n    \"g.6.b\": 5,\n    \"g.6.c\": 5,\n    \"g.6.d\": 5\n  },\n  \"pr.1\": {\n    \"pr.1.a\": 5,\n    \"pr.1.b\": 5,\n    \"pr.1.c\": 5,\n    \"pr.1.d\": 5,\n    \"pr.1.e\": 5,\n    \"pr.1.f\": 5\n  },\n  \"pr.2\": {\n    \"pr.2.a\": 5,\n    \"pr.2.b\": 5,\n    \"pr.2.c\": 5,\n    \"pr.2.d\": 5\n  },\n  \"pr.3\": {\n    \"pr.3.a\": 5,\n    \"pr.3.b\": 5,\n    \"pr.3.c\": 5\n  },\n  \"pr.4\": {\n    \"pr.4.a\": 5,\n    \"pr.4.b\": 5,\n    \"pr.4.c\": 5,\n    \"pr.4.d\": 5\n  },\n  \"pr.5\": {\n    \"pr.5.a\": 5,\n    \"pr.5.b\": 5,\n    \"pr.5.c\": 5\n  },\n  \"pr.6\": {\n    \"pr.6.a\": 5,\n    \"pr.6.b\": 5,\n    \"pr.6.c\": 5\n  },\n  \"pr.7\": {\n    \"pr.7.a\": 5,\n    \"pr.7.b\": 5,\n    \"pr.7.c\": 5\n  },\n  \"pr.8\": {\n    \"pr.8.a\": 5,\n    \"pr.8.b\": 5,\n    \"pr.8.c\": 5\n  },\n  \"pr.9\": {\n    \"pr.9.a\": 5,\n    \"pr.9.b\": 5,\n    \"pr.9.c\": 5\n  },\n  \"td.1\": {\n    \"td.1.a\": 5,\n    \"td.1.b\": 5,\n    \"td.1.c\": 5,\n    \"td.1.d\": 5\n  },\n  \"td.2\": {\n    \"td.2.a\": 5,\n    \"td.2.b\": 5,\n    \"td.2.c\": 5,\n    \"td.2.d\": 5\n  },\n  \"td.3\": {\n    \"td.3.a\": 5,\n    \"td.3.b\": 5,\n    \"td.3.c\": 5,\n    \"td.3.d\": 5\n  },\n  \"ss.1\": {\n    \"ss.1.a\": 5,\n    \"ss.1.b\": 5,\n    \"ss.1.c\": 5,\n    \"ss.1.d\": 5\n  },\n  \"ss.2\": {\n    \"ss.2.a\": 5,\n    \"ss.2.b\": 5,\n    \"ss.2.c\": 5,\n    \"ss.2.d\": 5\n  },\n  \"ss.3\": {\n    \"ss.3.a\": 5,\n    \"ss.3.b\": 5,\n    \"ss.3.c\": 5,\n    \"ss.3.d\": 5\n  },\n  \"ss.4\": {\n    \"ss.4.a\": 4,\n    \"ss.4.b\": 4,\n    \"ss.4.c\": 4,\n    \"ss.4.d\": 4\n  },\n  \"wp.1\": {\n    \"wp.1.a\": 5,\n    \"wp.1.b\": 5,\n    \"wp.1.c\": 5\n  },\n  \"wp.2\": {\n    \"wp.2.a\": 3,\n    \"wp.2.b\": 3,\n    \"wp.2.c\": 3\n  },\n  \"wp.3\": {\n    \"wp.3.a\": 5,\n    \"wp.3.b\": 5,\n    \"wp.3.c\": 5\n  },\n  \"wp.4\": {\n    \"wp.4.a\": 5,\n    \"wp.4.b\": 5,\n    \"wp.4.c\": 5\n  },\n  \"wp.5\": {\n    \"wp.5.a\": 5,\n    \"wp.5.b\": 5,\n    \"wp.5.c\": 5\n  },\n  \"wp.6\": {\n    \"wp.6.a\": 5,\n    \"wp.6.b\": 5,\n    \"wp.6.c\": 5\n  },\n  \"af.1\": {\n    \"af.1.a\": 5,\n    \"af.1.b\": 4,\n    \"af.1.c\": 5,\n    \"af.1.d\": 5\n  },\n  \"af.2\": {\n    \"af.2.a\": 5,\n    \"af.2.b\": 5,\n    \"af.2.c\": 5\n  },\n  \"af.3\": {\n    \"af.3.a\": 5,\n    \"af.3.b\": 5,\n    \"af.3.c\": 5,\n    \"af.3.d\": 5\n  }\n}"
+}
