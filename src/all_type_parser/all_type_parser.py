@@ -36,10 +36,14 @@ def _is_empty(result: dict) -> bool:
     """Return True if the parser produced nothing useful."""
     if not result:
         return True
+    # Ignore metadata-only keys (e.g. doc_type) when judging emptiness
+    content = {k: v for k, v in result.items() if k != "doc_type"}
+    if not content:
+        return True
     # A non-empty dict must contain at least one non-empty value
     return all(
         (not v) or (isinstance(v, dict) and not v) or (isinstance(v, list) and not v)
-        for v in result.values()
+        for v in content.values()
     )
 
 
