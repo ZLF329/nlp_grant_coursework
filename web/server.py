@@ -333,13 +333,22 @@ def result(job_id: str):
 
 @app.get("/history")
 def history():
+    import re as _re
+    JOB_ID_RE = _re.compile(r'^[a-f0-9]{12}$')
     entries = []
     for p in sorted(RESULT_DIR.glob("*.json"), key=lambda f: f.stat().st_mtime, reverse=True):
+        # Only include main result files: stem is exactly the 12-char job_id
+        if not JOB_ID_RE.match(p.stem):
+            continue
         try:
             data = json.loads(p.read_text(encoding="utf-8"))
+            doc_id = data.get("doc_id", p.stem)
+            # Strip job_id prefix from doc_id for a cleaner label
+            label = _re.sub(r'^[a-f0-9]{12}_', '', doc_id)
             entries.append({
                 "job_id":   p.stem,
-                "doc_id":   data.get("doc_id", p.stem),
+                "doc_id":   doc_id,
+                "label":    label,
                 "ran_at":   (data.get("run_info") or {}).get("ran_at_utc"),
                 "score":    (data.get("overall") or {}).get("final_score_0to100"),
                 "model":    (data.get("run_info") or {}).get("scorer_model"),

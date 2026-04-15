@@ -2161,7 +2161,10 @@
     function populateSelects() {
       const beforeSelect = document.getElementById('beforeSelect');
       const afterSelect = document.getElementById('afterSelect');
-      const options = state.loadedReviews.map(review => `<option value="${review.id}">${review.label}</option>`).join('');
+      const options = state.loadedReviews.map(review => {
+        const shortLabel = (review.label || review.id).replace(/^[a-f0-9]{12}_/, '');
+        return `<option value="${review.id}">${shortLabel}</option>`;
+      }).join('');
       beforeSelect.innerHTML = options;
       afterSelect.innerHTML = options;
       if (!state.selectedBeforeId && state.loadedReviews[0]) state.selectedBeforeId = state.loadedReviews[0].id;
@@ -2455,18 +2458,30 @@
       } catch (e) { return []; }
     }
 
-    async function loadFromHistory(jobId, label) {
+    async function loadFromHistory(jobId, label, slot) {
+      // slot: 'before' | 'after' | null (auto)
       try {
         const res = await fetch(`/history/${jobId}`);
         if (!res.ok) return;
         const data = await res.json();
         const norm = normalizeReview(data, label);
-        // Add to loadedReviews if not already present
         if (!state.loadedReviews.find(r => r.id === norm.id)) {
           state.loadedReviews.push(norm);
         }
-        state.selectedAfterId = norm.id;
+        if (slot === 'before') {
+          state.selectedBeforeId = norm.id;
+        } else if (slot === 'after') {
+          state.selectedAfterId = norm.id;
+        } else {
+          // auto: fill A first, then B
+          if (!state.selectedBeforeId || state.selectedBeforeId === state.selectedAfterId) {
+            state.selectedBeforeId = norm.id;
+          } else {
+            state.selectedAfterId = norm.id;
+          }
+        }
         if (!state.selectedBeforeId) state.selectedBeforeId = norm.id;
+        if (!state.selectedAfterId)  state.selectedAfterId  = norm.id;
         render();
       } catch (e) { console.warn('history load failed', e); }
     }
@@ -2480,23 +2495,30 @@
         return;
       }
       list.innerHTML = entries.map(e => {
-        const name = (e.doc_id || e.job_id).replace(/^[a-f0-9]{12}_/, '');
+        const name  = e.label || (e.doc_id || e.job_id).replace(/^[a-f0-9]{12}_/, '');
         const score = e.score != null ? `<span style="color:#7dd3fc;font-weight:600;">${e.score.toFixed(1)}</span>` : '';
-        const date = e.ran_at ? new Date(e.ran_at).toLocaleString() : '';
-        return `<div data-job="${e.job_id}" data-label="${name}" class="history-item"
-          style="padding:8px 16px;cursor:pointer;border-bottom:1px solid #2a2a3a;display:flex;justify-content:space-between;align-items:center;gap:8px;"
-          onmouseover="this.style.background='#2a2a3a'" onmouseout="this.style.background=''">
-          <div>
-            <div style="font-size:13px;color:#e2e8f0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:200px;">${name}</div>
+        const date  = e.ran_at ? new Date(e.ran_at).toLocaleString() : '';
+        return `<div style="padding:8px 12px;border-bottom:1px solid #2a2a3a;display:flex;align-items:center;gap:8px;">
+          <div style="flex:1;min-width:0;">
+            <div style="font-size:13px;color:#e2e8f0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;" title="${name}">${name}</div>
             <div style="font-size:11px;color:#666;">${date}</div>
           </div>
-          <div style="white-space:nowrap;">${score}</div>
+          <div style="display:flex;align-items:center;gap:6px;flex-shrink:0;">
+            ${score}
+            <button data-job="${e.job_id}" data-label="${name}" data-slot="before"
+              style="font-size:11px;padding:2px 7px;border-radius:4px;border:1px solid #4b5563;background:transparent;color:#94a3b8;cursor:pointer;"
+              onmouseover="this.style.background='#374151'" onmouseout="this.style.background='transparent'">A</button>
+            <button data-job="${e.job_id}" data-label="${name}" data-slot="after"
+              style="font-size:11px;padding:2px 7px;border-radius:4px;border:1px solid #4b5563;background:transparent;color:#94a3b8;cursor:pointer;"
+              onmouseover="this.style.background='#374151'" onmouseout="this.style.background='transparent'">B</button>
+          </div>
         </div>`;
       }).join('');
-      list.querySelectorAll('.history-item').forEach(el => {
-        el.addEventListener('click', () => {
+      list.querySelectorAll('button[data-job]').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
           document.getElementById('historyDropdown').style.display = 'none';
-          loadFromHistory(el.dataset.job, el.dataset.label);
+          loadFromHistory(btn.dataset.job, btn.dataset.label, btn.dataset.slot);
         });
       });
     }
