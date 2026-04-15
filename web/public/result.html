@@ -1742,7 +1742,6 @@
       let cards = [];
       if (mode === 'single') {
         const review = getPrimaryReview();
-        const coveragePct = round1(review.overall.coverage || 0);
         const topSection = [...(review.sections || [])]
           .filter(s => s.overall && s.overall.finalScore > 0)
           .sort((a, b) => b.overall.finalScore - a.overall.finalScore)[0] || null;
@@ -1756,9 +1755,9 @@
           { label:'Sub-criteria', value:`${review.overall.totalItems || 0}`,
             pillHtml:`<span class="status-pill status-neutral">${review.overall.goodItems || 0} scored</span>`,
             desc:'Criteria detected across the loaded review' },
-          { label:'Coverage score', value:`${coveragePct}`,
-            pillHtml:`<span class="status-pill status-neutral">${topSection ? topSection.name : '—'}</span>`,
-            desc: topSection ? `Strongest section · ${fmtScore(topSection.overall.finalScore)} / 100` : 'Breadth of evidence across criteria' }
+          { label:'Strongest section', value: topSection ? topSection.name : '—',
+            pillHtml: topSection ? `<span class="status-pill status-positive">${fmtScore(topSection.overall.finalScore)} / 100</span>` : '<span class="status-pill status-neutral">No data</span>',
+            desc: topSection ? `Highest scoring section in this review` : 'No scored sections found' }
         ];
       } else {
         const before = getBeforeReview();
@@ -2420,17 +2419,14 @@
       // Mini metrics grid
       const avgH = metrics.avg_h_index != null ? metrics.avg_h_index : '—';
       const avgCit = metrics.avg_citations != null ? Math.round(metrics.avg_citations) : '—';
-      const teamSize = metrics.team_size != null ? metrics.team_size : '—';
-      const orcidCov = metrics.orcid_coverage_ratio != null
-        ? Math.round(metrics.orcid_coverage_ratio * 100) + '%' : '—';
       const avgWorks = metrics.avg_works_recent_5y != null ? metrics.avg_works_recent_5y : '—';
       const resolved = metrics.resolved_profiles != null ? metrics.resolved_profiles : '—';
 
       const miniMetrics = [
         { label: 'Avg h-index', value: avgH },
         { label: 'Avg citations', value: avgCit },
-        { label: 'Team size', value: teamSize },
-        { label: 'ORCID coverage', value: orcidCov },
+        { label: 'Works (last 5y)', value: avgWorks },
+        { label: 'Profiles resolved', value: resolved },
       ].map(m => `
         <div class="orcid-mini-card">
           <div class="orcid-mini-label">${m.label}</div>
@@ -2439,10 +2435,7 @@
 
       cell.innerHTML = `
         <div class="orcid-member-list">${memberHtml}${extraHtml}</div>
-        <div class="orcid-mini-metrics">${miniMetrics}</div>
-        ${resolved !== '—' && resolved > 0
-          ? `<div style="font-size:11px;color:var(--text-3);margin-top:10px;">${resolved} profile${resolved > 1 ? 's' : ''} resolved · avg ${avgWorks} works in last 5 years</div>`
-          : ''}`;
+        <div class="orcid-mini-metrics">${miniMetrics}</div>`;
     }
 
     function init() {
