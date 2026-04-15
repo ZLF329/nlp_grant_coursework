@@ -6,13 +6,18 @@ Entry point for parsing any grant application file into the unified JSON format.
 Pipeline for PDF files:
   1. fellowships_parser  — blue-box fellowship format (NIHR DF/AF)
      → if result is non-empty, done.
-  2. pdf_parser          — generic big-box PDF format
+  2. RfPB_parser         — RfPB format (fast pre-check on page 1)
      → if result is non-empty, done.
-  3. document_parser + all_other_parser  — last-resort fallback (see below)
+  3. pdf_parser          — generic big-box PDF format
+     → if result is non-empty, done.
+  4. RfPB_parser         — second attempt as fallback
+     → if result is non-empty, done.
+  5. llm_fallback_parser — last resort: pdfplumber text + glm-ocr → qwen
 
-Pipeline for DOCX / other files:
-  3. document_parser     — extracts a raw sections JSON
-     all_other_parser    — maps it to the unified format
+Pipeline for DOCX files:
+  1. python-docx raw text extraction
+     → if >= MIN_CONTENT_CHARS, return as Raw Content.
+  2. llm_fallback_parser — if text too sparse (< MIN_CONTENT_CHARS)
 
 The output JSON always uses the same top-level keys as IC00458_after.json.
 Only keys for which content was found are included.
@@ -64,7 +69,7 @@ def _total_text_length(result: dict) -> int:
     return total
 
 
-# Minimum total characters for a rule-based result to be considered sufficient;
+# Minimum total characters for a DOCX result to be considered sufficient;
 # below this threshold the LLM fallback is triggered.
 _MIN_CONTENT_CHARS = 2000
 
@@ -94,7 +99,7 @@ def _try_fellowships_parser(pdf_path: str) -> dict:
         return {}
 
 
-# ──────────────────────────── stage 2 — RfPB_parser ─────────────────────────
+# ──────────────────────────── stage 2 / 4 — RfPB_parser ─────────────────────
 
 def _try_rfpb_parser(pdf_path: str) -> dict:
     try:
@@ -118,124 +123,6 @@ def _try_pdf_parser(pdf_path: str) -> dict:
         return {}
 
 
-# ──────────────────────────── stage 3 — document_parser + all_other_parser ───
-
-def _try_document_then_all_other(input_path: str) -> dict:
-    """
-    Parse with HybridDocumentParser → produce a temporary sections JSON →
-    convert with all_other_parser → return unified dict.
-    """
-    try:
-        from document_parser import HybridDocumentParser
-        from .all_other_parser import convert_to_unified_format
-
-        parser = HybridDocumentParser()
-        parsed = parser.parse(input_path)
-
-        # Serialise ParsedDocument to the sections-JSON dict expected by
-        # convert_to_unified_format  (same schema as IC00009_after.json)
-        sections_json = {
-            "file_name": parsed.file_name,
-            "file_type": parsed.file_type,
-            "sections": [
-                {
-                    "title": sec.title,
-                    "type":  sec.type,
-                    "content": sec.content,
-                }
-                for sec in parsed.sections
-            ],
-        }
-
-        # Write intermediate sections JSON, convert, then delete it
-        p = Path(input_path)
-        tmp_sections_path = p.parent / "json_data" / (p.stem + "_sections_tmp.json")
-        tmp_sections_path.parent.mkdir(exist_ok=True)
-        _save_json(sections_json, str(tmp_sections_path))
-
-        result = convert_to_unified_format(sections_json)
-
-        tmp_sections_path.unlink(missing_ok=True)
-
-        return result if result else {}
-    except Exception as e:
-        print(f"[all_type_parser] document_parser/all_other_parser failed: {e}")
-        return {}
-
-
-# ──────────────────────────── OCR fallback for scanned PDFs ──────────────────
-
-def _is_scanned_pdf(pdf_path: str) -> bool:
-    """Return True if the PDF appears to be primarily image-based (no selectable text)."""
-    try:
-        from document_parser.detector import detect_file_type, FileType
-        return detect_file_type(pdf_path) == FileType.PDF_SCAN
-    except Exception:
-        return False
-
-
-def _try_ocr_then_all_other(pdf_path: str) -> dict:
-    """
-    OCR fallback for scanned PDFs: extract text with PDFOCRParser, then
-    convert to unified format via all_other_parser (catch-all mode).
-
-    Each OCR'd page becomes a title+text pair in sections_json so that
-    _sections_to_blocks() builds blocks the catch-all can pick up.
-    Requires paddleocr or pytesseract to be installed; returns {} otherwise.
-    """
-    try:
-        from document_parser.pdf_ocr import PDFOCRParser
-        from .all_other_parser import convert_to_unified_format
-
-        parser = PDFOCRParser()
-        parsed = parser.parse(pdf_path)
-        if not parsed.sections:
-            print("[all_type_parser] OCR parser returned no sections")
-            return {}
-
-        # Build a sections_json where each OCR page is a title+text pair.
-        # Headings are "Page N" and won't match any keyword extractor, so
-        # all_other_parser's catch-all will collect them under Raw Content.
-        sections = []
-        for sec in parsed.sections:
-            text = str(sec.content or "").strip()
-            if text:
-                sections.append({"title": sec.title, "type": "title",  "content": sec.title})
-                sections.append({"title": sec.title, "type": "text",   "content": text})
-
-        if not sections:
-            print("[all_type_parser] OCR produced no usable text")
-            return {}
-
-        sections_json = {
-            "file_name": parsed.file_name,
-            "file_type": parsed.file_type,
-            "sections": sections,
-        }
-        result = convert_to_unified_format(sections_json)
-        return result if result else {}
-    except Exception as e:
-        print(f"[all_type_parser] _try_ocr_then_all_other failed: {e}")
-        return {}
-
-
-# ──────────────────────────── stage 4 — llm_fallback_parser ─────────────────
-
-def _try_llm_fallback(input_path: str) -> dict:
-    """
-    Last-resort parser: pdfplumber text → glm-ocr (image OCR) → qwen3.5:27b
-    structured extraction via Ollama.  Triggered when all rule-based parsers
-    produce results too sparse (< _MIN_CONTENT_CHARS characters).
-    """
-    try:
-        from .llm_fallback_parser import extract_all_sections
-        result = extract_all_sections(input_path)
-        return result if result else {}
-    except Exception as e:
-        print(f"[all_type_parser] llm_fallback_parser failed: {e}")
-        return {}
-
-
 # ──────────────────────────── RfPB pre-check ─────────────────────────────────
 
 def _is_rfpb_pdf(pdf_path: str, n_lines: int = 2) -> bool:
@@ -250,10 +137,60 @@ def _is_rfpb_pdf(pdf_path: str, n_lines: int = 2) -> bool:
                 return False
             text = pdf.pages[0].extract_text() or ""
         first_lines = "\n".join(text.splitlines()[:n_lines])
-        # print(first_lines)
         return "RfPB" in first_lines
     except Exception:
         return False
+
+
+# ──────────────────────────── DOCX extraction ────────────────────────────────
+
+def _try_docx_parse(docx_path: str) -> dict:
+    """
+    Extract all text from a DOCX file using python-docx and return a unified
+    dict with the full content stored under APPLICATION DETAILS["Raw Content"].
+
+    Returns {} if the file cannot be read or produces no text.
+    """
+    try:
+        from docx import Document
+        doc = Document(docx_path)
+        parts: list = []
+
+        for para in doc.paragraphs:
+            text = para.text.strip()
+            if text:
+                parts.append(text)
+
+        for table in doc.tables:
+            for row in table.rows:
+                row_text = "\t".join(cell.text.strip() for cell in row.cells)
+                if row_text.strip():
+                    parts.append(row_text)
+
+        full_text = "\n".join(parts)
+        if not full_text.strip():
+            return {}
+
+        return {"APPLICATION DETAILS": {"Raw Content": full_text}}
+    except Exception as e:
+        print(f"[all_type_parser] docx parsing failed: {e}")
+        return {}
+
+
+# ──────────────────────────── stage 5 — llm_fallback_parser ─────────────────
+
+def _try_llm_fallback(input_path: str) -> dict:
+    """
+    Last-resort parser: pdfplumber text → glm-ocr (image OCR) → qwen3.5:27b
+    structured extraction via Ollama.  Also handles DOCX via python-docx.
+    """
+    try:
+        from .llm_fallback_parser import extract_all_sections
+        result = extract_all_sections(input_path)
+        return result if result else {}
+    except Exception as e:
+        print(f"[all_type_parser] llm_fallback_parser failed: {e}")
+        return {}
 
 
 # ──────────────────────────── public API ─────────────────────────────────────
@@ -262,68 +199,84 @@ def parse(input_path: str) -> dict:
     """
     Parse any grant application file and return the unified JSON dict.
 
-    For PDF files the three-stage pipeline is tried in order.
-    For non-PDF files only stage 3 is used.
+    For PDF files the four-stage rule-based pipeline is tried in order,
+    with LLM as the final fallback.
+    For DOCX files, python-docx extraction is used directly; LLM is
+    triggered only if the extracted text is too sparse.
     """
     ext = Path(input_path).suffix.lower()
 
     if ext == ".pdf":
-        # ── Early check: scanned (image-only) PDF — vector parsers won't help ──
-        if _is_scanned_pdf(input_path):
-            print("[all_type_parser] detected scanned PDF — using OCR path")
-            result = _try_ocr_then_all_other(input_path)
+        # Fast pre-check: if page 1 mentions "RfPB", go straight to RfPB parser
+        if _is_rfpb_pdf(input_path):
+            print("[all_type_parser] detected RfPB PDF — using RfPB_parser directly")
+            result = _try_rfpb_parser(input_path)
             if not _is_empty(result):
-                print("[all_type_parser] ✓ OCR path succeeded")
+                print("[all_type_parser] ✓ RfPB_parser succeeded")
                 return result
-            print("[all_type_parser] OCR path returned empty — falling back to document_parser")
+            print("[all_type_parser] RfPB_parser returned empty — falling back to LLM")
         else:
-            # Fast pre-check: if page 1 mentions "RfPB", go straight to RfPB parser
-            if _is_rfpb_pdf(input_path):
-                print("[all_type_parser] detected RfPB PDF — using RfPB_parser directly")
-                result = _try_rfpb_parser(input_path)
-                if not _is_empty(result):
-                    print("[all_type_parser] ✓ RfPB_parser succeeded")
-                    return result
-                print("[all_type_parser] RfPB_parser returned empty — falling back to document_parser")
-            else:
-                # Stage 1: fellowship blue-box parser
-                result = _try_fellowships_parser(input_path)
-                if not _is_empty(result):
-                    print("[all_type_parser] ✓ fellowships_parser succeeded")
-                    return result
+            # Stage 1: fellowship blue-box parser
+            result = _try_fellowships_parser(input_path)
+            if not _is_empty(result):
+                print("[all_type_parser] ✓ fellowships_parser succeeded")
+                return result
 
-                # Stage 2: generic big-box PDF parser
-                result = _try_pdf_parser(input_path)
-                if not _is_empty(result):
-                    print("[all_type_parser] ✓ pdf_parser succeeded")
-                    return result
+            # Stage 2: generic big-box PDF parser
+            result = _try_pdf_parser(input_path)
+            if not _is_empty(result):
+                print("[all_type_parser] ✓ pdf_parser succeeded")
+                return result
 
-                # Stage 3: RfPB Stage 2 parser (fallback for non-RfPB PDFs)
-                result = _try_rfpb_parser(input_path)
-                if not _is_empty(result):
-                    print("[all_type_parser] ✓ RfPB_parser succeeded")
-                    return result
+            # Stage 3: RfPB fallback for non-RfPB PDFs
+            result = _try_rfpb_parser(input_path)
+            if not _is_empty(result):
+                print("[all_type_parser] ✓ RfPB_parser succeeded")
+                return result
 
-                print("[all_type_parser] all PDF parsers returned empty — falling back to document_parser")
+            print("[all_type_parser] all PDF parsers returned empty — falling back to LLM")
 
-    # Stage 3: document_parser + all_other_parser (covers DOCX, other, and PDF fallback)
-    result = _try_document_then_all_other(input_path)
-    if not _is_empty(result) and _total_text_length(result) >= _MIN_CONTENT_CHARS:
-        print("[all_type_parser] ✓ document_parser + all_other_parser succeeded")
+        # Stage 4: LLM fallback for all unrecognised PDFs
+        print("[all_type_parser] falling back to LLM parser (glm-ocr + qwen3.5:27b)")
+        result = _try_llm_fallback(input_path)
+        if not _is_empty(result):
+            print("[all_type_parser] ✓ llm_fallback_parser succeeded")
+        else:
+            print("[all_type_parser] ✗ all parsers returned empty")
         return result
-    if not _is_empty(result):
-        print(f"[all_type_parser] document_parser result too sparse "
-              f"({_total_text_length(result)} chars < {_MIN_CONTENT_CHARS}) "
-              f"— falling back to LLM parser")
 
-    # Stage 4: LLM fallback — handles any format via glm-ocr + qwen3.5:27b
-    print("[all_type_parser] falling back to LLM parser (glm-ocr + qwen3.5:27b)")
-    result = _try_llm_fallback(input_path)
-    if not _is_empty(result):
-        print("[all_type_parser] ✓ llm_fallback_parser succeeded")
+    elif ext in (".docx", ".doc"):
+        # DOCX: extract raw text with python-docx
+        result = _try_docx_parse(input_path)
+        if not _is_empty(result) and _total_text_length(result) >= _MIN_CONTENT_CHARS:
+            print("[all_type_parser] ✓ docx parsing succeeded")
+            return result
+
+        if not _is_empty(result):
+            print(
+                f"[all_type_parser] docx result too sparse "
+                f"({_total_text_length(result)} chars < {_MIN_CONTENT_CHARS}) "
+                f"— falling back to LLM parser"
+            )
+        else:
+            print("[all_type_parser] docx parsing returned empty — falling back to LLM parser")
+
+        result = _try_llm_fallback(input_path)
+        if not _is_empty(result):
+            print("[all_type_parser] ✓ llm_fallback_parser succeeded")
+        else:
+            print("[all_type_parser] ✗ all parsers returned empty")
+        return result
+
     else:
-        print("[all_type_parser] ✗ all parsers returned empty")
-    return result
+        # Unknown format — try LLM directly
+        print(f"[all_type_parser] unsupported extension '{ext}' — trying LLM parser")
+        result = _try_llm_fallback(input_path)
+        if not _is_empty(result):
+            print("[all_type_parser] ✓ llm_fallback_parser succeeded")
+        else:
+            print("[all_type_parser] ✗ all parsers returned empty")
+        return result
 
 
 def parse_and_save(input_path: str, output_path: Optional[str] = None) -> str:
