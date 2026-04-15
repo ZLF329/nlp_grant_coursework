@@ -1,95 +1,107 @@
-# NIHR 课题申请书自动评分系统
+# NIHR Grant Application Automated Scoring System
 
-基于本地大语言模型（Ollama）的 NIHR 课题申请书结构化评分流水线。输入 PDF，输出各维度结构化评分、证据来源及评审理由。
-
----
-
-## 整体思路
-
-### 为什么不直接把全文丢给模型打分？
-
-申请书动辄数万字，超出模型的上下文窗口。即便塞进去，模型也很难在注意力被稀释的情况下逐条核对每个评分子项的证据。
-
-本系统的解决方案是：**先把文档拆成小块（Chunk Pool），再用两阶段流水线做定向检索 + 打分**，让模型每次只看与当前评分维度最相关的内容。
+This project implements a structured scoring pipeline for NIHR grant applications using a local large language model backend through Ollama. The input is a grant application PDF. The output is a structured JSON file containing rubric-level scores, evidence sources, strengths, limitations, and an overall score.
 
 ---
 
-## 流水线架构
+## Core Idea
 
-```
+### Why not send the full application directly to the model?
+
+NIHR applications can contain tens of thousands of words, often exceeding or crowding the model context window. Even when the full text fits, the model may struggle to check each scoring signal against the right evidence because attention is spread across the entire document.
+
+This system addresses that problem by first splitting the application into a traceable chunk pool, then using a two-stage pipeline for evidence discovery and final scoring. The model only sees the context most relevant to the current scoring dimension.
+
+---
+
+## Pipeline Architecture
+
+```text
 PDF
- │
- ▼
-[1] 解析（Parser）
- │   按章节提取文本，生成结构化 JSON
- │
- ▼
-[2] 构建 Chunk Pool
- │   每个章节文本按字符数切块（≤1200字/块）
- │   每块分配唯一 chunk_id，记录所属章节
- │
- ▼
-[3] Stage 1 — 信念积累（Belief Accumulation）
- │   逐章节扫描，让模型找出与各评分子项相关的证据块
- │   输出：每个子项的 good/bad 证据块 ID + 含义解读
- │   结果汇总为 belief_state（全局信念状态）
- │
- ▼
-[4] Stage 2 — 最终打分（Final Scoring）
- │   对每个评分大项，从 belief_state 推断相关章节
- │   拼接该大项的"精简版申请书文本"发给模型
- │   模型对每个 signal 打 0-5 分，并给出 pros/drawbacks
- │
- ▼
-[5] 聚合输出
-     各 signal → 子项（sub_criterion）→ 大项（section）→ overall
-     计算加权平均分，附带 doc_type 专项排除逻辑
+ |
+ v
+[1] Parser
+ |   Extract text by application section and generate structured JSON.
+ |
+ v
+[2] Chunk Pool Construction
+ |   Split each section into text chunks (default: <= 1200 characters).
+ |   Assign each chunk a unique chunk_id and preserve its source section.
+ |
+ v
+[3] Stage 1 - Belief Accumulation
+ |   Scan the application section by section.
+ |   Ask the model to identify evidence chunks relevant to each rubric sub-criterion.
+ |   Output good/bad evidence chunk IDs and short implications.
+ |   Merge results into a global belief_state.
+ |
+ v
+[4] Dynamic Context Selection
+ |   For each scoring dimension, combine rule-based section priors with
+ |   evidence-derived sections from the belief_state.
+ |   Deduplicate chunks and preserve original document order.
+ |
+ v
+[5] Stage 2 - Final Scoring
+ |   Build a scoped version of the application for each rubric section.
+ |   Ask the model to score each signal from 0 to 5.
+ |   Return pros, drawbacks, and grounded evidence IDs.
+ |
+ v
+[6] Aggregated Output
+     signal -> sub_criterion -> section -> overall
+     Compute weighted averages and apply doc_type-specific exclusions.
 ```
 
 ---
 
-## 关键模块说明
+## Key Modules
 
-### 解析层（Parser）
+### Parser Layer
 
-位于 `src/all_type_parser/`。自动识别 PDF 类型并路由到对应解析器：
+Located in `src/all_type_parser/`. The parser automatically detects the PDF type and routes the file to the appropriate parser.
 
-| 文件 | 适用类型 | doc_type |
+| File | Target format | doc_type |
 |---|---|---|
-| `fellowships_parser.py` | NIHR Fellowship（博士/博士后） | `fellowship` |
-| `RfPB_parser.py` | Research for Patient Benefit Stage 2 | `rfpb` |
-| `all_other_parser.py` | 其他格式兜底 | `unknown` |
+| `fellowships_parser.py` | NIHR Fellowship applications (doctoral/postdoctoral) | `fellowship` |
+| `RfPB_parser.py` | Research for Patient Benefit Stage 2 applications | `rfpb` |
+| `all_other_parser.py` | Fallback parser for other formats | `unknown` |
 
-解析输出为结构化 JSON，顶层包含 `doc_type` 字段，用于后续评分时的专项适配。
+The parser output is a structured JSON object. The top level includes a `doc_type` field, which is later used for scoring adaptation.
 
-RfPB 与 Fellowship 的结构差异：
-- Fellowship：固定大框（蓝色方框）出现在每页顶部，章节分隔明确
-- RfPB Stage 2：蓝色方框可出现在页面任意位置，同一页可能有多个章节，需逐行检测
+Key layout differences between RfPB and Fellowship applications:
 
----
-
-### Chunk Pool（`src/pool/build_pool.py`）
-
-将解析后的 JSON 中所有文本字段切成固定大小的块（默认 ≤ 1200 字符）。每块记录：
-
-- `chunk_id`：格式为 `sec{章节缩写}__{序号}_{子序号}`，如 `secdrp__001_a`
-- `parser_section`：所属章节名（如 `Detailed Research Plan`）
-- `source_path`：原始路径（如 `APPLICATION DETAILS > Detailed Research Plan`）
-
-同时生成两个派生块：
-- **Application Context**：汇总申请书元数据（标题、申请人、机构等）
-- **Application Form Analysis**：基于解析结果的结构性统计（词数、列表数、重复率、章节间语义重叠度等），专供表单质量维度使用
+- Fellowship applications usually have fixed blue boxes near the top of each page, making section boundaries relatively clear.
+- RfPB Stage 2 applications may place blue boxes at variable positions, and a single page can contain multiple sections, so line-level section detection is required.
 
 ---
 
-### Stage 1 — 信念积累
+### Chunk Pool (`src/pool/build_pool.py`)
 
-**设计动机**：申请书中同一段内容可能同时与多个评分维度相关（例如 CV 既关系到研究经验，也关系到领导力轨迹）。Stage 1 通过全文扫描，预先建立"哪些块与哪些子项相关"的映射，供 Stage 2 精准检索。
+The chunk pool converts the parsed JSON into fixed-size evidence units. By default, each text chunk is limited to 1200 characters. Each chunk stores:
 
-**执行逻辑**：
-- 遍历所有应用章节（不含 Application Form）
-- 每次把当前章节的所有 chunk 文本 + 当前全局信念状态 + 完整评分标准发给模型
-- 模型输出 findings，格式为：
+- `chunk_id`: unique ID, such as `secdrp__001_a`
+- `parser_section`: source section, such as `Detailed Research Plan`
+- `source_path`: original JSON path, such as `APPLICATION DETAILS > Detailed Research Plan`
+
+The pool also adds derived chunks:
+
+- **Application Context**: application-level metadata such as title, applicant, organisation, and other contextual fields.
+- **Plain English NLP Analysis**: readability and plain-English indicators, including sentence length, Flesch-Kincaid estimates, jargon proxy density, content coverage, and lexical overlap with the detailed research plan.
+- **Application Form Analysis**: structural indicators derived from parser output, including word counts, list markers, table-like budget lines, repeated text, transition phrases, and cross-section lexical overlap. This chunk supports the application form quality dimension.
+
+---
+
+### Stage 1 - Belief Accumulation
+
+**Motivation:** The same passage can be relevant to multiple scoring dimensions. For example, a CV section can support both research experience and leadership trajectory. Stage 1 scans the document first and builds a mapping from rubric sub-criteria to supporting or negative evidence chunks.
+
+**Execution:**
+
+- Iterate through parsed application sections, excluding the derived Application Form scoring chunk.
+- For each section, send the current section chunks, the current global belief state, and the rubric to the model.
+- The model returns findings in this shape:
+
   ```json
   {
     "sub_id": "g.4",
@@ -97,122 +109,185 @@ RfPB 与 Fellowship 的结构差异：
       "good_evidence_ids": ["secac__001_a"],
       "bad_evidence_ids": []
     },
-    "implication": "CV 中列举了 7 篇发表论文及多项获批课题，支持研究产出维度"
+    "implication": "The CV lists publications and prior funded projects, supporting research output quality."
   }
   ```
-- Finding 按子项合并到 `belief_state.subcriteria_beliefs`，跨章节累积
 
-**扁平化设计**：每个 finding 直接对应一个 `sub_id`，不再嵌套 signal 层级，减少 token 消耗，让模型在有限上下文内覆盖更多子项。
+- Findings are merged by `sub_id` into `belief_state.subcriteria_beliefs`.
+- Evidence accumulates across sections and is reused during final scoring.
 
----
-
-### Stage 2 — 最终打分
-
-**执行逻辑**：
-- 对每个评分大项（general / proposed_research / sites_support 等），从 belief_state 中反查出相关的解析章节
-- 从 Chunk Pool 中取出这些章节的完整文本，拼成"精简申请书"
-- 将精简申请书 + 该大项的完整评分标准 + belief_state 摘要一起发给模型
-- 模型对每个 signal 打 0-5 分，给出 pros（优势）和 drawbacks（不足）
-
-**检索策略**（`SECTION_TO_PARSER_SECTIONS`）：每个评分大项预设了应参考的解析章节列表，例如：
-- `proposed_research` → 科学摘要、详细研究计划、与上阶段的变化（RfPB 专有）等
-- `training_development` → 培训与发展、支持与导师制等
-- `general` → 不限定章节（全局检索）
+**Flattened design:** Each finding maps directly to a parent `sub_id` rather than nesting at the signal level. This reduces token cost and allows Stage 1 to cover more rubric items within the context budget.
 
 ---
 
-### 评分标准（`criteria_points.json`）
+### Dynamic Context Selection
 
-六个评分大项，每项下设若干子项（sub_criterion），每个子项下设若干 signal：
+Final scoring does not reuse the same full-document prompt for every rubric section. Instead, the system builds a scoped context dynamically for each scoring dimension.
 
-| 大项 | key | 说明 |
+The selection process combines two sources:
+
+1. **Rule-based section priors** from `SECTION_TO_PARSER_SECTIONS`, which define where evidence is expected to appear for each rubric dimension.
+2. **Evidence-driven expansion** from the Stage 1 `belief_state`, which adds parser sections that actually contain evidence for the target rubric sub-criteria.
+
+For example:
+
+- `proposed_research` retrieves the application context, plain English summary, scientific abstract, detailed research plan, previous-stage changes, PPI/WPCC sections, and budget information.
+- `training_development` retrieves training, development, support, and mentorship sections.
+- `application_form` retrieves the derived Application Form Analysis chunk.
+- `general` uses the full application because applicant quality evidence can appear across many sections.
+
+After selection, duplicate chunks are removed and the remaining chunks are ordered according to their original document position. If no scoped context can be constructed, the system falls back to the full application text.
+
+---
+
+### Stage 2 - Final Scoring
+
+**Execution:**
+
+- For each major rubric section, identify relevant parser sections from the belief state and rule-based mappings.
+- Build a scoped version of the application text from the chunk pool.
+- Send the scoped application text, the target rubric section, and the final belief state to the model.
+- The model scores every signal from 0 to 5 and returns:
+  - `used_chunk_ids`
+  - `pros`
+  - `drawbacks`
+  - signal-level scores
+
+The model output is constrained by JSON schemas so that all required signals are scored and all score values are valid integers from 0 to 5.
+
+---
+
+### Scoring Rubric (`criteria_points.json`)
+
+The rubric contains six major scoring sections. Each section contains sub-criteria, and each sub-criterion contains signal-level scoring items.
+
+| Section | key | Description |
 |---|---|---|
-| 综合素质 | `general` | 申请人经验、产出、领导力等 |
-| 研究方案 | `proposed_research` | 研究问题、方法设计、可行性等 |
-| 培训与发展 | `training_development` | 培训计划、导师、职业发展支持 |
-| 机构与支持 | `sites_support` | 机构资质、督导安排、研究文化 |
-| 患者与公众参与 | `wpcc` | PPI 设计、代表性、参与深度 |
-| 申请表质量 | `application_form` | 结构完整性、逻辑性、格式规范 |
+| General | `general` | Applicant experience, outputs, leadership potential, and career trajectory |
+| Proposed Research | `proposed_research` | Research question, design, methodological rigour, feasibility, impact, and resources |
+| Training and Development | `training_development` | Training plan, mentorship, career development, and skill acquisition |
+| Sites and Support | `sites_support` | Institutional capability, supervision, infrastructure, and research culture |
+| Working with People and Communities | `wpcc` | PPI/WPCC design, representativeness, depth of involvement, and feedback mechanisms |
+| Application Form | `application_form` | Structural completeness, logical flow, formatting, repetition, and coherence |
 
-打分计算路径：signal（0-5）→ 子项加权平均 → 换算为 0-10 → 大项加权平均 → overall
+Score aggregation path:
 
----
-
-### doc_type 适配机制
-
-不同类型的课题申请书评分维度不完全相同。系统通过 `doc_type` 字段实现专项排除：
-
-**RfPB（Research for Patient Benefit）**
-
-RfPB 是面向已有研究基础的项目基金，不是个人职业发展基金。与 Fellowship 的核心区别：
-- 申请书不要求职业发展陈述、培训计划等个人叙事内容
-- 没有培训/发展章节（Training & Development）
-
-因此对 `doc_type=rfpb` 的申请书自动执行：
-
-| 排除对象 | 排除范围 | 原因 |
-|---|---|---|
-| `g.1` 优秀申请通用特征 | 不计入 general 得分 | 含"培训计划"等 Fellowship 专属 signal |
-| `g.2` 为什么需要此奖项 | 不计入 general 得分 | 询问个人职业发展需求，与项目基金无关 |
-| `training_development` | 不计入 overall 得分 | RfPB 申请表无对应章节，强行计入只会拉低总分 |
-
-排除的子项依然会被打分并出现在输出中（带 `excluded_reason: "not_applicable_for_doc_type"` 标记），仅不参与均值计算，方便人工审查。
-
----
-
-## 目录结构
-
+```text
+signal score (0-5)
+ -> weighted sub_criterion average
+ -> sub_criterion score (0-10)
+ -> weighted section average
+ -> overall score
 ```
+
+---
+
+### `doc_type` Adaptation
+
+Different NIHR application types do not share exactly the same scoring expectations. The pipeline uses `doc_type` to exclude criteria that are not applicable to a given application format.
+
+#### RfPB (Research for Patient Benefit)
+
+RfPB is a project grant rather than an individual career-development fellowship. Compared with Fellowship applications:
+
+- It does not require a personal career-development narrative.
+- It does not contain a training and development section in the Fellowship sense.
+- Training-related Fellowship criteria should not reduce the score of an RfPB application.
+
+For `doc_type=rfpb`, the pipeline applies these exclusions:
+
+| Excluded item | Exclusion scope | Reason |
+|---|---|---|
+| `g.1` Common Characteristics of Good Applications | Excluded from the General section average | Contains Fellowship-oriented signals such as training plan quality |
+| `g.2` Tell Us Why You Need This Award | Excluded from the General section average | Asks about personal career-development need, which is not applicable to a project grant |
+| `training_development` | Excluded from the overall score | RfPB applications do not have a matching Fellowship-style training section |
+
+Excluded sub-criteria can still appear in the output with `excluded_reason: "not_applicable_for_doc_type"`. They are visible for review but do not affect the averaged scores.
+
+---
+
+## Directory Structure
+
+```text
 .
-├── criteria_points.json          # 评分标准定义
-├── qwen3_ollama.py               # 主入口（Ollama 后端）
-├── score_experiments.ipynb       # 评分稳定性实验 Notebook
-├── src/
-│   ├── all_type_parser/
-│   │   ├── all_type_parser.py    # 解析器路由
-│   │   ├── fellowships_parser.py # Fellowship PDF 解析
-│   │   ├── RfPB_parser.py        # RfPB Stage 2 PDF 解析
-│   │   └── pdf_utils.py          # PDF 工具函数
-│   ├── pool/
-│   │   └── build_pool.py         # Chunk Pool 构建
-│   └── scoring/
-│       └── pipeline.py           # 两阶段评分流水线
-└── data/
-    ├── successful/               # 测试用申请书 PDF
-    └── experiments/              # 稳定性实验数据
+|-- criteria_points.json          # Rubric definition
+|-- qwen3_ollama.py               # Main Ollama scoring entry point
+|-- score_experiments.ipynb       # Score stability experiments
+|-- src/
+|   |-- all_type_parser/
+|   |   |-- all_type_parser.py    # Parser router
+|   |   |-- fellowships_parser.py # Fellowship PDF parser
+|   |   |-- RfPB_parser.py        # RfPB Stage 2 PDF parser
+|   |   |-- pdf_parser.py         # Generic PDF parser
+|   |   |-- pdf_utils.py          # PDF utility functions
+|   |-- pool/
+|   |   |-- build_pool.py         # Chunk pool construction
+|   |-- scoring/
+|       |-- pipeline.py           # Two-stage scoring pipeline
+|-- data/
+|   |-- successful/               # Example successful application PDFs
+|   |-- unsuccessful/             # Example unsuccessful application PDFs
+|   |-- experiments/              # Experiment datasets
 ```
 
 ---
 
-## 运行方式
+## Usage
+
+### 1. Parse a PDF
 
 ```bash
-# 1. 解析 PDF（自动识别类型）
 python -m src.all_type_parser.all_type_parser path/to/application.pdf
+```
 
-# 2. 评分（需本地 Ollama 运行对应模型）
+The parser automatically detects the document type where possible and writes a structured JSON file under a `json_data/` directory next to the input PDF.
+
+### 2. Score an application
+
+The scoring step requires a running Ollama server with the selected model available locally.
+
+```bash
 OLLAMA_MODEL=qwen3.5:35b python qwen3_ollama.py \
   data/successful/json_data/IC00029_RfPB.json \
   --criteria criteria_points.json \
   --out data/successful/json_data/IC00029_RfPB_scored.json
 ```
 
-稳定性实验（重复跑多次、多文件对比）使用 `score_experiments.ipynb`，支持：
-- 同一 PDF 多次评分的方差统计
-- A/B 两组申请书的分布对比及假设检验
+### 3. Run experiments
+
+Use `score_experiments.ipynb` for scoring experiments, including:
+
+- repeated scoring of the same PDF to inspect variance
+- A/B group comparisons between application sets
+- score distribution and hypothesis-test exploration
 
 ---
 
-## 输出结构
+## Output Structure
 
-评分 JSON 的顶层结构：
+The top-level scored JSON has the following shape:
 
 ```json
 {
   "doc_id": "IC00029_RfPB",
-  "run_info": { "scorer_model": "qwen3.5:35b", "ran_at_utc": "..." },
-  "pool_lookup": { "chunk_id": { "text": "...", "parser_section": "..." } },
-  "belief_state": { "subcriteria_beliefs": { "pr.1": { "good_evidence_ids": [...] } } },
+  "run_info": {
+    "scorer_model": "qwen3.5:35b",
+    "ran_at_utc": "..."
+  },
+  "pool_lookup": {
+    "chunk_id": {
+      "text": "...",
+      "parser_section": "..."
+    }
+  },
+  "belief_state": {
+    "subcriteria_beliefs": {
+      "pr.1": {
+        "good_evidence_ids": ["..."],
+        "bad_evidence_ids": []
+      }
+    }
+  },
   "features": {
     "general": {
       "score_10": 7.33,
@@ -221,15 +296,28 @@ OLLAMA_MODEL=qwen3.5:35b python qwen3_ollama.py \
           "sub_id": "g.3",
           "score_10": 8.0,
           "counts_toward_section_average": true,
-          "signals": [ { "sid": "g.3.a", "score": 4 } ],
+          "signals": [
+            {
+              "sid": "g.3.a",
+              "score": 4
+            }
+          ],
           "pros": "...",
           "drawbacks": "...",
-          "evidence": [ { "id": "secac__001_a", "text": "..." } ]
+          "evidence": [
+            {
+              "id": "secac__001_a",
+              "text": "..."
+            }
+          ]
         }
       ]
     }
   },
-  "overall": { "score_10": 8.44, "final_score_0to100": 84.4 },
+  "overall": {
+    "score_10": 8.44,
+    "final_score_0to100": 84.4
+  },
   "debug": {
     "doc_type": "rfpb",
     "excluded_sections": ["training_development"],
@@ -237,3 +325,5 @@ OLLAMA_MODEL=qwen3.5:35b python qwen3_ollama.py \
   }
 }
 ```
+
+The output is designed to be auditable: each score can be inspected together with the evidence chunks and model rationale used to produce it.
