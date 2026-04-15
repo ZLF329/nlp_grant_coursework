@@ -25,6 +25,8 @@ import traceback
 import uuid
 from pathlib import Path
 
+import requests as _requests
+
 from flask import Flask, jsonify, request, send_from_directory
 
 # ── path wiring ───────────────────────────────────────────────────────────────
@@ -41,6 +43,7 @@ for d in (UPLOAD_DIR, PARSED_DIR, RESULT_DIR):
 
 PUBLIC_DIR = Path(__file__).resolve().parent / "public"
 CRITERIA_PATH = PROJECT_ROOT / "criteria_points.json"
+OLLAMA_HOST = os.environ.get("OLLAMA_HOST", "http://127.0.0.1:11434").rstrip("/")
 
 # ── pipeline imports (lazy where heavy) ───────────────────────────────────────
 from src.all_type_parser.all_type_parser import parse_and_save           # noqa: E402
@@ -352,6 +355,37 @@ def history_item(job_id: str):
     if not p.exists():
         return jsonify({"error": "not found"}), 404
     return jsonify(json.loads(p.read_text(encoding="utf-8")))
+
+
+@app.get("/status")
+def status():
+    with JOBS_LOCK:
+        all_jobs = list(JOBS.values())
+    running = sum(1 for j in all_jobs if j["status"] == "running")
+    queued  = sum(1 for j in all_jobs if j["status"] == "pending")
+
+    # Ollama GPU info via /api/ps
+    gpu: dict = {}
+    try:
+        r = _requests.get(f"{OLLAMA_HOST}/api/ps", timeout=3)
+        if r.status_code == 200:
+            models = r.json().get("models") or []
+            size_vram = sum(m.get("size_vram", 0) for m in models)
+            gpu = {
+                "models_loaded": [m.get("name") for m in models],
+                "vram_used_gb": round(size_vram / 1024**3, 2),
+                "model_active": len(models) > 0,
+            }
+        else:
+            gpu = {"error": f"ollama /api/ps returned {r.status_code}"}
+    except Exception as e:
+        gpu = {"error": str(e)}
+
+    return jsonify({
+        "active_jobs": running,
+        "queued_jobs": queued,
+        "gpu": gpu,
+    })
 
 
 if __name__ == "__main__":

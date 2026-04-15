@@ -515,6 +515,10 @@
       </a>
       <div class="nav-links" style="display:flex;align-items:center;gap:8px;">
         <span class="nav-badge">Beta</span>
+        <div id="statusBar" style="display:flex;align-items:center;gap:6px;font-size:12px;color:#94a3b8;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:4px 12px;">
+          <span id="statusDot" style="width:7px;height:7px;border-radius:50%;background:#4ade80;flex-shrink:0;"></span>
+          <span id="statusText">Loading…</span>
+        </div>
       </div>
     </nav>
 
@@ -715,6 +719,51 @@
 
       const root = createRoot(document.getElementById("root"));
       root.render(React.createElement(App));
+    </script>
+
+    <script>
+      (function() {
+        const dot  = document.getElementById('statusDot');
+        const text = document.getElementById('statusText');
+
+        async function pollStatus() {
+          try {
+            const res = await fetch('/status');
+            if (!res.ok) throw new Error('status error');
+            const s = await res.json();
+
+            const active  = s.active_jobs  || 0;
+            const queued  = s.queued_jobs  || 0;
+            const gpu     = s.gpu          || {};
+            const vram    = gpu.vram_used_gb != null ? `${gpu.vram_used_gb} GB VRAM` : '';
+            const loaded  = (gpu.models_loaded || []).length > 0;
+
+            let label = '';
+            let color = '#4ade80';  // green = idle
+
+            if (active > 0) {
+              color = '#f59e0b';  // amber = busy
+              label = `${active} job${active > 1 ? 's' : ''} running`;
+              if (queued > 0) label += ` · ${queued} queued`;
+            } else {
+              label = 'Idle';
+            }
+            if (vram) label += ` · ${vram}`;
+            if (!loaded && active > 0) {
+              color = '#f87171';  // red = model not loaded but job running (unusual)
+            }
+
+            dot.style.background  = color;
+            text.textContent      = label;
+          } catch(e) {
+            dot.style.background  = '#6b7280';
+            text.textContent      = 'Server unreachable';
+          }
+        }
+
+        pollStatus();
+        setInterval(pollStatus, 8000);
+      })();
     </script>
   </body>
 </html>
