@@ -328,6 +328,32 @@ def result(job_id: str):
         return jsonify(job["result"])
 
 
+@app.get("/history")
+def history():
+    entries = []
+    for p in sorted(RESULT_DIR.glob("*.json"), key=lambda f: f.stat().st_mtime, reverse=True):
+        try:
+            data = json.loads(p.read_text(encoding="utf-8"))
+            entries.append({
+                "job_id":   p.stem,
+                "doc_id":   data.get("doc_id", p.stem),
+                "ran_at":   (data.get("run_info") or {}).get("ran_at_utc"),
+                "score":    (data.get("overall") or {}).get("final_score_0to100"),
+                "model":    (data.get("run_info") or {}).get("scorer_model"),
+            })
+        except Exception:
+            pass
+    return jsonify(entries)
+
+
+@app.get("/history/<job_id>")
+def history_item(job_id: str):
+    p = RESULT_DIR / f"{job_id}.json"
+    if not p.exists():
+        return jsonify({"error": "not found"}), 404
+    return jsonify(json.loads(p.read_text(encoding="utf-8")))
+
+
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", "8000"))
     print(f"[server] Grant AI pipeline listening on http://0.0.0.0:{port}")
