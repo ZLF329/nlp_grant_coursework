@@ -2548,7 +2548,11 @@
           const active = s.active_jobs  || 0;
           const queued = s.queued_jobs  || 0;
           const gpu    = s.gpu          || {};
-          const vram   = gpu.vram_used_gb != null ? `${gpu.vram_used_gb} GB VRAM` : '';
+          const vramStr = gpu.vram_used_gb != null
+            ? (gpu.vram_total_gb != null ? `${gpu.vram_used_gb}/${gpu.vram_total_gb} GB` : `${gpu.vram_used_gb} GB`)
+            : null;
+          const gpuStr  = gpu.gpu_name ? gpu.gpu_name.replace('NVIDIA ', '') : null;
+          const vram    = [gpuStr, vramStr].filter(Boolean).join(' · ');
           const loaded = (gpu.models_loaded || []).length > 0;
 
           let label = '';

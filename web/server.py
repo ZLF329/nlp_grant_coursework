@@ -364,22 +364,53 @@ def status():
     running = sum(1 for j in all_jobs if j["status"] == "running")
     queued  = sum(1 for j in all_jobs if j["status"] == "pending")
 
-    # Ollama GPU info via /api/ps
+    # GPU info: try nvidia-smi first, fall back to sysctl (Apple Silicon)
+    vram_used_gb: float | None = None
+    vram_total_gb: float | None = None
+    gpu_name: str | None = None
+    try:
+        import subprocess
+        out = subprocess.check_output(
+            ["nvidia-smi", "--query-gpu=name,memory.used,memory.total",
+             "--format=csv,noheader,nounits"],
+            text=True, timeout=5,
+        ).strip().splitlines()
+        if out:
+            parts = [p.strip() for p in out[0].split(",")]
+            gpu_name      = parts[0]
+            vram_used_gb  = round(int(parts[1]) / 1024, 2)
+            vram_total_gb = round(int(parts[2]) / 1024, 2)
+    except FileNotFoundError:
+        # No nvidia-smi — try Apple Silicon unified memory
+        try:
+            import subprocess
+            mem_bytes = int(subprocess.check_output(["sysctl", "-n", "hw.memsize"], text=True).strip())
+            vram_total_gb = round(mem_bytes / 1024**3, 1)
+        except Exception:
+            pass
+    except Exception:
+        pass
+
+    # Ollama running models via /api/ps
     gpu: dict = {}
     try:
         r = _requests.get(f"{OLLAMA_HOST}/api/ps", timeout=3)
         if r.status_code == 200:
             models = r.json().get("models") or []
-            size_vram = sum(m.get("size_vram", 0) for m in models)
+            ollama_vram = sum(m.get("size_vram", 0) for m in models)
+            # Prefer nvidia-smi used VRAM; ollama /api/ps as fallback
             gpu = {
+                "gpu_name":     gpu_name,
                 "models_loaded": [m.get("name") for m in models],
-                "vram_used_gb": round(size_vram / 1024**3, 2),
+                "vram_used_gb": vram_used_gb if vram_used_gb is not None else round(ollama_vram / 1024**3, 2),
+                "vram_total_gb": vram_total_gb,
                 "model_active": len(models) > 0,
             }
         else:
-            gpu = {"error": f"ollama /api/ps returned {r.status_code}"}
+            gpu = {"error": f"ollama /api/ps returned {r.status_code}",
+                   "gpu_name": gpu_name, "vram_used_gb": vram_used_gb, "vram_total_gb": vram_total_gb}
     except Exception as e:
-        gpu = {"error": str(e)}
+        gpu = {"error": str(e), "gpu_name": gpu_name, "vram_used_gb": vram_used_gb, "vram_total_gb": vram_total_gb}
 
     return jsonify({
         "active_jobs": running,
