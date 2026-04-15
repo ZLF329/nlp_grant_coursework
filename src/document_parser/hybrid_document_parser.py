@@ -331,12 +331,12 @@ class HybridDocumentParser(DocumentParser):
                     is_title = True
 
                 if is_title:
-                    # 保存前一个文本块
-                    if current_text and current_title:
+                    # Bug B fix: flush accumulated text even if no title matched yet
+                    if current_text:
                         blocks.append(ContentBlock(
                             block_type="text",
                             content="\n".join(current_text),
-                            metadata={"title": current_title}
+                            metadata={"title": current_title or ""}
                         ))
                     current_text = []
 
@@ -351,12 +351,12 @@ class HybridDocumentParser(DocumentParser):
                     # 文本
                     current_text.append(text)
 
-            # 保存最后的文本块
-            if current_text and current_title:
+            # Bug B fix: flush last block even if current_title is None
+            if current_text:
                 blocks.append(ContentBlock(
                     block_type="text",
                     content="\n".join(current_text),
-                    metadata={"title": current_title}
+                    metadata={"title": current_title or ""}
                 ))
 
             # 处理表格

@@ -91,6 +91,34 @@ def _extract_text_pdfplumber(pdf_path: str) -> tuple[str, float]:
     return "\n\n".join(pages_text), avg
 
 
+def _extract_text_docx(docx_path: str) -> str:
+    """
+    Extract all text from a DOCX file using python-docx.
+
+    Paragraphs and table cells are concatenated in document order.
+    Returns a single string ready to be sent to the LLM.
+    """
+    from docx import Document
+
+    doc = Document(docx_path)
+    parts: list[str] = []
+
+    # Paragraphs in document order
+    for para in doc.paragraphs:
+        text = para.text.strip()
+        if text:
+            parts.append(text)
+
+    # Tables (append after paragraphs to preserve rough document order)
+    for table in doc.tables:
+        for row in table.rows:
+            row_text = "\t".join(cell.text.strip() for cell in row.cells)
+            if row_text.strip():
+                parts.append(row_text)
+
+    return "\n".join(parts)
+
+
 # ---------------------------------------------------------------------------
 # Stage 2 — image OCR via glm-ocr (Ollama)
 # ---------------------------------------------------------------------------
@@ -337,54 +365,77 @@ def _structure_with_llm(text: str) -> dict:
 # Public API
 # ---------------------------------------------------------------------------
 
-def extract_all_sections(pdf_path: str) -> dict:
+def extract_all_sections(input_path: str) -> dict:
     """
-    Extract all grant-application sections from an arbitrary PDF and return a
-    unified JSON dict matching the IC00458_after.json schema.
+    Extract all grant-application sections from a PDF or DOCX file and return
+    a unified JSON dict matching the IC00458_after.json schema.
 
-    Pipeline
-    --------
+    Pipeline for PDF
+    ----------------
     1. pdfplumber text extraction
        - Rich text  (avg >= MIN_CHARS_PER_PAGE) → feed directly to LLM
        - Sparse text (scanned PDF)              → glm-ocr → feed to LLM
     2. qwen3.5:27b structured extraction → unified dict
 
+    Pipeline for DOCX (and other non-PDF files)
+    --------------------------------------------
+    1. python-docx text extraction (paragraphs + tables)
+    2. qwen3.5:27b structured extraction → unified dict
+       (image OCR step is skipped — DOCX has selectable text by definition)
+
     Parameters
     ----------
-    pdf_path : str
-        Absolute or relative path to the PDF file.
+    input_path : str
+        Absolute or relative path to the input file (PDF or DOCX).
 
     Returns
     -------
     dict
         Unified JSON dict.  Empty dict if extraction failed completely.
     """
-    print(f"[llm_fallback_parser] processing: {pdf_path}")
+    ext = Path(input_path).suffix.lower()
+    print(f"[llm_fallback_parser] processing: {input_path}")
 
-    # ── Stage 1: pdfplumber text extraction ──────────────────────────────────
-    try:
-        text, avg_chars = _extract_text_pdfplumber(pdf_path)
-    except Exception as e:
-        print(f"[llm_fallback_parser] pdfplumber failed: {e}")
-        text, avg_chars = "", 0.0
-
-    print(f"[llm_fallback_parser] avg chars/page: {avg_chars:.0f}")
-
-    # ── Stage 2: image OCR if text is too sparse ──────────────────────────────
-    if avg_chars < MIN_CHARS_PER_PAGE:
+    # ── DOCX branch: extract text with python-docx, skip image OCR ───────────
+    if ext in (".docx", ".doc"):
         try:
-            ocr_text = _ocr_pdf(pdf_path)
-            if ocr_text.strip():
-                text = ocr_text
+            text = _extract_text_docx(input_path)
         except Exception as e:
-            print(f"[llm_fallback_parser] image OCR failed: {e}")
-            # Fall through — use whatever pdfplumber gave us (may be empty)
+            print(f"[llm_fallback_parser] python-docx extraction failed: {e}")
+            return {}
 
-    if not text.strip():
-        print("[llm_fallback_parser] no text available — giving up")
-        return {}
+        if not text.strip():
+            print("[llm_fallback_parser] no text extracted from DOCX — giving up")
+            return {}
 
-    # ── Stage 3: structured extraction via LLM ────────────────────────────────
+        print(f"[llm_fallback_parser] DOCX: extracted {len(text):,} chars")
+
+    # ── PDF branch: pdfplumber → (glm-ocr if sparse) ─────────────────────────
+    else:
+        # Stage 1: pdfplumber text extraction
+        try:
+            text, avg_chars = _extract_text_pdfplumber(input_path)
+        except Exception as e:
+            print(f"[llm_fallback_parser] pdfplumber failed: {e}")
+            text, avg_chars = "", 0.0
+
+        print(f"[llm_fallback_parser] avg chars/page: {avg_chars:.0f}")
+
+        # Stage 2: image OCR if text is too sparse
+        if avg_chars < MIN_CHARS_PER_PAGE:
+            try:
+                ocr_text = _ocr_pdf(input_path)
+                if ocr_text.strip():
+                    text = ocr_text
+            except Exception as e:
+                print(f"[llm_fallback_parser] image OCR failed: {e}")
+                # Fall through — use whatever pdfplumber gave us (may be empty)
+
+        if not text.strip():
+            print("[llm_fallback_parser] no text available — giving up")
+            return {}
+
+    # ── Stage 3: structured extraction via LLM (both branches) ───────────────
     print(f"[llm_fallback_parser] sending {len(text):,} chars to {OLLAMA_MODEL} …")
     try:
         result = _structure_with_llm(text)
