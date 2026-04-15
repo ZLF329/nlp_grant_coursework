@@ -49,25 +49,39 @@ _PES_KW = [
 _PLAN_KW = [
     "detailed research plan", "research plan", "project plan",
     "methodology", "methods", "work plan", "programme of work",
+    # UKRI sections
+    "approach", "reproducibility", "statistical design",
+    "data management", "ethics and responsible",
 ]
 _ABSTRACT_KW = [
     "scientific abstract", "abstract", "research summary",
     "project summary", "summary", "research area",
     "research question", "aims", "objectives", "background",
     "overview", "introduction", "project description",
+    # UKRI sections
+    "vision", "excellence", "originality", "innovation", "impact",
 ]
 _APPLICANT_CV_KW = ["applicant cv"]
-_APPLICANT_RESEARCH_BACKGROUND_KW = ["applicant research background"]
+_APPLICANT_RESEARCH_BACKGROUND_KW = [
+    "applicant research background",
+    # UKRI sections
+    "career development", "capability to deliver",
+    "degree registration", "clinical activities",
+]
 
 _BUDGET_KW = [
     "budget", "cost", "financial", "finance",
     "funding breakdown", "expenditure", "resources requested",
     "direct costs", "indirect costs", "staff costs",
+    # UKRI sections
+    "resources and cost",
 ]
 
 _LEAD_KW = [
     "lead applicant", "chief investigator",
     "principal investigator", "pi details", "lead researcher",
+    # UKRI sections
+    "core team",
 ]
 _COAPPLICANT_KW = [
     "co-applicant", "co applicant", "coapplicant",
@@ -83,6 +97,8 @@ _SUMMARY_INFO_KW = [
     "application summary", "summary information", "application information",
     "project information", "contracting", "grant reference",
     "project title", "application title", "application details overview",
+    # UKRI "1. Details" section contains applicant/project metadata
+    "details",
 ]
 
 # ──────────────────────────── Block building ──────────────────────────────────

@@ -8,11 +8,15 @@ Pipeline for PDF files:
      → if result is non-empty, done.
   2. pdf_parser          — generic big-box PDF format
      → if result is non-empty, done.
-  3. document_parser + all_other_parser  — last-resort fallback (see below)
+  3. document_parser + all_other_parser  — rule-based fallback
+     → if result is non-empty, done.
+  4. llm_fallback_parser — LLM-powered last resort (pdfplumber → glm-ocr if
+     scanned → qwen3.5:27b structured extraction)
 
 Pipeline for DOCX / other files:
   3. document_parser     — extracts a raw sections JSON
      all_other_parser    — maps it to the unified format
+  4. llm_fallback_parser — LLM-powered last resort
 
 The output JSON always uses the same top-level keys as IC00458_after.json.
 Only keys for which content was found are included.
@@ -64,8 +68,7 @@ def _total_text_length(result: dict) -> int:
     return total
 
 
-# Minimum total characters for a rule-based result to be considered sufficient;
-# below this threshold the LLM fallback is triggered.
+# Minimum total characters for a result to be considered sufficient
 _MIN_CONTENT_CHARS = 2000
 
 
@@ -163,69 +166,13 @@ def _try_document_then_all_other(input_path: str) -> dict:
         return {}
 
 
-# ──────────────────────────── OCR fallback for scanned PDFs ──────────────────
-
-def _is_scanned_pdf(pdf_path: str) -> bool:
-    """Return True if the PDF appears to be primarily image-based (no selectable text)."""
-    try:
-        from document_parser.detector import detect_file_type, FileType
-        return detect_file_type(pdf_path) == FileType.PDF_SCAN
-    except Exception:
-        return False
-
-
-def _try_ocr_then_all_other(pdf_path: str) -> dict:
-    """
-    OCR fallback for scanned PDFs: extract text with PDFOCRParser, then
-    convert to unified format via all_other_parser (catch-all mode).
-
-    Each OCR'd page becomes a title+text pair in sections_json so that
-    _sections_to_blocks() builds blocks the catch-all can pick up.
-    Requires paddleocr or pytesseract to be installed; returns {} otherwise.
-    """
-    try:
-        from document_parser.pdf_ocr import PDFOCRParser
-        from .all_other_parser import convert_to_unified_format
-
-        parser = PDFOCRParser()
-        parsed = parser.parse(pdf_path)
-        if not parsed.sections:
-            print("[all_type_parser] OCR parser returned no sections")
-            return {}
-
-        # Build a sections_json where each OCR page is a title+text pair.
-        # Headings are "Page N" and won't match any keyword extractor, so
-        # all_other_parser's catch-all will collect them under Raw Content.
-        sections = []
-        for sec in parsed.sections:
-            text = str(sec.content or "").strip()
-            if text:
-                sections.append({"title": sec.title, "type": "title",  "content": sec.title})
-                sections.append({"title": sec.title, "type": "text",   "content": text})
-
-        if not sections:
-            print("[all_type_parser] OCR produced no usable text")
-            return {}
-
-        sections_json = {
-            "file_name": parsed.file_name,
-            "file_type": parsed.file_type,
-            "sections": sections,
-        }
-        result = convert_to_unified_format(sections_json)
-        return result if result else {}
-    except Exception as e:
-        print(f"[all_type_parser] _try_ocr_then_all_other failed: {e}")
-        return {}
-
-
 # ──────────────────────────── stage 4 — llm_fallback_parser ─────────────────
 
 def _try_llm_fallback(input_path: str) -> dict:
     """
-    Last-resort parser: pdfplumber text → glm-ocr (image OCR) → qwen3.5:27b
-    structured extraction via Ollama.  Triggered when all rule-based parsers
-    produce results too sparse (< _MIN_CONTENT_CHARS characters).
+    Last-resort parser: pdfplumber text extraction → (glm-ocr if scanned) →
+    qwen3.5:27b structured extraction via Ollama.
+    Works for any PDF or document format.
     """
     try:
         from .llm_fallback_parser import extract_all_sections
@@ -268,43 +215,34 @@ def parse(input_path: str) -> dict:
     ext = Path(input_path).suffix.lower()
 
     if ext == ".pdf":
-        # ── Early check: scanned (image-only) PDF — vector parsers won't help ──
-        if _is_scanned_pdf(input_path):
-            print("[all_type_parser] detected scanned PDF — using OCR path")
-            result = _try_ocr_then_all_other(input_path)
+        # Fast pre-check: if page 1 mentions "RfPB", go straight to RfPB parser
+        if _is_rfpb_pdf(input_path):
+            print("[all_type_parser] detected RfPB PDF — using RfPB_parser directly")
+            result = _try_rfpb_parser(input_path)
             if not _is_empty(result):
-                print("[all_type_parser] ✓ OCR path succeeded")
+                print("[all_type_parser] ✓ RfPB_parser succeeded")
                 return result
-            print("[all_type_parser] OCR path returned empty — falling back to document_parser")
+            print("[all_type_parser] RfPB_parser returned empty — falling back to document_parser")
         else:
-            # Fast pre-check: if page 1 mentions "RfPB", go straight to RfPB parser
-            if _is_rfpb_pdf(input_path):
-                print("[all_type_parser] detected RfPB PDF — using RfPB_parser directly")
-                result = _try_rfpb_parser(input_path)
-                if not _is_empty(result):
-                    print("[all_type_parser] ✓ RfPB_parser succeeded")
-                    return result
-                print("[all_type_parser] RfPB_parser returned empty — falling back to document_parser")
-            else:
-                # Stage 1: fellowship blue-box parser
-                result = _try_fellowships_parser(input_path)
-                if not _is_empty(result):
-                    print("[all_type_parser] ✓ fellowships_parser succeeded")
-                    return result
+            # Stage 1: fellowship blue-box parser
+            result = _try_fellowships_parser(input_path)
+            if not _is_empty(result):
+                print("[all_type_parser] ✓ fellowships_parser succeeded")
+                return result
 
-                # Stage 2: generic big-box PDF parser
-                result = _try_pdf_parser(input_path)
-                if not _is_empty(result):
-                    print("[all_type_parser] ✓ pdf_parser succeeded")
-                    return result
+            # Stage 2: generic big-box PDF parser
+            result = _try_pdf_parser(input_path)
+            if not _is_empty(result):
+                print("[all_type_parser] ✓ pdf_parser succeeded")
+                return result
 
-                # Stage 3: RfPB Stage 2 parser (fallback for non-RfPB PDFs)
-                result = _try_rfpb_parser(input_path)
-                if not _is_empty(result):
-                    print("[all_type_parser] ✓ RfPB_parser succeeded")
-                    return result
+            # Stage 3: RfPB Stage 2 parser (fallback for non-RfPB PDFs)
+            result = _try_rfpb_parser(input_path)
+            if not _is_empty(result):
+                print("[all_type_parser] ✓ RfPB_parser succeeded")
+                return result
 
-                print("[all_type_parser] all PDF parsers returned empty — falling back to document_parser")
+            print("[all_type_parser] all PDF parsers returned empty — falling back to document_parser")
 
     # Stage 3: document_parser + all_other_parser (covers DOCX, other, and PDF fallback)
     result = _try_document_then_all_other(input_path)
@@ -312,11 +250,9 @@ def parse(input_path: str) -> dict:
         print("[all_type_parser] ✓ document_parser + all_other_parser succeeded")
         return result
     if not _is_empty(result):
-        print(f"[all_type_parser] document_parser result too sparse "
-              f"({_total_text_length(result)} chars < {_MIN_CONTENT_CHARS}) "
-              f"— falling back to LLM parser")
+        print("[all_type_parser] document_parser result too sparse — falling back to LLM parser")
 
-    # Stage 4: LLM fallback — handles any format via glm-ocr + qwen3.5:27b
+    # Stage 4: LLM fallback — works on any format, handles scanned PDFs via glm-ocr
     print("[all_type_parser] falling back to LLM parser (glm-ocr + qwen3.5:27b)")
     result = _try_llm_fallback(input_path)
     if not _is_empty(result):
