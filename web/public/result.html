@@ -831,6 +831,7 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 10px;
+      margin-top: 4px;
     }
     .orcid-mini-card {
       background: var(--canvas);
@@ -1742,9 +1743,9 @@
       let cards = [];
       if (mode === 'single') {
         const review = getPrimaryReview();
-        const topSection = [...(review.sections || [])]
+        const weakSection = [...(review.sections || [])]
           .filter(s => s.overall && s.overall.finalScore > 0)
-          .sort((a, b) => b.overall.finalScore - a.overall.finalScore)[0] || null;
+          .sort((a, b) => a.overall.finalScore - b.overall.finalScore)[0] || null;
         cards = [
           { label:'Final score', value:`${fmtScore(review.overall.finalScore)}`,
             pillHtml:`<span class="status-pill status-positive">${riskFromScore(review.overall.finalScore)} risk</span>`,
@@ -1755,9 +1756,9 @@
           { label:'Sub-criteria', value:`${review.overall.totalItems || 0}`,
             pillHtml:`<span class="status-pill status-neutral">${review.overall.goodItems || 0} scored</span>`,
             desc:'Criteria detected across the loaded review' },
-          { label:'Strongest section', value: topSection ? topSection.name : '—',
-            pillHtml: topSection ? `<span class="status-pill status-positive">${fmtScore(topSection.overall.finalScore)} / 100</span>` : '<span class="status-pill status-neutral">No data</span>',
-            desc: topSection ? `Highest scoring section in this review` : 'No scored sections found' }
+          { label:'Weakest section', value: weakSection ? weakSection.name : '—',
+            pillHtml: weakSection ? `<span class="status-pill status-negative">${fmtScore(weakSection.overall.finalScore)} / 100</span>` : '<span class="status-pill status-neutral">No data</span>',
+            desc: weakSection ? `Lowest scoring section in this review` : 'No scored sections found' }
         ];
       } else {
         const before = getBeforeReview();
@@ -2425,8 +2426,6 @@
       const miniMetrics = [
         { label: 'Avg h-index', value: avgH },
         { label: 'Avg citations', value: avgCit },
-        { label: 'Works (last 5y)', value: avgWorks },
-        { label: 'Profiles resolved', value: resolved },
       ].map(m => `
         <div class="orcid-mini-card">
           <div class="orcid-mini-label">${m.label}</div>
