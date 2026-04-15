@@ -213,6 +213,20 @@ def _extract_lead_team(blocks: List[dict]) -> Optional[dict]:
     return result if result else None
 
 
+def _is_classified(heading: str) -> bool:
+    """Return True if *heading* is already handled by a known keyword extractor."""
+    return (
+        _app_details_subkey(heading) is not None
+        or _matches(heading, _BUDGET_KW)
+        or _matches(heading, _LEAD_KW)
+        or _matches(heading, _COAPPLICANT_KW)
+        or _matches(heading, _SUPERVISOR_KW)
+        or _matches(heading, _MENTOR_KW)
+        or _matches(heading, _HOST_KW)
+        or _matches(heading, _SUMMARY_INFO_KW)
+    )
+
+
 def _extract_summary_info(blocks: List[dict]) -> Optional[dict]:
     """Best-effort: locate an explicit summary-info block and parse key:value pairs."""
     for block in blocks:
@@ -266,6 +280,22 @@ def convert_to_unified_format(sections_json: dict) -> dict:
     summary_info = _extract_summary_info(blocks)
     if summary_info:
         out[KEY_SUMMARY_INFO] = summary_info
+
+    # ── Catch-all: rescue text from blocks not matched by any known extractor ──
+    # Covers OCR output, unusual formats, or any section heading not in keyword
+    # tables.  Content is stored under APPLICATION DETAILS["Raw Content"] so the
+    # downstream NLP and LLM scorer still have something to work with.
+    raw_parts = [
+        block["content"]
+        for block in blocks
+        if block["type"] == "text"
+        and block["content"]
+        and not _is_classified(block["heading"])
+    ]
+    if raw_parts:
+        details = out.setdefault(KEY_APP_DETAILS, {})
+        if isinstance(details, dict):
+            details.setdefault("Raw Content", "\n\n".join(raw_parts))
 
     return out
 

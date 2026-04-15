@@ -97,4 +97,4 @@ def _detect_pdf_type(file_path: str) -> FileType:
 
 def is_scanned_pdf(file_path: str) -> bool:
     """判断是否为扫描版 PDF"""
-    return detect_pdf_type(file_path) == FileType.PDF_SCAN
+    return detect_file_type(file_path) == FileType.PDF_SCAN
