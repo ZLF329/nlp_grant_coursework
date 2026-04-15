@@ -47,6 +47,7 @@ from src.all_type_parser.all_type_parser import parse_and_save           # noqa:
 from src.feature_eng.nlp_feature import extract_nlp_features              # noqa: E402
 from ORCID.orcid_features import compute_features as compute_orcid_features  # noqa: E402
 from ORCID.orcid_features import fetch_orcid_profile                       # noqa: E402
+from ORCID.orcid_features import openalex_cited_by_for_dois                # noqa: E402
 
 # Ollama scorer is imported lazily — keeping a single shared instance avoids
 # reloading the model on every request.
@@ -117,7 +118,17 @@ def _run_orcid_enrichment(parsed: dict) -> dict:
 
         try:
             profile = fetch_orcid_profile(orcid, max_works=100)
-            features = compute_orcid_features(profile)
+            # Enrich with citation counts from OpenAlex (parallel, capped at 40 DOIs)
+            doi2citedby: dict = {}
+            try:
+                dois = [w["doi"] for w in profile.get("works", []) if w.get("doi")][:40]
+                if dois:
+                    doi2citedby = openalex_cited_by_for_dois(
+                        dois, max_workers=6, timeout_sec=12, max_retries=1
+                    )
+            except Exception as _oa_exc:
+                print(f"[WARN] OpenAlex fetch skipped for {orcid}: {_oa_exc}")
+            features = compute_orcid_features(profile, doi2citedby=doi2citedby or None)
             entry["status"] = "ok"
             entry["summary"] = {
                 "works_total": features.get("outputs", {}).get("works_total", 0),
