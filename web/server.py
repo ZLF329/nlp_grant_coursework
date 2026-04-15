@@ -110,6 +110,11 @@ def _run_orcid_enrichment(parsed: dict) -> dict:
 
     for member in members:
         entry = dict(member)
+        # Only enrich Lead Applicant via ORCID
+        if entry.get("role_group") not in ("Lead Applicant", "Joint Lead Applicant"):
+            entry["status"] = "skipped"
+            enriched_members.append(entry)
+            continue
         orcid = entry.get("orcid") or ""
         if not orcid:
             entry["status"] = "missing_orcid"
@@ -128,7 +133,7 @@ def _run_orcid_enrichment(parsed: dict) -> dict:
                     )
             except Exception as _oa_exc:
                 print(f"[WARN] OpenAlex fetch skipped for {orcid}: {_oa_exc}")
-            features = compute_orcid_features(profile, doi2citedby=doi2citedby or None)
+            features = compute_orcid_features(profile, doi2citedby=doi2citedby if dois else None)
             entry["status"] = "ok"
             entry["summary"] = {
                 "works_total": features.get("outputs", {}).get("works_total", 0),
@@ -258,7 +263,8 @@ def _run_pipeline(job_id: str, upload_path: Path):
         result = dict(scored)
         result["nlp_features"] = nlp_features
         result.setdefault("features", {})
-        result["features"]["orcid"] = orcid_features
+        if orcid_features["team_metrics"]["resolved_profiles"] > 0:
+            result["features"]["orcid"] = orcid_features
 
         # Persist for later inspection
         out_path = RESULT_DIR / f"{job_id}.json"
