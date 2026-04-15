@@ -1,0 +1,329 @@
+{
+  "processed_sections": [
+    "Scientific Abstract",
+    "Detailed Research Plan",
+    "Applicant Research Background",
+    "Raw Content",
+    "SUMMARY BUDGET",
+    "Application Context",
+    "Application Form Analysis"
+  ],
+  "subcriteria_beliefs": {
+    "pr.1": {
+      "good_evidence_ids": [
+        "secsa__001_a",
+        "secsa__001_b",
+        "secsa__001_c",
+        "secafa__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Scientific Abstract: Clearly articulates the problem (variable outcomes), objectives (combine modelling/AI), methods (PK/PD, imCMS, NBS), and beneficiaries (patients, clinicians), meeting plain English summary requiremen",
+        "Application Form Analysis: Confirms presence of a Scientific Abstract (2413 words) and structured sections, supporting the existence of a plain English summary component."
+      ]
+    },
+    "pr.2": {
+      "good_evidence_ids": [
+        "secsa__001_a",
+        "secsa__001_g",
+        "secdrp__001_c",
+        "secdrp__001_d",
+        "secdrp__001_e",
+        "secafa__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Scientific Abstract: Identifies specific knowledge gaps in current PK/PD models (ignoring heterogeneity) and single-gene studies, justifying the proposed integrated approach.",
+        "Detailed Research Plan: Critically analyzes limitations of conventional PK/PD models (homogeneity assumption) and reductionist biomarker discovery, identifying specific gaps in predicting treatment resistance and justify",
+        "Application Form Analysis: Reports low lexical overlap (0.20-0.30) between abstract and detailed plan, suggesting distinct content rather than mere repetition, supporting evidence review quality."
+      ]
+    },
+    "pr.3": {
+      "good_evidence_ids": [
+        "secsa__001_b",
+        "secsa__001_c",
+        "secdrp__001_e",
+        "secdrp__001_f",
+        "secdrp__001_n",
+        "secafa__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Scientific Abstract: Outlines 5 specific, numbered objectives aligned with a 36-month PhD duration, indicating appropriate scope and feasibility.",
+        "Detailed Research Plan: Defines five specific, sequential objectives (classification, digital pathology evaluation, biomarker identification, validation, translation) with clear milestones and external validation cohorts",
+        "Application Form Analysis: Identifies a SUMMARY BUDGET section and logical flow from context to budget, indicating alignment of scope and resources."
+      ]
+    },
+    "pr.4": {
+      "good_evidence_ids": [
+        "secsa__001_b",
+        "secsa__001_c",
+        "secsa__001_g",
+        "secdrp__001_i",
+        "secdrp__001_j",
+        "secdrp__001_k",
+        "secafa__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Scientific Abstract: Details specific methodologies including PK/PD modelling, imCMS AI classification, and NBS pathway analysis, demonstrating methodological rigor.",
+        "Detailed Research Plan: Provides explicit methodological details including PK/PD model development, patient stratification criteria (RECIST), CMS-specific parameter estimation, and model selection criteria, ensuring meth",
+        "Application Form Analysis: Detects 34 numbered heading-like lines and 20 list markers, indicating structured methodological sections and explicit descriptions."
+      ]
+    },
+    "pr.5": {
+      "good_evidence_ids": [
+        "secsa__001_c",
+        "secsa__001_h",
+        "secdrp__001_f",
+        "secdrp__001_n",
+        "secdrp__001_o"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Scientific Abstract: Explicitly states benefits for patients (avoiding futile treatment), clinicians (decision support), and the NHS (resource allocation), addressing impact criteria.",
+        "Detailed Research Plan: Explicitly links the project to MRC and NHS priorities for precision oncology, proposing a clinical decision-support tool to forecast individual patient trajectories and inform treatment selection"
+      ]
+    },
+    "pr.6": {
+      "good_evidence_ids": [
+        "secsa__001_d",
+        "secsa__001_m",
+        "secsa__001_n"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Scientific Abstract: Describes active Patient and Public Involvement (PPI) including a focus group and ongoing engagement with patient partners to shape communication and priorities."
+      ]
+    },
+    "pr.9": {
+      "good_evidence_ids": [
+        "secsa__001_m",
+        "secdrp__001_b",
+        "secdrp__001_k",
+        "secdrp__001_l"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Scientific Abstract: Commits to testing predictive performance across demographic subgroups (sex, age) to address algorithmic bias, supporting inclusive research design.",
+        "Detailed Research Plan: Commits to following MRC embedding diversity policy and testing model performance across subgroups, while using digital pathology to capture intratumoural heterogeneity, supporting inclusive desig"
+      ]
+    },
+    "wp.1": {
+      "good_evidence_ids": [
+        "secsa__001_m",
+        "secsa__001_n",
+        "secac__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Scientific Abstract: Confirms integration of lived experience via a focus group with patient partners that affirmed project relevance and explored acceptability of methods.",
+        "Application Context: The Christie Patient-Centred Research Group will facilitate patient and public involvement, and the mentor supports engagement with patients to ensure research relevance."
+      ]
+    },
+    "wp.3": {
+      "good_evidence_ids": [
+        "secsa__001_c",
+        "secsa__001_n",
+        "secac__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Scientific Abstract: Plans to develop a prototype tool for clinicians and commit to open-access publication and public code sharing to maximize public benefit.",
+        "Application Context: Mentor and host statements emphasize translating technical research for patients and the public, and positioning outputs for real-world application in cancer care."
+      ]
+    },
+    "ss.1": {
+      "good_evidence_ids": [
+        "secdrp__001_g",
+        "secdrp__001_h",
+        "secdrp__001_t",
+        "secac__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Detailed Research Plan: Highlights the S:CORT consortium's track record with MRC/CRUK funding, established data curation protocols, and prior successful development of imCMS and NBS methods by supervisory teams.",
+        "Application Context: Host organisations (The Christie, UoL) have strong track records in translational oncology, precision medicine, and computational modelling, with established collaborations."
+      ]
+    },
+    "ss.2": {
+      "good_evidence_ids": [
+        "secdrp__001_d",
+        "secdrp__001_g",
+        "secdrp__001_h",
+        "secac__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Detailed Research Plan: Describes a supervisory team with complementary expertise (Prof Maughan in oncology/imCMS, Dr You in PK/PD, Prof Jones in multi-omics), directly aligning with project methodological needs.",
+        "Application Context: Detailed supervisor and mentor statements confirm roles, expertise alignment (PK/PD, oncology, AI), and structured support including quarterly mentor meetings."
+      ]
+    },
+    "ss.3": {
+      "good_evidence_ids": [
+        "secdrp__001_g",
+        "secdrp__001_v",
+        "secdrp__001_w",
+        "secac__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Detailed Research Plan: Confirms access to University of Liverpool HPC facilities (3000 cores/6 GPUs), secure data storage compliant with ISO 27001, and established data governance protocols, ensuring resource adequacy.",
+        "Application Context: The Christie provides salary support for an extra year, workspace, and access to clinical data, while Liverpool provides computational resources, ensuring full support for the award."
+      ]
+    },
+    "pr.8": {
+      "good_evidence_ids": [
+        "secdrp__001_h",
+        "secdrp__001_i",
+        "secdrp__001_j"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Detailed Research Plan: Presents preliminary data including treatment response plots (Figure 1) and validated PK/PD models (Figure 2), demonstrating prior successful project execution and skills alignment."
+      ]
+    },
+    "g.1": {
+      "good_evidence_ids": [
+        "secarb__001_b",
+        "secac__001",
+        "secafa__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Applicant Research Background: Clearly states ambition to become a research leader in AI-augmented cancer pharmacometrics, outlining a distinct independent direction.",
+        "Application Context: Host and supervisor statements confirm a clear vision for Lydia to become a research leader in cancer pharmacometrics, with a distinctive independent direction combining clinical pharmacy and AI mode",
+        "Application Form Analysis: Low duplication rates (0.032) and high transition phrase count (39) suggest a coherent, well-structured application with a clear research vision."
+      ]
+    },
+    "g.2": {
+      "good_evidence_ids": [
+        "secarb__001_b",
+        "secac__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Applicant Research Background: Explains that the fellowship is the right next step to transition from supporting to leading research, providing necessary training and mentorship for independence.",
+        "Application Context: The fellowship is positioned as the critical step to transition from operational leadership to independent research, enabling the acquisition of doctoral-level methodological skills necessary for fut"
+      ]
+    },
+    "g.3": {
+      "good_evidence_ids": [
+        "secarb__001_b",
+        "secarb__001_c",
+        "secac__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Applicant Research Background: Lists relevant prior experience in clinical trials and specific skills (regression, R, calculus, linear algebra) aligned with the proposed PK/PD and AI modelling work.",
+        "Application Context: Evidence of prior PK/PD modelling, data processing from MRC trials, and recent upskilling in R and mathematical modelling demonstrates strong alignment between experience and project needs."
+      ]
+    },
+    "g.5": {
+      "good_evidence_ids": [
+        "secarb__001_b",
+        "secac__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Applicant Research Background: Explicitly states long-term career goals to drive development of mechanistic models and contribute to national capability in precision oncology.",
+        "Application Context: Strong evidence of increasing responsibility (Lead Pharmacist, shaping strategy) and recognition by peers (Director of Research support) as a future research leader."
+      ]
+    },
+    "g.6": {
+      "good_evidence_ids": [
+        "secarb__001_b",
+        "secarb__001_c",
+        "secarb__001_d",
+        "secac__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Applicant Research Background: Confirms clinical background and intent to remain clinically active, addressing the practitioner-academic career requirement.",
+        "Application Context: Explicit commitment to a practitioner-academic career, with arrangements to retain 0.2 WTE clinical activity while protecting research time."
+      ]
+    },
+    "td.1": {
+      "good_evidence_ids": [
+        "secarb__001_b",
+        "secarb__001_c",
+        "secac__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Applicant Research Background: Describes a structured, staged training plan (math foundations, PK/PD, AI stratification) with clear sequencing over the fellowship duration.",
+        "Application Context: Describes a comprehensive training package including methodological training at Liverpool, clinical leadership via CCAP, and patient engagement, forming a cohesive plan."
+      ]
+    },
+    "td.2": {
+      "good_evidence_ids": [
+        "secarb__001_b",
+        "secarb__001_c",
+        "secac__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Applicant Research Background: Identifies specific skill gaps (mathematical fluency for differential equations) and maps training activities directly to project objectives.",
+        "Application Context: Training is targeted to bridge gaps in quantitative methods and leadership, directly mapped to the project's AI and modelling requirements."
+      ]
+    },
+    "td.3": {
+      "good_evidence_ids": [
+        "secarb__001_b",
+        "secac__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Applicant Research Background: Connects the proposed training trajectory directly to the career aspiration of becoming a research leader in the field.",
+        "Application Context: Training activities are explicitly linked to the long-term goal of leading a nationally recognised programme in AI-augmented cancer pharmacometrics."
+      ]
+    },
+    "g.4": {
+      "good_evidence_ids": [
+        "secrc__001_c",
+        "secac__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Raw Content: Outlines a clear dissemination plan including Zenodo archiving, open-access publications, and presentations at PAGE/ESMO, supporting g.4.",
+        "Application Context: Mentions co-authorship on a real-world survival analysis and leadership in clinical trials pharmacy, indicating quality research outputs and practical impact."
+      ]
+    },
+    "pr.7": {
+      "good_evidence_ids": [
+        "secrc__001_t",
+        "secrc__001_u",
+        "secrc__001_v",
+        "secafa__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Raw Content: Provides detailed cost breakdowns for staff, equipment, travel, and PPI with specific justifications (e.g., laptop specs, conference fees, NIHR rates), strongly supporting pr.7.",
+        "Application Form Analysis: Confirms presence of a SUMMARY BUDGET section with table-like lines, supporting the existence of resource justification."
+      ]
+    },
+    "wp.6": {
+      "good_evidence_ids": [
+        "secrc__001_v"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Raw Content: Explicitly budgets £1,500 for four PPIE sessions with calculated rates and expenses, demonstrating a costed and resourced plan for inclusion (wp.6)."
+      ]
+    },
+    "ss.4": {
+      "good_evidence_ids": [
+        "secac__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Application Context: Mentions of leadership programmes for women in academia and mentorship focused on challenges for female clinical academics indicate a commitment to inclusive culture."
+      ]
+    }
+  },
+  "missing_signals": [
+    "wp.2",
+    "wp.4",
+    "wp.5"
+  ]
+}
