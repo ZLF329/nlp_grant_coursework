@@ -755,6 +755,73 @@
       padding-bottom: 10px;
     }
     .hidden { display:none !important; }
+
+    /* ── Overview row (2 big cells) ── */
+    .overview-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .overview-cell {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-2);
+      padding: 28px;
+    }
+    .overview-cell .eyebrow { margin: 0 0 6px; }
+    .overview-cell h2 {
+      margin: 0 0 4px;
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -.03em;
+    }
+    .overview-cell .sub-copy {
+      margin: 0 0 18px;
+      font-size: 13px;
+      color: var(--text-2);
+    }
+    @media (max-width: 900px) {
+      .overview-row { grid-template-columns: 1fr; }
+    }
+
+    /* ── Evidence chunks in drawer ── */
+    .evidence-toggle-btn {
+      border: 1px solid var(--border);
+      border-radius: var(--pill);
+      background: var(--surface-soft);
+      color: var(--text-2);
+      font: 600 11px/1 "Inter", system-ui, sans-serif;
+      padding: 5px 10px;
+      cursor: pointer;
+      letter-spacing: .02em;
+      transition: background .15s, color .15s;
+      flex-shrink: 0;
+    }
+    .evidence-toggle-btn:hover { background: var(--brand-soft); color: var(--brand); }
+    .evidence-collapse { display: none; margin-top: 10px; }
+    .evidence-collapse.open { display: block; }
+    .evidence-chunk {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-s);
+      padding: 10px 12px;
+      background: var(--surface-soft);
+      margin-bottom: 8px;
+    }
+    .evidence-chunk p {
+      font-size: 12px;
+      color: var(--text-2);
+      line-height: 1.55;
+      margin: 0;
+      font-style: italic;
+    }
+    .evidence-chunk .ev-source {
+      font-size: 11px;
+      color: var(--text-3);
+      margin-top: 4px;
+      font-style: normal;
+    }
+
     .mono {
       font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
       font-size: 12px;
@@ -850,41 +917,21 @@
       <button class="ghost-btn" onclick="window.location.href='/'">← Go back to upload</button>
     </section>
 
-    <section class="kpis" id="kpiRow"></section>
-
-    <!-- NLP Features Panel -->
-    <section class="panel hidden" id="nlpPanel" style="padding:28px;">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
-        <div>
-          <p class="eyebrow">nlp analysis</p>
-          <h2 style="margin:0;font-size:22px;font-weight:800;letter-spacing:-.03em;">NLP Feature Metrics</h2>
-          <p style="margin:6px 0 0;font-size:13px;color:var(--text-2);">Readability, coherence, dependency, applicant, and budget features extracted from the document.</p>
-        </div>
-        <button class="ghost-btn" id="nlpToggleBtn" type="button" style="white-space:nowrap;">Collapse</button>
+    <!-- Overview: 2 big cells (NLP + KPI) -->
+    <div class="overview-row hidden" id="overviewRow">
+      <div class="overview-cell">
+        <p class="eyebrow">nlp analysis</p>
+        <h2>Document Quality</h2>
+        <p class="sub-copy">Key writing metrics from the full document.</p>
+        <div id="nlpOverviewKpis" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;"></div>
       </div>
-      <div id="nlpContent">
-        <!-- Writing Quality -->
-        <div style="margin-bottom:20px;">
-          <h3 style="margin:0 0 12px;font-size:15px;font-weight:700;color:var(--text);">Writing Quality</h3>
-          <div class="kpis" id="nlpWritingKpis" style="grid-template-columns:repeat(auto-fit,minmax(150px,1fr));"></div>
-        </div>
-        <!-- Plain English Analysis -->
-        <div style="margin-bottom:20px;">
-          <h3 style="margin:0 0 12px;font-size:15px;font-weight:700;color:var(--text);">Plain English Summary Analysis</h3>
-          <div class="kpis" id="nlpReadabilityKpis" style="grid-template-columns:repeat(auto-fit,minmax(150px,1fr));"></div>
-        </div>
-        <!-- Applicant Features -->
-        <div style="margin-bottom:20px;" id="nlpApplicantSection">
-          <h3 style="margin:0 0 12px;font-size:15px;font-weight:700;color:var(--text);">Applicant Features</h3>
-          <div class="kpis" id="nlpApplicantKpis" style="grid-template-columns:repeat(auto-fit,minmax(150px,1fr));"></div>
-        </div>
-        <!-- Budget Features -->
-        <div id="nlpBudgetSection">
-          <h3 style="margin:0 0 12px;font-size:15px;font-weight:700;color:var(--text);">Budget Features</h3>
-          <div class="kpis" id="nlpBudgetKpis" style="grid-template-columns:repeat(auto-fit,minmax(150px,1fr));"></div>
-        </div>
+      <div class="overview-cell">
+        <p class="eyebrow">scoring overview</p>
+        <h2>Score Summary</h2>
+        <p class="sub-copy">Application scores and team signals.</p>
+        <div class="kpis" id="kpiRow" style="grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;"></div>
       </div>
-    </section>
+    </div>
 
     <section class="workspace" id="workspaceSection">
       <aside class="rail" id="sectionRail"></aside>
@@ -988,8 +1035,15 @@
         </section>
 
         <section class="drawer-section">
-          <h4 class="card-title" id="concernHeading">Notes / concerns</h4>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;gap:8px;">
+            <h4 class="card-title" id="concernHeading">Notes / concerns</h4>
+            <button class="evidence-toggle-btn" id="viewEvidenceBtn" type="button">View evidence ▾</button>
+          </div>
           <div class="evidence-list" id="concernList"></div>
+          <div class="evidence-collapse" id="evidenceCollapse">
+            <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3);margin-bottom:8px;">Used Evidence Chunks</div>
+            <div id="evidenceChunkList"></div>
+          </div>
         </section>
       </aside>
     </section>
@@ -1238,7 +1292,7 @@
         score: Number(c.score_10 || c.quality_score_0to10 || 0),
         evidence,
         evidenceCount: Number(c.evidence_count || evidence.length || Number((c.evidence_ids || []).length || 0)),
-        evidenceIds: Array.isArray(c.evidence_ids) ? c.evidence_ids : [],
+        evidenceIds: Array.isArray(c.evidence_ids) ? c.evidence_ids : (Array.isArray(c.used_chunk_ids) ? c.used_chunk_ids : []),
         evidenceTop5: Array.isArray(c.evidence_top5) ? c.evidence_top5 : [],
         evidenceStatus: c.evidence_status || 'ok',
         pros,
@@ -1801,14 +1855,6 @@
         if (criterionPair.after.score >= 8) notes.push({ tone:'positive', tag:'Strong sub-criterion', text:'This sub-criterion is currently scoring in a strong range.', source:'Current review' });
         else notes.push({ tone:'warning', tag:'Could improve', text:'This sub-criterion has room to improve or be supported more explicitly.', source:'Current review' });
       }
-      (criterionPair.after.signals || []).forEach(signal => {
-        notes.push({
-          tone: signal.rawScore <= 1 ? 'warning' : signal.rawScore <= 3 ? 'neutral' : 'positive',
-          tag: `${signal.sid} · ${round1(signal.rawScore || 0)} / 5`,
-          text: `${signal.text} · averaged ${round1(signal.rawScore)} · weighted ${round1(signal.weightedScore)}.`,
-          source: 'Stage 2 scoring'
-        });
-      });
       if (!notes.length) notes.push({ tone:'neutral', tag:'No extra note', text:'No additional concerns were generated for this criterion.', source:'System' });
       concernList.innerHTML = notes.map(note => `
         <div class="snippet-card">
@@ -1819,6 +1865,39 @@
           <p class="snippet-text">${escapeHtml(note.text)}</p>
         </div>
       `).join('');
+
+      // Populate evidence chunks (truncated to 30 words each)
+      const criterion = criterionPair.after;
+      const poolLookup = getPrimaryReview()?.poolLookup || {};
+      const evidenceTexts = [];
+      if (criterion.evidence && criterion.evidence.length > 0) {
+        criterion.evidence.forEach(ev => { if (ev.text) evidenceTexts.push({ text: ev.text, source: ev.section || ev.sourcePath || '' }); });
+      } else if (criterion.evidenceTop5 && criterion.evidenceTop5.length > 0) {
+        criterion.evidenceTop5.forEach(t => { if (t) evidenceTexts.push({ text: t, source: '' }); });
+      } else if (criterion.evidenceIds && criterion.evidenceIds.length > 0) {
+        criterion.evidenceIds.forEach(id => {
+          const chunk = poolLookup[id];
+          if (chunk) {
+            const txt = typeof chunk === 'string' ? chunk : (chunk.text || chunk.content || '');
+            if (txt) evidenceTexts.push({ text: txt, source: chunk.section || '' });
+          }
+        });
+      }
+      const chunkList = document.getElementById('evidenceChunkList');
+      if (chunkList) {
+        if (evidenceTexts.length > 0) {
+          chunkList.innerHTML = evidenceTexts.map(({ text, source }) => {
+            const words = (text || '').trim().split(/\s+/);
+            const truncated = words.slice(0, 30).join(' ') + (words.length > 30 ? '…' : '');
+            return `<div class="evidence-chunk">
+              <p>"${escapeHtml(truncated)}"</p>
+              ${source ? `<p class="ev-source">${escapeHtml(source)}</p>` : ''}
+            </div>`;
+          }).join('');
+        } else {
+          chunkList.innerHTML = `<p class="small-copy" style="color:var(--text-3);margin:0;">No evidence chunks stored for this criterion.</p>`;
+        }
+      }
     }
 
     function openRationaleModal(criterionName) {
@@ -1934,14 +2013,14 @@
 
     function showNoData() {
       document.getElementById('noDataBanner').classList.remove('hidden');
-      document.getElementById('kpiRow').classList.add('hidden');
+      document.getElementById('overviewRow').classList.add('hidden');
       document.getElementById('workspaceSection').classList.add('hidden');
       document.getElementById('tableSection').classList.add('hidden');
     }
 
     function hideNoData() {
       document.getElementById('noDataBanner').classList.add('hidden');
-      document.getElementById('kpiRow').classList.remove('hidden');
+      document.getElementById('overviewRow').classList.remove('hidden');
       document.getElementById('workspaceSection').classList.remove('hidden');
       document.getElementById('tableSection').classList.remove('hidden');
     }
@@ -2047,6 +2126,13 @@
         });
       });
 
+      document.getElementById('viewEvidenceBtn').addEventListener('click', () => {
+        const collapse = document.getElementById('evidenceCollapse');
+        const btn = document.getElementById('viewEvidenceBtn');
+        const open = collapse.classList.toggle('open');
+        btn.textContent = open ? 'Hide evidence ▴' : 'View evidence ▾';
+      });
+
       document.getElementById('rationaleModalClose').addEventListener('click', closeRationaleModal);
       document.getElementById('rationaleModal').addEventListener('click', (event) => {
         if (event.target.id === 'rationaleModal') closeRationaleModal();
@@ -2141,77 +2227,17 @@
 
     function renderNlpFeatures(data) {
       const nlp = data?.nlp_features;
-      const panel = document.getElementById('nlpPanel');
-      if (!nlp || nlp.error) {
-        panel.classList.add('hidden');
-        return;
-      }
-      panel.classList.remove('hidden');
-
-      // Writing Quality
-      const writingEl = document.getElementById('nlpWritingKpis');
-      writingEl.innerHTML = [
-        renderNlpKpiCard('Total Sentences', nlp.total_sentences ?? '—', 'Across all sections'),
+      const cell = document.getElementById('nlpOverviewKpis');
+      if (!nlp || nlp.error || !cell) return;
+      // Show only the 4 most important metrics
+      cell.innerHTML = [
+        renderNlpKpiCard('Total Sentences', nlp.total_sentences ?? '—', 'Full document'),
         renderNlpKpiCard('Avg Sentence Length', nlp.avg_sentence_length ?? '—', 'Words per sentence'),
-        renderNlpKpiCard('Long Sentence Ratio', nlp.long_sentence_ratio != null ? (nlp.long_sentence_ratio * 100).toFixed(1) + '%' : '—', 'Sentences with 30+ words'),
-        renderNlpKpiCard('Max Dependency Depth', nlp.max_dependency_depth ?? '—', 'Deepest parse tree'),
-        renderNlpKpiCard('Avg Dependency Depth', nlp.avg_dependency_depth ?? '—', 'Mean parse tree depth'),
+        renderNlpKpiCard('Long Sentence Ratio',
+          nlp.long_sentence_ratio != null ? (nlp.long_sentence_ratio * 100).toFixed(1) + '%' : '—',
+          'Sentences ≥ 30 words'),
+        renderNlpKpiCard('Avg Dependency Depth', nlp.avg_dependency_depth ?? '—', 'Parse tree depth'),
       ].join('');
-
-      // Plain English Readability
-      const readEl = document.getElementById('nlpReadabilityKpis');
-      const pe = nlp.plain_english_analysis || {};
-      if (Object.keys(pe).length) {
-        const cards = Object.entries(pe).map(([k, v]) => {
-          const label = k.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
-          const val = typeof v === 'number' ? (Number.isInteger(v) ? v : v.toFixed(2)) : String(v ?? '—');
-          return renderNlpKpiCard(label, val, '');
-        });
-        readEl.innerHTML = cards.join('');
-      } else {
-        readEl.innerHTML = '<p style="font-size:13px;color:var(--text-3);margin:0;">No Plain English Summary found in this document.</p>';
-      }
-
-      // Applicant Features
-      const appEl = document.getElementById('nlpApplicantKpis');
-      const appSection = document.getElementById('nlpApplicantSection');
-      const app = nlp.applicant_features;
-      if (app && typeof app === 'object' && Object.keys(app).length) {
-        appSection.classList.remove('hidden');
-        const cards = Object.entries(app).map(([k, v]) => {
-          const label = k.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
-          const val = typeof v === 'number' ? (Number.isInteger(v) ? v : v.toFixed(2)) : (Array.isArray(v) ? v.length + ' items' : String(v ?? '—'));
-          return renderNlpKpiCard(label, val, '');
-        });
-        appEl.innerHTML = cards.join('');
-      } else {
-        appSection.classList.add('hidden');
-      }
-
-      // Budget Features
-      const budEl = document.getElementById('nlpBudgetKpis');
-      const budSection = document.getElementById('nlpBudgetSection');
-      const bud = nlp.budget_features;
-      if (bud && typeof bud === 'object' && Object.keys(bud).length) {
-        budSection.classList.remove('hidden');
-        const cards = Object.entries(bud).map(([k, v]) => {
-          const label = k.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
-          const val = typeof v === 'number' ? (Number.isInteger(v) ? v : v.toFixed(2)) : String(v ?? '—');
-          return renderNlpKpiCard(label, val, '');
-        });
-        budEl.innerHTML = cards.join('');
-      } else {
-        budSection.classList.add('hidden');
-      }
-
-      // Toggle button
-      const toggleBtn = document.getElementById('nlpToggleBtn');
-      const nlpContent = document.getElementById('nlpContent');
-      toggleBtn.onclick = () => {
-        const hidden = nlpContent.style.display === 'none';
-        nlpContent.style.display = hidden ? '' : 'none';
-        toggleBtn.textContent = hidden ? 'Collapse' : 'Expand';
-      };
     }
 
     function init() {

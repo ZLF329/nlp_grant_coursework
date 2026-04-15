@@ -21,6 +21,26 @@ from src.feature_eng.dependency import analyze_single_file
 from src.feature_eng.application import extract_applicant_features
 from src.feature_eng.budget import extract_budget_features
 
+def extract_all_text(data) -> str:
+    """Recursively extract all substantial string values from parsed JSON (full document)."""
+    texts = []
+
+    def _recurse(obj):
+        if isinstance(obj, str):
+            stripped = obj.strip()
+            if len(stripped) > 30:
+                texts.append(stripped)
+        elif isinstance(obj, dict):
+            for v in obj.values():
+                _recurse(v)
+        elif isinstance(obj, list):
+            for item in obj:
+                _recurse(item)
+
+    _recurse(data)
+    return " ".join(texts)
+
+
 def extract_nlp_features(raw_data):
     """Extract NLP features from parsed JSON data dict. Returns a dict of all NLP metrics."""
     nlp = build_sentence_segment()
@@ -28,8 +48,8 @@ def extract_nlp_features(raw_data):
 
     sections = get_sections(raw_data, default_structure)
 
-    # Global Metrics (Based on ALL sections)
-    full_text = merge_sections(sections, default_structure)
+    # Global Metrics (Based on FULL DOCUMENT — all sections recursively)
+    full_text = extract_all_text(raw_data)
     all_sentences = split_text_into_sentences(full_text, nlp)
     all_word_counts = sentence_words_count(all_sentences)
 
