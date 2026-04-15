@@ -785,6 +785,99 @@
       .overview-row { grid-template-columns: 1fr; }
     }
 
+    /* ── Scores row (4 kpi cards) ── */
+    .scores-row {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+    @media (max-width: 900px) {
+      .scores-row { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* ── ORCID cell internals ── */
+    .orcid-member-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+    .orcid-member-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      padding: 9px 12px;
+      border-radius: 10px;
+      background: var(--canvas);
+      border: 1px solid var(--border);
+    }
+    .orcid-member-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+      flex: 1;
+      min-width: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .orcid-member-role {
+      font-size: 11px;
+      color: var(--text-3);
+      margin-top: 1px;
+    }
+    .orcid-mini-metrics {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .orcid-mini-card {
+      background: var(--canvas);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 10px 12px;
+    }
+    .orcid-mini-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      margin-bottom: 3px;
+    }
+    .orcid-mini-value {
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: -.02em;
+      color: var(--text);
+    }
+    .orcid-fail-state {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 10px;
+      padding: 24px 12px;
+      color: var(--text-2);
+    }
+    .orcid-fail-icon {
+      font-size: 28px;
+      opacity: .45;
+    }
+    .orcid-fail-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .orcid-fail-desc {
+      font-size: 12px;
+      color: var(--text-3);
+      max-width: 220px;
+      line-height: 1.5;
+    }
+
     /* ── Evidence chunks in drawer ── */
     .evidence-toggle-btn {
       border: 1px solid var(--border);
@@ -917,7 +1010,7 @@
       <button class="ghost-btn" onclick="window.location.href='/'">← Go back to upload</button>
     </section>
 
-    <!-- Overview: 2 big cells (NLP + KPI) -->
+    <!-- Overview: 2 big cells (NLP + ORCID) -->
     <div class="overview-row hidden" id="overviewRow">
       <div class="overview-cell">
         <p class="eyebrow">nlp analysis</p>
@@ -925,12 +1018,20 @@
         <p class="sub-copy">Key writing metrics from the full document.</p>
         <div id="nlpOverviewKpis" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;"></div>
       </div>
-      <div class="overview-cell">
-        <p class="eyebrow">scoring overview</p>
-        <h2>Score Summary</h2>
-        <p class="sub-copy">Application scores and team signals.</p>
-        <div class="kpis" id="kpiRow" style="grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;"></div>
+      <div class="overview-cell" id="orcidCell">
+        <p class="eyebrow">orcid profiles</p>
+        <h2>Research Team</h2>
+        <p class="sub-copy">Academic profiles and citation metrics from ORCID.</p>
+        <div id="orcidCellBody"></div>
       </div>
+    </div>
+
+    <!-- Scores row: 4 kpi cards -->
+    <div class="scores-row hidden" id="scoresRow">
+      <article class="kpi-card" id="scoreCard0"></article>
+      <article class="kpi-card" id="scoreCard1"></article>
+      <article class="kpi-card" id="scoreCard2"></article>
+      <article class="kpi-card" id="scoreCard3"></article>
     </div>
 
     <section class="workspace" id="workspaceSection">
@@ -1624,14 +1725,27 @@
         : 'Inspect one scoring JSON file section by section, with sub-criteria, signal scores, and rationale.';
     }
 
+    function _setScoreCard(idx, card) {
+      const el = document.getElementById(`scoreCard${idx}`);
+      if (!el) return;
+      el.innerHTML = `
+        <div class="label">${card.label}</div>
+        <div class="kpi-main">
+          <div class="kpi-value">${card.value}</div>
+          ${card.pillHtml}
+        </div>
+        <div class="muted small-copy">${card.desc}</div>`;
+    }
+
     function renderKpis() {
       const mode = getCurrentMode();
-      const row = document.getElementById('kpiRow');
-      row.innerHTML = '';
       let cards = [];
       if (mode === 'single') {
         const review = getPrimaryReview();
-        const team = review?.orcid?.team_metrics || null;
+        const coveragePct = round1(review.overall.coverage || 0);
+        const topSection = [...(review.sections || [])]
+          .filter(s => s.overall && s.overall.finalScore > 0)
+          .sort((a, b) => b.overall.finalScore - a.overall.finalScore)[0] || null;
         cards = [
           { label:'Final score', value:`${fmtScore(review.overall.finalScore)}`,
             pillHtml:`<span class="status-pill status-positive">${riskFromScore(review.overall.finalScore)} risk</span>`,
@@ -1642,10 +1756,9 @@
           { label:'Sub-criteria', value:`${review.overall.totalItems || 0}`,
             pillHtml:`<span class="status-pill status-neutral">${review.overall.goodItems || 0} scored</span>`,
             desc:'Criteria detected across the loaded review' },
-          { label:team ? 'Team signals' : 'Run info',
-            value:team ? `${team.team_size} person` : `${review.runInfo.model || 'Unknown model'}`,
-            pillHtml:team ? `<span class="status-pill status-neutral">H-index ${fmtScore(team.avg_h_index || 0)}</span>` : `<span class="status-pill status-neutral">${review.runInfo.judgeModel || 'Judge'}</span>`,
-            desc:team ? `Avg citations ${fmtScore(team.avg_citations || 0)} · recent works ${fmtScore(team.avg_works_recent_5y || 0)}` : `${prettyDate(review.runInfo.ranAt)}` }
+          { label:'Coverage score', value:`${coveragePct}`,
+            pillHtml:`<span class="status-pill status-neutral">${topSection ? topSection.name : '—'}</span>`,
+            desc: topSection ? `Strongest section · ${fmtScore(topSection.overall.finalScore)} / 100` : 'Breadth of evidence across criteria' }
         ];
       } else {
         const before = getBeforeReview();
@@ -1669,16 +1782,7 @@
             desc:risk ? `After score ${fmtScore(risk.after.overall.finalScore)} / 100` : 'Load two reviews to compare' }
         ];
       }
-      row.innerHTML = cards.map(card => `
-        <article class="kpi-card">
-          <div class="label">${card.label}</div>
-          <div class="kpi-main">
-            <div class="kpi-value">${card.value}</div>
-            ${card.pillHtml}
-          </div>
-          <div class="muted small-copy">${card.desc}</div>
-        </article>
-      `).join('');
+      cards.forEach((card, i) => _setScoreCard(i, card));
     }
 
     function renderRail() {
@@ -2014,6 +2118,7 @@
     function showNoData() {
       document.getElementById('noDataBanner').classList.remove('hidden');
       document.getElementById('overviewRow').classList.add('hidden');
+      document.getElementById('scoresRow').classList.add('hidden');
       document.getElementById('workspaceSection').classList.add('hidden');
       document.getElementById('tableSection').classList.add('hidden');
     }
@@ -2021,6 +2126,7 @@
     function hideNoData() {
       document.getElementById('noDataBanner').classList.add('hidden');
       document.getElementById('overviewRow').classList.remove('hidden');
+      document.getElementById('scoresRow').classList.remove('hidden');
       document.getElementById('workspaceSection').classList.remove('hidden');
       document.getElementById('tableSection').classList.remove('hidden');
     }
@@ -2067,6 +2173,7 @@
       populateSelects();
       render();
       renderNlpFeatures(raw);
+      renderOrcidCell(raw);
     }
 
     function loadReviewPair(rawA, labelA, rawB, labelB) {
@@ -2081,6 +2188,7 @@
       populateSelects();
       render();
       renderNlpFeatures(rawB);
+      renderOrcidCell(rawB);
     }
 
     async function readJsonFiles(fileList) {
@@ -2238,6 +2346,103 @@
           'Sentences ≥ 30 words'),
         renderNlpKpiCard('Avg Dependency Depth', nlp.avg_dependency_depth ?? '—', 'Parse tree depth'),
       ].join('');
+    }
+
+    // ── ORCID cell rendering ──
+    function renderOrcidCell(raw) {
+      const cell = document.getElementById('orcidCellBody');
+      if (!cell) return;
+
+      const orcid = raw?.features_json?.features?.orcid || raw?.features?.orcid;
+
+      // Helper: build a status badge
+      function statusBadge(status) {
+        if (status === 'ok') return `<span class="status-pill status-positive">ORCID verified</span>`;
+        if (status === 'missing_orcid') return `<span class="status-pill status-neutral">No ORCID</span>`;
+        return `<span class="status-pill status-negative">Lookup failed</span>`;
+      }
+
+      // Polite failure state
+      function failState(title, desc) {
+        cell.innerHTML = `
+          <div class="orcid-fail-state">
+            <div class="orcid-fail-icon">🔬</div>
+            <div class="orcid-fail-title">${title}</div>
+            <div class="orcid-fail-desc">${desc}</div>
+          </div>`;
+      }
+
+      if (!orcid) {
+        failState('No ORCID data available', 'ORCID enrichment was not run or returned no results for this application.');
+        return;
+      }
+
+      const metrics = orcid.team_metrics || {};
+      const members = orcid.members || [];
+
+      // If all members failed, show polite failure
+      const anyOk = members.some(m => m.status === 'ok');
+      const anyOrcid = members.some(m => m.orcid);
+
+      if (!anyOrcid && members.length > 0) {
+        failState('ORCID profiles could not be retrieved',
+          'None of the team members listed an ORCID identifier. Academic metrics are unavailable for this application.');
+        return;
+      }
+      if (!anyOk && anyOrcid) {
+        failState('ORCID lookup was unsuccessful',
+          'ORCID identifiers were found but profile data could not be retrieved at this time. This may be a temporary network issue.');
+        return;
+      }
+
+      // Build member list (only show up to 5 to avoid overflow)
+      const shown = members.slice(0, 5);
+      const memberHtml = shown.map(m => {
+        const nameText = m.name || m.role_group || 'Unknown';
+        const roleText = m.proposed_role || m.role_group || '';
+        const badge = statusBadge(m.status);
+        const orcidId = m.orcid ? `<span style="font-size:10px;color:var(--text-3);font-family:monospace;">${m.orcid}</span>` : '';
+        return `
+          <div class="orcid-member-row">
+            <div style="flex:1;min-width:0;">
+              <div class="orcid-member-name">${nameText}</div>
+              ${roleText ? `<div class="orcid-member-role">${roleText}</div>` : ''}
+              ${orcidId}
+            </div>
+            <div>${badge}</div>
+          </div>`;
+      }).join('');
+      const extraCount = members.length - shown.length;
+      const extraHtml = extraCount > 0
+        ? `<div style="font-size:11px;color:var(--text-3);margin-top:4px;">+${extraCount} more team member${extraCount > 1 ? 's' : ''}</div>`
+        : '';
+
+      // Mini metrics grid
+      const avgH = metrics.avg_h_index != null ? metrics.avg_h_index : '—';
+      const avgCit = metrics.avg_citations != null ? Math.round(metrics.avg_citations) : '—';
+      const teamSize = metrics.team_size != null ? metrics.team_size : '—';
+      const orcidCov = metrics.orcid_coverage_ratio != null
+        ? Math.round(metrics.orcid_coverage_ratio * 100) + '%' : '—';
+      const avgWorks = metrics.avg_works_recent_5y != null ? metrics.avg_works_recent_5y : '—';
+      const resolved = metrics.resolved_profiles != null ? metrics.resolved_profiles : '—';
+
+      const miniMetrics = [
+        { label: 'Avg h-index', value: avgH },
+        { label: 'Avg citations', value: avgCit },
+        { label: 'Team size', value: teamSize },
+        { label: 'ORCID coverage', value: orcidCov },
+      ].map(m => `
+        <div class="orcid-mini-card">
+          <div class="orcid-mini-label">${m.label}</div>
+          <div class="orcid-mini-value">${m.value}</div>
+        </div>`).join('');
+
+      cell.innerHTML = `
+        <div class="orcid-member-list">${memberHtml}${extraHtml}</div>
+        <div class="orcid-mini-metrics">${miniMetrics}</div>
+        ${resolved !== '—' && resolved > 0
+          ? `<div style="font-size:11px;color:var(--text-3);margin-top:10px;">${resolved} profile${resolved > 1 ? 's' : ''} resolved · avg ${avgWorks} works in last 5 years</div>`
+          : ''}`;
     }
 
     function init() {
