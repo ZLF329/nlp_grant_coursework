@@ -49,6 +49,13 @@ OVERALL_EXCLUDED_SECTIONS_BY_DOC_TYPE: dict[str, set[str]] = {
 SECTION_EXCLUDED_SUB_IDS_BY_DOC_TYPE: dict[str, set[str]] = {
     "rfpb": {"g.1", "g.2"},
 }
+# Maximum score (0–10) for specific sub-criteria by doc_type.
+# llm_fallback PDFs lose structural formatting on extraction, so the
+# "Use of Formatting, Headings, and Subheadings" criterion (af.1) cannot
+# reliably score above 6/10 — cap it to avoid rewarding format we cannot see.
+SUB_ID_SCORE_CAPS_BY_DOC_TYPE: dict[str, dict[str, float]] = {
+    "llm_fallback": {"af.1": 6.0},
+}
 # ──────────────────────────────────────────────────────────────────────────────
 SCORER_MAX_SCORE = 5
 USED_CHUNK_MAX = 5
@@ -1250,6 +1257,46 @@ def _aggregate_sub_criterion(
     }
 
 
+def _apply_score_caps(
+    features: dict[str, dict[str, Any]],
+    sub_id_caps: dict[str, float],
+) -> None:
+    """
+    Cap specific sub-criteria scores in-place and recompute section aggregates.
+    Called after _aggregate_section so all score_10 values are already on 0–10.
+    """
+    if not sub_id_caps:
+        return
+    for section_data in features.values():
+        modified = False
+        sub_criteria = section_data.get("sub_criteria", [])
+        for sub in sub_criteria:
+            cap = sub_id_caps.get(sub["sub_id"])
+            if cap is not None and sub.get("score_10", 0) > cap:
+                sub["score_10"] = cap
+                sub["quality_score_0to10"] = cap
+                sub["quality"] = (
+                    "good" if cap >= 7.5 else
+                    "mixed" if cap >= 4 else
+                    "weak"
+                )
+                modified = True
+        if not modified:
+            continue
+        # Recompute section-level aggregates from capped sub-criteria
+        scored = [s for s in sub_criteria if s.get("counts_toward_section_average", True)]
+        denom = scored or sub_criteria
+        total_weight = sum(s["weight"] for s in denom) or 1.0
+        new_score_10 = round(sum(s["score_10"] * s["weight"] for s in denom) / total_weight, 2)
+        section_data["score_10"] = new_score_10
+        ov = section_data.get("overall", {})
+        ov["score_10"] = new_score_10
+        ov["final_score_0to100"] = round(new_score_10 * 10, 2)
+        ov["quality_score_0to100"] = round(new_score_10 * 10, 2)
+        ov["quality_score_avg_0to10"] = new_score_10
+        ov["good_items"] = sum(1 for s in denom if s["score_10"] >= 7.5)
+
+
 def _aggregate_section(section: dict[str, Any], pool_lookup: dict[str, dict[str, str]]) -> dict[str, Any]:
     sub_criteria = [_aggregate_sub_criterion(sub, pool_lookup) for sub in section["sub_criteria"]]
     scored_sub_criteria = [
@@ -1705,6 +1752,8 @@ def score_application_base(
         section["section_key"]: _aggregate_section(section, pool_lookup)
         for section in sections
     }
+    sub_id_caps = SUB_ID_SCORE_CAPS_BY_DOC_TYPE.get(doc_type, {})
+    _apply_score_caps(features, sub_id_caps)
     section_weights = {section["section_key"]: section["weight"] for section in sections}
 
     return {
