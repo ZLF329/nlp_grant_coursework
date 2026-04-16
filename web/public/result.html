@@ -1666,9 +1666,9 @@
     function sectionMetrics(section) {
       const o = section.overall;
       return [
-        { label:'Final score', before:o.finalScore, after:o.finalScore, valueLabel:'100 scale' },
-        { label:'Signal avg', before:(o.avgSignalScore || 0), after:(o.avgSignalScore || 0), valueLabel:'0–5 scale' },
-        { label:'Sub-criteria', before:o.totalItems || 0, after:o.totalItems || 0, valueLabel:'raw count' }
+        { label:'Final score', before:o.finalScore, after:o.finalScore, valueLabel:'100 scale', barMax:100 },
+        { label:'Signal avg', before:(o.avgSignalScore || 0), after:(o.avgSignalScore || 0), valueLabel:'0–5 scale', barMax:5 },
+        { label:'Sub-criteria', before:o.totalItems || 0, after:o.totalItems || 0, valueLabel:'raw count', barMax:20 }
       ];
     }
 
@@ -1676,9 +1676,9 @@
       const before = sectionPair.before.overall;
       const after = sectionPair.after.overall;
       return [
-        { label:'Final score', before:before.finalScore, after:after.finalScore, valueLabel:'100 scale' },
-        { label:'Signal avg', before:(before.avgSignalScore || 0), after:(after.avgSignalScore || 0), valueLabel:'0–5 scale' },
-        { label:'Sub-criteria', before:before.totalItems || 0, after:after.totalItems || 0, valueLabel:'raw count' }
+        { label:'Final score', before:before.finalScore, after:after.finalScore, valueLabel:'100 scale', barMax:100 },
+        { label:'Signal avg', before:(before.avgSignalScore || 0), after:(after.avgSignalScore || 0), valueLabel:'0–5 scale', barMax:5 },
+        { label:'Sub-criteria', before:before.totalItems || 0, after:after.totalItems || 0, valueLabel:'raw count', barMax:20 }
       ];
     }
 
@@ -1914,8 +1914,8 @@
               }
             </div>
             <div class="metric-track">
-              <div class="metric-fill-before" style="width:${clamp(metric.before,0,100)}%"></div>
-              <div class="metric-fill-after" style="width:${clamp(metric.after,0,100)}%"></div>
+              <div class="metric-fill-before" style="width:${clamp(metric.before / (metric.barMax || 100) * 100, 0, 100)}%"></div>
+              <div class="metric-fill-after" style="width:${clamp(metric.after / (metric.barMax || 100) * 100, 0, 100)}%"></div>
             </div>
             <div class="metric-sub">${mode === 'compare' ? `Before ${fmtScore(metric.before)} · After ${fmtScore(metric.after)}` : `Current value: ${fmtScore(metric.before)}`}</div>
           </div>
