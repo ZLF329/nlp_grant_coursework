@@ -1658,8 +1658,6 @@
       return [
         { label:'Final score', before:o.finalScore, after:o.finalScore, valueLabel:'100 scale' },
         { label:'Signal avg', before:(o.avgSignalScore || 0), after:(o.avgSignalScore || 0), valueLabel:'0–5 scale' },
-        { label:'Coverage', before:o.coverage || 0, after:o.coverage || 0, valueLabel:'100 scale' },
-        { label:'Quality', before:o.quality || 0, after:o.quality || 0, valueLabel:'100 scale' },
         { label:'Sub-criteria', before:o.totalItems || 0, after:o.totalItems || 0, valueLabel:'raw count' }
       ];
     }
@@ -1670,8 +1668,6 @@
       return [
         { label:'Final score', before:before.finalScore, after:after.finalScore, valueLabel:'100 scale' },
         { label:'Signal avg', before:(before.avgSignalScore || 0), after:(after.avgSignalScore || 0), valueLabel:'0–5 scale' },
-        { label:'Coverage', before:before.coverage || 0, after:after.coverage || 0, valueLabel:'100 scale' },
-        { label:'Quality', before:before.quality || 0, after:after.quality || 0, valueLabel:'100 scale' },
         { label:'Sub-criteria', before:before.totalItems || 0, after:after.totalItems || 0, valueLabel:'raw count' }
       ];
     }
