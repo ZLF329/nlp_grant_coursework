@@ -60,7 +60,6 @@ MIN_CHARS_PER_PAGE: int = 300
 
 # Page limits (token / cost guard)
 MAX_PAGES_TEXT:  int = 60   # max pages whose text we send to the LLM
-MAX_PAGES_IMAGE: int = 20   # max pages we OCR when in image mode
 
 # DPI for pdf2image rendering
 IMAGE_DPI: int = 150
@@ -127,9 +126,9 @@ def _extract_text_docx(docx_path: str) -> str:
 # Stage 2 — image OCR via glm-ocr (Ollama)
 # ---------------------------------------------------------------------------
 
-def _pdf_pages_to_base64(pdf_path: str, max_pages: int = MAX_PAGES_IMAGE) -> list[str]:
+def _pdf_pages_to_base64(pdf_path: str) -> list[str]:
     """
-    Render PDF pages to PNG images and return them as base64-encoded strings.
+    Render all PDF pages to PNG images and return them as base64-encoded strings.
     Requires pdf2image and poppler on PATH.
     """
     try:
@@ -140,7 +139,7 @@ def _pdf_pages_to_base64(pdf_path: str, max_pages: int = MAX_PAGES_IMAGE) -> lis
             "Install it with:  pip install pdf2image"
         ) from exc
 
-    images = convert_from_path(pdf_path, dpi=IMAGE_DPI, last_page=max_pages)
+    images = convert_from_path(pdf_path, dpi=IMAGE_DPI)
     result: list[str] = []
     for img in images:
         buf = io.BytesIO()
@@ -189,11 +188,8 @@ def _ocr_pdf(pdf_path: str) -> str:
     Convert PDF pages to images, OCR each one with glm-ocr, and concatenate
     the results into a single text string.
     """
-    print(
-        f"[llm_fallback_parser] sparse text detected — "
-        f"running image OCR (up to {MAX_PAGES_IMAGE} pages)"
-    )
-    b64_images = _pdf_pages_to_base64(pdf_path, max_pages=MAX_PAGES_IMAGE)
+    print("[llm_fallback_parser] sparse text detected — running image OCR (all pages)")
+    b64_images = _pdf_pages_to_base64(pdf_path)
     page_texts: list[str] = []
     for i, b64 in enumerate(b64_images, 1):
         print(f"[llm_fallback_parser]   OCR page {i}/{len(b64_images)} …")
