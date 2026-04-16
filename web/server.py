@@ -25,6 +25,8 @@ import traceback
 import uuid
 from pathlib import Path
 
+import requests as _requests
+
 from flask import Flask, jsonify, request, send_from_directory
 
 # ── path wiring ───────────────────────────────────────────────────────────────
@@ -41,6 +43,7 @@ for d in (UPLOAD_DIR, PARSED_DIR, RESULT_DIR):
 
 PUBLIC_DIR = Path(__file__).resolve().parent / "public"
 CRITERIA_PATH = PROJECT_ROOT / "criteria_points.json"
+OLLAMA_HOST = os.environ.get("OLLAMA_HOST", "http://127.0.0.1:11434").rstrip("/")
 
 # ── pipeline imports (lazy where heavy) ───────────────────────────────────────
 from src.all_type_parser.all_type_parser import parse_and_save           # noqa: E402
@@ -110,6 +113,11 @@ def _run_orcid_enrichment(parsed: dict) -> dict:
 
     for member in members:
         entry = dict(member)
+        # Only enrich Lead Applicant via ORCID
+        if entry.get("role_group") not in ("Lead Applicant", "Joint Lead Applicant"):
+            entry["status"] = "skipped"
+            enriched_members.append(entry)
+            continue
         orcid = entry.get("orcid") or ""
         if not orcid:
             entry["status"] = "missing_orcid"
@@ -128,7 +136,7 @@ def _run_orcid_enrichment(parsed: dict) -> dict:
                     )
             except Exception as _oa_exc:
                 print(f"[WARN] OpenAlex fetch skipped for {orcid}: {_oa_exc}")
-            features = compute_orcid_features(profile, doi2citedby=doi2citedby or None)
+            features = compute_orcid_features(profile, doi2citedby=doi2citedby if dois else None)
             entry["status"] = "ok"
             entry["summary"] = {
                 "works_total": features.get("outputs", {}).get("works_total", 0),
@@ -258,7 +266,8 @@ def _run_pipeline(job_id: str, upload_path: Path):
         result = dict(scored)
         result["nlp_features"] = nlp_features
         result.setdefault("features", {})
-        result["features"]["orcid"] = orcid_features
+        if orcid_features["team_metrics"]["resolved_profiles"] > 0:
+            result["features"]["orcid"] = orcid_features
 
         # Persist for later inspection
         out_path = RESULT_DIR / f"{job_id}.json"
@@ -320,6 +329,103 @@ def result(job_id: str):
         if job["status"] != "done" or not job["result"]:
             return jsonify({"error": "not ready"}), 409
         return jsonify(job["result"])
+
+
+@app.get("/history")
+def history():
+    import re as _re
+    JOB_ID_RE = _re.compile(r'^[a-f0-9]{12}$')
+    entries = []
+    for p in sorted(RESULT_DIR.glob("*.json"), key=lambda f: f.stat().st_mtime, reverse=True):
+        # Only include main result files: stem is exactly the 12-char job_id
+        if not JOB_ID_RE.match(p.stem):
+            continue
+        try:
+            data = json.loads(p.read_text(encoding="utf-8"))
+            doc_id = data.get("doc_id", p.stem)
+            # Strip job_id prefix from doc_id for a cleaner label
+            label = _re.sub(r'^[a-f0-9]{12}_', '', doc_id)
+            entries.append({
+                "job_id":   p.stem,
+                "doc_id":   doc_id,
+                "label":    label,
+                "ran_at":   (data.get("run_info") or {}).get("ran_at_utc"),
+                "score":    (data.get("overall") or {}).get("final_score_0to100"),
+                "model":    (data.get("run_info") or {}).get("scorer_model"),
+            })
+        except Exception:
+            pass
+    return jsonify(entries)
+
+
+@app.get("/history/<job_id>")
+def history_item(job_id: str):
+    p = RESULT_DIR / f"{job_id}.json"
+    if not p.exists():
+        return jsonify({"error": "not found"}), 404
+    return jsonify(json.loads(p.read_text(encoding="utf-8")))
+
+
+@app.get("/status")
+def status():
+    with JOBS_LOCK:
+        all_jobs = list(JOBS.values())
+    running = sum(1 for j in all_jobs if j["status"] == "running")
+    queued  = sum(1 for j in all_jobs if j["status"] == "pending")
+
+    # GPU info: try nvidia-smi first, fall back to sysctl (Apple Silicon)
+    vram_used_gb: float | None = None
+    vram_total_gb: float | None = None
+    gpu_name: str | None = None
+    try:
+        import subprocess
+        out = subprocess.check_output(
+            ["nvidia-smi", "--query-gpu=name,memory.used,memory.total",
+             "--format=csv,noheader,nounits"],
+            text=True, timeout=5,
+        ).strip().splitlines()
+        if out:
+            parts = [p.strip() for p in out[0].split(",")]
+            gpu_name      = parts[0]
+            vram_used_gb  = round(int(parts[1]) / 1024, 2)
+            vram_total_gb = round(int(parts[2]) / 1024, 2)
+    except FileNotFoundError:
+        # No nvidia-smi — try Apple Silicon unified memory
+        try:
+            import subprocess
+            mem_bytes = int(subprocess.check_output(["sysctl", "-n", "hw.memsize"], text=True).strip())
+            vram_total_gb = round(mem_bytes / 1024**3, 1)
+        except Exception:
+            pass
+    except Exception:
+        pass
+
+    # Ollama running models via /api/ps
+    gpu: dict = {}
+    try:
+        r = _requests.get(f"{OLLAMA_HOST}/api/ps", timeout=3)
+        if r.status_code == 200:
+            models = r.json().get("models") or []
+            ollama_vram = sum(m.get("size_vram", 0) for m in models)
+            # Prefer nvidia-smi used VRAM; ollama /api/ps as fallback
+            gpu = {
+                "gpu_name":     gpu_name,
+                "models_loaded": [m.get("name") for m in models],
+                "vram_used_gb": vram_used_gb if vram_used_gb is not None else round(ollama_vram / 1024**3, 2),
+                "vram_total_gb": vram_total_gb,
+                "model_active": len(models) > 0,
+            }
+        else:
+            gpu = {"error": f"ollama /api/ps returned {r.status_code}",
+                   "gpu_name": gpu_name, "vram_used_gb": vram_used_gb, "vram_total_gb": vram_total_gb}
+    except Exception as e:
+        gpu = {"error": str(e), "gpu_name": gpu_name, "vram_used_gb": vram_used_gb, "vram_total_gb": vram_total_gb}
+
+    return jsonify({
+        "active_jobs": running,
+        "queued_jobs": queued,
+        "gpu": gpu,
+    })
 
 
 if __name__ == "__main__":

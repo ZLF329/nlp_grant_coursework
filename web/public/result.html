@@ -954,7 +954,11 @@
       <div class="nav-logo">G</div>
       Grant AI
     </a>
-    <div class="nav-right">
+    <div class="nav-right" style="display:flex;align-items:center;gap:10px;">
+      <div id="statusBar" style="display:flex;align-items:center;gap:6px;font-size:12px;color:#94a3b8;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:4px 12px;">
+        <span id="statusDot" style="width:7px;height:7px;border-radius:50%;background:#4ade80;flex-shrink:0;"></span>
+        <span id="statusText">Loading…</span>
+      </div>
       <button class="nav-link" onclick="window.location.href='/'">← Upload new PDF</button>
     </div>
   </nav>
@@ -994,6 +998,12 @@
         </div>
         <div class="control-row">
           <div class="upload-wrap">
+            <div class="history-wrap" style="position:relative;display:inline-block;">
+              <button class="ghost-btn" id="historyBtn" type="button">History ▾</button>
+              <div id="historyDropdown" style="display:none;position:absolute;top:100%;left:0;z-index:200;background:#1e1e2e;border:1px solid #333;border-radius:8px;min-width:320px;max-height:320px;overflow-y:auto;box-shadow:0 8px 24px rgba(0,0,0,.4);">
+                <div id="historyList" style="padding:8px 0;"></div>
+              </div>
+            </div>
             <button class="ghost-btn" id="loadOneBtn" type="button">Load 1 JSON</button>
             <button class="ghost-btn" id="loadTwoBtn" type="button">Load 2 JSONs</button>
             <button class="ghost-btn" id="copyJsonBtn" type="button">Copy JSON</button>
@@ -2151,7 +2161,10 @@
     function populateSelects() {
       const beforeSelect = document.getElementById('beforeSelect');
       const afterSelect = document.getElementById('afterSelect');
-      const options = state.loadedReviews.map(review => `<option value="${review.id}">${review.label}</option>`).join('');
+      const options = state.loadedReviews.map(review => {
+        const shortLabel = (review.label || review.id).replace(/^[a-f0-9]{12}_/, '');
+        return `<option value="${review.id}">${shortLabel}</option>`;
+      }).join('');
       beforeSelect.innerHTML = options;
       afterSelect.innerHTML = options;
       if (!state.selectedBeforeId && state.loadedReviews[0]) state.selectedBeforeId = state.loadedReviews[0].id;
@@ -2437,8 +2450,94 @@
         <div class="orcid-mini-metrics">${miniMetrics}</div>`;
     }
 
+    // ── history ───────────────────────────────────────────────────────────────
+    async function fetchHistory() {
+      try {
+        const res = await fetch('/history');
+        return res.ok ? await res.json() : [];
+      } catch (e) { return []; }
+    }
+
+    async function loadFromHistory(jobId, label, slot) {
+      // slot: 'before' | 'after' | null (auto)
+      try {
+        const res = await fetch(`/history/${jobId}`);
+        if (!res.ok) return;
+        const data = await res.json();
+        const norm = normalizeReview(data, label);
+        if (!state.loadedReviews.find(r => r.id === norm.id)) {
+          state.loadedReviews.push(norm);
+        }
+        if (slot === 'before') {
+          state.selectedBeforeId = norm.id;
+        } else if (slot === 'after') {
+          state.selectedAfterId = norm.id;
+        } else {
+          // auto: fill A first, then B
+          if (!state.selectedBeforeId || state.selectedBeforeId === state.selectedAfterId) {
+            state.selectedBeforeId = norm.id;
+          } else {
+            state.selectedAfterId = norm.id;
+          }
+        }
+        if (!state.selectedBeforeId) state.selectedBeforeId = norm.id;
+        if (!state.selectedAfterId)  state.selectedAfterId  = norm.id;
+        render();
+      } catch (e) { console.warn('history load failed', e); }
+    }
+
+    async function renderHistoryDropdown() {
+      const list = document.getElementById('historyList');
+      list.innerHTML = '<div style="padding:8px 16px;color:#888;font-size:12px;">Loading…</div>';
+      const entries = await fetchHistory();
+      if (!entries.length) {
+        list.innerHTML = '<div style="padding:8px 16px;color:#888;font-size:12px;">No history yet</div>';
+        return;
+      }
+      list.innerHTML = entries.map(e => {
+        const name  = e.label || (e.doc_id || e.job_id).replace(/^[a-f0-9]{12}_/, '');
+        const score = e.score != null ? `<span style="color:#7dd3fc;font-weight:600;">${e.score.toFixed(1)}</span>` : '';
+        const date  = e.ran_at ? new Date(e.ran_at).toLocaleString() : '';
+        return `<div style="padding:8px 12px;border-bottom:1px solid #2a2a3a;display:flex;align-items:center;gap:8px;">
+          <div style="flex:1;min-width:0;">
+            <div style="font-size:13px;color:#e2e8f0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;" title="${name}">${name}</div>
+            <div style="font-size:11px;color:#666;">${date}</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:6px;flex-shrink:0;">
+            ${score}
+            <button data-job="${e.job_id}" data-label="${name}" data-slot="before"
+              style="font-size:11px;padding:2px 7px;border-radius:4px;border:1px solid #4b5563;background:transparent;color:#94a3b8;cursor:pointer;"
+              onmouseover="this.style.background='#374151'" onmouseout="this.style.background='transparent'">A</button>
+            <button data-job="${e.job_id}" data-label="${name}" data-slot="after"
+              style="font-size:11px;padding:2px 7px;border-radius:4px;border:1px solid #4b5563;background:transparent;color:#94a3b8;cursor:pointer;"
+              onmouseover="this.style.background='#374151'" onmouseout="this.style.background='transparent'">B</button>
+          </div>
+        </div>`;
+      }).join('');
+      list.querySelectorAll('button[data-job]').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          document.getElementById('historyDropdown').style.display = 'none';
+          loadFromHistory(btn.dataset.job, btn.dataset.label, btn.dataset.slot);
+        });
+      });
+    }
+
+    function initHistoryBtn() {
+      const btn = document.getElementById('historyBtn');
+      const dropdown = document.getElementById('historyDropdown');
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = dropdown.style.display !== 'none';
+        dropdown.style.display = isOpen ? 'none' : 'block';
+        if (!isOpen) renderHistoryDropdown();
+      });
+      document.addEventListener('click', () => { dropdown.style.display = 'none'; });
+    }
+
     function init() {
       initEvents();
+      initHistoryBtn();
       // Try to load from localStorage (result of last processed PDF)
       const raw = localStorage.getItem('features_result');
       if (raw) {
@@ -2455,6 +2554,53 @@
     }
 
     init();
+  </script>
+
+  <script>
+    (function() {
+      const dot  = document.getElementById('statusDot');
+      const text = document.getElementById('statusText');
+
+      async function pollStatus() {
+        try {
+          const res = await fetch('/status');
+          if (!res.ok) throw new Error('status error');
+          const s = await res.json();
+
+          const active = s.active_jobs  || 0;
+          const queued = s.queued_jobs  || 0;
+          const gpu    = s.gpu          || {};
+          const vramStr = gpu.vram_used_gb != null
+            ? (gpu.vram_total_gb != null ? `${gpu.vram_used_gb}/${gpu.vram_total_gb} GB` : `${gpu.vram_used_gb} GB`)
+            : null;
+          const gpuStr  = gpu.gpu_name ? gpu.gpu_name.replace('NVIDIA ', '') : null;
+          const vram    = [gpuStr, vramStr].filter(Boolean).join(' · ');
+          const loaded = (gpu.models_loaded || []).length > 0;
+
+          let label = '';
+          let color = '#4ade80';
+
+          if (active > 0) {
+            color = '#f59e0b';
+            label = `${active} job${active > 1 ? 's' : ''} running`;
+            if (queued > 0) label += ` · ${queued} queued`;
+          } else {
+            label = 'Idle';
+          }
+          if (vram) label += ` · ${vram}`;
+          if (!loaded && active > 0) color = '#f87171';
+
+          dot.style.background = color;
+          text.textContent     = label;
+        } catch(e) {
+          dot.style.background = '#6b7280';
+          text.textContent     = 'Server unreachable';
+        }
+      }
+
+      pollStatus();
+      setInterval(pollStatus, 8000);
+    })();
   </script>
 </body>
 </html>
