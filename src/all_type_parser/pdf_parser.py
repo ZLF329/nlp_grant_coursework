@@ -1,9 +1,13 @@
+import logging
 from dataclasses import dataclass
 from typing import List, Optional, Dict, Set
 import pdfplumber
 import re
 import os
 import json
+
+# Suppress noisy pdfminer FontBBox / encoding warnings
+logging.getLogger("pdfminer").setLevel(logging.ERROR)
 
 
 TARGET_HEADINGS = [

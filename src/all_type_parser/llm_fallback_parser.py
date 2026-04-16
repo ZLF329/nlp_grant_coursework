@@ -33,6 +33,7 @@ from __future__ import annotations
 import base64
 import io
 import json
+import logging
 import os
 import re
 from pathlib import Path
@@ -40,6 +41,9 @@ from typing import Optional
 
 import pdfplumber
 import requests
+
+# Suppress noisy pdfminer FontBBox / encoding warnings
+logging.getLogger("pdfminer").setLevel(logging.ERROR)
 
 # ---------------------------------------------------------------------------
 # Configuration
@@ -50,9 +54,9 @@ OLLAMA_MODEL     = os.environ.get("OLLAMA_MODEL",     "qwen3.5:27b")
 OLLAMA_OCR_MODEL = os.environ.get("OLLAMA_OCR_MODEL", "glm-ocr")
 OLLAMA_TIMEOUT   = float(os.environ.get("OLLAMA_TIMEOUT", "1200"))
 
-# Minimum average characters per page to skip OCR and use pdfplumber text directly
-# Set high so we always use image OCR (glm-ocr) to capture table content
-MIN_CHARS_PER_PAGE: int = 99999
+# Minimum average characters per page to skip OCR and use pdfplumber text directly.
+# Below this threshold the page is treated as scanned and sent to glm-ocr.
+MIN_CHARS_PER_PAGE: int = 300
 
 # Page limits (token / cost guard)
 MAX_PAGES_TEXT:  int = 60   # max pages whose text we send to the LLM
@@ -299,6 +303,7 @@ _UNIFIED_SCHEMA: dict = {
                 "Working with People and Communities Summary": {"type": "string"},
                 "Training & Development and Research Support": {"type": "string"},
                 "SUPPORT AND MENTORSHIP": {"type": "string"},
+                "Other Content": {"type": "string"},
             },
             "required": [
                 "Plain English Summary of Research",
@@ -312,6 +317,7 @@ _UNIFIED_SCHEMA: dict = {
                 "Working with People and Communities Summary",
                 "Training & Development and Research Support",
                 "SUPPORT AND MENTORSHIP",
+                "Other Content",
             ],
         },
         "SUMMARY BUDGET": {"type": "string"},
@@ -352,6 +358,7 @@ Rules:
   - working with people / communities headings -> "Working with People and Communities Summary"
   - training / development / host support headings -> "Training & Development and Research Support"
   - supervisor / mentorship / support headings -> "SUPPORT AND MENTORSHIP"
+  - any section that does not fit the above categories -> "Other Content" (concatenate all such sections here)
 - Canonical SUMMARY INFORMATION mappings:
   - project or research title -> "Application Title"
   - host or contracting organisation -> "Contracting Organisation"
@@ -395,6 +402,11 @@ def _structure_with_llm(text: str) -> dict:
     # Guard against extremely long documents exceeding context window
     user_text = text[:120_000]
 
+    # Output budget: roughly 1 output token per 8 input chars, clamped to
+    # [8192, 32768].  This avoids both truncation (the 8192-fixed bug) and
+    # unnecessarily large allocations for short documents.
+    num_predict = max(8192, min(len(user_text) // 8, 32768))
+
     payload = {
         "model": OLLAMA_MODEL,
         "messages": [
@@ -406,7 +418,7 @@ def _structure_with_llm(text: str) -> dict:
         "options": {
             "temperature": 0.1,
             "top_p": 0.9,
-            "num_predict": 8192,
+            "num_predict": num_predict,
         },
         "think": False,
     }

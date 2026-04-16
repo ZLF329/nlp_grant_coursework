@@ -23,6 +23,7 @@ Key structural difference from fellowships_parser:
                via in_section_box flag rather than a per-page flag.
 """
 
+import logging
 from dataclasses import dataclass
 from typing import List, Optional, Dict
 import pdfplumber
@@ -31,6 +32,9 @@ import os
 import json
 
 from .pdf_utils import is_not_watermark as _is_not_watermark
+
+# Suppress noisy pdfminer FontBBox / encoding warnings
+logging.getLogger("pdfminer").setLevel(logging.ERROR)
 
 
 # ---------------------------------------------------------------------------

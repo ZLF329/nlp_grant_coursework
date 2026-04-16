@@ -25,9 +25,14 @@ Only keys for which content was found are included.
 from __future__ import annotations
 
 import json
+import logging
 import sys
 from pathlib import Path
 from typing import Optional
+
+# Suppress noisy pdfminer FontBBox / encoding warnings (affects all parsers
+# that use pdfplumber, including the _is_rfpb_pdf() pre-check below)
+logging.getLogger("pdfminer").setLevel(logging.ERROR)
 
 # ── path setup so sub-parsers can be imported regardless of cwd ──────────────
 _SRC = Path(__file__).resolve().parent.parent   # …/src

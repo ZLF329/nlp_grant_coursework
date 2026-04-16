@@ -19,6 +19,7 @@ Section mapping
 Lead Applicant name/title is extracted from the page-1 Summary overview.
 """
 
+import logging
 from dataclasses import dataclass
 from typing import List, Optional, Dict
 import pdfplumber
@@ -27,6 +28,9 @@ import os
 import json
 
 from .pdf_utils import is_not_watermark as _is_not_watermark
+
+# Suppress noisy pdfminer FontBBox / encoding warnings
+logging.getLogger("pdfminer").setLevel(logging.ERROR)
 
 
 # ---------------------------------------------------------------------------
