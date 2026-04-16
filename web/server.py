@@ -229,7 +229,7 @@ def _update(job_id: str, *, step_key: str | None = None, step_status: str | None
 def _run_pipeline(job_id: str, upload_path: Path):
     try:
         _update(job_id, step_key="stage0", step_status="running",
-                progress=10, detail="Stage 0: Parsing PDF…")
+                progress=10, detail="Stage 0: Parsing document…")
         parsed_path = parse_and_save(str(upload_path))
         parsed = json.loads(Path(parsed_path).read_text(encoding="utf-8"))
 
@@ -303,7 +303,7 @@ def upload():
         return jsonify({"error": "no file"}), 400
 
     job_id = _new_job()
-    safe_name = Path(f.filename or "upload.pdf").name
+    safe_name = Path(f.filename or "upload.bin").name
     target = UPLOAD_DIR / f"{job_id}_{safe_name}"
     f.save(str(target))
 

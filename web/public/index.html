@@ -660,10 +660,10 @@
               // Upload card
               React.createElement("div", { className: "upload-card" },
                 React.createElement("label", { className: "drop-zone" },
-                  React.createElement("input", { type: "file", accept: "application/pdf", onChange: (e) => setFile(e.target.files[0] || null) }),
+                  React.createElement("input", { type: "file", accept: "application/pdf,.docx,.doc,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/msword", onChange: (e) => setFile(e.target.files[0] || null) }),
                   React.createElement("div", { className: "drop-icon" }, "📄"),
-                  React.createElement("div", { className: "drop-title" }, file ? "File selected" : "Drop a PDF or browse"),
-                  React.createElement("div", { className: "drop-sub" }, "PDF files only · max size depends on server settings")
+                  React.createElement("div", { className: "drop-title" }, file ? "File selected" : "Drop a file or browse"),
+                  React.createElement("div", { className: "drop-sub" }, "PDF · DOCX · DOC · max size depends on server settings")
                 ),
                 React.createElement("div", { className: "file-meta" },
                   file
