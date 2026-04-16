@@ -2165,19 +2165,21 @@
       renderTable();
     }
 
+    function reviewBtnLabel(review) {
+      if (!review) return '— select —';
+      const name = (review.label || review.id).replace(/^[a-f0-9]{12}_/, '');
+      const score = review.overall?.finalScore != null ? ` · ${Math.round(review.overall.finalScore)}` : '';
+      const time = review.runInfo?.ranAt
+        ? ` · ${new Date(review.runInfo.ranAt).toLocaleString([], { month:'numeric', day:'numeric', hour:'2-digit', minute:'2-digit' })}`
+        : '';
+      return name + score + time;
+    }
+
     function populateSelects() {
-      const beforeReview = getBeforeReview();
-      const afterReview  = getAfterReview();
       const btnA = document.getElementById('reviewABtn');
       const btnB = document.getElementById('reviewBBtn');
-      if (btnA) {
-        const lbl = beforeReview ? (beforeReview.label || beforeReview.id).replace(/^[a-f0-9]{12}_/, '') : '— select —';
-        btnA.textContent = lbl + ' ▾';
-      }
-      if (btnB) {
-        const lbl = afterReview ? (afterReview.label || afterReview.id).replace(/^[a-f0-9]{12}_/, '') : '— select —';
-        btnB.textContent = lbl + ' ▾';
-      }
+      if (btnA) btnA.textContent = reviewBtnLabel(getBeforeReview()) + ' ▾';
+      if (btnB) btnB.textContent = reviewBtnLabel(getAfterReview())  + ' ▾';
     }
 
     function loadSingleRaw(raw, label) {
