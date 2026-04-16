@@ -206,65 +206,125 @@ def _ocr_pdf(pdf_path: str) -> str:
 # JSON schema for Ollama constrained generation
 _UNIFIED_SCHEMA: dict = {
     "type": "object",
+    "additionalProperties": False,
     "properties": {
         "doc_type": {"type": "string"},
         "SUMMARY INFORMATION": {
             "type": "object",
+            "additionalProperties": False,
             "properties": {
-                "Project Title":      {"type": "string"},
-                "Chief Investigator": {"type": "string"},
-                "Organisation":       {"type": "string"},
-                "Start Date":         {"type": "string"},
-                "Duration":           {"type": "string"},
-                "Total Cost":         {"type": "string"},
+                "Application Title": {"type": "string"},
+                "Contracting Organisation": {"type": "string"},
+                "Start Date": {"type": "string"},
+                "End Date": {"type": "string"},
+                "Duration (months)": {"type": "string"},
+                "Total Cost to NIHR": {"type": "string"},
             },
+            "required": [
+                "Application Title",
+                "Contracting Organisation",
+                "Start Date",
+                "End Date",
+                "Duration (months)",
+                "Total Cost to NIHR",
+            ],
         },
         "LEAD APPLICANT & RESEARCH TEAM": {
             "type": "object",
+            "additionalProperties": False,
             "properties": {
                 "Lead Applicant": {
-                    "type": "object",
+                    "type": ["object", "null"],
+                    "additionalProperties": False,
                     "properties": {
-                        "Full Name":        {"type": "string"},
-                        "Organisation":     {"type": "string"},
-                        "Department":       {"type": "string"},
-                        "Proposed Role":    {"type": "string"},
-                        "ORCID":            {"type": "string"},
+                        "Full Name": {"type": "string"},
+                        "Organisation": {"type": "string"},
+                        "Department": {"type": "string"},
+                        "Proposed Role": {"type": "string"},
+                        "ORCID": {"type": "string"},
                         "% FTE Commitment": {"type": "string"},
                     },
+                    "required": [
+                        "Full Name",
+                        "Organisation",
+                        "Department",
+                        "Proposed Role",
+                        "ORCID",
+                        "% FTE Commitment",
+                    ],
                 },
                 "Joint Lead Applicant": {"type": ["object", "null"]},
                 "Co-Applicants": {
                     "type": "array",
                     "items": {
                         "type": "object",
+                        "additionalProperties": False,
                         "properties": {
-                            "Full Name":     {"type": "string"},
+                            "Full Name": {"type": "string"},
                             "Proposed Role": {"type": "string"},
-                            "Organisation":  {"type": "string"},
-                            "Department":    {"type": "string"},
-                            "ORCID":         {"type": "string"},
-                            "Position":      {"type": "string"},
+                            "Organisation": {"type": "string"},
+                            "Department": {"type": "string"},
+                            "ORCID": {"type": "string"},
+                            "Position": {"type": "string"},
                         },
+                        "required": [
+                            "Full Name",
+                            "Proposed Role",
+                            "Organisation",
+                            "Department",
+                            "ORCID",
+                            "Position",
+                        ],
                     },
                 },
             },
+            "required": [
+                "Lead Applicant",
+                "Joint Lead Applicant",
+                "Co-Applicants",
+            ],
         },
         "APPLICATION DETAILS": {
             "type": "object",
+            "additionalProperties": False,
             "properties": {
-                "Plain English Summary of Research":          {"type": "string"},
-                "Scientific Abstract":                        {"type": "string"},
-                "Applicant CV":                               {"type": "string"},
-                "Applicant Research Background":              {"type": "string"},
-                "Detailed Research Plan":                     {"type": "string"},
-                "Patient & Public Involvement":               {"type": "string"},
+                "Plain English Summary of Research": {"type": "string"},
+                "Plain English Summary": {"type": "string"},
+                "Scientific Abstract": {"type": "string"},
+                "Applicant CV": {"type": "string"},
+                "Applicant Research Background": {"type": "string"},
+                "Detailed Research Plan": {"type": "string"},
+                "Changes from Previous Stage": {"type": "string"},
+                "Patient & Public Involvement": {"type": "string"},
+                "Working with People and Communities Summary": {"type": "string"},
                 "Training & Development and Research Support": {"type": "string"},
+                "SUPPORT AND MENTORSHIP": {"type": "string"},
             },
+            "required": [
+                "Plain English Summary of Research",
+                "Plain English Summary",
+                "Scientific Abstract",
+                "Applicant CV",
+                "Applicant Research Background",
+                "Detailed Research Plan",
+                "Changes from Previous Stage",
+                "Patient & Public Involvement",
+                "Working with People and Communities Summary",
+                "Training & Development and Research Support",
+                "SUPPORT AND MENTORSHIP",
+            ],
         },
         "SUMMARY BUDGET": {"type": "string"},
     },
+    "required": [
+        "doc_type",
+        "SUMMARY INFORMATION",
+        "LEAD APPLICANT & RESEARCH TEAM",
+        "APPLICATION DETAILS",
+        "SUMMARY BUDGET",
+    ],
 }
+
 
 _SYSTEM_PROMPT = """\
 You are an expert at extracting structured information from grant application documents.
@@ -272,11 +332,32 @@ Given raw text from a grant application PDF, extract the information and return 
 valid JSON that matches the provided schema.
 
 Rules:
-- Only include fields for which you found actual content in the text.
+- Return one JSON object that matches the schema exactly.
+- Use the schema's field names exactly as written. Do not invent new keys.
+- Always include every key required by the schema.
+- If content is missing, use empty string "" for missing text fields, null for
+  missing object fields, and [] for missing arrays.
 - Do NOT invent or hallucinate any information.
-- For string fields, copy or faithfully summarise the relevant passage.
-- If a section is entirely absent from the text, omit that key entirely.
-- Return ONLY the JSON object — no preamble, no markdown fences, no explanation.
+- For narrative text fields, copy the original document text as literally as possible.
+- Do NOT summarise, paraphrase, compress, rewrite, or simplify the original wording.
+- Preserve original wording, ordering, and paragraph breaks whenever possible.
+- Only make minimal fixes for obvious OCR noise such as broken spacing or duplicated punctuation.
+- Map document section titles and near-synonyms into the predefined schema keys.
+- Canonical APPLICATION DETAILS mappings:
+  - lay summary headings -> "Plain English Summary of Research" or "Plain English Summary"
+  - abstract headings -> "Scientific Abstract"
+  - research plan / methods / proposal body headings -> "Detailed Research Plan"
+  - first-stage revision headings -> "Changes from Previous Stage"
+  - PPI headings -> "Patient & Public Involvement"
+  - working with people / communities headings -> "Working with People and Communities Summary"
+  - training / development / host support headings -> "Training & Development and Research Support"
+  - supervisor / mentorship / support headings -> "SUPPORT AND MENTORSHIP"
+- Canonical SUMMARY INFORMATION mappings:
+  - project or research title -> "Application Title"
+  - host or contracting organisation -> "Contracting Organisation"
+  - duration or grant duration in months -> "Duration (months)"
+  - total cost / research costs -> "Total Cost to NIHR"
+- Return ONLY the JSON object with no preamble, markdown fences, or explanation.
 """
 
 _USER_PROMPT_TEMPLATE = """\
@@ -325,7 +406,7 @@ def _structure_with_llm(text: str) -> dict:
         "options": {
             "temperature": 0.1,
             "top_p": 0.9,
-            "num_predict": 4096,
+            "num_predict": 8192,
         },
         "think": False,
     }
