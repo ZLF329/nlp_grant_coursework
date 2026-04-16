@@ -980,12 +980,22 @@
         </div>
         <div class="control-row">
           <div class="control-group">
-            <label class="control-label" for="beforeSelect">Review A</label>
-            <select id="beforeSelect"></select>
+            <label class="control-label">Review A</label>
+            <div class="history-wrap" style="position:relative;display:inline-block;">
+              <button class="ghost-btn" id="reviewABtn" type="button" style="min-width:170px;text-align:left;">— select — ▾</button>
+              <div id="reviewADropdown" style="display:none;position:absolute;top:100%;left:0;z-index:200;background:#1e1e2e;border:1px solid #333;border-radius:8px;min-width:320px;max-height:320px;overflow-y:auto;box-shadow:0 8px 24px rgba(0,0,0,.4);">
+                <div id="reviewAList" style="padding:8px 0;"></div>
+              </div>
+            </div>
           </div>
           <div class="control-group">
-            <label class="control-label" for="afterSelect">Review B / current</label>
-            <select id="afterSelect"></select>
+            <label class="control-label">Review B / Current</label>
+            <div class="history-wrap" style="position:relative;display:inline-block;">
+              <button class="ghost-btn" id="reviewBBtn" type="button" style="min-width:170px;text-align:left;">— select — ▾</button>
+              <div id="reviewBDropdown" style="display:none;position:absolute;top:100%;left:0;z-index:200;background:#1e1e2e;border:1px solid #333;border-radius:8px;min-width:320px;max-height:320px;overflow-y:auto;box-shadow:0 8px 24px rgba(0,0,0,.4);">
+                <div id="reviewBList" style="padding:8px 0;"></div>
+              </div>
+            </div>
           </div>
         </div>
         <div class="control-row" style="align-items:center;">
@@ -2155,20 +2165,18 @@
     }
 
     function populateSelects() {
-      const beforeSelect = document.getElementById('beforeSelect');
-      const afterSelect = document.getElementById('afterSelect');
-      const options = state.loadedReviews.map(review => {
-        const shortLabel = (review.label || review.id).replace(/^[a-f0-9]{12}_/, '');
-        return `<option value="${review.id}">${shortLabel}</option>`;
-      }).join('');
-      beforeSelect.innerHTML = options;
-      afterSelect.innerHTML = options;
-      if (!state.selectedBeforeId && state.loadedReviews[0]) state.selectedBeforeId = state.loadedReviews[0].id;
-      if (!state.selectedAfterId && state.loadedReviews[0]) state.selectedAfterId = state.loadedReviews[state.loadedReviews.length - 1].id;
-      if (!state.loadedReviews.find(r => r.id === state.selectedBeforeId)) state.selectedBeforeId = state.loadedReviews[0]?.id || null;
-      if (!state.loadedReviews.find(r => r.id === state.selectedAfterId)) state.selectedAfterId = state.loadedReviews[state.loadedReviews.length - 1]?.id || null;
-      beforeSelect.value = state.selectedBeforeId || '';
-      afterSelect.value = state.selectedAfterId || '';
+      const beforeReview = getBeforeReview();
+      const afterReview  = getAfterReview();
+      const btnA = document.getElementById('reviewABtn');
+      const btnB = document.getElementById('reviewBBtn');
+      if (btnA) {
+        const lbl = beforeReview ? (beforeReview.label || beforeReview.id).replace(/^[a-f0-9]{12}_/, '') : '— select —';
+        btnA.textContent = lbl + ' ▾';
+      }
+      if (btnB) {
+        const lbl = afterReview ? (afterReview.label || afterReview.id).replace(/^[a-f0-9]{12}_/, '') : '— select —';
+        btnB.textContent = lbl + ' ▾';
+      }
     }
 
     function loadSingleRaw(raw, label) {
@@ -2211,20 +2219,6 @@
     }
 
     function initEvents() {
-
-      document.getElementById('beforeSelect').addEventListener('change', (e) => {
-        state.selectedBeforeId = e.target.value;
-        if (getCurrentMode() === 'single') state.selectedAfterId = state.selectedBeforeId;
-        state.selectedSectionId = null;
-        state.selectedCriterionName = null;
-        render();
-      });
-      document.getElementById('afterSelect').addEventListener('change', (e) => {
-        state.selectedAfterId = e.target.value;
-        state.selectedSectionId = null;
-        state.selectedCriterionName = null;
-        render();
-      });
 
       document.querySelectorAll('#workspaceTabs .tab').forEach(btn => {
         btn.addEventListener('click', () => {
@@ -2519,6 +2513,64 @@
       });
     }
 
+    async function renderReviewDropdownList(slot) {
+      const listId      = slot === 'before' ? 'reviewAList'     : 'reviewBList';
+      const dropdownId  = slot === 'before' ? 'reviewADropdown' : 'reviewBDropdown';
+      const list = document.getElementById(listId);
+      list.innerHTML = '<div style="padding:8px 16px;color:#888;font-size:12px;">Loading…</div>';
+      const entries = await fetchHistory();
+      if (!entries.length) {
+        list.innerHTML = '<div style="padding:8px 16px;color:#888;font-size:12px;">No history yet</div>';
+        return;
+      }
+      list.innerHTML = entries.map(e => {
+        const name  = e.label || e.job_id;
+        const score = e.score != null ? `<span style="color:#60a5fa;font-weight:600;font-size:13px;min-width:32px;text-align:right;">${Math.round(e.score)}</span>` : '';
+        const date  = e.ran_at ? new Date(e.ran_at).toLocaleString() : '';
+        const loaded = state.loadedReviews.find(r => r.label === name || r.docId === e.doc_id);
+        const active = loaded && ((slot === 'before' && state.selectedBeforeId === loaded.id) ||
+                                  (slot === 'after'  && state.selectedAfterId  === loaded.id));
+        const activeBg = active ? '#1e3a5f' : 'transparent';
+        return `<div style="padding:8px 16px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;gap:8px;background:${activeBg};border-bottom:1px solid #2a2a3e;"
+                     data-job="${e.job_id}" data-label="${name}" data-slot="${slot}"
+                     onmouseover="this.style.background='#374151'" onmouseout="this.style.background='${activeBg}'">
+          <div style="flex:1;min-width:0;">
+            <div style="font-weight:500;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${name}</div>
+            <div style="font-size:11px;color:#666;">${date}</div>
+          </div>
+          <div style="flex-shrink:0;">${score}</div>
+        </div>`;
+      }).join('');
+      list.querySelectorAll('[data-job]').forEach(item => {
+        item.addEventListener('click', evt => {
+          evt.stopPropagation();
+          document.getElementById(dropdownId).style.display = 'none';
+          loadFromHistory(item.dataset.job, item.dataset.label, item.dataset.slot);
+        });
+      });
+    }
+
+    function initReviewDropdowns() {
+      ['before', 'after'].forEach(slot => {
+        const btnId      = slot === 'before' ? 'reviewABtn'      : 'reviewBBtn';
+        const dropdownId = slot === 'before' ? 'reviewADropdown' : 'reviewBDropdown';
+        const otherDropId= slot === 'before' ? 'reviewBDropdown' : 'reviewADropdown';
+        const btn      = document.getElementById(btnId);
+        const dropdown = document.getElementById(dropdownId);
+        btn.addEventListener('click', e => {
+          e.stopPropagation();
+          document.getElementById(otherDropId).style.display = 'none';
+          const isOpen = dropdown.style.display !== 'none';
+          dropdown.style.display = isOpen ? 'none' : 'block';
+          if (!isOpen) renderReviewDropdownList(slot);
+        });
+      });
+      document.addEventListener('click', () => {
+        document.getElementById('reviewADropdown').style.display = 'none';
+        document.getElementById('reviewBDropdown').style.display = 'none';
+      });
+    }
+
     function initHistoryBtn() {
       const btn = document.getElementById('historyBtn');
       const dropdown = document.getElementById('historyDropdown');
@@ -2534,6 +2586,7 @@
     function init() {
       initEvents();
       initHistoryBtn();
+      initReviewDropdowns();
       // Try to load from localStorage (result of last processed PDF)
       const raw = localStorage.getItem('features_result');
       if (raw) {
