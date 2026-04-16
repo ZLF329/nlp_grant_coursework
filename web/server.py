@@ -52,20 +52,7 @@ from ORCID.orcid_features import compute_features as compute_orcid_features  # n
 from ORCID.orcid_features import fetch_orcid_profile                       # noqa: E402
 from ORCID.orcid_features import openalex_cited_by_for_dois                # noqa: E402
 
-# Ollama scorer is imported lazily — keeping a single shared instance avoids
-# reloading the model on every request.
-_scorer_lock = threading.Lock()
-_scorer = None
 ORCID_RE = re.compile(r"\b\d{4}-\d{4}-\d{4}-\d{3}[\dX]\b")
-
-
-def _get_scorer():
-    global _scorer
-    with _scorer_lock:
-        if _scorer is None:
-            from qwen3_ollama import _Scorer  # noqa: WPS433
-            _scorer = _Scorer()
-        return _scorer
 
 
 # ── job state ─────────────────────────────────────────────────────────────────
@@ -252,12 +239,10 @@ def _run_pipeline(job_id: str, upload_path: Path):
         _update(job_id, step_key="stage2", step_status="running",
                 progress=70, detail="Stage 2: Drawback-aware final signal scoring…")
         from qwen3_ollama import score_application
-        scorer = _get_scorer()
         scored = score_application(
             parsed,
             CRITERIA_PATH,
             doc_id=upload_path.stem,
-            scorer=scorer,
             artifacts_dir=RESULT_DIR,
         )
         _update(job_id, step_key="stage2", step_status="done",
