@@ -1,0 +1,126 @@
+{
+  "processed_sections": [
+    "Application Context",
+    "Application Form Analysis"
+  ],
+  "subcriteria_beliefs": {
+    "pr.1": {
+      "good_evidence_ids": [
+        "secac__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Application Context: Plain English Summary clearly outlines background, aims, methods, PPI, and dissemination in accessible language, supporting pr.1."
+      ]
+    },
+    "pr.2": {
+      "good_evidence_ids": [
+        "secac__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Application Context: Detailed review of existing evidence cites 28 references, identifies knowledge gaps regarding SPC implementation barriers, and critically analyzes current guidelines, supporting pr.2."
+      ]
+    },
+    "pr.3": {
+      "good_evidence_ids": [
+        "secac__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Application Context: Study scope is clearly defined as a two-stage mixed-methods study over 18 months with specific aims to identify barriers and co-design strategies, aligning with award expectations, supporting pr.3."
+      ]
+    },
+    "pr.4": {
+      "good_evidence_ids": [
+        "secac__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Application Context: Methods are explicitly described using CFIR framework, semi-structured interviews, and e-Delphi technique with clear data analysis plans, supporting pr.4."
+      ]
+    },
+    "pr.5": {
+      "good_evidence_ids": [
+        "secac__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Application Context: Project addresses top oral health priorities, aims to reduce NHS costs, improve patient quality of life, and limit tooth loss, supporting pr.5."
+      ]
+    },
+    "pr.6": {
+      "good_evidence_ids": [
+        "secac__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Application Context: Extensive PPI involvement described across design, recruitment, data collection, analysis, and dissemination stages, supporting pr.6."
+      ]
+    },
+    "pr.9": {
+      "good_evidence_ids": [
+        "secac__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Application Context: Recruitment targets diverse populations in deprived areas (East London/East of England) and includes multiple informant groups to ensure inclusive representation, supporting pr.9."
+      ]
+    },
+    "wp.1": {
+      "good_evidence_ids": [
+        "secac__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Application Context: Patient focus groups proactively involved in proposal feedback, topic priority, and recruitment strategies, demonstrating integration of lived experience, supporting wp.1."
+      ]
+    },
+    "wp.3": {
+      "good_evidence_ids": [
+        "secac__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Application Context: Dissemination plan includes journals, conferences, social media, podcasts, and patient forums to maximize public benefit, supporting wp.3."
+      ]
+    },
+    "wp.4": {
+      "good_evidence_ids": [
+        "secac__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Application Context: Study setting targets large, deprived, and diverse populations in East London and East of England, addressing representation of underserved groups, supporting wp.4."
+      ]
+    },
+    "wp.5": {
+      "good_evidence_ids": [
+        "secac__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Application Context: PPI involvement spans the entire research lifecycle from design to dissemination, ensuring inclusivity across all stages, supporting wp.5."
+      ]
+    }
+  },
+  "missing_signals": [
+    "g.1",
+    "g.2",
+    "g.3",
+    "g.4",
+    "g.5",
+    "g.6",
+    "pr.7",
+    "pr.8",
+    "td.1",
+    "td.2",
+    "td.3",
+    "ss.1",
+    "ss.2",
+    "ss.3",
+    "ss.4",
+    "wp.2",
+    "wp.6"
+  ]
+}

@@ -446,6 +446,7 @@ def _structure_with_llm(text: str) -> dict:
         return json.loads(raw)
     except json.JSONDecodeError as e:
         print(f"[llm_fallback_parser] JSON parse error: {e}")
+        print(f"[llm_fallback_parser] raw LLM output length: {len(raw)} and the num_predict is: {num_predict}")
         print(f"[llm_fallback_parser] raw LLM output (first 500 chars): {raw[:500]}")
         return {}
 

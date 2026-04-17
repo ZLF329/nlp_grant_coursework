@@ -1,0 +1,102 @@
+[
+  {
+    "section_name": "Application Context",
+    "findings": [
+      {
+        "sub_id": "pr.3",
+        "good_evidence_ids": [],
+        "bad_evidence_ids": [
+          "secac__001"
+        ],
+        "implication": "Application Context: Feedback indicates the proposed feasibility study scope (12 months, £150k) is too ambitious given only 11 pilot volunteers, challenging feasibility and award appropriateness."
+      },
+      {
+        "sub_id": "pr.6",
+        "good_evidence_ids": [
+          "secac__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Context: Applicant plans PPI workshops with patients, family members, and carers, supporting engagement with people and communities."
+      },
+      {
+        "sub_id": "ss.2",
+        "good_evidence_ids": [
+          "secac__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Context: Applicant is actively seeking mentorship and guidance from RSS CTU team on regulation and team building, indicating engagement with supervisory support."
+      },
+      {
+        "sub_id": "g.1",
+        "good_evidence_ids": [],
+        "bad_evidence_ids": [
+          "secac__001"
+        ],
+        "implication": "Application Context: Feedback highlights the need to justify the clinical problem and scale, suggesting the current research vision may lack sufficient justification."
+      }
+    ],
+    "resolved_signals": [
+      "pr.3",
+      "pr.6",
+      "ss.2",
+      "g.1"
+    ],
+    "missing_signals_after": [
+      "g.2",
+      "g.3",
+      "g.4",
+      "g.5",
+      "g.6",
+      "pr.1",
+      "pr.2",
+      "pr.4",
+      "pr.5",
+      "pr.7",
+      "pr.8",
+      "pr.9",
+      "td.1",
+      "td.2",
+      "td.3",
+      "ss.1",
+      "ss.3",
+      "ss.4",
+      "wp.1",
+      "wp.2",
+      "wp.3",
+      "wp.4",
+      "wp.5",
+      "wp.6"
+    ]
+  },
+  {
+    "section_name": "Application Form Analysis",
+    "findings": [],
+    "resolved_signals": [],
+    "missing_signals_after": [
+      "g.2",
+      "g.3",
+      "g.4",
+      "g.5",
+      "g.6",
+      "pr.1",
+      "pr.2",
+      "pr.4",
+      "pr.5",
+      "pr.7",
+      "pr.8",
+      "pr.9",
+      "td.1",
+      "td.2",
+      "td.3",
+      "ss.1",
+      "ss.3",
+      "ss.4",
+      "wp.1",
+      "wp.2",
+      "wp.3",
+      "wp.4",
+      "wp.5",
+      "wp.6"
+    ]
+  }
+]
