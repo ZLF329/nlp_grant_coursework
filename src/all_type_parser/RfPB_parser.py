@@ -50,21 +50,25 @@ PAGE_HEADER_BOTTOM: float = 58.0
 PAGE_FOOTER_TOP:    float = 805.0
 
 # Known section headings (without number prefix — matches any "N. Heading" variant)
-SECTION_TEAM:     str = "The Research Team"
-SECTION_HISTORY:  str = "History of application"
-SECTION_ABSTRACT: str = "Scientific abstract"
-SECTION_PES:      str = "Plain English Summary"
-SECTION_CHANGES:  str = "Changes from first stage"
-SECTION_PLAN:     str = "Detailed Research plan"
-SECTION_PPI:      str = "Patient & Public Involvement"
-SECTION_BUDGET:   str = "Detailed Budget"
-SECTION_MGMT:     str = "Management & Governance"
-SECTION_UPLOADS:  str = "Uploads"
-SECTION_ADMIN:    str = "Administrative contact details"
-SECTION_RD:       str = "Research & Development office contact"
-SECTION_ACK:      str = "Acknowledgement review and submit"
-SECTION_CV_LEAD:  str = "CV - Lead Applicant(s)"
-SECTION_CV_CO:    str = "CV - Co-applicants"
+SECTION_TEAM:          str = "The Research Team"
+SECTION_HISTORY:       str = "History of application"
+SECTION_ABSTRACT:      str = "Scientific abstract"
+SECTION_PES:           str = "Plain English Summary"
+SECTION_CHANGES:       str = "Changes from first stage"
+SECTION_PLAN:          str = "Detailed Research plan"
+SECTION_PLAN_S1:       str = "Research Plan"          # Stage 1 unnumbered variant
+SECTION_PPI:           str = "Patient & Public Involvement"
+SECTION_BUDGET:        str = "Detailed Budget"
+SECTION_MGMT:          str = "Management & Governance"
+SECTION_UPLOADS:       str = "Uploads"
+SECTION_ADMIN:         str = "Administrative contact details"
+SECTION_RD:            str = "Research & Development office contact"
+SECTION_RD_S1:         str = "Research and Development office contact details"  # Stage 1 variant
+SECTION_ACK:           str = "Acknowledgement review and submit"
+SECTION_CV_LEAD:       str = "CV - Lead Applicant(s)"
+SECTION_CV_CO:         str = "CV - Co-applicants"
+SECTION_TEAM_LEAD_S1:  str = "Lead Applicant Details"  # Stage 1 variant
+SECTION_TEAM_S1:       str = "Research Team Details"   # Stage 1 variant
 KNOWN_SECTION_HEADINGS = {
     SECTION_TEAM,
     SECTION_HISTORY,
@@ -72,15 +76,19 @@ KNOWN_SECTION_HEADINGS = {
     SECTION_PES,
     SECTION_CHANGES,
     SECTION_PLAN,
+    SECTION_PLAN_S1,
     SECTION_PPI,
     SECTION_BUDGET,
     SECTION_MGMT,
     SECTION_UPLOADS,
     SECTION_ADMIN,
     SECTION_RD,
+    SECTION_RD_S1,
     SECTION_ACK,
     SECTION_CV_LEAD,
     SECTION_CV_CO,
+    SECTION_TEAM_LEAD_S1,
+    SECTION_TEAM_S1,
 }
 
 
@@ -215,14 +223,14 @@ def filter_rfpb_lines(lines: List[Line]) -> List[Line]:
 
 def is_rfpb_heading(line: Line) -> bool:
     """
-    True when this line is a numbered section heading inside a wide blue box.
+    True when this line is a section heading inside a wide blue box.
     Requires the line to overlap a wide filled rect AND the text to match a
-    known RfPB section heading.
+    known RfPB section heading.  Number prefix (e.g. "4. ") is optional —
+    Stage 1 PDFs use unnumbered headings.
     """
-    text = line.text.strip()
-    if not line.in_section_box or not re.match(r'^\d+\.\s+', text):
+    if not line.in_section_box:
         return False
-    key = _heading_key(text)
+    key = _heading_key(line.text.strip())
     for known in KNOWN_SECTION_HEADINGS:
         known_key = _heading_key(known)
         if key == known_key or key.startswith(known_key):
@@ -334,17 +342,31 @@ def parse_summary_information(pdf_path: str) -> dict:
     raw = _get_page1_raw_text(pdf_path)
     out: dict = {}
 
-    # Application Title
-    m = re.search(r'Research Title[:\s]*\n?(.+)', raw)
-    if m:
-        out["Application Title"] = m.group(1).strip()
+    # Application Title — two layout variants:
+    # Stage 2: "Research Title\nThe actual title..."
+    # Stage 1: "First part of title\nResearch Title\nSecond part of title"
+    m_split = re.search(r'([^\n]+)\nResearch Title[^\n]*\n(.+)', raw)
+    m_inline = re.search(r'Research Title[:\s]*\n?(.+)', raw)
+    if m_split and m_split.group(1).strip() and not re.search(
+        r'(Programme|Call|Reference|Lead Applicant|Host|Start Date)',
+        m_split.group(1), re.IGNORECASE
+    ):
+        out["Application Title"] = m_split.group(1).strip() + ' ' + m_split.group(2).strip()
+    elif m_split:
+        out["Application Title"] = m_split.group(2).strip()
+    elif m_inline:
+        out["Application Title"] = m_inline.group(1).strip()
 
-    # Contracting Organisation
-    m = re.search(r'Host organisation[^\n]*\n([^\n]+)', raw)
-    if m:
-        candidate = m.group(1).strip()
-        if candidate and not re.match(r'^[Pp]artner|^applicable', candidate):
-            out["Contracting Organisation"] = candidate
+    # Contracting Organisation — value may be inline ("Host organisation NHS Trust")
+    # or on the next line (Stage 2 two-column layout)
+    m_inline = re.search(r'Host organisation\s+([^\n]+)', raw)
+    m_nextln = re.search(r'Host organisation[^\n]*\n([^\n]+)', raw)
+    for m, grp in [(m_inline, 1), (m_nextln, 1)]:
+        if m:
+            candidate = m.group(grp).strip()
+            if candidate and not re.match(r'^[Pp]artner|^applicable|^\d', candidate):
+                out["Contracting Organisation"] = candidate
+                break
 
     # Start Date
     m = re.search(r'Start Date[:\s]*\n?([0-9]{2}/[0-9]{2}/[0-9]{4})', raw)
@@ -356,13 +378,15 @@ def parse_summary_information(pdf_path: str) -> dict:
     if m:
         out["End Date"] = m.group(1)
 
-    # Duration (months) — from "Grant Duration" field
-    m = re.search(r'(?:Grant\s+)?Duration[^\n]*\n?(\d+)\s*(?:months?)?', raw, re.IGNORECASE)
+    # Duration (months) — use non-greedy match to get the first integer on the line
+    m = re.search(r'(?:Grant\s+)?Duration[^\n]*?(\d+)\s*(?:months?)?(?:\s|$|\n)', raw, re.IGNORECASE)
     if m:
         out["Duration (months)"] = m.group(1)
 
-    # Total Cost to NIHR — from "Research Costs" field
-    m = re.search(r'(?:Research\s+)?Costs?[^\n]*\n?([\£\$]?[\d,]+(?:\.\d{2})?)', raw, re.IGNORECASE)
+    # Total Cost to NIHR — match £/$ amount on the same line (non-greedy to avoid backtrack truncation)
+    m = re.search(r'(?:Estimated\s+)?(?:Research\s+)?Costs?[^\n]*?([\£\$][\d,]+\.\d{2})', raw, re.IGNORECASE)
+    if not m:
+        m = re.search(r'(?:Estimated\s+)?(?:Research\s+)?Costs?[^\n]*?([\d,]+\.\d{2})', raw, re.IGNORECASE)
     if m:
         out["Total Cost to NIHR"] = m.group(1).strip()
 
@@ -536,7 +560,7 @@ def parse_application_details(lines: List[Line]) -> dict:
     if changes_lines:
         out["Changes from Previous Stage"] = parse_text_section(changes_lines)
 
-    plan_lines = slice_section(lines, SECTION_PLAN)
+    plan_lines = slice_section(lines, SECTION_PLAN) or slice_section(lines, SECTION_PLAN_S1)
     if plan_lines:
         out["Detailed Research Plan"] = parse_text_section(plan_lines)
 

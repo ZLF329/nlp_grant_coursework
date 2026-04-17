@@ -527,15 +527,21 @@ def extract_all_sections(input_path: str) -> dict:
 
     # ── Stage 3: structured extraction via LLM (both branches) ───────────────
     print(f"[llm_fallback_parser] sending {len(text):,} chars to {OLLAMA_MODEL} …")
+    result = {}
     try:
         result = _structure_with_llm(text)
     except Exception as e:
         print(f"[llm_fallback_parser] LLM structuring failed: {e}")
-        return {}
 
     if result:
         result.setdefault("doc_type", "llm_fallback")
         print("[llm_fallback_parser] ✓ extraction complete")
+    elif ext not in (".docx", ".doc") and text.strip():
+        print("[llm_fallback_parser] ✗ LLM returned empty/invalid result — using raw text fallback")
+        result = {
+            "doc_type": "llm_fallback",
+            "APPLICATION DETAILS": {"Raw Content": text},
+        }
     else:
         print("[llm_fallback_parser] ✗ LLM returned empty result")
 
