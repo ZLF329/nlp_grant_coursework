@@ -1687,11 +1687,9 @@
       const top = [...(section.criteria || [])].sort((a,b)=> b.score - a.score);
       const low = [...(section.criteria || [])].sort((a,b)=> a.score - b.score);
       const strong = [];
-      strong.push(`${section.name} scores ${fmtScore(o.finalScore)} / 100. Signal average is ${round1(o.avgSignalScore || 0)} on the 0–5 scale.`);
       strong.push(`This section contains ${o.totalItems} sub-criteria and ${o.signalCount} signals.`);
       if (top[0]) strong.push(`Top sub-criterion: "${top[0].name}" scored ${fmtScore(top[0].score)} / 10.`);
       const risks = [];
-      if ((o.avgSignalScore || 0) < 2.5) risks.push(`Average signal score is only ${round1(o.avgSignalScore || 0)} / 5.`);
       if (low[0]) risks.push(`Lowest-scoring sub-criterion is "${low[0].name}" at ${fmtScore(low[0].score)} / 10.`);
       if (!section.criteria.length) risks.push('No scored sub-criteria were detected for this module.');
       return { strong, risks };
@@ -1710,8 +1708,6 @@
         return { name, delta: scoreDelta(b.score, a.score), before: b, after: a };
       }).sort((a,b) => Math.abs(b.delta) - Math.abs(a.delta));
       const strong = [];
-      strong.push(`Section score moved from ${fmtScore(before.overall.finalScore)} to ${fmtScore(after.overall.finalScore)} (${fmtDelta(delta)}).`);
-      strong.push(`Signal average moved ${round1(before.overall.avgSignalScore || 0)} → ${round1(after.overall.avgSignalScore || 0)} on the 0–5 scale.`);
       if (movements[0]) strong.push(`Largest sub-criterion movement: "${movements[0].name}" (${fmtDelta(movements[0].delta, '/10')}).`);
       const risks = [];
       const negatives = movements.filter(m => m.delta < 0);
@@ -1866,7 +1862,8 @@
         ? `${pair.name} comparison by section and sub-criterion score.`
         : `${pair.name} with sub-criterion scores and rationale.`;
       document.getElementById('beforeScore').textContent = fmtScore(beforeScore);
-      document.getElementById('afterScore').textContent = fmtScore(afterScore);
+      document.getElementById('afterScore').textContent = mode === 'compare' ? fmtScore(afterScore) : '';
+      document.getElementById('afterScore').style.display = mode === 'compare' ? '' : 'none';
       document.getElementById('heroArrow').style.visibility = mode === 'compare' ? 'visible' : 'hidden';
       document.getElementById('heroDelta').className = mode === 'compare' ? pillClassFromDelta(delta) : 'status-pill status-neutral';
       document.getElementById('heroDelta').textContent = mode === 'compare' ? fmtDelta(delta) : `${pair.before.overall.totalItems || 0} items`;
@@ -1875,12 +1872,19 @@
         : `Signal average is ${round1(pair.before.overall.avgSignalScore || 0)} on the 0-5 scale.`;
       document.getElementById('legendBeforeLabel').textContent = beforeLabel;
       document.getElementById('legendAfterLabel').textContent = mode === 'compare' ? afterLabel : 'Selected review';
+      document.getElementById('legendAfterLabel').closest('.legend-item').style.display = mode === 'compare' ? '' : 'none';
       document.getElementById('beforeBarTitle').textContent = mode === 'compare' ? 'Review A score' : 'Section score';
-      document.getElementById('afterBarTitle').textContent = mode === 'compare' ? 'Review B score' : 'Section score';
       document.getElementById('beforeChartLabel').textContent = `${fmtScore(beforeScore)} / 100`;
-      document.getElementById('afterChartLabel').textContent = `${fmtScore(afterScore)} / 100`;
       document.getElementById('beforeBar').style.width = `${clamp(beforeScore,0,100)}%`;
-      document.getElementById('afterBar').style.width = `${clamp(afterScore,0,100)}%`;
+      const _afterBarWrap = document.getElementById('afterBarTitle').closest('div').parentElement;
+      if (mode === 'compare') {
+        _afterBarWrap.style.display = '';
+        document.getElementById('afterBarTitle').textContent = 'Review B score';
+        document.getElementById('afterChartLabel').textContent = `${fmtScore(afterScore)} / 100`;
+        document.getElementById('afterBar').style.width = `${clamp(afterScore,0,100)}%`;
+      } else {
+        _afterBarWrap.style.display = 'none';
+      }
     }
 
     function renderMetrics() {
@@ -1990,16 +1994,24 @@
       const criterion = criterionPair.after;
       const poolLookup = getPrimaryReview()?.poolLookup || {};
       const evidenceTexts = [];
+      const _promptPrefixes = [
+        'Plain English Summary NLP analysis derived from parser output',
+        'Application form structural analysis derived from parser output'
+      ];
+      function _isPromptChunk(txt) {
+        const t = (txt || '').trim();
+        return _promptPrefixes.some(p => t.startsWith(p));
+      }
       if (criterion.evidence && criterion.evidence.length > 0) {
-        criterion.evidence.forEach(ev => { if (ev.text) evidenceTexts.push({ text: ev.text, source: ev.section || ev.sourcePath || '' }); });
+        criterion.evidence.forEach(ev => { if (ev.text && !_isPromptChunk(ev.text)) evidenceTexts.push({ text: ev.text, source: ev.section || ev.sourcePath || '' }); });
       } else if (criterion.evidenceTop5 && criterion.evidenceTop5.length > 0) {
-        criterion.evidenceTop5.forEach(t => { if (t) evidenceTexts.push({ text: t, source: '' }); });
+        criterion.evidenceTop5.forEach(t => { if (t && !_isPromptChunk(t)) evidenceTexts.push({ text: t, source: '' }); });
       } else if (criterion.evidenceIds && criterion.evidenceIds.length > 0) {
         criterion.evidenceIds.forEach(id => {
           const chunk = poolLookup[id];
           if (chunk) {
             const txt = typeof chunk === 'string' ? chunk : (chunk.text || chunk.content || '');
-            if (txt) evidenceTexts.push({ text: txt, source: chunk.section || '' });
+            if (txt && !_isPromptChunk(txt)) evidenceTexts.push({ text: txt, source: chunk.section || '' });
           }
         });
       }
@@ -2012,6 +2024,7 @@
             return `<div class="evidence-chunk">
               <p>"${escapeHtml(truncated)}"</p>
               ${source ? `<p class="ev-source">${escapeHtml(source)}</p>` : ''}
+              <p class="ev-source" style="color:var(--brand);font-weight:600;">Sub-criterion: ${escapeHtml(criterionPair.name)}</p>
             </div>`;
           }).join('');
         } else {
