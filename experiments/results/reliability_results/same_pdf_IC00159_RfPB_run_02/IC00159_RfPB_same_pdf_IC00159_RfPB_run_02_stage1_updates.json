@@ -1,0 +1,923 @@
+[
+  {
+    "section_name": "Scientific Abstract",
+    "findings": [
+      {
+        "sub_id": "pr.2",
+        "good_evidence_ids": [
+          "secsa__001_a"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Cites references (1-4) to establish prevalence and treatment gaps, supporting evidence review quality."
+      },
+      {
+        "sub_id": "pr.3",
+        "good_evidence_ids": [
+          "secsa__001_b",
+          "secsa__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Defines a feasibility study with 75 patients and specific follow-up, indicating appropriate scope and feasibility."
+      },
+      {
+        "sub_id": "pr.4",
+        "good_evidence_ids": [
+          "secsa__001_b",
+          "secsa__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Describes a single-blind RCT with 1:1:1 randomization and control arms, demonstrating methodological rigor."
+      },
+      {
+        "sub_id": "pr.5",
+        "good_evidence_ids": [
+          "secsa__001_a",
+          "secsa__001_b"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Highlights impact on quality of life and aims to inform future trials, supporting potential patient impact."
+      },
+      {
+        "sub_id": "pr.9",
+        "good_evidence_ids": [
+          "secsa__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Specifies inclusion criteria for adults with VLS-related structural changes, addressing participant selection."
+      }
+    ],
+    "resolved_signals": [
+      "pr.2",
+      "pr.3",
+      "pr.4",
+      "pr.5",
+      "pr.9"
+    ],
+    "missing_signals_after": [
+      "g.1",
+      "g.2",
+      "g.3",
+      "g.4",
+      "g.5",
+      "g.6",
+      "pr.1",
+      "pr.6",
+      "pr.7",
+      "pr.8",
+      "td.1",
+      "td.2",
+      "td.3",
+      "ss.1",
+      "ss.2",
+      "ss.3",
+      "ss.4",
+      "wp.1",
+      "wp.2",
+      "wp.3",
+      "wp.4",
+      "wp.5",
+      "wp.6"
+    ]
+  },
+  {
+    "section_name": "Plain English Summary of Research",
+    "findings": [
+      {
+        "sub_id": "pr.1",
+        "good_evidence_ids": [
+          "secpesor__001_a",
+          "secpesor__001_b",
+          "secpesor__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Clearly defines the problem, aims, methods, and dissemination in accessible language, supporting pr.1."
+      },
+      {
+        "sub_id": "pr.3",
+        "good_evidence_ids": [
+          "secpesor__001_b"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Specifies a feasibility study with 75 patients and 6-month follow-up, confirming appropriate scope."
+      },
+      {
+        "sub_id": "pr.4",
+        "good_evidence_ids": [
+          "secpesor__001_b"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Describes random allocation into three groups and specific outcome measures, supporting methodological rigor."
+      },
+      {
+        "sub_id": "pr.5",
+        "good_evidence_ids": [
+          "secpesor__001_a",
+          "secpesor__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Highlights potential to reduce scarring and improve symptoms, with plans to share results via patient groups."
+      },
+      {
+        "sub_id": "pr.6",
+        "good_evidence_ids": [
+          "secpesor__001_b"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Details patient representative involvement in design and an advisory group for ongoing input."
+      },
+      {
+        "sub_id": "wp.1",
+        "good_evidence_ids": [
+          "secpesor__001_b"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Mentions a patient representative contributing to study design and an online survey to shape the study."
+      },
+      {
+        "sub_id": "wp.3",
+        "good_evidence_ids": [
+          "secpesor__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Outlines dissemination via online platforms, patient support groups, and social media to maximize benefit."
+      }
+    ],
+    "resolved_signals": [
+      "pr.1",
+      "pr.3",
+      "pr.4",
+      "pr.5",
+      "pr.6",
+      "wp.1",
+      "wp.3"
+    ],
+    "missing_signals_after": [
+      "g.1",
+      "g.2",
+      "g.3",
+      "g.4",
+      "g.5",
+      "g.6",
+      "pr.7",
+      "pr.8",
+      "td.1",
+      "td.2",
+      "td.3",
+      "ss.1",
+      "ss.2",
+      "ss.3",
+      "ss.4",
+      "wp.2",
+      "wp.4",
+      "wp.5",
+      "wp.6"
+    ]
+  },
+  {
+    "section_name": "Changes from Previous Stage",
+    "findings": [
+      {
+        "sub_id": "pr.1",
+        "good_evidence_ids": [
+          "seccfps__001_p"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Changes from Previous Stage: Confirms PES was rewritten to remove jargon and explain vulvar fibrosis, with patient validation, strongly supporting pr.1."
+      },
+      {
+        "sub_id": "pr.3",
+        "good_evidence_ids": [
+          "seccfps__001_f",
+          "seccfps__001_q"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Changes from Previous Stage: Details recruitment targets, sample size (75), and traffic light progression criteria, confirming feasibility and scope alignment."
+      },
+      {
+        "sub_id": "pr.4",
+        "good_evidence_ids": [
+          "seccfps__001_h",
+          "seccfps__001_k",
+          "seccfps__001_l"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Changes from Previous Stage: Justifies efficacy outcomes and sham procedure considerations based on patient/clinician feedback, demonstrating methodological rigor."
+      },
+      {
+        "sub_id": "pr.6",
+        "good_evidence_ids": [
+          "seccfps__001_n",
+          "seccfps__001_o"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Changes from Previous Stage: Details expanded PPI involvement, increased FTE, and advisory group engagement, strongly supporting pr.6."
+      },
+      {
+        "sub_id": "pr.9",
+        "good_evidence_ids": [
+          "seccfps__001_g",
+          "seccfps__001_h"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Changes from Previous Stage: Describes travel reimbursement and assessment of travel impact to mitigate barriers, supporting inclusive design."
+      },
+      {
+        "sub_id": "wp.1",
+        "good_evidence_ids": [
+          "seccfps__001_i",
+          "seccfps__001_k",
+          "seccfps__001_n"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Changes from Previous Stage: Shows specific design changes (sham procedure assessment) driven by patient focus groups and surveys, supporting wp.1."
+      },
+      {
+        "sub_id": "wp.6",
+        "good_evidence_ids": [
+          "seccfps__001_n"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Changes from Previous Stage: Explicitly mentions budget additions for PPI compensation (£120/day) and travel costs, supporting wp.6."
+      }
+    ],
+    "resolved_signals": [
+      "pr.1",
+      "pr.3",
+      "pr.4",
+      "pr.6",
+      "pr.9",
+      "wp.1",
+      "wp.6"
+    ],
+    "missing_signals_after": [
+      "g.1",
+      "g.2",
+      "g.3",
+      "g.4",
+      "g.5",
+      "g.6",
+      "pr.7",
+      "pr.8",
+      "td.1",
+      "td.2",
+      "td.3",
+      "ss.1",
+      "ss.2",
+      "ss.3",
+      "ss.4",
+      "wp.2",
+      "wp.4",
+      "wp.5"
+    ]
+  },
+  {
+    "section_name": "Detailed Research Plan",
+    "findings": [
+      {
+        "sub_id": "g.3",
+        "good_evidence_ids": [
+          "secdrp__001_",
+          "secdrp__001_",
+          "secdrp__001_"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Describes team members' extensive experience in clinical trials, statistics, health economics, and psychology, demonstrating relevant research experience and training."
+      },
+      {
+        "sub_id": "g.4",
+        "good_evidence_ids": [
+          "secdrp__001_",
+          "secdrp__001_",
+          "secdrp__001_"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Lists high publication counts (300+, 20+), PhDs, and awards for team members, indicating impactful research outputs."
+      },
+      {
+        "sub_id": "g.5",
+        "good_evidence_ids": [
+          "secdrp__001_",
+          "secdrp__001_"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Highlights leadership roles (Chief Investigator, Trust Lead, Research Lead) and teaching responsibilities, supporting trajectory towards research leadership."
+      },
+      {
+        "sub_id": "g.6",
+        "good_evidence_ids": [
+          "secdrp__001_",
+          "secdrp__001_",
+          "secdrp__001_"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Team includes Consultant Dermatologists and Plastic Surgeons actively treating VLS, confirming commitment to practitioner-academic careers."
+      },
+      {
+        "sub_id": "pr.2",
+        "good_evidence_ids": [
+          "secdrp__001_d",
+          "secdrp__001_f",
+          "secdrp__001_g"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Conducts systematic reviews, identifies knowledge gaps (lack of RCTs comparing AFG/PRP), and cites specific studies, demonstrating high-quality evidence review."
+      },
+      {
+        "sub_id": "pr.3",
+        "good_evidence_ids": [
+          "secdrp__001_j",
+          "secdrp__001_l",
+          "secdrp__001_y"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Defines a feasibility trial with 75 patients, specific recruitment targets, and clear progression criteria, indicating appropriate scope and feasibility."
+      },
+      {
+        "sub_id": "pr.4",
+        "good_evidence_ids": [
+          "secdrp__001_k",
+          "secdrp__001_l",
+          "secdrp__001_s"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Specifies single-blind RCT design, randomization methods, control arms, sample size justification, and statistical analysis plans, showing methodological rigor."
+      },
+      {
+        "sub_id": "pr.5",
+        "good_evidence_ids": [
+          "secdrp__001_e",
+          "secdrp__001_}",
+          "secdrp__001_~"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Details potential to improve QoL, reduce scarring, and inform national guidelines, with clear pathways to health service impact."
+      },
+      {
+        "sub_id": "pr.6",
+        "good_evidence_ids": [
+          "secdrp__001_g",
+          "secdrp__001_h",
+          "secdrp__001_i"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Describes extensive PPI involvement including focus groups, surveys (809 patients), and a Patient Advisory Group shaping trial design and outcomes."
+      },
+      {
+        "sub_id": "pr.8",
+        "good_evidence_ids": [
+          "secdrp__001_g",
+          "secdrp__001_f"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Cites prior pilot studies (retrospective n=59, prospective n=33) and systematic reviews conducted by the team, demonstrating quality of previous research."
+      },
+      {
+        "sub_id": "pr.9",
+        "good_evidence_ids": [
+          "secdrp__001_n",
+          "secdrp__001_o"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Explicitly references NIHR INCLUDE guidelines to ensure inclusion of underserved patients and plans to record diversity indicators."
+      },
+      {
+        "sub_id": "ss.1",
+        "good_evidence_ids": [
+          "secdrp__001_",
+          "secdrp__001_",
+          "secdrp__001_"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Highlights Royal Free and UCL CTU's track record with numerous publications, awards, and prior successful trials in relevant fields."
+      },
+      {
+        "sub_id": "ss.2",
+        "good_evidence_ids": [
+          "secdrp__001_",
+          "secdrp__001_"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Describes a structured management framework with a Chief Investigator, Trial Management Group, and independent Trial Steering Committee."
+      },
+      {
+        "sub_id": "ss.3",
+        "good_evidence_ids": [
+          "secdrp__001_",
+          "secdrp__001_"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Confirms support from Royal Free (sponsor) and UCL CTU (statistician, health economist, database manager), providing necessary infrastructure."
+      },
+      {
+        "sub_id": "wp.1",
+        "good_evidence_ids": [
+          "secdrp__001_h",
+          "secdrp__001_i"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Details specific design changes (e.g., sham procedure assessment, outcome measures) driven by patient focus groups and surveys."
+      },
+      {
+        "sub_id": "wp.3",
+        "good_evidence_ids": [
+          "secdrp__001_|",
+          "secdrp__001_"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Outlines comprehensive dissemination plans including patient forums, social media, infographics, and direct feedback to participants."
+      },
+      {
+        "sub_id": "wp.4",
+        "good_evidence_ids": [
+          "secdrp__001_n",
+          "secdrp__001_o"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Explicitly plans to record age, ethnicity, and other indicators of underserved patients to ensure representation."
+      },
+      {
+        "sub_id": "wp.5",
+        "good_evidence_ids": [
+          "secdrp__001_g",
+          "secdrp__001_i",
+          "secdrp__001_"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Demonstrates inclusivity across the lifecycle from design (PPI focus groups) to dissemination (patient-friendly summaries)."
+      },
+      {
+        "sub_id": "wp.6",
+        "good_evidence_ids": [
+          "secdrp__001_q",
+          "secdrp__001_"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Mentions travel reimbursement for patients and dedicated staff time for PPI engagement, indicating resourced inclusion plans."
+      }
+    ],
+    "resolved_signals": [
+      "g.3",
+      "g.4",
+      "g.5",
+      "g.6",
+      "pr.2",
+      "pr.3",
+      "pr.4",
+      "pr.5",
+      "pr.6",
+      "pr.8",
+      "pr.9",
+      "ss.1",
+      "ss.2",
+      "ss.3",
+      "wp.1",
+      "wp.3",
+      "wp.4",
+      "wp.5",
+      "wp.6"
+    ],
+    "missing_signals_after": [
+      "g.1",
+      "g.2",
+      "pr.7",
+      "td.1",
+      "td.2",
+      "td.3",
+      "ss.4",
+      "wp.2"
+    ]
+  },
+  {
+    "section_name": "Patient & Public Involvement",
+    "findings": [
+      {
+        "sub_id": "wp.1",
+        "good_evidence_ids": [
+          "secppi__001_a",
+          "secppi__001_b",
+          "secppi__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Patient & Public Involvement: Details co-production with VLS patients, PAG involvement in design changes (sham procedure, outcome measures), and review of consent forms, strongly supporting integration of lived experienc"
+      },
+      {
+        "sub_id": "wp.3",
+        "good_evidence_ids": [
+          "secppi__001_b",
+          "secppi__001_c",
+          "secppi__001_d"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Patient & Public Involvement: Outlines plans to disseminate results via patient groups, social media, and educational materials co-produced with patients, maximizing public benefit."
+      },
+      {
+        "sub_id": "wp.5",
+        "good_evidence_ids": [
+          "secppi__001_a",
+          "secppi__001_b",
+          "secppi__001_d"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Patient & Public Involvement: Describes PPI engagement across the full lifecycle from design phase interviews to ongoing feedback loops during follow-up and dissemination planning."
+      },
+      {
+        "sub_id": "wp.6",
+        "good_evidence_ids": [
+          "secppi__001_a",
+          "secppi__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Patient & Public Involvement: Explicitly states reimbursement rates (£120/day) and travel costs for PPI members, confirming a costed and resourced plan for inclusion."
+      },
+      {
+        "sub_id": "pr.6",
+        "good_evidence_ids": [
+          "secppi__001_a",
+          "secppi__001_b",
+          "secppi__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Patient & Public Involvement: Describes active involvement of a patient co-applicant and PAG in shaping trial design, recruitment, and retention strategies, supporting engagement with people and communities."
+      }
+    ],
+    "resolved_signals": [
+      "wp.1",
+      "wp.3",
+      "wp.5",
+      "wp.6",
+      "pr.6"
+    ],
+    "missing_signals_after": [
+      "g.1",
+      "g.2",
+      "pr.7",
+      "td.1",
+      "td.2",
+      "td.3",
+      "ss.4",
+      "wp.2"
+    ]
+  },
+  {
+    "section_name": "Applicant CV",
+    "findings": [
+      {
+        "sub_id": "g.3",
+        "good_evidence_ids": [
+          "secac__001_a",
+          "secac__001_b",
+          "secac__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Applicant CV: Lists extensive medical qualifications (MD, FRCS) and publications on stem cells and lipotransfer, confirming relevant research experience and training."
+      },
+      {
+        "sub_id": "g.4",
+        "good_evidence_ids": [
+          "secac__001_b",
+          "secac__001_c",
+          "secac__001_d"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Applicant CV: Details multiple peer-reviewed publications and significant grants (e.g., £3M Capital Funding), demonstrating impactful research outputs and funding success."
+      },
+      {
+        "sub_id": "g.5",
+        "good_evidence_ids": [
+          "secac__001_a",
+          "secac__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Applicant CV: Holds the position of Director and serves as Primary Investigator or Lead on multiple grants, indicating increasing responsibility and research leadership."
+      },
+      {
+        "sub_id": "g.6",
+        "good_evidence_ids": [
+          "secac__001_a",
+          "secac__001_b"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Applicant CV: Applicant is a Consultant Surgeon with clinical qualifications and publications on clinical treatments (e.g., vulvar lichen sclerosus), confirming a practitioner-academic career."
+      },
+      {
+        "sub_id": "pr.8",
+        "good_evidence_ids": [
+          "secac__001_b",
+          "secac__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Applicant CV: Publications and grants directly address adipose-derived stem cells and lipotransfer, aligning with the proposed research topic and demonstrating prior quality."
+      }
+    ],
+    "resolved_signals": [
+      "g.3",
+      "g.4",
+      "g.5",
+      "g.6",
+      "pr.8"
+    ],
+    "missing_signals_after": [
+      "g.1",
+      "g.2",
+      "pr.7",
+      "td.1",
+      "td.2",
+      "td.3",
+      "ss.4",
+      "wp.2"
+    ]
+  },
+  {
+    "section_name": "SUMMARY BUDGET",
+    "findings": [
+      {
+        "sub_id": "pr.7",
+        "good_evidence_ids": [
+          "secsb__001_o",
+          "secsb__001_p",
+          "secsb__001_q"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "SUMMARY BUDGET: Provides explicit justifications for monitoring visits, conferences, patient reimbursement, and staff FTE, linking costs directly to project tasks and needs."
+      },
+      {
+        "sub_id": "wp.6",
+        "good_evidence_ids": [
+          "secsb__001_l",
+          "secsb__001_m",
+          "secsb__001_p"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "SUMMARY BUDGET: Includes specific budget lines for PPI representative reimbursement, patient focus groups, and travel, confirming a costed plan for research inclusion."
+      },
+      {
+        "sub_id": "g.6",
+        "good_evidence_ids": [
+          "secsb__001_a",
+          "secsb__001_b",
+          "secsb__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "SUMMARY BUDGET: Lists staff roles including 'NIHR Academic Clinical Fellow', 'Consultant Plastic Surgeon', and 'Consultant Dermatologist', confirming a practitioner-academic team structure."
+      }
+    ],
+    "resolved_signals": [
+      "pr.7",
+      "wp.6",
+      "g.6"
+    ],
+    "missing_signals_after": [
+      "g.1",
+      "g.2",
+      "td.1",
+      "td.2",
+      "td.3",
+      "ss.4",
+      "wp.2"
+    ]
+  },
+  {
+    "section_name": "Application Context",
+    "findings": [],
+    "resolved_signals": [],
+    "missing_signals_after": [
+      "g.1",
+      "g.2",
+      "td.1",
+      "td.2",
+      "td.3",
+      "ss.4",
+      "wp.2"
+    ]
+  },
+  {
+    "section_name": "Plain English NLP Analysis",
+    "findings": [
+      {
+        "sub_id": "pr.1",
+        "good_evidence_ids": [
+          "secpena__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English NLP Analysis: Coverage hits confirm the presence of problem, objectives, methods, beneficiaries, and impact, directly supporting content completeness requirements."
+      }
+    ],
+    "resolved_signals": [
+      "pr.1"
+    ],
+    "missing_signals_after": [
+      "g.1",
+      "g.2",
+      "td.1",
+      "td.2",
+      "td.3",
+      "ss.4",
+      "wp.2"
+    ]
+  },
+  {
+    "section_name": "Application Form Analysis",
+    "findings": [
+      {
+        "sub_id": "pr.1",
+        "good_evidence_ids": [
+          "secafa__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Form Analysis: Confirms presence of 'Plain English Summary of Research' and 'Plain English NLP Analysis' sections, indicating structural compliance with pr.1 requirements."
+      },
+      {
+        "sub_id": "pr.6",
+        "good_evidence_ids": [
+          "secafa__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Form Analysis: Identifies a dedicated 'Patient & Public Involvement' section (749 words), confirming structural evidence for pr.6."
+      },
+      {
+        "sub_id": "pr.7",
+        "good_evidence_ids": [
+          "secafa__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Form Analysis: Detects 'SUMMARY BUDGET' section with 316 table-like lines, indicating detailed resource justification structure for pr.7."
+      },
+      {
+        "sub_id": "g.3",
+        "good_evidence_ids": [
+          "secafa__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Form Analysis: Lists 'Applicant CV' section (564 words), providing the structural container for evidence of relevant research experience and training (g.3)."
+      },
+      {
+        "sub_id": "g.4",
+        "good_evidence_ids": [
+          "secafa__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Form Analysis: Presence of 'Applicant CV' section indicates where impactful research outputs and outcomes (g.4) are documented."
+      },
+      {
+        "sub_id": "g.5",
+        "good_evidence_ids": [
+          "secafa__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Form Analysis: 'Applicant CV' section is present, serving as the primary source for trajectory towards research leadership (g.5)."
+      },
+      {
+        "sub_id": "g.6",
+        "good_evidence_ids": [
+          "secafa__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Form Analysis: 'Applicant CV' section available to assess commitment to practitioner-academic career (g.6)."
+      },
+      {
+        "sub_id": "pr.2",
+        "good_evidence_ids": [
+          "secafa__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Form Analysis: 'Detailed Research Plan' (7413 words) and 'Scientific Abstract' sections are present, providing the structural basis for evidence review quality (pr.2)."
+      },
+      {
+        "sub_id": "pr.3",
+        "good_evidence_ids": [
+          "secafa__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Form Analysis: 'Detailed Research Plan' section exists, containing the scope and feasibility details required for pr.3."
+      },
+      {
+        "sub_id": "pr.4",
+        "good_evidence_ids": [
+          "secafa__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Form Analysis: 'Detailed Research Plan' section is present, indicating where research design and methodological rigor (pr.4) are described."
+      },
+      {
+        "sub_id": "pr.5",
+        "good_evidence_ids": [
+          "secafa__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Form Analysis: 'Detailed Research Plan' and 'Plain English Summary' sections are present, providing the location for impact statements (pr.5)."
+      },
+      {
+        "sub_id": "pr.8",
+        "good_evidence_ids": [
+          "secafa__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Form Analysis: 'Applicant CV' and 'Detailed Research Plan' sections are present, containing evidence of previous research quality (pr.8)."
+      },
+      {
+        "sub_id": "pr.9",
+        "good_evidence_ids": [
+          "secafa__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Form Analysis: 'Detailed Research Plan' section is present, indicating where inclusive research design (pr.9) is addressed."
+      },
+      {
+        "sub_id": "ss.1",
+        "good_evidence_ids": [
+          "secafa__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Form Analysis: 'Detailed Research Plan' section is present, typically containing track record of contracting organisation (ss.1)."
+      },
+      {
+        "sub_id": "ss.2",
+        "good_evidence_ids": [
+          "secafa__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Form Analysis: 'Detailed Research Plan' section is present, indicating where supervisory support and mentorship (ss.2) are described."
+      },
+      {
+        "sub_id": "ss.3",
+        "good_evidence_ids": [
+          "secafa__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Form Analysis: 'Detailed Research Plan' section is present, indicating where organisational appropriateness (ss.3) is described."
+      },
+      {
+        "sub_id": "wp.1",
+        "good_evidence_ids": [
+          "secafa__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Form Analysis: 'Patient & Public Involvement' section is present, providing the structural basis for integration of lived experience (wp.1)."
+      },
+      {
+        "sub_id": "wp.3",
+        "good_evidence_ids": [
+          "secafa__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Form Analysis: 'Patient & Public Involvement' and 'Detailed Research Plan' sections are present, indicating where public benefit plans (wp.3) are located."
+      },
+      {
+        "sub_id": "wp.4",
+        "good_evidence_ids": [
+          "secafa__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Form Analysis: 'Detailed Research Plan' section is present, indicating where representation of seldom heard groups (wp.4) is addressed."
+      },
+      {
+        "sub_id": "wp.5",
+        "good_evidence_ids": [
+          "secafa__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Form Analysis: 'Patient & Public Involvement' and 'Detailed Research Plan' sections are present, indicating where inclusivity across the lifecycle (wp.5) is described."
+      },
+      {
+        "sub_id": "wp.6",
+        "good_evidence_ids": [
+          "secafa__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Form Analysis: 'SUMMARY BUDGET' and 'Patient & Public Involvement' sections are present, indicating where costed inclusion plans (wp.6) are located."
+      }
+    ],
+    "resolved_signals": [
+      "pr.1",
+      "pr.6",
+      "pr.7",
+      "g.3",
+      "g.4",
+      "g.5",
+      "g.6",
+      "pr.2",
+      "pr.3",
+      "pr.4",
+      "pr.5",
+      "pr.8",
+      "pr.9",
+      "ss.1",
+      "ss.2",
+      "ss.3",
+      "wp.1",
+      "wp.3",
+      "wp.4",
+      "wp.5",
+      "wp.6"
+    ],
+    "missing_signals_after": [
+      "g.1",
+      "g.2",
+      "td.1",
+      "td.2",
+      "td.3",
+      "ss.4",
+      "wp.2"
+    ]
+  }
+]

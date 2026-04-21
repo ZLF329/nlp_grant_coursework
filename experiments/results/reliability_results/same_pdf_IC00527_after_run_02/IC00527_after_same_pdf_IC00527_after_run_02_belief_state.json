@@ -1,0 +1,323 @@
+{
+  "processed_sections": [
+    "Scientific Abstract",
+    "Plain English Summary of Research",
+    "Patient & Public Involvement",
+    "SUMMARY BUDGET",
+    "Application Context",
+    "Plain English NLP Analysis",
+    "Application Form Analysis"
+  ],
+  "subcriteria_beliefs": {
+    "pr.1": {
+      "good_evidence_ids": [
+        "secsa__001_a",
+        "secsa__001_b",
+        "secsa__001_c",
+        "secpesor__001_a",
+        "secpesor__001_b",
+        "secpesor__001_c",
+        "secpena__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Scientific Abstract: Contains clear problem statement, objectives, methods, and impact, meeting pr.1 criteria for a comprehensive summary.",
+        "Plain English Summary of Research: Clearly articulates the problem, aim, methods, and impact in accessible language, fully supporting pr.1.",
+        "Plain English NLP Analysis: Lexical overlap with detailed plan is 0.0, challenging pr.1 alignment; requires manual verification of semantic consistency."
+      ]
+    },
+    "pr.2": {
+      "good_evidence_ids": [
+        "secsa__001_a",
+        "secpesor__001_a"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Scientific Abstract: Identifies knowledge gaps regarding inequitable access and lack of predictive tools, supporting pr.2.",
+        "Plain English Summary of Research: Identifies a specific knowledge gap regarding the lack of reliable tools to predict severe psoriasis, supporting pr.2."
+      ]
+    },
+    "pr.3": {
+      "good_evidence_ids": [
+        "secsa__001_b",
+        "secsa__001_c",
+        "secpesor__001_b"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Scientific Abstract: Outlines three distinct studies with specific timelines (0-36 months), indicating feasible scope for pr.3.",
+        "Plain English Summary of Research: Outlines a feasible three-stage approach (recruitment, modelling, feedback) appropriate for the award scope, supporting pr.3."
+      ]
+    },
+    "pr.4": {
+      "good_evidence_ids": [
+        "secsa__001_b",
+        "secsa__001_c",
+        "secpesor__001_b"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Scientific Abstract: Describes specific methods including cross-sectional validation, machine learning, and qualitative focus groups, supporting pr.4.",
+        "Plain English Summary of Research: Describes specific methods including self-assessment, specialist validation, mathematical modelling, and group discussions, supporting pr.4."
+      ]
+    },
+    "pr.5": {
+      "good_evidence_ids": [
+        "secsa__001_a",
+        "secsa__001_c",
+        "secpesor__001_a",
+        "secpesor__001_c"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Scientific Abstract: Explicitly links outcomes to improved patient autonomy, equitable access, and alignment with NHS Long Term Plan, supporting pr.5.",
+        "Plain English Summary of Research: Explicitly links the project to equal access to care, improved outcomes, and tailored healthcare, strongly supporting pr.5."
+      ]
+    },
+    "pr.6": {
+      "good_evidence_ids": [
+        "secsa__001_a",
+        "secsa__001_b",
+        "secsa__001_c",
+        "secpesor__001_b",
+        "secpesor__001_c",
+        "secppi__001_a",
+        "secppi__001_b",
+        "secppi__001_c"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Scientific Abstract: States proposal was shaped by patients/carers and includes focus groups, demonstrating engagement per pr.6.",
+        "Plain English Summary of Research: Details co-design with patients, 6-monthly advisory meetings, and involvement in planning/analysis, supporting pr.6.",
+        "Patient & Public Involvement: Details co-design across all stages, a formal PLAG, and specific engagement activities (webinar, survey, focus groups), strongly supporting pr.6."
+      ]
+    },
+    "pr.9": {
+      "good_evidence_ids": [
+        "secsa__001_b",
+        "secsa__001_c",
+        "secpesor__001_b",
+        "secpesor__001_c",
+        "secppi__001_a",
+        "secppi__001_b",
+        "secppi__001_c",
+        "secsb__001_c",
+        "secsb__001_e"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Scientific Abstract: Mentions ensuring inclusive research for diverse communities and external validation in diverse datasets, supporting pr.9.",
+        "Plain English Summary of Research: Emphasizes recruiting diverse populations and ensuring research is inclusive of diverse communities, supporting pr.9.",
+        "Patient & Public Involvement: Explicitly targets diversity in age, sex, ethnicity, and location; includes strategies to reduce digital exclusion and ensure generalisability, supporting pr.9.",
+        "SUMMARY BUDGET: Budgets for diverse ancestry datasets (Our Future Health, East London Genes & Health), supporting inclusive research design, supporting pr.9."
+      ]
+    },
+    "wp.1": {
+      "good_evidence_ids": [
+        "secsa__001_b",
+        "secsa__001_c",
+        "secpesor__001_a",
+        "secpesor__001_c",
+        "secppi__001_a",
+        "secppi__001_b",
+        "secppi__001_c"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Scientific Abstract: Highlights that the proposal was shaped by people with psoriasis and involves them in focus groups, supporting wp.1.",
+        "Plain English Summary of Research: States the project addresses priorities highlighted by people with psoriasis and they have directly shaped the project, supporting wp.1.",
+        "Patient & Public Involvement: Demonstrates integration of lived experience by shaping research questions, digital tool design, and communication strategies based on patient feedback, supporting wp.1."
+      ]
+    },
+    "wp.3": {
+      "good_evidence_ids": [
+        "secsa__001_c",
+        "secpesor__001_c",
+        "secppi__001_c"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Scientific Abstract: Details dissemination via open-access journals, conferences, and Plain English Summaries, supporting wp.3.",
+        "Plain English Summary of Research: Plans to share findings in journals, conferences, and create accessible materials for the public, supporting wp.3.",
+        "Patient & Public Involvement: Plans for PPI contributors to co-develop Plain English summaries, co-author publications, and co-present at events, supporting wp.3."
+      ]
+    },
+    "wp.4": {
+      "good_evidence_ids": [
+        "secppi__001_a",
+        "secppi__001_c"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Patient & Public Involvement: Explicitly mentions recruiting diverse participants across age, ethnicity, and location, and using established networks to ensure representation, supporting wp.4."
+      ]
+    },
+    "wp.5": {
+      "good_evidence_ids": [
+        "secppi__001_a",
+        "secppi__001_b",
+        "secppi__001_c"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Patient & Public Involvement: Describes involvement across the lifecycle from co-design and recruitment to data interpretation and dissemination, supporting wp.5."
+      ]
+    },
+    "wp.6": {
+      "good_evidence_ids": [
+        "secppi__001_b",
+        "secppi__001_c",
+        "secsb__001_c",
+        "secsb__001_d"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Patient & Public Involvement: Mentions reimbursement in line with NIHR guidance and formal training for contributors, indicating resourced support for inclusion, supporting wp.6.",
+        "SUMMARY BUDGET: Allocates specific funds for PLAG meetings, co-facilitation, and training, confirming a costed plan for inclusion, supporting wp.6."
+      ]
+    },
+    "pr.7": {
+      "good_evidence_ids": [
+        "secsb__001_a",
+        "secsb__001_b",
+        "secsb__001_c"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "SUMMARY BUDGET: Provides detailed cost breakdowns with explicit justifications for staff, equipment, training, and PPIE activities, directly supporting pr.7."
+      ]
+    },
+    "td.1": {
+      "good_evidence_ids": [
+        "secsb__001_b",
+        "secsb__001_c"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "SUMMARY BUDGET: Lists specific training courses (e.g., Epidemiology, R, Qualitative Methods) sequenced by year, supporting td.1."
+      ]
+    },
+    "td.2": {
+      "good_evidence_ids": [
+        "secsb__001_b",
+        "secsb__001_c"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "SUMMARY BUDGET: Maps training to project needs (e.g., statistical computing for modelling, qualitative methods for focus groups), supporting td.2."
+      ]
+    },
+    "td.3": {
+      "good_evidence_ids": [
+        "secsb__001_b",
+        "secsb__001_c"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "SUMMARY BUDGET: Includes leadership courses (King's Fund, Future Leaders Academy) and implementation science, indicating support for career aspirations, supporting td.3."
+      ]
+    },
+    "g.1": {
+      "good_evidence_ids": [
+        "secac__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Application Context: Describes a clear career trajectory from pre-doctoral to postdoctoral research via the NIHR Doctoral Fellowship, supported by a structured mentorship plan."
+      ]
+    },
+    "g.2": {
+      "good_evidence_ids": [
+        "secac__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Application Context: Explicitly states the award is the right next step to transition to postdoctoral research and gain specific skills in bioinformatics and prediction modelling."
+      ]
+    },
+    "g.3": {
+      "good_evidence_ids": [
+        "secac__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Application Context: Details prior experience in pre-doctoral fellowships, MRC-funded PhD, and NIHR Clinical Lectureship, aligning with the proposed project's needs."
+      ]
+    },
+    "g.4": {
+      "good_evidence_ids": [
+        "secac__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Application Context: Mentions prior awards (MRC-NIHR Clinical Academic Research Partnership, NIHR Advanced Fellowship) and leadership in national registries, indicating impactful outputs."
+      ]
+    },
+    "g.5": {
+      "good_evidence_ids": [
+        "secac__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Application Context: Highlights increasing responsibility through roles as Chief Investigator, Co-Director of registries, and Director of DermAcademy, showing leadership trajectory."
+      ]
+    },
+    "g.6": {
+      "good_evidence_ids": [
+        "secac__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Application Context: Applicant is medically qualified with a GMC registration and follows the NIHR Integrated Academic Training pathway, confirming practitioner-academic commitment."
+      ]
+    },
+    "ss.1": {
+      "good_evidence_ids": [
+        "secac__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Application Context: Supervisors have strong track records in psoriasis research, genetic epidemiology, and health data science, with extensive publications and leadership in national guidelines."
+      ]
+    },
+    "ss.2": {
+      "good_evidence_ids": [
+        "secac__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Application Context: Provides detailed descriptions of four supervisors and a mentor, including specific meeting frequencies (weekly, fortnightly, monthly) and tailored training plans."
+      ]
+    },
+    "ss.3": {
+      "good_evidence_ids": [
+        "secac__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Application Context: King's College London and Guy's and St Thomas' NHS Trust provide access to key datasets (HUNT, FinnGenn), clinical networks, and established research units."
+      ]
+    },
+    "ss.4": {
+      "good_evidence_ids": [
+        "secac__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Application Context: Mentions the Integrated Academic Training Programme and DermAcademy, indicating institutional support for academic development and inclusive training environments."
+      ]
+    },
+    "wp.2": {
+      "good_evidence_ids": [
+        "secac__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Application Context: The research team includes diverse expertise (dermatology, genetics, epidemiology, statistics) and gender balance (female lead applicant and supervisors), supporting team diversity."
+      ]
+    }
+  },
+  "missing_signals": [
+    "pr.8"
+  ]
+}

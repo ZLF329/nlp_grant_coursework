@@ -1,0 +1,539 @@
+[
+  {
+    "section_name": "Scientific Abstract",
+    "findings": [
+      {
+        "sub_id": "pr.1",
+        "good_evidence_ids": [
+          "secsa__001_a",
+          "secsa__001_b",
+          "secsa__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Contains clear problem statement, objectives, methods, and impact sections, supporting pr.1."
+      },
+      {
+        "sub_id": "pr.2",
+        "good_evidence_ids": [
+          "secsa__001_a"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Identifies knowledge gaps regarding inequitable access and need for predictive tools, supporting pr.2."
+      },
+      {
+        "sub_id": "pr.3",
+        "good_evidence_ids": [
+          "secsa__001_b",
+          "secsa__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Outlines three distinct studies with specific timelines (0-36 months), supporting pr.3."
+      },
+      {
+        "sub_id": "pr.4",
+        "good_evidence_ids": [
+          "secsa__001_b",
+          "secsa__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Describes cross-sectional validation, machine learning modeling, and qualitative focus groups, supporting pr.4."
+      },
+      {
+        "sub_id": "pr.5",
+        "good_evidence_ids": [
+          "secsa__001_a",
+          "secsa__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Highlights benefits like timely intervention, patient autonomy, and alignment with NHS Long Term Plan, supporting pr.5."
+      },
+      {
+        "sub_id": "pr.6",
+        "good_evidence_ids": [
+          "secsa__001_a",
+          "secsa__001_b",
+          "secsa__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: States proposal shaped by patients/carers and includes focus groups for communication, supporting pr.6."
+      },
+      {
+        "sub_id": "pr.9",
+        "good_evidence_ids": [
+          "secsa__001_b",
+          "secsa__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Mentions ensuring inclusive research for diverse communities and external validation in diverse datasets, supporting pr.9."
+      },
+      {
+        "sub_id": "wp.1",
+        "good_evidence_ids": [
+          "secsa__001_b",
+          "secsa__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Explicitly notes proposal shaped by people with psoriasis and carers, supporting wp.1."
+      },
+      {
+        "sub_id": "wp.3",
+        "good_evidence_ids": [
+          "secsa__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Details dissemination via open-access journals, conferences, and Plain English Summaries, supporting wp.3."
+      }
+    ],
+    "resolved_signals": [
+      "pr.1",
+      "pr.2",
+      "pr.3",
+      "pr.4",
+      "pr.5",
+      "pr.6",
+      "pr.9",
+      "wp.1",
+      "wp.3"
+    ],
+    "missing_signals_after": [
+      "g.1",
+      "g.2",
+      "g.3",
+      "g.4",
+      "g.5",
+      "g.6",
+      "pr.7",
+      "pr.8",
+      "td.1",
+      "td.2",
+      "td.3",
+      "ss.1",
+      "ss.2",
+      "ss.3",
+      "ss.4",
+      "wp.2",
+      "wp.4",
+      "wp.5",
+      "wp.6"
+    ]
+  },
+  {
+    "section_name": "Plain English Summary of Research",
+    "findings": [
+      {
+        "sub_id": "pr.1",
+        "good_evidence_ids": [
+          "secpesor__001_a",
+          "secpesor__001_b",
+          "secpesor__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Clearly structured with Background, Aim, Methods, and Impact sections using accessible language, supporting pr.1."
+      },
+      {
+        "sub_id": "pr.2",
+        "good_evidence_ids": [
+          "secpesor__001_a"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Identifies a specific knowledge gap regarding the lack of reliable tools to predict severe psoriasis, supporting pr.2."
+      },
+      {
+        "sub_id": "pr.3",
+        "good_evidence_ids": [
+          "secpesor__001_b"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Outlines a feasible three-stage approach (recruitment/validation, modeling, qualitative feedback) appropriate for the award scope, supporting pr.3."
+      },
+      {
+        "sub_id": "pr.4",
+        "good_evidence_ids": [
+          "secpesor__001_b"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Describes specific methods including self-assessment validation, mathematical modeling, and group discussions, supporting pr.4."
+      },
+      {
+        "sub_id": "pr.5",
+        "good_evidence_ids": [
+          "secpesor__001_a",
+          "secpesor__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Explicitly states impact on equal access to care, improved outcomes, and tailored healthcare, supporting pr.5."
+      },
+      {
+        "sub_id": "pr.6",
+        "good_evidence_ids": [
+          "secpesor__001_b",
+          "secpesor__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Details engagement through 6-monthly meetings, co-design of the app, and group discussions for feedback, supporting pr.6."
+      },
+      {
+        "sub_id": "pr.9",
+        "good_evidence_ids": [
+          "secpesor__001_b",
+          "secpesor__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Commits to recruiting diverse populations and ensuring research is inclusive of diverse communities, supporting pr.9."
+      },
+      {
+        "sub_id": "wp.1",
+        "good_evidence_ids": [
+          "secpesor__001_a",
+          "secpesor__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: States the project addresses priorities highlighted by people with psoriasis and they have directly shaped the project, supporting wp.1."
+      },
+      {
+        "sub_id": "wp.3",
+        "good_evidence_ids": [
+          "secpesor__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Plans to share findings in journals, conferences, and create easily understood materials for the public, supporting wp.3."
+      }
+    ],
+    "resolved_signals": [
+      "pr.1",
+      "pr.2",
+      "pr.3",
+      "pr.4",
+      "pr.5",
+      "pr.6",
+      "pr.9",
+      "wp.1",
+      "wp.3"
+    ],
+    "missing_signals_after": [
+      "g.1",
+      "g.2",
+      "g.3",
+      "g.4",
+      "g.5",
+      "g.6",
+      "pr.7",
+      "pr.8",
+      "td.1",
+      "td.2",
+      "td.3",
+      "ss.1",
+      "ss.2",
+      "ss.3",
+      "ss.4",
+      "wp.2",
+      "wp.4",
+      "wp.5",
+      "wp.6"
+    ]
+  },
+  {
+    "section_name": "Patient & Public Involvement",
+    "findings": [
+      {
+        "sub_id": "pr.6",
+        "good_evidence_ids": [
+          "secppi__001_a",
+          "secppi__001_b",
+          "secppi__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Patient & Public Involvement: Details co-design via webinars, surveys, and engagement groups, with PLAG involvement in recruitment, interpretation, and dissemination, strongly supporting pr.6."
+      },
+      {
+        "sub_id": "pr.9",
+        "good_evidence_ids": [
+          "secppi__001_a",
+          "secppi__001_b",
+          "secppi__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Patient & Public Involvement: Explicit strategies for diverse recruitment (age, sex, ethnicity) and mitigating digital exclusion via phone-in options, supporting pr.9."
+      },
+      {
+        "sub_id": "wp.1",
+        "good_evidence_ids": [
+          "secppi__001_a",
+          "secppi__001_b",
+          "secppi__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Patient & Public Involvement: Specific examples of design changes based on patient feedback (digital tool, genetic data inclusion, communication focus), strongly supporting wp.1."
+      },
+      {
+        "sub_id": "wp.3",
+        "good_evidence_ids": [
+          "secppi__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Patient & Public Involvement: Plans for PPI co-authorship, co-presentation, and Plain English summaries to maximize public benefit, supporting wp.3."
+      },
+      {
+        "sub_id": "wp.4",
+        "good_evidence_ids": [
+          "secppi__001_a",
+          "secppi__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Patient & Public Involvement: Mentions diversity in age, sex, ethnicity, and location in engagement and recruitment, with strategies to ensure diverse views, supporting wp.4."
+      },
+      {
+        "sub_id": "wp.5",
+        "good_evidence_ids": [
+          "secppi__001_a",
+          "secppi__001_b",
+          "secppi__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Patient & Public Involvement: Involvement spans all stages (co-development, recruitment, interpretation, dissemination) with training and inclusive meeting formats, supporting wp.5."
+      },
+      {
+        "sub_id": "wp.6",
+        "good_evidence_ids": [
+          "secppi__001_b",
+          "secppi__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Patient & Public Involvement: Mentions reimbursement in line with NIHR guidance and training provision, indicating resourcing for inclusion, supporting wp.6."
+      }
+    ],
+    "resolved_signals": [
+      "pr.6",
+      "pr.9",
+      "wp.1",
+      "wp.3",
+      "wp.4",
+      "wp.5",
+      "wp.6"
+    ],
+    "missing_signals_after": [
+      "g.1",
+      "g.2",
+      "g.3",
+      "g.4",
+      "g.5",
+      "g.6",
+      "pr.7",
+      "pr.8",
+      "td.1",
+      "td.2",
+      "td.3",
+      "ss.1",
+      "ss.2",
+      "ss.3",
+      "ss.4",
+      "wp.2"
+    ]
+  },
+  {
+    "section_name": "SUMMARY BUDGET",
+    "findings": [
+      {
+        "sub_id": "pr.7",
+        "good_evidence_ids": [
+          "secsb__001_a",
+          "secsb__001_b",
+          "secsb__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "SUMMARY BUDGET: Provides detailed cost breakdowns with explicit justifications for staff, equipment, training, and PPIE activities, directly supporting pr.7."
+      },
+      {
+        "sub_id": "td.1",
+        "good_evidence_ids": [
+          "secsb__001_b",
+          "secsb__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "SUMMARY BUDGET: Lists specific training courses (e.g., Epidemiology, R, Qualitative Methods) sequenced by year, supporting td.1."
+      },
+      {
+        "sub_id": "td.2",
+        "good_evidence_ids": [
+          "secsb__001_b",
+          "secsb__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "SUMMARY BUDGET: Maps training to project needs (e.g., statistical computing for modeling, qualitative methods for focus groups), supporting td.2."
+      },
+      {
+        "sub_id": "td.3",
+        "good_evidence_ids": [
+          "secsb__001_b",
+          "secsb__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "SUMMARY BUDGET: Includes leadership courses (King's Fund, Future Leaders Academy) and implementation science, supporting career trajectory in td.3."
+      },
+      {
+        "sub_id": "wp.6",
+        "good_evidence_ids": [
+          "secsb__001_c",
+          "secsb__001_d"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "SUMMARY BUDGET: Allocates specific funds for PLAG meetings, co-facilitation, and training, confirming a costed plan for inclusion in wp.6."
+      },
+      {
+        "sub_id": "pr.9",
+        "good_evidence_ids": [
+          "secsb__001_c",
+          "secsb__001_e"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "SUMMARY BUDGET: Funds access to diverse ancestry datasets (Our Future Health, East London Genes & Health), supporting inclusive design in pr.9."
+      }
+    ],
+    "resolved_signals": [
+      "pr.7",
+      "td.1",
+      "td.2",
+      "td.3",
+      "wp.6",
+      "pr.9"
+    ],
+    "missing_signals_after": [
+      "g.1",
+      "g.2",
+      "g.3",
+      "g.4",
+      "g.5",
+      "g.6",
+      "pr.8",
+      "ss.1",
+      "ss.2",
+      "ss.3",
+      "ss.4",
+      "wp.2"
+    ]
+  },
+  {
+    "section_name": "Application Context",
+    "findings": [
+      {
+        "sub_id": "g.1",
+        "good_evidence_ids": [
+          "secac__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Context: Describes a clear career trajectory from pre-doctoral fellowship to postdoctoral research, supported by a structured mentorship plan, addressing g.1."
+      },
+      {
+        "sub_id": "g.3",
+        "good_evidence_ids": [
+          "secac__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Context: Applicant holds an NIHR Advanced Fellowship and has led co-design of the mySkin platform, demonstrating relevant experience and alignment with project needs for g.3."
+      },
+      {
+        "sub_id": "g.4",
+        "good_evidence_ids": [
+          "secac__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Context: Mentions prior awards (MRC-NIHR Clinical Academic Research Partnership, NIHR Advanced Fellowship) and leadership in national registries, supporting g.4."
+      },
+      {
+        "sub_id": "g.5",
+        "good_evidence_ids": [
+          "secac__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Context: Applicant has supervised PhD students and co-directed registries, showing increasing responsibility and leadership potential for g.5."
+      },
+      {
+        "sub_id": "g.6",
+        "good_evidence_ids": [
+          "secac__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Context: Applicant is a medically qualified dermatologist following the NIHR Integrated Academic Training pathway, explicitly supporting g.6."
+      },
+      {
+        "sub_id": "ss.1",
+        "good_evidence_ids": [
+          "secac__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Context: Supervisors have strong track records in psoriasis research, including leading national registries and international consortia, supporting ss.1."
+      },
+      {
+        "sub_id": "ss.2",
+        "good_evidence_ids": [
+          "secac__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Context: Detailed descriptions of supervisor roles, meeting frequencies (weekly/fortnightly), and specific training plans (bioinformatics, statistics) strongly support ss.2."
+      },
+      {
+        "sub_id": "ss.3",
+        "good_evidence_ids": [
+          "secac__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Context: King's College London and St John's Institute provide access to key datasets (HUNT, FinnGenn) and clinical networks, supporting ss.3."
+      },
+      {
+        "sub_id": "wp.2",
+        "good_evidence_ids": [
+          "secac__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Context: The research team includes diverse expertise (dermatology, epidemiology, genetics, statistics) and gender balance (Dr Sagoo, Prof Langan, Prof Smith, Dr Mahil, Prof Norton), supporting wp.2."
+      }
+    ],
+    "resolved_signals": [
+      "g.1",
+      "g.3",
+      "g.4",
+      "g.5",
+      "g.6",
+      "ss.1",
+      "ss.2",
+      "ss.3",
+      "wp.2"
+    ],
+    "missing_signals_after": [
+      "g.2",
+      "pr.8",
+      "ss.4"
+    ]
+  },
+  {
+    "section_name": "Plain English NLP Analysis",
+    "findings": [
+      {
+        "sub_id": "pr.1",
+        "good_evidence_ids": [
+          "secpena__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English NLP Analysis: Lexical overlap with detailed plan is 0.0, challenging alignment evidence for pr.1 despite coverage hits."
+      }
+    ],
+    "resolved_signals": [
+      "pr.1"
+    ],
+    "missing_signals_after": [
+      "g.2",
+      "pr.8",
+      "ss.4"
+    ]
+  },
+  {
+    "section_name": "Application Form Analysis",
+    "findings": [],
+    "resolved_signals": [],
+    "missing_signals_after": [
+      "g.2",
+      "pr.8",
+      "ss.4"
+    ]
+  }
+]

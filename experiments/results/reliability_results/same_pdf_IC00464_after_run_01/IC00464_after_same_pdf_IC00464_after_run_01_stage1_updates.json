@@ -1,0 +1,642 @@
+[
+  {
+    "section_name": "Scientific Abstract",
+    "findings": [
+      {
+        "sub_id": "pr.1",
+        "good_evidence_ids": [
+          "secsa__001_a",
+          "secsa__001_b",
+          "secsa__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Clearly outlines problem, objectives, methods, and impact, supporting pr.1."
+      },
+      {
+        "sub_id": "pr.2",
+        "good_evidence_ids": [
+          "secsa__001_a"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Cites ACHIEVE trial and TACT pilot to justify the study, supporting pr.2."
+      },
+      {
+        "sub_id": "pr.3",
+        "good_evidence_ids": [
+          "secsa__001_b",
+          "secsa__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Defines 5 workstreams with timelines and sample sizes, supporting pr.3."
+      },
+      {
+        "sub_id": "pr.4",
+        "good_evidence_ids": [
+          "secsa__001_b",
+          "secsa__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Details RCT design, eligibility, and outcomes, supporting pr.4."
+      },
+      {
+        "sub_id": "pr.5",
+        "good_evidence_ids": [
+          "secsa__001_a",
+          "secsa__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Highlights potential to halve dementia progression and reduce inequalities, supporting pr.5."
+      },
+      {
+        "sub_id": "pr.6",
+        "good_evidence_ids": [
+          "secsa__001_b",
+          "secsa__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Mentions co-design workshops and PPIE resources, supporting pr.6."
+      },
+      {
+        "sub_id": "pr.8",
+        "good_evidence_ids": [
+          "secsa__001_a"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: References successful TACT pilot results, supporting pr.8."
+      },
+      {
+        "sub_id": "pr.9",
+        "good_evidence_ids": [
+          "secsa__001_b",
+          "secsa__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Focuses on underserved groups and equity strategies, supporting pr.9."
+      },
+      {
+        "sub_id": "wp.1",
+        "good_evidence_ids": [
+          "secsa__001_b",
+          "secsa__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Explicitly plans co-design workshops and PPIE resources, supporting wp.1."
+      },
+      {
+        "sub_id": "wp.3",
+        "good_evidence_ids": [
+          "secsa__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Details dissemination plans including lay summaries and policy briefs, supporting wp.3."
+      },
+      {
+        "sub_id": "wp.4",
+        "good_evidence_ids": [
+          "secsa__001_b",
+          "secsa__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Targets deprived PCNs and ethnic minority communities, supporting wp.4."
+      },
+      {
+        "sub_id": "wp.5",
+        "good_evidence_ids": [
+          "secsa__001_b",
+          "secsa__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Integrates inclusion in design, recruitment, and dissemination, supporting wp.5."
+      }
+    ],
+    "resolved_signals": [
+      "pr.1",
+      "pr.2",
+      "pr.3",
+      "pr.4",
+      "pr.5",
+      "pr.6",
+      "pr.8",
+      "pr.9",
+      "wp.1",
+      "wp.3",
+      "wp.4",
+      "wp.5"
+    ],
+    "missing_signals_after": [
+      "g.1",
+      "g.2",
+      "g.3",
+      "g.4",
+      "g.5",
+      "g.6",
+      "pr.7",
+      "td.1",
+      "td.2",
+      "td.3",
+      "ss.1",
+      "ss.2",
+      "ss.3",
+      "ss.4",
+      "wp.2",
+      "wp.6"
+    ]
+  },
+  {
+    "section_name": "Plain English Summary of Research",
+    "findings": [
+      {
+        "sub_id": "pr.1",
+        "good_evidence_ids": [
+          "secpesor__001_a",
+          "secpesor__001_b",
+          "secpesor__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Clearly explains the problem (MCI/hearing loss), objectives, methods (RCT), and impact in accessible language, supporting pr.1."
+      },
+      {
+        "sub_id": "pr.3",
+        "good_evidence_ids": [
+          "secpesor__001_b"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Outlines a 5-year timeline with specific phases (setup, trial, analysis), supporting feasibility under pr.3."
+      },
+      {
+        "sub_id": "pr.4",
+        "good_evidence_ids": [
+          "secpesor__001_b"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Describes a randomized design with two groups (intervention vs. usual care) and specific outcome measures, supporting pr.4."
+      },
+      {
+        "sub_id": "pr.5",
+        "good_evidence_ids": [
+          "secpesor__001_a",
+          "secpesor__001_b"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Highlights benefits like better hearing, mood, social life, and potential delay of dementia, supporting pr.5."
+      },
+      {
+        "sub_id": "pr.6",
+        "good_evidence_ids": [
+          "secpesor__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Details a lived experience panel involved in co-design, recruitment, and dissemination, supporting pr.6."
+      },
+      {
+        "sub_id": "pr.8",
+        "good_evidence_ids": [
+          "secpesor__001_a"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: References a successful small study (n=58) with encouraging results as the basis for the larger trial, supporting pr.8."
+      },
+      {
+        "sub_id": "pr.9",
+        "good_evidence_ids": [
+          "secpesor__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Explicitly commits to including people from all backgrounds and those often left out of research, supporting pr.9."
+      },
+      {
+        "sub_id": "wp.1",
+        "good_evidence_ids": [
+          "secpesor__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: States the lived experience panel shaped the project from the start and will co-design the intervention, supporting wp.1."
+      },
+      {
+        "sub_id": "wp.3",
+        "good_evidence_ids": [
+          "secpesor__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Plans to share results with public, charities, and patient groups via website, social media, and events, supporting wp.3."
+      },
+      {
+        "sub_id": "wp.4",
+        "good_evidence_ids": [
+          "secpesor__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Commits to including people from all backgrounds, especially those often left out, supporting wp.4."
+      },
+      {
+        "sub_id": "wp.5",
+        "good_evidence_ids": [
+          "secpesor__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Involves the panel across design, recruitment, and dissemination stages, supporting wp.5."
+      }
+    ],
+    "resolved_signals": [
+      "pr.1",
+      "pr.3",
+      "pr.4",
+      "pr.5",
+      "pr.6",
+      "pr.8",
+      "pr.9",
+      "wp.1",
+      "wp.3",
+      "wp.4",
+      "wp.5"
+    ],
+    "missing_signals_after": [
+      "g.1",
+      "g.2",
+      "g.3",
+      "g.4",
+      "g.5",
+      "g.6",
+      "pr.7",
+      "td.1",
+      "td.2",
+      "td.3",
+      "ss.1",
+      "ss.2",
+      "ss.3",
+      "ss.4",
+      "wp.2",
+      "wp.6"
+    ]
+  },
+  {
+    "section_name": "Changes from Previous Stage",
+    "findings": [
+      {
+        "sub_id": "pr.3",
+        "good_evidence_ids": [
+          "seccfps__001_a",
+          "seccfps__001_d",
+          "seccfps__001_e"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Changes from Previous Stage: Justifies revised timeline (66 months) and sample size (n=424) as feasible, supporting pr.3."
+      },
+      {
+        "sub_id": "pr.4",
+        "good_evidence_ids": [
+          "seccfps__001_b",
+          "seccfps__001_c",
+          "seccfps__001_d"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Changes from Previous Stage: Details methodological shifts (MoCA, self-fitting) and justifies 18-month outcome timing, supporting pr.4."
+      },
+      {
+        "sub_id": "pr.7",
+        "good_evidence_ids": [
+          "seccfps__001_a",
+          "seccfps__001_d",
+          "seccfps__001_e"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Changes from Previous Stage: Explains budget reduction despite expanded scope via efficiency gains, supporting pr.7."
+      },
+      {
+        "sub_id": "pr.9",
+        "good_evidence_ids": [
+          "seccfps__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Changes from Previous Stage: Describes recruitment in high-deprivation areas and digital inclusion strategies, supporting pr.9."
+      },
+      {
+        "sub_id": "td.1",
+        "good_evidence_ids": [
+          "seccfps__001_d"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Changes from Previous Stage: Outlines training for two PhDs and RAs with mentorship, supporting td.1."
+      },
+      {
+        "sub_id": "td.2",
+        "good_evidence_ids": [
+          "seccfps__001_d"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Changes from Previous Stage: Aligns training (behaviour change, audiology) with project needs, supporting td.2."
+      },
+      {
+        "sub_id": "td.3",
+        "good_evidence_ids": [
+          "seccfps__001_d"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Changes from Previous Stage: Links training to PGfAR/NIHR guidance and career development, supporting td.3."
+      },
+      {
+        "sub_id": "ss.2",
+        "good_evidence_ids": [
+          "seccfps__001_d"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Changes from Previous Stage: Mentions Prof Livingston as Named Training Contact and mentorship plans, supporting ss.2."
+      },
+      {
+        "sub_id": "wp.1",
+        "good_evidence_ids": [
+          "seccfps__001_c",
+          "seccfps__001_d"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Changes from Previous Stage: Details PPIE shaping design, outcomes, and materials, supporting wp.1."
+      },
+      {
+        "sub_id": "wp.4",
+        "good_evidence_ids": [
+          "seccfps__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Changes from Previous Stage: Explicitly targets high-deprivation areas and oversamples INCLUDE groups, supporting wp.4."
+      },
+      {
+        "sub_id": "wp.5",
+        "good_evidence_ids": [
+          "seccfps__001_c",
+          "seccfps__001_d"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Changes from Previous Stage: Integrates PPIE across design, delivery, and governance stages, supporting wp.5."
+      }
+    ],
+    "resolved_signals": [
+      "pr.3",
+      "pr.4",
+      "pr.7",
+      "pr.9",
+      "td.1",
+      "td.2",
+      "td.3",
+      "ss.2",
+      "wp.1",
+      "wp.4",
+      "wp.5"
+    ],
+    "missing_signals_after": [
+      "g.1",
+      "g.2",
+      "g.3",
+      "g.4",
+      "g.5",
+      "g.6",
+      "ss.1",
+      "ss.3",
+      "ss.4",
+      "wp.2",
+      "wp.6"
+    ]
+  },
+  {
+    "section_name": "Patient & Public Involvement",
+    "findings": [
+      {
+        "sub_id": "wp.1",
+        "good_evidence_ids": [
+          "secppi__001_a",
+          "secppi__001_b"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Patient & Public Involvement: Details co-creation of intervention in WS1 and accessibility reviews led by lived experience partners, strongly supporting wp.1."
+      },
+      {
+        "sub_id": "wp.2",
+        "good_evidence_ids": [
+          "secppi__001_a"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Patient & Public Involvement: Describes a PPIE team with diverse lived experiences (hearing loss, cognitive impairment) and professional backgrounds, supporting wp.2."
+      },
+      {
+        "sub_id": "wp.3",
+        "good_evidence_ids": [
+          "secppi__001_b",
+          "secppi__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Patient & Public Involvement: Outlines co-development of accessible outputs (Easy Read, subtitled videos) and public engagement in WS5, supporting wp.3."
+      },
+      {
+        "sub_id": "wp.4",
+        "good_evidence_ids": [
+          "secppi__001_b"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Patient & Public Involvement: Explicitly plans sessions with people from high-deprivation areas and ethnic minority backgrounds, supporting wp.4."
+      },
+      {
+        "sub_id": "wp.5",
+        "good_evidence_ids": [
+          "secppi__001_b",
+          "secppi__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Patient & Public Involvement: Maps PPIE involvement across all five workstreams from design to dissemination, supporting wp.5."
+      },
+      {
+        "sub_id": "wp.6",
+        "good_evidence_ids": [
+          "secppi__001_b",
+          "secppi__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Patient & Public Involvement: Provides a specific £30,331 budget breakdown for payments, access costs, and coordination, supporting wp.6."
+      }
+    ],
+    "resolved_signals": [
+      "wp.1",
+      "wp.2",
+      "wp.3",
+      "wp.4",
+      "wp.5",
+      "wp.6"
+    ],
+    "missing_signals_after": [
+      "g.1",
+      "g.2",
+      "g.3",
+      "g.4",
+      "g.5",
+      "g.6",
+      "ss.1",
+      "ss.3",
+      "ss.4"
+    ]
+  },
+  {
+    "section_name": "SUMMARY BUDGET",
+    "findings": [
+      {
+        "sub_id": "pr.7",
+        "good_evidence_ids": [
+          "secsb__001_a",
+          "secsb__001_b",
+          "secsb__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "SUMMARY BUDGET: Provides detailed cost breakdowns for personnel, digital infrastructure, and equipment, explicitly benchmarked against NIHR guidance and linked to deliverables, strongly supporting pr.7."
+      },
+      {
+        "sub_id": "pr.9",
+        "good_evidence_ids": [
+          "secsb__001_d"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "SUMMARY BUDGET: Allocates specific funds for 278 tablet devices and SIM cards for participants lacking digital access, directly supporting inclusive research design under pr.9."
+      },
+      {
+        "sub_id": "wp.6",
+        "good_evidence_ids": [
+          "secsb__001_e",
+          "secsb__001_d"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "SUMMARY BUDGET: Includes a dedicated £30.3k line for PPI fees and £34.8k for participant vouchers, confirming a costed plan for research inclusion under wp.6."
+      },
+      {
+        "sub_id": "td.1",
+        "good_evidence_ids": [
+          "secsb__001_b",
+          "secsb__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "SUMMARY BUDGET: Budgets for 2 PhD fees/stipends and includes Tympa Academy training for coaches, indicating structured training activities aligned with project needs under td.1."
+      }
+    ],
+    "resolved_signals": [
+      "pr.7",
+      "pr.9",
+      "wp.6",
+      "td.1"
+    ],
+    "missing_signals_after": [
+      "g.1",
+      "g.2",
+      "g.3",
+      "g.4",
+      "g.5",
+      "g.6",
+      "ss.1",
+      "ss.3",
+      "ss.4"
+    ]
+  },
+  {
+    "section_name": "Application Context",
+    "findings": [
+      {
+        "sub_id": "g.1",
+        "good_evidence_ids": [
+          "secac__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Context: Lead Applicant describes a clear trajectory from TACT pilot to TACT+ scale-up, bridging research and clinical reality, supporting g.1."
+      },
+      {
+        "sub_id": "g.3",
+        "good_evidence_ids": [
+          "secac__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Context: Team members cite specific prior projects (TACT pilot, ENHANCE, Manchester consensus) and methods (RCT, qualitative, economic evaluation) directly relevant to the proposed study, supporting g.3."
+      },
+      {
+        "sub_id": "g.4",
+        "good_evidence_ids": [
+          "secac__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Context: Lead Applicant notes 27,000 citations and policy shaping via Lancet Dementia Commission; Co-applicants cite high-impact publications and consensus statements, supporting g.4."
+      },
+      {
+        "sub_id": "g.5",
+        "good_evidence_ids": [
+          "secac__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Context: Team includes NIHR Senior Investigators, Directors of BRC themes, and leads of national consensus groups, demonstrating increasing responsibility and peer recognition, supporting g.5."
+      },
+      {
+        "sub_id": "g.6",
+        "good_evidence_ids": [
+          "secac__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Context: Lead Applicant and multiple Co-applicants (e.g., Dr Dunne, Dr Maru, Prof Mehta) are active clinicians balancing NHS practice with research leadership, supporting g.6."
+      },
+      {
+        "sub_id": "ss.1",
+        "good_evidence_ids": [
+          "secac__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Context: Contracting Organisation (UCL) and partners (NHS Trusts, RNID) demonstrate strong track records via NIHR BRC themes, successful prior trials (TACT, ENHANCE), and national policy contributions, suppor"
+      },
+      {
+        "sub_id": "ss.3",
+        "good_evidence_ids": [
+          "secac__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Context: UCL CCTU provides established infrastructure for multi-site RCTs, and the team leverages existing primary care networks and digital tools (Tympa), ensuring organisational support aligns with project "
+      },
+      {
+        "sub_id": "ss.4",
+        "good_evidence_ids": [
+          "secac__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Context: Dedicated PPIE and EDI Lead (Ms Khatun) and public co-applicants ensure inclusive culture; team explicitly addresses health inequalities and diverse recruitment, supporting ss.4."
+      }
+    ],
+    "resolved_signals": [
+      "g.1",
+      "g.3",
+      "g.4",
+      "g.5",
+      "g.6",
+      "ss.1",
+      "ss.3",
+      "ss.4"
+    ],
+    "missing_signals_after": [
+      "g.2"
+    ]
+  },
+  {
+    "section_name": "Plain English NLP Analysis",
+    "findings": [
+      {
+        "sub_id": "pr.1",
+        "good_evidence_ids": [
+          "secpena__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English NLP Analysis: Zero long sentences (ratio 0.0) and short average length (9.44 words) indicate strong sentence structure for non-specialists, supporting pr.1."
+      }
+    ],
+    "resolved_signals": [
+      "pr.1"
+    ],
+    "missing_signals_after": [
+      "g.2"
+    ]
+  },
+  {
+    "section_name": "Application Form Analysis",
+    "findings": [],
+    "resolved_signals": [],
+    "missing_signals_after": [
+      "g.2"
+    ]
+  }
+]
