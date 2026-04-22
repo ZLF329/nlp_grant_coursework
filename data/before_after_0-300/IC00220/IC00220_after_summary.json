@@ -1,0 +1,922 @@
+{
+  "doc_id": "e9c2263cab4c_IC00220_after",
+  "run_info": {
+    "ran_at_utc": "2026-04-21T12:38:15.670617Z",
+    "model": "qwen3.5:27b",
+    "judge_model": null
+  },
+  "sections": [
+    {
+      "section_id": "application_form",
+      "section_name": "Application Form",
+      "average_score_10": 8.94,
+      "sub_criteria": [
+        {
+          "sub_id": "af.1",
+          "name": "Use of Formatting, Headings, and Subheadings",
+          "group_name": null,
+          "score_10": 9.5,
+          "pros": "The application demonstrates excellent structural organization with 10 detected parser sections, 34 numbered heading-like lines, and 44 list markers, indicating a clear hierarchy and consistent use of headings. The presence of 18 extracted emphasis markers and 166 table-like budget lines confirms effective use of formatting to enhance readability and navigation.",
+          "drawbacks": "While emphasis markers are present, the analysis notes a parser limitation where bold/emphasis may be lost during text extraction; thus, the score for emphasis (af.1.b) is slightly reduced to 4 to account for the inability to fully verify the visual weight of these markers in the original document.",
+          "signals": [
+            {
+              "sid": "af.1.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "af.1.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "af.1.c",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "af.1.d",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "af.2",
+          "name": "Limited Duplication and Repetition",
+          "group_name": null,
+          "score_10": 9.33,
+          "pros": "The application exhibits very low duplication rates, with a duplicate sentence rate of only 0.007 (excluding budget) and a repeated line rate of 0.082. Lexical overlap between major sections (e.g., Research Background and Training) is moderate (0.257), suggesting necessary thematic consistency rather than redundant copying.",
+          "drawbacks": "While duplication is minimal, the lexical overlap of 0.257 between 'Applicant Research Background' and 'Training & Development' indicates some repetition of content, preventing a perfect score for novelty across all sections.",
+          "signals": [
+            {
+              "sid": "af.2.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "af.2.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "af.2.c",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "af.3",
+          "name": "Logical Flow and Coherence Across Sections",
+          "group_name": null,
+          "score_10": 8,
+          "pros": "The application demonstrates strong logical flow with 38 transition phrases and 136 terms linking objectives, methods, and budget. The section order follows a standard, logical progression from applicant context to research plan, PPI, training, and budget, creating a coherent narrative thread.",
+          "drawbacks": "No material caveats or missing details regarding logical flow were identified in the structural analysis; the evidence is complete and specific.",
+          "signals": [
+            {
+              "sid": "af.3.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "af.3.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "af.3.c",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "af.3.d",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section_id": "general",
+      "section_name": "General",
+      "average_score_10": 8.7,
+      "sub_criteria": [
+        {
+          "sub_id": "g.1",
+          "name": "Common Characteristics of Good Applications",
+          "group_name": "Common Characteristics of Good Applications",
+          "score_10": 9.5,
+          "pros": "The application demonstrates a clear research vision focused on adventurous play and injury, with a defined career trajectory towards an academic clinical lectureship. The training plan is highly detailed, mapping specific courses (LSHTM, Oxford) to project needs, and the institutional support from the University of Cambridge's Epidemiology Unit is robust, citing world-leading status and specific supervisor expertise.",
+          "drawbacks": "While the vision is clear, the 'distinctive ideas' signal is slightly less explicit than the training and support signals, relying more on the novelty of the specific data combination rather than a unique theoretical framework.",
+          "signals": [
+            {
+              "sid": "g.1.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "g.1.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "g.1.c",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "g.1.d",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "g.2",
+          "name": "Tell Us Why You Need This Award",
+          "group_name": "Tell Us Why You Need This Award",
+          "score_10": 8,
+          "pros": "The applicant explicitly articulates why this award is the right next step, describing it as a catalyst to expand epidemiology knowledge and transition to independence. The proposal clearly links the award to building on existing clinical curiosity and pre-doctoral work, with specific training plans to gain new skills in big data and advanced statistics.",
+          "drawbacks": "The description of how the award will develop specific research partnerships within the NHS or industry is less detailed compared to the academic and PPI partnerships, though the CA:RING collaboration is well-defined.",
+          "signals": [
+            {
+              "sid": "g.2.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "g.2.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "g.2.c",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "g.2.d",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "g.3",
+          "name": "Relevant Research Experience and Training",
+          "group_name": "Applicant",
+          "score_10": 10,
+          "pros": "The applicant has extensive relevant experience, including pre-doctoral research fellow roles, specific grants (NHSE, King's College), and expertise in study design, statistical analysis (R & Stata), and co-production methodologies. This aligns perfectly with the requirements of the proposed PhD project.",
+          "drawbacks": "No significant drawbacks; the evidence for prior experience and training is comprehensive and directly applicable.",
+          "signals": [
+            {
+              "sid": "g.3.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "g.3.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "g.3.c",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "g.4",
+          "name": "Impactful Research Outputs and Outcomes",
+          "group_name": "Applicant",
+          "score_10": 8,
+          "pros": "The applicant has a strong publication record in high-impact journals (BMJ, Archives of Disease in Childhood) and has received prestigious awards (William Cadogan Prize, Michael Blacow Prize). The research background highlights successful trial coordination and systematic reviews, demonstrating meaningful outputs.",
+          "drawbacks": "While citation metrics are not explicitly quantified in the text, the quality of the journals and awards serves as a strong proxy for impact.",
+          "signals": [
+            {
+              "sid": "g.4.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "g.4.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "g.4.c",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "g.4.d",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "g.5",
+          "name": "Trajectory Towards Research Leadership",
+          "group_name": "Applicant",
+          "score_10": 8,
+          "pros": "The applicant shows a clear trajectory towards leadership, progressing from ST2/ST3 to Registrar and PI roles on grants. There is evidence of increasing responsibility through co-PI roles on multi-centre trials and executive board membership. Participation in Kings Fund Leadership and Teaching Certificate programs further supports this trajectory.",
+          "drawbacks": "Peer recognition specifically for leadership potential (distinct from research awards) is implied but not explicitly detailed as a separate metric.",
+          "signals": [
+            {
+              "sid": "g.5.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "g.5.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "g.5.c",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "g.5.d",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "g.6",
+          "name": "Commitment to Practitioner-Academic Career (if applicable)",
+          "group_name": "Applicant",
+          "score_10": 8,
+          "pros": "The applicant holds MRCPCH and Paediatric Registrar positions alongside research fellowships, explicitly identifying as a practitioner-academic. The proposal includes a concrete plan to maintain clinical practice (one day per fortnight) while conducting research, demonstrating a clear commitment to balancing both roles.",
+          "drawbacks": "The specific professional networks or qualifications related to the 'practitioner' side (beyond the clinical registrar role) are less detailed than the research qualifications.",
+          "signals": [
+            {
+              "sid": "g.6.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "g.6.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "g.6.c",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "g.6.d",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section_id": "proposed_research",
+      "section_name": "Proposed Research",
+      "average_score_10": 9.71,
+      "sub_criteria": [
+        {
+          "sub_id": "pr.1",
+          "name": "Quality of the Plain English Summary",
+          "group_name": null,
+          "score_10": 9.67,
+          "pros": "The Plain English Summary demonstrates exceptional quality with high readability metrics (Flesch-Kincaid 6.13, Reading Ease 68.45) and very low jargon density (1.66%). It clearly articulates the problem (misconceptions about adventurous play), objectives, methods (three workstreams), beneficiaries (parents, schools, policy makers), and real-world impact in accessible language.",
+          "drawbacks": "While the summary is excellent, the lexical overlap with the detailed research plan is relatively low (0.116), suggesting some specific technical details in the detailed plan are not mirrored in the summary, though this is common for lay summaries.",
+          "signals": [
+            {
+              "sid": "pr.1.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.1.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.1.c",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.1.d",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.1.e",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.1.f",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "pr.2",
+          "name": "Evidence Review Quality & Relevance",
+          "group_name": null,
+          "score_10": 8,
+          "pros": "The application explicitly identifies a critical evidence gap regarding the association between adventurous play and injury, noting the lack of granular data and outdated NICE guidance. It critically analyzes existing literature to justify the need for new, representative data.",
+          "drawbacks": "The specific number of references cited is not explicitly quantified in the provided text snippets, though the critical analysis of the gap is strong.",
+          "signals": [
+            {
+              "sid": "pr.2.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.2.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.2.c",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.2.d",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "pr.3",
+          "name": "Research Scope & Award Appropriateness",
+          "group_name": null,
+          "score_10": 10,
+          "pros": "The project scope is highly appropriate for a PhD fellowship, comprising three distinct, manageable workstreams (parent survey, A&E data, national registry analysis) with clear sample sizes (1,500, ~500, national data) and defined objectives. The timeline and complexity are well-matched to the 36-month duration.",
+          "drawbacks": "No significant drawbacks identified; the scope is well-defined and feasible.",
+          "signals": [
+            {
+              "sid": "pr.3.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.3.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.3.c",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "pr.4",
+          "name": "Research Design & Methodological Rigor",
+          "group_name": null,
+          "score_10": 10,
+          "pros": "The research design is rigorous and clearly described, utilizing a mixed-methods approach: a cross-sectional survey (YouGov), a prospective cohort (EPIC), and retrospective registry analysis. Statistical plans are detailed, including specific controls and alignment between aims and methods.",
+          "drawbacks": "No significant drawbacks identified; the methodological rigor is high.",
+          "signals": [
+            {
+              "sid": "pr.4.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.4.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.4.c",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.4.d",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "pr.5",
+          "name": "Potential Impact on Patients, Public, and Health Services",
+          "group_name": null,
+          "score_10": 10,
+          "pros": "The application clearly articulates impact on patients (reducing unnecessary safeguarding referrals), the public (promoting safe play), and health services (informing emergency medicine and policy). It outlines specific pathways for dissemination to parents, schools, and policymakers.",
+          "drawbacks": "No significant drawbacks identified; the impact pathways are specific and well-justified.",
+          "signals": [
+            {
+              "sid": "pr.5.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.5.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.5.c",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "pr.6",
+          "name": "Engagement with People & Communities",
+          "group_name": null,
+          "score_10": 10,
+          "pros": "Demonstrates deep engagement with PPIE (CA:RING) across all workstreams, including co-design of surveys, iterative pro forma development, and addressing specific priorities like neurodiversity. The plan includes workshops, participant payments, and analysis of feedback.",
+          "drawbacks": "No significant drawbacks identified; the engagement plan is robust and integrated throughout the project lifecycle.",
+          "signals": [
+            {
+              "sid": "pr.6.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.6.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.6.c",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "pr.7",
+          "name": "Justification of Resources & Award Costs",
+          "group_name": null,
+          "score_10": 10,
+          "pros": "The budget provides detailed cost breakdowns with explicit justifications for salaries, travel, equipment, and survey costs (e.g., YouGov), directly linking resources to project tasks. The proportionality of costs to the scope of three workstreams is appropriate.",
+          "drawbacks": "No significant drawbacks identified; the justification is clear and comprehensive.",
+          "signals": [
+            {
+              "sid": "pr.7.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.7.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.7.c",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "pr.8",
+          "name": "Quality of Previous Research (if applicable)",
+          "group_name": null,
+          "score_10": 10,
+          "pros": "The applicant demonstrates high-quality previous research through successful grant acquisition (NHSE, King's College), a consistent record of peer-reviewed publications (BMJ, Archives of Disease in Childhood), and awards (William Cadogan, Michael Blacow). Skills in study design and statistical analysis are well-aligned with the proposed work.",
+          "drawbacks": "No significant drawbacks identified; the track record is strong and relevant.",
+          "signals": [
+            {
+              "sid": "pr.8.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.8.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.8.c",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "pr.9",
+          "name": "Inclusive Research Design",
+          "group_name": null,
+          "score_10": 10,
+          "pros": "The research design explicitly considers inclusivity by addressing the effect of medical conditions like autism and ADHD on injury risk, as requested by parents. Recruitment via YouGov ensures EDI representation, and specific data collection on neurodiversity is planned.",
+          "drawbacks": "No significant drawbacks identified; inclusivity is well-integrated into the design.",
+          "signals": [
+            {
+              "sid": "pr.9.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.9.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.9.c",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section_id": "sites_support",
+      "section_name": "Sites & Support",
+      "average_score_10": 8,
+      "sub_criteria": [
+        {
+          "sub_id": "ss.1",
+          "name": "Track Record of the Contracting Organisation (and Partners)",
+          "group_name": null,
+          "score_10": 8,
+          "pros": "The application provides exceptional evidence of the contracting organisation's track record. The Host Statement details the Epidemiology Unit's world-leading status, £13.5m annual income, and REF 2021 ratings (97% world-leading/internationally competitive). It explicitly lists supervisors' extensive publication histories, successful PhD completions, and specific awards (e.g., mentoring awards, UKRI Future Leaders Fellowship). Prior collaborations with the PEDAL unit and Starlight Foundation are also documented.",
+          "drawbacks": "No material caveats or missing details regarding the organisation's track record were identified.",
+          "signals": [
+            {
+              "sid": "ss.1.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "ss.1.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "ss.1.c",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "ss.1.d",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "ss.2",
+          "name": "Suitability of Supervisory Support and Mentorship Arrangements",
+          "group_name": null,
+          "score_10": 8,
+          "pros": "Supervisory support is comprehensively detailed with explicit roles for three supervisors (Dr van Sluijs, Prof Ramchandani, Dr Hesketh). The text specifies meeting frequencies (monthly team meetings, regular individual contact), specific expertise alignment (play, injury, epidemiology), and a history of successful co-supervision. The applicant notes established relationships with these supervisors, evidenced by prior joint publications and preliminary work.",
+          "drawbacks": "No material caveats or missing details regarding the supervisory framework were identified.",
+          "signals": [
+            {
+              "sid": "ss.2.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "ss.2.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "ss.2.c",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "ss.2.d",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "ss.3",
+          "name": "Appropriateness of the Contracting Organisation to Support the Award and Career Aspirations",
+          "group_name": null,
+          "score_10": 8,
+          "pros": "The application details robust infrastructure including an ISO27001 certified Secure Research Computing Platform, professional support teams (data management, statistics, IT), and access to population-based cohort studies. The Host Statement confirms the unit's capacity to support clinical academic trainees (currently hosting 5/30+). Specific initiatives for early career researchers (ECRs), such as Work-in-Progress sessions and grant application support, are explicitly described.",
+          "drawbacks": "No material caveats or missing details regarding organisational support were identified.",
+          "signals": [
+            {
+              "sid": "ss.3.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "ss.3.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "ss.3.c",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "ss.3.d",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "ss.4",
+          "name": "Commitment to Inclusive and Supportive Research Culture",
+          "group_name": null,
+          "score_10": 8,
+          "pros": "Strong evidence of an inclusive culture is provided, citing specific policies (zero tolerance for bullying, active bystander training), mandatory EDI training for panel members, and adherence to DORA principles. The unit holds the Advance HE Race Equality Charter (bronze) and has a silver award for equality. The text details specific mechanisms for monitoring EDI progress and supporting underrepresented groups through Equality Champions and diverse recruitment frameworks.",
+          "drawbacks": "No material caveats or missing details regarding the research culture were identified.",
+          "signals": [
+            {
+              "sid": "ss.4.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "ss.4.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "ss.4.c",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "ss.4.d",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section_id": "training_development",
+      "section_name": "Training & Development",
+      "average_score_10": 8,
+      "sub_criteria": [
+        {
+          "sub_id": "td.1",
+          "name": "Quality and Relevance of Proposed Training",
+          "group_name": null,
+          "score_10": 8,
+          "pros": "The application provides a highly detailed and structured training plan. It explicitly lists specific courses (e.g., LSHTM Epidemiology, Oxford Data Management, Cambridge PPIE) with durations and institutions. There are clear, explicit links between training content and skill acquisition, such as 'data cleaning, coding, and structuring techniques' for the survey workstream and 'regression modeling' for hospital data analysis.",
+          "drawbacks": "While the plan is comprehensive, the specific sequencing or timeline (e.g., which month or year each course occurs) is not explicitly detailed, though the grouping by workstream implies a logical order.",
+          "signals": [
+            {
+              "sid": "td.1.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "td.1.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "td.1.c",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "td.1.d",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "td.2",
+          "name": "Suitability to Personal Development and Project Needs",
+          "group_name": null,
+          "score_10": 8,
+          "pros": "The training is highly targeted rather than generic, with specific courses mapped directly to the three workstreams (e.g., 'Big Data Epidemiology' for trauma data linkage). The applicant identifies specific needs like 'handling complex datasets' and 'data linkage techniques' which are addressed by the proposed training. Mentorship is also integrated through the research visit to UBC and regular supervisory team meetings.",
+          "drawbacks": "The applicant does not explicitly state 'I lack skill X' in a gap-analysis format, but the targeted nature of the training (e.g., 'to ensure rigorous data collection... I will complete courses') strongly implies the identification of these needs.",
+          "signals": [
+            {
+              "sid": "td.2.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "td.2.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "td.2.c",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "td.2.d",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "td.3",
+          "name": "Support for Career Aspirations",
+          "group_name": null,
+          "score_10": 8,
+          "pros": "The applicant explicitly states career goals: 'support my goal of becoming an academic clinical lecturer' and 'advocating evidence-based changes'. The training plan directly supports this with a 'Postgraduate Certificate in Teaching and Learning' and 'Kings Fund - Leadership for Population Health'. The plan also includes experiential learning via a 6-week research visit to UBC and maintaining clinical practice (one day per fortnight) to ensure skills remain transferable and grounded.",
+          "drawbacks": "No material caveats or missing details found; the connection between training and long-term career trajectory is robust and specific.",
+          "signals": [
+            {
+              "sid": "td.3.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "td.3.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "td.3.c",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "td.3.d",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section_id": "wpcc",
+      "section_name": "Working with People & Communities",
+      "average_score_10": 7.55,
+      "sub_criteria": [
+        {
+          "sub_id": "wp.1",
+          "name": "Integration of Lived Experience in Research Design",
+          "group_name": null,
+          "score_10": 10,
+          "pros": "The application provides exceptional evidence of integration. PPIE directly shaped the research design by adding Workstream 3 (major trauma) based on parental concerns (secppi__001_b), co-designing survey questions (secppi__001_d), and prioritizing specific variables like neurodiversity and supervision (secdrp__001_k). The use of the CA:RING advisory group is explicitly detailed across all stages.",
+          "drawbacks": "No material caveats; the evidence is comprehensive, specific, and directly links lived experience to concrete changes in the study design.",
+          "signals": [
+            {
+              "sid": "wp.1.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "wp.1.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "wp.1.c",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "wp.2",
+          "name": "Diversity and Inclusivity of the Research Team",
+          "group_name": null,
+          "score_10": 0,
+          "pros": "No evidence found in the application text regarding the diversity of the research team itself (e.g., gender, ethnicity, age of the investigators).",
+          "drawbacks": "The application focuses entirely on the diversity of participants and PPI contributors, but provides no information on the demographic composition or diversity of the research team (applicant and supervisors). Consequently, all signals for this subcriterion must be scored as 0.",
+          "signals": [
+            {
+              "sid": "wp.2.a",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "wp.2.b",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "wp.2.c",
+              "score_0to5": 0,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "wp.3",
+          "name": "Commitment to Maximising Public and Patient Benefit",
+          "group_name": null,
+          "score_10": 10,
+          "pros": "A robust plan exists to maximize benefit, including specific dissemination to parenting groups, schools, and healthcare professionals (secpesor__001_c). The proposal outlines actionable outcomes such as reducing unnecessary safeguarding referrals (secdrp__001_d) and creating educational materials (secdrp__001_x). Links between objectives and benefits are clear and specific.",
+          "drawbacks": "No significant drawbacks; the plan is well-articulated and covers multiple beneficiary groups with specific mechanisms for impact.",
+          "signals": [
+            {
+              "sid": "wp.3.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "wp.3.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "wp.3.c",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "wp.4",
+          "name": "Representation of Seldom Heard or Underserved Groups",
+          "group_name": null,
+          "score_10": 7.33,
+          "pros": "The application explicitly targets underserved groups, including children with neurodiversity (ADHD, autism) and those from socioeconomically disadvantaged backgrounds (secdrp__001_f, secdrp__001_g). Recruitment via YouGov is cited to ensure EDI representation (secdrp__001_m), and CA:RING actively targets underrepresented groups (secppi__001_c).",
+          "drawbacks": "While specific groups are identified and recruitment strategies mentioned, there is limited discussion of specific barriers these groups might face in participating (e.g., digital exclusion for online surveys) and detailed mitigation strategies beyond the general use of YouGov.",
+          "signals": [
+            {
+              "sid": "wp.4.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "wp.4.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "wp.4.c",
+              "score_0to5": 3,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "wp.5",
+          "name": "Inclusivity Across the Research Lifecycle",
+          "group_name": null,
+          "score_10": 8,
+          "pros": "Inclusion is demonstrated across the entire lifecycle: planning (co-design of survey/proforma), conduct (data collection priorities), analysis (PPIE guiding analysis priorities), and dissemination (reviewing guidelines) (secppi__001_d). The plan explicitly considers accessibility and equity in recruitment (secppi__001_c).",
+          "drawbacks": "While the plan is comprehensive, the specific mechanisms for 'ongoing evaluation and adaptation' of the inclusion strategy itself (beyond the iterative PPIE workshops) are less detailed than the PPIE activities themselves.",
+          "signals": [
+            {
+              "sid": "wp.5.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "wp.5.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "wp.5.c",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "wp.6",
+          "name": "Costed and Resourced Plan for Research Inclusion",
+          "group_name": null,
+          "score_10": 10,
+          "pros": "The budget provides a highly detailed, costed plan for inclusion activities. Specific line items exist for PPIE development meetings, workshop facilitation, participant payments (£25/hr), transcription, and analysis (secsb__001_d, secsb__001_i). Staff time for admin and coordination is also explicitly budgeted (secsb__001_j).",
+          "drawbacks": "No drawbacks; the budget aligns perfectly with the inclusion plan described in the text, providing full financial support for the proposed activities.",
+          "signals": [
+            {
+              "sid": "wp.6.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "wp.6.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "wp.6.c",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
