@@ -1,0 +1,165 @@
+[
+  {
+    "section_name": "Application Context",
+    "findings": [
+      {
+        "sub_id": "pr.2",
+        "good_evidence_ids": [
+          "secac__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Context: Provides a detailed literature review citing multiple studies (e.g., Neuhauser et al 2005, Li et al 2024) and explicitly identifies gaps in knowledge regarding BPPV treatment consensus and anatomical"
+      },
+      {
+        "sub_id": "pr.3",
+        "good_evidence_ids": [
+          "secac__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Context: Defines a clear 18-month timeline, specific aims (primary and secondary), and a feasible sample size calculation (n=246) based on prevalence data, supporting scope and feasibility."
+      },
+      {
+        "sub_id": "pr.4",
+        "good_evidence_ids": [
+          "secac__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Context: Details rigorous methods including specific diagnostic criteria (Barany Society), standardized equipment (Balcare chair, video goggles), statistical analysis plans, and a modified Delphi technique fo"
+      },
+      {
+        "sub_id": "pr.5",
+        "good_evidence_ids": [
+          "secac__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Context: Highlights patient benefits through quotes illustrating delays in diagnosis, and outlines impacts such as reduced falls, improved independence, and reduced burden on healthcare services."
+      },
+      {
+        "sub_id": "pr.6",
+        "good_evidence_ids": [
+          "secac__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Context: Demonstrates engagement via patient quotes informing the research, PPI involvement in recruitment strategies, and plans for a PPI advisory group for dissemination."
+      },
+      {
+        "sub_id": "pr.9",
+        "good_evidence_ids": [
+          "secac__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Context: Addresses inclusivity by targeting a diverse North Central London area, planning for interpreter costs, and acknowledging language barriers as exclusion criteria while seeking to mitigate travel cost"
+      },
+      {
+        "sub_id": "wp.1",
+        "good_evidence_ids": [
+          "secac__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Context: Shows integration of lived experience through patient feedback on recruitment preferences (email/phone) and the development of a PPI advisory group for dissemination."
+      },
+      {
+        "sub_id": "wp.3",
+        "good_evidence_ids": [
+          "secac__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Context: Outlines a comprehensive dissemination plan including peer-reviewed journals, conferences, social media, newsletters to service users, and integration into educational courses."
+      },
+      {
+        "sub_id": "wp.4",
+        "good_evidence_ids": [
+          "secac__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Context: Explicitly targets diverse ethnic communities in North Central London and addresses barriers like travel costs and language proficiency to support representation."
+      },
+      {
+        "sub_id": "wp.6",
+        "good_evidence_ids": [
+          "secac__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Context: Includes specific budget requests for travel expenses and interpreter costs to facilitate participation from diverse and underserved groups."
+      },
+      {
+        "sub_id": "g.3",
+        "good_evidence_ids": [
+          "secac__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Context: Mentions prior experience training GPs, conducting a preliminary survey of 24 professionals, and clinical work with dizziness patients, aligning with the proposed study."
+      },
+      {
+        "sub_id": "g.6",
+        "good_evidence_ids": [
+          "secac__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Context: Applicant is a specialist physiotherapist embedded in clinical services (UCLH), balancing clinical practice with research activities and training other professionals."
+      },
+      {
+        "sub_id": "ss.3",
+        "good_evidence_ids": [
+          "secac__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Context: Describes access to specialist equipment (Balcare chair), secure data systems (REDCap), and oversight by Consultant Neurologists at UCLH."
+      }
+    ],
+    "resolved_signals": [
+      "pr.2",
+      "pr.3",
+      "pr.4",
+      "pr.5",
+      "pr.6",
+      "pr.9",
+      "wp.1",
+      "wp.3",
+      "wp.4",
+      "wp.6",
+      "g.3",
+      "g.6",
+      "ss.3"
+    ],
+    "missing_signals_after": [
+      "g.1",
+      "g.2",
+      "g.4",
+      "g.5",
+      "pr.1",
+      "pr.7",
+      "pr.8",
+      "td.1",
+      "td.2",
+      "td.3",
+      "ss.1",
+      "ss.2",
+      "ss.4",
+      "wp.2",
+      "wp.5"
+    ]
+  },
+  {
+    "section_name": "Application Form Analysis",
+    "findings": [],
+    "resolved_signals": [],
+    "missing_signals_after": [
+      "g.1",
+      "g.2",
+      "g.4",
+      "g.5",
+      "pr.1",
+      "pr.7",
+      "pr.8",
+      "td.1",
+      "td.2",
+      "td.3",
+      "ss.1",
+      "ss.2",
+      "ss.4",
+      "wp.2",
+      "wp.5"
+    ]
+  }
+]

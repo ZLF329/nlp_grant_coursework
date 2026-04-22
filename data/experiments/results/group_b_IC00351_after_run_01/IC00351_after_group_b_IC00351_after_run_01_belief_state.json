@@ -1,0 +1,439 @@
+{
+  "processed_sections": [
+    "Applicant CV",
+    "Applicant Research Background",
+    "Plain English Summary of Research",
+    "Scientific Abstract",
+    "Detailed Research Plan",
+    "Patient & Public Involvement",
+    "Training & Development and Research Support",
+    "SUMMARY BUDGET",
+    "Application Context",
+    "Plain English NLP Analysis",
+    "Application Form Analysis"
+  ],
+  "subcriteria_beliefs": {
+    "g.3": {
+      "good_evidence_ids": [
+        "secac__001_a",
+        "secac__001_b",
+        "secac__001_c",
+        "secarb__001_a",
+        "secarb__001_b",
+        "secarb__001_d",
+        "sectdars__001_c",
+        "sectdars__001_p"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Applicant CV: Lists formal qualifications (MSc, FRCA, MRCP) and extensive clinical/research roles (Academic Clinical Fellow, Fellowships), demonstrating relevant training and experience.",
+        "Applicant Research Background: Details specific prior projects (GEMINI, narrative reviews) and formal training (MSc Health Data Science, MSc Medical Education) directly relevant to the proposed study.",
+        "Training & Development and Research Support: Details prior MSc in Health Data Science and specific planned courses in qualitative methods and ML, demonstrating relevant experience and training, supporting g.3."
+      ]
+    },
+    "g.4": {
+      "good_evidence_ids": [
+        "secac__001_d",
+        "secac__001_e",
+        "secac__001_f",
+        "secarb__001_a",
+        "secarb__001_d",
+        "secarb__001_e",
+        "sectdars__001_d",
+        "sectdars__001_p",
+        "sectdars__001_q"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Applicant CV: Provides a substantial list of peer-reviewed publications in high-impact journals (e.g., Anaesthesia, BMJ, Lancet) and multiple awards, indicating strong research output.",
+        "Applicant Research Background: Lists 12 publications, 12 abstracts, a co-edited book, and multiple awards (prizes, bursaries), demonstrating a strong track record of impactful outputs.",
+        "Training & Development and Research Support: Lists 12 publications, 12 abstracts, a co-edited book, and multiple awards (HEA Fellowship, prizes), indicating strong research outputs, supporting g.4."
+      ]
+    },
+    "g.5": {
+      "good_evidence_ids": [
+        "secac__001_b",
+        "secac__001_c",
+        "secac__001_g",
+        "secarb__001_d",
+        "secarb__001_e",
+        "sectdars__001_e",
+        "sectdars__001_q"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Applicant CV: Shows progression from F1 to ST7 with increasing research responsibility (Academic Fellowships, Clinical Fellow) and leadership recognition via prizes.",
+        "Applicant Research Background: Demonstrates increasing leadership through roles as Trainee Editor, Chair of Pan-London Network, and EDI Representative, alongside peer review activities.",
+        "Training & Development and Research Support: Shows increasing responsibility through roles as Trainee Editor, Chair of Pan-London Network, and leadership in GEMINI, supporting g.5."
+      ]
+    },
+    "g.6": {
+      "good_evidence_ids": [
+        "secac__001_b",
+        "secac__001_c",
+        "secarb__001_a",
+        "secarb__001_b",
+        "secarb__001_f",
+        "sectdars__001_e",
+        "sectdars__001_p"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Applicant CV: Demonstrates a clear practitioner-academic trajectory with concurrent clinical training (Anaesthetics/ICM) and dedicated research posts (Academic Clinical Fellow).",
+        "Applicant Research Background: Explicitly states the goal of becoming a Clinician Scientist, balancing full-time clinical work with research training and policy engagement.",
+        "Training & Development and Research Support: Explicitly states commitment to a dual specialist clinical academic track, balancing registrar training with research, supporting g.6."
+      ]
+    },
+    "g.1": {
+      "good_evidence_ids": [
+        "secarb__001_a",
+        "secarb__001_f",
+        "sectdars__001_a",
+        "sectdars__001_e"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Applicant Research Background: Clearly articulates a research vision focused on IMV and CDSS, with a defined career trajectory towards a Clinician Scientist role and Chair.",
+        "Training & Development and Research Support: Clearly articulates a research vision in IMV/XAI and a career trajectory to become a Clinician Scientist and Chair, supporting g.1."
+      ]
+    },
+    "g.2": {
+      "good_evidence_ids": [
+        "secarb__001_a",
+        "secarb__001_f",
+        "secarb__001_i",
+        "sectdars__001_a",
+        "sectdars__001_f"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Applicant Research Background: Explains the award as a necessary springboard to gain expert skills in mixed methods and ML, building on existing data science and clinical experience.",
+        "Training & Development and Research Support: Explains the award as a springboard for independence and protected time to develop new skills in ML and implementation, supporting g.2."
+      ]
+    },
+    "pr.1": {
+      "good_evidence_ids": [
+        "secarb__001_i",
+        "secpesor__001_a",
+        "secpesor__001_b",
+        "secpesor__001_c",
+        "secppi__001_a",
+        "secppi__001_b",
+        "secpena__001",
+        "secafa__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Applicant Research Background: Reports a Flesch-Kincaid Grade Level of 7.2 for the Plain English Summary, with specific improvements made based on reviewer feedback.",
+        "Plain English Summary of Research: Clearly articulates the problem, objectives, methods, and beneficiaries in accessible language, supporting pr.1.",
+        "Patient & Public Involvement: Describes iterative refinement of the lay summary based on RPG, PERC, and PFAG feedback to remove jargon and clarify objectives, directly supporting pr.1.",
+        "Plain English NLP Analysis: NLP metrics show high readability (Flesch-Kincaid 5.51, Reading Ease 66.19), low jargon density (1.77%), and coverage of key elements (problem, objectives, methods, beneficiaries, impact), str",
+        "Application Form Analysis: Confirms presence of Plain English Summary (578 words) and NLP analysis section, indicating structural compliance for readability assessment."
+      ]
+    },
+    "pr.6": {
+      "good_evidence_ids": [
+        "secarb__001_c",
+        "secarb__001_h",
+        "secpesor__001_c",
+        "secsa__001_b",
+        "secsa__001_c",
+        "secsa__001_d",
+        "secdrp__001_e",
+        "secdrp__001_f",
+        "secdrp__001_s",
+        "secppi__001_a",
+        "secppi__001_b",
+        "secppi__001_c"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Applicant Research Background: Describes active PPIE involvement including a Patient and Family Advisory Group, a public co-applicant, and co-design workshops.",
+        "Plain English Summary of Research: Confirms patient and public involvement from the start and a patient panel for dissemination, supporting pr.6.",
+        "Scientific Abstract: Describes active engagement via focus groups, co-design workshops, and a patient/family advisory group for dissemination.",
+        "Detailed Research Plan: Details extensive PPIE including a 12-member PFAG, public co-applicant, and co-design workshops for visualisation and UI, ensuring patient input shapes the study design.",
+        "Patient & Public Involvement: Details extensive engagement via RPG, PERC, and a 12-person PFAG, with specific feedback on bias, data security, and recruitment criteria incorporated into the proposal, strongly supporting"
+      ]
+    },
+    "pr.8": {
+      "good_evidence_ids": [
+        "secarb__001_a",
+        "secarb__001_b"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Applicant Research Background: Highlights prior successful projects (GEMINI, ventilation reviews) and relevant skills (ML, qualitative) that align with the proposed work."
+      ]
+    },
+    "td.1": {
+      "good_evidence_ids": [
+        "secarb__001_i",
+        "sectdars__001_c",
+        "sectdars__001_d"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Applicant Research Background: Outlines a revised training plan adding external courses in qualitative methodology, implementation science, and co-design to address previous gaps.",
+        "Training & Development and Research Support: Provides a detailed, costed training plan including specific courses in qualitative methods, implementation science, and ML, supporting td.1."
+      ]
+    },
+    "td.2": {
+      "good_evidence_ids": [
+        "secarb__001_i",
+        "sectdars__001_c",
+        "sectdars__001_d"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Applicant Research Background: Identifies specific skill gaps (qualitative, co-design) and maps targeted training activities to address them for the project.",
+        "Training & Development and Research Support: Identifies specific skill gaps (qualitative, co-design) and maps targeted external courses to address them, supporting td.2."
+      ]
+    },
+    "td.3": {
+      "good_evidence_ids": [
+        "secarb__001_f",
+        "secarb__001_i",
+        "sectdars__001_a",
+        "sectdars__001_e"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Applicant Research Background: Connects the training plan to long-term career aspirations of leading a research group and attaining a Chair in anaesthesia.",
+        "Training & Development and Research Support: Connects training activities to long-term goals of leading a research group and attaining a Chair, supporting td.3."
+      ]
+    },
+    "wp.1": {
+      "good_evidence_ids": [
+        "secarb__001_c",
+        "secarb__001_h",
+        "secpesor__001_c",
+        "secsa__001_b",
+        "secsa__001_d",
+        "secdrp__001_e",
+        "secdrp__001_f",
+        "secdrp__001_s",
+        "secppi__001_a",
+        "secppi__001_b",
+        "secppi__001_c",
+        "sectdars__001_r"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Applicant Research Background: Details integration of lived experience through a PFAG, public co-applicant, and co-design workshops that refined the proposal.",
+        "Plain English Summary of Research: Mentions discussion with patients to choose research areas and a patient panel to plan sharing, supporting wp.1.",
+        "Scientific Abstract: Integrates lived experience through co-design workshops for visualizations and a patient advisory group for public dissemination.",
+        "Detailed Research Plan: Demonstrates deep integration of lived experience via a PFAG and public co-applicant who co-design visualisations and guide dissemination, directly influencing study design.",
+        "Patient & Public Involvement: Demonstrates deep integration of lived experience through a PFAG and co-applicant, resulting in specific amendments to recruitment criteria and proposal themes, supporting wp.1.",
+        "Training & Development and Research Support: Mentions active engagement with patient/public partners and a PPI co-applicant with lived experience, supporting wp.1."
+      ]
+    },
+    "wp.6": {
+      "good_evidence_ids": [
+        "secarb__001_i",
+        "secppi__001_d",
+        "secsb__001_g",
+        "secsb__001_h",
+        "secsb__001_i",
+        "secafa__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Applicant Research Background: Confirms that PPIE activities are costed, including regular meetings, preparation time, and internet access for the advisory group.",
+        "Patient & Public Involvement: Explicitly states that PFAG and co-applicant time are costed in accordance with NIHR guidelines, supporting wp.6.",
+        "SUMMARY BUDGET: Details a fully costed plan for PPIE activities including meetings, workshops, and travel for PFAG members and co-applicants, supporting wp.6.",
+        "Application Form Analysis: Confirms a dedicated Patient & Public Involvement section (790 words) exists, providing the structural basis for assessing costed inclusion plans."
+      ]
+    },
+    "pr.2": {
+      "good_evidence_ids": [
+        "secpesor__001_a",
+        "secsa__001_a",
+        "secdrp__001_g",
+        "secdrp__001_h",
+        "secdrp__001_i"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Plain English Summary of Research: Identifies knowledge gaps regarding inconsistent ventilator weaning practices and lack of trusted CDSS, supporting pr.2.",
+        "Scientific Abstract: Identifies a knowledge gap where CDSS are 'black box' and lack rationale, justifying the need for explainable AI.",
+        "Detailed Research Plan: Conducts a narrative review identifying 2,616 studies, critically analyzing heterogeneity in weaning practice and the 'black box' limitation of existing CDSS, clearly defining knowledge gaps."
+      ]
+    },
+    "pr.3": {
+      "good_evidence_ids": [
+        "secpesor__001_b",
+        "secsa__001_b",
+        "secsa__001_c",
+        "secdrp__001_k",
+        "secdrp__001_l",
+        "secdrp__001_~",
+        "secafa__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Plain English Summary of Research: Outlines a feasible three-step approach (ML prediction, visual tool design, simulation testing) appropriate for the award scope, supporting pr.3.",
+        "Scientific Abstract: Outlines a feasible 33-month timeline with distinct phases for model development, co-design, and simulation, aligning with award scope.",
+        "Detailed Research Plan: Outlines a feasible scope with three distinct objectives, specific data sources (MIMIC-IV, NHS trusts), and risk mitigation strategies for model failure, aligning with award expectations.",
+        "Application Form Analysis: Shows a logical section order moving from context to research plan and budget, supporting assessment of scope and feasibility flow."
+      ]
+    },
+    "pr.4": {
+      "good_evidence_ids": [
+        "secpesor__001_b",
+        "secsa__001_b",
+        "secsa__001_c",
+        "secdrp__001_n",
+        "secdrp__001_o",
+        "secdrp__001_v",
+        "secafa__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Plain English Summary of Research: Describes specific methods including machine learning for prediction and co-design with clinicians for visual tools, supporting pr.4.",
+        "Scientific Abstract: Specifies rigorous methods including three neural network architectures (TFT, TCN, LSTM) and a modified between-subjects vignette study.",
+        "Detailed Research Plan: Specifies rigorous methods including TFT/TCN/LSTM architectures, 5-fold cross-validation, bias assessment, and a multifactorial vignette study with physiological cognitive load measures.",
+        "Application Form Analysis: Detects 35 numbered heading-like lines and 44 list markers, indicating a structured presentation of research design and methods."
+      ]
+    },
+    "pr.5": {
+      "good_evidence_ids": [
+        "secpesor__001_c",
+        "secsa__001_c",
+        "secdrp__001_d",
+        "secdrp__001_e",
+        "secdrp__001_y"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Plain English Summary of Research: Explicitly lists patient benefits including improved safety, consistent care, and reduced hospital stays, supporting pr.5.",
+        "Scientific Abstract: Details specific impacts including reduced heterogeneity in practice, optimized ventilator time, and reduced NHS admission costs.",
+        "Detailed Research Plan: Explicitly links research to patient benefits (reduced ventilator time, improved comfort) and NHS benefits (reduced length of stay, cost optimization), addressing high research priorities."
+      ]
+    },
+    "pr.9": {
+      "good_evidence_ids": [
+        "secpesor__001_b",
+        "secdrp__001_o",
+        "secdrp__001_p",
+        "secdrp__001_|",
+        "secppi__001_b",
+        "secppi__001_c"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Plain English Summary of Research: States commitment to ensuring models are fair for all groups, including those less often studied, supporting pr.9.",
+        "Detailed Research Plan: Commits to assessing bias in under-represented groups, adhering to SAGER guidelines and NIHR-INCLUDE framework, and purposive sampling for diversity in qualitative components.",
+        "Patient & Public Involvement: Highlights PFAG feedback on diversity and lived experience, leading to purposive recruitment criteria (stable recovery, >18y) and a diverse group (25% non-white), supporting pr.9."
+      ]
+    },
+    "wp.3": {
+      "good_evidence_ids": [
+        "secpesor__001_c",
+        "secsa__001_c",
+        "secsa__001_d",
+        "secdrp__001_x",
+        "secdrp__001_y",
+        "secppi__001_c",
+        "secppi__001_d",
+        "sectdars__001_f",
+        "sectdars__001_r"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Plain English Summary of Research: Details dissemination plans via meetings, journals, and public activities to maximize benefit, supporting wp.3.",
+        "Scientific Abstract: Plans dissemination through scientific meetings, publications, and co-presenting with a patient advisory group to maximize benefit.",
+        "Detailed Research Plan: Outlines a comprehensive dissemination strategy including high-impact journals, conferences, code sharing on Zenodo, and co-presentation with patient representatives.",
+        "Patient & Public Involvement: Outlines active PFAG roles in crafting messages for public dissemination and co-presenting results, alongside plans to use media teams and charities, supporting wp.3.",
+        "Training & Development and Research Support: Plans dissemination to international research community, clinicians, patients, and public to maximize benefit, supporting wp.3."
+      ]
+    },
+    "ss.2": {
+      "good_evidence_ids": [
+        "secdrp__001_y",
+        "secdrp__001_z",
+        "secdrp__001_{",
+        "sectdars__001_a",
+        "sectdars__001_h",
+        "sectdars__001_k"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Detailed Research Plan: Describes a robust supervisory team with specific roles (clinical, methodological, ML expertise) and weekly meetings, ensuring alignment with project needs.",
+        "Training & Development and Research Support: Describes a multidisciplinary supervisory team with specific roles and weekly meetings, ensuring strong mentorship, supporting ss.2."
+      ]
+    },
+    "ss.3": {
+      "good_evidence_ids": [
+        "secdrp__001_l",
+        "secdrp__001_m",
+        "secdrp__001_|",
+        "sectdars__001_b",
+        "sectdars__001_l",
+        "sectdars__001_s"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Detailed Research Plan: Confirms access to necessary infrastructure including secure NHS data environments (BDAU SE), cloud platforms (Google Cloud), and established data sharing agreements.",
+        "Training & Development and Research Support: Confirms access to Imperial DSI, NIHR HRC, and CA TO resources, aligning organizational support with career aspirations, supporting ss.3."
+      ]
+    },
+    "wp.4": {
+      "good_evidence_ids": [
+        "secppi__001_b",
+        "secppi__001_c"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Patient & Public Involvement: Addresses barriers to participation identified by RPG (homogeneity) and implements strategies for diversity (25% non-white, UK-wide), supporting wp.4."
+      ]
+    },
+    "wp.5": {
+      "good_evidence_ids": [
+        "secppi__001_a",
+        "secppi__001_c",
+        "secppi__001_d"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Patient & Public Involvement: Shows inclusion across the lifecycle from proposal development (RPG/PERC) to ongoing advisory (4-monthly meetings) and dissemination, supporting wp.5."
+      ]
+    },
+    "ss.1": {
+      "good_evidence_ids": [
+        "sectdars__001_g",
+        "sectdars__001_h",
+        "sectdars__001_i"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Training & Development and Research Support: Highlights supervisors' extensive track records with >£5M grants, >80 publications, and international recognition, supporting ss.1."
+      ]
+    },
+    "ss.4": {
+      "good_evidence_ids": [
+        "sectdars__001_t",
+        "sectdars__001_u"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Training & Development and Research Support: Cites Athena Swan Gold, Race Equality Charter, and other EDI accreditations, demonstrating a commitment to inclusive culture, supporting ss.4."
+      ]
+    },
+    "pr.7": {
+      "good_evidence_ids": [
+        "secsb__001_a",
+        "secsb__001_c",
+        "secsb__001_e",
+        "secafa__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "SUMMARY BUDGET: Provides explicit justifications linking costs to specific tasks (e.g., GPU for data analysis, travel for collaboration, PPIE meetings), supporting pr.7.",
+        "Application Form Analysis: Identifies 147 table-like budget lines and 127 objective-method-budget link terms, suggesting strong structural alignment between tasks and costs."
+      ]
+    }
+  },
+  "missing_signals": [
+    "wp.2"
+  ]
+}
