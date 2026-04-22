@@ -1,0 +1,409 @@
+{
+  "processed_sections": [
+    "Applicant CV",
+    "Applicant Research Background",
+    "Plain English Summary of Research",
+    "Scientific Abstract",
+    "Detailed Research Plan",
+    "Patient & Public Involvement",
+    "Training & Development and Research Support",
+    "SUMMARY BUDGET",
+    "Application Context",
+    "Plain English NLP Analysis",
+    "Application Form Analysis"
+  ],
+  "subcriteria_beliefs": {
+    "g.3": {
+      "good_evidence_ids": [
+        "secac__001_a",
+        "secac__001_b",
+        "secarb__001_b",
+        "secarb__001_c",
+        "secarb__001_d"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Applicant CV: Applicant holds an MPH and MFPH qualifications and has held research internships at Public Health England, demonstrating formal training and relevant experience.",
+        "Applicant Research Background: Details specific prior projects including a national survey on men's health and a cross-sectional study on health literacy, demonstrating relevant methods and experience."
+      ]
+    },
+    "g.4": {
+      "good_evidence_ids": [
+        "secac__001_b",
+        "secac__001_c",
+        "secac__001_d",
+        "secarb__001_a",
+        "secarb__001_c",
+        "secarb__001_d"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Applicant CV: Applicant lists multiple peer-reviewed publications in high-impact journals (e.g., Anaesthesia, British Journal of Surgery) and has received several academic awards and prizes.",
+        "Applicant Research Background: Lists multiple outputs including awards (Doubleday Student Award), conference presentations, and an accepted manuscript, showing impactful research outcomes."
+      ]
+    },
+    "g.5": {
+      "good_evidence_ids": [
+        "secac__001_b",
+        "secac__001_d",
+        "secarb__001_c",
+        "secarb__001_d",
+        "secarb__001_e"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Applicant CV: Applicant shows increasing responsibility through roles as Visiting Lecturer, NIHR Fellow, and Project Lead for public engagement initiatives, supported by multiple awards.",
+        "Applicant Research Background: Demonstrates increasing leadership as Principal Investigator leading a team of 7, organizing conferences, and serving as a judge for competitions."
+      ]
+    },
+    "g.6": {
+      "good_evidence_ids": [
+        "secac__001_a",
+        "secac__001_b",
+        "secarb__001_c",
+        "secarb__001_d",
+        "secarb__001_e"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Applicant CV: Applicant is an MBChB graduate currently working as a Specialty Registrar and NIHR Academic Clinical Fellow, demonstrating a clear practitioner-academic career path.",
+        "Applicant Research Background: Confirms practitioner-academic commitment by conducting research while training as a junior doctor and holding an Academic Clinical Fellowship."
+      ]
+    },
+    "g.1": {
+      "good_evidence_ids": [
+        "secarb__001_d",
+        "secarb__001_e",
+        "secarb__001_f",
+        "sectdars__001_a",
+        "sectdars__001_d"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Applicant Research Background: Describes a clear trajectory from patient experience to leading independent research projects and pursuing a PhD, demonstrating a distinct research vision.",
+        "Training & Development and Research Support: Demonstrates a well-justified training plan and strong mentorship, reinforcing the application's overall quality and clear career trajectory."
+      ]
+    },
+    "g.2": {
+      "good_evidence_ids": [
+        "secarb__001_d",
+        "secarb__001_f"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Applicant Research Background: Explicitly states the fellowship will build skills in qualitative research and AI, enabling a career in academia and bridging health/social care."
+      ]
+    },
+    "pr.8": {
+      "good_evidence_ids": [
+        "secarb__001_b",
+        "secarb__001_c",
+        "secarb__001_d"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Applicant Research Background: Provides detailed evidence of prior successful projects, including data collection from 3000+ people and dissemination leading to policy changes."
+      ]
+    },
+    "wp.1": {
+      "good_evidence_ids": [
+        "secarb__001_a",
+        "secarb__001_e",
+        "secarb__001_f",
+        "secpesor__001_c",
+        "secsa__001_b",
+        "secsa__001_c",
+        "secppi__001_a",
+        "secppi__001_b"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Applicant Research Background: Highlights extensive PPIE, including co-developing projects with patients and shadowing care workers to shape the PhD question.",
+        "Plain English Summary of Research: States the project question was created with care workers, residents, and families, supporting wp.1.",
+        "Scientific Abstract: States the project was co-produced with residents and carers who reviewed the methodology, demonstrating integration of lived experience in design.",
+        "Patient & Public Involvement: Describes co-production from inception, with a carer suggesting the PhD aim and a community group adapting the Delphi methodology to include printed versions and face-to-face discussions."
+      ]
+    },
+    "wp.3": {
+      "good_evidence_ids": [
+        "secarb__001_c",
+        "secarb__001_d",
+        "secpesor__001_c",
+        "secsa__001_c"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Applicant Research Background: Describes practical impact of previous work, including changes to appointment letters, patient leaflets, and mandatory training programs.",
+        "Plain English Summary of Research: Plans to share results via journals, conferences, and a video for care workers, supporting wp.3.",
+        "Scientific Abstract: Links co-produced principles to effective communication and reduced hospital readmissions, showing a clear commitment to maximizing public benefit."
+      ]
+    },
+    "pr.1": {
+      "good_evidence_ids": [
+        "secpesor__001_a",
+        "secpesor__001_b",
+        "secpesor__001_c",
+        "secsa__001_a",
+        "secsa__001_b",
+        "secsa__001_c",
+        "secpena__001",
+        "secafa__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Plain English Summary of Research: Clearly defines the problem, objectives, methods, and beneficiaries in accessible language, supporting pr.1.",
+        "Scientific Abstract: Clearly articulates the problem (MDS unsuitability), aims, methods (WP1-4), and beneficiaries (carers/residents), fulfilling pr.1 requirements for a comprehensive summary.",
+        "Plain English NLP Analysis: NLP metrics show high readability (Flesch-Kincaid 6.86, 0% long sentences) and low jargon density (1.03%), with coverage of problem, objectives, methods, beneficiaries, and impact, strongly su",
+        "Application Form Analysis: Confirms presence of Plain English Summary and NLP analysis sections, indicating structural compliance for readability assessment."
+      ]
+    },
+    "pr.3": {
+      "good_evidence_ids": [
+        "secpesor__001_b",
+        "secpesor__001_c",
+        "secsa__001_a",
+        "secsa__001_b",
+        "secafa__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Plain English Summary of Research: Outlines a structured 4-question approach with specific tasks (survey, focus groups, AI training), indicating feasible scope for pr.3.",
+        "Scientific Abstract: Outlines a structured 4-work-package approach with specific tasks (survey, focus groups, NLP), indicating a feasible scope aligned with award expectations.",
+        "Application Form Analysis: Word counts (5140 for Research Plan, 2164 for Budget) indicate substantial detail, supporting feasibility and scope assessment."
+      ]
+    },
+    "pr.4": {
+      "good_evidence_ids": [
+        "secpesor__001_b",
+        "secpesor__001_c",
+        "secsa__001_a",
+        "secsa__001_b",
+        "secdrp__001_i",
+        "secdrp__001_l",
+        "secdrp__001_o"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Plain English Summary of Research: Describes specific methods including national surveys, focus groups, and AI model training, supporting pr.4.",
+        "Scientific Abstract: Explicitly describes rigorous methods including systematic review, cross-sectional survey, mixed methods, Delphi, and NLP algorithm training, supporting methodological rigor.",
+        "Detailed Research Plan: Provides explicit methodological descriptions including systematic review protocols (PRISMA), validated tools (FHLT, PEMAT), sample size calculations, and specific analysis plans for mixed methods"
+      ]
+    },
+    "pr.5": {
+      "good_evidence_ids": [
+        "secpesor__001_a",
+        "secpesor__001_c",
+        "secsa__001_c"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Plain English Summary of Research: Explicitly states the goal to improve care for patients in care homes and ensure they get the right care, supporting pr.5.",
+        "Scientific Abstract: Details specific impacts including reduced workloads, fewer medical events, and cost savings for the NHS, demonstrating clear potential for patient and service benefit."
+      ]
+    },
+    "pr.6": {
+      "good_evidence_ids": [
+        "secpesor__001_b",
+        "secpesor__001_c",
+        "secsa__001_b",
+        "secsa__001_c",
+        "secafa__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Plain English Summary of Research: Details engagement with care workers, residents, families, and medical teams throughout design and feedback stages, supporting pr.6.",
+        "Scientific Abstract: Highlights co-production with residents/carers in methodology review and a steering committee, confirming strong engagement with people and communities.",
+        "Application Form Analysis: Confirms a dedicated 'Patient & Public Involvement' section (771 words), indicating specific attention to engagement criteria."
+      ]
+    },
+    "pr.9": {
+      "good_evidence_ids": [
+        "secpesor__001_b",
+        "secpesor__001_c",
+        "secsa__001_c",
+        "secppi__001_b",
+        "secppi__001_c",
+        "secsb__001_d",
+        "secsb__001_e"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Plain English Summary of Research: Includes diverse voices (residents, families, care workers) in the expert group and feedback loops, supporting pr.9.",
+        "Scientific Abstract: Mentions methodology review by the public to ensure accessibility and inclusivity for a range of participants, supporting inclusive research design.",
+        "Patient & Public Involvement: Demonstrates adaptive methods for accessibility, such as replacing digital barriers with printed materials and face-to-face discussions for older adults in care homes.",
+        "SUMMARY BUDGET: Budgets for accessible equipment (large print keyboards, webcams) and travel to reduce technological barriers, supporting inclusive research design."
+      ]
+    },
+    "pr.2": {
+      "good_evidence_ids": [
+        "secdrp__001_c",
+        "secdrp__001_d",
+        "secdrp__001_e",
+        "secafa__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Detailed Research Plan: Critically reviews literature on health literacy and MDS readability, explicitly identifying gaps in evidence regarding care workers' numeracy and the need for accessible summaries.",
+        "Application Form Analysis: Notes 32 transition phrases and logical section ordering, supporting evidence of coherent flow in the research plan."
+      ]
+    },
+    "pr.7": {
+      "good_evidence_ids": [
+        "secdrp__001_k",
+        "secdrp__001_q",
+        "secdrp__001_z",
+        "secsb__001_a",
+        "secsb__001_b",
+        "secsb__001_c",
+        "secafa__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Detailed Research Plan: Justifies resources by detailing participant incentives (£15/£25 vouchers), travel costs, and specific recruitment strategies linked to project tasks, though a full budget table is not present.",
+        "SUMMARY BUDGET: Provides detailed cost breakdowns for staff, travel, and equipment with explicit justifications linking resources to specific work packages (WP1, WP4) and tasks.",
+        "Application Form Analysis: Identifies 144 table-like budget lines and 95 objective-method-budget link terms, suggesting strong structural justification of resources."
+      ]
+    },
+    "ss.1": {
+      "good_evidence_ids": [
+        "secdrp__001_h",
+        "secdrp__001_m"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Detailed Research Plan: Highlights strong institutional support via UCL-led Vivaldi network, HCIC, and established links with three NHS trusts, demonstrating a robust track record of partnerships."
+      ]
+    },
+    "ss.2": {
+      "good_evidence_ids": [
+        "secdrp__001_x",
+        "secdrp__001_y",
+        "sectdars__001_f",
+        "sectdars__001_h",
+        "sectdars__001_j"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Detailed Research Plan: Describes a structured supervision framework with fortnightly/monthly meetings with named supervisors and a steering committee, ensuring strong mentorship support.",
+        "Training & Development and Research Support: Details a robust supervisory framework with four named supervisors, specific meeting frequencies (fortnightly/quarterly), and clear alignment of supervisor expertise (public h"
+      ]
+    },
+    "ss.3": {
+      "good_evidence_ids": [
+        "secdrp__001_h",
+        "secdrp__001_j",
+        "sectdars__001_l",
+        "sectdars__001_m",
+        "sectdars__001_p"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Detailed Research Plan: Confirms access to necessary infrastructure including UCL data safe haven (RedCap), established care home networks, and AI teams at Institute of Health Informatics.",
+        "Training & Development and Research Support: Confirms access to critical infrastructure including the Vivaldi care home network, UCLH discharge summaries, and AI/data science teams, ensuring the organization is fully equ"
+      ]
+    },
+    "ss.4": {
+      "good_evidence_ids": [
+        "secdrp__001_c",
+        "secdrp__001_p",
+        "secdrp__001_s",
+        "sectdars__001_g",
+        "sectdars__001_s"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Detailed Research Plan: Demonstrates commitment to inclusive culture through co-production with carers/residents, purposive sampling for diversity, and plain English materials for accessibility.",
+        "Training & Development and Research Support: Highlights institutional commitment to inclusive culture through Athena Swan and Race Equality Charter awards, active EDI committees, and specific support for diverse student"
+      ]
+    },
+    "wp.2": {
+      "good_evidence_ids": [
+        "secdrp__001_p",
+        "secdrp__001_s"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Detailed Research Plan: Explicitly plans for diverse recruitment in focus groups and Delphi panels, including care workers, residents, families, and medical teams to ensure team and participant diversity."
+      ]
+    },
+    "wp.4": {
+      "good_evidence_ids": [
+        "secdrp__001_b",
+        "secdrp__001_p",
+        "secdrp__001_s"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Detailed Research Plan: Focuses on underserved older people in care homes and includes residents/families as experts by experience, addressing representation of seldom-heard groups."
+      ]
+    },
+    "wp.5": {
+      "good_evidence_ids": [
+        "secdrp__001_c",
+        "secdrp__001_s",
+        "secdrp__001_u",
+        "secppi__001_c",
+        "secppi__001_d"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Detailed Research Plan: Integrates inclusivity across the lifecycle from co-designing principles (WP3) to evaluating AI outputs with diverse stakeholders (WP4), ensuring accessibility at all stages.",
+        "Patient & Public Involvement: Details inclusive support across the lifecycle, including pre-meetings, printed papers, technical accessories, plain English TORs, and face-to-face options for online meetings."
+      ]
+    },
+    "wp.6": {
+      "good_evidence_ids": [
+        "secdrp__001_k",
+        "secdrp__001_q",
+        "secdrp__001_z",
+        "secppi__001_c",
+        "secppi__001_d",
+        "secsb__001_f",
+        "secsb__001_g",
+        "secsb__001_h"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Detailed Research Plan: Allocates specific resources for inclusion, including £15/£25 incentives, travel cost coverage, and time for co-production meetings, ensuring the inclusion plan is costed.",
+        "Patient & Public Involvement: Confirms resourcing for inclusion via remuneration for residents/family members and coaching for care workers to support their active participation.",
+        "SUMMARY BUDGET: Allocates specific funds for PPIE involvement, participant vouchers, and training for care workers, demonstrating a fully costed plan for research inclusion."
+      ]
+    },
+    "td.2": {
+      "good_evidence_ids": [
+        "secppi__001_d"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Patient & Public Involvement: Applicant plans to attend a facilitator course to support chairing the steering committee, addressing a specific skill gap for managing inclusive engagement."
+      ]
+    },
+    "td.1": {
+      "good_evidence_ids": [
+        "sectdars__001_a",
+        "sectdars__001_b",
+        "sectdars__001_c",
+        "secsb__001_i",
+        "secafa__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Training & Development and Research Support: Provides a comprehensive, structured training plan covering systematic reviews, surveys, statistical analysis, qualitative methods, and AI, directly addressing project-specifi",
+        "SUMMARY BUDGET: Funds specific short courses in qualitative methods, NVivo, and facilitator skills, confirming a structured and relevant training plan.",
+        "Application Form Analysis: Confirms a substantial 'Training & Development' section (3612 words), suggesting a comprehensive training plan is present."
+      ]
+    },
+    "td.3": {
+      "good_evidence_ids": [
+        "sectdars__001_a",
+        "sectdars__001_d",
+        "sectdars__001_f"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Training & Development and Research Support: Explicitly links training activities (grant writing, facilitator skills, leadership coaching) to long-term career goals in academia and public health, demonstrating strong sup"
+      ]
+    }
+  },
+  "missing_signals": []
+}

@@ -1,0 +1,360 @@
+[
+  {
+    "section_name": "Plain English Summary of Research",
+    "findings": [
+      {
+        "sub_id": "pr.1",
+        "good_evidence_ids": [
+          "secpesor__001_a",
+          "secpesor__001_b",
+          "secpesor__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: The section provides a clear problem statement, objectives, methods, and beneficiaries in accessible language, strongly supporting pr.1."
+      },
+      {
+        "sub_id": "pr.2",
+        "good_evidence_ids": [
+          "secpesor__001_a"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Identifies a knowledge gap regarding GP guidance for PLWHIV and lack of evidence on what works best, supporting pr.2."
+      },
+      {
+        "sub_id": "pr.4",
+        "good_evidence_ids": [
+          "secpesor__001_a",
+          "secpesor__001_b"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Describes a three-part design including literature review, database analysis, and co-design with a steering group, supporting pr.4."
+      },
+      {
+        "sub_id": "pr.5",
+        "good_evidence_ids": [
+          "secpesor__001_a",
+          "secpesor__001_b"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Explicitly states the aim to improve health checks and care for PLWHIV to help them live longer, healthier lives, supporting pr.5."
+      },
+      {
+        "sub_id": "pr.6",
+        "good_evidence_ids": [
+          "secpesor__001_a",
+          "secpesor__001_b"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Details the Person-Based Approach, PPI involvement in proposal writing, steering group co-leadership, and feedback loops, strongly supporting pr.6."
+      },
+      {
+        "sub_id": "wp.1",
+        "good_evidence_ids": [
+          "secpesor__001_a",
+          "secpesor__001_b"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Highlights central input from PLWHIV in planning, co-design of the care model, and feedback mechanisms, supporting wp.1."
+      },
+      {
+        "sub_id": "wp.3",
+        "good_evidence_ids": [
+          "secpesor__001_b",
+          "secpesor__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Outlines dissemination plans including journals, conferences, social media, and press releases to share findings with the public and health workers, supporting wp.3."
+      }
+    ],
+    "resolved_signals": [
+      "pr.1",
+      "pr.2",
+      "pr.4",
+      "pr.5",
+      "pr.6",
+      "wp.1",
+      "wp.3"
+    ],
+    "missing_signals_after": [
+      "g.1",
+      "g.2",
+      "g.3",
+      "g.4",
+      "g.5",
+      "g.6",
+      "pr.3",
+      "pr.7",
+      "pr.8",
+      "pr.9",
+      "td.1",
+      "td.2",
+      "td.3",
+      "ss.1",
+      "ss.2",
+      "ss.3",
+      "ss.4",
+      "wp.2",
+      "wp.4",
+      "wp.5",
+      "wp.6"
+    ]
+  },
+  {
+    "section_name": "Detailed Research Plan",
+    "findings": [
+      {
+        "sub_id": "g.3",
+        "good_evidence_ids": [
+          "secdrp__001_f",
+          "secdrp__001_g"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Lists team members' prior experience with NIHR grants, electronic health records, and scoping reviews, aligning skills with project needs."
+      },
+      {
+        "sub_id": "g.4",
+        "good_evidence_ids": [
+          "secdrp__001_g"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Mentions track records of publications and successful NIHR grant applications for key team members, supporting prior research quality."
+      },
+      {
+        "sub_id": "g.6",
+        "good_evidence_ids": [
+          "secdrp__001_f",
+          "secdrp__001_g"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Identifies GP academics and HIV specialists as team members, demonstrating a practitioner-academic mix relevant to the study."
+      },
+      {
+        "sub_id": "pr.3",
+        "good_evidence_ids": [
+          "secdrp__001_j",
+          "secdrp__001_k",
+          "secdrp__001_m"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Defines three workstreams with specific timelines (months 2-16) and methods, indicating a feasible scope for the award."
+      },
+      {
+        "sub_id": "pr.4",
+        "good_evidence_ids": [
+          "secdrp__001_k",
+          "secdrp__001_l",
+          "secdrp__001_m"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Details rigorous methods including Arksey and O'Malley framework for scoping review and CPRD database analysis with regression, supporting methodological rigor."
+      },
+      {
+        "sub_id": "pr.5",
+        "good_evidence_ids": [
+          "secdrp__001_c",
+          "secdrp__001_n",
+          "secdrp__001_o"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Explicitly links outcomes to NHS priorities, clinical guidance, and improved health for PLWHIV, demonstrating clear potential impact."
+      },
+      {
+        "sub_id": "pr.6",
+        "good_evidence_ids": [
+          "secdrp__001_h",
+          "secdrp__001_i",
+          "secdrp__001_n"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Describes a Person-Based Approach, stakeholder group co-led by PLWHIV, and focus groups, showing deep engagement throughout the lifecycle."
+      },
+      {
+        "sub_id": "pr.9",
+        "good_evidence_ids": [
+          "secdrp__001_j",
+          "secdrp__001_n"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Explicitly addresses diversity (MSM, Black African, trans) and plans to recruit underserved demographics for focus groups."
+      },
+      {
+        "sub_id": "ss.1",
+        "good_evidence_ids": [
+          "secdrp__001_g"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Highlights team members' track records of successful NIHR grants and publications in HIV care, indicating strong institutional track record."
+      },
+      {
+        "sub_id": "ss.2",
+        "good_evidence_ids": [
+          "secdrp__001_g",
+          "secdrp__001_i"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Assigns specific roles for methodological advice, supervision of research associates, and PPI training, showing structured support."
+      },
+      {
+        "sub_id": "wp.1",
+        "good_evidence_ids": [
+          "secdrp__001_h",
+          "secdrp__001_i",
+          "secdrp__001_n"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Integrates PLWHIV as co-applicants and in focus groups to co-design the intervention, ensuring lived experience shapes the research."
+      },
+      {
+        "sub_id": "wp.2",
+        "good_evidence_ids": [
+          "secdrp__001_f",
+          "secdrp__001_g"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Lists a diverse team including PLWHIV co-applicants, GP academics, and HIV specialists, reflecting inclusive team composition."
+      },
+      {
+        "sub_id": "wp.4",
+        "good_evidence_ids": [
+          "secdrp__001_j",
+          "secdrp__001_n"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Identifies specific underserved groups (trans, Black African, non-metropolitan) and plans targeted recruitment strategies."
+      },
+      {
+        "sub_id": "wp.5",
+        "good_evidence_ids": [
+          "secdrp__001_h",
+          "secdrp__001_i",
+          "secdrp__001_n"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Ensures inclusion across design (PBA), recruitment (focus groups), and analysis (stakeholder feedback), covering the research lifecycle."
+      },
+      {
+        "sub_id": "wp.6",
+        "good_evidence_ids": [
+          "secdrp__001_i",
+          "secdrp__001_n"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: States that compensation for time and expenses for the stakeholder group is costed in the budget, supporting resourced inclusion."
+      }
+    ],
+    "resolved_signals": [
+      "g.3",
+      "g.4",
+      "g.6",
+      "pr.3",
+      "pr.4",
+      "pr.5",
+      "pr.6",
+      "pr.9",
+      "ss.1",
+      "ss.2",
+      "wp.1",
+      "wp.2",
+      "wp.4",
+      "wp.5",
+      "wp.6"
+    ],
+    "missing_signals_after": [
+      "g.1",
+      "g.2",
+      "g.5",
+      "pr.7",
+      "pr.8",
+      "td.1",
+      "td.2",
+      "td.3",
+      "ss.3",
+      "ss.4"
+    ]
+  },
+  {
+    "section_name": "Application Context",
+    "findings": [
+      {
+        "sub_id": "pr.3",
+        "good_evidence_ids": [
+          "secac__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Context: Specifies an 18-month duration and total cost of £180,401.32, providing concrete feasibility indicators for the project scope."
+      },
+      {
+        "sub_id": "pr.7",
+        "good_evidence_ids": [
+          "secac__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Context: States the total cost to NIHR as £180,401.32, establishing the funding level for resource justification."
+      },
+      {
+        "sub_id": "ss.3",
+        "good_evidence_ids": [
+          "secac__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Context: Identifies the contracting organisation as an INTEGRATED CARE BOARD, indicating the institutional setting for the award."
+      }
+    ],
+    "resolved_signals": [
+      "pr.3",
+      "pr.7",
+      "ss.3"
+    ],
+    "missing_signals_after": [
+      "g.1",
+      "g.2",
+      "g.5",
+      "pr.8",
+      "td.1",
+      "td.2",
+      "td.3",
+      "ss.4"
+    ]
+  },
+  {
+    "section_name": "Plain English NLP Analysis",
+    "findings": [
+      {
+        "sub_id": "pr.1",
+        "good_evidence_ids": [
+          "secpena__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English NLP Analysis: Flesch-Kincaid grade 5.3 and Reading Ease 74.35 indicate high readability, while low jargon density (2.41%) and coverage of key elements (problem, objectives, methods, beneficiaries, impact) s"
+      }
+    ],
+    "resolved_signals": [
+      "pr.1"
+    ],
+    "missing_signals_after": [
+      "g.1",
+      "g.2",
+      "g.5",
+      "pr.8",
+      "td.1",
+      "td.2",
+      "td.3",
+      "ss.4"
+    ]
+  },
+  {
+    "section_name": "Application Form Analysis",
+    "findings": [],
+    "resolved_signals": [],
+    "missing_signals_after": [
+      "g.1",
+      "g.2",
+      "g.5",
+      "pr.8",
+      "td.1",
+      "td.2",
+      "td.3",
+      "ss.4"
+    ]
+  }
+]

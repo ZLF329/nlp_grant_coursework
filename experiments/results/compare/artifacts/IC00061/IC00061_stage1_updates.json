@@ -1,0 +1,156 @@
+[
+  {
+    "section_name": "Patient & Public Involvement",
+    "findings": [
+      {
+        "sub_id": "wp.1",
+        "good_evidence_ids": [
+          "secppi__001_a",
+          "secppi__001_c",
+          "secppi__001_d"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Patient & Public Involvement: Strong evidence of co-design: PPI groups involved in developing review questions, recruitment pathways, survey questions, and workshop materials across all work packages."
+      },
+      {
+        "sub_id": "wp.4",
+        "good_evidence_ids": [
+          "secppi__001_a",
+          "secppi__001_c",
+          "secppi__001_d"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Patient & Public Involvement: Explicit strategies for diverse recruitment including parent support groups, trusted advocates, interpreters, and BSL to reach diverse communities and CYP with SEND."
+      },
+      {
+        "sub_id": "wp.5",
+        "good_evidence_ids": [
+          "secppi__001_a",
+          "secppi__001_c",
+          "secppi__001_d"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Patient & Public Involvement: Inclusivity embedded across lifecycle: PPI involved in design, conduct, analysis, and dissemination, with specific adjustments for communication needs and reasonable adjustments."
+      },
+      {
+        "sub_id": "wp.6",
+        "good_evidence_ids": [
+          "secppi__001_l",
+          "secppi__001_m",
+          "secppi__001_n"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Patient & Public Involvement: Comprehensive budget for inclusion: specific line items for PPI vouchers, childcare, travel, interpreters, accessible room hire, and training for PPI members."
+      },
+      {
+        "sub_id": "pr.9",
+        "good_evidence_ids": [
+          "secppi__001_a",
+          "secppi__001_b",
+          "secppi__001_j"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Patient & Public Involvement: Inclusive design features: use of easy read information, verbal explanations, interpreters, BSL, and wheelchair accessible rooms to support participation."
+      },
+      {
+        "sub_id": "pr.6",
+        "good_evidence_ids": [
+          "secppi__001_c",
+          "secppi__001_d"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Patient & Public Involvement: Active engagement described: PPI groups co-produce materials and facilitate workshops, with clear feedback loops and involvement in data analysis."
+      }
+    ],
+    "resolved_signals": [
+      "wp.1",
+      "wp.4",
+      "wp.5",
+      "wp.6",
+      "pr.9",
+      "pr.6"
+    ],
+    "missing_signals_after": [
+      "g.1",
+      "g.2",
+      "g.3",
+      "g.4",
+      "g.5",
+      "g.6",
+      "pr.1",
+      "pr.2",
+      "pr.3",
+      "pr.4",
+      "pr.5",
+      "pr.7",
+      "pr.8",
+      "td.1",
+      "td.2",
+      "td.3",
+      "ss.1",
+      "ss.2",
+      "ss.3",
+      "ss.4",
+      "wp.2",
+      "wp.3"
+    ]
+  },
+  {
+    "section_name": "Application Context",
+    "findings": [],
+    "resolved_signals": [],
+    "missing_signals_after": [
+      "g.1",
+      "g.2",
+      "g.3",
+      "g.4",
+      "g.5",
+      "g.6",
+      "pr.1",
+      "pr.2",
+      "pr.3",
+      "pr.4",
+      "pr.5",
+      "pr.7",
+      "pr.8",
+      "td.1",
+      "td.2",
+      "td.3",
+      "ss.1",
+      "ss.2",
+      "ss.3",
+      "ss.4",
+      "wp.2",
+      "wp.3"
+    ]
+  },
+  {
+    "section_name": "Application Form Analysis",
+    "findings": [],
+    "resolved_signals": [],
+    "missing_signals_after": [
+      "g.1",
+      "g.2",
+      "g.3",
+      "g.4",
+      "g.5",
+      "g.6",
+      "pr.1",
+      "pr.2",
+      "pr.3",
+      "pr.4",
+      "pr.5",
+      "pr.7",
+      "pr.8",
+      "td.1",
+      "td.2",
+      "td.3",
+      "ss.1",
+      "ss.2",
+      "ss.3",
+      "ss.4",
+      "wp.2",
+      "wp.3"
+    ]
+  }
+]
