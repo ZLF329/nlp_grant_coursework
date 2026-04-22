@@ -20,6 +20,7 @@ from src.scoring.pipeline import score_application_base
 OLLAMA_HOST = os.environ.get("OLLAMA_HOST", "http://127.0.0.1:11434").rstrip("/")
 OLLAMA_MODEL = os.environ.get("OLLAMA_MODEL", "qwen3.5:27b")
 OLLAMA_TIMEOUT = float(os.environ.get("OLLAMA_TIMEOUT", "1200"))
+OLLAMA_NUM_CTX = int(os.environ["OLLAMA_NUM_CTX"]) if "OLLAMA_NUM_CTX" in os.environ else None
 
 
 def _strip_think_tags(text: str) -> str:
@@ -58,6 +59,7 @@ class _Scorer:
                 "temperature": 0.1,
                 "top_p": 0.9,
                 "num_predict": max_tokens,
+                **({"num_ctx": OLLAMA_NUM_CTX} if OLLAMA_NUM_CTX else {}),
             },
             "think": False,
         }
