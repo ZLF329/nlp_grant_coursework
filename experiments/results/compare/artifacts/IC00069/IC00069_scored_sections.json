@@ -1,0 +1,1674 @@
+[
+  {
+    "human_name": "General",
+    "section_key": "general",
+    "weight": 1.0,
+    "sub_criteria": [
+      {
+        "sub_id": "g.1",
+        "name": "Common Characteristics of Good Applications",
+        "definition": "The application demonstrates characteristics commonly found in strong grant applications.",
+        "group_name": "Common Characteristics of Good Applications",
+        "weight": 1.0,
+        "used_chunk_ids": [
+          "secarb__001_f",
+          "sectdars__001_a",
+          "sectdars__001_g",
+          "sectdars__001_j"
+        ],
+        "evidence_count": 4,
+        "evidence_status": "ok",
+        "confidence_gap": 0.0,
+        "confidence_label": "high_confidence",
+        "signals": [
+          {
+            "sid": "g.1.a",
+            "signal_text": "Clear research vision and career trajectory",
+            "weight": 1.0,
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
+          },
+          {
+            "sid": "g.1.b",
+            "signal_text": "Distinctive ideas with an independent direction",
+            "weight": 1.0,
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
+          },
+          {
+            "sid": "g.1.c",
+            "signal_text": "Well-justified training plan",
+            "weight": 1.0,
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
+          },
+          {
+            "sid": "g.1.d",
+            "signal_text": "Strong mentorship and institutional support",
+            "weight": 1.0,
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
+          }
+        ],
+        "pros": "The applicant clearly articulates a career vision to become a mixed methods researcher (g.1.a) with a specific trajectory from Pre-doctoral to Doctoral Fellowship. The training plan is highly detailed, listing specific MSc modules and short courses (g.1.c). Strong mentorship is evidenced by three named supervisors with defined roles, expertise, and meeting schedules (g.1.d). The application demonstrates distinctive ideas by focusing on under-represented ethnic minorities in Parkinson's research (g.1.b).",
+        "drawbacks": "While the vision is clear, the 'distinctive ideas' (g.1.b) rely heavily on the applicant's personal background rather than a novel theoretical framework, though this is appropriate for a pre-doctoral level.",
+        "rationale": "While the vision is clear, the 'distinctive ideas' (g.1.b) rely heavily on the applicant's personal background rather than a novel theoretical framework, though this is appropriate for a pre-doctoral level.",
+        "missing_evidence": false,
+        "if_applicable": false,
+        "counts_toward_section_average": true
+      },
+      {
+        "sub_id": "g.2",
+        "name": "Tell Us Why You Need This Award",
+        "definition": "The applicant clearly articulates why this specific award is the right next step in their career.",
+        "group_name": "Tell Us Why You Need This Award",
+        "weight": 1.0,
+        "used_chunk_ids": [
+          "secarb__001_a",
+          "secarb__001_f",
+          "sectdars__001_n"
+        ],
+        "evidence_count": 3,
+        "evidence_status": "ok",
+        "confidence_gap": 0.0,
+        "confidence_label": "high_confidence",
+        "signals": [
+          {
+            "sid": "g.2.a",
+            "signal_text": "Explain why this award is the right next step in your career (not just another project grant)",
+            "weight": 1.0,
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
+          },
+          {
+            "sid": "g.2.b",
+            "signal_text": "What difference would securing an award make to your career, and why now?",
+            "weight": 1.0,
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
+          },
+          {
+            "sid": "g.2.c",
+            "signal_text": "How will an award build on your existing experience and what new skills will it enable you to gain?",
+            "weight": 1.0,
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
+          },
+          {
+            "sid": "g.2.d",
+            "signal_text": "How will it develop your research partnerships within the NHS, public health or social care, charity organisations, industry or other organisations?",
+            "weight": 1.0,
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
+          }
+        ],
+        "pros": "The applicant explicitly states why this award is the right next step: to gain theoretical underpinnings for a future PhD, building on existing 'hands-on' experience (g.2.a, g.2.b). The application details how the award will build on existing experience in qualitative/quantitative methods to gain specialist mixed methods skills (g.2.c). Partnerships with international institutions (Bangladesh) and UK collaborators (Newcastle) are described as part of the development plan (g.2.d).",
+        "drawbacks": "The description of developing research partnerships (g.2.d) focuses primarily on the applicant's personal shadowing and learning opportunities rather than establishing new institutional collaborations or funding streams, though this is consistent with the pre-doctoral stage.",
+        "rationale": "The description of developing research partnerships (g.2.d) focuses primarily on the applicant's personal shadowing and learning opportunities rather than establishing new institutional collaborations or funding streams, though this is consistent with the pre-doctoral stage.",
+        "missing_evidence": false,
+        "if_applicable": false,
+        "counts_toward_section_average": true
+      },
+      {
+        "sub_id": "g.3",
+        "name": "Relevant Research Experience and Training",
+        "definition": "Demonstrates prior research experience and/or training that prepares the applicant to successfully undertake the proposed award in applied health or social care research.",
+        "group_name": "Applicant",
+        "weight": 1.0,
+        "used_chunk_ids": [
+          "secarb__001_a",
+          "secarb__001_c",
+          "secarb__001_e"
+        ],
+        "evidence_count": 3,
+        "evidence_status": "ok",
+        "confidence_gap": 0.0,
+        "confidence_label": "high_confidence",
+        "signals": [
+          {
+            "sid": "g.3.a",
+            "signal_text": "Mentions of previous projects, research methods, or techniques relevant to the proposed study",
+            "weight": 1.0,
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
+          },
+          {
+            "sid": "g.3.b",
+            "signal_text": "Evidence of formal training, courses, or certifications",
+            "weight": 1.0,
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
+          },
+          {
+            "sid": "g.3.c",
+            "signal_text": "Alignment between prior experience and skills required for the proposed project",
+            "weight": 1.0,
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
+          }
+        ],
+        "pros": "The applicant provides extensive evidence of previous projects, including a BSc dissertation using mixed methods and roles as Research Assistant and Clinical Coordinator involving data collection, analysis, and PPIE (g.3.a). Formal training is evidenced by a statistics module and specific planned courses (g.3.b). There is a strong alignment between prior experience in Parkinson's research and the proposed project's focus on the same condition and community (g.3.c).",
+        "drawbacks": "While the applicant has practical experience, formal certification in advanced mixed methods is currently being sought through the proposed MSc, meaning the 'formal training' signal (g.3.b) relies partly on the proposed award's training plan rather than completed certifications.",
+        "rationale": "While the applicant has practical experience, formal certification in advanced mixed methods is currently being sought through the proposed MSc, meaning the 'formal training' signal (g.3.b) relies partly on the proposed award's training plan rather than completed certifications.",
+        "missing_evidence": false,
+        "if_applicable": false,
+        "counts_toward_section_average": true
+      },
+      {
+        "sub_id": "g.4",
+        "name": "Impactful Research Outputs and Outcomes",
+        "definition": "Evidence of meaningful research outputs or outcomes appropriate to the applicant’s career stage, demonstrating contribution to the field.",
+        "group_name": "Applicant",
+        "weight": 1.0,
+        "used_chunk_ids": [
+          "secac__001_b",
+          "secarb__001_d",
+          "secarb__001_e"
+        ],
+        "evidence_count": 3,
+        "evidence_status": "ok",
+        "confidence_gap": 0.0,
+        "confidence_label": "high_confidence",
+        "signals": [
+          {
+            "sid": "g.4.a",
+            "signal_text": "Number and quality of publications, reports, or presentations",
+            "weight": 1.0,
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
+          },
+          {
+            "sid": "g.4.b",
+            "signal_text": "Citation metrics or other indicators of impact (where mentioned)",
+            "weight": 1.0,
+            "score": 0,
+            "score_0to5_raw": 0.0,
+            "score_0to5_weighted": 0.0
+          },
+          {
+            "sid": "g.4.c",
+            "signal_text": "Awards, grants, or recognitions linked to prior research",
+            "weight": 1.0,
+            "score": 3,
+            "score_0to5_raw": 3.0,
+            "score_0to5_weighted": 3.0
+          },
+          {
+            "sid": "g.4.d",
+            "signal_text": "Description of practical or societal impact of previous work",
+            "weight": 1.0,
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
+          }
+        ],
+        "pros": "The applicant lists two peer-reviewed publications in relevant journals (g.4.a). There is evidence of securing small grants (£500, £700) and leading community engagement activities that reached over 2,000 people (g.4.c, g.4.d). The practical impact of previous work is described through increased awareness and screening attendance in the British Bangladeshi community (g.4.d).",
+        "drawbacks": "No citation metrics or indicators of impact (e.g., h-index, citation counts) are provided for the publications (g.4.b). The grants secured are small-scale, which is appropriate for the career stage but limits the 'quality' signal compared to larger grants.",
+        "rationale": "No citation metrics or indicators of impact (e.g., h-index, citation counts) are provided for the publications (g.4.b). The grants secured are small-scale, which is appropriate for the career stage but limits the 'quality' signal compared to larger grants.",
+        "missing_evidence": false,
+        "if_applicable": false,
+        "counts_toward_section_average": true
+      },
+      {
+        "sub_id": "g.5",
+        "name": "Trajectory Towards Research Leadership",
+        "definition": "Demonstrates potential and progression towards becoming a future leader in health or social care research.",
+        "group_name": "Applicant",
+        "weight": 1.0,
+        "used_chunk_ids": [
+          "secarb__001_d",
+          "secarb__001_f",
+          "sectdars__001_i"
+        ],
+        "evidence_count": 3,
+        "evidence_status": "ok",
+        "confidence_gap": 0.0,
+        "confidence_label": "high_confidence",
+        "signals": [
+          {
+            "sid": "g.5.a",
+            "signal_text": "Statements of career ambitions and long-term goals",
+            "weight": 1.0,
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
+          },
+          {
+            "sid": "g.5.b",
+            "signal_text": "Evidence of increasing responsibility in previous roles (e.g., leading projects, mentoring)",
+            "weight": 1.0,
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
+          },
+          {
+            "sid": "g.5.c",
+            "signal_text": "Participation in leadership or professional development programs",
+            "weight": 1.0,
+            "score": 3,
+            "score_0to5_raw": 3.0,
+            "score_0to5_weighted": 3.0
+          },
+          {
+            "sid": "g.5.d",
+            "signal_text": "Recognition by peers or institutions suggesting leadership potential",
+            "weight": 1.0,
+            "score": 3,
+            "score_0to5_raw": 3.0,
+            "score_0to5_weighted": 3.0
+          }
+        ],
+        "pros": "The applicant clearly states long-term goals to pursue an NIHR Doctoral Fellowship and a career as a mixed methods researcher (g.5.a). Evidence of increasing responsibility is shown through progression from volunteer to lead community researcher and Clinical Coordinator, managing grants and PPIE (g.5.b). The applicant is supported by supervisors who recognize their potential (g.5.d).",
+        "drawbacks": "Participation in formal leadership or professional development programs (g.5.c) is limited to the proposed training; there is no mention of completed external leadership courses or programs prior to this application.",
+        "rationale": "Participation in formal leadership or professional development programs (g.5.c) is limited to the proposed training; there is no mention of completed external leadership courses or programs prior to this application.",
+        "missing_evidence": false,
+        "if_applicable": false,
+        "counts_toward_section_average": true
+      },
+      {
+        "sub_id": "g.6",
+        "name": "Commitment to Practitioner-Academic Career (if applicable)",
+        "definition": "For applicants including a clinical or practice element, shows a clear commitment to combining research with professional practice.",
+        "group_name": "Applicant",
+        "weight": 1.0,
+        "used_chunk_ids": [
+          "secac__001_a",
+          "secarb__001_d",
+          "secarb__001_f"
+        ],
+        "evidence_count": 3,
+        "evidence_status": "ok",
+        "confidence_gap": 0.0,
+        "confidence_label": "high_confidence",
+        "signals": [
+          {
+            "sid": "g.6.a",
+            "signal_text": "Explicit statement of practitioner-academic career intentions",
+            "weight": 1.0,
+            "score": 3,
+            "score_0to5_raw": 3.0,
+            "score_0to5_weighted": 3.0
+          },
+          {
+            "sid": "g.6.b",
+            "signal_text": "Involvement in clinical or practice-based research",
+            "weight": 1.0,
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
+          },
+          {
+            "sid": "g.6.c",
+            "signal_text": "Evidence of balancing practice responsibilities with research activities",
+            "weight": 1.0,
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
+          },
+          {
+            "sid": "g.6.d",
+            "signal_text": "Participation in relevant professional networks or qualifications",
+            "weight": 1.0,
+            "score": 2,
+            "score_0to5_raw": 2.0,
+            "score_0to5_weighted": 2.0
+          }
+        ],
+        "pros": "The applicant has significant involvement in clinical practice-based research as a Clinical Coordinator at Barts Health NHS Trust (g.6.b). The application demonstrates a clear ability to balance practice responsibilities with research activities, managing patient pathways and research tasks simultaneously (g.6.c). The applicant explicitly commits to research benefiting patients and carers (g.6.a).",
+        "drawbacks": "The applicant is not a registered health or care professional (stated as 'Not a Registered Health or Care Professional' in the CV), which limits the strength of the 'practitioner-academic' signal (g.6.a) as they are not practicing clinically while researching. There is no mention of participation in relevant professional networks or qualifications specific to clinical practice (g.6.d).",
+        "rationale": "The applicant is not a registered health or care professional (stated as 'Not a Registered Health or Care Professional' in the CV), which limits the strength of the 'practitioner-academic' signal (g.6.a) as they are not practicing clinically while researching. There is no mention of participation in relevant professional networks or qualifications specific to clinical practice (g.6.d).",
+        "missing_evidence": false,
+        "if_applicable": true,
+        "counts_toward_section_average": false
+      }
+    ]
+  },
+  {
+    "human_name": "Proposed research",
+    "section_key": "proposed_research",
+    "weight": 1.0,
+    "sub_criteria": [
+      {
+        "sub_id": "pr.1",
+        "name": "Quality of the Plain English Summary",
+        "definition": "Clear, simple description of the research that a non-specialist audience can understand; explains problem, importance, plan, beneficiaries, and real-world use; avoids jargon; aligns with the detailed proposal.",
+        "group_name": null,
+        "weight": 1.0,
+        "used_chunk_ids": [
+          "sectdars__001_c",
+          "sectdars__001_d",
+          "secafa__001"
+        ],
+        "evidence_count": 3,
+        "evidence_status": "ok",
+        "confidence_gap": 0.0,
+        "confidence_label": "high_confidence",
+        "signals": [
+          {
+            "sid": "pr.1.a",
+            "signal_text": "Readability scores (e.g., Flesch-Kincaid)",
+            "weight": 1.0,
+            "score": 2,
+            "score_0to5_raw": 2.0,
+            "score_0to5_weighted": 2.0
+          },
+          {
+            "sid": "pr.1.b",
+            "signal_text": "Low density of unexplained jargon or technical terms",
+            "weight": 1.0,
+            "score": 2,
+            "score_0to5_raw": 2.0,
+            "score_0to5_weighted": 2.0
+          },
+          {
+            "sid": "pr.1.c",
+            "signal_text": "Presence of problem statement, objectives, methods, beneficiaries, and real-world impact",
+            "weight": 1.0,
+            "score": 1,
+            "score_0to5_raw": 1.0,
+            "score_0to5_weighted": 1.0
+          },
+          {
+            "sid": "pr.1.d",
+            "signal_text": "Alignment with detailed proposal content",
+            "weight": 1.0,
+            "score": 2,
+            "score_0to5_raw": 2.0,
+            "score_0to5_weighted": 2.0
+          },
+          {
+            "sid": "pr.1.e",
+            "signal_text": "Sentence structure and coherence for non-specialist understanding",
+            "weight": 1.0,
+            "score": 2,
+            "score_0to5_raw": 2.0,
+            "score_0to5_weighted": 2.0
+          },
+          {
+            "sid": "pr.1.f",
+            "signal_text": "Emphasis on societal or patient relevance",
+            "weight": 1.0,
+            "score": 3,
+            "score_0to5_raw": 3.0,
+            "score_0to5_weighted": 3.0
+          }
+        ],
+        "pros": "The application form analysis confirms the structural presence of a plain summary section. The detailed research plan (sectdars__001_c) clearly articulates the problem (under-representation of ethnic minorities in Parkinson's research) and the real-world impact (influencing future research priorities).",
+        "drawbacks": "The actual text of the 'Plain English Summary' is not provided in the input; only the detailed research plan is available. Consequently, readability scores, jargon density, and sentence coherence specific to a non-specialist summary cannot be directly assessed. The detailed plan uses technical terms (e.g., 'exploratory sequential mixed method', 'thematic analysis') that may not be explained for a lay audience.",
+        "rationale": "The actual text of the 'Plain English Summary' is not provided in the input; only the detailed research plan is available. Consequently, readability scores, jargon density, and sentence coherence specific to a non-specialist summary cannot be directly assessed. The detailed plan uses technical terms (e.g., 'exploratory sequential mixed method', 'thematic analysis') that may not be explained for a lay audience.",
+        "missing_evidence": false,
+        "if_applicable": false,
+        "counts_toward_section_average": true
+      },
+      {
+        "sub_id": "pr.2",
+        "name": "Evidence Review Quality & Relevance",
+        "definition": "How comprehensively and critically the application reviews existing literature and evidence.",
+        "group_name": null,
+        "weight": 1.0,
+        "used_chunk_ids": [
+          "sectdars__001_c",
+          "sectdars__001_d"
+        ],
+        "evidence_count": 2,
+        "evidence_status": "ok",
+        "confidence_gap": 0.0,
+        "confidence_label": "high_confidence",
+        "signals": [
+          {
+            "sid": "pr.2.a",
+            "signal_text": "Number and relevance of references cited",
+            "weight": 1.0,
+            "score": 1,
+            "score_0to5_raw": 1.0,
+            "score_0to5_weighted": 1.0
+          },
+          {
+            "sid": "pr.2.b",
+            "signal_text": "Presence of critical analysis vs. mere summary",
+            "weight": 1.0,
+            "score": 1,
+            "score_0to5_raw": 1.0,
+            "score_0to5_weighted": 1.0
+          },
+          {
+            "sid": "pr.2.c",
+            "signal_text": "Identification of knowledge gaps",
+            "weight": 1.0,
+            "score": 3,
+            "score_0to5_raw": 3.0,
+            "score_0to5_weighted": 3.0
+          },
+          {
+            "sid": "pr.2.d",
+            "signal_text": "Coherence and logical flow",
+            "weight": 1.0,
+            "score": 2,
+            "score_0to5_raw": 2.0,
+            "score_0to5_weighted": 2.0
+          }
+        ],
+        "pros": "The application explicitly identifies a knowledge gap: previous Parkinson's priorities were heavily influenced by white middle-class groups, with limited responses from ethnic minorities (sectdars__001_d). It references the James Lind Alliance (JLA) framework as the basis for the study.",
+        "drawbacks": "There is no comprehensive literature review or list of references provided in the text. The evidence review is limited to a general statement about previous PSPs and a plan to conduct a 'scoping review' as Stage 2 of the project, rather than a critical analysis of existing literature within the application itself.",
+        "rationale": "There is no comprehensive literature review or list of references provided in the text. The evidence review is limited to a general statement about previous PSPs and a plan to conduct a 'scoping review' as Stage 2 of the project, rather than a critical analysis of existing literature within the application itself.",
+        "missing_evidence": false,
+        "if_applicable": false,
+        "counts_toward_section_average": true
+      },
+      {
+        "sub_id": "pr.3",
+        "name": "Research Scope & Award Appropriateness",
+        "definition": "Whether the project scope matches the scale and expectations of the proposed award (doctoral, postdoctoral, etc.).",
+        "group_name": null,
+        "weight": 1.0,
+        "used_chunk_ids": [
+          "sectdars__001_d",
+          "sectdars__001_e",
+          "sectdars__001_f"
+        ],
+        "evidence_count": 3,
+        "evidence_status": "ok",
+        "confidence_gap": 0.0,
+        "confidence_label": "high_confidence",
+        "signals": [
+          {
+            "sid": "pr.3.a",
+            "signal_text": "Alignment of aims with award level",
+            "weight": 1.0,
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
+          },
+          {
+            "sid": "pr.3.b",
+            "signal_text": "Feasibility indicators (time, complexity, tasks)",
+            "weight": 1.0,
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
+          },
+          {
+            "sid": "pr.3.c",
+            "signal_text": "Proportion of work relative to award expectations",
+            "weight": 1.0,
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
+          }
+        ],
+        "pros": "The project scope is well-aligned with a pre-doctoral fellowship, focusing on training in mixed methods and producing a 'Top 10' priority list rather than a full clinical trial. The timeline (24 months) and six-stage methodology are clearly defined and appear feasible within the award duration.",
+        "drawbacks": "While the scope is appropriate, the reliance on a 'scoping review' as a project stage (Stage 2) rather than a completed background review suggests the applicant is learning the methodology during the fellowship, which is appropriate for the award level but limits the immediate depth of the research output.",
+        "rationale": "While the scope is appropriate, the reliance on a 'scoping review' as a project stage (Stage 2) rather than a completed background review suggests the applicant is learning the methodology during the fellowship, which is appropriate for the award level but limits the immediate depth of the research output.",
+        "missing_evidence": false,
+        "if_applicable": false,
+        "counts_toward_section_average": true
+      },
+      {
+        "sub_id": "pr.4",
+        "name": "Research Design & Methodological Rigor",
+        "definition": "Clarity, appropriateness, and robustness of study design to answer the research questions.",
+        "group_name": null,
+        "weight": 1.0,
+        "used_chunk_ids": [
+          "sectdars__001_d",
+          "sectdars__001_e"
+        ],
+        "evidence_count": 2,
+        "evidence_status": "ok",
+        "confidence_gap": 0.0,
+        "confidence_label": "high_confidence",
+        "signals": [
+          {
+            "sid": "pr.4.a",
+            "signal_text": "Explicit description of methods",
+            "weight": 1.0,
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
+          },
+          {
+            "sid": "pr.4.b",
+            "signal_text": "Logical alignment between aims and methods",
+            "weight": 1.0,
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
+          },
+          {
+            "sid": "pr.4.c",
+            "signal_text": "Discussion of controls, sample size, or methodology justification",
+            "weight": 1.0,
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
+          },
+          {
+            "sid": "pr.4.d",
+            "signal_text": "Structured methodological sections",
+            "weight": 1.0,
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
+          }
+        ],
+        "pros": "The research design is exceptionally detailed, outlining six distinct stages from steering group formation to consensus workshops. It explicitly describes the mixed-methods sequencing (exploratory and explanatory sequential) and includes a data validation stage. The alignment between the aim (identifying priorities) and the JLA PSP method is logical and robust.",
+        "drawbacks": "Specific details on sample size calculations for the surveys or the specific criteria for the 'long list' of summary questions are not provided, though the qualitative nature of the initial stages makes strict sample size justification less critical than in quantitative trials.",
+        "rationale": "Specific details on sample size calculations for the surveys or the specific criteria for the 'long list' of summary questions are not provided, though the qualitative nature of the initial stages makes strict sample size justification less critical than in quantitative trials.",
+        "missing_evidence": false,
+        "if_applicable": false,
+        "counts_toward_section_average": true
+      },
+      {
+        "sub_id": "pr.5",
+        "name": "Potential Impact on Patients, Public, and Health Services",
+        "definition": "Likely benefits or influence of the research on patients, carers, or health and care systems.",
+        "group_name": null,
+        "weight": 1.0,
+        "used_chunk_ids": [
+          "sectdars__001_c",
+          "sectdars__001_d",
+          "sectdars__001_f"
+        ],
+        "evidence_count": 3,
+        "evidence_status": "ok",
+        "confidence_gap": 0.0,
+        "confidence_label": "high_confidence",
+        "signals": [
+          {
+            "sid": "pr.5.a",
+            "signal_text": "Mentions of direct or indirect patient/public benefits",
+            "weight": 1.0,
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
+          },
+          {
+            "sid": "pr.5.b",
+            "signal_text": "Alignment with health priorities or societal needs",
+            "weight": 1.0,
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
+          },
+          {
+            "sid": "pr.5.c",
+            "signal_text": "Clarity and specificity of expected outcomes",
+            "weight": 1.0,
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
+          }
+        ],
+        "pros": "The application clearly states the benefit: capturing voices of ethnically diverse groups to influence future research prioritization. It aligns with NIHR strategic focus on patient benefit and inclusivity. The expected outcome is a 'Top 10' list of priorities to be published and promoted.",
+        "drawbacks": "The impact is primarily on the research agenda (setting priorities) rather than direct clinical intervention or immediate patient health outcomes. The long-term benefit depends on other researchers acting on the identified priorities.",
+        "rationale": "The impact is primarily on the research agenda (setting priorities) rather than direct clinical intervention or immediate patient health outcomes. The long-term benefit depends on other researchers acting on the identified priorities.",
+        "missing_evidence": false,
+        "if_applicable": false,
+        "counts_toward_section_average": true
+      },
+      {
+        "sub_id": "pr.6",
+        "name": "Engagement with People & Communities",
+        "definition": "Evidence of meaningful involvement of patients, carers, or communities.",
+        "group_name": null,
+        "weight": 1.0,
+        "used_chunk_ids": [
+          "sectdars__001_c",
+          "sectdars__001_d",
+          "sectdars__001_e"
+        ],
+        "evidence_count": 3,
+        "evidence_status": "ok",
+        "confidence_gap": 0.0,
+        "confidence_label": "high_confidence",
+        "signals": [
+          {
+            "sid": "pr.6.a",
+            "signal_text": "Use of co-design, participatory methods, or consultations",
+            "weight": 1.0,
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
+          },
+          {
+            "sid": "pr.6.b",
+            "signal_text": "References to ethical considerations and feedback mechanisms",
+            "weight": 1.0,
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
+          },
+          {
+            "sid": "pr.6.c",
+            "signal_text": "Description of involvement at multiple project stages",
+            "weight": 1.0,
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
+          }
+        ],
+        "pros": "Engagement is central to the design, utilizing the James Lind Alliance Priority Setting Partnership (PSP) method. Patients, carers, and clinicians are involved in a steering group, surveys, and a final consensus workshop. The plan includes co-facilitation by a PPIE expert.",
+        "drawbacks": "While the plan is strong, the specific mechanisms for obtaining feedback on the research design *before* the project starts (beyond the steering group formation) are less detailed than the engagement *during* the project.",
+        "rationale": "While the plan is strong, the specific mechanisms for obtaining feedback on the research design *before* the project starts (beyond the steering group formation) are less detailed than the engagement *during* the project.",
+        "missing_evidence": false,
+        "if_applicable": false,
+        "counts_toward_section_average": true
+      },
+      {
+        "sub_id": "pr.7",
+        "name": "Justification of Resources & Award Costs",
+        "definition": "Appropriateness and clarity of requested resources for the planned work.",
+        "group_name": null,
+        "weight": 1.0,
+        "used_chunk_ids": [
+          "secsb__001_b",
+          "secsb__001_c"
+        ],
+        "evidence_count": 2,
+        "evidence_status": "ok",
+        "confidence_gap": 0.0,
+        "confidence_label": "high_confidence",
+        "signals": [
+          {
+            "sid": "pr.7.a",
+            "signal_text": "Explicit links between tasks and resources requested",
+            "weight": 1.0,
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
+          },
+          {
+            "sid": "pr.7.b",
+            "signal_text": "Budget proportionality to project scope",
+            "weight": 1.0,
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
+          },
+          {
+            "sid": "pr.7.c",
+            "signal_text": "Clear rationale for funding level",
+            "weight": 1.0,
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
+          }
+        ],
+        "pros": "The budget provides explicit links between tasks and resources, including specific line items for PPIE member reimbursement (£1000), training courses (Oxford, Imperial), and conference attendance. The costs are justified with specific rates (e.g., accommodation in Oxford).",
+        "drawbacks": "The budget justification for the MSc course fees is present, but the link between the specific MSc modules and the immediate research tasks could be slightly more explicit in the budget notes, though it is clear in the training section.",
+        "rationale": "The budget justification for the MSc course fees is present, but the link between the specific MSc modules and the immediate research tasks could be slightly more explicit in the budget notes, though it is clear in the training section.",
+        "missing_evidence": false,
+        "if_applicable": false,
+        "counts_toward_section_average": true
+      },
+      {
+        "sub_id": "pr.8",
+        "name": "Quality of Previous Research (if applicable)",
+        "definition": "Prior relevant research experience demonstrating capability to deliver the proposed project.",
+        "group_name": null,
+        "weight": 1.0,
+        "used_chunk_ids": [
+          "sectdars__001_c",
+          "sectdars__001_m"
+        ],
+        "evidence_count": 2,
+        "evidence_status": "ok",
+        "confidence_gap": 0.0,
+        "confidence_label": "high_confidence",
+        "signals": [
+          {
+            "sid": "pr.8.a",
+            "signal_text": "Number and relevance of publications or outputs",
+            "weight": 1.0,
+            "score": 2,
+            "score_0to5_raw": 2.0,
+            "score_0to5_weighted": 2.0
+          },
+          {
+            "sid": "pr.8.b",
+            "signal_text": "Evidence of prior successful projects",
+            "weight": 1.0,
+            "score": 3,
+            "score_0to5_raw": 3.0,
+            "score_0to5_weighted": 3.0
+          },
+          {
+            "sid": "pr.8.c",
+            "signal_text": "Skills alignment with proposed work",
+            "weight": 1.0,
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
+          }
+        ],
+        "pros": "The applicant demonstrates relevant prior experience through the East London Parkinson's Disease (ELPD) project and the 'Mapping Practices of Participation' project. This experience directly informs the participatory approach and the focus on under-served communities.",
+        "drawbacks": "The application text does not list specific publications or outputs from the applicant's previous work within the 'Proposed Research' section itself (though they may exist in the CV section not fully analyzed here). The evidence of prior success is described narratively rather than through a list of outputs.",
+        "rationale": "The application text does not list specific publications or outputs from the applicant's previous work within the 'Proposed Research' section itself (though they may exist in the CV section not fully analyzed here). The evidence of prior success is described narratively rather than through a list of outputs.",
+        "missing_evidence": false,
+        "if_applicable": true,
+        "counts_toward_section_average": false
+      },
+      {
+        "sub_id": "pr.9",
+        "name": "Inclusive Research Design",
+        "definition": "Consideration of inclusivity throughout the research lifecycle, including participant diversity and accessibility.",
+        "group_name": null,
+        "weight": 1.0,
+        "used_chunk_ids": [
+          "sectdars__001_d",
+          "sectdars__001_n"
+        ],
+        "evidence_count": 2,
+        "evidence_status": "ok",
+        "confidence_gap": 0.0,
+        "confidence_label": "high_confidence",
+        "signals": [
+          {
+            "sid": "pr.9.a",
+            "signal_text": "Explicit strategies for diverse recruitment",
+            "weight": 1.0,
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
+          },
+          {
+            "sid": "pr.9.b",
+            "signal_text": "Adaptive methods or accessibility considerations",
+            "weight": 1.0,
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
+          },
+          {
+            "sid": "pr.9.c",
+            "signal_text": "Equity and participation indicators",
+            "weight": 1.0,
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
+          }
+        ],
+        "pros": "The research is explicitly designed to address the under-representation of ethnic minorities. Strategies include targeting under-served communities in East London and an international collaboration in Bangladesh to understand diverse perspectives. The steering group is planned to be diverse.",
+        "drawbacks": "While the recruitment strategy is inclusive, specific adaptive methods for accessibility (e.g., language translation services for the surveys beyond the applicant's bilingual status) are not detailed in the methodology section.",
+        "rationale": "While the recruitment strategy is inclusive, specific adaptive methods for accessibility (e.g., language translation services for the surveys beyond the applicant's bilingual status) are not detailed in the methodology section.",
+        "missing_evidence": false,
+        "if_applicable": false,
+        "counts_toward_section_average": true
+      }
+    ]
+  },
+  {
+    "human_name": "Training and development",
+    "section_key": "training_development",
+    "weight": 1.0,
+    "sub_criteria": [
+      {
+        "sub_id": "td.1",
+        "name": "Quality and Relevance of Proposed Training",
+        "definition": "How well-structured, clear, and relevant the training plan is in relation to the project’s goals and the applicant’s research needs.",
+        "group_name": null,
+        "weight": 1.0,
+        "used_chunk_ids": [
+          "sectdars__001_a",
+          "sectdars__001_b"
+        ],
+        "evidence_count": 2,
+        "evidence_status": "ok",
+        "confidence_gap": 0.0,
+        "confidence_label": "high_confidence",
+        "signals": [
+          {
+            "sid": "td.1.a",
+            "signal_text": "Completeness and clarity of training description",
+            "weight": 1.0,
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
+          },
+          {
+            "sid": "td.1.b",
+            "signal_text": "Alignment of training topics with project methods or techniques",
+            "weight": 1.0,
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
+          },
+          {
+            "sid": "td.1.c",
+            "signal_text": "Structured timeline or sequencing of training activities",
+            "weight": 1.0,
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
+          },
+          {
+            "sid": "td.1.d",
+            "signal_text": "Explicit links between training content and skill acquisition",
+            "weight": 1.0,
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
+          }
+        ],
+        "pros": "The application provides a highly detailed and structured training plan, listing specific MSc modules by term (e.g., 'Introduction to Qualitative Methods', 'Survey Design') and additional targeted courses (Oxford Mixed Methods, Imperial PPIE). The plan explicitly links training content to skill acquisition, stating the MSc will provide 'high quality instruction in the twin pillars of mixed methodology research' and that specific courses will prepare the applicant for the fellowship and subsequent PhD.",
+        "drawbacks": "No material caveats or missing details found; the training description is comprehensive and directly evidenced.",
+        "rationale": "No material caveats or missing details found; the training description is comprehensive and directly evidenced.",
+        "missing_evidence": false,
+        "if_applicable": false,
+        "counts_toward_section_average": true
+      },
+      {
+        "sub_id": "td.2",
+        "name": "Suitability to Personal Development and Project Needs",
+        "definition": "How well the proposed training addresses the applicant’s current skills gaps and supports successful project delivery.",
+        "group_name": null,
+        "weight": 1.0,
+        "used_chunk_ids": [
+          "sectdars__001_b",
+          "sectdars__001_e"
+        ],
+        "evidence_count": 2,
+        "evidence_status": "ok",
+        "confidence_gap": 0.0,
+        "confidence_label": "high_confidence",
+        "signals": [
+          {
+            "sid": "td.2.a",
+            "signal_text": "Identification of personal skill gaps",
+            "weight": 1.0,
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
+          },
+          {
+            "sid": "td.2.b",
+            "signal_text": "Clear mapping between training activities and project tasks",
+            "weight": 1.0,
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
+          },
+          {
+            "sid": "td.2.c",
+            "signal_text": "Evidence that proposed training is targeted rather than generic",
+            "weight": 1.0,
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
+          },
+          {
+            "sid": "td.2.d",
+            "signal_text": "Mention of mentorship, workshops, or formal courses relevant to development needs",
+            "weight": 1.0,
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
+          }
+        ],
+        "pros": "The training is explicitly targeted to address specific gaps in methodological theory and PPIE, directly mapping to the proposed research stages (e.g., 'Mixed Methods in Health Research' to support the multi-staged mixed-methods design). The applicant identifies the need for 'relevant methodological theory' to complement existing practical experience, and lists specific mentorship and workshop opportunities (e.g., 'Early Career Researcher writing retreat', 'Research Integrity Training').",
+        "drawbacks": "While the applicant clearly identifies the need for theoretical underpinnings, the specific 'skill gaps' are inferred from the transition from Research Assistant to MSc student rather than explicitly listed as a deficit analysis, though the alignment is otherwise perfect.",
+        "rationale": "While the applicant clearly identifies the need for theoretical underpinnings, the specific 'skill gaps' are inferred from the transition from Research Assistant to MSc student rather than explicitly listed as a deficit analysis, though the alignment is otherwise perfect.",
+        "missing_evidence": false,
+        "if_applicable": false,
+        "counts_toward_section_average": true
+      },
+      {
+        "sub_id": "td.3",
+        "name": "Support for Career Aspirations",
+        "definition": "The extent to which the training plan, and any professional practice components, contribute to the applicant’s long-term career goals.",
+        "group_name": null,
+        "weight": 1.0,
+        "used_chunk_ids": [
+          "sectdars__001_f",
+          "sectdars__001_i"
+        ],
+        "evidence_count": 2,
+        "evidence_status": "ok",
+        "confidence_gap": 0.0,
+        "confidence_label": "high_confidence",
+        "signals": [
+          {
+            "sid": "td.3.a",
+            "signal_text": "Explicit statement of career goals",
+            "weight": 1.0,
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
+          },
+          {
+            "sid": "td.3.b",
+            "signal_text": "Connections between training activities and future career trajectory",
+            "weight": 1.0,
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
+          },
+          {
+            "sid": "td.3.c",
+            "signal_text": "Indications of skill transferability beyond the current project",
+            "weight": 1.0,
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
+          },
+          {
+            "sid": "td.3.d",
+            "signal_text": "Reference to professional practice or experiential learning where applicable",
+            "weight": 1.0,
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
+          }
+        ],
+        "pros": "The application explicitly states career goals ('prepare for an NIHR Doctoral Fellowship', 'grow as a researcher, specialising in participatory and mixed methods research'). It provides a clear timeline for career progression (e.g., 'In January 2026, start preparing for NIHR Doctoral Fellowship application'). The training plan is tightly connected to this trajectory, with supervisors committed to 'pastoral and career development support' and the MSc serving as a 'building block to my long-term career'.",
+        "drawbacks": "No material caveats or missing details found; the connection between training and career aspirations is robust and specific.",
+        "rationale": "No material caveats or missing details found; the connection between training and career aspirations is robust and specific.",
+        "missing_evidence": false,
+        "if_applicable": false,
+        "counts_toward_section_average": true
+      }
+    ]
+  },
+  {
+    "human_name": "Sites and support",
+    "section_key": "sites_support",
+    "weight": 1.0,
+    "sub_criteria": [
+      {
+        "sub_id": "ss.1",
+        "name": "Track Record of the Contracting Organisation (and Partners)",
+        "definition": "Demonstrated expertise, experience, and research achievements of the organisation(s) in the proposed research area.",
+        "group_name": null,
+        "weight": 1.0,
+        "used_chunk_ids": [
+          "sectdars__001_p",
+          "sectdars__001_q",
+          "sectdars__001_s"
+        ],
+        "evidence_count": 3,
+        "evidence_status": "ok",
+        "confidence_gap": 0.0,
+        "confidence_label": "high_confidence",
+        "signals": [
+          {
+            "sid": "ss.1.a",
+            "signal_text": "Publication or project history in relevant research fields",
+            "weight": 1.0,
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
+          },
+          {
+            "sid": "ss.1.b",
+            "signal_text": "Previous funding success or awards in similar domains",
+            "weight": 1.0,
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
+          },
+          {
+            "sid": "ss.1.c",
+            "signal_text": "Mention of prior collaborations or partnerships",
+            "weight": 1.0,
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
+          },
+          {
+            "sid": "ss.1.d",
+            "signal_text": "Highlighted achievements or notable outputs",
+            "weight": 1.0,
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
+          }
+        ],
+        "pros": "The application provides strong evidence of the host organisation's track record. It details the Centre for Preventive Neurology's (CPN) focus on neurological conditions and its international reputation. It lists substantial funding from major bodies (NIHR, MRC, Parkinson's UK) and highlights specific achievements like the Athena Swan Gold Award and the successful progression of previous pre-doctoral fellows.",
+        "drawbacks": "While the organisational track record is well-documented, specific publication metrics or a list of recent high-impact papers from the specific research unit are not explicitly enumerated, though the funding and awards serve as strong proxies.",
+        "rationale": "While the organisational track record is well-documented, specific publication metrics or a list of recent high-impact papers from the specific research unit are not explicitly enumerated, though the funding and awards serve as strong proxies.",
+        "missing_evidence": false,
+        "if_applicable": false,
+        "counts_toward_section_average": true
+      },
+      {
+        "sub_id": "ss.2",
+        "name": "Suitability of Supervisory Support and Mentorship Arrangements",
+        "definition": "Quality, clarity, and appropriateness of supervision and mentoring for supporting the applicant’s research and career development.",
+        "group_name": null,
+        "weight": 1.0,
+        "used_chunk_ids": [
+          "sectdars__001_g",
+          "sectdars__001_h",
+          "sectdars__001_i",
+          "sectdars__001_j",
+          "sectdars__001_l"
+        ],
+        "evidence_count": 5,
+        "evidence_status": "ok",
+        "confidence_gap": 0.0,
+        "confidence_label": "high_confidence",
+        "signals": [
+          {
+            "sid": "ss.2.a",
+            "signal_text": "Explicit description of supervisor roles and responsibilities",
+            "weight": 1.0,
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
+          },
+          {
+            "sid": "ss.2.b",
+            "signal_text": "Evidence of mentorship plans, meetings, or training support",
+            "weight": 1.0,
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
+          },
+          {
+            "sid": "ss.2.c",
+            "signal_text": "Alignment between supervisor expertise and project needs",
+            "weight": 1.0,
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
+          },
+          {
+            "sid": "ss.2.d",
+            "signal_text": "Presence of structured supervision framework (frequency, format, accountability)",
+            "weight": 1.0,
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
+          }
+        ],
+        "pros": "The application offers a comprehensive supervisory framework with three named supervisors (Primary, Secondary, Research Support). Each supervisor's specific expertise (mixed methods, neurology, qualitative research) is explicitly aligned with the project needs. Detailed supervision histories (numbers of students supervised to completion) are provided. A clear schedule is defined (weekly meetings with primary, monthly with secondary, plus ELPD team meetings), and specific mentorship activities (reading lists, career development support) are outlined.",
+        "drawbacks": "No material caveats; the supervision plan is robust, specific, and fully evidenced.",
+        "rationale": "No material caveats; the supervision plan is robust, specific, and fully evidenced.",
+        "missing_evidence": false,
+        "if_applicable": false,
+        "counts_toward_section_average": true
+      },
+      {
+        "sub_id": "ss.3",
+        "name": "Appropriateness of the Contracting Organisation to Support the Award and Career Aspirations",
+        "definition": "How well the organisation (and any partners) can provide the infrastructure, resources, and environment necessary to deliver the project and support the applicant’s career growth.",
+        "group_name": null,
+        "weight": 1.0,
+        "used_chunk_ids": [
+          "sectdars__001_p",
+          "sectdars__001_r",
+          "sectdars__001_s",
+          "sectdars__001_t"
+        ],
+        "evidence_count": 4,
+        "evidence_status": "ok",
+        "confidence_gap": 0.0,
+        "confidence_label": "high_confidence",
+        "signals": [
+          {
+            "sid": "ss.3.a",
+            "signal_text": "Description of facilities, infrastructure, or resources provided",
+            "weight": 1.0,
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
+          },
+          {
+            "sid": "ss.3.b",
+            "signal_text": "Links between organisational support and project success",
+            "weight": 1.0,
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
+          },
+          {
+            "sid": "ss.3.c",
+            "signal_text": "Alignment of organisational focus with applicant’s career trajectory",
+            "weight": 1.0,
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
+          },
+          {
+            "sid": "ss.3.d",
+            "signal_text": "Evidence of tailored support for award type (doctoral, postdoctoral)",
+            "weight": 1.0,
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
+          }
+        ],
+        "pros": "The host organisation (QMUL/WIPH) provides extensive infrastructure support, including access to the Centre for Preventive Neurology, Early Career Researcher (ECR) groups, seminar series, and specific training resources (Centre for Academic and Professional Development). The text explicitly links these resources to the applicant's career trajectory (preparing for a Doctoral Fellowship) and the project's success (access to diverse populations, PPIE expertise). The organisation's commitment to EDI and research integrity is well-documented.",
+        "drawbacks": "No material caveats; the support infrastructure is clearly described and directly relevant to the award type and applicant's goals.",
+        "rationale": "No material caveats; the support infrastructure is clearly described and directly relevant to the award type and applicant's goals.",
+        "missing_evidence": false,
+        "if_applicable": false,
+        "counts_toward_section_average": true
+      },
+      {
+        "sub_id": "ss.4",
+        "name": "Commitment to Inclusive and Supportive Research Culture",
+        "definition": "Evidence that the organisation fosters inclusivity, research integrity, and a supportive environment for all researchers.",
+        "group_name": null,
+        "weight": 1.0,
+        "used_chunk_ids": [
+          "sectdars__001_q",
+          "sectdars__001_s",
+          "sectdars__001_t"
+        ],
+        "evidence_count": 3,
+        "evidence_status": "ok",
+        "confidence_gap": 0.0,
+        "confidence_label": "high_confidence",
+        "signals": [
+          {
+            "sid": "ss.4.a",
+            "signal_text": "Mentions of policies or practices promoting diversity, equity, and inclusion",
+            "weight": 1.0,
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
+          },
+          {
+            "sid": "ss.4.b",
+            "signal_text": "Evidence of inclusive recruitment, mentoring, or support initiatives",
+            "weight": 1.0,
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
+          },
+          {
+            "sid": "ss.4.c",
+            "signal_text": "References to adherence to research integrity principles",
+            "weight": 1.0,
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
+          },
+          {
+            "sid": "ss.4.d",
+            "signal_text": "Statements on organisational culture, training, or initiatives supporting underrepresented groups",
+            "weight": 1.0,
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
+          }
+        ],
+        "pros": "Strong evidence of an inclusive culture is provided, citing the Athena Swan Gold Award, embedded EDI principles in strategic decision-making, and specific initiatives like the ECR forum and 'Thinking between the lines' group. The text explicitly mentions mandatory Research Integrity Training and the organisation's focus on diverse patient populations and underrepresented groups in their research.",
+        "drawbacks": "No material caveats; the commitment to inclusivity and integrity is thoroughly evidenced with specific awards and policies.",
+        "rationale": "No material caveats; the commitment to inclusivity and integrity is thoroughly evidenced with specific awards and policies.",
+        "missing_evidence": false,
+        "if_applicable": false,
+        "counts_toward_section_average": true
+      }
+    ]
+  },
+  {
+    "human_name": "Working with people and communities",
+    "section_key": "wpcc",
+    "weight": 1.0,
+    "sub_criteria": [
+      {
+        "sub_id": "wp.1",
+        "name": "Integration of Lived Experience in Research Design",
+        "definition": "How input from patients, carers, or people with relevant lived experience has shaped the research questions, design, and methods.",
+        "group_name": null,
+        "weight": 1.0,
+        "used_chunk_ids": [
+          "sectdars__001_c",
+          "sectdars__001_d",
+          "sectdars__001_e"
+        ],
+        "evidence_count": 3,
+        "evidence_status": "ok",
+        "confidence_gap": 0.0,
+        "confidence_label": "high_confidence",
+        "signals": [
+          {
+            "sid": "wp.1.a",
+            "signal_text": "Mentions of consultation or co-design activities",
+            "weight": 1.0,
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
+          },
+          {
+            "sid": "wp.1.b",
+            "signal_text": "Specific examples of changes made to study design based on lived experience",
+            "weight": 1.0,
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
+          },
+          {
+            "sid": "wp.1.c",
+            "signal_text": "References to patient or community advisory groups",
+            "weight": 1.0,
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
+          }
+        ],
+        "pros": "The application explicitly details the use of James Lind Alliance Priority Setting Partnership (PSP) methods, which inherently involve co-design with patients and carers. It describes forming a steering group with diverse stakeholders to define scope and protocol (wp.1.a, wp.1.c) and co-facilitating workshops to finalize priorities (wp.1.b). The applicant's background also highlights co-developing culturally appropriate protocols with community members.",
+        "drawbacks": "While the plan for co-design is strong, the specific examples of *changes* made to the study design based on prior lived experience feedback are described as future activities (Stage 1-6) rather than retrospective evidence of design modification from a previous project, preventing a perfect score on wp.1.b.",
+        "rationale": "While the plan for co-design is strong, the specific examples of *changes* made to the study design based on prior lived experience feedback are described as future activities (Stage 1-6) rather than retrospective evidence of design modification from a previous project, preventing a perfect score on wp.1.b.",
+        "missing_evidence": false,
+        "if_applicable": false,
+        "counts_toward_section_average": true
+      },
+      {
+        "sub_id": "wp.2",
+        "name": "Diversity and Inclusivity of the Research Team",
+        "definition": "Extent to which the research team reflects diversity in terms of skills, experience, and demographic representation.",
+        "group_name": null,
+        "weight": 1.0,
+        "used_chunk_ids": [
+          "sectdars__001_g",
+          "sectdars__001_j",
+          "sectdars__001_l"
+        ],
+        "evidence_count": 3,
+        "evidence_status": "ok",
+        "confidence_gap": 0.0,
+        "confidence_label": "high_confidence",
+        "signals": [
+          {
+            "sid": "wp.2.a",
+            "signal_text": "Explicit mentions of team composition across gender, ethnicity, age, or other relevant characteristics",
+            "weight": 1.0,
+            "score": 2,
+            "score_0to5_raw": 2.0,
+            "score_0to5_weighted": 2.0
+          },
+          {
+            "sid": "wp.2.b",
+            "signal_text": "Statements about inclusion in hiring or team-building",
+            "weight": 1.0,
+            "score": 1,
+            "score_0to5_raw": 1.0,
+            "score_0to5_weighted": 1.0
+          },
+          {
+            "sid": "wp.2.c",
+            "signal_text": "Evidence of equitable task allocation and collaboration",
+            "weight": 1.0,
+            "score": 2,
+            "score_0to5_raw": 2.0,
+            "score_0to5_weighted": 2.0
+          }
+        ],
+        "pros": "The research team includes supervisors with diverse expertise (Health Psychology, Neurology, Health Services Research) and the applicant has a background in working with ethnic minority communities. The team composition reflects a mix of academic and clinical roles.",
+        "drawbacks": "There is no explicit statement detailing the demographic composition (gender, ethnicity, age) of the core research team itself. The focus is on the diversity of the *participants* and the *community* engaged, rather than the diversity of the *team* members. No specific hiring or team-building statements regarding inclusion are provided.",
+        "rationale": "There is no explicit statement detailing the demographic composition (gender, ethnicity, age) of the core research team itself. The focus is on the diversity of the *participants* and the *community* engaged, rather than the diversity of the *team* members. No specific hiring or team-building statements regarding inclusion are provided.",
+        "missing_evidence": false,
+        "if_applicable": false,
+        "counts_toward_section_average": true
+      },
+      {
+        "sub_id": "wp.3",
+        "name": "Commitment to Maximising Public and Patient Benefit",
+        "definition": "Clarity and strength of the plan to ensure research outcomes meaningfully benefit patients, carers, and the public.",
+        "group_name": null,
+        "weight": 1.0,
+        "used_chunk_ids": [
+          "sectdars__001_c",
+          "sectdars__001_e",
+          "sectdars__001_f"
+        ],
+        "evidence_count": 3,
+        "evidence_status": "ok",
+        "confidence_gap": 0.0,
+        "confidence_label": "high_confidence",
+        "signals": [
+          {
+            "sid": "wp.3.a",
+            "signal_text": "Mentions of dissemination, knowledge translation, or implementation plans",
+            "weight": 1.0,
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
+          },
+          {
+            "sid": "wp.3.b",
+            "signal_text": "Clear links between study objectives and anticipated benefits",
+            "weight": 1.0,
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
+          },
+          {
+            "sid": "wp.3.c",
+            "signal_text": "Emphasis on actionable outcomes or improvements in health/care",
+            "weight": 1.0,
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
+          }
+        ],
+        "pros": "The application outlines a clear dissemination plan including international conferences and NIHR events. It explicitly links the study objectives to anticipated benefits: producing a 'Top 10' list of research priorities to influence future research agendas for under-served communities. The focus on actionable outcomes (priorities) is strong.",
+        "drawbacks": "While the plan to influence research agendas is clear, the direct translation of these priorities into immediate clinical practice changes or specific health service improvements within the fellowship timeframe is less detailed, as the primary output is a prioritized list for future research.",
+        "rationale": "While the plan to influence research agendas is clear, the direct translation of these priorities into immediate clinical practice changes or specific health service improvements within the fellowship timeframe is less detailed, as the primary output is a prioritized list for future research.",
+        "missing_evidence": false,
+        "if_applicable": false,
+        "counts_toward_section_average": true
+      },
+      {
+        "sub_id": "wp.4",
+        "name": "Representation of Seldom Heard or Underserved Groups",
+        "definition": "Degree to which participants and PPI contributors represent groups historically underrepresented in research, including those facing health inequalities.",
+        "group_name": null,
+        "weight": 1.0,
+        "used_chunk_ids": [
+          "secarb__001_b",
+          "secarb__001_c",
+          "sectdars__001_d",
+          "sectdars__001_n"
+        ],
+        "evidence_count": 4,
+        "evidence_status": "ok",
+        "confidence_gap": 0.0,
+        "confidence_label": "high_confidence",
+        "signals": [
+          {
+            "sid": "wp.4.a",
+            "signal_text": "Mention of specific demographic groups (age, race, ethnicity, disability, gender, sexual orientation, religion/belief, location, socioeconomic status)",
+            "weight": 1.0,
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
+          },
+          {
+            "sid": "wp.4.b",
+            "signal_text": "Evidence of targeted recruitment strategies",
+            "weight": 1.0,
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
+          },
+          {
+            "sid": "wp.4.c",
+            "signal_text": "Discussion of barriers to participation and mitigation strategies",
+            "weight": 1.0,
+            "score": 3,
+            "score_0to5_raw": 3.0,
+            "score_0to5_weighted": 3.0
+          }
+        ],
+        "pros": "Strong evidence of targeting specific underserved groups: British Bangladeshi community, ethnic minorities in East London, and patients in Bangladesh. The applicant explicitly notes that previous priorities were influenced by white middle-class groups and aims to capture voices of ethnically diverse groups. Recruitment strategies include visits to mosques, community centres, and libraries.",
+        "drawbacks": "While barriers to participation are acknowledged (e.g., lack of representation), specific mitigation strategies for *this* project beyond general engagement (like the PSP method) are not deeply elaborated in terms of overcoming specific logistical or cultural barriers during the data collection phase.",
+        "rationale": "While barriers to participation are acknowledged (e.g., lack of representation), specific mitigation strategies for *this* project beyond general engagement (like the PSP method) are not deeply elaborated in terms of overcoming specific logistical or cultural barriers during the data collection phase.",
+        "missing_evidence": false,
+        "if_applicable": false,
+        "counts_toward_section_average": true
+      },
+      {
+        "sub_id": "wp.5",
+        "name": "Inclusivity Across the Research Lifecycle",
+        "definition": "Demonstration that inclusion is considered at all stages of the project: planning, recruitment, conduct, analysis, and dissemination.",
+        "group_name": null,
+        "weight": 1.0,
+        "used_chunk_ids": [
+          "sectdars__001_c",
+          "sectdars__001_d",
+          "sectdars__001_e"
+        ],
+        "evidence_count": 3,
+        "evidence_status": "ok",
+        "confidence_gap": 0.0,
+        "confidence_label": "high_confidence",
+        "signals": [
+          {
+            "sid": "wp.5.a",
+            "signal_text": "References to inclusion in study design, participant selection, and analysis",
+            "weight": 1.0,
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
+          },
+          {
+            "sid": "wp.5.b",
+            "signal_text": "Consideration of accessibility and equity in all project stages",
+            "weight": 1.0,
+            "score": 3,
+            "score_0to5_raw": 3.0,
+            "score_0to5_weighted": 3.0
+          },
+          {
+            "sid": "wp.5.c",
+            "signal_text": "Documented plans for ongoing evaluation and adaptation",
+            "weight": 1.0,
+            "score": 3,
+            "score_0to5_raw": 3.0,
+            "score_0to5_weighted": 3.0
+          }
+        ],
+        "pros": "Inclusion is embedded across the lifecycle: planning (steering group), recruitment (multiple channels), conduct (surveys, interviews), and analysis (thematic analysis of diverse responses). The use of JLA PSP methods ensures stakeholder involvement at multiple stages.",
+        "drawbacks": "Explicit consideration of accessibility (e.g., for disabled participants) or specific equity measures in the analysis phase (beyond thematic analysis) is not detailed. The plan for ongoing evaluation and adaptation of inclusion strategies during the project is implied but not explicitly documented as a formal process.",
+        "rationale": "Explicit consideration of accessibility (e.g., for disabled participants) or specific equity measures in the analysis phase (beyond thematic analysis) is not detailed. The plan for ongoing evaluation and adaptation of inclusion strategies during the project is implied but not explicitly documented as a formal process.",
+        "missing_evidence": false,
+        "if_applicable": false,
+        "counts_toward_section_average": true
+      },
+      {
+        "sub_id": "wp.6",
+        "name": "Costed and Resourced Plan for Research Inclusion",
+        "definition": "Evidence that research inclusion has been properly budgeted and resourced within the proposal.",
+        "group_name": null,
+        "weight": 1.0,
+        "used_chunk_ids": [
+          "secsb__001_b",
+          "secsb__001_c"
+        ],
+        "evidence_count": 2,
+        "evidence_status": "ok",
+        "confidence_gap": 0.0,
+        "confidence_label": "high_confidence",
+        "signals": [
+          {
+            "sid": "wp.6.a",
+            "signal_text": "Explicit budget line(s) for inclusion activities (PPI, outreach, recruitment support)",
+            "weight": 1.0,
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
+          },
+          {
+            "sid": "wp.6.b",
+            "signal_text": "Mention of staff time, materials, or training dedicated to inclusion",
+            "weight": 1.0,
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
+          },
+          {
+            "sid": "wp.6.c",
+            "signal_text": "Alignment between inclusion plan and allocated resources",
+            "weight": 1.0,
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
+          }
+        ],
+        "pros": "The budget explicitly includes a line item for 'Patient Public Involvement and Engagement (PPIE) and Workshop' totaling £1000. The justification clearly states this covers reimbursement for time, travel, and refreshments for PPIE members across research stages. This demonstrates a fully costed and resourced plan for inclusion.",
+        "drawbacks": "No significant drawbacks; the budgeting for inclusion is specific, justified, and aligned with the proposed activities.",
+        "rationale": "No significant drawbacks; the budgeting for inclusion is specific, justified, and aligned with the proposed activities.",
+        "missing_evidence": false,
+        "if_applicable": false,
+        "counts_toward_section_average": true
+      }
+    ]
+  },
+  {
+    "human_name": "Application Form",
+    "section_key": "application_form",
+    "weight": 1.0,
+    "sub_criteria": [
+      {
+        "sub_id": "af.1",
+        "name": "Use of Formatting, Headings, and Subheadings",
+        "definition": "Effective use of text formatting to make the application clear, navigable, and easy to read.",
+        "group_name": null,
+        "weight": 1.0,
+        "used_chunk_ids": [
+          "secafa__001"
+        ],
+        "evidence_count": 1,
+        "evidence_status": "sparse_evidence",
+        "confidence_gap": 0.0,
+        "confidence_label": "high_confidence",
+        "signals": [
+          {
+            "sid": "af.1.a",
+            "signal_text": "Presence and consistency of headings and subheadings",
+            "weight": 1.0,
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
+          },
+          {
+            "sid": "af.1.b",
+            "signal_text": "Use of bold or emphasis for key terms",
+            "weight": 1.0,
+            "score": 3,
+            "score_0to5_raw": 3.0,
+            "score_0to5_weighted": 3.0
+          },
+          {
+            "sid": "af.1.c",
+            "signal_text": "Structured hierarchy of sections (logical nesting of headings)",
+            "weight": 1.0,
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
+          },
+          {
+            "sid": "af.1.d",
+            "signal_text": "Patterns detected via text parsing for formatting markers",
+            "weight": 1.0,
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
+          }
+        ],
+        "pros": "The application form analysis confirms the presence of 5 distinct parser sections and 22 extracted emphasis markers, indicating a structured hierarchy and use of formatting. The section order follows a logical progression from applicant context to budget.",
+        "drawbacks": "The analysis notes that bold/emphasis markers may be lost during text extraction, meaning the count of 22 is a lower bound. Additionally, only 1 numbered heading-like line was detected, suggesting limited use of numbered lists for subheadings.",
+        "rationale": "The analysis notes that bold/emphasis markers may be lost during text extraction, meaning the count of 22 is a lower bound. Additionally, only 1 numbered heading-like line was detected, suggesting limited use of numbered lists for subheadings.",
+        "missing_evidence": false,
+        "if_applicable": false,
+        "counts_toward_section_average": true
+      },
+      {
+        "sub_id": "af.2",
+        "name": "Limited Duplication and Repetition",
+        "definition": "Avoidance of unnecessary repetition within or across sections.",
+        "group_name": null,
+        "weight": 1.0,
+        "used_chunk_ids": [
+          "secafa__001"
+        ],
+        "evidence_count": 1,
+        "evidence_status": "sparse_evidence",
+        "confidence_gap": 0.0,
+        "confidence_label": "high_confidence",
+        "signals": [
+          {
+            "sid": "af.2.a",
+            "signal_text": "Semantic similarity measures between sentences/paragraphs",
+            "weight": 1.0,
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
+          },
+          {
+            "sid": "af.2.b",
+            "signal_text": "Detection of repeated phrases or ideas",
+            "weight": 1.0,
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
+          },
+          {
+            "sid": "af.2.c",
+            "signal_text": "Novelty score for each section (unique content vs. overlap)",
+            "weight": 1.0,
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
+          }
+        ],
+        "pros": "Quantitative metrics show a very low duplicate sentence rate (0.007) and a low repeated line rate (0.055), indicating strong avoidance of unnecessary repetition. The lexical overlap between major sections is moderate (0.205), suggesting distinct content.",
+        "drawbacks": "While the rates are low, the lexical overlap of 0.205 between 'Applicant Research Background' and 'Training & Development' indicates some thematic repetition, which is expected but prevents a perfect score for novelty across all sections.",
+        "rationale": "While the rates are low, the lexical overlap of 0.205 between 'Applicant Research Background' and 'Training & Development' indicates some thematic repetition, which is expected but prevents a perfect score for novelty across all sections.",
+        "missing_evidence": false,
+        "if_applicable": false,
+        "counts_toward_section_average": true
+      },
+      {
+        "sub_id": "af.3",
+        "name": "Logical Flow and Coherence Across Sections",
+        "definition": "The application progresses logically, with a clear thread linking the research question, objectives, and work packages.",
+        "group_name": null,
+        "weight": 1.0,
+        "used_chunk_ids": [
+          "secafa__001"
+        ],
+        "evidence_count": 1,
+        "evidence_status": "sparse_evidence",
+        "confidence_gap": 0.0,
+        "confidence_label": "high_confidence",
+        "signals": [
+          {
+            "sid": "af.3.a",
+            "signal_text": "Semantic coherence between sections (using embeddings or similarity metrics)",
+            "weight": 1.0,
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
+          },
+          {
+            "sid": "af.3.b",
+            "signal_text": "Explicit linking of objectives to methods and work packages",
+            "weight": 1.0,
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
+          },
+          {
+            "sid": "af.3.c",
+            "signal_text": "Presence of transitional phrases or linking statements",
+            "weight": 1.0,
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
+          },
+          {
+            "sid": "af.3.d",
+            "signal_text": "Detectable narrative thread anchored on research aims",
+            "weight": 1.0,
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
+          }
+        ],
+        "pros": "The analysis identifies 76 objective-method-budget link terms, providing strong evidence of explicit linking between research aims and resources. The section order is logical, moving from context to plan to budget, and 10 transition phrases were detected.",
+        "drawbacks": "The evidence for semantic coherence (af.3.a) and the narrative thread (af.3.d) relies on structural indicators (link terms, section order) rather than direct textual analysis of the narrative flow, as the provided text is a structural summary.",
+        "rationale": "The evidence for semantic coherence (af.3.a) and the narrative thread (af.3.d) relies on structural indicators (link terms, section order) rather than direct textual analysis of the narrative flow, as the provided text is a structural summary.",
+        "missing_evidence": false,
+        "if_applicable": false,
+        "counts_toward_section_average": true
+      }
+    ]
+  }
+]

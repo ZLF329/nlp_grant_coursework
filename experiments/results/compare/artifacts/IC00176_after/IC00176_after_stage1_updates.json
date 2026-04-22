@@ -1,0 +1,564 @@
+[
+  {
+    "section_name": "Scientific Abstract",
+    "findings": [
+      {
+        "sub_id": "pr.1",
+        "good_evidence_ids": [
+          "secsa__001_a",
+          "secsa__001_b",
+          "secsa__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Clearly states the problem (health inequalities in IBD), objectives, methods (mixed-methods, 3 phases), beneficiaries (SA populations), and impact (policy, equity), supporting pr.1."
+      },
+      {
+        "sub_id": "pr.3",
+        "good_evidence_ids": [
+          "secsa__001_a",
+          "secsa__001_b",
+          "secsa__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Outlines a feasible 3-phase study with specific data sources (CPRD, HES), sample sizes (30-40 interviews), and timelines (2005-2025), supporting pr.3."
+      },
+      {
+        "sub_id": "pr.4",
+        "good_evidence_ids": [
+          "secsa__001_a",
+          "secsa__001_b",
+          "secsa__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Details rigorous methods including Cox regression, Poisson models, interpretive phenomenology, and RAMESES framework for realist review, supporting pr.4."
+      },
+      {
+        "sub_id": "pr.5",
+        "good_evidence_ids": [
+          "secsa__001_a",
+          "secsa__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Explicitly aims to improve outcomes for SA patients, inform policy, and align with NHS Long Term Plan and CORE20PLUS5, supporting pr.5."
+      },
+      {
+        "sub_id": "pr.6",
+        "good_evidence_ids": [
+          "secsa__001_b",
+          "secsa__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Plans to recruit via patient charities (CCUK, SAIA) and include stakeholder engagement in Phase 3, supporting pr.6."
+      },
+      {
+        "sub_id": "pr.9",
+        "good_evidence_ids": [
+          "secsa__001_a",
+          "secsa__001_b"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Focuses specifically on South Asian communities to address ethnic disparities and cultural barriers, supporting pr.9."
+      },
+      {
+        "sub_id": "wp.1",
+        "good_evidence_ids": [
+          "secsa__001_b",
+          "secsa__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Includes interviews with patients to explore lived experiences and stakeholder engagement in the realist review, supporting wp.1."
+      },
+      {
+        "sub_id": "wp.3",
+        "good_evidence_ids": [
+          "secsa__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Aims to produce actionable recommendations and transferable strategies to enhance equity and improve patient outcomes, supporting wp.3."
+      },
+      {
+        "sub_id": "wp.4",
+        "good_evidence_ids": [
+          "secsa__001_a",
+          "secsa__001_b"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Targets South Asian populations, a specific ethnic minority group often underserved in IBD care, supporting wp.4."
+      },
+      {
+        "sub_id": "wp.5",
+        "good_evidence_ids": [
+          "secsa__001_a",
+          "secsa__001_b",
+          "secsa__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Integrates diverse perspectives (quantitative data, qualitative lived experience, evidence synthesis) across all phases to address equity, supporting wp.5."
+      }
+    ],
+    "resolved_signals": [
+      "pr.1",
+      "pr.3",
+      "pr.4",
+      "pr.5",
+      "pr.6",
+      "pr.9",
+      "wp.1",
+      "wp.3",
+      "wp.4",
+      "wp.5"
+    ],
+    "missing_signals_after": [
+      "g.1",
+      "g.2",
+      "g.3",
+      "g.4",
+      "g.5",
+      "g.6",
+      "pr.2",
+      "pr.7",
+      "pr.8",
+      "td.1",
+      "td.2",
+      "td.3",
+      "ss.1",
+      "ss.2",
+      "ss.3",
+      "ss.4",
+      "wp.2",
+      "wp.6"
+    ]
+  },
+  {
+    "section_name": "Plain English Summary of Research",
+    "findings": [
+      {
+        "sub_id": "pr.1",
+        "good_evidence_ids": [
+          "secpesor__001_a",
+          "secpesor__001_b",
+          "secpesor__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Clearly defines the problem (IBD inequalities in South Asians), outlines 3-phase objectives, describes methods (records, interviews, realist review), identifies beneficiaries, and state"
+      },
+      {
+        "sub_id": "pr.3",
+        "good_evidence_ids": [
+          "secpesor__001_a",
+          "secpesor__001_b"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Describes a structured 3-phase approach with specific tasks (record analysis, interviews, review) and clear progression, indicating a feasible scope appropriate for a fellowship, suppor"
+      },
+      {
+        "sub_id": "pr.4",
+        "good_evidence_ids": [
+          "secpesor__001_b",
+          "secpesor__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Explicitly details methods including NHS health records analysis, patient/professional interviews, and a realist review, demonstrating methodological rigor and alignment with aims, supp"
+      },
+      {
+        "sub_id": "pr.5",
+        "good_evidence_ids": [
+          "secpesor__001_a",
+          "secpesor__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Explicitly aims to reduce health inequalities, improve care pathways, and design better services for South Asian patients, highlighting clear societal and patient impact, supporting pr."
+      },
+      {
+        "sub_id": "pr.6",
+        "good_evidence_ids": [
+          "secpesor__001_a",
+          "secpesor__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: States commitment to listening to patients, working with community groups, and involving patients/healthcare workers in the realist review, supporting pr.6."
+      },
+      {
+        "sub_id": "pr.9",
+        "good_evidence_ids": [
+          "secpesor__001_a",
+          "secpesor__001_b"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Specifically targets South Asian populations to address language barriers and cultural differences, demonstrating an inclusive design focused on underserved groups, supporting pr.9."
+      },
+      {
+        "sub_id": "wp.1",
+        "good_evidence_ids": [
+          "secpesor__001_a",
+          "secpesor__001_b"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Plans to interview patients to understand personal stories and work with community groups, integrating lived experience into the research design, supporting wp.1."
+      },
+      {
+        "sub_id": "wp.3",
+        "good_evidence_ids": [
+          "secpesor__001_a",
+          "secpesor__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Aims to improve care, raise awareness, and design better services based on findings, showing a clear commitment to maximizing public and patient benefit, supporting wp.3."
+      },
+      {
+        "sub_id": "wp.4",
+        "good_evidence_ids": [
+          "secpesor__001_a",
+          "secpesor__001_b"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Explicitly focuses on South Asian people, a specific ethnic minority group facing worse health outcomes, ensuring representation of seldom-heard groups, supporting wp.4."
+      },
+      {
+        "sub_id": "wp.5",
+        "good_evidence_ids": [
+          "secpesor__001_a",
+          "secpesor__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Engages South Asian communities and patients across all three phases (data analysis, interviews, review) to ensure inclusivity throughout the research lifecycle, supporting wp.5."
+      }
+    ],
+    "resolved_signals": [
+      "pr.1",
+      "pr.3",
+      "pr.4",
+      "pr.5",
+      "pr.6",
+      "pr.9",
+      "wp.1",
+      "wp.3",
+      "wp.4",
+      "wp.5"
+    ],
+    "missing_signals_after": [
+      "g.1",
+      "g.2",
+      "g.3",
+      "g.4",
+      "g.5",
+      "g.6",
+      "pr.2",
+      "pr.7",
+      "pr.8",
+      "td.1",
+      "td.2",
+      "td.3",
+      "ss.1",
+      "ss.2",
+      "ss.3",
+      "ss.4",
+      "wp.2",
+      "wp.6"
+    ]
+  },
+  {
+    "section_name": "Patient & Public Involvement",
+    "findings": [
+      {
+        "sub_id": "pr.6",
+        "good_evidence_ids": [
+          "secppi__001_a",
+          "secppi__001_b",
+          "secppi__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Patient & Public Involvement: Details a cross-cutting PPIE approach from inception to dissemination, including co-design, training, and ethical considerations, strongly supporting pr.6."
+      },
+      {
+        "sub_id": "pr.9",
+        "good_evidence_ids": [
+          "secppi__001_a",
+          "secppi__001_b"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Patient & Public Involvement: Explicitly targets South Asian communities with diverse demographics and provides translated materials and culturally sensitive communication, supporting pr.9."
+      },
+      {
+        "sub_id": "wp.1",
+        "good_evidence_ids": [
+          "secppi__001_a",
+          "secppi__001_b"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Patient & Public Involvement: Describes co-development of materials, shaping interpretation of findings, and influencing intervention proposals, demonstrating integration of lived experience in design, supporting wp.1."
+      },
+      {
+        "sub_id": "wp.3",
+        "good_evidence_ids": [
+          "secppi__001_b",
+          "secppi__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Patient & Public Involvement: Outlines co-designed dissemination activities including workshops, videos, and co-authored publications to ensure findings are accessible and impactful, supporting wp.3."
+      },
+      {
+        "sub_id": "wp.4",
+        "good_evidence_ids": [
+          "secppi__001_a",
+          "secppi__001_b"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Patient & Public Involvement: Specifically includes South Asian patients spanning age, gender, religion, and language, ensuring representation of seldom-heard groups, supporting wp.4."
+      },
+      {
+        "sub_id": "wp.5",
+        "good_evidence_ids": [
+          "secppi__001_a",
+          "secppi__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Patient & Public Involvement: Embeds PPIE as a foundational pillar from inception to dissemination with continuous evaluation, demonstrating inclusivity across the research lifecycle, supporting wp.5."
+      },
+      {
+        "sub_id": "wp.6",
+        "good_evidence_ids": [
+          "secppi__001_a",
+          "secppi__001_b"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Patient & Public Involvement: Mentions reimbursement in line with NIHR guidance and tailored training, indicating resourcing for inclusion, though specific budget lines are not detailed, partially supporting wp.6."
+      }
+    ],
+    "resolved_signals": [
+      "pr.6",
+      "pr.9",
+      "wp.1",
+      "wp.3",
+      "wp.4",
+      "wp.5",
+      "wp.6"
+    ],
+    "missing_signals_after": [
+      "g.1",
+      "g.2",
+      "g.3",
+      "g.4",
+      "g.5",
+      "g.6",
+      "pr.2",
+      "pr.7",
+      "pr.8",
+      "td.1",
+      "td.2",
+      "td.3",
+      "ss.1",
+      "ss.2",
+      "ss.3",
+      "ss.4",
+      "wp.2"
+    ]
+  },
+  {
+    "section_name": "SUMMARY BUDGET",
+    "findings": [
+      {
+        "sub_id": "g.1",
+        "good_evidence_ids": [
+          "secsb__001_a",
+          "secsb__001_b"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "SUMMARY BUDGET: Details a comprehensive training plan covering quantitative, qualitative, and leadership skills, supporting g.1.c."
+      },
+      {
+        "sub_id": "pr.7",
+        "good_evidence_ids": [
+          "secsb__001_a",
+          "secsb__001_d"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "SUMMARY BUDGET: Provides explicit links between tasks (data access, transcription, travel) and resources requested with clear rationales, supporting pr.7."
+      },
+      {
+        "sub_id": "td.1",
+        "good_evidence_ids": [
+          "secsb__001_a",
+          "secsb__001_b"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "SUMMARY BUDGET: Lists specific courses (e.g., Oxford Big Data, LSHTM Epidemiology) aligned with project methods, supporting td.1."
+      },
+      {
+        "sub_id": "td.2",
+        "good_evidence_ids": [
+          "secsb__001_a",
+          "secsb__001_b"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "SUMMARY BUDGET: Maps training activities directly to project tasks (e.g., NVivo for qualitative analysis, Big Data for CPRD), supporting td.2."
+      },
+      {
+        "sub_id": "wp.6",
+        "good_evidence_ids": [
+          "secsb__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "SUMMARY BUDGET: Includes detailed budget lines for PPIE meetings, travel, and honoraria, confirming a costed plan for inclusion, supporting wp.6."
+      }
+    ],
+    "resolved_signals": [
+      "g.1",
+      "pr.7",
+      "td.1",
+      "td.2",
+      "wp.6"
+    ],
+    "missing_signals_after": [
+      "g.2",
+      "g.3",
+      "g.4",
+      "g.5",
+      "g.6",
+      "pr.2",
+      "pr.8",
+      "td.3",
+      "ss.1",
+      "ss.2",
+      "ss.3",
+      "ss.4",
+      "wp.2"
+    ]
+  },
+  {
+    "section_name": "Application Context",
+    "findings": [
+      {
+        "sub_id": "g.1",
+        "good_evidence_ids": [
+          "secac__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Context: Details a robust mentorship team with specific roles (supervision, methodological support, clinical expertise) and structured meeting plans, strongly supporting g.1.d."
+      },
+      {
+        "sub_id": "g.3",
+        "good_evidence_ids": [
+          "secac__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Context: Mentions the applicant's professional registration as a Pharmacist and supervisors' expertise in mixed methods and IBD, indicating alignment of prior experience with project needs (g.3.c)."
+      },
+      {
+        "sub_id": "g.4",
+        "good_evidence_ids": [
+          "secac__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Context: Highlights supervisor outputs including the IBD-Fatigue Self-Assessment Scale (validated in 20 countries) and leadership in a £2.3M NIHR grant, supporting g.4.d regarding practical impact."
+      },
+      {
+        "sub_id": "g.5",
+        "good_evidence_ids": [
+          "secac__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Context: Notes supervisors' track records in leading consortia, serving on advisory boards, and supervising multiple PhDs, demonstrating research leadership potential (g.5.b, g.5.d)."
+      },
+      {
+        "sub_id": "g.6",
+        "good_evidence_ids": [
+          "secac__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Context: Identifies the applicant as a registered Pharmacist and emphasizes the goal to advance pharmacist practice in IBD care, supporting g.6.a and g.6.b."
+      },
+      {
+        "sub_id": "ss.1",
+        "good_evidence_ids": [
+          "secac__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Context: Describes supervisors' extensive track records, including 16 externally funded studies, international consortia involvement, and validated tools, supporting ss.1.a and ss.1.d."
+      },
+      {
+        "sub_id": "ss.2",
+        "good_evidence_ids": [
+          "secac__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Context: Explicitly details supervisor roles, specific support areas (causal inference, realist review), and a structured supervision framework (four-weekly meetings), strongly supporting ss.2."
+      },
+      {
+        "sub_id": "ss.3",
+        "good_evidence_ids": [
+          "secac__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Context: Highlights King's College London and University of Oxford as host institutions with established networks and resources for IBD research, supporting ss.3.a and ss.3.c."
+      },
+      {
+        "sub_id": "ss.4",
+        "good_evidence_ids": [
+          "secac__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Context: Mentions supervisors' commitment to supporting underrepresented backgrounds and addressing health inequalities in South Asian communities, supporting ss.4.d."
+      },
+      {
+        "sub_id": "wp.2",
+        "good_evidence_ids": [
+          "secac__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Context: Describes a diverse supervisory team with expertise in health equity and specific focus on South Asian populations, indicating a commitment to inclusive team dynamics (wp.2.b)."
+      }
+    ],
+    "resolved_signals": [
+      "g.1",
+      "g.3",
+      "g.4",
+      "g.5",
+      "g.6",
+      "ss.1",
+      "ss.2",
+      "ss.3",
+      "ss.4",
+      "wp.2"
+    ],
+    "missing_signals_after": [
+      "g.2",
+      "pr.2",
+      "pr.8",
+      "td.3"
+    ]
+  },
+  {
+    "section_name": "Plain English NLP Analysis",
+    "findings": [
+      {
+        "sub_id": "pr.1",
+        "good_evidence_ids": [
+          "secpena__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English NLP Analysis: NLP metrics show strong readability (Flesch-Kincaid 7.27, 0% long sentences) and low jargon density (2.72%), supporting pr.1.a, pr.1.b, and pr.1.e. Coverage hits confirm presence of problem, o"
+      }
+    ],
+    "resolved_signals": [
+      "pr.1"
+    ],
+    "missing_signals_after": [
+      "g.2",
+      "pr.2",
+      "pr.8",
+      "td.3"
+    ]
+  },
+  {
+    "section_name": "Application Form Analysis",
+    "findings": [],
+    "resolved_signals": [],
+    "missing_signals_after": [
+      "g.2",
+      "pr.2",
+      "pr.8",
+      "td.3"
+    ]
+  }
+]

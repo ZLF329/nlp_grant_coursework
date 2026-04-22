@@ -1,0 +1,463 @@
+{
+  "processed_sections": [
+    "Applicant CV",
+    "Applicant Research Background",
+    "Plain English Summary of Research",
+    "Scientific Abstract",
+    "Detailed Research Plan",
+    "Patient & Public Involvement",
+    "Training & Development and Research Support",
+    "SUMMARY BUDGET",
+    "Application Context",
+    "Plain English NLP Analysis",
+    "Application Form Analysis"
+  ],
+  "subcriteria_beliefs": {
+    "g.3": {
+      "good_evidence_ids": [
+        "secac__001_a",
+        "secac__001_b",
+        "secarb__001_b",
+        "secarb__001_c",
+        "secarb__001_d",
+        "secdrp__001_i",
+        "secdrp__001_n",
+        "secdrp__001_o"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Applicant CV: Applicant holds MSc in Immunology and PGCert in Research Skills, plus NIHR Academic Clinical Fellow role, demonstrating formal training and relevant research experience.",
+        "Applicant Research Background: Details extensive relevant experience including feasibility trials, systematic reviews, and specific techniques (PBMC isolation, ELISAs, SPSS, GraphPad) directly applicable to the proposed",
+        "Detailed Research Plan: Demonstrates relevant experience and training in epidemiological analysis (OpenSAFELY), deep learning (CNNs), and PET-CT imaging techniques."
+      ]
+    },
+    "g.4": {
+      "good_evidence_ids": [
+        "secac__001_b",
+        "secac__001_c",
+        "secac__001_d",
+        "secarb__001_a",
+        "secarb__001_b",
+        "secarb__001_c",
+        "secdrp__001_u",
+        "secdrp__001_v",
+        "sectdars__001_d",
+        "sectdars__001_e",
+        "sectdars__001_f"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Applicant CV: CV lists multiple peer-reviewed publications in rheumatology and immunology journals (e.g., Oxford Medical Case Reports, BMJ Case Reports), indicating a strong track record of research outputs.",
+        "Applicant Research Background: Lists multiple outputs including publications in Neuroscience, book chapters, literature reviews, case reports, and presentations at BSR and EULAR conferences.",
+        "Detailed Research Plan: Plans for three key manuscripts and presentations at national/international conferences indicate expected high-quality research outputs.",
+        "Training & Development and Research Support: Lists supervisors with high publication counts (250+, 240+, 60+) and H-indices (43, 34, 20), providing strong evidence of impactful research outputs within the support network"
+      ]
+    },
+    "g.5": {
+      "good_evidence_ids": [
+        "secac__001_d",
+        "secac__001_e",
+        "secarb__001_b",
+        "secarb__001_c",
+        "secarb__001_e",
+        "secdrp__001_x",
+        "sectdars__001_a",
+        "sectdars__001_j"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Applicant CV: Applicant has received multiple academic prizes (e.g., Gresham Prize, Clare-Massachusetts Studentship) and awards, suggesting peer recognition and leadership potential.",
+        "Applicant Research Background: Demonstrates increasing responsibility through leading pilot trials, supervising research nurses/fellows, authoring a book, and organizing a national study day.",
+        "Detailed Research Plan: Explicitly states the long-term goal of becoming a leading clinical academic and plans to apply for an NIHR Clinical Lectureship.",
+        "Training & Development and Research Support: Applicant plans to attend BMA Leadership Programmes and holds roles like Chief Rheumatology Registrar, indicating participation in leadership development and increasing respon"
+      ]
+    },
+    "g.6": {
+      "good_evidence_ids": [
+        "secac__001_a",
+        "secac__001_b",
+        "secarb__001_a",
+        "secarb__001_c",
+        "secarb__001_h",
+        "secdrp__001_r",
+        "secdrp__001_s",
+        "sectdars__001_c",
+        "sectdars__001_d"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Applicant CV: Applicant holds an MBBChir and has held clinical roles (Foundation Trainee, Specialist Trainee) alongside an NIHR Academic Clinical Fellowship, confirming a practitioner-academic career path.",
+        "Applicant Research Background: Confirms commitment to a practitioner-academic career via NIHR ACF, clinical training (ST5), and balancing on-call duties with research activities.",
+        "Detailed Research Plan: Research is embedded in clinical practice (KCH MDTs, routine NHS care) with recruitment during clinic appointments, supporting a practitioner-academic career.",
+        "Training & Development and Research Support: Explicitly outlines balancing clinical duties (NHS clinics, on-call) with research (PhD enrolment, data analysis), confirming commitment to a practitioner-academic career."
+      ]
+    },
+    "g.1": {
+      "good_evidence_ids": [
+        "secarb__001_a",
+        "secarb__001_f",
+        "secdrp__001_x",
+        "sectdars__001_a",
+        "sectdars__001_c",
+        "sectdars__001_j",
+        "secafa__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Applicant Research Background: Clearly states a career vision to become a leading clinical academic in Rheumatology and a research leader in sarcoidosis, with a defined trajectory from ACF to NIHR Clinical Lectureship.",
+        "Detailed Research Plan: Applicant outlines a clear career trajectory from fellowship to NIHR Clinical Lectureship and becoming a leading clinical academic in sarcoidosis.",
+        "Training & Development and Research Support: Details a comprehensive training plan including epidemiology, deep learning, and leadership courses, directly supporting the 'Well-justified training plan' signal.",
+        "Application Form Analysis: Low duplication rates (0.009) and high transition phrase counts (75) suggest a coherent narrative supporting clear research vision."
+      ]
+    },
+    "g.2": {
+      "good_evidence_ids": [
+        "secarb__001_f",
+        "secarb__001_g",
+        "secdrp__001_x"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Applicant Research Background: Explicitly links the fellowship to developing methods for identifying high-risk sarcoidosis patients and achieving the goal of an NIHR Clinical Lectureship, justifying the award as the next",
+        "Detailed Research Plan: The fellowship is positioned as the necessary step to develop skills for a nationwide study and achieve the goal of an NIHR Clinical Lectureship."
+      ]
+    },
+    "pr.2": {
+      "good_evidence_ids": [
+        "secarb__001_d",
+        "secsa__001_a",
+        "secdrp__001_e",
+        "secdrp__001_f",
+        "secdrp__001_g"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Applicant Research Background: Identifies a specific knowledge gap in sarcoidosis research, noting only nine RCTs exist and highlighting a lack of epidemiological data.",
+        "Scientific Abstract: Identifies specific knowledge gaps regarding the lack of objective PET-CT measures for sarcoidosis activity and limited evidence for second-line treatment selection.",
+        "Detailed Research Plan: Comprehensive review of existing evidence identifies gaps in mortality prediction, under-representation of ethnic groups, and lack of validated PET-CT quantification methods."
+      ]
+    },
+    "pr.5": {
+      "good_evidence_ids": [
+        "secarb__001_f",
+        "secsa__001_c",
+        "secdrp__001_c",
+        "secdrp__001_d",
+        "secdrp__001_e"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Applicant Research Background: Describes potential impact including improved patient identification, guided referral to specialist centres, and reduced healthcare burdens.",
+        "Scientific Abstract: Details anticipated impact including improved patient identification, reduced hospitalizations, and informing global clinical trial design.",
+        "Detailed Research Plan: Clear impact on patients (reduced side effects, better QoL), health services (resource allocation, reduced costs), and guideline development."
+      ]
+    },
+    "pr.8": {
+      "good_evidence_ids": [
+        "secarb__001_b",
+        "secarb__001_c",
+        "secarb__001_d"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Applicant Research Background: Provides evidence of prior successful projects including feasibility trials, systematic reviews, and epidemiological studies with manuscripts under submission."
+      ]
+    },
+    "wp.3": {
+      "good_evidence_ids": [
+        "secarb__001_e",
+        "secpesor__001_c",
+        "secsa__001_c",
+        "secdrp__001_v",
+        "secdrp__001_w",
+        "secppi__001_d",
+        "secppi__001_e"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Applicant Research Background: Mentions collaboration with Sarcoidosis UK to write patient information leaflets, indicating a commitment to public/patient benefit.",
+        "Plain English Summary of Research: Outlines a robust dissemination plan including plain English summaries, newsletters, and social media to maximize public benefit, supporting wp.3.",
+        "Scientific Abstract: Outlines a dissemination plan including publications, presentations, and PPI-guided communication to patients and the public.",
+        "Detailed Research Plan: Comprehensive dissemination plan including plain English summaries, social media, and newsletters via Sarcoidosis UK to maximize public benefit.",
+        "Patient & Public Involvement: Outlines a robust dissemination plan including lay summaries, charity website publication, and public engagement events co-produced with the patient panel."
+      ]
+    },
+    "pr.1": {
+      "good_evidence_ids": [
+        "secpesor__001_a",
+        "secpesor__001_b",
+        "secpesor__001_c",
+        "secpena__001",
+        "secafa__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Plain English Summary of Research: Clearly defines the problem, aims, methods, and beneficiaries in accessible language, supporting pr.1.",
+        "Plain English NLP Analysis: NLP metrics show high readability (Flesch-Kincaid 6.24, Reading Ease 63.68), low jargon density (2.08%), and coverage of key elements (problem, objectives, methods, beneficiaries, impact), str",
+        "Application Form Analysis: Confirms presence of Plain English Summary and NLP analysis sections, indicating structural compliance for readability and content checks."
+      ]
+    },
+    "pr.3": {
+      "good_evidence_ids": [
+        "secpesor__001_b",
+        "secpesor__001_c",
+        "secsa__001_b",
+        "secdrp__001_h",
+        "secdrp__001_m",
+        "secdrp__001_p",
+        "secafa__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Plain English Summary of Research: Outlines a feasible three-phase design with specific tasks (data collection, AI training, follow-up), supporting pr.3.",
+        "Scientific Abstract: Outlines a feasible three-phase plan with specific timelines (0-36 months) and distinct tasks, demonstrating appropriate scope for the award.",
+        "Detailed Research Plan: Three-phase plan with specific timelines (0-36 months) and sample size calculations demonstrates appropriate scope and feasibility for the award.",
+        "Application Form Analysis: Notes a logical section order moving from context to research plan and budget, supporting assessment of scope and feasibility."
+      ]
+    },
+    "pr.4": {
+      "good_evidence_ids": [
+        "secpesor__001_b",
+        "secpesor__001_c",
+        "secsa__001_b",
+        "secsa__001_c",
+        "secdrp__001_j",
+        "secdrp__001_l",
+        "secdrp__001_o",
+        "secafa__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Plain English Summary of Research: Describes explicit methods including OpenSAFELY data collection, AI model training, and one-year follow-up, supporting pr.4.",
+        "Scientific Abstract: Describes explicit methods including OpenSAFELY data analysis, deep-learning algorithm development for PET-CT, and regression models for outcome correlation.",
+        "Detailed Research Plan: Detailed methodological rigor including explicit definitions, statistical analysis plans (competing risk models), and AI model validation strategies.",
+        "Application Form Analysis: Detects 25 list markers and 16 numbered headings, indicating structured presentation of methods and research design."
+      ]
+    },
+    "pr.6": {
+      "good_evidence_ids": [
+        "secpesor__001_c",
+        "secsa__001_c",
+        "secdrp__001_c",
+        "secdrp__001_s",
+        "secdrp__001_u",
+        "secafa__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Plain English Summary of Research: Details patient involvement via Sarcoidosis UK, including interviews, focus groups, and a six-person panel guiding design and analysis, supporting pr.6.",
+        "Scientific Abstract: Confirms patient representative involvement at all stages of study design and analysis, ensuring patient-focused research.",
+        "Detailed Research Plan: Strong engagement with patient representatives through interviews, co-writing PILs, and stakeholder meetings across all phases.",
+        "Application Form Analysis: Confirms a dedicated 'Patient & Public Involvement' section with 780 words, indicating specific attention to engagement criteria."
+      ]
+    },
+    "pr.9": {
+      "good_evidence_ids": [
+        "secpesor__001_a",
+        "secpesor__001_b",
+        "secsa__001_b",
+        "secdrp__001_f",
+        "secdrp__001_s"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Plain English Summary of Research: Explicitly plans to analyze factors including age, sex, and ethnicity to understand risk, supporting pr.9.",
+        "Scientific Abstract: Explicitly aims to identify demographic risk factors, indicating an inclusive approach to understanding disease heterogeneity across populations.",
+        "Detailed Research Plan: Explicit strategies to address under-representation of Black and minority ethnic groups and an Equality Impact Assessment to ensure inclusive recruitment."
+      ]
+    },
+    "wp.1": {
+      "good_evidence_ids": [
+        "secpesor__001_c",
+        "secsa__001_c",
+        "secdrp__001_c",
+        "secdrp__001_s",
+        "secdrp__001_u",
+        "secppi__001_a",
+        "secppi__001_d"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Plain English Summary of Research: Describes co-design activities with patient representatives to guide study design and result analysis, supporting wp.1.",
+        "Scientific Abstract: States that patient representatives will be involved in study design and analysis, integrating lived experience into the research process.",
+        "Detailed Research Plan: Patient representatives were consulted for study design, PIL co-writing, and will be involved in stakeholder meetings throughout the project.",
+        "Patient & Public Involvement: Details specific design changes (e.g., measuring disease activity across systems, standardizing RCT design) directly resulting from patient focus groups and advisory input."
+      ]
+    },
+    "wp.4": {
+      "good_evidence_ids": [
+        "secpesor__001_a",
+        "secpesor__001_b",
+        "secdrp__001_f",
+        "secdrp__001_s",
+        "secppi__001_a",
+        "secppi__001_d"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Plain English Summary of Research: Explicitly includes ethnicity as a key factor in risk analysis, addressing representation of diverse groups, supporting wp.4.",
+        "Detailed Research Plan: Explicit focus on recruiting and analyzing data from Black, Asian, and Minority Ethnic (BAME) groups to address under-representation.",
+        "Patient & Public Involvement: Identifies specific strategies to engage ethnic minorities, including a dedicated BAME patient representative to identify recruitment limitations."
+      ]
+    },
+    "wp.5": {
+      "good_evidence_ids": [
+        "secpesor__001_c",
+        "secsa__001_c",
+        "secdrp__001_c",
+        "secdrp__001_s",
+        "secdrp__001_u",
+        "secppi__001_c",
+        "secppi__001_d"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Plain English Summary of Research: Demonstrates inclusivity across the lifecycle by involving patients in design, analysis, and dissemination stages, supporting wp.5.",
+        "Scientific Abstract: Demonstrates inclusivity across the lifecycle by involving patients in design, analysis, and dissemination stages.",
+        "Detailed Research Plan: Inclusivity is integrated across the lifecycle from initial interviews and design co-creation to recruitment strategies and result dissemination.",
+        "Patient & Public Involvement: Describes involvement across the full lifecycle: training, protocol design (Phase 1), model design (Phase 2), trial development (Phase 3), and dissemination."
+      ]
+    },
+    "td.1": {
+      "good_evidence_ids": [
+        "secdrp__001_{",
+        "secdrp__001_|",
+        "sectdars__001_a",
+        "sectdars__001_c",
+        "secsb__001_f",
+        "secsb__001_g",
+        "secafa__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Detailed Research Plan: Specific training courses identified for epidemiology, statistics, Python coding, and deep learning, aligned with project phases.",
+        "Training & Development and Research Support: Provides a complete and clear description of training, including specific courses in Stata, Python, deep learning, and statistics aligned with project phases.",
+        "SUMMARY BUDGET: Allocates funds for specific training courses (Epidemiology, Deep Learning) and a Stanford placement, demonstrating a costed and structured training plan (td.1).",
+        "Application Form Analysis: Identifies a substantial 'Training & Development' section (2182 words), suggesting detailed training plans are present."
+      ]
+    },
+    "td.2": {
+      "good_evidence_ids": [
+        "secdrp__001_{",
+        "secdrp__001_|",
+        "sectdars__001_a",
+        "sectdars__001_c",
+        "secsb__001_f",
+        "secsb__001_g"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Detailed Research Plan: Training is targeted to specific project needs (e.g., deep learning for Phase 2, epidemiology for Phase 1) rather than generic.",
+        "Training & Development and Research Support: Training is highly targeted, linking specific courses (e.g., Advanced Epidemiological Analysis) to Phase 1 and deep learning courses to Phase 2 of the project.",
+        "SUMMARY BUDGET: Training costs are explicitly mapped to project phases (Epidemiology for Phase 1, Deep Learning for Phase 2), showing targeted suitability (td.2)."
+      ]
+    },
+    "td.3": {
+      "good_evidence_ids": [
+        "secdrp__001_x",
+        "sectdars__001_a",
+        "sectdars__001_b"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Detailed Research Plan: Training in deep learning and epidemiology supports the career aspiration to become a leading clinical academic and secure an NIHR Clinical Lectureship.",
+        "Training & Development and Research Support: Training activities, including a Stanford placement and leadership courses, are explicitly linked to building a future research career and academic clinician trajectory."
+      ]
+    },
+    "ss.1": {
+      "good_evidence_ids": [
+        "secdrp__001_x",
+        "secdrp__001_y",
+        "sectdars__001_d",
+        "sectdars__001_e",
+        "sectdars__001_f"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Detailed Research Plan: King's College London and KCH provide strong support including a Centre of Excellence, Clinical Trials Unit, and existing sarcoidosis studies.",
+        "Training & Development and Research Support: Supervisors have extensive track records with hundreds of publications and high H-indices, demonstrating a strong history of research output in relevant fields."
+      ]
+    },
+    "ss.2": {
+      "good_evidence_ids": [
+        "secdrp__001_y",
+        "secdrp__001_z",
+        "sectdars__001_d",
+        "sectdars__001_e",
+        "sectdars__001_f"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Detailed Research Plan: Robust supervisory team with specific expertise in epidemiology, statistics, and imaging sciences, with structured monthly and biannual meetings.",
+        "Training & Development and Research Support: Describes a robust supervisory team with specific expertise in epidemiology, imaging, and rheumatology, including structured supervision and mentorship history."
+      ]
+    },
+    "ss.3": {
+      "good_evidence_ids": [
+        "secdrp__001_x",
+        "secdrp__001_y",
+        "sectdars__001_b",
+        "sectdars__001_j",
+        "sectdars__001_k",
+        "secsb__001_d",
+        "secsb__001_g"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Detailed Research Plan: Institutional support includes access to OpenSAFELY, KCH patient cohorts, and a multidisciplinary environment suitable for the proposed research.",
+        "Training & Development and Research Support: Host organisation provides access to a Sarcoidosis Centre of Excellence, OpenSAFELY platform, and multidisciplinary teams, ensuring appropriate infrastructure support.",
+        "SUMMARY BUDGET: Budget includes costs for essential infrastructure (computer for analysis) and institutional support (indirect costs, tuition), confirming organisational resource commitment (ss.3)."
+      ]
+    },
+    "ss.4": {
+      "good_evidence_ids": [
+        "secdrp__001_x",
+        "secdrp__001_s",
+        "sectdars__001_b",
+        "sectdars__001_g"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Detailed Research Plan: KCH serves a diverse population and the applicant has created an Equality Impact Assessment, indicating a commitment to inclusive culture.",
+        "Training & Development and Research Support: Mentions collaboration with Sarcoidosis UK and a multidisciplinary team including diverse specialties, indicating a supportive and inclusive research culture."
+      ]
+    },
+    "wp.2": {
+      "good_evidence_ids": [
+        "secppi__001_a",
+        "secppi__001_d"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Patient & Public Involvement: Explicitly mentions recruiting a patient representative of BAME background and ensuring diverse age/gender/ethnicity in the focus group to address recruitment barriers."
+      ]
+    },
+    "wp.6": {
+      "good_evidence_ids": [
+        "secppi__001_c",
+        "secppi__001_d",
+        "secsb__001_e",
+        "secsb__001_f"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Patient & Public Involvement: Confirms resourcing via free training courses, adherence to INVOLVE payment guidance, and an honorary research contract for a key patient representative.",
+        "SUMMARY BUDGET: Includes specific budget lines for patient focus groups, public engagement events, and stakeholder meetings, confirming a costed plan for inclusion (wp.6)."
+      ]
+    },
+    "pr.7": {
+      "good_evidence_ids": [
+        "secsb__001_a",
+        "secsb__001_b",
+        "secsb__001_c",
+        "secafa__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "SUMMARY BUDGET: Provides explicit justifications linking costs to specific tasks (e.g., computer for Python/Stata, travel for conferences, CPRD access), supporting pr.7.",
+        "Application Form Analysis: Identifies 105 table-like budget lines and 138 objective-method-budget link terms, suggesting strong structural justification for resources."
+      ]
+    }
+  },
+  "missing_signals": []
+}

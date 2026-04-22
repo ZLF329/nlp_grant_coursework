@@ -1,0 +1,349 @@
+[
+  {
+    "section_name": "Plain English Summary of Research",
+    "findings": [
+      {
+        "sub_id": "pr.1",
+        "good_evidence_ids": [
+          "secpesor__001_a",
+          "secpesor__001_b",
+          "secpesor__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: The section clearly outlines the problem (dementia care, touch), objectives (study feelings, design training), methods (scoping review, ethnography), beneficiaries (residents, staff), a"
+      },
+      {
+        "sub_id": "pr.2",
+        "good_evidence_ids": [
+          "secpesor__001_a",
+          "secpesor__001_b"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: The text explicitly identifies knowledge gaps regarding touch interactions in dementia care and proposes a scoping review to map existing literature, supporting pr.2."
+      },
+      {
+        "sub_id": "pr.4",
+        "good_evidence_ids": [
+          "secpesor__001_b"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Methods are explicitly described as a scoping review, ethnographic study in three care homes, and co-design of training, demonstrating methodological rigor and alignment with aims."
+      },
+      {
+        "sub_id": "pr.5",
+        "good_evidence_ids": [
+          "secpesor__001_a",
+          "secpesor__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: The summary highlights direct benefits for residents (relieving distress), staff (wellbeing), and relatives, and outlines dissemination plans to NHS and care networks, strongly supporti"
+      },
+      {
+        "sub_id": "pr.6",
+        "good_evidence_ids": [
+          "secpesor__001_b",
+          "secpesor__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: The section details a PPIE group including residents, relatives, and staff involved in design, materials, ethics, and training development, with feedback loops, fully supporting pr.6."
+      },
+      {
+        "sub_id": "wp.1",
+        "good_evidence_ids": [
+          "secpesor__001_b",
+          "secpesor__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Co-design with care workers and a PPIE group including a dementia carer are explicitly mentioned as integral to the study design and training development, supporting wp.1."
+      },
+      {
+        "sub_id": "wp.3",
+        "good_evidence_ids": [
+          "secpesor__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Dissemination plans include publishing, presenting, and an Advisory Board from NHS and care networks to ensure confident rollout, supporting wp.3."
+      },
+      {
+        "sub_id": "wp.4",
+        "good_evidence_ids": [
+          "secpesor__001_a"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: The research specifically targets older people with dementia and care home staff, addressing a vulnerable and often underserved demographic, supporting wp.4."
+      }
+    ],
+    "resolved_signals": [
+      "pr.1",
+      "pr.2",
+      "pr.4",
+      "pr.5",
+      "pr.6",
+      "wp.1",
+      "wp.3",
+      "wp.4"
+    ],
+    "missing_signals_after": [
+      "g.1",
+      "g.2",
+      "g.3",
+      "g.4",
+      "g.5",
+      "g.6",
+      "pr.3",
+      "pr.7",
+      "pr.8",
+      "pr.9",
+      "td.1",
+      "td.2",
+      "td.3",
+      "ss.1",
+      "ss.2",
+      "ss.3",
+      "ss.4",
+      "wp.2",
+      "wp.5",
+      "wp.6"
+    ]
+  },
+  {
+    "section_name": "Detailed Research Plan",
+    "findings": [
+      {
+        "sub_id": "pr.2",
+        "good_evidence_ids": [
+          "secdrp__001_f",
+          "secdrp__001_g",
+          "secdrp__001_h"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Extensive literature review on touch in dementia care, identifying specific gaps in staff awareness and intentional touch models, strongly supporting pr.2."
+      },
+      {
+        "sub_id": "pr.3",
+        "good_evidence_ids": [
+          "secdrp__001_j",
+          "secdrp__001_k",
+          "secdrp__001_q"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Defines a 24-month timeline with three distinct phases (scoping review, ethnography, training design) and specific objectives, demonstrating feasibility and scope alignment."
+      },
+      {
+        "sub_id": "pr.4",
+        "good_evidence_ids": [
+          "secdrp__001_j",
+          "secdrp__001_k",
+          "secdrp__001_l"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Explicitly details ethnographic methods, immersive observations, semi-structured interviews, and iterative analysis, showing strong methodological rigor."
+      },
+      {
+        "sub_id": "pr.5",
+        "good_evidence_ids": [
+          "secdrp__001_d",
+          "secdrp__001_e",
+          "secdrp__001_q"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Outlines benefits for residents (reduced anxiety), staff (reduced burnout), and services (training tools), with clear dissemination plans to NHS and care sectors."
+      },
+      {
+        "sub_id": "pr.6",
+        "good_evidence_ids": [
+          "secdrp__001_l",
+          "secdrp__001_n",
+          "secdrp__001_o"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Describes a bespoke PPIE group with specific roles in design, recruitment, and ethics, including remuneration and safeguarding, fully supporting pr.6."
+      },
+      {
+        "sub_id": "pr.9",
+        "good_evidence_ids": [
+          "secdrp__001_l",
+          "secdrp__001_n",
+          "secdrp__001_p"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Addresses inclusion of people with cognitive impairment via adapted consent and interview methods, and plans for diverse staff and resident backgrounds."
+      },
+      {
+        "sub_id": "wp.1",
+        "good_evidence_ids": [
+          "secdrp__001_i",
+          "secdrp__001_l",
+          "secdrp__001_o"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Explicitly commits to co-designing training with residents, relatives, and staff, and integrating PPIE feedback into study design and materials."
+      },
+      {
+        "sub_id": "wp.3",
+        "good_evidence_ids": [
+          "secdrp__001_q",
+          "secdrp__001_r"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Details a robust dissemination strategy including journal articles, conferences, and an Advisory Board with NHS and social care leaders to ensure impact."
+      },
+      {
+        "sub_id": "wp.4",
+        "good_evidence_ids": [
+          "secdrp__001_m",
+          "secdrp__001_p"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Targets older people with dementia and care home staff, explicitly considering rural/urban and deprived areas to ensure representation of underserved groups."
+      },
+      {
+        "sub_id": "wp.5",
+        "good_evidence_ids": [
+          "secdrp__001_l",
+          "secdrp__001_n",
+          "secdrp__001_p"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Incorporates inclusive methods (gentle interviews, visual aids) and ethical safeguards for those lacking capacity across all project stages."
+      }
+    ],
+    "resolved_signals": [
+      "pr.2",
+      "pr.3",
+      "pr.4",
+      "pr.5",
+      "pr.6",
+      "pr.9",
+      "wp.1",
+      "wp.3",
+      "wp.4",
+      "wp.5"
+    ],
+    "missing_signals_after": [
+      "g.1",
+      "g.2",
+      "g.3",
+      "g.4",
+      "g.5",
+      "g.6",
+      "pr.7",
+      "pr.8",
+      "td.1",
+      "td.2",
+      "td.3",
+      "ss.1",
+      "ss.2",
+      "ss.3",
+      "ss.4",
+      "wp.2",
+      "wp.6"
+    ]
+  },
+  {
+    "section_name": "Application Context",
+    "findings": [
+      {
+        "sub_id": "pr.3",
+        "good_evidence_ids": [
+          "secac__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Context: Specifies a 24-month duration and total cost of £195,589.11, providing concrete feasibility indicators for the project scope."
+      },
+      {
+        "sub_id": "pr.7",
+        "good_evidence_ids": [
+          "secac__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Context: States the total cost to NIHR as £195,589.11, establishing the funding level for resource justification."
+      },
+      {
+        "sub_id": "ss.1",
+        "good_evidence_ids": [
+          "secac__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Context: Identifies Royal Devon University Healthcare NHS Foundation Trust as the contracting organisation, establishing the institutional context."
+      }
+    ],
+    "resolved_signals": [
+      "pr.3",
+      "pr.7",
+      "ss.1"
+    ],
+    "missing_signals_after": [
+      "g.1",
+      "g.2",
+      "g.3",
+      "g.4",
+      "g.5",
+      "g.6",
+      "pr.8",
+      "td.1",
+      "td.2",
+      "td.3",
+      "ss.2",
+      "ss.3",
+      "ss.4",
+      "wp.2",
+      "wp.6"
+    ]
+  },
+  {
+    "section_name": "Plain English NLP Analysis",
+    "findings": [
+      {
+        "sub_id": "pr.1",
+        "good_evidence_ids": [
+          "secpena__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English NLP Analysis: Notes 16.4% lexical overlap with detailed plan, offering a quantitative baseline for alignment assessment under pr.1."
+      }
+    ],
+    "resolved_signals": [
+      "pr.1"
+    ],
+    "missing_signals_after": [
+      "g.1",
+      "g.2",
+      "g.3",
+      "g.4",
+      "g.5",
+      "g.6",
+      "pr.8",
+      "td.1",
+      "td.2",
+      "td.3",
+      "ss.2",
+      "ss.3",
+      "ss.4",
+      "wp.2",
+      "wp.6"
+    ]
+  },
+  {
+    "section_name": "Application Form Analysis",
+    "findings": [],
+    "resolved_signals": [],
+    "missing_signals_after": [
+      "g.1",
+      "g.2",
+      "g.3",
+      "g.4",
+      "g.5",
+      "g.6",
+      "pr.8",
+      "td.1",
+      "td.2",
+      "td.3",
+      "ss.2",
+      "ss.3",
+      "ss.4",
+      "wp.2",
+      "wp.6"
+    ]
+  }
+]

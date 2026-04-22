@@ -1,0 +1,727 @@
+[
+  {
+    "section_name": "Applicant CV",
+    "findings": [
+      {
+        "sub_id": "g.3",
+        "good_evidence_ids": [
+          "secac__001_a",
+          "secac__001_b",
+          "secac__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Applicant CV: CV details extensive research experience in neurosurgery and AI, including specific grants (Cancer Research UK, Stryker) and fellowships, strongly supporting relevant research experience and training."
+      },
+      {
+        "sub_id": "g.4",
+        "good_evidence_ids": [
+          "secac__001_c",
+          "secac__001_d",
+          "secac__001_e"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Applicant CV: CV lists numerous high-impact publications in journals like Nature Medicine, Lancet, and BMJ, plus multiple awards (Sir Hugh Cairns Prize, Barrow Foundation), demonstrating impactful research outputs."
+      },
+      {
+        "sub_id": "g.5",
+        "good_evidence_ids": [
+          "secac__001_a",
+          "secac__001_b",
+          "secac__001_y"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Applicant CV: Progression from trainee to sole fellowship recipient and co-investigator on competitive grants, alongside leadership in multicentre studies, indicates a clear trajectory towards research leadership."
+      },
+      {
+        "sub_id": "g.6",
+        "good_evidence_ids": [
+          "secac__001_a",
+          "secac__001_b"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Applicant CV: Applicant holds dual roles as Neurosurgical Trainee and Academic Clinical Fellow, with research focused on clinical surgical management, confirming commitment to a practitioner-academic career."
+      },
+      {
+        "sub_id": "pr.8",
+        "good_evidence_ids": [
+          "secac__001_c",
+          "secac__001_d",
+          "secac__001_e"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Applicant CV: Extensive publication record in relevant fields (AI in surgery, pituitary adenoma) and successful grant acquisition demonstrate high quality of previous research."
+      }
+    ],
+    "resolved_signals": [
+      "g.3",
+      "g.4",
+      "g.5",
+      "g.6",
+      "pr.8"
+    ],
+    "missing_signals_after": [
+      "g.1",
+      "g.2",
+      "pr.1",
+      "pr.2",
+      "pr.3",
+      "pr.4",
+      "pr.5",
+      "pr.6",
+      "pr.7",
+      "pr.9",
+      "td.1",
+      "td.2",
+      "td.3",
+      "ss.1",
+      "ss.2",
+      "ss.3",
+      "ss.4",
+      "wp.1",
+      "wp.2",
+      "wp.3",
+      "wp.4",
+      "wp.5",
+      "wp.6"
+    ]
+  },
+  {
+    "section_name": "Applicant Research Background",
+    "findings": [
+      {
+        "sub_id": "g.1",
+        "good_evidence_ids": [
+          "secarb__001_a",
+          "secarb__001_f"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Applicant Research Background: Clearly states aim to be an academic neurosurgeon and identifies completing a PhD as the next step, demonstrating a clear research vision and career trajectory."
+      },
+      {
+        "sub_id": "g.2",
+        "good_evidence_ids": [
+          "secarb__001_a",
+          "secarb__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Applicant Research Background: Explicitly states the PhD is the next step to develop as a surgeon-scientist and mentions leveraging existing networks for future translation, supporting the need for this award."
+      },
+      {
+        "sub_id": "g.3",
+        "good_evidence_ids": [
+          "secarb__001_b",
+          "secarb__001_c",
+          "secarb__001_d"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Applicant Research Background: Details specific prior projects in robotic platforms, AI workflow recognition, and multicentre observational studies, providing strong evidence of relevant research experience and training."
+      },
+      {
+        "sub_id": "g.4",
+        "good_evidence_ids": [
+          "secarb__001_a",
+          "secarb__001_c",
+          "secarb__001_d"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Applicant Research Background: Lists 70 peer-reviewed publications (including Nature Medicine), multiple grants (NIHR, CRUK, Stryker), and prestigious awards (Hugh Cairns Prize), demonstrating impactful outputs."
+      },
+      {
+        "sub_id": "g.5",
+        "good_evidence_ids": [
+          "secarb__001_d",
+          "secarb__001_e",
+          "secarb__001_f"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Applicant Research Background: Describes leadership roles as Vice Chair, Trainee Lead, and Junior PI, coordinating networks of >100 consultants and managing multicentre studies, indicating a trajectory towards research l"
+      },
+      {
+        "sub_id": "g.6",
+        "good_evidence_ids": [
+          "secarb__001_a",
+          "secarb__001_b",
+          "secarb__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Applicant Research Background: Applicant is a run-through neurosurgical trainee and NIHR Academic Clinical Fellow conducting clinical research on surgical technology, confirming commitment to a practitioner-academic care"
+      },
+      {
+        "sub_id": "pr.8",
+        "good_evidence_ids": [
+          "secarb__001_a",
+          "secarb__001_c",
+          "secarb__001_d"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Applicant Research Background: Extensive history of successful projects including AI model development and large-scale patient recruitment, with high-quality publications and grants, supports the quality of previous rese"
+      }
+    ],
+    "resolved_signals": [
+      "g.1",
+      "g.2",
+      "g.3",
+      "g.4",
+      "g.5",
+      "g.6",
+      "pr.8"
+    ],
+    "missing_signals_after": [
+      "pr.1",
+      "pr.2",
+      "pr.3",
+      "pr.4",
+      "pr.5",
+      "pr.6",
+      "pr.7",
+      "pr.9",
+      "td.1",
+      "td.2",
+      "td.3",
+      "ss.1",
+      "ss.2",
+      "ss.3",
+      "ss.4",
+      "wp.1",
+      "wp.2",
+      "wp.3",
+      "wp.4",
+      "wp.5",
+      "wp.6"
+    ]
+  },
+  {
+    "section_name": "Plain English Summary of Research",
+    "findings": [
+      {
+        "sub_id": "pr.1",
+        "good_evidence_ids": [
+          "secpesor__001_a",
+          "secpesor__001_b",
+          "secpesor__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Clearly articulates the problem (pituitary surgery variability), objectives (3 AI tools), methods (workflow analysis), and beneficiaries (patients/surgeons) in accessible language."
+      },
+      {
+        "sub_id": "pr.3",
+        "good_evidence_ids": [
+          "secpesor__001_b",
+          "secpesor__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Outlines a 3-year timeline with pilot and larger studies, indicating a feasible scope appropriate for a doctoral or postdoctoral award."
+      },
+      {
+        "sub_id": "pr.4",
+        "good_evidence_ids": [
+          "secpesor__001_a",
+          "secpesor__001_b"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Describes the core methodology (AI workflow analysis of surgical videos) and links it logically to the development of three specific clinical tools."
+      },
+      {
+        "sub_id": "pr.5",
+        "good_evidence_ids": [
+          "secpesor__001_a",
+          "secpesor__001_b",
+          "secpesor__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Explicitly details patient benefits (personalized care, faster discharge) and alignment with NIHR/NHS strategic themes, demonstrating strong potential impact."
+      },
+      {
+        "sub_id": "pr.8",
+        "good_evidence_ids": [
+          "secpesor__001_b"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Mentions prior success in building a secure system and AI models using predoctoral funding, providing evidence of previous research quality."
+      },
+      {
+        "sub_id": "ss.1",
+        "good_evidence_ids": [
+          "secpesor__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Highlights collaboration with the UK's largest pituitary centre, a prestigious innovation institute (WEISS), and major industry partners (Medtronic, NVIDIA), supporting institutional tr"
+      }
+    ],
+    "resolved_signals": [
+      "pr.1",
+      "pr.3",
+      "pr.4",
+      "pr.5",
+      "pr.8",
+      "ss.1"
+    ],
+    "missing_signals_after": [
+      "pr.2",
+      "pr.6",
+      "pr.7",
+      "pr.9",
+      "td.1",
+      "td.2",
+      "td.3",
+      "ss.2",
+      "ss.3",
+      "ss.4",
+      "wp.1",
+      "wp.2",
+      "wp.3",
+      "wp.4",
+      "wp.5",
+      "wp.6"
+    ]
+  },
+  {
+    "section_name": "Scientific Abstract",
+    "findings": [
+      {
+        "sub_id": "g.1",
+        "good_evidence_ids": [
+          "secsa__001_b"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Clearly outlines a 3-year doctoral fellowship plan with three specific aims to translate AI technology, demonstrating a clear research vision and career trajectory."
+      },
+      {
+        "sub_id": "g.3",
+        "good_evidence_ids": [
+          "secsa__001_b",
+          "secsa__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Mentions prior development of pre-clinical AI models and foundational work through NIHR and CRUK fellowships, providing strong evidence of relevant research experience."
+      },
+      {
+        "sub_id": "g.4",
+        "good_evidence_ids": [
+          "secsa__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Cites previous funding from NIHR Academic Clinical Fellowship and Cancer Research UK Predoctoral Fellowship, indicating impactful research outputs and recognitions."
+      },
+      {
+        "sub_id": "pr.3",
+        "good_evidence_ids": [
+          "secsa__001_b",
+          "secsa__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Defines a 3-year scope with specific aims and a phased approach (pilot studies followed by single centre development), indicating appropriate scope and feasibility."
+      },
+      {
+        "sub_id": "pr.4",
+        "good_evidence_ids": [
+          "secsa__001_b",
+          "secsa__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Describes the core methodology of AI workflow analysis via surgical video segmentation and links it logically to three distinct clinical applications."
+      },
+      {
+        "sub_id": "pr.5",
+        "good_evidence_ids": [
+          "secsa__001_a",
+          "secsa__001_b",
+          "secsa__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Explicitly states goals to improve patient outcomes, reduce morbidity, enable safer discharge, and improve surgical training, demonstrating strong potential impact."
+      },
+      {
+        "sub_id": "ss.1",
+        "good_evidence_ids": [
+          "secsa__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Highlights an established team at the UK's largest pituitary centre and collaborations with Medtronic and NVIDIA, supporting institutional track record."
+      }
+    ],
+    "resolved_signals": [
+      "g.1",
+      "g.3",
+      "g.4",
+      "pr.3",
+      "pr.4",
+      "pr.5",
+      "ss.1"
+    ],
+    "missing_signals_after": [
+      "pr.2",
+      "pr.6",
+      "pr.7",
+      "pr.9",
+      "td.1",
+      "td.2",
+      "td.3",
+      "ss.2",
+      "ss.3",
+      "ss.4",
+      "wp.1",
+      "wp.2",
+      "wp.3",
+      "wp.4",
+      "wp.5",
+      "wp.6"
+    ]
+  },
+  {
+    "section_name": "Detailed Research Plan",
+    "findings": [
+      {
+        "sub_id": "pr.2",
+        "good_evidence_ids": [
+          "secdrp__001_d",
+          "secdrp__001_e",
+          "secdrp__001_f"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Cites multiple systematic reviews (193 studies, 178 studies) and narrative reviews to identify heterogeneity in surgical practice and gaps in AI application, supporting evidence review quality."
+      },
+      {
+        "sub_id": "pr.4",
+        "good_evidence_ids": [
+          "secdrp__001_h",
+          "secdrp__001_i",
+          "secdrp__001_r"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Explicitly details methods including IDEAL/DECIDE-AI frameworks, sample sizes (n=6, n=30), and specific AI architectures (CNN-RNN), demonstrating strong methodological rigor."
+      },
+      {
+        "sub_id": "pr.6",
+        "good_evidence_ids": [
+          "secdrp__001_t",
+          "secdrp__001_u"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Mentions engagement in public and patient initiatives and plans for consent processes including non-English languages and accessibility adaptations, supporting engagement with people."
+      },
+      {
+        "sub_id": "pr.9",
+        "good_evidence_ids": [
+          "secdrp__001_t",
+          "secdrp__001_u"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Describes strategies for diverse recruitment (international patient base, non-English consent forms) and accessibility adaptations (audio narration), supporting inclusive research design."
+      },
+      {
+        "sub_id": "ss.2",
+        "good_evidence_ids": [
+          "secdrp__001_|"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Identifies specific supervisors (Mr Hani Marcus, Prof Stoyanov) as experts in the field with established relationships, supporting suitability of supervisory support."
+      },
+      {
+        "sub_id": "ss.3",
+        "good_evidence_ids": [
+          "secdrp__001_{",
+          "secdrp__001_|"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Details access to high-performance computing, dedicated engineering support via EPSRC grant, and industry partnerships (Medtronic, NVIDIA), supporting appropriateness of the contracting organisati"
+      },
+      {
+        "sub_id": "wp.3",
+        "good_evidence_ids": [
+          "secdrp__001_}",
+          "secdrp__001_z"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Outlines plans for publication, data sharing via WEISS Open Data Server, and future multicentre studies to maximize public and patient benefit."
+      }
+    ],
+    "resolved_signals": [
+      "pr.2",
+      "pr.4",
+      "pr.6",
+      "pr.9",
+      "ss.2",
+      "ss.3",
+      "wp.3"
+    ],
+    "missing_signals_after": [
+      "pr.7",
+      "td.1",
+      "td.2",
+      "td.3",
+      "ss.4",
+      "wp.1",
+      "wp.2",
+      "wp.4",
+      "wp.5",
+      "wp.6"
+    ]
+  },
+  {
+    "section_name": "Patient & Public Involvement",
+    "findings": [
+      {
+        "sub_id": "wp.1",
+        "good_evidence_ids": [
+          "secppi__001_b",
+          "secppi__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Patient & Public Involvement: Details active engagement with the WEISS UCL Pituitary Patient Advisory Group to refine lay summaries, study design, and outcomes, with specific mention of integrating patient insights into "
+      },
+      {
+        "sub_id": "wp.3",
+        "good_evidence_ids": [
+          "secppi__001_c",
+          "secppi__001_d"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Patient & Public Involvement: Outlines a robust dissemination plan including video summaries co-created with patients, sharing via the Pituitary Foundation, and engagement with underserved communities through the WEISS S"
+      },
+      {
+        "sub_id": "wp.5",
+        "good_evidence_ids": [
+          "secppi__001_b",
+          "secppi__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Patient & Public Involvement: Demonstrates inclusivity across the research lifecycle by involving patients in initial design, protocol refinement for six studies, ethics amendments, and final dissemination activities."
+      },
+      {
+        "sub_id": "wp.6",
+        "good_evidence_ids": [
+          "secppi__001_b",
+          "secppi__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Patient & Public Involvement: Explicitly states that patient representatives receive fair monetary remuneration for their time and effort, indicating a resourced plan for inclusion."
+      }
+    ],
+    "resolved_signals": [
+      "wp.1",
+      "wp.3",
+      "wp.5",
+      "wp.6"
+    ],
+    "missing_signals_after": [
+      "pr.7",
+      "td.1",
+      "td.2",
+      "td.3",
+      "ss.4",
+      "wp.2",
+      "wp.4"
+    ]
+  },
+  {
+    "section_name": "Training & Development and Research Support",
+    "findings": [
+      {
+        "sub_id": "td.1",
+        "good_evidence_ids": [
+          "sectdars__001_a",
+          "sectdars__001_c",
+          "sectdars__001_d"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Training & Development and Research Support: Details specific courses (ACCELERATE, Clinician Coders, Surgical Data Science Summer School) and placements (Medtronic, GWU) directly linked to project needs, supporting quali"
+      },
+      {
+        "sub_id": "td.2",
+        "good_evidence_ids": [
+          "sectdars__001_a",
+          "sectdars__001_c",
+          "sectdars__001_d"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Training & Development and Research Support: Explicitly identifies skill gaps (e.g., inability to independently build AI models, need for translation skills) and maps targeted training (online courses, industry placement"
+      },
+      {
+        "sub_id": "td.3",
+        "good_evidence_ids": [
+          "sectdars__001_a",
+          "sectdars__001_e",
+          "sectdars__001_n"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Training & Development and Research Support: Clearly states career goals (academic neurosurgeon, consultant) and links training (PhD, clinical sessions, leadership fellowships) to achieving these aspirations and future i"
+      },
+      {
+        "sub_id": "ss.2",
+        "good_evidence_ids": [
+          "sectdars__001_f",
+          "sectdars__001_g",
+          "sectdars__001_h"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Training & Development and Research Support: Describes a robust supervisory team with specific roles, meeting frequencies (monthly/weekly), and proven track records of guiding students to completion, strongly supporting "
+      },
+      {
+        "sub_id": "ss.3",
+        "good_evidence_ids": [
+          "sectdars__001_n",
+          "sectdars__001_o",
+          "sectdars__001_j"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Training & Development and Research Support: Host organization provides dedicated doctoral skills programs, mentoring, and access to industry resources (Medtronic, NVIDIA), demonstrating strong institutional support for "
+      },
+      {
+        "sub_id": "g.6",
+        "good_evidence_ids": [
+          "sectdars__001_e",
+          "sectdars__001_i"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Training & Development and Research Support: Explicitly plans 20% clinical commitment (on-call, theatre lists) to maintain surgical skills alongside the PhD, confirming commitment to a practitioner-academic career."
+      }
+    ],
+    "resolved_signals": [
+      "td.1",
+      "td.2",
+      "td.3",
+      "ss.2",
+      "ss.3",
+      "g.6"
+    ],
+    "missing_signals_after": [
+      "pr.7",
+      "ss.4",
+      "wp.2",
+      "wp.4"
+    ]
+  },
+  {
+    "section_name": "SUMMARY BUDGET",
+    "findings": [
+      {
+        "sub_id": "pr.7",
+        "good_evidence_ids": [
+          "secsb__001_a",
+          "secsb__001_c",
+          "secsb__001_f"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "SUMMARY BUDGET: Provides detailed justifications linking specific costs (salary, equipment, data annotation) to project tasks, with clear rationale for funding levels and proportionality."
+      },
+      {
+        "sub_id": "wp.6",
+        "good_evidence_ids": [
+          "secsb__001_d",
+          "secsb__001_e"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "SUMMARY BUDGET: Explicitly budgets for patient remuneration (£50 per review) and dissemination video costs co-created with patients, confirming a costed and resourced plan for inclusion."
+      }
+    ],
+    "resolved_signals": [
+      "pr.7",
+      "wp.6"
+    ],
+    "missing_signals_after": [
+      "ss.4",
+      "wp.2",
+      "wp.4"
+    ]
+  },
+  {
+    "section_name": "Application Context",
+    "findings": [
+      {
+        "sub_id": "ss.2",
+        "good_evidence_ids": [
+          "secac2__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Context: Lists a Doctoral Primary Supervisor (Consultant) and two additional Supervisors (Professor, Admin Authority), confirming the presence of a supervisory team."
+      },
+      {
+        "sub_id": "ss.3",
+        "good_evidence_ids": [
+          "secac2__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Context: Identifies University College London as the contracting organisation, providing the institutional context for the award."
+      }
+    ],
+    "resolved_signals": [
+      "ss.2",
+      "ss.3"
+    ],
+    "missing_signals_after": [
+      "ss.4",
+      "wp.2",
+      "wp.4"
+    ]
+  },
+  {
+    "section_name": "Plain English NLP Analysis",
+    "findings": [
+      {
+        "sub_id": "pr.1",
+        "good_evidence_ids": [
+          "secpena__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English NLP Analysis: Provides NLP metrics (Flesch-Kincaid 10.58, 0% long sentences) and confirms coverage of objectives, methods, beneficiaries, and impact, supporting the quality of the Plain English Summary."
+      }
+    ],
+    "resolved_signals": [
+      "pr.1"
+    ],
+    "missing_signals_after": [
+      "ss.4",
+      "wp.2",
+      "wp.4"
+    ]
+  },
+  {
+    "section_name": "Application Form Analysis",
+    "findings": [
+      {
+        "sub_id": "pr.1",
+        "good_evidence_ids": [
+          "secafa__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Form Analysis: Confirms presence of Plain English Summary and NLP analysis sections, supporting structural completeness for pr.1."
+      },
+      {
+        "sub_id": "pr.7",
+        "good_evidence_ids": [
+          "secafa__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Form Analysis: Identifies 125 table-like budget lines and links between objective/method/budget terms, supporting pr.7 resource justification."
+      },
+      {
+        "sub_id": "td.1",
+        "good_evidence_ids": [
+          "secafa__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Form Analysis: Confirms a dedicated 'Training & Development' section with 2619 words, supporting the presence of training content for td.1."
+      },
+      {
+        "sub_id": "wp.1",
+        "good_evidence_ids": [
+          "secafa__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Form Analysis: Confirms a dedicated 'Patient & Public Involvement' section with 718 words, supporting the presence of PPI content for wp.1."
+      }
+    ],
+    "resolved_signals": [
+      "pr.1",
+      "pr.7",
+      "td.1",
+      "wp.1"
+    ],
+    "missing_signals_after": [
+      "ss.4",
+      "wp.2",
+      "wp.4"
+    ]
+  }
+]
