@@ -1674,12 +1674,8 @@ def score_application_base(
     sections: list[dict[str, Any]] = []
     for rubric_section in rubric_sections:
         section_key = rubric_section["section_key"]
-        scoped_text, scoped_parser_sections = _build_scoped_application_text(
-            rubric_section=rubric_section,
-            pool_lookup=pool_lookup,
-            chunk_order=chunk_order,
-            belief_state=belief_state,
-        )
+        scoped_text = _build_full_application_text(pool_lookup, chunk_order)
+        scoped_parser_sections: list[str] = []
         stage2_scope_by_section[section_key] = scoped_parser_sections
         messages = build_final_scoring_messages(
             rubric_section=rubric_section,
