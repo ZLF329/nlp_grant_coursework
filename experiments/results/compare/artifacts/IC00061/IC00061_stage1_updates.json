@@ -10,7 +10,7 @@
           "secppi__001_d"
         ],
         "bad_evidence_ids": [],
-        "implication": "Patient & Public Involvement: Strong evidence of co-design: PPI groups involved in developing review questions, recruitment pathways, survey questions, and workshop materials across all work packages."
+        "implication": "Patient & Public Involvement: Strong evidence of co-design: PPI groups involved in developing review questions, protocols, recruitment pathways, survey questions, and workshop materials across all WPs."
       },
       {
         "sub_id": "wp.4",
@@ -20,7 +20,7 @@
           "secppi__001_d"
         ],
         "bad_evidence_ids": [],
-        "implication": "Patient & Public Involvement: Explicit strategies for diverse recruitment including parent support groups, trusted advocates, interpreters, and BSL to reach diverse communities and CYP with SEND."
+        "implication": "Patient & Public Involvement: Explicit strategies for diverse recruitment including parent support groups, trusted advocates, interpreters, BSL, and targeting diverse communities to address barriers like stigma."
       },
       {
         "sub_id": "wp.5",
@@ -30,7 +30,7 @@
           "secppi__001_d"
         ],
         "bad_evidence_ids": [],
-        "implication": "Patient & Public Involvement: Inclusivity embedded across lifecycle: PPI involved in design, conduct, analysis, and dissemination, with specific adjustments for communication needs and reasonable adjustments."
+        "implication": "Patient & Public Involvement: Inclusivity embedded across lifecycle: accessible language, easy read materials, communication supports, and PPI involvement in design, conduct, analysis, and dissemination."
       },
       {
         "sub_id": "wp.6",
@@ -40,26 +40,27 @@
           "secppi__001_n"
         ],
         "bad_evidence_ids": [],
-        "implication": "Patient & Public Involvement: Comprehensive budget for inclusion: specific line items for PPI vouchers, childcare, travel, interpreters, accessible room hire, and training for PPI members."
+        "implication": "Patient & Public Involvement: Comprehensive budget for inclusion: specific line items for PPI vouchers, childcare, travel, interpreters, accessible room hire, and training (Talking Mats) ensure resources match the plan."
+      },
+      {
+        "sub_id": "pr.6",
+        "good_evidence_ids": [
+          "secppi__001_a",
+          "secppi__001_c",
+          "secppi__001_d"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Patient & Public Involvement: Detailed engagement plan: PPI groups co-produce materials and facilitate workshops, with specific mechanisms for feedback and support for CYP participation."
       },
       {
         "sub_id": "pr.9",
         "good_evidence_ids": [
           "secppi__001_a",
           "secppi__001_b",
-          "secppi__001_j"
-        ],
-        "bad_evidence_ids": [],
-        "implication": "Patient & Public Involvement: Inclusive design features: use of easy read information, verbal explanations, interpreters, BSL, and wheelchair accessible rooms to support participation."
-      },
-      {
-        "sub_id": "pr.6",
-        "good_evidence_ids": [
-          "secppi__001_c",
           "secppi__001_d"
         ],
         "bad_evidence_ids": [],
-        "implication": "Patient & Public Involvement: Active engagement described: PPI groups co-produce materials and facilitate workshops, with clear feedback loops and involvement in data analysis."
+        "implication": "Patient & Public Involvement: Inclusive design features: use of interpreters, BSL, easy read information, verbal explanations, and trusted advocates to support participants with SEND and diverse needs."
       }
     ],
     "resolved_signals": [
@@ -67,8 +68,8 @@
       "wp.4",
       "wp.5",
       "wp.6",
-      "pr.9",
-      "pr.6"
+      "pr.6",
+      "pr.9"
     ],
     "missing_signals_after": [
       "g.1",

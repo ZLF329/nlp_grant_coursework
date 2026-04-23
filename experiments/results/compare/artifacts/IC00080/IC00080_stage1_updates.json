@@ -19,7 +19,7 @@
           "secac__001_d"
         ],
         "bad_evidence_ids": [],
-        "implication": "Applicant CV: Applicant lists multiple peer-reviewed publications (2024) and a Dean's List award, indicating a strong track record of research outputs."
+        "implication": "Applicant CV: CV lists multiple peer-reviewed publications (2024) and a Dean's List award, indicating a strong track record of research outputs and recognition."
       },
       {
         "sub_id": "g.6",
@@ -28,7 +28,7 @@
           "secac__001_b"
         ],
         "bad_evidence_ids": [],
-        "implication": "Applicant CV: CV shows concurrent clinical roles (Speech Pathologist) and research activities (Research Assistant, MRes), supporting a practitioner-academic career path."
+        "implication": "Applicant CV: Applicant maintains concurrent clinical roles (Speech Pathologist) and research positions (Research Assistant, MRes), evidencing a practitioner-academic career path."
       },
       {
         "sub_id": "pr.8",
@@ -92,7 +92,7 @@
           "secarb__001_g"
         ],
         "bad_evidence_ids": [],
-        "implication": "Applicant Research Background: Explains the award as the next step to explore research gaps and develop leadership skills, building on prior PCAF experience and MRes training."
+        "implication": "Applicant Research Background: Explains the award as the next step to explore research gaps and develop leadership skills, building on existing PCAF experience and clinical expertise."
       },
       {
         "sub_id": "g.3",
@@ -122,7 +122,7 @@
           "secarb__001_f"
         ],
         "bad_evidence_ids": [],
-        "implication": "Applicant Research Background: Shows increasing responsibility through committee roles, mentoring peers, leading quality improvement projects, and peer reviewing, indicating leadership potential."
+        "implication": "Applicant Research Background: Demonstrates increasing responsibility through committee roles, mentoring peers, leading quality improvement projects, and peer reviewing for evidence synthesis."
       },
       {
         "sub_id": "g.6",
@@ -132,7 +132,7 @@
           "secarb__001_g"
         ],
         "bad_evidence_ids": [],
-        "implication": "Applicant Research Background: Explicitly states commitment to a clinical academic career, balancing 14 years of clinical practice with research activities and PPI engagement."
+        "implication": "Applicant Research Background: Explicitly states commitment to a practitioner-academic career, balancing 14 years of clinical work with research activities and PPI engagement."
       },
       {
         "sub_id": "pr.8",
@@ -142,17 +142,16 @@
           "secarb__001_c"
         ],
         "bad_evidence_ids": [],
-        "implication": "Applicant Research Background: Demonstrates high-quality prior research in the specific topic of feeding/swallowing in ventilated children, with relevant publications and dissemination."
+        "implication": "Applicant Research Background: Previous work on feeding/swallowing in ventilator-assisted children directly aligns with the proposed project scope, showing relevant prior success."
       },
       {
         "sub_id": "wp.1",
         "good_evidence_ids": [
-          "secarb__001_b",
           "secarb__001_f",
           "secarb__001_i"
         ],
         "bad_evidence_ids": [],
-        "implication": "Applicant Research Background: Highlights active engagement with parents as a PPI group, securing a PPI grant, and involving them in proposal preparation, showing integration of lived experience."
+        "implication": "Applicant Research Background: Describes active engagement with parents as a PPI group who contributed to the research proposal, indicating integration of lived experience."
       }
     ],
     "resolved_signals": [
@@ -199,7 +198,7 @@
           "secpesor__001_c"
         ],
         "bad_evidence_ids": [],
-        "implication": "Plain English Summary of Research: Clearly outlines aims, background, methods, and impact in accessible language, supporting pr.1."
+        "implication": "Plain English Summary of Research: Clearly outlines aims, background, methods, and public involvement in accessible language, supporting pr.1."
       },
       {
         "sub_id": "pr.2",
@@ -226,7 +225,7 @@
           "secpesor__001_c"
         ],
         "bad_evidence_ids": [],
-        "implication": "Plain English Summary of Research: Describes specific methods including surveys, record reviews, questionnaires, and interviews aligned with aims, supporting pr.4."
+        "implication": "Plain English Summary of Research: Details specific methods including surveys, record reviews, home assessments, and interviews, supporting pr.4."
       },
       {
         "sub_id": "pr.5",
@@ -235,7 +234,7 @@
           "secpesor__001_b"
         ],
         "bad_evidence_ids": [],
-        "implication": "Plain English Summary of Research: Highlights the need to understand family impacts and improve support for ventilator-assisted children, supporting pr.5."
+        "implication": "Plain English Summary of Research: Highlights the need to understand family impacts and improve feeding support, demonstrating clear patient and public relevance for pr.5."
       },
       {
         "sub_id": "pr.6",
@@ -244,7 +243,7 @@
           "secpesor__001_d"
         ],
         "bad_evidence_ids": [],
-        "implication": "Plain English Summary of Research: Details involvement of parents and professionals in proposal development and ongoing advice, supporting pr.6."
+        "implication": "Plain English Summary of Research: Describes active involvement of parents and professionals in proposal development and ongoing advice, supporting pr.6."
       },
       {
         "sub_id": "wp.1",
@@ -252,7 +251,7 @@
           "secpesor__001_c"
         ],
         "bad_evidence_ids": [],
-        "implication": "Plain English Summary of Research: Confirms parents and professionals contributed to the proposal and will provide ongoing advice, reinforcing wp.1."
+        "implication": "Plain English Summary of Research: Confirms parents and health professionals contributed to the proposal and will provide ongoing advice, reinforcing wp.1."
       },
       {
         "sub_id": "wp.3",
@@ -260,7 +259,7 @@
           "secpesor__001_d"
         ],
         "bad_evidence_ids": [],
-        "implication": "Plain English Summary of Research: Outlines dissemination via conferences, journals, and social media to share findings with the public, supporting wp.3."
+        "implication": "Plain English Summary of Research: Outlines dissemination plans including conferences, journals, and social media to share findings with the public, supporting wp.3."
       }
     ],
     "resolved_signals": [
@@ -298,7 +297,7 @@
           "secsa__001_a"
         ],
         "bad_evidence_ids": [],
-        "implication": "Scientific Abstract: Explicitly identifies knowledge gaps regarding national policies, prevalence of feeding difficulties, and psychosocial impacts, supporting pr.2."
+        "implication": "Scientific Abstract: Explicitly identifies knowledge gaps regarding national policies, prevalence of feeding difficulties, and psychosocial impacts on families, supporting pr.2."
       },
       {
         "sub_id": "pr.3",
@@ -308,7 +307,7 @@
           "secsa__001_c"
         ],
         "bad_evidence_ids": [],
-        "implication": "Scientific Abstract: Defines three distinct studies with specific timelines (2026-2028) and sample criteria, indicating feasible scope and alignment with award expectations."
+        "implication": "Scientific Abstract: Defines three distinct studies with specific timelines (2026-2028) and clear objectives, demonstrating feasible scope and alignment with award expectations for pr.3."
       },
       {
         "sub_id": "pr.4",
@@ -317,16 +316,16 @@
           "secsa__001_c"
         ],
         "bad_evidence_ids": [],
-        "implication": "Scientific Abstract: Details specific methods including environmental scans, retrospective cohort reviews, and prospective case-series with questionnaires and interviews, supporting methodological rigor."
+        "implication": "Scientific Abstract: Details specific methodologies including environmental scans, retrospective cohort reviews, and prospective case-series with questionnaires and interviews, supporting pr.4."
       },
       {
         "sub_id": "pr.5",
         "good_evidence_ids": [
-          "secsa__001_a",
-          "secsa__001_c"
+          "secsa__001_c",
+          "secsa__001_d"
         ],
         "bad_evidence_ids": [],
-        "implication": "Scientific Abstract: Highlights the aim to inform evidence-based practice guidelines and interventions to improve feeding outcomes for ventilator-assisted children, demonstrating clear potential impact."
+        "implication": "Scientific Abstract: States outcomes will inform evidence-based practice guidelines and interventions to improve feeding outcomes, demonstrating clear potential impact for pr.5."
       },
       {
         "sub_id": "pr.6",
@@ -335,7 +334,7 @@
           "secsa__001_c"
         ],
         "bad_evidence_ids": [],
-        "implication": "Scientific Abstract: Emphasizes that contributions from children and families are key to identifying research priorities and includes interviews with parents/caregivers, supporting engagement."
+        "implication": "Scientific Abstract: Highlights that family contributions are key to identifying priorities and plans to explore psychosocial impacts via parent interviews, supporting pr.6."
       },
       {
         "sub_id": "wp.3",
@@ -343,7 +342,7 @@
           "secsa__001_c"
         ],
         "bad_evidence_ids": [],
-        "implication": "Scientific Abstract: Outlines dissemination through networks, conferences, and peer-reviewed journals to inform future research and practice guidelines."
+        "implication": "Scientific Abstract: Outlines dissemination through networks, conferences, and journals to inform future research and practice, supporting wp.3."
       }
     ],
     "resolved_signals": [
@@ -401,7 +400,7 @@
           "secdrp__001_s"
         ],
         "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: Provides explicit methodological details including environmental scan steps, specific assessment tools (PFD CRF, PAS, CEDAS), and data analysis plans (SPSS, reflexive thematic analysis)."
+        "implication": "Detailed Research Plan: Provides explicit methodological details including environmental scan steps, specific assessment tools (PAS, CEDAS, Pedi-EAT), and data analysis plans (SPSS, thematic analysis)."
       },
       {
         "sub_id": "pr.5",
@@ -410,7 +409,7 @@
           "secdrp__001_y"
         ],
         "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: Highlights economic burden (£301k-£630k/year) and aims to inform national guidelines and interventions, demonstrating clear potential impact on health services and patients."
+        "implication": "Detailed Research Plan: Highlights economic burden (£301k-£630k/year) and plans to inform national guidelines and interventions, demonstrating clear potential impact on health services and patients."
       },
       {
         "sub_id": "pr.6",
@@ -419,7 +418,7 @@
           "secdrp__001_w"
         ],
         "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: Plans to form an expert advisory group including parents/caregivers to guide planning and dissemination, and involves PPI groups in creating outputs."
+        "implication": "Detailed Research Plan: Plans to form an expert advisory group including parents/caregivers to guide planning and dissemination, and co-develop outputs with PPI groups."
       },
       {
         "sub_id": "pr.9",
@@ -429,7 +428,7 @@
           "secdrp__001_q"
         ],
         "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: Explicitly aims to recruit from diverse ethnic, gender, and socioeconomic backgrounds and includes translation of materials and interpreting services to ensure inclusivity."
+        "implication": "Detailed Research Plan: Explicitly aims for diverse recruitment across ethnic, gender, and socioeconomic backgrounds, and includes translation of materials and interpreting services."
       },
       {
         "sub_id": "ss.2",
@@ -438,15 +437,16 @@
           "secdrp__001_z"
         ],
         "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: Describes a structured supervision framework with bi-weekly primary supervisor meetings and monthly full team meetings, alongside peer support groups."
+        "implication": "Detailed Research Plan: Describes a structured supervision framework with bi-weekly primary supervisor meetings and monthly full team meetings, ensuring mentorship support."
       },
       {
         "sub_id": "ss.3",
         "good_evidence_ids": [
-          "secdrp__001_z"
+          "secdrp__001_n",
+          "secdrp__001_p"
         ],
         "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: Mentions access to NIHR Research Support Service and KCL data protection teams, indicating institutional support for research planning and governance."
+        "implication": "Detailed Research Plan: Identifies access to specialist tertiary centres (GOSH, Evelina, Alder Hey) with large catchment areas and electronic medical records, supporting project infrastructure."
       },
       {
         "sub_id": "wp.1",
@@ -455,7 +455,7 @@
           "secdrp__001_w"
         ],
         "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: Confirms the formation of an expert advisory group with parents/caregivers to guide research planning, implementation, and dissemination, integrating lived experience."
+        "implication": "Detailed Research Plan: Confirms the formation of an expert advisory group with parents/caregivers to guide research planning, implementation, and dissemination."
       },
       {
         "sub_id": "wp.3",
@@ -463,7 +463,7 @@
           "secdrp__001_w"
         ],
         "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: Outlines a comprehensive dissemination plan including lay summaries, open-access publications, conferences, and a Twitter/X account to maximize public benefit."
+        "implication": "Detailed Research Plan: Outlines comprehensive dissemination plans including lay summaries, open-access publications, conferences, and a best-practice statement for service delivery."
       }
     ],
     "resolved_signals": [
@@ -502,7 +502,7 @@
           "secppi__001_c"
         ],
         "bad_evidence_ids": [],
-        "implication": "Patient & Public Involvement: Details specific feedback from parents and professionals that shaped work packages (e.g., home visits, cultural considerations), demonstrating deep integration of lived experience into resea"
+        "implication": "Patient & Public Involvement: Details specific feedback from parents/professionals that shaped study design (e.g., home visits, cultural considerations), strongly supporting integration of lived experience."
       },
       {
         "sub_id": "wp.3",
@@ -511,7 +511,7 @@
           "secppi__001_e"
         ],
         "bad_evidence_ids": [],
-        "implication": "Patient & Public Involvement: Outlines active PPI roles in dissemination, including co-writing articles, joint presentations, and engagement events, ensuring public benefit and knowledge translation."
+        "implication": "Patient & Public Involvement: Outlines active PPI roles in dissemination (co-writing, joint presentations) and engagement events, demonstrating commitment to maximizing public benefit."
       },
       {
         "sub_id": "wp.4",
@@ -521,26 +521,33 @@
           "secppi__001_c"
         ],
         "bad_evidence_ids": [],
-        "implication": "Patient & Public Involvement: Highlights feedback on recruiting diverse demographics and respecting First Nations groups, alongside plans for translation services and accessibility support for PPI members."
+        "implication": "Patient & Public Involvement: Highlights feedback on diverse demographics, First Nations groups, and social disparities, indicating attention to representation of seldom-heard groups."
       },
       {
         "sub_id": "wp.5",
         "good_evidence_ids": [
-          "secppi__001_a",
           "secppi__001_c",
           "secppi__001_d"
         ],
         "bad_evidence_ids": [],
-        "implication": "Patient & Public Involvement: Describes involvement across the lifecycle from proposal development to ongoing advisory roles and dissemination, with specific accommodations for barriers like technology access and impairm"
+        "implication": "Patient & Public Involvement: Describes inclusive measures (translation, accessibility support, flexible methods) and involvement across design, recruitment, and dissemination stages."
       },
       {
         "sub_id": "wp.6",
         "good_evidence_ids": [
-          "secppi__001_a",
           "secppi__001_d"
         ],
         "bad_evidence_ids": [],
-        "implication": "Patient & Public Involvement: Mentions funding from the NIHR PPI Fund for initial engagement and commitment to compensate PPI members per guidelines and fund their training, indicating a resourced plan."
+        "implication": "Patient & Public Involvement: Explicitly mentions compensation per NIHR guidelines and funding for training courses, evidencing a costed plan for inclusion."
+      },
+      {
+        "sub_id": "pr.6",
+        "good_evidence_ids": [
+          "secppi__001_a",
+          "secppi__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Patient & Public Involvement: Confirms active engagement in proposal development and ongoing advisory roles, reinforcing ethical engagement and feedback mechanisms."
       }
     ],
     "resolved_signals": [
@@ -548,7 +555,8 @@
       "wp.3",
       "wp.4",
       "wp.5",
-      "wp.6"
+      "wp.6",
+      "pr.6"
     ],
     "missing_signals_after": [
       "pr.7",
@@ -571,7 +579,7 @@
           "sectdars__001_c"
         ],
         "bad_evidence_ids": [],
-        "implication": "Training & Development and Research Support: Provides a comprehensive, year-by-year training plan covering research methods, writing, and leadership, directly addressing completeness and relevance."
+        "implication": "Training & Development and Research Support: Provides a comprehensive, year-by-year training plan using the Vitae framework, covering research methods, data management, and writing, directly supporting td.1."
       },
       {
         "sub_id": "td.2",
@@ -580,25 +588,27 @@
           "sectdars__001_f"
         ],
         "bad_evidence_ids": [],
-        "implication": "Training & Development and Research Support: Explicitly maps specific courses (e.g., Questionnaire design, FEES training) to work packages and clinical skill gaps, demonstrating targeted suitability."
+        "implication": "Training & Development and Research Support: Explicitly maps specific courses (e.g., Questionnaire design, FEES training) to work packages and clinical skill gaps, demonstrating targeted suitability for td.2."
       },
       {
         "sub_id": "td.3",
         "good_evidence_ids": [
           "sectdars__001_c",
-          "sectdars__001_d"
+          "sectdars__001_d",
+          "sectdars__001_e"
         ],
         "bad_evidence_ids": [],
-        "implication": "Training & Development and Research Support: Links grant writing and leadership courses to post-doctoral funding goals and clinical leadership ambitions, supporting career trajectory."
+        "implication": "Training & Development and Research Support: Links training to career goals like grant writing, leadership, and international networking, showing clear support for career aspirations under td.3."
       },
       {
         "sub_id": "ss.1",
         "good_evidence_ids": [
           "sectdars__001_q",
+          "sectdars__001_r",
           "sectdars__001_s"
         ],
         "bad_evidence_ids": [],
-        "implication": "Training & Development and Research Support: Highlights KCL's top rankings in REF2021 and GSTT's history of supporting 13 fellowships, evidencing strong institutional track records."
+        "implication": "Training & Development and Research Support: Highlights KCL's top rankings, REF2021 success, and GSTT's history of supporting 13 fellowships, providing strong evidence of institutional track record for ss.1."
       },
       {
         "sub_id": "ss.4",
@@ -607,16 +617,17 @@
           "sectdars__001_v"
         ],
         "bad_evidence_ids": [],
-        "implication": "Training & Development and Research Support: Cites Race Equality Charter, Athena Swan awards, and inclusive R&D strategies, confirming commitment to an inclusive research culture."
+        "implication": "Training & Development and Research Support: Cites specific commitments to equality, diversity, Race Equality Charter, and Athena Swan awards, confirming a supportive inclusive culture for ss.4."
       },
       {
         "sub_id": "g.6",
         "good_evidence_ids": [
           "sectdars__001_d",
-          "sectdars__001_e"
+          "sectdars__001_e",
+          "sectdars__001_f"
         ],
         "bad_evidence_ids": [],
-        "implication": "Training & Development and Research Support: Details a 20% professional practice commitment and specific clinical training (FEES, BaByVFSSImP) to maintain competencies alongside research."
+        "implication": "Training & Development and Research Support: Details a 20% professional practice commitment, clinical mentorship, and specialist training (FEES, BaByVFSSImP), reinforcing the practitioner-academic career path for g.6."
       }
     ],
     "resolved_signals": [
@@ -640,7 +651,7 @@
         "good_evidence_ids": [
           "secsb__001_b",
           "secsb__001_d",
-          "secsb__001_f"
+          "secsb__001_g"
         ],
         "bad_evidence_ids": [],
         "implication": "SUMMARY BUDGET: Provides explicit justifications linking specific costs (conferences, travel, equipment) to research tasks and work packages, supporting pr.7."
@@ -652,7 +663,7 @@
           "secsb__001_h"
         ],
         "bad_evidence_ids": [],
-        "implication": "SUMMARY BUDGET: Includes a detailed budget for PPI members (£3300 total) covering compensation, training, and accessibility services (interpreters), confirming a costed inclusion plan."
+        "implication": "SUMMARY BUDGET: Includes a detailed budget for PPI members (£3300 total) covering compensation, training, and accessibility services (interpreters), confirming a costed plan for inclusion."
       },
       {
         "sub_id": "pr.9",
@@ -661,7 +672,7 @@
           "secsb__001_i"
         ],
         "bad_evidence_ids": [],
-        "implication": "SUMMARY BUDGET: Allocates funds for interpreting services (£500) and accessibility support (sign language, talk-to-type) for PPI members, demonstrating resourced inclusivity."
+        "implication": "SUMMARY BUDGET: Allocates funds for interpreting services (£500) and accessibility support (sign language, talk-to-type) for PPI and participants, reinforcing inclusive design."
       }
     ],
     "resolved_signals": [
@@ -690,7 +701,7 @@
           "secpena__001"
         ],
         "bad_evidence_ids": [],
-        "implication": "Plain English NLP Analysis: NLP metrics show a Flesch-Kincaid grade of 8.11, low long-sentence ratio (0.0), and coverage of key elements (problem, objectives, methods, beneficiaries, impact), strongly supporting the qual"
+        "implication": "Plain English NLP Analysis: NLP metrics show Grade 8.11 readability, 0% long sentences, and low jargon density (2.37%), strongly supporting pr.1 quality criteria."
       }
     ],
     "resolved_signals": [

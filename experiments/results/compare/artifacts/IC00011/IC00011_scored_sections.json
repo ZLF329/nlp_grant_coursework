@@ -11,10 +11,12 @@
         "group_name": "Common Characteristics of Good Applications",
         "weight": 1.0,
         "used_chunk_ids": [
+          "secsb__001_b",
+          "secsb__001_c",
           "secac__001"
         ],
-        "evidence_count": 1,
-        "evidence_status": "sparse_evidence",
+        "evidence_count": 3,
+        "evidence_status": "ok",
         "confidence_gap": 0.0,
         "confidence_label": "high_confidence",
         "signals": [
@@ -30,17 +32,17 @@
             "sid": "g.1.b",
             "signal_text": "Distinctive ideas with an independent direction",
             "weight": 1.0,
-            "score": 5,
-            "score_0to5_raw": 5.0,
-            "score_0to5_weighted": 5.0
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
           },
           {
             "sid": "g.1.c",
             "signal_text": "Well-justified training plan",
             "weight": 1.0,
-            "score": 5,
-            "score_0to5_raw": 5.0,
-            "score_0to5_weighted": 5.0
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
           },
           {
             "sid": "g.1.d",
@@ -51,9 +53,9 @@
             "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "Supervisors explicitly describe the applicant's clear research vision, distinctive ideas (innovative approach to airway dynamics), and a robust training plan. Strong mentorship is evidenced by detailed descriptions of multiple supervisors with specific expertise (ENT, statistics, respiratory physiotherapy) and their commitment to the project.",
-        "drawbacks": "No material caveats; evidence is comprehensive and directly supported by supervisor statements.",
-        "rationale": "No material caveats; evidence is comprehensive and directly supported by supervisor statements.",
+        "pros": "The application demonstrates a clear research vision and career trajectory (g.1.a) with supervisors explicitly identifying the applicant as a future leader and national expert. Strong mentorship (g.1.d) is evidenced by a detailed supervisory team with specific roles in endoscopy, statistics, and qualitative methods. The training plan (g.1.c) is well-justified with specific courses (Kings Fund, Bronchoscopy) linked to project needs. Distinctive ideas (g.1.b) are present, focusing on optimizing MI-E settings via airway imaging, though the 'independent direction' is heavily supported by the supervisor's existing methodology.",
+        "drawbacks": "While the vision is clear, the 'independent direction' (g.1.b) relies significantly on a method developed by the supervisor (Tiina Andersen), suggesting the applicant is applying an established technique rather than developing a wholly novel independent approach. The training plan is strong but could be more explicit on how the applicant will transition from learning the method to leading it independently.",
+        "rationale": "While the vision is clear, the 'independent direction' (g.1.b) relies significantly on a method developed by the supervisor (Tiina Andersen), suggesting the applicant is applying an established technique rather than developing a wholly novel independent approach. The training plan is strong but could be more explicit on how the applicant will transition from learning the method to leading it independently.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -65,10 +67,12 @@
         "group_name": "Tell Us Why You Need This Award",
         "weight": 1.0,
         "used_chunk_ids": [
+          "secsb__001_b",
+          "secsb__001_c",
           "secac__001"
         ],
-        "evidence_count": 1,
-        "evidence_status": "sparse_evidence",
+        "evidence_count": 3,
+        "evidence_status": "ok",
         "confidence_gap": 0.0,
         "confidence_label": "high_confidence",
         "signals": [
@@ -76,38 +80,38 @@
             "sid": "g.2.a",
             "signal_text": "Explain why this award is the right next step in your career (not just another project grant)",
             "weight": 1.0,
-            "score": 5,
-            "score_0to5_raw": 5.0,
-            "score_0to5_weighted": 5.0
+            "score": 3,
+            "score_0to5_raw": 3.0,
+            "score_0to5_weighted": 3.0
           },
           {
             "sid": "g.2.b",
             "signal_text": "What difference would securing an award make to your career, and why now?",
             "weight": 1.0,
-            "score": 5,
-            "score_0to5_raw": 5.0,
-            "score_0to5_weighted": 5.0
+            "score": 3,
+            "score_0to5_raw": 3.0,
+            "score_0to5_weighted": 3.0
           },
           {
             "sid": "g.2.c",
             "signal_text": "How will an award build on your existing experience and what new skills will it enable you to gain?",
             "weight": 1.0,
-            "score": 5,
-            "score_0to5_raw": 5.0,
-            "score_0to5_weighted": 5.0
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
           },
           {
             "sid": "g.2.d",
             "signal_text": "How will it develop your research partnerships within the NHS, public health or social care, charity organisations, industry or other organisations?",
             "weight": 1.0,
-            "score": 5,
-            "score_0to5_raw": 5.0,
-            "score_0to5_weighted": 5.0
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
           }
         ],
-        "pros": "Supervisors confirm the award is the right next step to transition from clinical practice to a clinical-academic career. The application details how the award builds on existing experience (clinical trials, outcome measures) and enables new skills (endoscopy, advanced statistics). Partnerships with international experts and charities are clearly articulated.",
-        "drawbacks": "No material caveats; the rationale for the award is strongly evidenced.",
-        "rationale": "No material caveats; the rationale for the award is strongly evidenced.",
+        "pros": "The application articulates why this award is the right next step (g.2.a) by positioning the applicant as ready to move from clinical practice to academic leadership. The award will build on existing experience (g.2.c) by formalizing skills in endoscopy and statistics through specific courses. Partnerships (g.2.d) are well-developed, with international collaborations (Norway, Portugal) and charity links. The difference the award makes (g.2.b) is implied through the transition to a clinical-academic role.",
+        "drawbacks": "The explicit statement of 'why now' (g.2.b) is somewhat implicit in the supervisors' comments about readiness rather than a direct statement from the applicant. The distinction between this being a career award versus a project grant (g.2.a) is clear in the context of the PhD, but the applicant's own voice on the specific career inflection point is less prominent than the supervisors' endorsements.",
+        "rationale": "The explicit statement of 'why now' (g.2.b) is somewhat implicit in the supervisors' comments about readiness rather than a direct statement from the applicant. The distinction between this being a career award versus a project grant (g.2.a) is clear in the context of the PhD, but the applicant's own voice on the specific career inflection point is less prominent than the supervisors' endorsements.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -119,10 +123,11 @@
         "group_name": "Applicant",
         "weight": 1.0,
         "used_chunk_ids": [
+          "secsb__001_b",
           "secac__001"
         ],
-        "evidence_count": 1,
-        "evidence_status": "sparse_evidence",
+        "evidence_count": 2,
+        "evidence_status": "ok",
         "confidence_gap": 0.0,
         "confidence_label": "high_confidence",
         "signals": [
@@ -138,9 +143,9 @@
             "sid": "g.3.b",
             "signal_text": "Evidence of formal training, courses, or certifications",
             "weight": 1.0,
-            "score": 5,
-            "score_0to5_raw": 5.0,
-            "score_0to5_weighted": 5.0
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
           },
           {
             "sid": "g.3.c",
@@ -151,9 +156,9 @@
             "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "The applicant has a strong background in clinical trials and respiratory outcome measures. Specific training courses (Bronchoscopy, Beyond BASIC Airway Management) are listed in the budget, directly aligning with the project's methodological needs (TFL, OEP).",
-        "drawbacks": "No material caveats; prior experience and planned training are well-aligned with the project.",
-        "rationale": "No material caveats; prior experience and planned training are well-aligned with the project.",
+        "pros": "The applicant has extensive relevant experience (g.3.a) including large-scale clinical trials and developing respiratory outcome measures. Alignment (g.3.c) is perfect, as the applicant is a specialist in treating children with SMA and has collaborated on projects using the exact methods proposed (OEP). Formal training (g.3.b) is evidenced by the planned courses in bronchoscopy and airway management, building on existing clinical expertise.",
+        "drawbacks": "While the applicant has clinical experience, the specific technical training in transnasal fibreoptic laryngoscopy (TFL) is a new skill to be acquired during the award (g.3.b), though the plan to learn this from a world-leading expert mitigates this gap.",
+        "rationale": "While the applicant has clinical experience, the specific technical training in transnasal fibreoptic laryngoscopy (TFL) is a new skill to be acquired during the award (g.3.b), though the plan to learn this from a world-leading expert mitigates this gap.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -192,22 +197,22 @@
             "sid": "g.4.c",
             "signal_text": "Awards, grants, or recognitions linked to prior research",
             "weight": 1.0,
-            "score": 5,
-            "score_0to5_raw": 5.0,
-            "score_0to5_weighted": 5.0
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
           },
           {
             "sid": "g.4.d",
             "signal_text": "Description of practical or societal impact of previous work",
             "weight": 1.0,
-            "score": 5,
-            "score_0to5_raw": 5.0,
-            "score_0to5_weighted": 5.0
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
           }
         ],
-        "pros": "The applicant has received the Lea Rose Award and has international recognition for a respiratory assessment tool. Supervisors mention publications and presentations at national/international conferences. Practical impact is highlighted through the implementation of her assessment tool in clinical settings worldwide.",
-        "drawbacks": "While publications are mentioned, specific citation metrics or a detailed list of publications is not provided in the text, limiting the score for g.4.b.",
-        "rationale": "While publications are mentioned, specific citation metrics or a detailed list of publications is not provided in the text, limiting the score for g.4.b.",
+        "pros": "The applicant has a strong track record of outputs (g.4.a) including publications and presentations at national/international conferences. Recognition (g.4.c) is evidenced by the Lea Rose Award and international recognition of her respiratory assessment tools. Practical impact (g.4.d) is clear, with her tools implemented in clinical settings worldwide.",
+        "drawbacks": "Citation metrics (g.4.b) are not explicitly mentioned in the text, limiting the evidence for this specific signal. The number of publications is described as 'a few' rather than a comprehensive list, which slightly weakens the evidence for volume, though quality is high.",
+        "rationale": "Citation metrics (g.4.b) are not explicitly mentioned in the text, limiting the evidence for this specific signal. The number of publications is described as 'a few' rather than a comprehensive list, which slightly weakens the evidence for volume, though quality is high.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -230,38 +235,38 @@
             "sid": "g.5.a",
             "signal_text": "Statements of career ambitions and long-term goals",
             "weight": 1.0,
-            "score": 5,
-            "score_0to5_raw": 5.0,
-            "score_0to5_weighted": 5.0
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
           },
           {
             "sid": "g.5.b",
             "signal_text": "Evidence of increasing responsibility in previous roles (e.g., leading projects, mentoring)",
             "weight": 1.0,
-            "score": 5,
-            "score_0to5_raw": 5.0,
-            "score_0to5_weighted": 5.0
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
           },
           {
             "sid": "g.5.c",
             "signal_text": "Participation in leadership or professional development programs",
             "weight": 1.0,
-            "score": 5,
-            "score_0to5_raw": 5.0,
-            "score_0to5_weighted": 5.0
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
           },
           {
             "sid": "g.5.d",
             "signal_text": "Recognition by peers or institutions suggesting leadership potential",
             "weight": 1.0,
-            "score": 5,
-            "score_0to5_raw": 5.0,
-            "score_0to5_weighted": 5.0
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
           }
         ],
-        "pros": "Supervisors explicitly state the applicant is ready to lead research and is a national expert. Evidence of increasing responsibility includes participation in large-scale trials and development of novel outcome measures. Recognition by peers (Lea Rose Award, international collaborations) supports leadership potential.",
-        "drawbacks": "No material caveats; leadership potential is strongly evidenced.",
-        "rationale": "No material caveats; leadership potential is strongly evidenced.",
+        "pros": "Recognition by peers (g.5.d) is very strong, with supervisors calling her a 'national expert' and 'future leader'. Increasing responsibility (g.5.b) is shown through her role in international consortia and leading research development. Career ambitions (g.5.a) are clear, aiming for a clinical-academic leadership role. Participation in development (g.5.c) is evidenced by her involvement in stakeholder groups and research networks.",
+        "drawbacks": "While the trajectory is clear, the specific long-term goals beyond the PhD (e.g., specific leadership positions or policy roles) are not explicitly detailed in the applicant's own words, relying on supervisor interpretation.",
+        "rationale": "While the trajectory is clear, the specific long-term goals beyond the PhD (e.g., specific leadership positions or policy roles) are not explicitly detailed in the applicant's own words, relying on supervisor interpretation.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -273,10 +278,11 @@
         "group_name": "Applicant",
         "weight": 1.0,
         "used_chunk_ids": [
+          "secsb__001_c",
           "secac__001"
         ],
-        "evidence_count": 1,
-        "evidence_status": "sparse_evidence",
+        "evidence_count": 2,
+        "evidence_status": "ok",
         "confidence_gap": 0.0,
         "confidence_label": "high_confidence",
         "signals": [
@@ -284,38 +290,38 @@
             "sid": "g.6.a",
             "signal_text": "Explicit statement of practitioner-academic career intentions",
             "weight": 1.0,
-            "score": 5,
-            "score_0to5_raw": 5.0,
-            "score_0to5_weighted": 5.0
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
           },
           {
             "sid": "g.6.b",
             "signal_text": "Involvement in clinical or practice-based research",
             "weight": 1.0,
-            "score": 5,
-            "score_0to5_raw": 5.0,
-            "score_0to5_weighted": 5.0
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
           },
           {
             "sid": "g.6.c",
             "signal_text": "Evidence of balancing practice responsibilities with research activities",
             "weight": 1.0,
-            "score": 5,
-            "score_0to5_raw": 5.0,
-            "score_0to5_weighted": 5.0
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
           },
           {
             "sid": "g.6.d",
             "signal_text": "Participation in relevant professional networks or qualifications",
             "weight": 1.0,
-            "score": 5,
-            "score_0to5_raw": 5.0,
-            "score_0to5_weighted": 5.0
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
           }
         ],
-        "pros": "The applicant is a physiotherapist with a clear commitment to combining research with clinical practice. The project is deeply embedded in clinical care (GOSH), and the applicant is already involved in clinical research networks (International SMA Consortium).",
-        "drawbacks": "No material caveats; the practitioner-academic trajectory is clearly defined and supported.",
-        "rationale": "No material caveats; the practitioner-academic trajectory is clearly defined and supported.",
+        "pros": "The applicant explicitly intends a practitioner-academic career (g.6.a), described as a 'clinical academic role'. Involvement in practice-based research (g.6.b) is central, as she is a specialist physiotherapist treating the target population. Professional networks (g.6.d) are robust, including the International SMA Consortium. Balancing practice (g.6.c) is supported by the clinical setting of the research at GOSH.",
+        "drawbacks": "The specific mechanisms for balancing clinical duties with the intensive research demands of the PhD (e.g., protected time arrangements) are not explicitly detailed in the text, though the institutional support implies it is managed.",
+        "rationale": "The specific mechanisms for balancing clinical duties with the intensive research demands of the PhD (e.g., protected time arrangements) are not explicitly detailed in the text, though the institutional support implies it is managed.",
         "missing_evidence": false,
         "if_applicable": true,
         "counts_toward_section_average": false
@@ -393,9 +399,9 @@
             "score_0to5_weighted": 4.0
           }
         ],
-        "pros": "The Plain English Summary is exceptionally clear, with NLP metrics showing a Flesch-Kincaid grade of 4.79 and zero long sentences. It effectively explains the problem (SMA/mucus), methods (camera/stickers), and impact (reduced hospital visits) in simple language. Technical terms like 'cough-assist' are explained immediately. The content aligns perfectly with the Scientific Abstract and Detailed Research Plan.",
-        "drawbacks": "No material caveats or missing details found; the summary is comprehensive and accessible.",
-        "rationale": "No material caveats or missing details found; the summary is comprehensive and accessible.",
+        "pros": "The Plain English Summary is exceptionally clear, with NLP metrics confirming high readability (Flesch-Kincaid 4.79) and low jargon density (1.13%). It comprehensively covers the problem (SMA/mucus), objectives, methods (camera, stickers), beneficiaries, and impact (reduced hospital visits). Technical terms like 'cough-assist' are explained simply, and the text aligns perfectly with the detailed Scientific Abstract.",
+        "drawbacks": "No material caveats or missing details found; the summary is a model of accessibility and alignment.",
+        "rationale": "No material caveats or missing details found; the summary is a model of accessibility and alignment.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -448,9 +454,9 @@
             "score_0to5_weighted": 3.0
           }
         ],
-        "pros": "The application clearly identifies a specific knowledge gap: the lack of understanding regarding airway dynamics during MI-E use in children with SMA. The Scientific Abstract explicitly states 'there is limited understanding of what occurs in the child's airway'.",
-        "drawbacks": "The provided text (Abstract and Plain English Summary) does not contain a formal literature review with citations or critical analysis of existing studies. The evidence review is limited to a high-level statement of the gap rather than a comprehensive survey of the field.",
-        "rationale": "The provided text (Abstract and Plain English Summary) does not contain a formal literature review with citations or critical analysis of existing studies. The evidence review is limited to a high-level statement of the gap rather than a comprehensive survey of the field.",
+        "pros": "The application clearly identifies a specific knowledge gap: the lack of understanding regarding airway dynamics during MI-E use in children with SMA. The Scientific Abstract explicitly states 'there is limited understanding of what occurs in the child's airway', justifying the need for the study.",
+        "drawbacks": "The application lacks a formal literature review section with citations. While the gap is identified, there is no critical analysis of existing studies or a list of references to support the claim of limited understanding, limiting the score for evidence review quality.",
+        "rationale": "The application lacks a formal literature review section with citations. While the gap is identified, there is no critical analysis of existing studies or a list of references to support the claim of limited understanding, limiting the score for evidence review quality.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -495,9 +501,9 @@
             "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "The scope is well-defined for a doctoral award, involving 45 patients over 9-18 months. The work is broken down into three clear Work Packages (TFL, OEP, Tolerance) with specific, achievable tasks described in both the Abstract and Plain English Summary.",
-        "drawbacks": "No significant drawbacks; the scope is appropriate and feasible.",
-        "rationale": "No significant drawbacks; the scope is appropriate and feasible.",
+        "pros": "The scope is well-defined for a doctoral project: 45 patients, three distinct work packages, and a 9-18 month timeline for data collection. The tasks (TFL, OEP, surveys) are specific and feasible within the proposed timeframe and resources.",
+        "drawbacks": "No significant drawbacks; the scope is appropriately matched to the award level.",
+        "rationale": "No significant drawbacks; the scope is appropriately matched to the award level.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -521,17 +527,17 @@
             "sid": "pr.4.a",
             "signal_text": "Explicit description of methods",
             "weight": 1.0,
-            "score": 5,
-            "score_0to5_raw": 5.0,
-            "score_0to5_weighted": 5.0
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
           },
           {
             "sid": "pr.4.b",
             "signal_text": "Logical alignment between aims and methods",
             "weight": 1.0,
-            "score": 5,
-            "score_0to5_raw": 5.0,
-            "score_0to5_weighted": 5.0
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
           },
           {
             "sid": "pr.4.c",
@@ -545,14 +551,14 @@
             "sid": "pr.4.d",
             "signal_text": "Structured methodological sections",
             "weight": 1.0,
-            "score": 5,
-            "score_0to5_raw": 5.0,
-            "score_0to5_weighted": 5.0
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
           }
         ],
-        "pros": "Methods are explicitly described: Transnasal Fibreoptic Laryngoscope (TFL) for airway dynamics and Opto-electronic Plethysmography (OEP) for lung volumes. The alignment between aims (optimizing MI-E) and methods (adjusting settings based on TFL/OEP data) is logical and robust. The study design is clearly structured into three WPs.",
-        "drawbacks": "While the methods are clear, the specific statistical analysis plan is mentioned only briefly ('Statistical analysis will be conducted') without detailing the specific tests or power calculations in the provided text.",
-        "rationale": "While the methods are clear, the specific statistical analysis plan is mentioned only briefly ('Statistical analysis will be conducted') without detailing the specific tests or power calculations in the provided text.",
+        "pros": "Methods are explicitly described with high detail: Transnasal Fibreoptic Laryngoscope (TFL) for airway dynamics and Opto-electronic Plethysmography (OEP) for lung volumes. The alignment between aims (optimizing MI-E) and methods (adjusting settings based on TFL/OEP data) is logical and robust. Statistical analysis is mentioned.",
+        "drawbacks": "While the methods are clear, specific details on the statistical power calculation or the exact criteria for 'optimal' airway status are not fully elaborated in the abstract, though the general approach is sound.",
+        "rationale": "While the methods are clear, specific details on the statistical power calculation or the exact criteria for 'optimal' airway status are not fully elaborated in the abstract, though the general approach is sound.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -597,9 +603,9 @@
             "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "Direct patient benefits are clearly articulated: improved secretion management, reduced hospitalizations, and improved quality of life. The impact extends to health services via reduced NHS costs. The outcomes are specific and directly linked to the research objectives.",
-        "drawbacks": "No material caveats; the impact is well-justified and specific.",
-        "rationale": "No material caveats; the impact is well-justified and specific.",
+        "pros": "Impact is clearly articulated: improved secretion management will reduce hospitalizations, improve quality of life, and lower NHS costs. The benefits are specific to the patient population (children with SMA) and the health service.",
+        "drawbacks": "No material caveats; the impact pathway is direct and well-explained.",
+        "rationale": "No material caveats; the impact pathway is direct and well-explained.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -645,9 +651,9 @@
             "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "Extensive evidence of meaningful engagement. A patient/community group (parents, patients, charities) was consulted on the proposal and plain English summary. Specific design changes were made based on feedback (e.g., creating a child-friendly video for TFL, adjusting scheduling for fatigue). A steering group will guide the project throughout.",
-        "drawbacks": "No material caveats; engagement is deep and integrated into the design.",
-        "rationale": "No material caveats; engagement is deep and integrated into the design.",
+        "pros": "Extensive evidence of meaningful engagement: a community group of parents, patients, and charity partners was consulted. Specific design changes were made based on feedback (e.g., creating a child-friendly video for TFL, adjusting scheduling to manage fatigue). Involvement spans planning, design, and dissemination.",
+        "drawbacks": "No material caveats; the engagement is deep and demonstrably influential on the study design.",
+        "rationale": "No material caveats; the engagement is deep and demonstrably influential on the study design.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -661,7 +667,7 @@
         "used_chunk_ids": [
           "secsb__001_a",
           "secsb__001_b",
-          "secsb__001_d"
+          "secsb__001_c"
         ],
         "evidence_count": 3,
         "evidence_status": "ok",
@@ -693,9 +699,9 @@
             "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "The budget provides explicit links between tasks and resources. Costs for TFL rental, OEP stickers, video analysis software (ChilliPharm), and training courses are detailed with specific unit costs and justifications (e.g., leasing vs. purchasing equipment).",
-        "drawbacks": "No material caveats; the justification is clear and proportional.",
-        "rationale": "No material caveats; the justification is clear and proportional.",
+        "pros": "The budget provides explicit links between tasks and resources: rental costs for laryngoscopes, specific consumables (stickers, cleaning), and training courses (Bronchoscopy, Leadership). The rationale for leasing vs. purchasing equipment is clearly explained.",
+        "drawbacks": "No material caveats; the budget is detailed and justified.",
+        "rationale": "No material caveats; the budget is detailed and justified.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -739,9 +745,9 @@
             "score_0to5_weighted": 4.0
           }
         ],
-        "pros": "Supervisors in the Application Context describe the applicant's prior experience with large-scale clinical trials, development of respiratory outcome measures, and international recognition (Lea Rose Award). This demonstrates capability to deliver the project.",
-        "drawbacks": "The 'Proposed Research' section itself (Abstract/Summary) does not explicitly list the applicant's prior publications or specific past projects; this evidence is found only in the 'Application Context' (supervisor letters). The signal is supported by the application as a whole but not directly within the research proposal text.",
-        "rationale": "The 'Proposed Research' section itself (Abstract/Summary) does not explicitly list the applicant's prior publications or specific past projects; this evidence is found only in the 'Application Context' (supervisor letters). The signal is supported by the application as a whole but not directly within the research proposal text.",
+        "pros": "Supervisors describe the applicant's prior experience in large-scale clinical trials and the development of respiratory outcome measures. There is evidence of publications and presentations at national/international conferences. Skills in respiratory physiotherapy align well with the proposed work.",
+        "drawbacks": "The application text does not list specific publications or provide a bibliography of prior work within the 'Proposed Research' section itself; evidence is inferred from supervisor statements in the Application Context. This limits the direct evidentiary strength within the target section.",
+        "rationale": "The application text does not list specific publications or provide a bibliography of prior work within the 'Proposed Research' section itself; evidence is inferred from supervisor statements in the Application Context. This limits the direct evidentiary strength within the target section.",
         "missing_evidence": false,
         "if_applicable": true,
         "counts_toward_section_average": false
@@ -787,9 +793,9 @@
             "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "Strong inclusive design strategies are evident. The study focuses on a rare disease (SMA) serving an under-represented population. Adaptive methods are included: patient information sheets adapted for communication styles, an animated video for understanding, and OEP marker counts adjusted for child size. Ongoing reviews ensure equality and diversity.",
-        "drawbacks": "No material caveats; inclusivity is well-integrated.",
-        "rationale": "No material caveats; inclusivity is well-integrated.",
+        "pros": "Strong inclusive design: adaptations for communication styles, animated videos for understanding, and 'Talking Mats' for consent/feedback. The study focuses on a rare disease (SMA) serving an under-represented population. Methods are adaptive (e.g., number of stickers based on child size).",
+        "drawbacks": "No material caveats; inclusivity is woven throughout the design and methodology.",
+        "rationale": "No material caveats; inclusivity is woven throughout the design and methodology.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -820,25 +826,25 @@
             "sid": "td.1.a",
             "signal_text": "Completeness and clarity of training description",
             "weight": 1.0,
-            "score": 5,
-            "score_0to5_raw": 5.0,
-            "score_0to5_weighted": 5.0
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
           },
           {
             "sid": "td.1.b",
             "signal_text": "Alignment of training topics with project methods or techniques",
             "weight": 1.0,
-            "score": 5,
-            "score_0to5_raw": 5.0,
-            "score_0to5_weighted": 5.0
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
           },
           {
             "sid": "td.1.c",
             "signal_text": "Structured timeline or sequencing of training activities",
             "weight": 1.0,
-            "score": 2,
-            "score_0to5_raw": 2.0,
-            "score_0to5_weighted": 2.0
+            "score": 3,
+            "score_0to5_raw": 3.0,
+            "score_0to5_weighted": 3.0
           },
           {
             "sid": "td.1.d",
@@ -849,9 +855,9 @@
             "score_0to5_weighted": 4.0
           }
         ],
-        "pros": "The application provides a highly complete and clear description of training, listing specific courses (Kings Fund leadership, Bronchoscopy, Beyond BASIC Airway Management, Impact Acceleration Unit) and PhD tuition fees. The training topics are directly aligned with project methods, specifically linking bronchoscopy and airway management courses to the transnasal fibreoptic laryngoscopy required in Work Package 1.",
-        "drawbacks": "While the courses are listed, there is no explicit timeline or sequencing of when these training activities will occur relative to the project phases (td.1.c). The link between training content and specific skill acquisition is strong but relies on the course titles rather than a detailed breakdown of learning outcomes (td.1.d).",
-        "rationale": "While the courses are listed, there is no explicit timeline or sequencing of when these training activities will occur relative to the project phases (td.1.c). The link between training content and specific skill acquisition is strong but relies on the course titles rather than a detailed breakdown of learning outcomes (td.1.d).",
+        "pros": "The application provides a highly detailed and complete training plan in the budget section, explicitly listing specific courses (Kings Fund leadership, Bronchoscopy, Beyond BASIC Airway Management, Impact Acceleration Unit) and PhD tuition. The descriptions clearly link training content to skill acquisition (e.g., 'equip leaders with skills to manage a team', 'learning use of bronchoscopies').",
+        "drawbacks": "While the courses are well-described, the application lacks a structured timeline or sequencing of when these training activities will occur relative to the project phases (e.g., Year 1 vs Year 3), preventing a perfect score on sequencing.",
+        "rationale": "While the courses are well-described, the application lacks a structured timeline or sequencing of when these training activities will occur relative to the project phases (e.g., Year 1 vs Year 3), preventing a perfect score on sequencing.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -864,10 +870,9 @@
         "weight": 1.0,
         "used_chunk_ids": [
           "secsb__001_b",
-          "secsb__001_c",
-          "secac__001"
+          "secsb__001_c"
         ],
-        "evidence_count": 3,
+        "evidence_count": 2,
         "evidence_status": "ok",
         "confidence_gap": 0.0,
         "confidence_label": "high_confidence",
@@ -876,17 +881,17 @@
             "sid": "td.2.a",
             "signal_text": "Identification of personal skill gaps",
             "weight": 1.0,
-            "score": 3,
-            "score_0to5_raw": 3.0,
-            "score_0to5_weighted": 3.0
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
           },
           {
             "sid": "td.2.b",
             "signal_text": "Clear mapping between training activities and project tasks",
             "weight": 1.0,
-            "score": 5,
-            "score_0to5_raw": 5.0,
-            "score_0to5_weighted": 5.0
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
           },
           {
             "sid": "td.2.c",
@@ -900,14 +905,14 @@
             "sid": "td.2.d",
             "signal_text": "Mention of mentorship, workshops, or formal courses relevant to development needs",
             "weight": 1.0,
-            "score": 5,
-            "score_0to5_raw": 5.0,
-            "score_0to5_weighted": 5.0
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
           }
         ],
-        "pros": "There is a clear mapping between training activities and project tasks; the budget explicitly funds bronchoscopy and airway management courses required to perform the laryngoscopy examinations described in the project. The plan includes targeted formal courses (e.g., specific Royal Brompton courses) and mentorship (supervisors with expertise in laryngoscopy and airway research), rather than generic training.",
-        "drawbacks": "The application does not explicitly articulate the applicant's current skill gaps in a dedicated statement; instead, the gaps are inferred from the necessity of the funded courses (td.2.a). While the training is targeted, the specific mechanism for how the leadership course addresses a gap in the applicant's current management skills is implied rather than explicitly stated.",
-        "rationale": "The application does not explicitly articulate the applicant's current skill gaps in a dedicated statement; instead, the gaps are inferred from the necessity of the funded courses (td.2.a). While the training is targeted, the specific mechanism for how the leadership course addresses a gap in the applicant's current management skills is implied rather than explicitly stated.",
+        "pros": "The training is highly targeted and directly mapped to project tasks. The budget explicitly justifies the Bronchoscopy and Airway Management courses as necessary for the 'transnasal fibreoptic laryngoscopes described in work package 1'. The inclusion of specific workshops (PPIE, Statistics) and leadership courses demonstrates a clear mapping between training activities and both project delivery and personal development needs.",
+        "drawbacks": "While the training is clearly targeted, the application does not explicitly articulate the applicant's current 'skill gaps' in a narrative format; the gaps are inferred from the necessity of the courses rather than stated as a self-assessment.",
+        "rationale": "While the training is clearly targeted, the application does not explicitly articulate the applicant's current 'skill gaps' in a narrative format; the gaps are inferred from the necessity of the courses rather than stated as a self-assessment.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -920,10 +925,9 @@
         "weight": 1.0,
         "used_chunk_ids": [
           "secsb__001_b",
-          "secsb__001_c",
-          "secac__001"
+          "secsb__001_c"
         ],
-        "evidence_count": 3,
+        "evidence_count": 2,
         "evidence_status": "ok",
         "confidence_gap": 0.0,
         "confidence_label": "high_confidence",
@@ -932,38 +936,38 @@
             "sid": "td.3.a",
             "signal_text": "Explicit statement of career goals",
             "weight": 1.0,
-            "score": 2,
-            "score_0to5_raw": 2.0,
-            "score_0to5_weighted": 2.0
+            "score": 3,
+            "score_0to5_raw": 3.0,
+            "score_0to5_weighted": 3.0
           },
           {
             "sid": "td.3.b",
             "signal_text": "Connections between training activities and future career trajectory",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           },
           {
             "sid": "td.3.c",
             "signal_text": "Indications of skill transferability beyond the current project",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           },
           {
             "sid": "td.3.d",
             "signal_text": "Reference to professional practice or experiential learning where applicable",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "The training plan includes the Kings Fund leadership course and Impact Acceleration Unit knowledge mobilisation, which directly support career aspirations by building transferable skills in team management and research dissemination. The inclusion of a PhD programme and specific clinical courses supports the trajectory towards a clinical-academic career, as noted by supervisors.",
-        "drawbacks": "There is no explicit, standalone statement of the applicant's long-term career goals within the training section itself; this is inferred from the course choices and supervisor comments (td.3.a). The connection between the specific training activities and the future career trajectory is strong but relies on the assumption that the applicant intends to pursue the leadership roles the courses prepare them for.",
-        "rationale": "There is no explicit, standalone statement of the applicant's long-term career goals within the training section itself; this is inferred from the course choices and supervisor comments (td.3.a). The connection between the specific training activities and the future career trajectory is strong but relies on the assumption that the applicant intends to pursue the leadership roles the courses prepare them for.",
+        "pros": "The training plan strongly supports career aspirations through the inclusion of the 'Kings Fund leadership course' (explicitly for managing teams and resilience) and the 'Impact Acceleration Unit' course for knowledge mobilisation. These are highly transferable skills that extend beyond the immediate project, directly supporting a trajectory towards research leadership and academic practice.",
+        "drawbacks": "The application does not contain an explicit, standalone statement of the applicant's long-term career goals within the training section itself; the connection to career trajectory is evidenced through the selection of courses rather than a direct declaration of ambition in this specific text block.",
+        "rationale": "The application does not contain an explicit, standalone statement of the applicant's long-term career goals within the training section itself; the connection to career trajectory is evidenced through the selection of courses rather than a direct declaration of ambition in this specific text block.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -993,9 +997,9 @@
             "sid": "ss.1.a",
             "signal_text": "Publication or project history in relevant research fields",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           },
           {
             "sid": "ss.1.b",
@@ -1009,22 +1013,22 @@
             "sid": "ss.1.c",
             "signal_text": "Mention of prior collaborations or partnerships",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           },
           {
             "sid": "ss.1.d",
             "signal_text": "Highlighted achievements or notable outputs",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "The application provides extensive evidence of the contracting organisation's (GOSH/UCL) track record. Supervisors explicitly mention the 'Dubowitz Neuromuscular Centre' as the largest paediatric neuromuscular centre in the UK, the 'ORCHID' research centre, and the 'EpiCENTR' group. Specific achievements include successful PhD completions, international collaborations (Norway, Portugal, US), and leadership in global congresses (ERS, JIVD).",
-        "drawbacks": "While the track record is strong, specific details on previous funding success amounts or specific grant awards held by the organisation itself (distinct from the supervisors' individual grants) are not explicitly quantified, though implied through the scale of operations.",
-        "rationale": "While the track record is strong, specific details on previous funding success amounts or specific grant awards held by the organisation itself (distinct from the supervisors' individual grants) are not explicitly quantified, though implied through the scale of operations.",
+        "pros": "The application provides strong evidence of the contracting organisation's track record. GOSH and UCL are explicitly described as world-leading, with the Dubowitz Neuromuscular Centre noted as the largest paediatric neuromuscular centre in the UK. Supervisors highlight specific achievements, including international collaborations (Norway, Portugal, US), leadership in global congresses (ERS, JIVD), and successful completion of multiple PhDs and MScs. The text details specific research outputs like the development of respiratory outcome measures and the Lea Rose Award.",
+        "drawbacks": "While the track record is extensive, specific details on previous funding success (ss.1.b) are implied through the supervisors' current grants (NIHR, Western Norway Health Authorities) rather than a direct list of past grants secured by the contracting organisation specifically for this type of project, though the evidence is still strong.",
+        "rationale": "While the track record is extensive, specific details on previous funding success (ss.1.b) are implied through the supervisors' current grants (NIHR, Western Norway Health Authorities) rather than a direct list of past grants secured by the contracting organisation specifically for this type of project, though the evidence is still strong.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1047,25 +1051,25 @@
             "sid": "ss.2.a",
             "signal_text": "Explicit description of supervisor roles and responsibilities",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           },
           {
             "sid": "ss.2.b",
             "signal_text": "Evidence of mentorship plans, meetings, or training support",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           },
           {
             "sid": "ss.2.c",
             "signal_text": "Alignment between supervisor expertise and project needs",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           },
           {
             "sid": "ss.2.d",
@@ -1076,9 +1080,9 @@
             "score_0to5_weighted": 4.0
           }
         ],
-        "pros": "Supervisory roles are explicitly defined with high specificity: Tiina Andersen (Practice Supervisor) provides training in transnasal fibreoptic laryngoscopy; Ema Swingwood (Practice Supervisor) supports clinical academic development; Giovanni Baranello (Primary Academic Supervisor) offers neuromuscular expertise; Colin Butler (Academic Supervisor) provides ENT/endoscopy training; Deborah Ridout (Academic Supervisor) offers statistical support; Faith Gibson (Academic Supervisor) supports study design and qualitative methods. The team demonstrates deep alignment with project needs (MI-E, laryngoscopy, SMA).",
-        "drawbacks": "While the roles and expertise are detailed, the specific frequency of supervision meetings (e.g., 'weekly' or 'monthly') is not explicitly stated for the applicant, though 'regular supervision' is mentioned.",
-        "rationale": "While the roles and expertise are detailed, the specific frequency of supervision meetings (e.g., 'weekly' or 'monthly') is not explicitly stated for the applicant, though 'regular supervision' is mentioned.",
+        "pros": "The supervisory team is exceptionally well-defined with explicit roles: Tiina Andersen (Practice Supervisor) for transnasal fibreoptic laryngoscopy training; Ema Swingwood (Practice Supervisor) for clinical academic development; Giovanni Baranello (Primary Academic Supervisor) for neuromuscular expertise; Colin Butler (Academic Supervisor) for ENT/endoscopy; Deborah Ridout (Academic Supervisor) for statistics; and Faith Gibson (Academic Supervisor) for qualitative methods and study design. Each supervisor details their specific contribution, past supervision success (e.g., 'supervised 5 PhD students', '28 PhD vivas'), and alignment with the project's technical needs.",
+        "drawbacks": "While the roles and expertise are clearly described, the specific frequency or format of supervision meetings (e.g., 'weekly', 'monthly') is not explicitly quantified in the text, preventing a perfect score for the structured framework signal (ss.2.d), though the commitment to regular supervision is stated.",
+        "rationale": "While the roles and expertise are clearly described, the specific frequency or format of supervision meetings (e.g., 'weekly', 'monthly') is not explicitly quantified in the text, preventing a perfect score for the structured framework signal (ss.2.d), though the commitment to regular supervision is stated.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1101,38 +1105,38 @@
             "sid": "ss.3.a",
             "signal_text": "Description of facilities, infrastructure, or resources provided",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           },
           {
             "sid": "ss.3.b",
             "signal_text": "Links between organisational support and project success",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           },
           {
             "sid": "ss.3.c",
             "signal_text": "Alignment of organisational focus with applicant’s career trajectory",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           },
           {
             "sid": "ss.3.d",
             "signal_text": "Evidence of tailored support for award type (doctoral, postdoctoral)",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "The application details access to critical resources: the patient population at GOSH, specialized equipment (laryngoscopes, optoelectronic plethysmography), and the 'ORCHID' research centre infrastructure. The supervisors confirm access to the 'Ear Nose and Throat (ENT) research group' and 'statistical support service'. The environment is described as a 'thriving academic community' with established internship and post-doc programs, directly supporting the applicant's career trajectory.",
-        "drawbacks": "The description of tailored support for the specific award type (doctoral fellowship) is strong but relies heavily on the supervisors' individual commitments rather than a formalized institutional policy document for this specific award tier.",
-        "rationale": "The description of tailored support for the specific award type (doctoral fellowship) is strong but relies heavily on the supervisors' individual commitments rather than a formalized institutional policy document for this specific award tier.",
+        "pros": "The application details robust infrastructure support. The applicant has direct access to the specific patient population (children with SMA) and necessary equipment (laryngoscopy, optoelectronic plethysmography). The ORCHID research centre is described as a thriving academic community supporting 16 DCAF students, 5 PCAFs, and 13 post-docs, with established internship programmes and GOSH BRC support. The text explicitly links this environment to the applicant's career trajectory, noting the centre's mission to support nurses and allied health professionals on their academic pathway.",
+        "drawbacks": "No significant drawbacks; the evidence for facilities, resources, and tailored support is comprehensive and directly evidenced in the supervisor statements.",
+        "rationale": "No significant drawbacks; the evidence for facilities, resources, and tailored support is comprehensive and directly evidenced in the supervisor statements.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1155,9 +1159,9 @@
             "sid": "ss.4.a",
             "signal_text": "Mentions of policies or practices promoting diversity, equity, and inclusion",
             "weight": 1.0,
-            "score": 3,
-            "score_0to5_raw": 3.0,
-            "score_0to5_weighted": 3.0
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
           },
           {
             "sid": "ss.4.b",
@@ -1171,22 +1175,22 @@
             "sid": "ss.4.c",
             "signal_text": "References to adherence to research integrity principles",
             "weight": 1.0,
-            "score": 2,
-            "score_0to5_raw": 2.0,
-            "score_0to5_weighted": 2.0
+            "score": 3,
+            "score_0to5_raw": 3.0,
+            "score_0to5_weighted": 3.0
           },
           {
             "sid": "ss.4.d",
             "signal_text": "Statements on organisational culture, training, or initiatives supporting underrepresented groups",
             "weight": 1.0,
-            "score": 3,
-            "score_0to5_raw": 3.0,
-            "score_0to5_weighted": 3.0
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
           }
         ],
-        "pros": "Evidence of a supportive culture is present through mentions of the 'ORCHID' centre supporting diverse students (nurses, AHPs), an 'established vibrant internship programme', and a 'thriving academic community'. The involvement of a diverse supervisory team (physiotherapists, surgeons, statisticians, nurses) and international collaborations suggests an inclusive environment. Specific mention of working with 'families with lived experience' and 'PPI' indicates a culture valuing diverse input.",
-        "drawbacks": "There is no explicit mention of specific institutional policies regarding diversity, equity, and inclusion (DEI) or research integrity frameworks (e.g., specific codes of conduct or mandatory training modules) within the text provided. The evidence is more descriptive of the culture than policy-based.",
-        "rationale": "There is no explicit mention of specific institutional policies regarding diversity, equity, and inclusion (DEI) or research integrity frameworks (e.g., specific codes of conduct or mandatory training modules) within the text provided. The evidence is more descriptive of the culture than policy-based.",
+        "pros": "The ORCHID research centre is highlighted for supporting a diverse cohort of students and researchers, with a mission to improve health through inclusive research. The text mentions established internship programmes and success with various NIHR programmes, indicating a supportive culture. Supervisors note the cross-disciplinary approach and the involvement of diverse expertise (physiotherapists, ENT surgeons, statisticians).",
+        "drawbacks": "While the culture is described as supportive and diverse, there is no explicit mention of specific policies regarding diversity, equity, and inclusion (DEI) or adherence to specific research integrity frameworks (e.g., specific codes of conduct) within the text provided. The evidence relies more on the description of the community's composition and activities rather than formal policy statements.",
+        "rationale": "While the culture is described as supportive and diverse, there is no explicit mention of specific policies regarding diversity, equity, and inclusion (DEI) or adherence to specific research integrity frameworks (e.g., specific codes of conduct) within the text provided. The evidence relies more on the description of the community's composition and activities rather than formal policy statements.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1218,30 +1222,30 @@
             "sid": "wp.1.a",
             "signal_text": "Mentions of consultation or co-design activities",
             "weight": 1.0,
-            "score": 5,
-            "score_0to5_raw": 5.0,
-            "score_0to5_weighted": 5.0
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
           },
           {
             "sid": "wp.1.b",
             "signal_text": "Specific examples of changes made to study design based on lived experience",
             "weight": 1.0,
-            "score": 5,
-            "score_0to5_raw": 5.0,
-            "score_0to5_weighted": 5.0
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
           },
           {
             "sid": "wp.1.c",
             "signal_text": "References to patient or community advisory groups",
             "weight": 1.0,
-            "score": 5,
-            "score_0to5_raw": 5.0,
-            "score_0to5_weighted": 5.0
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
           }
         ],
-        "pros": "The application provides exceptional evidence of integration. It details specific consultations with a diverse group of parents, patients, and charity partners (secppi__001_a). Crucially, it lists concrete design changes made in response to feedback, such as creating a child-friendly video for the TFL procedure, adjusting the testing schedule to manage fatigue, and ensuring equipment accessibility (secppi__001_b). A formal communities' group is established to guide the project throughout (secppi__001_c).",
-        "drawbacks": "No material caveats; the evidence is comprehensive, specific, and directly addresses all aspects of lived experience integration.",
-        "rationale": "No material caveats; the evidence is comprehensive, specific, and directly addresses all aspects of lived experience integration.",
+        "pros": "The application provides exceptional evidence of integration. It details specific consultations with a diverse group (parents, patients, charities) that directly shaped the study design. Concrete changes are documented, including the creation of a child-friendly video to address concerns about the TFL procedure, adjusting the testing schedule to manage fatigue, and extending data collection periods. A formal communities' group is established to guide the project throughout.",
+        "drawbacks": "No material caveats or missing details found; the evidence is complete and specific.",
+        "rationale": "No material caveats or missing details found; the evidence is complete and specific.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1265,30 +1269,30 @@
             "sid": "wp.2.a",
             "signal_text": "Explicit mentions of team composition across gender, ethnicity, age, or other relevant characteristics",
             "weight": 1.0,
-            "score": 2,
-            "score_0to5_raw": 2.0,
-            "score_0to5_weighted": 2.0
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
           },
           {
             "sid": "wp.2.b",
             "signal_text": "Statements about inclusion in hiring or team-building",
             "weight": 1.0,
-            "score": 1,
-            "score_0to5_raw": 1.0,
-            "score_0to5_weighted": 1.0
+            "score": 2,
+            "score_0to5_raw": 2.0,
+            "score_0to5_weighted": 2.0
           },
           {
             "sid": "wp.2.c",
             "signal_text": "Evidence of equitable task allocation and collaboration",
             "weight": 1.0,
-            "score": 1,
-            "score_0to5_raw": 1.0,
-            "score_0to5_weighted": 1.0
+            "score": 3,
+            "score_0to5_raw": 3.0,
+            "score_0to5_weighted": 3.0
           }
         ],
-        "pros": "The supervisory team demonstrates diversity in professional roles (physiotherapists, ENT surgeons, statisticians, nurses) and international collaboration (secac__001). The PPI group includes members from diverse socio-economic and ethnic backgrounds (secppi__001_a).",
-        "drawbacks": "The rubric specifically asks for the diversity of the *research team* (skills, experience, demographic representation). While the PPI group's demographics are described, the application does not explicitly detail the demographic composition (gender, ethnicity, age) of the core research team itself, nor does it mention specific inclusion strategies for hiring or team-building within the research team.",
-        "rationale": "The rubric specifically asks for the diversity of the *research team* (skills, experience, demographic representation). While the PPI group's demographics are described, the application does not explicitly detail the demographic composition (gender, ethnicity, age) of the core research team itself, nor does it mention specific inclusion strategies for hiring or team-building within the research team.",
+        "pros": "The research team demonstrates strong diversity in professional expertise, including physiotherapists, ENT surgeons, statisticians, and medical doctors, with international collaboration. The PPI group is explicitly described as having diverse socio-economic and ethnic backgrounds.",
+        "drawbacks": "While the PPI group's diversity is noted, there is limited explicit evidence regarding the demographic diversity (e.g., gender, ethnicity) of the core academic research team itself beyond the PPI contributors. Statements about inclusion in hiring or equitable task allocation within the core team are not explicitly detailed.",
+        "rationale": "While the PPI group's diversity is noted, there is limited explicit evidence regarding the demographic diversity (e.g., gender, ethnicity) of the core academic research team itself beyond the PPI contributors. Statements about inclusion in hiring or equitable task allocation within the core team are not explicitly detailed.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1313,30 +1317,30 @@
             "sid": "wp.3.a",
             "signal_text": "Mentions of dissemination, knowledge translation, or implementation plans",
             "weight": 1.0,
-            "score": 5,
-            "score_0to5_raw": 5.0,
-            "score_0to5_weighted": 5.0
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
           },
           {
             "sid": "wp.3.b",
             "signal_text": "Clear links between study objectives and anticipated benefits",
             "weight": 1.0,
-            "score": 5,
-            "score_0to5_raw": 5.0,
-            "score_0to5_weighted": 5.0
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
           },
           {
             "sid": "wp.3.c",
             "signal_text": "Emphasis on actionable outcomes or improvements in health/care",
             "weight": 1.0,
-            "score": 5,
-            "score_0to5_raw": 5.0,
-            "score_0to5_weighted": 5.0
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
           }
         ],
-        "pros": "The application outlines a robust dissemination plan involving podcasts, meetings with parent support groups, and charity networks (secsa__001_c, secpesor__001_c). There is a clear link between objectives (optimizing MI-E) and benefits (reduced hospitalizations, improved quality of life). The PPI group is explicitly tasked with assisting in writing final reports and facilitating publication on charity websites to ensure findings reach all audiences (secppi__001_c).",
-        "drawbacks": "No material caveats; the plan is specific, actionable, and directly involves the community in maximizing benefit.",
-        "rationale": "No material caveats; the plan is specific, actionable, and directly involves the community in maximizing benefit.",
+        "pros": "The application outlines a robust plan for maximizing benefit. It details specific dissemination strategies (podcasts, meetings with parent groups, charity websites) co-designed with patients. There are clear links between objectives (optimizing MI-E) and anticipated benefits (reduced hospitalizations, improved quality of life). The plan emphasizes actionable outcomes through the involvement of patient groups in writing final reports and facilitating dissemination via their networks.",
+        "drawbacks": "No material caveats or missing details found; the plan is comprehensive and directly evidenced.",
+        "rationale": "No material caveats or missing details found; the plan is comprehensive and directly evidenced.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1350,7 +1354,7 @@
         "used_chunk_ids": [
           "secsa__001_c",
           "secppi__001_a",
-          "secppi__001_b"
+          "secsb__001_c"
         ],
         "evidence_count": 3,
         "evidence_status": "ok",
@@ -1377,14 +1381,14 @@
             "sid": "wp.4.c",
             "signal_text": "Discussion of barriers to participation and mitigation strategies",
             "weight": 1.0,
-            "score": 3,
-            "score_0to5_raw": 3.0,
-            "score_0to5_weighted": 3.0
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
           }
         ],
-        "pros": "The study explicitly targets children with Spinal Muscular Atrophy, a rare disease serving an under-represented population (secsa__001_c). The PPI group is confirmed to include members from diverse socio-economic and ethnic backgrounds (secppi__001_a). Adjustments are made for patients with behavioral and communicative concerns to ensure participation (secsa__001_c).",
-        "drawbacks": "While the target population is underserved, the application does not detail specific *targeted recruitment strategies* beyond general adjustments for communication styles. It mentions 'ongoing reviews' for equality but lacks a detailed discussion of specific barriers to participation for different subgroups within the SMA community and how they are mitigated beyond the general adaptations mentioned.",
-        "rationale": "While the target population is underserved, the application does not detail specific *targeted recruitment strategies* beyond general adjustments for communication styles. It mentions 'ongoing reviews' for equality but lacks a detailed discussion of specific barriers to participation for different subgroups within the SMA community and how they are mitigated beyond the general adaptations mentioned.",
+        "pros": "The study explicitly targets children with Spinal Muscular Atrophy, a rare disease serving an under-represented population. The PPI group includes members from diverse socio-economic and ethnic backgrounds. Specific mitigation strategies for barriers are detailed, such as animated videos for understanding, adapted information sheets for different communication styles, and the use of 'Talking Mats' to ensure children with behavioral/communicative concerns can participate.",
+        "drawbacks": "While barriers are addressed, specific targeted recruitment strategies beyond the general hospital setting (e.g., specific outreach to minority ethnic communities) are not explicitly detailed, though the focus on a rare disease inherently targets an underserved group.",
+        "rationale": "While barriers are addressed, specific targeted recruitment strategies beyond the general hospital setting (e.g., specific outreach to minority ethnic communities) are not explicitly detailed, though the focus on a rare disease inherently targets an underserved group.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1397,8 +1401,8 @@
         "weight": 1.0,
         "used_chunk_ids": [
           "secsa__001_c",
-          "secpesor__001_b",
           "secppi__001_a",
+          "secppi__001_b",
           "secppi__001_c"
         ],
         "evidence_count": 4,
@@ -1410,30 +1414,30 @@
             "sid": "wp.5.a",
             "signal_text": "References to inclusion in study design, participant selection, and analysis",
             "weight": 1.0,
-            "score": 5,
-            "score_0to5_raw": 5.0,
-            "score_0to5_weighted": 5.0
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
           },
           {
             "sid": "wp.5.b",
             "signal_text": "Consideration of accessibility and equity in all project stages",
             "weight": 1.0,
-            "score": 5,
-            "score_0to5_raw": 5.0,
-            "score_0to5_weighted": 5.0
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
           },
           {
             "sid": "wp.5.c",
             "signal_text": "Documented plans for ongoing evaluation and adaptation",
             "weight": 1.0,
-            "score": 5,
-            "score_0to5_raw": 5.0,
-            "score_0to5_weighted": 5.0
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
           }
         ],
-        "pros": "Inclusion is demonstrated across the entire lifecycle: planning (co-design of proposal and plain English summary), recruitment (adapted information sheets, animated video), conduct (scheduling for fatigue, adaptive methods for child size), and dissemination (PPI involvement in reporting) (secsa__001_c, secpesor__001_b, secppi__001_a, secppi__001_c). Ongoing reviews are planned to ensure equality and diversity are considered throughout.",
-        "drawbacks": "No material caveats; the evidence covers all stages of the research lifecycle with specific examples.",
-        "rationale": "No material caveats; the evidence covers all stages of the research lifecycle with specific examples.",
+        "pros": "Inclusion is demonstrated across the entire lifecycle. Planning involved co-design and specific adaptations (video, scheduling). Recruitment and conduct include accessibility measures (Talking Mats, breaks). Analysis and dissemination involve patient groups in interpreting results and sharing findings. Ongoing reviews for equality and diversity are explicitly planned.",
+        "drawbacks": "No material caveats or missing details found; the evidence covers all stages of the research lifecycle comprehensively.",
+        "rationale": "No material caveats or missing details found; the evidence covers all stages of the research lifecycle comprehensively.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1457,30 +1461,30 @@
             "sid": "wp.6.a",
             "signal_text": "Explicit budget line(s) for inclusion activities (PPI, outreach, recruitment support)",
             "weight": 1.0,
-            "score": 5,
-            "score_0to5_raw": 5.0,
-            "score_0to5_weighted": 5.0
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
           },
           {
             "sid": "wp.6.b",
             "signal_text": "Mention of staff time, materials, or training dedicated to inclusion",
             "weight": 1.0,
-            "score": 5,
-            "score_0to5_raw": 5.0,
-            "score_0to5_weighted": 5.0
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
           },
           {
             "sid": "wp.6.c",
             "signal_text": "Alignment between inclusion plan and allocated resources",
             "weight": 1.0,
-            "score": 5,
-            "score_0to5_raw": 5.0,
-            "score_0to5_weighted": 5.0
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
           }
         ],
-        "pros": "The budget explicitly includes line items for inclusion activities: £120 for 'Talking Mats' to allow all children to participate in consent and feedback (secsb__001_c), and costs for refreshments for study participants and families (secsb__001_c). It also allocates funds for travel and subsistence for the committees involved in the project (secsb__001_c).",
-        "drawbacks": "No material caveats; the budget clearly aligns with the inclusion plan described in the text.",
-        "rationale": "No material caveats; the budget clearly aligns with the inclusion plan described in the text.",
+        "pros": "The budget explicitly allocates funds for inclusion activities. Specific line items include the annual fee for 'Talking Mats' (£120) to support consent and feedback for children, and costs for refreshments for study participants and families. The budget also covers time, travel, and subsistence for the committees involved in the project, ensuring the PPI plan is fully resourced.",
+        "drawbacks": "No material caveats or missing details found; the budget aligns perfectly with the inclusion plan.",
+        "rationale": "No material caveats or missing details found; the budget aligns perfectly with the inclusion plan.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1539,9 +1543,9 @@
             "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "The application form analysis confirms the presence of 6 distinct sections with clear labels (Scientific Abstract, Plain English Summary, etc.), 18 list markers, and 21 extracted emphasis markers. The structural hierarchy is logical, moving from context to research plan and budget. The parser explicitly detected numbered heading-like lines and table-like budget lines, indicating strong formatting.",
-        "drawbacks": "While 21 emphasis markers were detected, the analysis notes a parser limitation where bold/emphasis may be lost during text extraction. Consequently, while the evidence for emphasis is strong, it is not perfectly verified as intentional formatting in the original document versus parser artifacts, preventing a perfect 5 for af.1.b.",
-        "rationale": "While 21 emphasis markers were detected, the analysis notes a parser limitation where bold/emphasis may be lost during text extraction. Consequently, while the evidence for emphasis is strong, it is not perfectly verified as intentional formatting in the original document versus parser artifacts, preventing a perfect 5 for af.1.b.",
+        "pros": "The application form analysis confirms the presence of 6 distinct sections with clear labels (Scientific Abstract, Plain English Summary, etc.), 18 list markers, and 21 extracted emphasis markers. The structural hierarchy is logical, moving from context to abstract, research plan, PPI, and budget. The parser explicitly detected numbered heading-like lines and table-like budget lines, indicating strong formatting.",
+        "drawbacks": "The analysis notes a parser limitation where bold/emphasis markers may be lost during text extraction; while 21 markers were extracted, the score is capped at 4 for emphasis (af.1.b) to account for the possibility that some intended formatting was not captured by the parser rather than absent in the original document.",
+        "rationale": "The analysis notes a parser limitation where bold/emphasis markers may be lost during text extraction; while 21 markers were extracted, the score is capped at 4 for emphasis (af.1.b) to account for the possibility that some intended formatting was not captured by the parser rather than absent in the original document.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1564,17 +1568,17 @@
             "sid": "af.2.a",
             "signal_text": "Semantic similarity measures between sentences/paragraphs",
             "weight": 1.0,
-            "score": 5,
-            "score_0to5_raw": 5.0,
-            "score_0to5_weighted": 5.0
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
           },
           {
             "sid": "af.2.b",
             "signal_text": "Detection of repeated phrases or ideas",
             "weight": 1.0,
-            "score": 5,
-            "score_0to5_raw": 5.0,
-            "score_0to5_weighted": 5.0
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
           },
           {
             "sid": "af.2.c",
@@ -1585,9 +1589,9 @@
             "score_0to5_weighted": 4.0
           }
         ],
-        "pros": "The analysis reports extremely low duplication rates: duplicate sentence rate excluding budget is 0.008 and repeated line rate is 0.014. The lexical overlap between the Scientific Abstract and Plain English Summary is only 0.207, indicating that the content is distinct and tailored to each section rather than copy-pasted.",
-        "drawbacks": "While the metrics for duplication are excellent, the 'novelty score' (af.2.c) is inferred from the low overlap rate rather than a direct novelty metric provided in the text. The low overlap is strong evidence, but the specific calculation of a novelty score is not explicitly detailed in the chunk.",
-        "rationale": "While the metrics for duplication are excellent, the 'novelty score' (af.2.c) is inferred from the low overlap rate rather than a direct novelty metric provided in the text. The low overlap is strong evidence, but the specific calculation of a novelty score is not explicitly detailed in the chunk.",
+        "pros": "Quantitative metrics from the analysis show extremely low duplication rates: duplicate sentence rate excluding budget is 0.008 and repeated line rate is 0.014. The lexical overlap between the Scientific Abstract and Plain English Summary is only 0.207, indicating that the content is distinct and tailored to each section rather than simply copied.",
+        "drawbacks": "No material drawbacks found; the metrics provide strong, direct evidence of limited duplication and high novelty across sections.",
+        "rationale": "No material drawbacks found; the metrics provide strong, direct evidence of limited duplication and high novelty across sections.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1618,9 +1622,9 @@
             "sid": "af.3.b",
             "signal_text": "Explicit linking of objectives to methods and work packages",
             "weight": 1.0,
-            "score": 5,
-            "score_0to5_raw": 5.0,
-            "score_0to5_weighted": 5.0
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
           },
           {
             "sid": "af.3.c",
@@ -1639,9 +1643,9 @@
             "score_0to5_weighted": 4.0
           }
         ],
-        "pros": "The application demonstrates strong logical flow with 29 terms linking objectives, methods, and budget. The section order is explicitly described as moving logically from applicant context to research plan, PPI, and budget. There are 10 transition phrases detected, supporting coherence.",
-        "drawbacks": "The evidence for semantic coherence (af.3.a) and the narrative thread (af.3.d) relies on the parser's detection of linking terms and section order rather than a deep semantic embedding analysis of the text content itself. While the structural indicators are strong, the actual semantic depth of the narrative thread is inferred from these structural metrics.",
-        "rationale": "The evidence for semantic coherence (af.3.a) and the narrative thread (af.3.d) relies on the parser's detection of linking terms and section order rather than a deep semantic embedding analysis of the text content itself. While the structural indicators are strong, the actual semantic depth of the narrative thread is inferred from these structural metrics.",
+        "pros": "The analysis identifies 10 transition phrases and 29 terms linking objectives, methods, and budget, indicating strong logical flow. The section order is described as moving logically from applicant context through research plan to budget. The presence of these linking terms suggests a coherent narrative thread.",
+        "drawbacks": "While the metrics (transition phrases, linking terms) are strong, the analysis is derived from structural parsing rather than a deep semantic embedding analysis of the full text content. Therefore, while the evidence is strong, it relies on the parser's ability to detect these specific linguistic markers, warranting a score of 4 rather than 5.",
+        "rationale": "While the metrics (transition phrases, linking terms) are strong, the analysis is derived from structural parsing rather than a deep semantic embedding analysis of the full text content. Therefore, while the evidence is strong, it relies on the parser's ability to detect these specific linguistic markers, warranting a score of 4 rather than 5.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true

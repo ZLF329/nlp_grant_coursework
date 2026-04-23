@@ -198,8 +198,8 @@
           }
         ],
         "pros": "No evidence found in the provided text to support any signal.",
-        "drawbacks": "The text mentions a rejected application but provides no details on publications, citation metrics, awards, or practical impact of previous work.",
-        "rationale": "The text mentions a rejected application but provides no details on publications, citation metrics, awards, or practical impact of previous work.",
+        "drawbacks": "The text mentions a rejected application but provides no details on publications, citations, awards, or societal impact of previous work.",
+        "rationale": "The text mentions a rejected application but provides no details on publications, citations, awards, or societal impact of previous work.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -302,8 +302,8 @@
           }
         ],
         "pros": "No evidence found in the provided text to support any signal.",
-        "drawbacks": "The text does not contain any statement of practitioner-academic career intentions, involvement in clinical research, or evidence of balancing practice with research.",
-        "rationale": "The text does not contain any statement of practitioner-academic career intentions, involvement in clinical research, or evidence of balancing practice with research.",
+        "drawbacks": "The text does not contain any explicit statements regarding practitioner-academic career intentions, clinical involvement, or balancing practice with research.",
+        "rationale": "The text does not contain any explicit statements regarding practitioner-academic career intentions, clinical involvement, or balancing practice with research.",
         "missing_evidence": false,
         "if_applicable": true,
         "counts_toward_section_average": false
@@ -379,8 +379,8 @@
           }
         ],
         "pros": "No evidence found to support any signal.",
-        "drawbacks": "The application text contains only a fallback placeholder ('llm_fallback') with no Plain English Summary or Detailed Research Plan. Consequently, readability, jargon usage, problem statements, alignment, coherence, and societal relevance cannot be assessed.",
-        "rationale": "The application text contains only a fallback placeholder ('llm_fallback') with no Plain English Summary or Detailed Research Plan. Consequently, readability, jargon usage, problem statements, alignment, coherence, and societal relevance cannot be assessed.",
+        "drawbacks": "The application text contains only a fallback placeholder ('llm_fallback') and lacks a Plain English Summary or Detailed Research Plan. Consequently, readability, jargon usage, problem statement, alignment, coherence, and societal relevance cannot be assessed.",
+        "rationale": "The application text contains only a fallback placeholder ('llm_fallback') and lacks a Plain English Summary or Detailed Research Plan. Consequently, readability, jargon usage, problem statement, alignment, coherence, and societal relevance cannot be assessed.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -671,8 +671,8 @@
           }
         ],
         "pros": "No evidence found to support any signal.",
-        "drawbacks": "The application text is a placeholder. No resources, budget, or justification for costs are mentioned.",
-        "rationale": "The application text is a placeholder. No resources, budget, or justification for costs are mentioned.",
+        "drawbacks": "The application text is a placeholder. No resources, budget, or rationale for costs are mentioned.",
+        "rationale": "The application text is a placeholder. No resources, budget, or rationale for costs are mentioned.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -821,9 +821,9 @@
             "score_0to5_weighted": 0.0
           }
         ],
-        "pros": "No evidence found in the application text to support any training description, alignment, timeline, or skill acquisition links.",
-        "drawbacks": "The application text contains only a fallback placeholder ('llm_fallback') with no substantive content regarding training plans. All signals lack any evidence.",
-        "rationale": "The application text contains only a fallback placeholder ('llm_fallback') with no substantive content regarding training plans. All signals lack any evidence.",
+        "pros": "No evidence found in the application text to support any training description or relevance.",
+        "drawbacks": "The application text contains only a fallback placeholder with no content regarding training plans, timelines, or skill acquisition.",
+        "rationale": "The application text contains only a fallback placeholder with no content regarding training plans, timelines, or skill acquisition.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -873,9 +873,9 @@
             "score_0to5_weighted": 0.0
           }
         ],
-        "pros": "No evidence found in the application text to support identification of skill gaps, mapping to tasks, targeted training, or mentorship details.",
-        "drawbacks": "The application text is empty of relevant content (only 'llm_fallback' present). There is no mention of personal development needs or project-specific training suitability.",
-        "rationale": "The application text is empty of relevant content (only 'llm_fallback' present). There is no mention of personal development needs or project-specific training suitability.",
+        "pros": "No evidence found in the application text to support identification of skill gaps or mapping to project tasks.",
+        "drawbacks": "The application text is empty of substantive content; no personal development needs or specific training activities are mentioned.",
+        "rationale": "The application text is empty of substantive content; no personal development needs or specific training activities are mentioned.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -925,9 +925,9 @@
             "score_0to5_weighted": 0.0
           }
         ],
-        "pros": "No evidence found in the application text to support career goals, connections to training, skill transferability, or professional practice references.",
-        "drawbacks": "The application text provides no information on career aspirations or how training supports them. The content is limited to a fallback message.",
-        "rationale": "The application text provides no information on career aspirations or how training supports them. The content is limited to a fallback message.",
+        "pros": "No evidence found in the application text to support career goals or connections to training.",
+        "drawbacks": "The application text provides no information on career aspirations, skill transferability, or professional practice components.",
+        "rationale": "The application text provides no information on career aspirations, skill transferability, or professional practice components.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -985,8 +985,8 @@
           }
         ],
         "pros": "No evidence found in the application text regarding the contracting organisation's track record.",
-        "drawbacks": "The application text contains only a fallback placeholder with no substantive content describing publication history, funding success, collaborations, or achievements.",
-        "rationale": "The application text contains only a fallback placeholder with no substantive content describing publication history, funding success, collaborations, or achievements.",
+        "drawbacks": "The application text contains only a fallback placeholder with no substantive content describing the organisation's publication history, funding success, collaborations, or achievements.",
+        "rationale": "The application text contains only a fallback placeholder with no substantive content describing the organisation's publication history, funding success, collaborations, or achievements.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1036,7 +1036,7 @@
             "score_0to5_weighted": 0.0
           }
         ],
-        "pros": "No evidence found regarding supervisory support or mentorship arrangements.",
+        "pros": "No evidence found in the application text regarding supervisory support.",
         "drawbacks": "The application text is a fallback placeholder lacking any description of supervisor roles, mentorship plans, expertise alignment, or supervision frameworks.",
         "rationale": "The application text is a fallback placeholder lacking any description of supervisor roles, mentorship plans, expertise alignment, or supervision frameworks.",
         "missing_evidence": false,
@@ -1088,9 +1088,9 @@
             "score_0to5_weighted": 0.0
           }
         ],
-        "pros": "No evidence found regarding the appropriateness of the contracting organisation.",
-        "drawbacks": "The application text provides no details on facilities, infrastructure, resources, or alignment with career aspirations.",
-        "rationale": "The application text provides no details on facilities, infrastructure, resources, or alignment with career aspirations.",
+        "pros": "No evidence found in the application text regarding organisational appropriateness.",
+        "drawbacks": "The application text provides no details on facilities, infrastructure, resources, or alignment with the applicant's career trajectory.",
+        "rationale": "The application text provides no details on facilities, infrastructure, resources, or alignment with the applicant's career trajectory.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1140,9 +1140,9 @@
             "score_0to5_weighted": 0.0
           }
         ],
-        "pros": "No evidence found regarding commitment to an inclusive and supportive research culture.",
-        "drawbacks": "The application text is a fallback placeholder with no mention of diversity policies, inclusive initiatives, research integrity, or organisational culture.",
-        "rationale": "The application text is a fallback placeholder with no mention of diversity policies, inclusive initiatives, research integrity, or organisational culture.",
+        "pros": "No evidence found in the application text regarding inclusive research culture.",
+        "drawbacks": "The application text is a fallback placeholder with no mention of diversity policies, inclusive initiatives, research integrity principles, or supportive culture statements.",
+        "rationale": "The application text is a fallback placeholder with no mention of diversity policies, inclusive initiatives, research integrity principles, or supportive culture statements.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1192,8 +1192,8 @@
           }
         ],
         "pros": "No evidence found in the application text.",
-        "drawbacks": "The application text contains only a fallback placeholder with no content regarding lived experience integration, consultation, or co-design.",
-        "rationale": "The application text contains only a fallback placeholder with no content regarding lived experience integration, consultation, or co-design.",
+        "drawbacks": "The application text contains only a fallback placeholder with no content regarding lived experience integration, consultation, or co-design activities.",
+        "rationale": "The application text contains only a fallback placeholder with no content regarding lived experience integration, consultation, or co-design activities.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1236,8 +1236,8 @@
           }
         ],
         "pros": "No evidence found in the application text.",
-        "drawbacks": "The application text contains only a fallback placeholder with no content regarding team diversity or composition.",
-        "rationale": "The application text contains only a fallback placeholder with no content regarding team diversity or composition.",
+        "drawbacks": "The application text contains only a fallback placeholder with no content regarding team diversity, inclusion statements, or equitable task allocation.",
+        "rationale": "The application text contains only a fallback placeholder with no content regarding team diversity, inclusion statements, or equitable task allocation.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1280,8 +1280,8 @@
           }
         ],
         "pros": "No evidence found in the application text.",
-        "drawbacks": "The application text contains only a fallback placeholder with no content regarding public benefit plans or dissemination.",
-        "rationale": "The application text contains only a fallback placeholder with no content regarding public benefit plans or dissemination.",
+        "drawbacks": "The application text contains only a fallback placeholder with no content regarding dissemination plans, links to benefits, or actionable outcomes.",
+        "rationale": "The application text contains only a fallback placeholder with no content regarding dissemination plans, links to benefits, or actionable outcomes.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1324,8 +1324,8 @@
           }
         ],
         "pros": "No evidence found in the application text.",
-        "drawbacks": "The application text contains only a fallback placeholder with no content regarding representation of seldom heard groups.",
-        "rationale": "The application text contains only a fallback placeholder with no content regarding representation of seldom heard groups.",
+        "drawbacks": "The application text contains only a fallback placeholder with no content regarding representation of seldom heard groups, recruitment strategies, or barriers to participation.",
+        "rationale": "The application text contains only a fallback placeholder with no content regarding representation of seldom heard groups, recruitment strategies, or barriers to participation.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1368,8 +1368,8 @@
           }
         ],
         "pros": "No evidence found in the application text.",
-        "drawbacks": "The application text contains only a fallback placeholder with no content regarding inclusivity across the research lifecycle.",
-        "rationale": "The application text contains only a fallback placeholder with no content regarding inclusivity across the research lifecycle.",
+        "drawbacks": "The application text contains only a fallback placeholder with no content regarding inclusivity across the research lifecycle, accessibility, or evaluation plans.",
+        "rationale": "The application text contains only a fallback placeholder with no content regarding inclusivity across the research lifecycle, accessibility, or evaluation plans.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1412,8 +1412,8 @@
           }
         ],
         "pros": "No evidence found in the application text.",
-        "drawbacks": "The application text contains only a fallback placeholder with no content regarding budgeted resources for inclusion.",
-        "rationale": "The application text contains only a fallback placeholder with no content regarding budgeted resources for inclusion.",
+        "drawbacks": "The application text contains only a fallback placeholder with no content regarding budgeted resources for inclusion activities, staff time, or alignment of resources.",
+        "rationale": "The application text contains only a fallback placeholder with no content regarding budgeted resources for inclusion activities, staff time, or alignment of resources.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1443,25 +1443,25 @@
             "sid": "af.1.a",
             "signal_text": "Presence and consistency of headings and subheadings",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 3,
+            "score_0to5_raw": 3.0,
+            "score_0to5_weighted": 3.0
           },
           {
             "sid": "af.1.b",
             "signal_text": "Use of bold or emphasis for key terms",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 2,
+            "score_0to5_raw": 2.0,
+            "score_0to5_weighted": 2.0
           },
           {
             "sid": "af.1.c",
             "signal_text": "Structured hierarchy of sections (logical nesting of headings)",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 3,
+            "score_0to5_raw": 3.0,
+            "score_0to5_weighted": 3.0
           },
           {
             "sid": "af.1.d",
@@ -1472,9 +1472,9 @@
             "score_0to5_weighted": 4.0
           }
         ],
-        "pros": "The analysis confirms the presence of numbered headings (1 detected) and extracted emphasis markers (2 detected). The section order is logical, moving from applicant context to research plan and budget. Parser limitations regarding bold text are explicitly noted, but structural markers are present.",
-        "drawbacks": "Parser limitations regarding bold text are explicitly noted, meaning the evidence for emphasis is derived from parser detection rather than raw text verification. Only one numbered heading-like line was detected, suggesting limited hierarchical depth.",
-        "rationale": "Parser limitations regarding bold text are explicitly noted, meaning the evidence for emphasis is derived from parser detection rather than raw text verification. Only one numbered heading-like line was detected, suggesting limited hierarchical depth.",
+        "pros": "The analysis confirms the presence of numbered headings (1 detected) and extracted emphasis markers (2 detected). The section order follows a logical progression from applicant context to budget, indicating a structured hierarchy.",
+        "drawbacks": "Parser limitations explicitly state that bold/emphasis markers may be lost during extraction, preventing a perfect score for emphasis usage. Only one numbered heading-like line was detected, suggesting limited subheading granularity.",
+        "rationale": "Parser limitations explicitly state that bold/emphasis markers may be lost during extraction, preventing a perfect score for emphasis usage. Only one numbered heading-like line was detected, suggesting limited subheading granularity.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1518,9 +1518,9 @@
             "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "The analysis explicitly reports a duplicate sentence rate of 0.0 and a repeated line rate of 0.0. No high cross-section lexical overlap was detected at the 0.18 threshold, indicating strong novelty and lack of repetition.",
-        "drawbacks": "No drawbacks identified; the metrics for duplication and repetition are perfect based on the provided analysis.",
-        "rationale": "No drawbacks identified; the metrics for duplication and repetition are perfect based on the provided analysis.",
+        "pros": "The analysis reports a duplicate sentence rate of 0.0 and a repeated line rate of 0.0. No high cross-section lexical overlap was detected at the 0.18 threshold, indicating strong novelty and lack of repetition.",
+        "drawbacks": "No drawbacks identified; the metrics for duplication and repetition are optimal.",
+        "rationale": "No drawbacks identified; the metrics for duplication and repetition are optimal.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1551,17 +1551,17 @@
             "sid": "af.3.b",
             "signal_text": "Explicit linking of objectives to methods and work packages",
             "weight": 1.0,
-            "score": 0,
-            "score_0to5_raw": 0.0,
-            "score_0to5_weighted": 0.0
+            "score": 2,
+            "score_0to5_raw": 2.0,
+            "score_0to5_weighted": 2.0
           },
           {
             "sid": "af.3.c",
             "signal_text": "Presence of transitional phrases or linking statements",
             "weight": 1.0,
-            "score": 3,
-            "score_0to5_raw": 3.0,
-            "score_0to5_weighted": 3.0
+            "score": 2,
+            "score_0to5_raw": 2.0,
+            "score_0to5_weighted": 2.0
           },
           {
             "sid": "af.3.d",
@@ -1572,9 +1572,9 @@
             "score_0to5_weighted": 3.0
           }
         ],
-        "pros": "The analysis confirms a logical section order (applicant/context, summary, research plan, PPI, training, budget). One transition phrase was detected, and the narrative thread appears anchored on research aims based on the section flow.",
-        "drawbacks": "The analysis explicitly states that 'objective_method_budget_link_terms' count is 0, indicating a lack of explicit linking between objectives, methods, and budget. Only one transition phrase was found, suggesting weak transitional flow. Semantic coherence metrics are not provided, relying only on section order.",
-        "rationale": "The analysis explicitly states that 'objective_method_budget_link_terms' count is 0, indicating a lack of explicit linking between objectives, methods, and budget. Only one transition phrase was found, suggesting weak transitional flow. Semantic coherence metrics are not provided, relying only on section order.",
+        "pros": "The section order moves logically from applicant/context through research plan, PPI, training, and budget. One transition phrase was detected, and the narrative thread appears anchored on standard research sections.",
+        "drawbacks": "Only one transition phrase was detected, suggesting weak explicit linking between sections. The count of objective-method-budget link terms is 0, indicating a lack of explicit semantic connections between these critical components.",
+        "rationale": "Only one transition phrase was detected, suggesting weak explicit linking between sections. The count of objective-method-budget link terms is 0, indicating a lack of explicit semantic connections between these critical components.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true

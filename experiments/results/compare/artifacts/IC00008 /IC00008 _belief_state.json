@@ -22,13 +22,16 @@
         "secarb__001_c",
         "secarb__001_d",
         "secsa__001_b",
-        "secsa__001_c"
+        "secsa__001_c",
+        "sectdars__001_c",
+        "sectdars__001_d"
       ],
       "bad_evidence_ids": [],
       "implications": [
-        "Applicant CV: CV details extensive research experience in neurosurgery and AI, including specific grants (Cancer Research UK, Stryker) and fellowships, strongly supporting relevant research experience and training.",
-        "Applicant Research Background: Details specific prior projects in robotic platforms, AI workflow recognition, and multicentre observational studies, providing strong evidence of relevant research experience and training.",
-        "Scientific Abstract: Mentions prior development of pre-clinical AI models and foundational work through NIHR and CRUK fellowships, providing strong evidence of relevant research experience."
+        "Applicant CV: CV details extensive research experience in neurosurgery and AI, including specific grants and roles as sole recipient or co-investigator, strongly supporting relevant research experience.",
+        "Applicant Research Background: Details specific prior projects involving robotic platforms, AI workflow models, and multicentre observational studies, demonstrating extensive relevant research experience and methods.",
+        "Scientific Abstract: Mentions prior development of pre-clinical AI models and foundational work via NIHR and CRUK fellowships, demonstrating relevant research experience and methods.",
+        "Training & Development and Research Support: Details prior training (R courses, FAST.AI) and identifies specific gaps in AI model building, demonstrating alignment between experience and project needs, supporting g.3."
       ]
     },
     "g.4": {
@@ -43,9 +46,9 @@
       ],
       "bad_evidence_ids": [],
       "implications": [
-        "Applicant CV: CV lists numerous high-impact publications in journals like Nature Medicine, Lancet, and BMJ, plus multiple awards (Sir Hugh Cairns Prize, Barrow Foundation), demonstrating impactful research outputs.",
-        "Applicant Research Background: Lists 70 peer-reviewed publications (including Nature Medicine), multiple grants (NIHR, CRUK, Stryker), and prestigious awards (Hugh Cairns Prize), demonstrating impactful outputs.",
-        "Scientific Abstract: Cites previous funding from NIHR Academic Clinical Fellowship and Cancer Research UK Predoctoral Fellowship, indicating impactful research outputs and recognitions."
+        "Applicant CV: CV lists numerous high-impact publications in journals like Nature Medicine and The Lancet, plus multiple awards, demonstrating a strong track record of impactful outputs.",
+        "Applicant Research Background: Lists 70 peer-reviewed publications (including Nature Medicine), multiple grants (NIHR, CRUK, Stryker), and prestigious awards (Barrow Foundation, Hugh Cairns Prize), confirming impactful o",
+        "Scientific Abstract: Cites previous funding from NIHR Academic Clinical Fellowship and Cancer Research UK Predoctoral Fellowship, indicating impactful prior research outputs and recognitions."
       ]
     },
     "g.5": {
@@ -55,12 +58,15 @@
         "secac__001_y",
         "secarb__001_d",
         "secarb__001_e",
-        "secarb__001_f"
+        "secarb__001_f",
+        "sectdars__001_d",
+        "sectdars__001_e"
       ],
       "bad_evidence_ids": [],
       "implications": [
-        "Applicant CV: Progression from trainee to sole fellowship recipient and co-investigator on competitive grants, alongside leadership in multicentre studies, indicates a clear trajectory towards research leadership.",
-        "Applicant Research Background: Describes leadership roles as Vice Chair, Trainee Lead, and Junior PI, coordinating networks of >100 consultants and managing multicentre studies, indicating a trajectory towards research l"
+        "Applicant CV: Progression from trainee to NIHR Academic Clinical Fellow and receipt of competitive awards (e.g., Barrow Foundation) indicates increasing responsibility and leadership potential.",
+        "Applicant Research Background: Describes leadership roles as Junior PI, Vice Chair of Interest Group, and Trainee Lead, plus teaching training and faculty roles, indicating a strong trajectory towards research leadership",
+        "Training & Development and Research Support: Highlights leadership roles (faculty member, course delivery) and plans for future academic consultancy, indicating a trajectory towards research leadership, supporting g.5."
       ]
     },
     "g.6": {
@@ -70,21 +76,20 @@
         "secarb__001_a",
         "secarb__001_b",
         "secarb__001_c",
-        "sectdars__001_e",
-        "sectdars__001_i"
+        "sectdars__001_e"
       ],
       "bad_evidence_ids": [],
       "implications": [
-        "Applicant CV: Applicant holds dual roles as Neurosurgical Trainee and Academic Clinical Fellow, with research focused on clinical surgical management, confirming commitment to a practitioner-academic career.",
-        "Applicant Research Background: Applicant is a run-through neurosurgical trainee and NIHR Academic Clinical Fellow conducting clinical research on surgical technology, confirming commitment to a practitioner-academic care",
-        "Training & Development and Research Support: Explicitly plans 20% clinical commitment (on-call, theatre lists) to maintain surgical skills alongside the PhD, confirming commitment to a practitioner-academic career."
+        "Applicant CV: Applicant holds dual roles as Neurosurgical Trainee and Research Fellow, with clinical research grants, confirming commitment to a practitioner-academic career.",
+        "Applicant Research Background: Applicant is a run-through neurosurgical trainee and NIHR Academic Clinical Fellow conducting clinical research (e.g., first-in-human pilot study), confirming commitment to a practitioner-a",
+        "Training & Development and Research Support: Explicitly plans to maintain clinical skills (2 sessions/week) alongside research, demonstrating commitment to a practitioner-academic career, supporting g.6."
       ]
     },
     "pr.8": {
       "good_evidence_ids": [
+        "secac__001_b",
         "secac__001_c",
         "secac__001_d",
-        "secac__001_e",
         "secarb__001_a",
         "secarb__001_c",
         "secarb__001_d",
@@ -92,31 +97,37 @@
       ],
       "bad_evidence_ids": [],
       "implications": [
-        "Applicant CV: Extensive publication record in relevant fields (AI in surgery, pituitary adenoma) and successful grant acquisition demonstrate high quality of previous research.",
-        "Applicant Research Background: Extensive history of successful projects including AI model development and large-scale patient recruitment, with high-quality publications and grants, supports the quality of previous rese",
-        "Plain English Summary of Research: Mentions prior success in building a secure system and AI models using predoctoral funding, providing evidence of previous research quality."
+        "Applicant CV: CV provides extensive evidence of previous research quality through a long list of publications and successful grant acquisitions relevant to the field.",
+        "Applicant Research Background: Provides detailed evidence of high-quality previous research including 70 publications, successful grant acquisitions, and leadership in large multicentre studies.",
+        "Plain English Summary of Research: Mentions prior success in building a secure system and AI models using predoctoral funding, supporting pr.8."
       ]
     },
     "g.1": {
       "good_evidence_ids": [
         "secarb__001_a",
         "secarb__001_f",
-        "secsa__001_b"
+        "secsa__001_b",
+        "sectdars__001_a",
+        "sectdars__001_e"
       ],
       "bad_evidence_ids": [],
       "implications": [
-        "Applicant Research Background: Clearly states aim to be an academic neurosurgeon and identifies completing a PhD as the next step, demonstrating a clear research vision and career trajectory.",
-        "Scientific Abstract: Clearly outlines a 3-year doctoral fellowship plan with three specific aims to translate AI technology, demonstrating a clear research vision and career trajectory."
+        "Applicant Research Background: Clearly states aim to be an academic neurosurgeon and identifies completing a PhD as the next step, supporting a clear research vision and career trajectory.",
+        "Scientific Abstract: Clearly outlines a 3-year doctoral fellowship plan with three specific aims to translate AI models, supporting a clear research vision and career trajectory.",
+        "Training & Development and Research Support: Reaffirms a clear vision to be a high-quality academic neurosurgeon and outlines a well-justified training plan to achieve this, supporting g.1."
       ]
     },
     "g.2": {
       "good_evidence_ids": [
         "secarb__001_a",
-        "secarb__001_c"
+        "secarb__001_f",
+        "sectdars__001_a",
+        "sectdars__001_b"
       ],
       "bad_evidence_ids": [],
       "implications": [
-        "Applicant Research Background: Explicitly states the PhD is the next step to develop as a surgeon-scientist and mentions leveraging existing networks for future translation, supporting the need for this award."
+        "Applicant Research Background: Explicitly states that completing a PhD is the next step to maximize opportunities for personal improvement and project development, justifying the award as the right next step.",
+        "Training & Development and Research Support: Explains how the award enables specific skill acquisition (translation, AI) and industry partnerships (Medtronic, NVIDIA) not possible otherwise, supporting g.2."
       ]
     },
     "pr.1": {
@@ -129,8 +140,8 @@
       ],
       "bad_evidence_ids": [],
       "implications": [
-        "Plain English Summary of Research: Clearly articulates the problem (pituitary surgery variability), objectives (3 AI tools), methods (workflow analysis), and beneficiaries (patients/surgeons) in accessible language.",
-        "Plain English NLP Analysis: Provides NLP metrics (Flesch-Kincaid 10.58, 0% long sentences) and confirms coverage of objectives, methods, beneficiaries, and impact, supporting the quality of the Plain English Summary.",
+        "Plain English Summary of Research: Clearly articulates the problem (pituitary adenomas), objectives (3 AI tools), methods (workflow analysis), beneficiaries (surgeons, patients), and impact (personalized care), supportin",
+        "Plain English NLP Analysis: NLP metrics show short sentences (avg 9.3 words) and coverage of objectives/methods/impact, supporting pr.1 quality, though Flesch-Kincaid grade 10.58 and 5% jargon density suggest moderate re",
         "Application Form Analysis: Confirms presence of Plain English Summary and NLP analysis sections, supporting structural completeness for pr.1."
       ]
     },
@@ -139,12 +150,14 @@
         "secpesor__001_b",
         "secpesor__001_c",
         "secsa__001_b",
-        "secsa__001_c"
+        "secsa__001_c",
+        "secafa__001"
       ],
       "bad_evidence_ids": [],
       "implications": [
-        "Plain English Summary of Research: Outlines a 3-year timeline with pilot and larger studies, indicating a feasible scope appropriate for a doctoral or postdoctoral award.",
-        "Scientific Abstract: Defines a 3-year scope with specific aims and a phased approach (pilot studies followed by single centre development), indicating appropriate scope and feasibility."
+        "Plain English Summary of Research: Outlines a 3-year timeline with pilot and larger studies, indicating feasibility and appropriate scope for the award, supporting pr.3.",
+        "Scientific Abstract: Defines a 3-year scope with specific aims and a phased approach (pilot studies followed by single centre development), indicating appropriate scope and feasibility.",
+        "Application Form Analysis: Word counts for Detailed Research Plan (5175) and Training (2619) suggest sufficient scope and detail for pr.3."
       ]
     },
     "pr.4": {
@@ -155,19 +168,20 @@
         "secsa__001_c",
         "secdrp__001_h",
         "secdrp__001_i",
-        "secdrp__001_r"
+        "secdrp__001_r",
+        "secafa__001"
       ],
       "bad_evidence_ids": [],
       "implications": [
-        "Plain English Summary of Research: Describes the core methodology (AI workflow analysis of surgical videos) and links it logically to the development of three specific clinical tools.",
-        "Scientific Abstract: Describes the core methodology of AI workflow analysis via surgical video segmentation and links it logically to three distinct clinical applications.",
-        "Detailed Research Plan: Explicitly details methods including IDEAL/DECIDE-AI frameworks, sample sizes (n=6, n=30), and specific AI architectures (CNN-RNN), demonstrating strong methodological rigor."
+        "Plain English Summary of Research: Describes the methodology of AI workflow analysis and video annotation to achieve specific aims, supporting pr.4.",
+        "Scientific Abstract: Describes the methodology of AI workflow analysis, video segmentation, and specific study designs (pilot and development studies), supporting methodological rigor.",
+        "Detailed Research Plan: Explicitly details methods including IDEAL/DECIDE-AI frameworks, sample sizes (n=6, n=30), specific AI architectures (CNN-RNN), and validation metrics (F1 scores), demonstrating strong methodologi",
+        "Application Form Analysis: Presence of Detailed Research Plan with 5175 words and structured headings supports methodological rigor for pr.4."
       ]
     },
     "pr.5": {
       "good_evidence_ids": [
         "secpesor__001_a",
-        "secpesor__001_b",
         "secpesor__001_c",
         "secsa__001_a",
         "secsa__001_b",
@@ -175,8 +189,8 @@
       ],
       "bad_evidence_ids": [],
       "implications": [
-        "Plain English Summary of Research: Explicitly details patient benefits (personalized care, faster discharge) and alignment with NIHR/NHS strategic themes, demonstrating strong potential impact.",
-        "Scientific Abstract: Explicitly states goals to improve patient outcomes, reduce morbidity, enable safer discharge, and improve surgical training, demonstrating strong potential impact."
+        "Plain English Summary of Research: Highlights potential to revolutionize surgery, enhance training, and enable personalized care, aligning with NIHR and NHS strategies, supporting pr.5.",
+        "Scientific Abstract: Explicitly links AI workflow analysis to improved patient outcomes, safer discharge, better training, and personalized post-operative care, demonstrating clear potential impact."
       ]
     },
     "ss.1": {
@@ -186,29 +200,33 @@
       ],
       "bad_evidence_ids": [],
       "implications": [
-        "Plain English Summary of Research: Highlights collaboration with the UK's largest pituitary centre, a prestigious innovation institute (WEISS), and major industry partners (Medtronic, NVIDIA), supporting institutional tr",
-        "Scientific Abstract: Highlights an established team at the UK's largest pituitary centre and collaborations with Medtronic and NVIDIA, supporting institutional track record."
+        "Plain English Summary of Research: Identifies collaboration with UK's largest pituitary centre, WEISS (UCL), and major AI companies (Medtronic, NVIDIA), supporting ss.1.",
+        "Scientific Abstract: Highlights an established team at the UK's largest pituitary centre and collaborations with Medtronic and NVIDIA, supporting a strong track record of the contracting organisation and partners."
       ]
     },
     "pr.2": {
       "good_evidence_ids": [
         "secdrp__001_d",
         "secdrp__001_e",
-        "secdrp__001_f"
+        "secdrp__001_f",
+        "secafa__001"
       ],
       "bad_evidence_ids": [],
       "implications": [
-        "Detailed Research Plan: Cites multiple systematic reviews (193 studies, 178 studies) and narrative reviews to identify heterogeneity in surgical practice and gaps in AI application, supporting evidence review quality."
+        "Detailed Research Plan: Cites multiple systematic reviews (193 studies, 178 studies) and narrative reviews to identify heterogeneity in practice and gaps in AI-driven workflow analysis, supporting evidence review quality",
+        "Application Form Analysis: High transition phrase count (72) and logical section ordering support coherence and flow for pr.2."
       ]
     },
     "pr.6": {
       "good_evidence_ids": [
-        "secdrp__001_t",
-        "secdrp__001_u"
+        "secdrp__001_u",
+        "secdrp__001_v",
+        "secafa__001"
       ],
       "bad_evidence_ids": [],
       "implications": [
-        "Detailed Research Plan: Mentions engagement in public and patient initiatives and plans for consent processes including non-English languages and accessibility adaptations, supporting engagement with people."
+        "Detailed Research Plan: Mentions engagement in public and patient initiatives, adaptations for inclusivity (non-English forms, audio narration), and ethical considerations regarding human-in-the-loop AI, supporting engag",
+        "Application Form Analysis: Dedicated Patient & Public Involvement section (718 words) confirms engagement content for pr.6."
       ]
     },
     "pr.9": {
@@ -218,37 +236,18 @@
       ],
       "bad_evidence_ids": [],
       "implications": [
-        "Detailed Research Plan: Describes strategies for diverse recruitment (international patient base, non-English consent forms) and accessibility adaptations (audio narration), supporting inclusive research design."
-      ]
-    },
-    "ss.2": {
-      "good_evidence_ids": [
-        "secdrp__001_|",
-        "sectdars__001_f",
-        "sectdars__001_g",
-        "sectdars__001_h",
-        "secac2__001"
-      ],
-      "bad_evidence_ids": [],
-      "implications": [
-        "Detailed Research Plan: Identifies specific supervisors (Mr Hani Marcus, Prof Stoyanov) as experts in the field with established relationships, supporting suitability of supervisory support.",
-        "Training & Development and Research Support: Describes a robust supervisory team with specific roles, meeting frequencies (monthly/weekly), and proven track records of guiding students to completion, strongly supporting",
-        "Application Context: Lists a Doctoral Primary Supervisor (Consultant) and two additional Supervisors (Professor, Admin Authority), confirming the presence of a supervisory team."
+        "Detailed Research Plan: Describes an international patient base and specific adaptations for accessibility (non-English languages, audio narration for visually impaired), supporting inclusive research design."
       ]
     },
     "ss.3": {
       "good_evidence_ids": [
         "secdrp__001_{",
         "secdrp__001_|",
-        "sectdars__001_n",
-        "sectdars__001_o",
-        "sectdars__001_j",
         "secac2__001"
       ],
       "bad_evidence_ids": [],
       "implications": [
-        "Detailed Research Plan: Details access to high-performance computing, dedicated engineering support via EPSRC grant, and industry partnerships (Medtronic, NVIDIA), supporting appropriateness of the contracting organisati",
-        "Training & Development and Research Support: Host organization provides dedicated doctoral skills programs, mentoring, and access to industry resources (Medtronic, NVIDIA), demonstrating strong institutional support for",
+        "Detailed Research Plan: Highlights the UK's largest pituitary centre, WEISS infrastructure (HPC clusters), and dedicated EPSRC funding for AI model support, confirming organizational appropriateness.",
         "Application Context: Identifies University College London as the contracting organisation, providing the institutional context for the award."
       ]
     },
@@ -256,13 +255,14 @@
       "good_evidence_ids": [
         "secdrp__001_}",
         "secdrp__001_z",
+        "secppi__001_a",
         "secppi__001_c",
         "secppi__001_d"
       ],
       "bad_evidence_ids": [],
       "implications": [
-        "Detailed Research Plan: Outlines plans for publication, data sharing via WEISS Open Data Server, and future multicentre studies to maximize public and patient benefit.",
-        "Patient & Public Involvement: Outlines a robust dissemination plan including video summaries co-created with patients, sharing via the Pituitary Foundation, and engagement with underserved communities through the WEISS S"
+        "Detailed Research Plan: Outlines plans for peer-reviewed publications, conferences, and open data sharing via WEISS Open Data Server, demonstrating commitment to maximizing public benefit.",
+        "Patient & Public Involvement: Details a robust dissemination plan including co-created videos, sharing with the Pituitary Foundation, and interactive theatre events to maximize public and patient benefit."
       ]
     },
     "wp.1": {
@@ -273,8 +273,8 @@
       ],
       "bad_evidence_ids": [],
       "implications": [
-        "Patient & Public Involvement: Details active engagement with the WEISS UCL Pituitary Patient Advisory Group to refine lay summaries, study design, and outcomes, with specific mention of integrating patient insights into",
-        "Application Form Analysis: Confirms a dedicated 'Patient & Public Involvement' section with 718 words, supporting the presence of PPI content for wp.1."
+        "Patient & Public Involvement: Describes active engagement with the WEISS UCL Pituitary Patient Advisory Group to refine lay summaries, study design, and outcomes, with specific mention of integrating patient insights.",
+        "Application Form Analysis: Patient & Public Involvement section presence supports integration of lived experience (wp.1)."
       ]
     },
     "wp.5": {
@@ -284,7 +284,7 @@
       ],
       "bad_evidence_ids": [],
       "implications": [
-        "Patient & Public Involvement: Demonstrates inclusivity across the research lifecycle by involving patients in initial design, protocol refinement for six studies, ethics amendments, and final dissemination activities."
+        "Patient & Public Involvement: Outlines involvement across the research lifecycle, from initial application review and study design to ethics amendments and final dissemination, ensuring inclusivity at multiple stages."
       ]
     },
     "wp.6": {
@@ -292,12 +292,14 @@
         "secppi__001_b",
         "secppi__001_c",
         "secsb__001_d",
-        "secsb__001_e"
+        "secsb__001_e",
+        "secafa__001"
       ],
       "bad_evidence_ids": [],
       "implications": [
         "Patient & Public Involvement: Explicitly states that patient representatives receive fair monetary remuneration for their time and effort, indicating a resourced plan for inclusion.",
-        "SUMMARY BUDGET: Explicitly budgets for patient remuneration (£50 per review) and dissemination video costs co-created with patients, confirming a costed and resourced plan for inclusion."
+        "SUMMARY BUDGET: Explicitly budgets for patient remuneration (£50 per review) and dissemination video costs (£9000), confirming a costed and resourced plan for research inclusion.",
+        "Application Form Analysis: SUMMARY BUDGET section (2528 words) and PPI section suggest costed plans for inclusion (wp.6)."
       ]
     },
     "td.1": {
@@ -309,8 +311,8 @@
       ],
       "bad_evidence_ids": [],
       "implications": [
-        "Training & Development and Research Support: Details specific courses (ACCELERATE, Clinician Coders, Surgical Data Science Summer School) and placements (Medtronic, GWU) directly linked to project needs, supporting quali",
-        "Application Form Analysis: Confirms a dedicated 'Training & Development' section with 2619 words, supporting the presence of training content for td.1."
+        "Training & Development and Research Support: Details specific courses (ACCELERATE, Clinician Coders, Surgical Data Science Summer School) and placements (Medtronic, GWU) aligned with project needs, supporting td.1.",
+        "Application Form Analysis: Training & Development section (2619 words) indicates substantial detail for training quality and relevance (td.1)."
       ]
     },
     "td.2": {
@@ -321,7 +323,7 @@
       ],
       "bad_evidence_ids": [],
       "implications": [
-        "Training & Development and Research Support: Explicitly identifies skill gaps (e.g., inability to independently build AI models, need for translation skills) and maps targeted training (online courses, industry placement"
+        "Training & Development and Research Support: Explicitly identifies skill gaps in independent AI model building and technology translation, mapping them to targeted training activities, supporting td.2."
       ]
     },
     "td.3": {
@@ -332,7 +334,31 @@
       ],
       "bad_evidence_ids": [],
       "implications": [
-        "Training & Development and Research Support: Clearly states career goals (academic neurosurgeon, consultant) and links training (PhD, clinical sessions, leadership fellowships) to achieving these aspirations and future i"
+        "Training & Development and Research Support: Clearly states career goals (academic neurosurgeon, consultancy) and links training (PhD, fellowships) to achieving these, supporting td.3."
+      ]
+    },
+    "ss.2": {
+      "good_evidence_ids": [
+        "sectdars__001_f",
+        "sectdars__001_g",
+        "sectdars__001_h",
+        "secac2__001",
+        "secafa__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Training & Development and Research Support: Describes structured supervision (monthly meetings, joint supervision) by experts with strong track records (Marcus, Stoyanov, Watkins), supporting ss.2.",
+        "Application Context: Lists a Doctoral Primary Supervisor (Consultant) and two additional Supervisors (Professor, Admin Authority), confirming the presence of a supervisory team.",
+        "Application Form Analysis: Training section includes Research Support, suggesting mentorship and supervisory details for ss.2."
+      ]
+    },
+    "ss.4": {
+      "good_evidence_ids": [
+        "sectdars__001_n"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Training & Development and Research Support: Mentions a dedicated mentoring programme for early career researchers and support mechanisms unique to UCL, indicating a supportive culture, supporting ss.4."
       ]
     },
     "pr.7": {
@@ -350,7 +376,6 @@
     }
   },
   "missing_signals": [
-    "ss.4",
     "wp.2",
     "wp.4"
   ]

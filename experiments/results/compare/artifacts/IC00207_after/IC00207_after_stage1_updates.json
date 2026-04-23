@@ -18,7 +18,7 @@
           "secac__001_d"
         ],
         "bad_evidence_ids": [],
-        "implication": "Applicant CV: Includes one peer-reviewed publication in The European Respiratory Journal and awards including the Brian Turley Award for PPI and a NIHR Incubator bursary."
+        "implication": "Applicant CV: Includes a peer-reviewed publication in The European Respiratory Journal and awards (NIHR Incubator, Brian Turley Award), indicating impactful research outputs."
       },
       {
         "sub_id": "g.5",
@@ -37,23 +37,13 @@
         ],
         "bad_evidence_ids": [],
         "implication": "Applicant CV: Demonstrates a practitioner-academic trajectory with clinical roles (Emergency Practitioner, Physiotherapist) alongside research qualifications and fellowships."
-      },
-      {
-        "sub_id": "pr.8",
-        "good_evidence_ids": [
-          "secac__001_b",
-          "secac__001_c"
-        ],
-        "bad_evidence_ids": [],
-        "implication": "Applicant CV: Provides evidence of prior research output (one publication) and involvement in a funded study panel (RCEM), indicating a track record of research activity."
       }
     ],
     "resolved_signals": [
       "g.3",
       "g.4",
       "g.5",
-      "g.6",
-      "pr.8"
+      "g.6"
     ],
     "missing_signals_after": [
       "g.1",
@@ -65,6 +55,7 @@
       "pr.5",
       "pr.6",
       "pr.7",
+      "pr.8",
       "pr.9",
       "td.1",
       "td.2",
@@ -91,17 +82,16 @@
           "secarb__001_g"
         ],
         "bad_evidence_ids": [],
-        "implication": "Applicant Research Background: Clearly articulates a research vision to become a post-doctoral clinical academic in UEC and outlines a trajectory from clinical practice to research leadership."
+        "implication": "Applicant Research Background: Clearly articulates a career trajectory from clinical physiotherapist to post-doctoral clinical academic in UEC, supported by a pre-doctoral bridging fellowship."
       },
       {
         "sub_id": "g.2",
         "good_evidence_ids": [
           "secarb__001_b",
-          "secarb__001_c",
           "secarb__001_g"
         ],
         "bad_evidence_ids": [],
-        "implication": "Applicant Research Background: Explains the DCAF as the necessary next step to build on a pre-doctoral bridging fellowship, addressing identified gaps in grant funding and supervisory skills."
+        "implication": "Applicant Research Background: Explains the DCAF as the necessary next step to build on a pre-doctoral fellowship and MRes, enabling full-time research development previously limited by clinical duties."
       },
       {
         "sub_id": "g.3",
@@ -111,7 +101,7 @@
           "secarb__001_f"
         ],
         "bad_evidence_ids": [],
-        "implication": "Applicant Research Background: Details extensive relevant experience including MRes, PGCert, NIHR PCAF application, and roles as PI/Co-I on national studies, demonstrating strong methodological training."
+        "implication": "Applicant Research Background: Details formal training (PGCert, MRes, NIHR PI essentials) and experience leading QI projects, trials, and national studies, demonstrating strong methodological alignment."
       },
       {
         "sub_id": "g.4",
@@ -120,26 +110,27 @@
           "secarb__001_e"
         ],
         "bad_evidence_ids": [],
-        "implication": "Applicant Research Background: Lists multiple peer-reviewed publications (BMJ Thorax, Physiotherapy Journal), conference presentations, and contributions to NICE/BTS guidance, showing high-quality outputs."
+        "implication": "Applicant Research Background: Lists multiple peer-reviewed publications (BMJ Thorax, Physiotherapy Journal), conference presentations, and contributions to NICE/BTS guidance, evidencing impactful outputs."
       },
       {
         "sub_id": "g.5",
         "good_evidence_ids": [
-          "secarb__001_e",
-          "secarb__001_f"
+          "secarb__001_b",
+          "secarb__001_c",
+          "secarb__001_e"
         ],
         "bad_evidence_ids": [],
-        "implication": "Applicant Research Background: Demonstrates increasing responsibility through senior leadership roles, supervising 21 practitioners, leading service evaluations, and acting as PI on national studies."
+        "implication": "Applicant Research Background: Demonstrates increasing leadership through roles as PI for national studies, Associate PI, and supervising research nurses, alongside clinical team leadership."
       },
       {
         "sub_id": "g.6",
         "good_evidence_ids": [
           "secarb__001_a",
-          "secarb__001_e",
+          "secarb__001_d",
           "secarb__001_i"
         ],
         "bad_evidence_ids": [],
-        "implication": "Applicant Research Background: Explicitly states commitment to a practitioner-academic career, balancing 20% clinical time with research, and integrating physiotherapy into UEC teams."
+        "implication": "Applicant Research Background: Explicitly states commitment to a practitioner-academic career, balancing senior clinical leadership with research fellow roles and aiming for post-doctoral advancement."
       },
       {
         "sub_id": "pr.8",
@@ -149,7 +140,7 @@
           "secarb__001_d"
         ],
         "bad_evidence_ids": [],
-        "implication": "Applicant Research Background: Provides strong evidence of prior research quality through successful grant awards (pre-doctoral bridging), PI roles, and a robust publication record."
+        "implication": "Applicant Research Background: Provides strong evidence of prior research quality through successful grant awards (pre-doctoral bridging), PI roles in national studies, and a track record of publications."
       }
     ],
     "resolved_signals": [
@@ -204,7 +195,7 @@
           "secpesor__001_b"
         ],
         "bad_evidence_ids": [],
-        "implication": "Plain English Summary of Research: Describes a four-part study (literature review, interviews, discussions, workshop) with clear tasks, indicating feasible scope for pr.3."
+        "implication": "Plain English Summary of Research: Describes a four-part study (literature review, interviews, discussions, workshop) with clear tasks, supporting feasibility and scope (pr.3)."
       },
       {
         "sub_id": "pr.4",
@@ -222,7 +213,7 @@
           "secpesor__001_c"
         ],
         "bad_evidence_ids": [],
-        "implication": "Plain English Summary of Research: Highlights patient benefits, service improvement, and a toolkit to standardize care, directly addressing pr.5."
+        "implication": "Plain English Summary of Research: Highlights patient benefits, service improvement, and a toolkit to standardize care, directly addressing patient and public impact (pr.5)."
       },
       {
         "sub_id": "pr.6",
@@ -231,16 +222,15 @@
           "secpesor__001_c"
         ],
         "bad_evidence_ids": [],
-        "implication": "Plain English Summary of Research: Details PPIE involvement in design, materials, and dissemination via a PAG, strongly supporting pr.6."
+        "implication": "Plain English Summary of Research: Details PPIE involvement in study design, material development, and findings dissemination via a PAG, strongly supporting pr.6."
       },
       {
         "sub_id": "wp.1",
         "good_evidence_ids": [
-          "secpesor__001_a",
           "secpesor__001_c"
         ],
         "bad_evidence_ids": [],
-        "implication": "Plain English Summary of Research: Describes co-production of a toolkit with patients and staff, and PAG involvement in study design, supporting wp.1."
+        "implication": "Plain English Summary of Research: Describes a Patient and Public Advisory Group (PAG) involved in developing materials and questions, supporting integration of lived experience (wp.1)."
       },
       {
         "sub_id": "wp.3",
@@ -248,7 +238,7 @@
           "secpesor__001_c"
         ],
         "bad_evidence_ids": [],
-        "implication": "Plain English Summary of Research: Outlines dissemination plans including journals, conferences, and engagement with policymakers to maximize benefit, supporting wp.3."
+        "implication": "Plain English Summary of Research: Outlines plans to share findings with policymakers, professional bodies, and via journals/conferences to drive next steps, supporting wp.3."
       }
     ],
     "resolved_signals": [
@@ -295,7 +285,7 @@
           "secsa__001_c"
         ],
         "bad_evidence_ids": [],
-        "implication": "Scientific Abstract: Details four work packages including systematic review, interviews, focus groups, and a co-design workshop, demonstrating methodological rigor and alignment with aims."
+        "implication": "Scientific Abstract: Details four work packages including systematic review, interviews, focus groups, and a co-design workshop using realist evaluation, supporting pr.4."
       },
       {
         "sub_id": "pr.5",
@@ -304,16 +294,15 @@
           "secsa__001_c"
         ],
         "bad_evidence_ids": [],
-        "implication": "Scientific Abstract: Explicitly links the study to urgent NHS workforce crises and outlines a toolkit for sustainable workforce planning, directly addressing patient and service impact."
+        "implication": "Scientific Abstract: Links the study to urgent NHS workforce crises and aims to produce a toolkit for sustainable workforce planning, supporting pr.5."
       },
       {
         "sub_id": "pr.6",
         "good_evidence_ids": [
-          "secsa__001_a",
           "secsa__001_c"
         ],
         "bad_evidence_ids": [],
-        "implication": "Scientific Abstract: States the aim to 'co-produce' a toolkit and includes a stakeholder workshop for co-design, confirming engagement with people and communities."
+        "implication": "Scientific Abstract: Explicitly mentions co-producing a toolkit via a stakeholder workshop and PAG collaboration, supporting pr.6."
       },
       {
         "sub_id": "wp.1",
@@ -321,7 +310,7 @@
           "secsa__001_c"
         ],
         "bad_evidence_ids": [],
-        "implication": "Scientific Abstract: Describes a stakeholder workshop to co-design an implementation toolkit, integrating lived experience into the research design."
+        "implication": "Scientific Abstract: Describes co-design of an implementation toolkit with stakeholders, reinforcing integration of lived experience (wp.1)."
       },
       {
         "sub_id": "wp.3",
@@ -329,7 +318,7 @@
           "secsa__001_c"
         ],
         "bad_evidence_ids": [],
-        "implication": "Scientific Abstract: Outlines dissemination via PAG collaboration, publications, and an open license agreement to maximize public and patient benefit."
+        "implication": "Scientific Abstract: Outlines dissemination via PAG, conferences, and publications to increase service-user awareness, supporting wp.3."
       }
     ],
     "resolved_signals": [
@@ -367,7 +356,7 @@
           "secdrp__001_k"
         ],
         "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: Critically reviews existing literature, identifying specific gaps in evidence regarding CP role implementation and impact in UEC settings, supporting pr.2."
+        "implication": "Detailed Research Plan: Critically reviews existing literature, identifying specific gaps in evidence regarding CP role implementation, impact, and evaluation in UEC settings, supporting pr.2."
       },
       {
         "sub_id": "pr.3",
@@ -377,17 +366,17 @@
           "secdrp__001_t"
         ],
         "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: Outlines a feasible four-work-package study with clear aims, sample sizes (30 interviews, 16 focus group participants), and a defined timeline, supporting pr.3."
+        "implication": "Detailed Research Plan: Outlines a feasible 4-work package study with clear aims, sample sizes (30 interviews, 16 focus group participants), and timeline milestones, supporting pr.3."
       },
       {
         "sub_id": "pr.4",
         "good_evidence_ids": [
           "secdrp__001_q",
-          "secdrp__001_r",
+          "secdrp__001_s",
           "secdrp__001_u"
         ],
         "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: Provides explicit methodological details including systematic review protocols (PRISMA, CASP), qualitative analysis (thematic, framework), and sampling strategies, supporting pr.4."
+        "implication": "Detailed Research Plan: Provides explicit methodological rigor with systematic review protocols (PRISMA, CASP), qualitative analysis (Thematic, Framework), and sampling strategies (purposive, snowball), supporting pr.4."
       },
       {
         "sub_id": "pr.5",
@@ -397,7 +386,7 @@
           "secdrp__001_y"
         ],
         "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: Clearly articulates patient and service benefits, including a co-produced toolkit to reduce variation and improve workforce planning, supporting pr.5."
+        "implication": "Detailed Research Plan: Clearly articulates impact on patients, services, and policy through a co-produced toolkit to reduce variation and improve workforce planning, supporting pr.5."
       },
       {
         "sub_id": "pr.6",
@@ -407,7 +396,7 @@
           "secdrp__001_v"
         ],
         "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: Details extensive engagement with patients and stakeholders via PAG, co-production workshops, and inclusion in data collection, supporting pr.6."
+        "implication": "Detailed Research Plan: Demonstrates strong engagement via PAG involvement in design, recruitment of service-users for focus groups, and co-production of the toolkit, supporting pr.6."
       },
       {
         "sub_id": "pr.9",
@@ -417,17 +406,54 @@
           "secdrp__001_~"
         ],
         "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: Describes purposive sampling for diverse perspectives, hybrid participation options, and translation services to ensure inclusivity, supporting pr.9."
+        "implication": "Detailed Research Plan: Details inclusive recruitment strategies (nationally representative, hybrid options, translation services) and diverse stakeholder levels (micro/meso/macro), supporting pr.9."
+      },
+      {
+        "sub_id": "td.1",
+        "good_evidence_ids": [
+          "secdrp__001_|",
+          "secdrp__001_}"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Describes a structured weekly timetable balancing clinical, training, and research activities, with specific training courses and supervisor meetings, supporting td.1."
+      },
+      {
+        "sub_id": "td.2",
+        "good_evidence_ids": [
+          "secdrp__001_|",
+          "secdrp__001_}"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Maps training activities (courses, research visits) directly to project tasks and personal development needs, supporting td.2."
+      },
+      {
+        "sub_id": "td.3",
+        "good_evidence_ids": [
+          "secdrp__001_{",
+          "secdrp__001_}"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Explicitly links the fellowship to a post-doctoral application and career trajectory, demonstrating support for long-term aspirations, supporting td.3."
+      },
+      {
+        "sub_id": "ss.2",
+        "good_evidence_ids": [
+          "secdrp__001_p",
+          "secdrp__001_q",
+          "secdrp__001_}"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Describes active supervisor support in review protocols, PAG oversight, and regular progress tracking against milestones, supporting ss.2."
       },
       {
         "sub_id": "wp.1",
         "good_evidence_ids": [
-          "secdrp__001_n",
           "secdrp__001_p",
+          "secdrp__001_r",
           "secdrp__001_v"
         ],
         "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: Explicitly integrates lived experience through co-production of the toolkit and PAG involvement in design and dissemination, supporting wp.1."
+        "implication": "Detailed Research Plan: Integrates lived experience through PAG involvement in question development and co-design of the toolkit, supporting wp.1."
       },
       {
         "sub_id": "wp.3",
@@ -437,115 +463,7 @@
           "secdrp__001_z"
         ],
         "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: Outlines a robust dissemination plan including open licensing, infographics for service-users, and engagement with policymakers to maximize benefit, supporting wp.3."
-      },
-      {
-        "sub_id": "g.1",
-        "good_evidence_ids": [
-          "secdrp__001_{",
-          "secdrp__001_|"
-        ],
-        "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: States clear career trajectory towards a post-doctoral fellowship and outlines a distinctive research direction on CP roles in UEC, supporting g.1."
-      },
-      {
-        "sub_id": "g.2",
-        "good_evidence_ids": [
-          "secdrp__001_{",
-          "secdrp__001_|"
-        ],
-        "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: Explains how the award builds on existing experience (RCEM survey, MRes) to gain new skills and secure a post-doctoral fellowship, supporting g.2."
-      },
-      {
-        "sub_id": "g.3",
-        "good_evidence_ids": [
-          "secdrp__001_p",
-          "secdrp__001_|"
-        ],
-        "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: Highlights prior experience managing projects, data protection, and PI roles, aligning with the skills required for the proposed study, supporting g.3."
-      },
-      {
-        "sub_id": "g.5",
-        "good_evidence_ids": [
-          "secdrp__001_{",
-          "secdrp__001_|"
-        ],
-        "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: Demonstrates leadership potential through project management, mentoring plans, and a clear path to influencing policy and practice, supporting g.5."
-      },
-      {
-        "sub_id": "g.6",
-        "good_evidence_ids": [
-          "secdrp__001_|",
-          "secdrp__001_{"
-        ],
-        "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: Explicitly balances clinical activity (one day/week) with research, demonstrating a commitment to a practitioner-academic career, supporting g.6."
-      },
-      {
-        "sub_id": "pr.7",
-        "good_evidence_ids": [
-          "secdrp__001_|"
-        ],
-        "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: Mentions tracking fellowship spending and project progress with auditable records, though specific budget justification is limited to general management, partially supporting pr.7."
-      },
-      {
-        "sub_id": "td.1",
-        "good_evidence_ids": [
-          "secdrp__001_|",
-          "secdrp__001_{"
-        ],
-        "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: Describes a weekly timetable including training courses and research visits, indicating a structured training plan, supporting td.1."
-      },
-      {
-        "sub_id": "td.2",
-        "good_evidence_ids": [
-          "secdrp__001_|",
-          "secdrp__001_{"
-        ],
-        "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: Links training activities (courses, visits) to project delivery and personal development, supporting td.2."
-      },
-      {
-        "sub_id": "td.3",
-        "good_evidence_ids": [
-          "secdrp__001_{",
-          "secdrp__001_|"
-        ],
-        "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: Explicitly connects the fellowship to a post-doctoral application and career advancement, supporting td.3."
-      },
-      {
-        "sub_id": "ss.2",
-        "good_evidence_ids": [
-          "secdrp__001_p",
-          "secdrp__001_|"
-        ],
-        "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: Mentions supervisor support for the systematic review and regular updates to the supervisory team, indicating mentorship arrangements, supporting ss.2."
-      },
-      {
-        "sub_id": "ss.3",
-        "good_evidence_ids": [
-          "secdrp__001_|",
-          "secdrp__001_{"
-        ],
-        "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: References collaboration with JRES, local finance managers, and PAG, suggesting organizational support structures, supporting ss.3."
-      },
-      {
-        "sub_id": "wp.5",
-        "good_evidence_ids": [
-          "secdrp__001_s",
-          "secdrp__001_t",
-          "secdrp__001_~"
-        ],
-        "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: Incorporates inclusivity across the lifecycle through diverse sampling, hybrid options, and translation services, supporting wp.5."
+        "implication": "Detailed Research Plan: Outlines comprehensive dissemination plans including conferences, publications, and infographics for service-users to maximize public benefit, supporting wp.3."
       }
     ],
     "resolved_signals": [
@@ -555,26 +473,21 @@
       "pr.5",
       "pr.6",
       "pr.9",
-      "wp.1",
-      "wp.3",
-      "g.1",
-      "g.2",
-      "g.3",
-      "g.5",
-      "g.6",
-      "pr.7",
       "td.1",
       "td.2",
       "td.3",
       "ss.2",
-      "ss.3",
-      "wp.5"
+      "wp.1",
+      "wp.3"
     ],
     "missing_signals_after": [
+      "pr.7",
       "ss.1",
+      "ss.3",
       "ss.4",
       "wp.2",
       "wp.4",
+      "wp.5",
       "wp.6"
     ]
   },
@@ -588,7 +501,7 @@
           "secppi__001_d"
         ],
         "bad_evidence_ids": [],
-        "implication": "Patient & Public Involvement: Details co-design of aims, objectives, and recruitment materials with patient groups, confirming integration of lived experience in research design."
+        "implication": "Patient & Public Involvement: Details co-design activities where patient engagement refined aims, objectives, and recruitment materials, strongly supporting integration of lived experience."
       },
       {
         "sub_id": "wp.3",
@@ -596,7 +509,7 @@
           "secppi__001_d"
         ],
         "bad_evidence_ids": [],
-        "implication": "Patient & Public Involvement: Assigns PAG a leading role in disseminating findings and driving knowledge mobilisation, directly supporting commitment to maximising public benefit."
+        "implication": "Patient & Public Involvement: Explicitly assigns PAG members a leading role in disseminating findings and driving knowledge mobilisation, supporting commitment to public benefit."
       },
       {
         "sub_id": "wp.4",
@@ -605,7 +518,7 @@
           "secppi__001_c"
         ],
         "bad_evidence_ids": [],
-        "implication": "Patient & Public Involvement: Explicitly targets diverse representation (social, ethnic) and uses NIHR EDI toolkit to ensure inclusion of seldom-heard groups in the PAG and study population."
+        "implication": "Patient & Public Involvement: Describes a socially and ethnically diverse group reflecting the local population and plans for UK-wide representation, supporting inclusion of seldom heard groups."
       },
       {
         "sub_id": "wp.5",
@@ -615,7 +528,7 @@
           "secppi__001_d"
         ],
         "bad_evidence_ids": [],
-        "implication": "Patient & Public Involvement: Outlines involvement across the full lifecycle from proposal development to data analysis and dissemination, ensuring inclusivity at all stages."
+        "implication": "Patient & Public Involvement: Outlines involvement across the full research lifecycle from proposal development to data analysis and dissemination, supporting inclusivity across stages."
       },
       {
         "sub_id": "wp.6",
@@ -623,7 +536,7 @@
           "secppi__001_d"
         ],
         "bad_evidence_ids": [],
-        "implication": "Patient & Public Involvement: Confirms funding for participation is included in the budget and outlines educational support/training for PAG members, supporting a costed inclusion plan."
+        "implication": "Patient & Public Involvement: Confirms funding for participation is included in the budget and outlines educational support for PAG members, supporting a costed inclusion plan."
       }
     ],
     "resolved_signals": [
@@ -634,7 +547,9 @@
       "wp.6"
     ],
     "missing_signals_after": [
+      "pr.7",
       "ss.1",
+      "ss.3",
       "ss.4",
       "wp.2"
     ]
@@ -649,7 +564,7 @@
           "sectdars__001_w"
         ],
         "bad_evidence_ids": [],
-        "implication": "Training & Development and Research Support: Outlines a clear career trajectory to become an expert clinical academic and aligns with the university's strategic vision, supporting g.1."
+        "implication": "Training & Development and Research Support: Outlines a bespoke programme aligned with RDF to prepare the applicant as an expert clinical academic, supported by institutional strategic vision."
       },
       {
         "sub_id": "g.2",
@@ -658,7 +573,7 @@
           "sectdars__001_e"
         ],
         "bad_evidence_ids": [],
-        "implication": "Training & Development and Research Support: Details how the award builds on existing experience (MRes, pre-doctoral bridging) to gain new skills (systematic reviews, qualitative methods) and progress to post-doctoral le"
+        "implication": "Training & Development and Research Support: Details specific training to address identified gaps (e.g., writing, qualitative analysis) and build skills for post-doctoral progression."
       },
       {
         "sub_id": "g.3",
@@ -668,27 +583,26 @@
           "sectdars__001_d"
         ],
         "bad_evidence_ids": [],
-        "implication": "Training & Development and Research Support: Lists specific formal training courses in systematic reviews, qualitative methods, and data analysis software, directly supporting g.3."
+        "implication": "Training & Development and Research Support: Lists extensive formal training in systematic reviews, qualitative methods, and data analysis software, directly relevant to the proposed study."
       },
       {
         "sub_id": "g.5",
         "good_evidence_ids": [
           "sectdars__001_a",
           "sectdars__001_d",
-          "sectdars__001_w"
+          "sectdars__001_e"
         ],
         "bad_evidence_ids": [],
-        "implication": "Training & Development and Research Support: Includes leadership training (King's Fund), mentorship development, and institutional support for future clinical academic roles, supporting g.5."
+        "implication": "Training & Development and Research Support: Includes leadership programmes (King's Fund), research visits to policy bodies, and mentorship development, supporting trajectory towards research leadership."
       },
       {
         "sub_id": "g.6",
         "good_evidence_ids": [
-          "sectdars__001_a",
           "sectdars__001_f",
-          "sectdars__001_x"
+          "sectdars__001_g"
         ],
         "bad_evidence_ids": [],
-        "implication": "Training & Development and Research Support: Explicitly plans 20% clinical practice alongside research, aiming to map skills against consultant-level roles, strongly supporting g.6."
+        "implication": "Training & Development and Research Support: Explicitly plans 20% clinical practice to map skills against consultant-level roles and maintain integration within the clinical team."
       },
       {
         "sub_id": "td.1",
@@ -698,17 +612,17 @@
           "sectdars__001_d"
         ],
         "bad_evidence_ids": [],
-        "implication": "Training & Development and Research Support: Provides a comprehensive, year-by-year training plan with specific courses and providers, supporting td.1."
+        "implication": "Training & Development and Research Support: Provides a comprehensive, year-by-year training plan with specific courses, durations, and providers aligned with research methods."
       },
       {
         "sub_id": "td.2",
         "good_evidence_ids": [
-          "sectdars__001_a",
           "sectdars__001_c",
+          "sectdars__001_d",
           "sectdars__001_e"
         ],
         "bad_evidence_ids": [],
-        "implication": "Training & Development and Research Support: Identifies specific skill gaps (e.g., reflexivity, NVivo, scientific writing) and maps targeted training to address them, supporting td.2."
+        "implication": "Training & Development and Research Support: Identifies specific skill gaps (e.g., reflexivity, NVivo, scientific writing) and maps targeted training to address them."
       },
       {
         "sub_id": "td.3",
@@ -717,17 +631,16 @@
           "sectdars__001_w"
         ],
         "bad_evidence_ids": [],
-        "implication": "Training & Development and Research Support: Connects training to long-term career goals of becoming a clinical academic and securing post-doctoral fellowships, supporting td.3."
+        "implication": "Training & Development and Research Support: Links training to long-term career goals of becoming an expert clinical academic and securing post-doctoral fellowships."
       },
       {
         "sub_id": "ss.1",
         "good_evidence_ids": [
-          "sectdars__001_s",
           "sectdars__001_t",
           "sectdars__001_u"
         ],
         "bad_evidence_ids": [],
-        "implication": "Training & Development and Research Support: Highlights the host's strong track record with REF 4* ratings, significant funding (£15.6m), and successful fellowship history, supporting ss.1."
+        "implication": "Training & Development and Research Support: Highlights the host's strong track record with £15.6m funding, 4* research outputs, and successful NIHR fellowships."
       },
       {
         "sub_id": "ss.2",
@@ -737,7 +650,7 @@
           "sectdars__001_i"
         ],
         "bad_evidence_ids": [],
-        "implication": "Training & Development and Research Support: Details a robust supervisory team with specific expertise in mixed methods, health policy, and advanced practice, including monthly meetings, supporting ss.2."
+        "implication": "Training & Development and Research Support: Describes a robust supervisory team with specific expertise in health systems, emergency care, and advanced practice, including monthly joint meetings."
       },
       {
         "sub_id": "ss.3",
@@ -747,16 +660,16 @@
           "sectdars__001_w"
         ],
         "bad_evidence_ids": [],
-        "implication": "Training & Development and Research Support: Describes institutional infrastructure (TACRI, CHIR), protected time, and a pathway for future clinical academic posts, supporting ss.3."
+        "implication": "Training & Development and Research Support: Details institutional support including protected time, research forums, TACRI access, and a pathway for future clinical academic roles."
       },
       {
         "sub_id": "ss.4",
         "good_evidence_ids": [
-          "sectdars__001_r",
+          "sectdars__001_s",
           "sectdars__001_v"
         ],
         "bad_evidence_ids": [],
-        "implication": "Training & Development and Research Support: Cites Athena Swan Silver Award, Stonewall Diversity Champion status, and commitment to VITAE Concordat, supporting ss.4."
+        "implication": "Training & Development and Research Support: Confirms commitment to EDI through Athena Swan Silver Award, Stonewall Diversity Champion status, and adherence to VITAE Concordat."
       },
       {
         "sub_id": "wp.1",
@@ -765,16 +678,7 @@
           "sectdars__001_d"
         ],
         "bad_evidence_ids": [],
-        "implication": "Training & Development and Research Support: Includes specific training in PPIE and co-production to embed public involvement throughout the research cycle, supporting wp.1."
-      },
-      {
-        "sub_id": "wp.3",
-        "good_evidence_ids": [
-          "sectdars__001_d",
-          "sectdars__001_e"
-        ],
-        "bad_evidence_ids": [],
-        "implication": "Training & Development and Research Support: Plans training in knowledge mobilisation and engaging policymakers to ensure impactful dissemination, supporting wp.3."
+        "implication": "Training & Development and Research Support: Includes specific training in PPIE and co-production to ensure public involvement is embedded throughout the research cycle."
       }
     ],
     "resolved_signals": [
@@ -790,10 +694,10 @@
       "ss.2",
       "ss.3",
       "ss.4",
-      "wp.1",
-      "wp.3"
+      "wp.1"
     ],
     "missing_signals_after": [
+      "pr.7",
       "wp.2"
     ]
   },
@@ -808,7 +712,7 @@
           "secsb__001_c"
         ],
         "bad_evidence_ids": [],
-        "implication": "SUMMARY BUDGET: Provides detailed justification for salary, training, and PPIE costs, explicitly linking them to project needs and NIHR guidance, strongly supporting pr.7."
+        "implication": "SUMMARY BUDGET: Provides detailed justification for salary, training, and equipment costs, explicitly linking them to project tasks and learning needs, strongly supporting pr.7."
       },
       {
         "sub_id": "wp.6",
@@ -818,7 +722,7 @@
           "secsb__001_n"
         ],
         "bad_evidence_ids": [],
-        "implication": "SUMMARY BUDGET: Includes specific budget lines for PAG meetings, vouchers, training, and interpretation services, confirming a fully costed plan for research inclusion, supporting wp.6."
+        "implication": "SUMMARY BUDGET: Includes specific budget lines for PAG meetings, vouchers, training, and interpretation services, confirming a fully costed plan for research inclusion (wp.6)."
       },
       {
         "sub_id": "pr.9",
@@ -828,7 +732,7 @@
           "secsb__001_p"
         ],
         "bad_evidence_ids": [],
-        "implication": "SUMMARY BUDGET: Allocates funds for printing materials in differing languages and interpretation services for PAG and focus groups, demonstrating concrete financial commitment to accessibility and inclusivity, supporting"
+        "implication": "SUMMARY BUDGET: Allocates funds for translation services, interpretation, and accessible materials (e.g., differing languages), demonstrating concrete financial commitment to inclusive design (pr.9)."
       },
       {
         "sub_id": "td.1",
@@ -838,17 +742,17 @@
           "secsb__001_t"
         ],
         "bad_evidence_ids": [],
-        "implication": "SUMMARY BUDGET: Details specific costs for systematic review, qualitative methods, and NVivo courses, providing concrete evidence of a structured and relevant training plan, supporting td.1."
+        "implication": "SUMMARY BUDGET: Lists specific, costed training courses (e.g., systematic reviews, qualitative methods, NVivo) aligned with project methods, supporting the quality and relevance of the training plan (td.1)."
       },
       {
         "sub_id": "td.2",
         "good_evidence_ids": [
-          "secsb__001_s",
           "secsb__001_u",
-          "secsb__001_v"
+          "secsb__001_v",
+          "secsb__001_w"
         ],
         "bad_evidence_ids": [],
-        "implication": "SUMMARY BUDGET: Justifies training costs by explicitly addressing identified skill gaps in reflexivity, data analysis, and focus group facilitation, demonstrating targeted suitability to project needs, supporting td.2."
+        "implication": "SUMMARY BUDGET: Justifies training costs by addressing specific skill gaps (e.g., reflexivity, data analysis) and mapping them to project tasks, supporting suitability to personal development needs (td.2)."
       },
       {
         "sub_id": "td.3",
@@ -858,7 +762,7 @@
           "secsb__001_z"
         ],
         "bad_evidence_ids": [],
-        "implication": "SUMMARY BUDGET: Includes funding for leadership development (King's Fund) and knowledge mobilisation courses, linking training directly to career aspirations and future research leadership, supporting td.3."
+        "implication": "SUMMARY BUDGET: Includes funding for leadership courses (King's Fund) and knowledge mobilisation training, linking development activities to long-term career aspirations (td.3)."
       }
     ],
     "resolved_signals": [
@@ -890,7 +794,7 @@
           "secpena__001"
         ],
         "bad_evidence_ids": [],
-        "implication": "Plain English NLP Analysis: NLP metrics show high readability (Flesch-Kincaid 5.41, Reading Ease 73.12), low jargon density (2.52%), and coverage of key elements (problem, objectives, methods, beneficiaries, impact), str"
+        "implication": "Plain English NLP Analysis: NLP metrics show high readability (Flesch-Kincaid 5.41, Reading Ease 73.12), low jargon density (2.52%), and coverage of key summary elements (problem, objectives, methods, beneficiaries, impa"
       }
     ],
     "resolved_signals": [
@@ -902,55 +806,8 @@
   },
   {
     "section_name": "Application Form Analysis",
-    "findings": [
-      {
-        "sub_id": "pr.1",
-        "good_evidence_ids": [
-          "secafa__001"
-        ],
-        "bad_evidence_ids": [],
-        "implication": "Application Form Analysis: Confirms presence of Plain English Summary and NLP analysis sections, indicating structural compliance for readability and content checks."
-      },
-      {
-        "sub_id": "pr.7",
-        "good_evidence_ids": [
-          "secafa__001"
-        ],
-        "bad_evidence_ids": [],
-        "implication": "Application Form Analysis: Identifies a detailed SUMMARY BUDGET section with 267 table-like lines, suggesting comprehensive resource justification is present."
-      },
-      {
-        "sub_id": "td.1",
-        "good_evidence_ids": [
-          "secafa__001"
-        ],
-        "bad_evidence_ids": [],
-        "implication": "Application Form Analysis: Confirms a dedicated 'Training & Development and Research Support' section with substantial word count, indicating a detailed training plan exists."
-      },
-      {
-        "sub_id": "wp.1",
-        "good_evidence_ids": [
-          "secafa__001"
-        ],
-        "bad_evidence_ids": [],
-        "implication": "Application Form Analysis: Confirms a dedicated 'Patient & Public Involvement' section, indicating specific engagement strategies are documented."
-      },
-      {
-        "sub_id": "pr.2",
-        "good_evidence_ids": [
-          "secafa__001"
-        ],
-        "bad_evidence_ids": [],
-        "implication": "Application Form Analysis: Confirms a 'Detailed Research Plan' section with high word count, suggesting space for evidence review and methodological detail."
-      }
-    ],
-    "resolved_signals": [
-      "pr.1",
-      "pr.7",
-      "td.1",
-      "wp.1",
-      "pr.2"
-    ],
+    "findings": [],
+    "resolved_signals": [],
     "missing_signals_after": [
       "wp.2"
     ]

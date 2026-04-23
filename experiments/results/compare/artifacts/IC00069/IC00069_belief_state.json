@@ -18,7 +18,7 @@
       "bad_evidence_ids": [],
       "implications": [
         "Applicant CV: Lists BSc Pharmacy and roles as Research Assistant/Clinical Coordinator, demonstrating relevant research experience and training.",
-        "Applicant Research Background: Details specific mixed methods training (dissertation, statistics module) and extensive experience in qualitative/quantitative data collection and analysis."
+        "Applicant Research Background: Details extensive experience in qualitative, quantitative, and mixed methods, including specific techniques like thematic analysis and regression models."
       ]
     },
     "g.4": {
@@ -30,19 +30,20 @@
       "bad_evidence_ids": [],
       "implications": [
         "Applicant CV: Lists two peer-reviewed publications in Movement Disorders and Journal of Parkinson's Disease, supporting impactful research outputs.",
-        "Applicant Research Background: Mentions securing small grants (£500, £700) and leading community engagement activities, demonstrating practical research outputs and impact."
+        "Applicant Research Background: Mentions securing grants (£500, £700) and leading community engagement activities impacting over 2,000 people, demonstrating practical impact."
       ]
     },
     "g.5": {
       "good_evidence_ids": [
         "secac__001_a",
         "secarb__001_b",
+        "secarb__001_c",
         "secarb__001_d"
       ],
       "bad_evidence_ids": [],
       "implications": [
-        "Applicant CV: Shows progression from Research Assistant to Clinical Coordinator with increasing responsibility, indicating trajectory towards leadership.",
-        "Applicant Research Background: Shows increasing responsibility from volunteer to lead community researcher and Clinical Coordinator, including managing grants and PPIE."
+        "Applicant CV: Shows progression from Research Assistant to Clinical Coordinator, indicating increasing responsibility in research roles.",
+        "Applicant Research Background: Shows increasing responsibility from volunteer to Research Assistant, then Clinical Coordinator, including leading projects and managing data registers."
       ]
     },
     "g.6": {
@@ -53,18 +54,20 @@
       ],
       "bad_evidence_ids": [],
       "implications": [
-        "Applicant CV: Includes a role as Clinical Coordinator at Barts Health NHS Trust, providing evidence of involvement in clinical practice-based research.",
+        "Applicant CV: Includes a role as Clinical Coordinator at Barts Health NHS Trust, demonstrating involvement in clinical practice alongside research.",
         "Applicant Research Background: Highlights role as Clinical Coordinator at Barts Health NHS Trust and commitment to research benefiting patients and carers."
       ]
     },
     "g.1": {
       "good_evidence_ids": [
         "secarb__001_f",
-        "secarb__001_g"
+        "secarb__001_g",
+        "secafa__001"
       ],
       "bad_evidence_ids": [],
       "implications": [
-        "Applicant Research Background: Clearly states a career vision to become a mixed methods researcher and outlines a trajectory from Pre-doctoral to Doctoral Fellowship."
+        "Applicant Research Background: Clearly states a career vision to become a mixed methods researcher and outlines a trajectory from Pre-doctoral to Doctoral Fellowship.",
+        "Application Form Analysis: Low duplicate sentence rate (0.007) and clear section hierarchy indicate a well-structured application with a clear research vision, supporting g.1."
       ]
     },
     "g.2": {
@@ -81,11 +84,11 @@
       "good_evidence_ids": [
         "secarb__001_b",
         "secarb__001_c",
-        "secarb__001_f"
+        "secarb__001_d"
       ],
       "bad_evidence_ids": [],
       "implications": [
-        "Applicant Research Background: Demonstrates strong focus on underserved groups (British Bangladeshi, East London) through targeted recruitment and culturally appropriate interventions."
+        "Applicant Research Background: Demonstrates strong focus on underserved groups, specifically British Bangladeshi communities and under-represented Parkinson's patients in East London."
       ]
     },
     "wp.5": {
@@ -95,29 +98,27 @@
       ],
       "bad_evidence_ids": [],
       "implications": [
-        "Applicant Research Background: Describes co-developing protocols with community members and organizing PPIE to ensure research aligns with participant priorities."
+        "Applicant Research Background: Describes co-developing culturally appropriate protocols and organizing PPIE to ensure research aligns with community priorities."
       ]
     },
     "td.1": {
       "good_evidence_ids": [
         "sectdars__001_a",
-        "sectdars__001_b",
-        "secafa__001"
+        "sectdars__001_b"
       ],
       "bad_evidence_ids": [],
       "implications": [
-        "Training & Development and Research Support: Detailed MSc curriculum and specific short courses (Oxford, Imperial, NIHR) provide a complete, structured training plan aligned with mixed methods research.",
-        "Application Form Analysis: Identifies a dedicated 'Training & Development and Research Support' section with 3594 words, indicating a substantial and detailed training plan."
+        "Training & Development and Research Support: Detailed MSc curriculum and additional courses in mixed methods and PPIE provide a complete, clear training description aligned with project needs."
       ]
     },
     "td.2": {
       "good_evidence_ids": [
         "sectdars__001_b",
-        "sectdars__001_e"
+        "sectdars__001_c"
       ],
       "bad_evidence_ids": [],
       "implications": [
-        "Training & Development and Research Support: Training is explicitly targeted to address gaps in methodological theory and PPIE, directly mapping to the proposed research stages and tasks."
+        "Training & Development and Research Support: Training is explicitly targeted to address gaps in mixed methods theory and participatory approaches required for the proposed JLA PSP study."
       ]
     },
     "td.3": {
@@ -127,20 +128,18 @@
       ],
       "bad_evidence_ids": [],
       "implications": [
-        "Training & Development and Research Support: Clear career trajectory outlined with specific milestones for NIHR Doctoral Fellowship application, supported by supervisor guidance on career development."
+        "Training & Development and Research Support: Training plan explicitly links MSc and fellowship to preparing for an NIHR Doctoral Fellowship, demonstrating clear career trajectory support."
       ]
     },
     "ss.2": {
       "good_evidence_ids": [
         "sectdars__001_g",
         "sectdars__001_j",
-        "sectdars__001_l",
-        "secafa__001"
+        "sectdars__001_l"
       ],
       "bad_evidence_ids": [],
       "implications": [
-        "Training & Development and Research Support: Three supervisors with specific expertise in mixed methods, neurology, and qualitative research are identified with defined meeting schedules and supervision histories.",
-        "Application Form Analysis: The presence of a 'Training & Development and Research Support' section suggests the location for supervisory and mentorship details."
+        "Training & Development and Research Support: Supervisors have extensive experience in mixed methods and Parkinson's research, with defined meeting schedules and specific roles for qualitative and quantitative support."
       ]
     },
     "ss.3": {
@@ -151,7 +150,7 @@
       ],
       "bad_evidence_ids": [],
       "implications": [
-        "Training & Development and Research Support: Host organisation provides robust infrastructure including ECR groups, seminar series, and access to Centre for Preventive Neurology resources."
+        "Training & Development and Research Support: Host organisation provides a rich research environment with specific training groups, seminars, and a track record of supporting pre-doctoral fellowships."
       ]
     },
     "ss.4": {
@@ -161,7 +160,7 @@
       ],
       "bad_evidence_ids": [],
       "implications": [
-        "Training & Development and Research Support: Strong commitment to EDI evidenced by Athena Swan Gold Award, inclusive research culture, and specific focus on diverse populations in CPN work."
+        "Training & Development and Research Support: Strong commitment to EDI evidenced by Athena Swan Gold Award, inclusive research focus, and specific initiatives for diverse populations."
       ]
     },
     "pr.4": {
@@ -172,21 +171,19 @@
       ],
       "bad_evidence_ids": [],
       "implications": [
-        "Training & Development and Research Support: Research design is rigorously detailed with six distinct stages, explicit mixed methods sequencing, and validation steps.",
-        "Application Form Analysis: Notes 'research plan' section presence and high count of objective-method-budget link terms, suggesting structured methodological alignment."
+        "Training & Development and Research Support: Research design is rigorously detailed with six specific stages, including mixed methods validation and consensus workshops.",
+        "Application Form Analysis: High count of objective-method-budget link terms (76) suggests strong logical alignment between aims and methods, supporting pr.4."
       ]
     },
     "pr.6": {
       "good_evidence_ids": [
         "sectdars__001_c",
         "sectdars__001_d",
-        "sectdars__001_e",
-        "secafa__001"
+        "sectdars__001_e"
       ],
       "bad_evidence_ids": [],
       "implications": [
-        "Training & Development and Research Support: Extensive engagement plan using JLA PSP methods, involving diverse stakeholders in steering groups, surveys, and consensus workshops.",
-        "Application Form Analysis: Explicitly lists 'PPI' in the section order, confirming the structural inclusion of engagement with people and communities."
+        "Training & Development and Research Support: Extensive engagement planned via JLA PSP methods, including a diverse steering group, surveys, and a consensus workshop co-facilitated by a PPIE expert."
       ]
     },
     "pr.9": {
@@ -196,7 +193,7 @@
       ],
       "bad_evidence_ids": [],
       "implications": [
-        "Training & Development and Research Support: Explicit strategy to address under-representation of ethnic minorities in Parkinson's research through targeted recruitment and international collaboration."
+        "Training & Development and Research Support: Explicit strategy to capture voices of ethnically diverse groups and under-served communities in East London and Bangladesh."
       ]
     },
     "wp.1": {
@@ -206,7 +203,7 @@
       ],
       "bad_evidence_ids": [],
       "implications": [
-        "Training & Development and Research Support: Research design integrates lived experience via James Lind Alliance Priority Setting Partnership methods and co-facilitated workshops."
+        "Training & Development and Research Support: Research design integrates lived experience through the James Lind Alliance Priority Setting Partnership methodology and stakeholder workshops."
       ]
     },
     "wp.3": {
@@ -216,19 +213,20 @@
       ],
       "bad_evidence_ids": [],
       "implications": [
-        "Training & Development and Research Support: Clear dissemination plan including international conferences and promotion of 'Top 10' priorities to influence future research agendas."
+        "Training & Development and Research Support: Clear dissemination plan includes international conferences and promoting the 'Top 10' priorities to influence future research."
       ]
     },
     "pr.7": {
       "good_evidence_ids": [
         "secsb__001_b",
         "secsb__001_c",
+        "secsb__001_d",
         "secafa__001"
       ],
       "bad_evidence_ids": [],
       "implications": [
-        "SUMMARY BUDGET: Provides detailed cost breakdowns for training, supervision, and PPIE with specific justifications (e.g., course fees, accommodation rates), supporting resource justification.",
-        "Application Form Analysis: Identifies 'SUMMARY BUDGET' with 35 table-like lines and 76 objective-method-budget link terms, providing strong structural evidence for resource justification."
+        "SUMMARY BUDGET: Provides detailed cost breakdowns for training, PPIE, and conferences with specific justifications, supporting pr.7.",
+        "Application Form Analysis: Identifies 35 table-like budget lines and 76 objective-method-budget link terms, providing strong structural evidence for resource justification (pr.7)."
       ]
     },
     "wp.6": {
@@ -237,7 +235,7 @@
       ],
       "bad_evidence_ids": [],
       "implications": [
-        "SUMMARY BUDGET: Explicitly budgets £1000 for PPIE member reimbursement (time, travel, refreshments) across research stages, demonstrating a costed plan for inclusion."
+        "SUMMARY BUDGET: Explicitly budgets £1000 for PPIE member reimbursement, travel, and refreshments, supporting wp.6."
       ]
     },
     "pr.1": {

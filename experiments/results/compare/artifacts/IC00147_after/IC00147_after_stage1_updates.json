@@ -9,7 +9,7 @@
           "secac__001_a"
         ],
         "bad_evidence_ids": [],
-        "implication": "Applicant CV: Lists formal training (PGCert Clinical Research, statistics courses) and prior research roles (Research Assistant, Pre-Doctoral Fellow), supporting relevant experience and training."
+        "implication": "Applicant CV: Lists formal training (PGCert Clinical Research, statistics courses) and prior research roles (Research Assistant, Pre-Doctoral Fellow) involving literature reviews and surveys, supporting relevant experien"
       },
       {
         "sub_id": "g.4",
@@ -19,7 +19,7 @@
           "secac__001_f"
         ],
         "bad_evidence_ids": [],
-        "implication": "Applicant CV: Lists multiple peer-reviewed publications in journals like Nutrients and Clinical Nutrition, plus travel grants for presentations, demonstrating impactful research outputs."
+        "implication": "Applicant CV: Lists multiple peer-reviewed publications in journals like Nutrients and Clinical Nutrition, plus travel grants for conference presentations, demonstrating impactful research outputs."
       },
       {
         "sub_id": "g.5",
@@ -28,7 +28,7 @@
           "secac__001_h"
         ],
         "bad_evidence_ids": [],
-        "implication": "Applicant CV: Shows increasing responsibility (Senior Specialist, Advisory Board roles) and leadership training (RYLA), indicating a trajectory towards research leadership."
+        "implication": "Applicant CV: Shows increasing responsibility through roles like 'Dietetic Representative' and 'Convener', plus leadership awards (RYLA), indicating a trajectory towards research leadership."
       },
       {
         "sub_id": "g.6",
@@ -37,7 +37,7 @@
           "secac__001_c"
         ],
         "bad_evidence_ids": [],
-        "implication": "Applicant CV: Demonstrates a practitioner-academic career through concurrent clinical roles (Dietitian) and research fellowships (HEE/NIHR Pre-Doctoral), balancing practice and research."
+        "implication": "Applicant CV: Demonstrates a practitioner-academic career with concurrent clinical roles (Senior Specialist Dietitian) and research activities (Pre-Doctoral Fellow, leading surveys), balancing practice and research."
       },
       {
         "sub_id": "pr.8",
@@ -46,7 +46,7 @@
           "secac__001_d"
         ],
         "bad_evidence_ids": [],
-        "implication": "Applicant CV: Evidence of prior successful projects (literature reviews, national surveys) and relevant publications supports the quality of previous research."
+        "implication": "Applicant CV: Provides evidence of prior successful projects (HEE/NIHR Pre-doctoral Fellowship) and relevant publications in the field of metabolic diseases, supporting quality of previous research."
       }
     ],
     "resolved_signals": [
@@ -92,7 +92,7 @@
           "secarb__001_h"
         ],
         "bad_evidence_ids": [],
-        "implication": "Applicant Research Background: Explicitly states aspiration to become a clinical academic and research leader, with a clear trajectory from PCAF to PhD, supporting a clear research vision."
+        "implication": "Applicant Research Background: Explicitly states aspiration to become a clinical academic and research leader, with a clear trajectory from PCAF to PhD, addressing career vision."
       },
       {
         "sub_id": "g.2",
@@ -101,7 +101,7 @@
           "secarb__001_h"
         ],
         "bad_evidence_ids": [],
-        "implication": "Applicant Research Background: Identifies a specific gap in adult PKU dietary management and explains how the award will enable the applicant to fill this gap and gain new qualitative skills."
+        "implication": "Applicant Research Background: Identifies a specific evidence gap in adult PKU management and explains how the award will enable the applicant to fill this gap and gain new skills."
       },
       {
         "sub_id": "g.3",
@@ -111,7 +111,7 @@
           "secarb__001_j"
         ],
         "bad_evidence_ids": [],
-        "implication": "Applicant Research Background: Details extensive prior experience in research design, data analysis, and systematic reviews, plus specific training in Cochrane methods and SPSS, strongly supporting relevant experience."
+        "implication": "Applicant Research Background: Details extensive prior experience in research design, data analysis, and systematic reviews, plus specific training in qualitative methods to address previous feedback."
       },
       {
         "sub_id": "g.4",
@@ -121,7 +121,7 @@
           "secarb__001_d"
         ],
         "bad_evidence_ids": [],
-        "implication": "Applicant Research Background: Lists 10 full publications, 14 conference abstracts, and citations in consensus papers, demonstrating high-quality and impactful research outputs."
+        "implication": "Applicant Research Background: Lists 10 full publications, 14 abstracts, and citations in consensus papers, demonstrating high-quality and impactful research outputs."
       },
       {
         "sub_id": "g.5",
@@ -131,7 +131,7 @@
           "secarb__001_f"
         ],
         "bad_evidence_ids": [],
-        "implication": "Applicant Research Background: Shows increasing responsibility as Lead Senior Specialist, developing services, supervising junior staff, and leading international guidelines, indicating a strong trajectory towards leader"
+        "implication": "Applicant Research Background: Shows increasing responsibility as Lead Senior Specialist Dietitian, developing services, mentoring junior staff, and leading national/international guidelines."
       },
       {
         "sub_id": "g.6",
@@ -141,7 +141,7 @@
           "secarb__001_f"
         ],
         "bad_evidence_ids": [],
-        "implication": "Applicant Research Background: Explicitly states aspiration to be a clinical academic, balances clinical leadership with research, and engages in professional networks, confirming commitment to a practitioner-academic ca"
+        "implication": "Applicant Research Background: Demonstrates a strong practitioner-academic career by balancing clinical leadership (managing 1000+ patients) with research outputs and teaching roles."
       },
       {
         "sub_id": "pr.8",
@@ -151,7 +151,7 @@
           "secarb__001_g"
         ],
         "bad_evidence_ids": [],
-        "implication": "Applicant Research Background: Demonstrates high quality of previous research through successful PCAF, peer-reviewed publications, and positive reviewer feedback on prior applications."
+        "implication": "Applicant Research Background: Provides evidence of prior successful projects (PCAF, multi-centre trials) and high-quality publications, confirming the quality of previous research."
       },
       {
         "sub_id": "wp.1",
@@ -160,7 +160,7 @@
           "secarb__001_h"
         ],
         "bad_evidence_ids": [],
-        "implication": "Applicant Research Background: Describes establishing a PPIE group that was pivotal in developing the proposal and increasing PPIE members in the Advisory Group based on feedback, showing integration of lived experience."
+        "implication": "Applicant Research Background: Describes establishing a PPIE group that was pivotal in developing the doctoral proposal and increasing PPIE members in the Advisory Group based on feedback."
       }
     ],
     "resolved_signals": [
@@ -207,7 +207,7 @@
           "secpesor__001_c"
         ],
         "bad_evidence_ids": [],
-        "implication": "Plain English Summary of Research: Clearly explains the problem (PKU protein needs), objectives (two studies), methods (DXA, accelerometers, blood tests), and beneficiaries (adults with PKU, clinicians) in accessible lan"
+        "implication": "Plain English Summary of Research: The summary clearly defines the problem (PKU muscle health), objectives (two studies), methods (DXA, accelerometers, diet records), and beneficiaries (adults with PKU, clinicians), usin"
       },
       {
         "sub_id": "pr.2",
@@ -215,7 +215,7 @@
           "secpesor__001_a"
         ],
         "bad_evidence_ids": [],
-        "implication": "Plain English Summary of Research: Identifies a specific knowledge gap regarding the ideal protein amount for adults with PKU and the potential risks of too little or too much protein."
+        "implication": "Plain English Summary of Research: Identifies a specific knowledge gap: 'For adults with PKU, we do not know the ideal amount of protein needed each day,' justifying the proposed research."
       },
       {
         "sub_id": "pr.3",
@@ -224,7 +224,7 @@
           "secpesor__001_c"
         ],
         "bad_evidence_ids": [],
-        "implication": "Plain English Summary of Research: Describes a feasible two-stage study design with specific timelines (4 days, 1 week, 12 weeks) and manageable tasks (diaries, scans, blood tests)."
+        "implication": "Plain English Summary of Research: Describes a feasible scope with defined timelines (4-day records, 1-week wear, 12-week intervention) and specific tasks, aligning with award expectations."
       },
       {
         "sub_id": "pr.4",
@@ -233,7 +233,7 @@
           "secpesor__001_c"
         ],
         "bad_evidence_ids": [],
-        "implication": "Plain English Summary of Research: Explicitly details methods including DXA scans, bioelectrical impedance, skinfold calipers, blood tests, and a randomized intervention (normal vs. increased protein) with exercise advic"
+        "implication": "Plain English Summary of Research: Details rigorous methods including DXA scans, bioelectrical impedance, skinfold calipers, blood tests, and a randomized intervention design with control and intervention groups."
       },
       {
         "sub_id": "pr.5",
@@ -241,7 +241,7 @@
           "secpesor__001_c"
         ],
         "bad_evidence_ids": [],
-        "implication": "Plain English Summary of Research: States clear impact goals: designing larger studies, guiding doctors/dietitians, and ensuring adults with PKU maintain good health as they age."
+        "implication": "Plain English Summary of Research: Explicitly states impact: results will guide Doctors and Dietitians to ensure adults with PKU maintain good health as they age and inform future larger studies."
       },
       {
         "sub_id": "pr.6",
@@ -249,7 +249,7 @@
           "secpesor__001_c"
         ],
         "bad_evidence_ids": [],
-        "implication": "Plain English Summary of Research: Confirms patient involvement in study design, information leaflets, questionnaires, and result sharing, plus plans for participant feedback."
+        "implication": "Plain English Summary of Research: Highlights patient involvement in study design, information leaflets, questionnaires, and result sharing, plus feedback mechanisms for participants and dietitians."
       },
       {
         "sub_id": "wp.1",
@@ -257,7 +257,7 @@
           "secpesor__001_c"
         ],
         "bad_evidence_ids": [],
-        "implication": "Plain English Summary of Research: Reaffirms integration of lived experience through involvement in study design, leaflets, and questionnaires, consistent with prior PPIE engagement."
+        "implication": "Plain English Summary of Research: Confirms integration of lived experience: 'People with PKU have been involved in the study design and will continue to help with patient information leaflets, questionnaires, and sharin"
       }
     ],
     "resolved_signals": [
@@ -295,7 +295,7 @@
           "secsa__001_a"
         ],
         "bad_evidence_ids": [],
-        "implication": "Scientific Abstract: Identifies a specific knowledge gap regarding optimal protein intake for adults with PKU, noting current guidelines are extrapolated and IAAO requirements may be 55% higher."
+        "implication": "Scientific Abstract: Identifies a clear knowledge gap regarding optimal protein intake for adults with PKU, noting limitations in current guidelines extrapolated from healthy populations."
       },
       {
         "sub_id": "pr.3",
@@ -305,7 +305,7 @@
           "secsa__001_c"
         ],
         "bad_evidence_ids": [],
-        "implication": "Scientific Abstract: Describes a feasible two-stage design (observational n=50, feasibility RCT n=24) with specific timelines (12 weeks) and clear tasks, supporting research scope and award appropriateness."
+        "implication": "Scientific Abstract: Outlines a feasible scope with two distinct studies (observational n=50, feasibility RCT n=24) and specific timelines (12-week intervention), aligning with award expectations."
       },
       {
         "sub_id": "pr.4",
@@ -314,7 +314,7 @@
           "secsa__001_c"
         ],
         "bad_evidence_ids": [],
-        "implication": "Scientific Abstract: Details rigorous methods including gold-standard assessments (DXA, dynamometry), randomization, specific protein dosages (0.83 vs 1.2g/kg), and adherence monitoring."
+        "implication": "Scientific Abstract: Details rigorous methods including gold-standard assessments (DXA, isokinetic dynamometry) and a randomised control trial design comparing NB vs IAAO protein requirements."
       },
       {
         "sub_id": "pr.5",
@@ -323,7 +323,7 @@
           "secsa__001_c"
         ],
         "bad_evidence_ids": [],
-        "implication": "Scientific Abstract: Highlights patient benefits by addressing muscle mass compromise and reducing the burden of excessive protein substitutes, aiming to develop evidence-based dietary guidelines."
+        "implication": "Scientific Abstract: Explicitly states impact on developing evidence-based dietary guidelines and improving muscle mass/function, addressing patient burden from excessive protein substitutes."
       },
       {
         "sub_id": "pr.6",
@@ -369,17 +369,17 @@
           "secdrp__001_f"
         ],
         "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: Critically analyzes existing evidence, citing a scoping review that identifies a significant gap in adult-specific protein status data and highlights limitations of current NB-based guidelines ver"
+        "implication": "Detailed Research Plan: Critically analyzes existing evidence, identifying a significant gap in adult-specific protein requirements and muscle function data, justifying the proposed research."
       },
       {
         "sub_id": "pr.3",
         "good_evidence_ids": [
           "secdrp__001_g",
           "secdrp__001_h",
-          "secdrp__001_p"
+          "secdrp__001_u"
         ],
         "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: Outlines a feasible two-stage design (observational n=50, feasibility RCT n=24) with specific timelines (18 months, 12 weeks) and clear objectives, aligning well with award expectations."
+        "implication": "Detailed Research Plan: Outlines a feasible scope with two distinct studies (observational n=50, feasibility RCT n=24) and specific timelines (12-week intervention), aligning with award expectations."
       },
       {
         "sub_id": "pr.4",
@@ -389,7 +389,7 @@
           "secdrp__001_n"
         ],
         "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: Provides explicit, rigorous methodological descriptions including gold-standard measures (DXA, isokinetic dynamometry), validated questionnaires (PKU-QoL, IPAQ-SF), and a detailed statistical anal"
+        "implication": "Detailed Research Plan: Details rigorous methods including gold-standard assessments (DXA, isokinetic dynamometry, force plates) and a randomised control trial design comparing NB vs IAAO protein requirements."
       },
       {
         "sub_id": "pr.5",
@@ -399,17 +399,17 @@
           "secdrp__001_y"
         ],
         "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: Clearly articulates patient benefits (reducing supplement burden, improving muscle function) and health service impact (informing UK/European guidelines, establishing new care pathways)."
+        "implication": "Detailed Research Plan: Explicitly states impact on developing evidence-based dietary guidelines, improving muscle mass/function, and reducing patient burden from excessive protein substitutes."
       },
       {
         "sub_id": "pr.6",
         "good_evidence_ids": [
-          "secdrp__001_c",
           "secdrp__001_i",
+          "secdrp__001_m",
           "secdrp__001_t"
         ],
         "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: Demonstrates deep engagement with PPIE at multiple stages, including study design, recruitment strategies (virtual appointments), intervention acceptability assessments, and dissemination planning"
+        "implication": "Detailed Research Plan: Highlights patient involvement in study design (PPIE group), information leaflets, and semi-structured interviews to evaluate intervention acceptability."
       },
       {
         "sub_id": "pr.9",
@@ -418,17 +418,17 @@
           "secdrp__001_n"
         ],
         "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: Includes specific strategies for inclusive recruitment such as virtual appointments to overcome geographical barriers, travel reimbursement, and collecting demographic data to ensure cohort repres"
+        "implication": "Detailed Research Plan: Describes inclusive strategies such as virtual appointments, travel reimbursement, and collecting demographic data to ensure the cohort represents the wider PKU population."
       },
       {
         "sub_id": "wp.1",
         "good_evidence_ids": [
           "secdrp__001_c",
           "secdrp__001_i",
-          "secdrp__001_s"
+          "secdrp__001_m"
         ],
         "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: Shows integration of lived experience in design choices (virtual appointments, exercise program inclusion) and ongoing involvement in the Project Advisory Group and dissemination."
+        "implication": "Detailed Research Plan: Demonstrates integration of lived experience via a PPIE group that identified key concerns, influenced recruitment methods (virtual appointments), and validated assessment feasibility."
       },
       {
         "sub_id": "wp.3",
@@ -437,7 +437,7 @@
           "secdrp__001_x"
         ],
         "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: Details a robust dissemination plan involving patient charities (NSPKU), professional bodies (BIMDG), and open-access publications to maximize public and patient benefit."
+        "implication": "Detailed Research Plan: Outlines a clear dissemination plan involving patient charities (NSPKU), professional groups (BIMDG), and open-access publications to maximize public and patient benefit."
       },
       {
         "sub_id": "wp.6",
@@ -446,26 +446,7 @@
           "secdrp__001_z"
         ],
         "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: Explicitly budgets for PPIE member reimbursement and travel costs, ensuring the inclusion plan is costed and resourced."
-      },
-      {
-        "sub_id": "ss.2",
-        "good_evidence_ids": [
-          "secdrp__001_z",
-          "secdrp__001_|"
-        ],
-        "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: Describes a structured supervisory framework with a Project Advisory Group meeting at key intervals and specific roles for academic and practice supervisors, including ethical oversight."
-      },
-      {
-        "sub_id": "ss.3",
-        "good_evidence_ids": [
-          "secdrp__001_h",
-          "secdrp__001_i",
-          "secdrp__001_k"
-        ],
-        "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: Highlights access to specialized facilities (KCL Centre for Human and Applied Physiological Sciences, GSTT labs) and equipment (DXA, force plates, activPAL) essential for the proposed methods."
+        "implication": "Detailed Research Plan: Includes costed resources for inclusion, specifically budgeting for travel reimbursement and financial compensation for PPIE members' involvement in meetings."
       }
     ],
     "resolved_signals": [
@@ -477,9 +458,7 @@
       "pr.9",
       "wp.1",
       "wp.3",
-      "wp.6",
-      "ss.2",
-      "ss.3"
+      "wp.6"
     ],
     "missing_signals_after": [
       "pr.7",
@@ -487,6 +466,8 @@
       "td.2",
       "td.3",
       "ss.1",
+      "ss.2",
+      "ss.3",
       "ss.4",
       "wp.2",
       "wp.4",
@@ -504,7 +485,16 @@
           "secppi__001_c"
         ],
         "bad_evidence_ids": [],
-        "implication": "Patient & Public Involvement: Section details specific design changes (recruitment methods, test day assessments, communication tools) driven by PPIE feedback, strongly supporting integration of lived experience."
+        "implication": "Patient & Public Involvement: Detailed evidence of co-design: PPIE group influenced recruitment methods, test day assessments, and resource design (fridge calendar, journal), confirming integration of lived experience."
+      },
+      {
+        "sub_id": "wp.3",
+        "good_evidence_ids": [
+          "secppi__001_c",
+          "secppi__001_d"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Patient & Public Involvement: PPIE group will advise on dissemination methods to the PKU community and IMD services, ensuring research outputs are accessible and beneficial to the target population."
       },
       {
         "sub_id": "wp.6",
@@ -512,17 +502,17 @@
           "secppi__001_d"
         ],
         "bad_evidence_ids": [],
-        "implication": "Patient & Public Involvement: Explicitly states financial reimbursement for PPIE time is costed into the fellowship using NIHR guidance, confirming a costed and resourced plan for inclusion."
+        "implication": "Patient & Public Involvement: Explicit costed plan for inclusion: financial reimbursement for PPIE time is calculated using NIHR guidance and included in the fellowship budget."
       },
       {
         "sub_id": "pr.6",
         "good_evidence_ids": [
           "secppi__001_a",
-          "secppi__001_c",
-          "secppi__001_d"
+          "secppi__001_b",
+          "secppi__001_c"
         ],
         "bad_evidence_ids": [],
-        "implication": "Patient & Public Involvement: Describes active involvement across multiple stages (design, recruitment, dissemination) and ethical considerations regarding participant comfort, supporting engagement with people and commu"
+        "implication": "Patient & Public Involvement: Strong engagement demonstrated through multiple meetings, feedback loops on study design, and specific adaptations to address participant concerns about self-consciousness."
       },
       {
         "sub_id": "pr.9",
@@ -530,24 +520,15 @@
           "secppi__001_d"
         ],
         "bad_evidence_ids": [],
-        "implication": "Patient & Public Involvement: Mentions selecting a diverse PPIE group to represent the wider community and using online meetings to enable wide geographical involvement, supporting inclusive research design."
-      },
-      {
-        "sub_id": "wp.5",
-        "good_evidence_ids": [
-          "secppi__001_c",
-          "secppi__001_d"
-        ],
-        "bad_evidence_ids": [],
-        "implication": "Patient & Public Involvement: Outlines involvement from proposal development through to dissemination and future research planning, demonstrating inclusivity across the research lifecycle."
+        "implication": "Patient & Public Involvement: Inclusive strategies include online meetings for geographical accessibility, training for new members, and a buddying system to support diverse participation."
       }
     ],
     "resolved_signals": [
       "wp.1",
+      "wp.3",
       "wp.6",
       "pr.6",
-      "pr.9",
-      "wp.5"
+      "pr.9"
     ],
     "missing_signals_after": [
       "pr.7",
@@ -555,9 +536,12 @@
       "td.2",
       "td.3",
       "ss.1",
+      "ss.2",
+      "ss.3",
       "ss.4",
       "wp.2",
-      "wp.4"
+      "wp.4",
+      "wp.5"
     ]
   },
   {
@@ -571,7 +555,7 @@
           "sectdars__001_c"
         ],
         "bad_evidence_ids": [],
-        "implication": "Training & Development and Research Support: Provides a comprehensive, structured training plan covering qualitative methods, clinical trials, data analysis, and governance, directly supporting the quality and relevance "
+        "implication": "Training & Development and Research Support: Provides a comprehensive, structured training plan covering qualitative methods, clinical trials, data analysis, and governance, directly addressing the quality and relevance "
       },
       {
         "sub_id": "td.2",
@@ -587,11 +571,11 @@
         "sub_id": "td.3",
         "good_evidence_ids": [
           "sectdars__001_d",
-          "sectdars__001_e",
-          "sectdars__001_f"
+          "sectdars__001_f",
+          "sectdars__001_o"
         ],
         "bad_evidence_ids": [],
-        "implication": "Training & Development and Research Support: Links training in leadership, clinical assessments, and research design to the applicant's career ambition to become a Clinical Professor of Dietetics, supporting career aspir"
+        "implication": "Training & Development and Research Support: Connects training in leadership, clinical assessments, and international collaborations to the applicant's career goal of becoming a Clinical Professor of Dietetics, supportin"
       },
       {
         "sub_id": "ss.1",
@@ -601,7 +585,27 @@
           "sectdars__001_t"
         ],
         "bad_evidence_ids": [],
-        "implication": "Training & Development and Research Support: Highlights KCL's world-leading research environment (REF 2021) and GSTT's track record of supporting clinical academic careers, strongly supporting the contracting organisatio"
+        "implication": "Training & Development and Research Support: Highlights KCL's world-leading research environment (REF 2021) and GSTT's track record of supporting clinical academic careers, demonstrating a strong institutional track reco"
+      },
+      {
+        "sub_id": "ss.2",
+        "good_evidence_ids": [
+          "sectdars__001_g",
+          "sectdars__001_h",
+          "sectdars__001_j"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Training & Development and Research Support: Details a robust supervisory team with specific expertise in dietetics, exercise metabolism, and clinical trials, including established working relationships and clear roles."
+      },
+      {
+        "sub_id": "ss.3",
+        "good_evidence_ids": [
+          "sectdars__001_s",
+          "sectdars__001_u",
+          "sectdars__001_v"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Training & Development and Research Support: Describes access to state-of-the-art facilities (CHAPS, Metabolic Research Unit) and a commitment to joint clinical academic appointments, aligning organizational support with"
       },
       {
         "sub_id": "ss.4",
@@ -609,25 +613,47 @@
           "sectdars__001_u"
         ],
         "bad_evidence_ids": [],
-        "implication": "Training & Development and Research Support: Cites Athena Swan Silver accreditation and specific EDI leads/forums at KCL and GSTT, providing concrete evidence of a commitment to an inclusive and supportive research cultu"
+        "implication": "Training & Development and Research Support: Mentions Athena Swan Silver accreditation and proactive EDI measures at both KCL and GSTT, indicating a commitment to an inclusive and supportive research culture."
+      },
+      {
+        "sub_id": "g.1",
+        "good_evidence_ids": [
+          "sectdars__001_a",
+          "sectdars__001_g",
+          "sectdars__001_r"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Training & Development and Research Support: Reinforces a clear research vision and career trajectory through a detailed training plan and strong institutional support for a clinical academic career."
+      },
+      {
+        "sub_id": "g.2",
+        "good_evidence_ids": [
+          "sectdars__001_a",
+          "sectdars__001_d",
+          "sectdars__001_o"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Training & Development and Research Support: Demonstrates how the award will build on existing experience by enabling new skills in complex interventions, tracer techniques, and leadership, justifying the need for this s"
       },
       {
         "sub_id": "g.5",
         "good_evidence_ids": [
           "sectdars__001_e",
-          "sectdars__001_f"
+          "sectdars__001_f",
+          "sectdars__001_o"
         ],
         "bad_evidence_ids": [],
-        "implication": "Training & Development and Research Support: Details leadership training modules and ongoing mentorship roles, reinforcing the trajectory towards research leadership."
+        "implication": "Training & Development and Research Support: Shows increasing responsibility through mentorship roles, leadership training, and international advisory board positions, supporting a trajectory towards research leadership."
       },
       {
         "sub_id": "g.6",
         "good_evidence_ids": [
           "sectdars__001_d",
+          "sectdars__001_e",
           "sectdars__001_f"
         ],
         "bad_evidence_ids": [],
-        "implication": "Training & Development and Research Support: Explicitly describes integrating research skills (anthropometry, functional assessments) into clinical practice and maintaining clinical roles, confirming commitment to a prac"
+        "implication": "Training & Development and Research Support: Explicitly links research training (anthropometry, ultrasound) to clinical practice improvements and service development, confirming commitment to a practitioner-academic care"
       }
     ],
     "resolved_signals": [
@@ -635,14 +661,19 @@
       "td.2",
       "td.3",
       "ss.1",
+      "ss.2",
+      "ss.3",
       "ss.4",
+      "g.1",
+      "g.2",
       "g.5",
       "g.6"
     ],
     "missing_signals_after": [
       "pr.7",
       "wp.2",
-      "wp.4"
+      "wp.4",
+      "wp.5"
     ]
   },
   {
@@ -656,7 +687,7 @@
           "secsb__001_i"
         ],
         "bad_evidence_ids": [],
-        "implication": "SUMMARY BUDGET: Provides explicit justifications linking specific costs (e.g., physiotherapist time, laptop, BIA machine) to research tasks and equipment needs, supporting pr.7."
+        "implication": "SUMMARY BUDGET: Provides explicit justifications linking specific costs (e.g., physiotherapist time, BIA machine, laptop) to research tasks and equipment needs, supporting pr.7."
       },
       {
         "sub_id": "wp.6",
@@ -665,7 +696,7 @@
           "secsb__001_u"
         ],
         "bad_evidence_ids": [],
-        "implication": "SUMMARY BUDGET: Includes specific budget lines for PPIE group payments (£50/person) and participant compensation (£125/participant) based on NIHR guidance, confirming a costed plan for inclusion."
+        "implication": "SUMMARY BUDGET: Includes specific budget lines for PPIE group payments and participant compensation based on NIHR guidance, confirming a costed plan for inclusion."
       }
     ],
     "resolved_signals": [
@@ -674,7 +705,8 @@
     ],
     "missing_signals_after": [
       "wp.2",
-      "wp.4"
+      "wp.4",
+      "wp.5"
     ]
   },
   {
@@ -683,7 +715,8 @@
     "resolved_signals": [],
     "missing_signals_after": [
       "wp.2",
-      "wp.4"
+      "wp.4",
+      "wp.5"
     ]
   },
   {
@@ -703,7 +736,8 @@
     ],
     "missing_signals_after": [
       "wp.2",
-      "wp.4"
+      "wp.4",
+      "wp.5"
     ]
   },
   {
@@ -715,7 +749,7 @@
           "secafa__001"
         ],
         "bad_evidence_ids": [],
-        "implication": "Application Form Analysis: Confirms presence of Plain English Summary and NLP analysis sections, supporting structural completeness for pr.1."
+        "implication": "Application Form Analysis: Confirms presence of Plain English Summary (608 words) and NLP analysis (153 words), indicating the section exists for evaluation."
       },
       {
         "sub_id": "pr.7",
@@ -723,7 +757,7 @@
           "secafa__001"
         ],
         "bad_evidence_ids": [],
-        "implication": "Application Form Analysis: Identifies 278 table-like budget lines and high lexical overlap between Research Plan and Budget, indicating detailed resource justification."
+        "implication": "Application Form Analysis: Identifies a detailed SUMMARY BUDGET (6012 words) with 278 table-like lines, indicating a comprehensive resource justification section."
       },
       {
         "sub_id": "td.1",
@@ -731,7 +765,7 @@
           "secafa__001"
         ],
         "bad_evidence_ids": [],
-        "implication": "Application Form Analysis: Confirms a dedicated 'Training & Development' section with 3847 words, supporting the presence of a comprehensive training plan."
+        "implication": "Application Form Analysis: Confirms a substantial Training & Development section (3847 words), suggesting detailed training plans are present."
       },
       {
         "sub_id": "wp.1",
@@ -739,18 +773,28 @@
           "secafa__001"
         ],
         "bad_evidence_ids": [],
-        "implication": "Application Form Analysis: Confirms a dedicated 'Patient & Public Involvement' section with 781 words, supporting the presence of PPI engagement details."
+        "implication": "Application Form Analysis: Confirms a dedicated Patient & Public Involvement section (781 words), indicating engagement strategies are documented."
+      },
+      {
+        "sub_id": "pr.3",
+        "good_evidence_ids": [
+          "secafa__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Form Analysis: Notes a Detailed Research Plan (5132 words) and logical flow indicators, suggesting scope and feasibility are addressed."
       }
     ],
     "resolved_signals": [
       "pr.1",
       "pr.7",
       "td.1",
-      "wp.1"
+      "wp.1",
+      "pr.3"
     ],
     "missing_signals_after": [
       "wp.2",
-      "wp.4"
+      "wp.4",
+      "wp.5"
     ]
   }
 ]
