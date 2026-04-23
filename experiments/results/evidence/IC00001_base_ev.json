@@ -9,8 +9,8 @@
 },
 "used_chunk_ids": [
 "secarb__001_a",
-"secarb__001_d",
 "secarb__001_f",
+"secdrp__001_a",
 "sectdars__001_a",
 "sectdars__001_b",
 "sectdars__001_c",
@@ -18,12 +18,16 @@
 "sectdars__001_e",
 "sectdars__001_f",
 "sectdars__001_g",
+<<<<<<< HEAD
 "sectdars__001_h",
 "sectdars__001_j",
 "sectdars__001_k",
 "sectdars__001_o",
 "sectdars__001_r",
 "sectdars__001_s"
+=======
+"sectdars__001_o"
+>>>>>>> 98fa26c (ev)
 ],
 "sub_criterion_score": 9.5
 },
@@ -36,6 +40,7 @@
 },
 "used_chunk_ids": [
 "secarb__001_a",
+<<<<<<< HEAD
 "secarb__001_d",
 "secarb__001_e",
 "secarb__001_f",
@@ -51,6 +56,18 @@
 "sectdars__001_n"
 ],
 "sub_criterion_score": 9.5
+=======
+"secarb__001_f",
+"sectdars__001_a",
+"sectdars__001_g",
+"sectdars__001_k",
+"sectdars__001_l",
+"secppi__001_d"
+],
+"sub_criterion_score": 9.5,
+"na": false
+}
+>>>>>>> 98fa26c (ev)
 },
 "Applicant": {
 "Relevant Research Experience and Training": {
@@ -65,6 +82,10 @@
 "secarb__001_b",
 "secarb__001_c",
 "secarb__001_d",
+<<<<<<< HEAD
+=======
+"secac__001_a",
+>>>>>>> 98fa26c (ev)
 "sectdars__001_a",
 "sectdars__001_b",
 "sectdars__001_c"
@@ -100,7 +121,6 @@
 },
 "used_chunk_ids": [
 "secarb__001_a",
-"secarb__001_b",
 "secarb__001_c",
 "secarb__001_d",
 "secarb__001_e",
@@ -124,18 +144,23 @@
 "secarb__001_c",
 "secarb__001_d",
 "secarb__001_e",
-"secarb__001_f",
-"secac__001_a"
+"secac__001_a",
+"secac__001_b"
 ],
+<<<<<<< HEAD
 "sub_criterion_score": 10.0
 }
+=======
+"sub_criterion_score": 10.0,
+"na": false
+>>>>>>> 98fa26c (ev)
 }
 },
 "Proposed research": {
 "Quality of the Plain English Summary": {
 "signal_scores": {
 "Readability scores (e.g., Flesch-Kincaid)": 5,
-"Low density of unexplained jargon or technical terms": 4,
+"Low density of unexplained jargon or technical terms": 5,
 "Presence of problem statement, objectives, methods, beneficiaries, and real-world impact": 5,
 "Alignment with detailed proposal content": 5,
 "Sentence structure and coherence for non-specialist understanding": 5,
@@ -149,10 +174,17 @@
 "secpena__001",
 "secsa__001_a",
 "secsa__001_b",
+<<<<<<< HEAD
 "secsa__001_c",
 "secsa__001_d"
 ],
 "sub_criterion_score": 9.666666666666666
+=======
+"secsa__001_c"
+],
+"sub_criterion_score": 10.0,
+"na": false
+>>>>>>> 98fa26c (ev)
 },
 "Evidence Review Quality & Relevance": {
 "signal_scores": {
@@ -162,8 +194,6 @@
 "Coherence and logical flow": 5
 },
 "used_chunk_ids": [
-"secdrp__001_c",
-"secdrp__001_d",
 "secdrp__001_e",
 "secdrp__001_f",
 "secdrp__001_g",
@@ -178,8 +208,8 @@
 "Research Scope & Award Appropriateness": {
 "signal_scores": {
 "Alignment of aims with award level": 5,
-"Feasibility indicators (time, complexity, tasks)": 4,
-"Proportion of work relative to award expectations": 4
+"Feasibility indicators (time, complexity, tasks)": 5,
+"Proportion of work relative to award expectations": 5
 },
 "used_chunk_ids": [
 "secsa__001_a",
@@ -188,11 +218,19 @@
 "secdrp__001_m",
 "secdrp__001_o",
 "secdrp__001_v",
+<<<<<<< HEAD
 "secdrp__001_}",
 "secdrp__001_~",
 "secac2__001"
 ],
 "sub_criterion_score": 8.666666666666666
+=======
+"secdrp__001_|",
+"secsb__001_a"
+],
+"sub_criterion_score": 10.0,
+"na": false
+>>>>>>> 98fa26c (ev)
 },
 "Research Design & Methodological Rigor": {
 "signal_scores": {
@@ -206,15 +244,12 @@
 "secdrp__001_m",
 "secdrp__001_n",
 "secdrp__001_o",
-"secdrp__001_p",
-"secdrp__001_q",
 "secdrp__001_r",
 "secdrp__001_s",
 "secdrp__001_t",
 "secdrp__001_u",
 "secdrp__001_v",
 "secdrp__001_w",
-"secdrp__001_x",
 "secdrp__001_y",
 "secdrp__001_z"
 ],
@@ -227,15 +262,24 @@
 "Clarity and specificity of expected outcomes": 5
 },
 "used_chunk_ids": [
+<<<<<<< HEAD
 "secpesor__001_a",
 "secpesor__001_c",
 "secsa__001_c",
 "secdrp__001_a",
+=======
+>>>>>>> 98fa26c (ev)
 "secdrp__001_b",
+"secdrp__001_c",
 "secdrp__001_d",
 "secdrp__001_e",
+<<<<<<< HEAD
 "secdrp__001_z",
 "secdrp__001_{"
+=======
+"secdrp__001_{",
+"secsa__001_c"
+>>>>>>> 98fa26c (ev)
 ],
 "sub_criterion_score": 10.0
 },
@@ -257,9 +301,18 @@
 "secppi__001_b",
 "secppi__001_c",
 "secppi__001_d",
+<<<<<<< HEAD
 "secdrp__001_|"
 ],
 "sub_criterion_score": 9.333333333333334
+=======
+"secppi__001_e",
+"secdrp__001_w",
+"secdrp__001_y"
+],
+"sub_criterion_score": 9.33,
+"na": false
+>>>>>>> 98fa26c (ev)
 },
 "Justification of Resources & Award Costs": {
 "signal_scores": {
@@ -285,7 +338,12 @@
 "secsb__001_o",
 "secsb__001_p"
 ],
+<<<<<<< HEAD
 "sub_criterion_score": 9.333333333333334
+=======
+"sub_criterion_score": 9.33,
+"na": false
+>>>>>>> 98fa26c (ev)
 },
 "Quality of Previous Research (if applicable)": {
 "signal_scores": {
@@ -308,6 +366,7 @@
 },
 "Inclusive Research Design": {
 "signal_scores": {
+<<<<<<< HEAD
 "Explicit strategies for diverse recruitment": 5,
 "Adaptive methods or accessibility considerations": 4,
 "Equity and participation indicators": 5
@@ -321,6 +380,21 @@
 "secppi__001_d"
 ],
 "sub_criterion_score": 9.333333333333334
+=======
+"Explicit strategies for diverse recruitment": 4,
+"Adaptive methods or accessibility considerations": 4,
+"Equity and participation indicators": 4
+},
+"used_chunk_ids": [
+"secsa__001_c",
+"secppi__001_a",
+"secppi__001_c",
+"secppi__001_d",
+"secdrp__001_x"
+],
+"sub_criterion_score": 8.0,
+"na": false
+>>>>>>> 98fa26c (ev)
 }
 },
 "Training and development": {
@@ -360,11 +434,15 @@
 "sectdars__001_c",
 "sectdars__001_d",
 "sectdars__001_e",
+<<<<<<< HEAD
 "sectdars__001_g",
 "sectdars__001_h",
 "sectdars__001_k",
 "sectdars__001_l",
 "sectdars__001_n"
+=======
+"sectdars__001_f"
+>>>>>>> 98fa26c (ev)
 ],
 "sub_criterion_score": 10.0
 },
@@ -381,7 +459,12 @@
 "sectdars__001_e",
 "sectdars__001_f"
 ],
+<<<<<<< HEAD
 "sub_criterion_score": 10.0
+=======
+"sub_criterion_score": 10.0,
+"na": false
+>>>>>>> 98fa26c (ev)
 }
 },
 "Sites and support": {
@@ -397,15 +480,17 @@
 "sectdars__001_g",
 "sectdars__001_h",
 "sectdars__001_j",
-"sectdars__001_k",
 "sectdars__001_l",
 "sectdars__001_m",
-"sectdars__001_n",
 "sectdars__001_o",
 "sectdars__001_p",
+<<<<<<< HEAD
 "sectdars__001_q",
 "sectdars__001_r",
 "sectdars__001_s"
+=======
+"sectdars__001_q"
+>>>>>>> 98fa26c (ev)
 ],
 "sub_criterion_score": 10.0
 },
@@ -424,7 +509,13 @@
 "sectdars__001_j",
 "sectdars__001_k",
 "sectdars__001_l",
+<<<<<<< HEAD
 "sectdars__001_m"
+=======
+"sectdars__001_m",
+"secdrp__001_{",
+"secdrp__001_|"
+>>>>>>> 98fa26c (ev)
 ],
 "sub_criterion_score": 10.0
 },
@@ -453,10 +544,19 @@
 "Statements on organisational culture, training, or initiatives supporting underrepresented groups": 4
 },
 "used_chunk_ids": [
+<<<<<<< HEAD
 "sectdars__001_q",
 "sectdars__001_r"
 ],
 "sub_criterion_score": 8.5
+=======
+"sectdars__001_f",
+"sectdars__001_q",
+"sectdars__001_r"
+],
+"sub_criterion_score": 9.0,
+"na": false
+>>>>>>> 98fa26c (ev)
 }
 },
 "Working with people and communities": {
@@ -469,10 +569,14 @@
 "used_chunk_ids": [
 "secppi__001_a",
 "secppi__001_b",
+<<<<<<< HEAD
 "secppi__001_c",
 "secpesor__001_c",
 "secsa__001_b",
 "secsa__001_c"
+=======
+"secppi__001_c"
+>>>>>>> 98fa26c (ev)
 ],
 "sub_criterion_score": 10.0
 },
@@ -495,9 +599,12 @@
 "used_chunk_ids": [
 "secpesor__001_c",
 "secpesor__001_d",
+<<<<<<< HEAD
 "secsa__001_c",
 "secsa__001_d",
 "secdrp__001_b",
+=======
+>>>>>>> 98fa26c (ev)
 "secdrp__001_z",
 "secdrp__001_{",
 "secppi__001_d"
@@ -507,6 +614,7 @@
 "Representation of Seldom Heard or Underserved Groups": {
 "signal_scores": {
 "Mention of specific demographic groups (age, race, ethnicity, disability, gender, sexual orientation, religion/belief, location, socioeconomic status)": 4,
+<<<<<<< HEAD
 "Evidence of targeted recruitment strategies": 5,
 "Discussion of barriers to participation and mitigation strategies": 5
 },
@@ -516,14 +624,27 @@
 "secppi__001_c"
 ],
 "sub_criterion_score": 9.333333333333334
+=======
+"Evidence of targeted recruitment strategies": 4,
+"Discussion of barriers to participation and mitigation strategies": 4
+},
+"used_chunk_ids": [
+"secppi__001_a",
+"secppi__001_c",
+"secdrp__001_x"
+],
+"sub_criterion_score": 8.0,
+"na": false
+>>>>>>> 98fa26c (ev)
 },
 "Inclusivity Across the Research Lifecycle": {
 "signal_scores": {
 "References to inclusion in study design, participant selection, and analysis": 5,
-"Consideration of accessibility and equity in all project stages": 5,
+"Consideration of accessibility and equity in all project stages": 4,
 "Documented plans for ongoing evaluation and adaptation": 4
 },
 "used_chunk_ids": [
+<<<<<<< HEAD
 "secpesor__001_c",
 "secsa__001_c",
 "secdrp__001_x",
@@ -532,6 +653,16 @@
 "secppi__001_e"
 ],
 "sub_criterion_score": 9.333333333333334
+=======
+"secsa__001_c",
+"secppi__001_c",
+"secppi__001_d",
+"secdrp__001_x",
+"secdrp__001_y"
+],
+"sub_criterion_score": 8.67,
+"na": false
+>>>>>>> 98fa26c (ev)
 },
 "Costed and Resourced Plan for Research Inclusion": {
 "signal_scores": {
@@ -540,13 +671,21 @@
 "Alignment between inclusion plan and allocated resources": 5
 },
 "used_chunk_ids": [
+<<<<<<< HEAD
 "secppi__001_d",
+=======
+>>>>>>> 98fa26c (ev)
 "secppi__001_e",
 "secsb__001_d",
 "secsb__001_e",
 "secsb__001_f"
 ],
+<<<<<<< HEAD
 "sub_criterion_score": 10.0
+=======
+"sub_criterion_score": 10.0,
+"na": false
+>>>>>>> 98fa26c (ev)
 }
 },
 "Application Form": {
@@ -581,8 +720,13 @@
 "Detectable narrative thread anchored on research aims": 5
 },
 "used_chunk_ids": [
-"secafa__001"
+"secafa__001",
+"secsa__001_a",
+"secsa__001_b",
+"secdrp__001_l",
+"secdrp__001_m"
 ],
+<<<<<<< HEAD
 "sub_criterion_score": 10.0
 }
 },
@@ -595,4 +739,20 @@
 "Application Form": 9.166666666666666
 },
 "overall_average": 9.583333333333334
+=======
+"sub_criterion_score": 10.0,
+"na": false
+}
+},
+"section_averages": {
+"General": 9.5,
+"Applicant": 9.5,
+"Proposed research": 9.41,
+"Training and development": 10.0,
+"Sites and support": 9.75,
+"Working with people and communities": 9.33,
+"Application Form": 9.17
+},
+"overall_average": 9.47
+>>>>>>> 98fa26c (ev)
 }
