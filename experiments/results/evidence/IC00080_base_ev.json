@@ -1,48 +1,41 @@
 {
 "General": {
-"common_characteristics_of_good_applications": {
+"Common Characteristics of Good Applications": {
 "signal_scores": {
 "Clear research vision and career trajectory": 5,
 "Distinctive ideas with an independent direction": 4,
-"Well-justified training plan": 5,
+"Well-justified training plan": 4,
 "Strong mentorship and institutional support": 5
 },
 "used_chunk_ids": [
 "secarb__001_f",
 "secarb__001_g",
 "sectdars__001_a",
-"sectdars__001_b",
-"sectdars__001_c",
 "sectdars__001_g",
-"sectdars__001_h",
 "sectdars__001_i",
-"sectdars__001_j",
 "sectdars__001_k",
-"sectdars__001_q",
-"sectdars__001_t"
+"sectdars__001_l"
 ],
-"sub_criterion_score": 9
+"sub_criterion_score": 9.0,
+"na": false
 },
-"tell_us_why_you_need_this_award": {
+"Tell Us Why You Need This Award": {
 "signal_scores": {
-"Explain why this award is the right next step in your career (not just another project grant)": 4,
+"Explain why this award is the right next step in your career (not just another project grant)": 5,
 "What difference would securing an award make to your career, and why now?": 4,
-"How will an award build on your existing experience and what new skills will it enable you to gain?": 5,
-"How will it develop your research partnerships within the NHS, public health or social care, charity organisations, industry or other organisations?": 5
+"How will an award build on your existing experience and what new skills will it enable you to gain?": 4,
+"How will it develop your research partnerships within the NHS, public health or social care, charity organisations, industry or other organisations?": 4
 },
 "used_chunk_ids": [
-"secarb__001_a",
 "secarb__001_f",
 "secarb__001_g",
 "sectdars__001_a",
-"sectdars__001_d",
-"sectdars__001_m",
-"sectdars__001_n",
-"sectdars__001_o"
+"sectdars__001_e",
+"sectdars__001_f"
 ],
-"sub_criterion_score": 9
-},
-"section_average": 9
+"sub_criterion_score": 8.5,
+"na": false
+}
 },
 "Applicant": {
 "Relevant Research Experience and Training": {
@@ -57,14 +50,15 @@
 "secarb__001_c",
 "secarb__001_d",
 "secac__001_a",
-"secac__001_b"
+"secac__001_c"
 ],
-"sub_criterion_score": 10
+"sub_criterion_score": 10.0,
+"na": false
 },
 "Impactful Research Outputs and Outcomes": {
 "signal_scores": {
 "Number and quality of publications, reports, or presentations": 4,
-"Citation metrics or other indicators of impact (where mentioned)": 1,
+"Citation metrics or other indicators of impact (where mentioned)": 2,
 "Awards, grants, or recognitions linked to prior research": 4,
 "Description of practical or societal impact of previous work": 4
 },
@@ -73,14 +67,16 @@
 "secac__001_c",
 "secac__001_d",
 "secarb__001_b",
-"secarb__001_c"
+"secarb__001_c",
+"secarb__001_i"
 ],
-"sub_criterion_score": 7
+"sub_criterion_score": 7.0,
+"na": false
 },
 "Trajectory Towards Research Leadership": {
 "signal_scores": {
 "Statements of career ambitions and long-term goals": 5,
-"Evidence of increasing responsibility in previous roles (e.g., leading projects, mentoring)": 5,
+"Evidence of increasing responsibility in previous roles (e.g., leading projects, mentoring)": 4,
 "Participation in leadership or professional development programs": 4,
 "Recognition by peers or institutions suggesting leadership potential": 4
 },
@@ -88,10 +84,10 @@
 "secarb__001_d",
 "secarb__001_e",
 "secarb__001_f",
-"secarb__001_g",
-"secac__001_d"
+"secarb__001_g"
 ],
-"sub_criterion_score": 9
+"sub_criterion_score": 8.5,
+"na": false
 },
 "Commitment to Practitioner-Academic Career (if applicable)": {
 "signal_scores": {
@@ -104,21 +100,20 @@
 "secarb__001_e",
 "secarb__001_f",
 "secarb__001_g",
-"sectdars__001_d",
 "sectdars__001_e"
 ],
-"sub_criterion_score": 10
-},
-"section_average": 9
+"sub_criterion_score": 10.0,
+"na": false
+}
 },
 "Proposed research": {
 "Quality of the Plain English Summary": {
 "signal_scores": {
 "Readability scores (e.g., Flesch-Kincaid)": 4,
 "Low density of unexplained jargon or technical terms": 4,
-"Presence of problem statement, objectives, methods, beneficiaries, and real-world impact": 4,
+"Presence of problem statement, objectives, methods, beneficiaries, and real-world impact": 5,
 "Alignment with detailed proposal content": 5,
-"Sentence structure and coherence for non-specialist understanding": 4,
+"Sentence structure and coherence for non-specialist understanding": 5,
 "Emphasis on societal or patient relevance": 5
 },
 "used_chunk_ids": [
@@ -126,12 +121,10 @@
 "secpesor__001_b",
 "secpesor__001_c",
 "secpesor__001_d",
-"secpena__001",
-"secdrp__001_h",
-"secdrp__001_v",
-"secdrp__001_y"
+"secpena__001"
 ],
-"sub_criterion_score": 9
+"sub_criterion_score": 9.33,
+"na": false
 },
 "Evidence Review Quality & Relevance": {
 "signal_scores": {
@@ -141,16 +134,15 @@
 "Coherence and logical flow": 5
 },
 "used_chunk_ids": [
-"secdrp__001_a",
-"secdrp__001_b",
-"secdrp__001_c",
-"secdrp__001_d",
 "secdrp__001_e",
 "secdrp__001_f",
 "secdrp__001_g",
-"secdrp__001_h"
+"secdrp__001_h",
+"secdrp__001_j",
+"secdrp__001_k"
 ],
-"sub_criterion_score": 10
+"sub_criterion_score": 10.0,
+"na": false
 },
 "Research Scope & Award Appropriateness": {
 "signal_scores": {
@@ -159,16 +151,16 @@
 "Proportion of work relative to award expectations": 4
 },
 "used_chunk_ids": [
+"secac2__001",
 "secsa__001_a",
 "secsa__001_b",
 "secsa__001_c",
 "secdrp__001_m",
-"secdrp__001_n",
 "secdrp__001_p",
-"secdrp__001_q",
-"secdrp__001_~"
+"secdrp__001_q"
 ],
-"sub_criterion_score": 9
+"sub_criterion_score": 8.67,
+"na": false
 },
 "Research Design & Methodological Rigor": {
 "signal_scores": {
@@ -178,80 +170,68 @@
 "Structured methodological sections": 5
 },
 "used_chunk_ids": [
-"secdrp__001_h",
+"secsa__001_b",
+"secsa__001_c",
 "secdrp__001_i",
 "secdrp__001_j",
-"secdrp__001_k",
-"secdrp__001_l",
 "secdrp__001_m",
-"secdrp__001_n",
-"secdrp__001_o",
 "secdrp__001_p",
-"secdrp__001_q",
-"secdrp__001_r",
-"secdrp__001_s",
-"secdrp__001_t",
 "secdrp__001_u",
 "secdrp__001_v"
 ],
-"sub_criterion_score": 10
+"sub_criterion_score": 10.0,
+"na": false
 },
 "Potential Impact on Patients, Public, and Health Services": {
 "signal_scores": {
 "Mentions of direct or indirect patient/public benefits": 5,
 "Alignment with health priorities or societal needs": 5,
-"Clarity and specificity of expected outcomes": 4
+"Clarity and specificity of expected outcomes": 5
 },
 "used_chunk_ids": [
-"secdrp__001_c",
+"secpesor__001_c",
+"secsa__001_c",
+"secsa__001_d",
 "secdrp__001_d",
 "secdrp__001_v",
-"secdrp__001_w",
-"secdrp__001_y",
-"secsa__001_c",
-"secsa__001_d"
+"secdrp__001_x",
+"secdrp__001_y"
 ],
-"sub_criterion_score": 9
+"sub_criterion_score": 10.0,
+"na": false
 },
 "Engagement with People & Communities": {
 "signal_scores": {
 "Use of co-design, participatory methods, or consultations": 5,
-"References to ethical considerations and feedback mechanisms": 5,
+"References to ethical considerations and feedback mechanisms": 4,
 "Description of involvement at multiple project stages": 5
 },
 "used_chunk_ids": [
+"secpesor__001_c",
 "secppi__001_a",
 "secppi__001_b",
 "secppi__001_c",
 "secppi__001_d",
-"secdrp__001_i",
-"secdrp__001_v"
+"secdrp__001{",
+"secdrp__001_|"
 ],
-"sub_criterion_score": 10
+"sub_criterion_score": 9.33,
+"na": false
 },
 "Justification of Resources & Award Costs": {
 "signal_scores": {
-"Explicit links between tasks and resources requested": 5,
+"Explicit links between tasks and resources requested": 3,
 "Budget proportionality to project scope": 4,
-"Clear rationale for funding level": 5
+"Clear rationale for funding level": 3
 },
 "used_chunk_ids": [
-"secsb__001_b",
-"secsb__001_c",
-"secsb__001_d",
-"secsb__001_e",
-"secsb__001_f",
-"secsb__001_g",
-"secsb__001_h",
-"secsb__001_i",
-"secsb__001_j",
-"secsb__001_k",
-"secsb__001_l",
-"secsb__001_m",
-"secsb__001_n",
-"secdrp__001_z"
+"secsb__001_q",
+"secac2__001",
+"secdrp__001_z",
+"secppi__001_d"
 ],
-"sub_criterion_score": 9
+"sub_criterion_score": 6.67,
+"na": false
 },
 "Quality of Previous Research (if applicable)": {
 "signal_scores": {
@@ -264,26 +244,28 @@
 "secac__001_d",
 "secarb__001_a",
 "secarb__001_b",
-"secarb__001_c"
+"secarb__001_c",
+"secarb__001_d"
 ],
-"sub_criterion_score": 9
+"sub_criterion_score": 9.33,
+"na": false
 },
 "Inclusive Research Design": {
 "signal_scores": {
-"Explicit strategies for diverse recruitment": 4,
+"Explicit strategies for diverse recruitment": 5,
 "Adaptive methods or accessibility considerations": 5,
 "Equity and participation indicators": 5
 },
 "used_chunk_ids": [
+"secdrp__001_h",
 "secdrp__001_n",
 "secdrp__001_q",
-"secdrp__001_r",
-"secdrp__001_z",
-"secppi__001_c"
+"secppi__001_c",
+"secdrp__001_z"
 ],
-"sub_criterion_score": 9
-},
-"section_average": 9.4
+"sub_criterion_score": 10.0,
+"na": false
+}
 },
 "Training and development": {
 "Quality and Relevance of Proposed Training": {
@@ -296,12 +278,11 @@
 "used_chunk_ids": [
 "sectdars__001_a",
 "sectdars__001_b",
-"sectdars__001_c",
-"sectdars__001_d",
 "sectdars__001_e",
 "sectdars__001_f"
 ],
-"sub_criterion_score": 10
+"sub_criterion_score": 10.0,
+"na": false
 },
 "Suitability to Personal Development and Project Needs": {
 "signal_scores": {
@@ -311,52 +292,49 @@
 "Mention of mentorship, workshops, or formal courses relevant to development needs": 5
 },
 "used_chunk_ids": [
+"secarb__001_g",
 "sectdars__001_a",
 "sectdars__001_b",
-"sectdars__001_c",
 "sectdars__001_e",
 "sectdars__001_f"
 ],
-"sub_criterion_score": 9
+"sub_criterion_score": 9.0,
+"na": false
 },
 "Support for Career Aspirations": {
 "signal_scores": {
-"Explicit statement of career goals": 4,
+"Explicit statement of career goals": 5,
 "Connections between training activities and future career trajectory": 5,
 "Indications of skill transferability beyond the current project": 5,
 "Reference to professional practice or experiential learning where applicable": 5
 },
 "used_chunk_ids": [
 "secarb__001_g",
-"sectdars__001_c",
-"sectdars__001_d",
+"sectdars__001_a",
 "sectdars__001_e",
 "sectdars__001_f"
 ],
-"sub_criterion_score": 10
-},
-"section_average": 9.7
+"sub_criterion_score": 10.0,
+"na": false
+}
 },
 "Sites and support": {
 "Track Record of the Contracting Organisation (and Partners)": {
 "signal_scores": {
-"Publication or project history in relevant research fields": 4,
-"Previous funding success or awards in similar domains": 5,
+"Publication or project history in relevant research fields": 3,
+"Previous funding success or awards in similar domains": 3,
 "Mention of prior collaborations or partnerships": 5,
-"Highlighted achievements or notable outputs": 5
+"Highlighted achievements or notable outputs": 4
 },
 "used_chunk_ids": [
+"secac2__001",
 "sectdars__001_g",
-"sectdars__001_h",
+"sectdars__001_i",
 "sectdars__001_j",
-"sectdars__001_m",
-"sectdars__001_n",
-"sectdars__001_q",
-"sectdars__001_r",
-"sectdars__001_s",
-"sectdars__001_t"
+"sectdars__001_k"
 ],
-"sub_criterion_score": 10
+"sub_criterion_score": 7.5,
+"na": false
 },
 "Suitability of Supervisory Support and Mentorship Arrangements": {
 "signal_scores": {
@@ -374,39 +352,44 @@
 "sectdars__001_l",
 "secdrp__001_y"
 ],
-"sub_criterion_score": 10
+"sub_criterion_score": 10.0,
+"na": false
 },
 "Appropriateness of the Contracting Organisation to Support the Award and Career Aspirations": {
 "signal_scores": {
-"Description of facilities, infrastructure, or resources provided": 5,
+"Description of facilities, infrastructure, or resources provided": 4,
 "Links between organisational support and project success": 5,
 "Alignment of organisational focus with applicant’s career trajectory": 5,
 "Evidence of tailored support for award type (doctoral, postdoctoral)": 5
 },
 "used_chunk_ids": [
-"sectdars__001_q",
-"sectdars__001_r",
-"sectdars__001_s",
-"sectdars__001_t",
-"sectdars__001_u"
+"secac2__001",
+"sectdars__001_a",
+"sectdars__001_e",
+"sectdars__001_g",
+"secdrp__001_y",
+"secdrp__001_z"
 ],
-"sub_criterion_score": 10
+"sub_criterion_score": 9.5,
+"na": false
 },
 "Commitment to Inclusive and Supportive Research Culture": {
 "signal_scores": {
-"Mentions of policies or practices promoting diversity, equity, and inclusion": 5,
+"Mentions of policies or practices promoting diversity, equity, and inclusion": 3,
 "Evidence of inclusive recruitment, mentoring, or support initiatives": 4,
 "References to adherence to research integrity principles": 5,
-"Statements on organisational culture, training, or initiatives supporting underrepresented groups": 5
+"Statements on organisational culture, training, or initiatives supporting underrepresented groups": 3
 },
 "used_chunk_ids": [
-"sectdars__001_t",
-"sectdars__001_u",
-"sectdars__001_v"
+"sectdars__001_a",
+"secdrp__001_x",
+"secdrp__001_z",
+"secdrp__001_{",
+"secppi__001_c"
 ],
-"sub_criterion_score": 10
-},
-"section_average": 10
+"sub_criterion_score": 7.5,
+"na": false
+}
 },
 "Working with people and communities": {
 "Integration of Lived Experience in Research Design": {
@@ -419,19 +402,24 @@
 "secppi__001_a",
 "secppi__001_b",
 "secppi__001_c",
-"secppi__001_d"
+"secpesor__001_c"
 ],
-"sub_criterion_score": 10
+"sub_criterion_score": 10.0,
+"na": false
 },
 "Diversity and Inclusivity of the Research Team": {
 "signal_scores": {
-"Explicit mentions of team composition across gender, ethnicity, age, or other relevant characteristics": 0,
+"Explicit mentions of team composition across gender, ethnicity, age, or other relevant characteristics": 1,
 "Statements about inclusion in hiring or team-building": 0,
-"Evidence of equitable task allocation and collaboration": 0
+"Evidence of equitable task allocation and collaboration": 3
 },
-"used_chunk_ids": [],
-"sub_criterion_score": 0,
-"na": true
+"used_chunk_ids": [
+"secpesor__001_c",
+"secppi__001_c",
+"secdrp__001_l"
+],
+"sub_criterion_score": 2.67,
+"na": false
 },
 "Commitment to Maximising Public and Patient Benefit": {
 "signal_scores": {
@@ -440,28 +428,29 @@
 "Emphasis on actionable outcomes or improvements in health/care": 5
 },
 "used_chunk_ids": [
+"secpesor__001_d",
+"secsa__001_c",
+"secsa__001_d",
 "secdrp__001_v",
-"secdrp__001_w",
-"secdrp__001_y",
-"secppi__001_d",
-"secppi__001_e"
+"secdrp__001_y"
 ],
-"sub_criterion_score": 10
+"sub_criterion_score": 10.0,
+"na": false
 },
 "Representation of Seldom Heard or Underserved Groups": {
 "signal_scores": {
-"Mention of specific demographic groups (age, race, ethnicity, disability, gender, sexual orientation, religion/belief, location, socioeconomic status)": 4,
-"Evidence of targeted recruitment strategies": 3,
+"Mention of specific demographic groups (age, race, ethnicity, disability, gender, sexual orientation, religion/belief, location, socioeconomic status)": 5,
+"Evidence of targeted recruitment strategies": 5,
 "Discussion of barriers to participation and mitigation strategies": 5
 },
 "used_chunk_ids": [
-"secdrp__001_g",
+"secdrp__001_h",
 "secdrp__001_n",
 "secdrp__001_q",
-"secppi__001_b",
 "secppi__001_c"
 ],
-"sub_criterion_score": 8
+"sub_criterion_score": 10.0,
+"na": false
 },
 "Inclusivity Across the Research Lifecycle": {
 "signal_scores": {
@@ -470,30 +459,30 @@
 "Documented plans for ongoing evaluation and adaptation": 4
 },
 "used_chunk_ids": [
+"secppi__001_c",
+"secppi__001_d",
+"secdrp__001_h",
 "secdrp__001_q",
 "secdrp__001_v",
-"secdrp__001_z",
-"secppi__001_c",
-"secppi__001_d"
+"secdrp__001_z"
 ],
-"sub_criterion_score": 9
+"sub_criterion_score": 9.33,
+"na": false
 },
 "Costed and Resourced Plan for Research Inclusion": {
 "signal_scores": {
-"Explicit budget line(s) for inclusion activities (PPI, outreach, recruitment support)": 5,
+"Explicit budget line(s) for inclusion activities (PPI, outreach, recruitment support)": 2,
 "Mention of staff time, materials, or training dedicated to inclusion": 4,
-"Alignment between inclusion plan and allocated resources": 5
+"Alignment between inclusion plan and allocated resources": 4
 },
 "used_chunk_ids": [
-"secsb__001_g",
-"secsb__001_h",
-"secsb__001_i",
 "secppi__001_c",
-"secppi__001_d"
+"secppi__001_d",
+"secsb__001_q"
 ],
-"sub_criterion_score": 9
-},
-"section_average": 9.2
+"sub_criterion_score": 6.67,
+"na": false
+}
 },
 "Application Form": {
 "Use of Formatting, Headings, and Subheadings": {
@@ -506,18 +495,20 @@
 "used_chunk_ids": [
 "secafa__001"
 ],
-"sub_criterion_score": 9
+"sub_criterion_score": 9.0,
+"na": false
 },
 "Limited Duplication and Repetition": {
 "signal_scores": {
-"Semantic similarity measures between sentences/paragraphs": 4,
+"Semantic similarity measures between sentences/paragraphs": 5,
 "Detection of repeated phrases or ideas": 4,
-"Novelty score for each section (unique content vs. overlap)": 4
+"Novelty score for each section (unique content vs. overlap)": 5
 },
 "used_chunk_ids": [
 "secafa__001"
 ],
-"sub_criterion_score": 8
+"sub_criterion_score": 9.33,
+"na": false
 },
 "Logical Flow and Coherence Across Sections": {
 "signal_scores": {
@@ -527,11 +518,23 @@
 "Detectable narrative thread anchored on research aims": 5
 },
 "used_chunk_ids": [
-"secafa__001"
+"secafa__001",
+"secsa__001_a",
+"secsa__001_b",
+"secsa__001_c"
 ],
-"sub_criterion_score": 10
+"sub_criterion_score": 10.0,
+"na": false
+}
 },
-"section_average": 9
+"section_averages": {
+"General": 8.75,
+"Applicant": 8.88,
+"Proposed research": 9.26,
+"Training and development": 9.67,
+"Sites and support": 8.62,
+"Working with people and communities": 8.11,
+"Application Form": 9.44
 },
-"overall_average": 9.2
+"overall_average": 8.93
 }
