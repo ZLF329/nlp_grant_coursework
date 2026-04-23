@@ -10,7 +10,7 @@
           "secpesor__001_c"
         ],
         "bad_evidence_ids": [],
-        "implication": "Plain English Summary of Research: The section provides a clear problem statement, objectives, methods, and beneficiaries in accessible language, strongly supporting pr.1."
+        "implication": "Plain English Summary of Research: The section clearly outlines the problem, aims, methods, and beneficiaries in accessible language, supporting pr.1."
       },
       {
         "sub_id": "pr.2",
@@ -18,7 +18,7 @@
           "secpesor__001_a"
         ],
         "bad_evidence_ids": [],
-        "implication": "Plain English Summary of Research: Identifies a knowledge gap regarding GP guidance for PLWHIV and lack of evidence on what works best, supporting pr.2."
+        "implication": "Plain English Summary of Research: Identifies a knowledge gap regarding GP guidance for PLWHIV and plans a review of recent studies, supporting pr.2."
       },
       {
         "sub_id": "pr.4",
@@ -27,7 +27,7 @@
           "secpesor__001_b"
         ],
         "bad_evidence_ids": [],
-        "implication": "Plain English Summary of Research: Describes a three-part design including literature review, database analysis, and co-design with a steering group, supporting pr.4."
+        "implication": "Plain English Summary of Research: Describes a three-part methodology including literature review, database analysis, and co-design with a steering group, supporting pr.4."
       },
       {
         "sub_id": "pr.5",
@@ -36,7 +36,7 @@
           "secpesor__001_b"
         ],
         "bad_evidence_ids": [],
-        "implication": "Plain English Summary of Research: Explicitly states the aim to improve health checks and care for PLWHIV to help them live longer, healthier lives, supporting pr.5."
+        "implication": "Plain English Summary of Research: Explicitly states the goal to improve healthcare for PLWHIV to help them live longer, healthier lives, supporting pr.5."
       },
       {
         "sub_id": "pr.6",
@@ -63,7 +63,7 @@
           "secpesor__001_c"
         ],
         "bad_evidence_ids": [],
-        "implication": "Plain English Summary of Research: Outlines dissemination plans including journals, conferences, social media, and press releases to share findings with the public and health workers, supporting wp.3."
+        "implication": "Plain English Summary of Research: Outlines a dissemination plan including journals, conferences, social media, and press releases to share findings with the public and health workers, supporting wp.3."
       }
     ],
     "resolved_signals": [
@@ -117,7 +117,7 @@
           "secdrp__001_g"
         ],
         "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: Mentions track records of publications and successful NIHR grant applications for key team members, supporting prior research quality."
+        "implication": "Detailed Research Plan: Mentions track records of publications and successful NIHR grant applications for key team members, indicating impactful outputs."
       },
       {
         "sub_id": "g.6",
@@ -126,7 +126,7 @@
           "secdrp__001_g"
         ],
         "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: Identifies GP academics and HIV specialists as team members, demonstrating a practitioner-academic mix relevant to the study."
+        "implication": "Detailed Research Plan: Identifies joint leads and co-applicants as GP academics and HIV specialists, demonstrating a practitioner-academic team structure."
       },
       {
         "sub_id": "pr.3",
@@ -136,7 +136,7 @@
           "secdrp__001_m"
         ],
         "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: Defines three workstreams with specific timelines (months 2-16) and methods, indicating a feasible scope for the award."
+        "implication": "Detailed Research Plan: Defines three workstreams with specific timelines (months 1-16) and methods (scoping review, CPRD analysis, co-design), showing feasible scope."
       },
       {
         "sub_id": "pr.4",
@@ -146,7 +146,7 @@
           "secdrp__001_m"
         ],
         "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: Details rigorous methods including Arksey and O'Malley framework for scoping review and CPRD database analysis with regression, supporting methodological rigor."
+        "implication": "Detailed Research Plan: Details rigorous methods including Arksey and O'Malley framework for scoping review, CPRD database parameters, and regression analysis."
       },
       {
         "sub_id": "pr.5",
@@ -156,7 +156,7 @@
           "secdrp__001_o"
         ],
         "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: Explicitly links outcomes to NHS priorities, clinical guidance, and improved health for PLWHIV, demonstrating clear potential impact."
+        "implication": "Detailed Research Plan: Explicitly links research to NHS priorities and aims to produce evidence-based guidance to improve care and resource use for PLWHIV."
       },
       {
         "sub_id": "pr.6",
@@ -166,7 +166,7 @@
           "secdrp__001_n"
         ],
         "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: Describes a Person-Based Approach, stakeholder group co-led by PLWHIV, and focus groups, showing deep engagement throughout the lifecycle."
+        "implication": "Detailed Research Plan: Describes a Person-Based Approach with PLWHIV co-applicants leading a stakeholder group and focus groups for co-design."
       },
       {
         "sub_id": "pr.9",
@@ -175,7 +175,7 @@
           "secdrp__001_n"
         ],
         "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: Explicitly addresses diversity (MSM, Black African, trans) and plans to recruit underserved demographics for focus groups."
+        "implication": "Detailed Research Plan: Identifies underrepresented groups (trans, Black African, rural) and plans extra efforts for their representation in focus groups."
       },
       {
         "sub_id": "ss.1",
@@ -183,7 +183,7 @@
           "secdrp__001_g"
         ],
         "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: Highlights team members' track records of successful NIHR grants and publications in HIV care, indicating strong institutional track record."
+        "implication": "Detailed Research Plan: Highlights team members' track records of successful NIHR grants and publications in HIV care, indicating strong institutional capability."
       },
       {
         "sub_id": "ss.2",
@@ -192,7 +192,7 @@
           "secdrp__001_i"
         ],
         "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: Assigns specific roles for methodological advice, supervision of research associates, and PPI training, showing structured support."
+        "implication": "Detailed Research Plan: Assigns specific roles for methodological advice (MTR), PPI training (SD, ANe), and co-leadership of stakeholder groups, showing structured support."
       },
       {
         "sub_id": "wp.1",
@@ -202,16 +202,7 @@
           "secdrp__001_n"
         ],
         "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: Integrates PLWHIV as co-applicants and in focus groups to co-design the intervention, ensuring lived experience shapes the research."
-      },
-      {
-        "sub_id": "wp.2",
-        "good_evidence_ids": [
-          "secdrp__001_f",
-          "secdrp__001_g"
-        ],
-        "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: Lists a diverse team including PLWHIV co-applicants, GP academics, and HIV specialists, reflecting inclusive team composition."
+        "implication": "Detailed Research Plan: Integrates PLWHIV as co-applicants and stakeholder group leaders to co-design the intervention, ensuring lived experience shapes the model."
       },
       {
         "sub_id": "wp.4",
@@ -220,7 +211,7 @@
           "secdrp__001_n"
         ],
         "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: Identifies specific underserved groups (trans, Black African, non-metropolitan) and plans targeted recruitment strategies."
+        "implication": "Detailed Research Plan: Explicitly targets men who have sex with men, Black African people, trans individuals, and those in non-metropolitan areas for inclusion."
       },
       {
         "sub_id": "wp.5",
@@ -230,7 +221,7 @@
           "secdrp__001_n"
         ],
         "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: Ensures inclusion across design (PBA), recruitment (focus groups), and analysis (stakeholder feedback), covering the research lifecycle."
+        "implication": "Detailed Research Plan: Plans PPI involvement across all three workstreams, from planning to co-design and refinement, ensuring inclusivity throughout the lifecycle."
       },
       {
         "sub_id": "wp.6",
@@ -239,7 +230,7 @@
           "secdrp__001_n"
         ],
         "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: States that compensation for time and expenses for the stakeholder group is costed in the budget, supporting resourced inclusion."
+        "implication": "Detailed Research Plan: States that compensation for time and expenses for the stakeholder group and focus group participants are costed in the budget."
       }
     ],
     "resolved_signals": [
@@ -254,7 +245,6 @@
       "ss.1",
       "ss.2",
       "wp.1",
-      "wp.2",
       "wp.4",
       "wp.5",
       "wp.6"
@@ -269,7 +259,8 @@
       "td.2",
       "td.3",
       "ss.3",
-      "ss.4"
+      "ss.4",
+      "wp.2"
     ]
   },
   {
@@ -297,7 +288,7 @@
           "secac__001"
         ],
         "bad_evidence_ids": [],
-        "implication": "Application Context: Identifies the contracting organisation as an INTEGRATED CARE BOARD, indicating the institutional setting for the award."
+        "implication": "Application Context: Identifies the contracting organisation as an Integrated Care Board, indicating the institutional setting for the award."
       }
     ],
     "resolved_signals": [
@@ -313,7 +304,8 @@
       "td.1",
       "td.2",
       "td.3",
-      "ss.4"
+      "ss.4",
+      "wp.2"
     ]
   },
   {
@@ -325,7 +317,7 @@
           "secpena__001"
         ],
         "bad_evidence_ids": [],
-        "implication": "Plain English NLP Analysis: Flesch-Kincaid grade 5.3 and Reading Ease 74.35 indicate high readability, while low jargon density (2.41%) and coverage of key elements (problem, objectives, methods, beneficiaries, impact) s"
+        "implication": "Plain English NLP Analysis: Flesch-Kincaid grade 5.3 and reading ease 74.35 indicate high readability; low jargon density (2.41%) and coverage of key elements (problem, objectives, methods, beneficiaries, impact) strongl"
       }
     ],
     "resolved_signals": [
@@ -339,7 +331,8 @@
       "td.1",
       "td.2",
       "td.3",
-      "ss.4"
+      "ss.4",
+      "wp.2"
     ]
   },
   {
@@ -354,7 +347,8 @@
       "td.1",
       "td.2",
       "td.3",
-      "ss.4"
+      "ss.4",
+      "wp.2"
     ]
   }
 ]

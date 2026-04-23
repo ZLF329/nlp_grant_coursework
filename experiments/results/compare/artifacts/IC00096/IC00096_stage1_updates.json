@@ -9,7 +9,7 @@
           "secac__001_d"
         ],
         "bad_evidence_ids": [],
-        "implication": "Applicant CV: CV details extensive prior research experience including project design, data collection, analysis, and specific training in statistical/coding methods, strongly supporting relevant experience and training."
+        "implication": "Applicant CV: CV details extensive prior research experience in respiratory physiology, including project design, data collection, and analysis, directly supporting relevant research experience."
       },
       {
         "sub_id": "g.4",
@@ -19,26 +19,26 @@
           "secac__001_h"
         ],
         "bad_evidence_ids": [],
-        "implication": "Applicant CV: CV lists numerous high-quality publications in respiratory journals and multiple awards (e.g., Directors Choice, CAHPR), demonstrating impactful research outputs and recognitions."
+        "implication": "Applicant CV: CV lists numerous publications in high-impact journals (e.g., ERJ, AJRCCM) and multiple awards (e.g., Directors Choice, CAHPR), demonstrating strong research outputs and recognition."
       },
       {
         "sub_id": "g.5",
         "good_evidence_ids": [
-          "secac__001_c",
-          "secac__001_h"
+          "secac__001_a",
+          "secac__001_c"
         ],
         "bad_evidence_ids": [],
-        "implication": "Applicant CV: Evidence of increasing responsibility shown through progression from Band 5 to Research Physiotherapist, leading projects, supervising MSc students, and receiving peer recognition via awards."
+        "implication": "Applicant CV: Progression from Band 5 to Research Physiotherapist and Editorial Board Member, plus supervision of MSc students, indicates increasing responsibility and leadership trajectory."
       },
       {
         "sub_id": "g.6",
         "good_evidence_ids": [
           "secac__001_a",
           "secac__001_b",
-          "secac__001_c"
+          "secac__001_d"
         ],
         "bad_evidence_ids": [],
-        "implication": "Applicant CV: Applicant holds concurrent clinical roles (Physiotherapist) and research positions (Research Fellow, PCAF), with research focused on clinical rehabilitation, confirming a practitioner-academic career trajec"
+        "implication": "Applicant CV: Applicant holds concurrent clinical roles (Physiotherapist) and research positions (Fellowships, PCAF), with research focused on clinical rehabilitation, confirming practitioner-academic commitment."
       },
       {
         "sub_id": "pr.8",
@@ -48,7 +48,7 @@
           "secac__001_e"
         ],
         "bad_evidence_ids": [],
-        "implication": "Applicant CV: CV provides a robust track record of previous research with multiple publications and grants in respiratory physiology, directly supporting the quality of previous research."
+        "implication": "Applicant CV: CV provides a robust track record of successful projects and publications in respiratory muscle training and critical care, aligning skills with proposed research areas."
       }
     ],
     "resolved_signals": [
@@ -88,6 +88,25 @@
     "section_name": "Applicant Research Background",
     "findings": [
       {
+        "sub_id": "g.1",
+        "good_evidence_ids": [
+          "secarb__001_f",
+          "secarb__001_g"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Applicant Research Background: Clearly states aspiration to be a leading clinical academic with a specific plan to apply for postdoctoral funding, supporting a clear research vision and trajectory."
+      },
+      {
+        "sub_id": "g.2",
+        "good_evidence_ids": [
+          "secarb__001_d",
+          "secarb__001_e",
+          "secarb__001_f"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Applicant Research Background: Details how the DCAF enables specific training (EMG, PPI) and skills development to conduct a definitive RCT, explaining why this award is the right next step."
+      },
+      {
         "sub_id": "g.3",
         "good_evidence_ids": [
           "secarb__001_a",
@@ -95,7 +114,7 @@
           "secarb__001_d"
         ],
         "bad_evidence_ids": [],
-        "implication": "Applicant Research Background: Details specific prior projects (ICU IMT, app trial, EMG study) and methods (data analysis, coding, EMG), strongly supporting relevant research experience and training."
+        "implication": "Applicant Research Background: Describes extensive prior experience leading clinical and lab studies, including data analysis and manuscript preparation, confirming relevant research experience."
       },
       {
         "sub_id": "g.4",
@@ -105,17 +124,17 @@
           "secarb__001_c"
         ],
         "bad_evidence_ids": [],
-        "implication": "Applicant Research Background: Lists secured grants (£118k+), first-author publications in high-impact journals (IF 3.5, 4.6), conference presentations, and awards (Directors' Choice), confirming impactful outputs."
+        "implication": "Applicant Research Background: Lists secured grants (£118k+), first-author publications in high-impact journals (IF 3.5, 4.6), and awards (Directors' Choice), demonstrating impactful outputs."
       },
       {
         "sub_id": "g.5",
         "good_evidence_ids": [
           "secarb__001_b",
           "secarb__001_c",
-          "secarb__001_e"
+          "secarb__001_f"
         ],
         "bad_evidence_ids": [],
-        "implication": "Applicant Research Background: Demonstrates increasing responsibility as lead investigator, supervisor of MSc students, mentor on research courses, and editorial board member, supporting trajectory towards leadership."
+        "implication": "Applicant Research Background: Evidence of increasing responsibility through leading trials, supervising MSc students, mentoring on research courses, and leading an editorial board team."
       },
       {
         "sub_id": "g.6",
@@ -124,17 +143,17 @@
           "secarb__001_f"
         ],
         "bad_evidence_ids": [],
-        "implication": "Applicant Research Background: Explicitly states role as specialist respiratory physiotherapist and clinical academic, balancing clinical teaching with research, confirming commitment to practitioner-academic career."
+        "implication": "Applicant Research Background: Explicitly identifies as a specialist respiratory physiotherapist balancing clinical teaching and research, confirming commitment to a practitioner-academic career."
       },
       {
         "sub_id": "pr.8",
         "good_evidence_ids": [
           "secarb__001_a",
           "secarb__001_b",
-          "secarb__001_d"
+          "secarb__001_c"
         ],
         "bad_evidence_ids": [],
-        "implication": "Applicant Research Background: Provides detailed evidence of successful prior projects with specific outcomes (recruitment targets met, manuscripts published/under review), supporting quality of previous research."
+        "implication": "Applicant Research Background: Demonstrates a strong track record of successful projects in respiratory physiology and critical care, aligning skills with the proposed DCAF work."
       },
       {
         "sub_id": "wp.1",
@@ -143,10 +162,12 @@
           "secarb__001_e"
         ],
         "bad_evidence_ids": [],
-        "implication": "Applicant Research Background: Mentions PPI training and convening a PPI group to engage in planning the DCAF, indicating integration of lived experience in research design."
+        "implication": "Applicant Research Background: Mentions extensive PPI activity, training, and convening a PPI group to inform the DCAF, indicating integration of lived experience."
       }
     ],
     "resolved_signals": [
+      "g.1",
+      "g.2",
       "g.3",
       "g.4",
       "g.5",
@@ -155,8 +176,6 @@
       "wp.1"
     ],
     "missing_signals_after": [
-      "g.1",
-      "g.2",
       "pr.1",
       "pr.2",
       "pr.3",
@@ -190,7 +209,7 @@
           "secpesor__001_c"
         ],
         "bad_evidence_ids": [],
-        "implication": "Plain English Summary of Research: Clearly articulates the problem (ventilator-induced weakness), objectives (diaphragm-focused training), methods (two studies), and beneficiaries (ICU patients), using accessible languag"
+        "implication": "Plain English Summary of Research: Clearly articulates the problem (ventilator-induced weakness), objectives (diaphragm-focused training), methods (two studies), and beneficiaries (ICU patients) in accessible language."
       },
       {
         "sub_id": "pr.2",
@@ -198,7 +217,7 @@
           "secpesor__001_a"
         ],
         "bad_evidence_ids": [],
-        "implication": "Plain English Summary of Research: Identifies a specific knowledge gap where current exercises strengthen wrong muscles and are distressing, justifying the need for a diaphragm-focused approach."
+        "implication": "Plain English Summary of Research: Identifies a specific knowledge gap where current exercises strengthen wrong muscles and are distressing, justifying the need for this research."
       },
       {
         "sub_id": "pr.3",
@@ -207,7 +226,7 @@
           "secpesor__001_c"
         ],
         "bad_evidence_ids": [],
-        "implication": "Plain English Summary of Research: Outlines a feasible two-stage scope (pilot study to optimize levels, followed by feasibility trial for recruitment/retention) appropriate for an award."
+        "implication": "Plain English Summary of Research: Describes a feasible two-stage approach (pilot to optimize, then feasibility RCT) appropriate for a development award."
       },
       {
         "sub_id": "pr.4",
@@ -216,7 +235,7 @@
           "secpesor__001_c"
         ],
         "bad_evidence_ids": [],
-        "implication": "Plain English Summary of Research: Describes explicit methods including measuring muscle effort via nasal tube and patches, patient feedback, and a randomized controlled design with usual care control."
+        "implication": "Plain English Summary of Research: Details specific methods including muscle measurement via nasal tube/patches, patient feedback, randomization, and control groups."
       },
       {
         "sub_id": "pr.5",
@@ -225,7 +244,7 @@
           "secpesor__001_c"
         ],
         "bad_evidence_ids": [],
-        "implication": "Plain English Summary of Research: Highlights direct patient benefits (reduced ventilator time, shorter hospital stay) and plans to disseminate results to healthcare professionals and patients via blogs and newsletters."
+        "implication": "Plain English Summary of Research: Explicitly links the research to reducing ventilator time, hospital stays, and health problems, highlighting direct patient benefits."
       },
       {
         "sub_id": "pr.6",
@@ -233,7 +252,7 @@
           "secpesor__001_c"
         ],
         "bad_evidence_ids": [],
-        "implication": "Plain English Summary of Research: Details active patient involvement in study design, information sheets, and consent forms, with continued advisory roles during the study."
+        "implication": "Plain English Summary of Research: Describes active patient involvement in study design, information sheets, and ongoing advisory roles, demonstrating strong engagement."
       },
       {
         "sub_id": "wp.1",
@@ -241,7 +260,7 @@
           "secpesor__001_c"
         ],
         "bad_evidence_ids": [],
-        "implication": "Plain English Summary of Research: Confirms integration of lived experience as patients helped design the study and will advise on patient experience and information materials."
+        "implication": "Plain English Summary of Research: Confirms integration of lived experience through patients helping design the study and advising on patient experience questions."
       },
       {
         "sub_id": "wp.3",
@@ -250,7 +269,7 @@
           "secpesor__001_d"
         ],
         "bad_evidence_ids": [],
-        "implication": "Plain English Summary of Research: Outlines a clear dissemination plan targeting healthcare professionals (conferences, journals) and the public (blogs, newsletters, social media) to maximize benefit."
+        "implication": "Plain English Summary of Research: Outlines a clear dissemination plan including conferences, journals, and patient-facing channels like blogs and social media."
       }
     ],
     "resolved_signals": [
@@ -264,8 +283,6 @@
       "wp.3"
     ],
     "missing_signals_after": [
-      "g.1",
-      "g.2",
       "pr.7",
       "pr.9",
       "td.1",
@@ -290,7 +307,7 @@
           "secsa__001_a"
         ],
         "bad_evidence_ids": [],
-        "implication": "Scientific Abstract: Identifies specific knowledge gaps regarding current IMT approaches recruiting wrong muscles and causing distress, justifying the proposed diaphragm-focused intervention."
+        "implication": "Scientific Abstract: Identifies specific knowledge gaps regarding current IMT approaches recruiting wrong muscle fibers and lacking consensus, justifying the proposed research."
       },
       {
         "sub_id": "pr.3",
@@ -299,7 +316,7 @@
           "secsa__001_c"
         ],
         "bad_evidence_ids": [],
-        "implication": "Scientific Abstract: Outlines a feasible two-stage scope (observational mixed methods followed by feasibility RCT) with clear timelines (36 months) and participant numbers (40 then 50)."
+        "implication": "Scientific Abstract: Outlines a feasible two-stage design (observational mixed methods followed by feasibility RCT) with clear timelines and sample sizes appropriate for the award level."
       },
       {
         "sub_id": "pr.4",
@@ -308,7 +325,7 @@
           "secsa__001_c"
         ],
         "bad_evidence_ids": [],
-        "implication": "Scientific Abstract: Describes rigorous methods including oesophageal EMG, surface EMG, mixed methods integration, and a randomized controlled trial design with specific feasibility outcomes."
+        "implication": "Scientific Abstract: Provides explicit methodological details including oesophageal EMG, surface EMG, specific IMT loads, and randomization procedures for the feasibility trial."
       },
       {
         "sub_id": "pr.5",
@@ -317,15 +334,25 @@
           "secsa__001_d"
         ],
         "bad_evidence_ids": [],
-        "implication": "Scientific Abstract: Highlights potential impact on reducing ICU/hospital stay, improving cognitive/functional outcomes, and reducing NHS costs through a definitive RCT."
+        "implication": "Scientific Abstract: Links the research to reducing ICU/hospital stays, improving cognitive/functional outcomes, and reducing NHS costs, demonstrating clear patient and service impact."
       },
       {
         "sub_id": "pr.6",
         "good_evidence_ids": [
+          "secsa__001_b",
           "secsa__001_c"
         ],
         "bad_evidence_ids": [],
-        "implication": "Scientific Abstract: Mentions collaboration with a PPI group for dissemination and qualitative exploration of participant experience, indicating engagement with people and communities."
+        "implication": "Scientific Abstract: Describes qualitative exploration of participant experience and collaboration with a PPI group for dissemination, indicating engagement with people and communities."
+      },
+      {
+        "sub_id": "wp.1",
+        "good_evidence_ids": [
+          "secsa__001_b",
+          "secsa__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Explicitly plans to explore participant experience qualitatively and collaborate with a PPI group, integrating lived experience into study design and dissemination."
       },
       {
         "sub_id": "wp.3",
@@ -334,7 +361,7 @@
           "secsa__001_d"
         ],
         "bad_evidence_ids": [],
-        "implication": "Scientific Abstract: Details a dissemination plan via peer-reviewed publications, conferences, and patient/public events to maximize public and patient benefit."
+        "implication": "Scientific Abstract: Details a dissemination strategy including peer-reviewed publications, conferences, and patient/public events to maximize public and patient benefit."
       }
     ],
     "resolved_signals": [
@@ -343,11 +370,10 @@
       "pr.4",
       "pr.5",
       "pr.6",
+      "wp.1",
       "wp.3"
     ],
     "missing_signals_after": [
-      "g.1",
-      "g.2",
       "pr.7",
       "pr.9",
       "td.1",
@@ -369,22 +395,22 @@
       {
         "sub_id": "pr.2",
         "good_evidence_ids": [
-          "secdrp__001_b",
           "secdrp__001_d",
-          "secdrp__001_e"
+          "secdrp__001_e",
+          "secdrp__001_f"
         ],
         "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: Critically reviews 7 RCTs and 2 systematic reviews, identifying heterogeneity in loads and lack of clinical outcome improvement, clearly defining knowledge gaps."
+        "implication": "Detailed Research Plan: Critically reviews 7 RCTs and 2 systematic reviews, identifying heterogeneity in loads and lack of clinical outcome improvement, clearly defining the knowledge gap."
       },
       {
         "sub_id": "pr.3",
         "good_evidence_ids": [
           "secdrp__001_h",
-          "secdrp__001_i",
+          "secdrp__001_k",
           "secdrp__001_u"
         ],
         "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: Outlines a feasible two-stage scope (observational mixed methods followed by feasibility RCT) with specific timelines (36 months) and sample sizes (40 then 50) appropriate for the award."
+        "implication": "Detailed Research Plan: Outlines a feasible two-stage design (observational mixed methods followed by feasibility RCT) with specific sample sizes (40 and 50) and timelines appropriate for the award."
       },
       {
         "sub_id": "pr.4",
@@ -394,17 +420,17 @@
           "secdrp__001_m"
         ],
         "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: Describes rigorous methods including oesophageal EMG, surface EMG, mixed methods integration, and a randomized controlled trial design with specific feasibility outcomes."
+        "implication": "Detailed Research Plan: Provides explicit methodological details including oesophageal EMG, surface EMG, specific IMT loads (15-45%), and randomization procedures for the feasibility trial."
       },
       {
         "sub_id": "pr.5",
         "good_evidence_ids": [
           "secdrp__001_c",
           "secdrp__001_d",
-          "secdrp__001_r"
+          "secdrp__001_z"
         ],
         "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: Highlights potential impact on reducing ICU/hospital stay, improving cognitive/functional outcomes, and reducing NHS costs through a definitive RCT."
+        "implication": "Detailed Research Plan: Explicitly links research to reducing ventilator time, hospital stays, and NHS costs, while improving patient wellbeing by reducing distressing experiences."
       },
       {
         "sub_id": "pr.6",
@@ -414,7 +440,7 @@
           "secdrp__001_o"
         ],
         "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: Details active PPI involvement in defining distressing experiences, shaping qualitative data collection tools, and informing dissemination, demonstrating strong engagement."
+        "implication": "Detailed Research Plan: Describes extensive PPI engagement informing study design, data collection tools (communication boards), and dissemination, demonstrating strong engagement."
       },
       {
         "sub_id": "pr.9",
@@ -424,7 +450,7 @@
           "secdrp__001_w"
         ],
         "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: Explicitly addresses inclusivity by allowing surrogate consent for delirious patients, using adaptive communication methods, and planning for interpretation services."
+        "implication": "Detailed Research Plan: Details inclusive strategies including surrogate consent for delirious patients, adaptive communication methods for impaired cognition, and funding for interpretation services."
       },
       {
         "sub_id": "ss.2",
@@ -433,7 +459,7 @@
           "secdrp__001_|"
         ],
         "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: Describes a structured supervision framework with monthly meetings, quarterly group meetings, and a steering group, supported by a team with relevant expertise."
+        "implication": "Detailed Research Plan: Describes a structured supervision framework with monthly meetings, quarterly group meetings, and a steering group, aligning supervisor expertise with project needs."
       },
       {
         "sub_id": "ss.3",
@@ -442,7 +468,7 @@
           "secdrp__001_|"
         ],
         "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: Confirms access to multiple ICU sites (RBHT, GSTT, Royal Free) and support from research finance and development departments, ensuring organizational appropriateness."
+        "implication": "Detailed Research Plan: Highlights access to multiple ICU sites (RBHT, GSTT, Royal Free) and support from research finance and development departments, ensuring appropriate organizational support."
       },
       {
         "sub_id": "ss.4",
@@ -450,7 +476,7 @@
           "secdrp__001_w"
         ],
         "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: Demonstrates commitment to inclusive culture via collaboration with EDI leads, adherence to NIHR INCLUDE guidelines, and specific strategies for diverse participation."
+        "implication": "Detailed Research Plan: Explicitly commits to EDI through collaboration with the Trust EDI lead, using NIHR INCLUDE guidelines, and ensuring accessible materials and interpretation services."
       },
       {
         "sub_id": "wp.1",
@@ -460,7 +486,7 @@
           "secdrp__001_o"
         ],
         "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: Integrates lived experience by using PPI feedback to define 'distressing' loads and co-designing communication tools and qualitative interview content."
+        "implication": "Detailed Research Plan: Demonstrates deep integration of lived experience, with PPI input shaping the study design, communication tools, and qualitative data collection methods."
       },
       {
         "sub_id": "wp.3",
@@ -469,7 +495,7 @@
           "secdrp__001_y"
         ],
         "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: Outlines a comprehensive dissemination plan including feedback events for participants, lay summaries, social media, and engagement with professional bodies."
+        "implication": "Detailed Research Plan: Outlines a comprehensive dissemination plan including peer-reviewed journals, conferences, lay summaries, and direct feedback events for participants and relatives."
       },
       {
         "sub_id": "wp.5",
@@ -479,7 +505,7 @@
           "secdrp__001_w"
         ],
         "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: Ensures inclusivity across the lifecycle by adapting consent for capacity issues, using a 'toolbox' of communication methods, and planning for interpretation services."
+        "implication": "Detailed Research Plan: Ensures inclusivity across the lifecycle by allowing surrogate consent, using adaptive communication methods for diverse abilities, and planning for interpretation services."
       }
     ],
     "resolved_signals": [
@@ -497,8 +523,6 @@
       "wp.5"
     ],
     "missing_signals_after": [
-      "g.1",
-      "g.2",
       "pr.7",
       "td.1",
       "td.2",
@@ -519,27 +543,15 @@
           "secppi__001_b"
         ],
         "bad_evidence_ids": [],
-        "implication": "Patient & Public Involvement: Details specific design changes (rest periods, scale anchors, catheter protocol) driven by PPI group feedback, strongly supporting integration of lived experience."
-      },
-      {
-        "sub_id": "wp.2",
-        "good_evidence_ids": [
-          "secppi__001_d"
-        ],
-        "bad_evidence_ids": [
-          "secppi__001_d"
-        ],
-        "implication": "Patient & Public Involvement: Acknowledges current lack of diversity (predominantly white group) but outlines active recruitment strategies to address this, partially supporting diversity and inclusivity."
+        "implication": "Patient & Public Involvement: PPI group directly influenced study design by advising on rest periods, scale simplification, catheter protocol changes, and qualitative data collection methods."
       },
       {
         "sub_id": "wp.4",
         "good_evidence_ids": [
           "secppi__001_d"
         ],
-        "bad_evidence_ids": [
-          "secppi__001_d"
-        ],
-        "implication": "Patient & Public Involvement: Identifies absence of underserved groups and commits to NIHR Under-served Communities Programme to improve representation, addressing barriers to participation."
+        "bad_evidence_ids": [],
+        "implication": "Patient & Public Involvement: Applicant acknowledges lack of diversity in current PPI group and outlines active recruitment strategies to include underserved communities."
       },
       {
         "sub_id": "wp.6",
@@ -548,78 +560,36 @@
           "secppi__001_c"
         ],
         "bad_evidence_ids": [],
-        "implication": "Patient & Public Involvement: Confirms PPI was fully funded in PCAF with allocated funding for training and involvement, supporting a costed and resourced plan."
+        "implication": "Patient & Public Involvement: PPI involvement is fully funded with allocated resources for meetings, training, and member support, ensuring a costed plan for inclusion."
+      },
+      {
+        "sub_id": "pr.6",
+        "good_evidence_ids": [
+          "secppi__001_c",
+          "secppi__001_d"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Patient & Public Involvement: Detailed plan for ongoing engagement includes regular meetings, specific advisory roles on data interpretation and ethics, and co-presentation at conferences."
       }
     ],
     "resolved_signals": [
       "wp.1",
-      "wp.2",
       "wp.4",
-      "wp.6"
+      "wp.6",
+      "pr.6"
     ],
     "missing_signals_after": [
-      "g.1",
-      "g.2",
       "pr.7",
       "td.1",
       "td.2",
       "td.3",
-      "ss.1"
+      "ss.1",
+      "wp.2"
     ]
   },
   {
     "section_name": "Training & Development and Research Support",
     "findings": [
-      {
-        "sub_id": "g.1",
-        "good_evidence_ids": [
-          "sectdars__001_a",
-          "sectdars__001_d",
-          "sectdars__001_e"
-        ],
-        "bad_evidence_ids": [],
-        "implication": "Training & Development and Research Support: Outlines a clear training plan aligned with career progression to a clinical academic leader, supporting g.1."
-      },
-      {
-        "sub_id": "g.2",
-        "good_evidence_ids": [
-          "sectdars__001_a",
-          "sectdars__001_c",
-          "sectdars__001_d"
-        ],
-        "bad_evidence_ids": [],
-        "implication": "Training & Development and Research Support: Details specific training to build on existing skills (e.g., MSc module refresh) and gain new skills (RCT design, ultrasound), supporting g.2."
-      },
-      {
-        "sub_id": "g.3",
-        "good_evidence_ids": [
-          "sectdars__001_b",
-          "sectdars__001_c",
-          "sectdars__001_d"
-        ],
-        "bad_evidence_ids": [],
-        "implication": "Training & Development and Research Support: Lists extensive formal training in qualitative/quantitative methods, RCTs, and clinical skills, reinforcing relevant research experience and training."
-      },
-      {
-        "sub_id": "g.5",
-        "good_evidence_ids": [
-          "sectdars__001_d",
-          "sectdars__001_e",
-          "sectdars__001_o"
-        ],
-        "bad_evidence_ids": [],
-        "implication": "Training & Development and Research Support: Includes leadership courses (King's Fund) and plans to supervise MSc students, supporting trajectory towards research leadership."
-      },
-      {
-        "sub_id": "g.6",
-        "good_evidence_ids": [
-          "sectdars__001_e",
-          "sectdars__001_f",
-          "sectdars__001_l"
-        ],
-        "bad_evidence_ids": [],
-        "implication": "Training & Development and Research Support: Explicitly details clinical secondments and practice supervision to maintain specialist skills, confirming commitment to a practitioner-academic career."
-      },
       {
         "sub_id": "td.1",
         "good_evidence_ids": [
@@ -628,7 +598,7 @@
           "sectdars__001_c"
         ],
         "bad_evidence_ids": [],
-        "implication": "Training & Development and Research Support: Provides a comprehensive, year-by-year training plan with specific courses linked to project milestones, strongly supporting quality and relevance."
+        "implication": "Training & Development and Research Support: Provides a comprehensive, year-by-year training plan aligned with the VITAE framework and specific project milestones, covering qualitative, quantitative, and clinical skills."
       },
       {
         "sub_id": "td.2",
@@ -638,7 +608,7 @@
           "sectdars__001_d"
         ],
         "bad_evidence_ids": [],
-        "implication": "Training & Development and Research Support: Training is highly targeted to specific project needs (e.g., diaphragm ultrasound for Study 2, mixed methods for Study 1), supporting suitability."
+        "implication": "Training & Development and Research Support: Explicitly maps training activities (e.g., RCT design, ultrasound, mixed methods) to specific project studies and identified skill gaps, demonstrating targeted suitability."
       },
       {
         "sub_id": "td.3",
@@ -648,17 +618,17 @@
           "sectdars__001_e"
         ],
         "bad_evidence_ids": [],
-        "implication": "Training & Development and Research Support: Explicitly links training to career aspirations (clinical academic leader) and transferable skills (leadership, RCT conduct), supporting career aspirations."
+        "implication": "Training & Development and Research Support: Links training to long-term career goals of becoming a clinical academic leader, including leadership courses, secondments, and teaching opportunities."
       },
       {
         "sub_id": "ss.1",
         "good_evidence_ids": [
-          "sectdars__001_g",
-          "sectdars__001_i",
-          "sectdars__001_j"
+          "sectdars__001_s",
+          "sectdars__001_t",
+          "sectdars__001_u"
         ],
         "bad_evidence_ids": [],
-        "implication": "Training & Development and Research Support: Supervisors have strong track records (publications, grants, successful PhD completions), supporting the contracting organisation's track record."
+        "implication": "Training & Development and Research Support: Host organisations (RBHH, Brunel) demonstrate strong track records with high REF ratings, successful fellowships, and established research centres."
       },
       {
         "sub_id": "ss.2",
@@ -668,7 +638,7 @@
           "sectdars__001_k"
         ],
         "bad_evidence_ids": [],
-        "implication": "Training & Development and Research Support: Describes a robust supervisory team with defined roles, regular meetings, and established relationships, confirming suitability of support."
+        "implication": "Training & Development and Research Support: Details a robust supervisory team with extensive experience in doctoral supervision, mixed methods, and clinical trials, with established meeting schedules."
       },
       {
         "sub_id": "ss.3",
@@ -678,7 +648,7 @@
           "sectdars__001_u"
         ],
         "bad_evidence_ids": [],
-        "implication": "Training & Development and Research Support: Host organisations provide dedicated research centres, backfill support, and a supportive academic environment, confirming appropriateness."
+        "implication": "Training & Development and Research Support: Confirms organisational support through dedicated time, backfill for clinical duties, access to research centres, and a supportive peer network of fellows."
       },
       {
         "sub_id": "ss.4",
@@ -687,24 +657,29 @@
           "sectdars__001_x"
         ],
         "bad_evidence_ids": [],
-        "implication": "Training & Development and Research Support: Hosts demonstrate strong commitment to EDI via charters, awards (Athena Silver), and specific initiatives, supporting inclusive culture."
+        "implication": "Training & Development and Research Support: Hosts demonstrate strong commitment to EDI via Positive Action Charters, Athena Silver Awards, and dedicated EDI leadership roles."
       },
       {
-        "sub_id": "wp.1",
+        "sub_id": "g.5",
         "good_evidence_ids": [
-          "sectdars__001_n",
+          "sectdars__001_d",
+          "sectdars__001_e",
           "sectdars__001_o"
         ],
         "bad_evidence_ids": [],
-        "implication": "Training & Development and Research Support: Plans to collaborate with PPI leads and present findings to PPI groups, reinforcing integration of lived experience."
+        "implication": "Training & Development and Research Support: Applicant is already mentoring on research courses and plans to supervise MSc projects, indicating increasing responsibility and leadership trajectory."
+      },
+      {
+        "sub_id": "g.6",
+        "good_evidence_ids": [
+          "sectdars__001_e",
+          "sectdars__001_f"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Training & Development and Research Support: Explicitly outlines a plan to maintain clinical practice through secondments and hospital work while advancing research, confirming practitioner-academic commitment."
       }
     ],
     "resolved_signals": [
-      "g.1",
-      "g.2",
-      "g.3",
-      "g.5",
-      "g.6",
       "td.1",
       "td.2",
       "td.3",
@@ -712,10 +687,12 @@
       "ss.2",
       "ss.3",
       "ss.4",
-      "wp.1"
+      "g.5",
+      "g.6"
     ],
     "missing_signals_after": [
-      "pr.7"
+      "pr.7",
+      "wp.2"
     ]
   },
   {
@@ -729,7 +706,7 @@
           "secsb__001_h"
         ],
         "bad_evidence_ids": [],
-        "implication": "SUMMARY BUDGET: Provides explicit justifications linking staff time, equipment (NAVA module, laptop), and consumables to specific study tasks (e.g., allocation concealment, data collection), strongly supporting pr.7."
+        "implication": "SUMMARY BUDGET: Clear rationale provided for funding levels, including calculations for PPI fees, transcription services, and interpreter time based on participant numbers and session durations, supporting pr.7.c."
       },
       {
         "sub_id": "wp.6",
@@ -739,16 +716,7 @@
           "secsb__001_l"
         ],
         "bad_evidence_ids": [],
-        "implication": "SUMMARY BUDGET: Details a fully costed plan for PPI including advisor fees, training courses, and dissemination events, confirming a resourced plan for research inclusion."
-      },
-      {
-        "sub_id": "pr.9",
-        "good_evidence_ids": [
-          "secsb__001_l",
-          "secsb__001_m"
-        ],
-        "bad_evidence_ids": [],
-        "implication": "SUMMARY BUDGET: Includes specific budget lines for translator/interpreter services for non-English speaking patients, demonstrating a costed strategy for inclusive recruitment."
+        "implication": "SUMMARY BUDGET: Includes specific funding for translator/interpreter time (£5,985) to overcome language barriers for 10% of participants, demonstrating resources dedicated to inclusion, supporting wp.6.b."
       },
       {
         "sub_id": "td.1",
@@ -758,33 +726,46 @@
           "secsb__001_o"
         ],
         "bad_evidence_ids": [],
-        "implication": "SUMMARY BUDGET: Allocates funds for specific training courses (e.g., RCT design, qualitative analysis, ultrasound) directly aligned with project methods, supporting training quality and relevance."
+        "implication": "SUMMARY BUDGET: Justifications explicitly link training to skill acquisition (e.g., 'equip me with skills to conduct feasibility RCT', 'develop my skills in diaphragm ultrasound'), supporting td.1.d."
       },
       {
         "sub_id": "td.2",
         "good_evidence_ids": [
-          "secsb__001_p",
-          "secsb__001_q",
-          "secsb__001_r"
+          "secsb__001_n",
+          "secsb__001_o",
+          "secsb__001_p"
         ],
         "bad_evidence_ids": [],
-        "implication": "SUMMARY BUDGET: Maps training activities (e.g., clinical trials unit workshop, regression models) to specific project needs and skill gaps, confirming suitability to personal development."
+        "implication": "SUMMARY BUDGET: Includes targeted mentorship and workshops (e.g., 'Inside a clinical trials unit', 'Supervised diaphragm ultrasound scans') rather than generic courses, supporting td.2.c and td.2.d."
+      },
+      {
+        "sub_id": "td.3",
+        "good_evidence_ids": [
+          "secsb__001_s",
+          "secsb__001_t"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "SUMMARY BUDGET: Courses in leadership, mixed methods, and clinical trials provide transferable skills for post-doctoral research, supporting td.3.c."
       }
     ],
     "resolved_signals": [
       "pr.7",
       "wp.6",
-      "pr.9",
       "td.1",
-      "td.2"
+      "td.2",
+      "td.3"
     ],
-    "missing_signals_after": []
+    "missing_signals_after": [
+      "wp.2"
+    ]
   },
   {
     "section_name": "Application Context",
     "findings": [],
     "resolved_signals": [],
-    "missing_signals_after": []
+    "missing_signals_after": [
+      "wp.2"
+    ]
   },
   {
     "section_name": "Plain English NLP Analysis",
@@ -795,18 +776,69 @@
           "secpena__001"
         ],
         "bad_evidence_ids": [],
-        "implication": "Plain English NLP Analysis: NLP metrics show strong readability (Flesch-Kincaid 6.08, 0% long sentences) and low jargon density (1.68%), with coverage of all required summary components, strongly supporting pr.1."
+        "implication": "Plain English NLP Analysis: NLP metrics show strong readability (Flesch-Kincaid 6.08, 0% long sentences) and low jargon density (1.68%), with coverage of problem, objectives, methods, beneficiaries, and impact, supportin"
       }
     ],
     "resolved_signals": [
       "pr.1"
     ],
-    "missing_signals_after": []
+    "missing_signals_after": [
+      "wp.2"
+    ]
   },
   {
     "section_name": "Application Form Analysis",
-    "findings": [],
-    "resolved_signals": [],
-    "missing_signals_after": []
+    "findings": [
+      {
+        "sub_id": "pr.1",
+        "good_evidence_ids": [
+          "secafa__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Form Analysis: Confirms presence of Plain English Summary and NLP analysis sections, providing structural evidence for readability and content coverage checks."
+      },
+      {
+        "sub_id": "pr.7",
+        "good_evidence_ids": [
+          "secafa__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Form Analysis: Identifies a detailed SUMMARY BUDGET section with 291 table lines and high lexical overlap with research plan, indicating structured resource justification."
+      },
+      {
+        "sub_id": "td.1",
+        "good_evidence_ids": [
+          "secafa__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Form Analysis: Confirms a substantial 'Training & Development' section (4142 words) with high lexical overlap to research plan, suggesting detailed training descriptions."
+      },
+      {
+        "sub_id": "wp.1",
+        "good_evidence_ids": [
+          "secafa__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Form Analysis: Confirms a dedicated 'Patient & Public Involvement' section (779 words), indicating specific content addressing lived experience integration."
+      },
+      {
+        "sub_id": "pr.3",
+        "good_evidence_ids": [
+          "secafa__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Form Analysis: Shows a large 'Detailed Research Plan' (5210 words) and logical section ordering, supporting assessment of scope and feasibility."
+      }
+    ],
+    "resolved_signals": [
+      "pr.1",
+      "pr.7",
+      "td.1",
+      "wp.1",
+      "pr.3"
+    ],
+    "missing_signals_after": [
+      "wp.2"
+    ]
   }
 ]

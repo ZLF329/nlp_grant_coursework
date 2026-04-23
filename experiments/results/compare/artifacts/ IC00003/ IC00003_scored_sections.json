@@ -52,9 +52,9 @@
             "score_0to5_weighted": 2.0
           }
         ],
-        "pros": "The application describes a clear research vision regarding the care of PLWHIV and lists a team with relevant expertise (g.1.a, g.1.b). There is some evidence of institutional support through the involvement of GP academics and HIV specialists (g.1.d).",
-        "drawbacks": "The application lacks a specific 'training plan' for the applicant (g.1.c). The 'career trajectory' and 'independent direction' are implied through the project scope but not explicitly articulated as a personal career development narrative for the lead applicant (g.1.a, g.1.b). Mentorship is described in terms of team roles rather than a formal supervision framework for the applicant (g.1.d).",
-        "rationale": "The application lacks a specific 'training plan' for the applicant (g.1.c). The 'career trajectory' and 'independent direction' are implied through the project scope but not explicitly articulated as a personal career development narrative for the lead applicant (g.1.a, g.1.b). Mentorship is described in terms of team roles rather than a formal supervision framework for the applicant (g.1.d).",
+        "pros": "The application describes a research team with a mix of clinical and research expertise (g.1.b) and mentions successful NIHR grant applications and publications (g.1.d).",
+        "drawbacks": "There is no explicit statement of the lead applicant's personal research vision or career trajectory (g.1.a). No training plan is described (g.1.c). Mentorship is implied through team roles but not explicitly detailed as a support structure for the applicant (g.1.d).",
+        "rationale": "There is no explicit statement of the lead applicant's personal research vision or career trajectory (g.1.a). No training plan is described (g.1.c). Mentorship is implied through team roles but not explicitly detailed as a support structure for the applicant (g.1.d).",
         "missing_evidence": false,
         "if_applicable": true,
         "counts_toward_section_average": false,
@@ -106,8 +106,8 @@
           }
         ],
         "pros": "No evidence found in the provided text.",
-        "drawbacks": "The application text focuses entirely on the research project details and does not contain a section or statement explaining why this specific award is the right next step for the applicant's career, the difference it would make, or how it builds on existing experience (g.2.a, g.2.b, g.2.c). There is no explicit discussion of how the award will develop research partnerships beyond the project team itself (g.2.d).",
-        "rationale": "The application text focuses entirely on the research project details and does not contain a section or statement explaining why this specific award is the right next step for the applicant's career, the difference it would make, or how it builds on existing experience (g.2.a, g.2.b, g.2.c). There is no explicit discussion of how the award will develop research partnerships beyond the project team itself (g.2.d).",
+        "drawbacks": "The application text focuses entirely on the research project and team composition. It lacks any personal narrative explaining why this specific award is the right next step for the applicant, the difference it would make to their career, or how it builds on their specific experience (g.2.a, g.2.b, g.2.c). There is no discussion of how the award will develop the applicant's specific research partnerships (g.2.d).",
+        "rationale": "The application text focuses entirely on the research project and team composition. It lacks any personal narrative explaining why this specific award is the right next step for the applicant, the difference it would make to their career, or how it builds on their specific experience (g.2.a, g.2.b, g.2.c). There is no discussion of how the award will develop the applicant's specific research partnerships (g.2.d).",
         "missing_evidence": false,
         "if_applicable": true,
         "counts_toward_section_average": false,
@@ -153,9 +153,9 @@
             "score_0to5_weighted": 4.0
           }
         ],
-        "pros": "The 'Research Team' section explicitly details prior experience with NIHR grants, electronic health records analysis, and scoping reviews, which directly aligns with the proposed methods (g.3.a, g.3.c). Specific mentions of PhD research and successful grant applications provide strong evidence of relevant experience.",
-        "drawbacks": "There is no explicit mention of formal training courses, certifications, or workshops completed by the applicant (g.3.b). The evidence is largely team-based rather than focused solely on the lead applicant's individual training history.",
-        "rationale": "There is no explicit mention of formal training courses, certifications, or workshops completed by the applicant (g.3.b). The evidence is largely team-based rather than focused solely on the lead applicant's individual training history.",
+        "pros": "The text explicitly lists team members' prior experience with electronic health records, scoping reviews, and NIHR-funded projects, which aligns well with the proposed methods (g.3.a, g.3.c).",
+        "drawbacks": "While experience is mentioned, there is little evidence of formal training courses or certifications for the applicant specifically (g.3.b). The evidence is largely about the team rather than the individual applicant's specific training history.",
+        "rationale": "While experience is mentioned, there is little evidence of formal training courses or certifications for the applicant specifically (g.3.b). The evidence is largely about the team rather than the individual applicant's specific training history.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -207,9 +207,9 @@
             "score_0to5_weighted": 2.0
           }
         ],
-        "pros": "The text mentions a 'track record of publications' and 'successful NIHR grant applications' for key team members, indicating prior research outputs (g.4.a, g.4.c). The project aims to generate evidence for clinical guidance, implying an understanding of practical impact (g.4.d).",
-        "drawbacks": "No specific citation metrics, impact factors, or quantitative indicators of impact are provided (g.4.b). The description of practical impact is prospective (what the project will do) rather than a detailed description of the impact of *previous* work (g.4.d). The evidence is somewhat generic ('track record') rather than listing specific high-impact outputs.",
-        "rationale": "No specific citation metrics, impact factors, or quantitative indicators of impact are provided (g.4.b). The description of practical impact is prospective (what the project will do) rather than a detailed description of the impact of *previous* work (g.4.d). The evidence is somewhat generic ('track record') rather than listing specific high-impact outputs.",
+        "pros": "The application mentions a track record of publications and successful NIHR grant applications for key team members (g.4.a, g.4.c). It implies practical impact through the goal of improving care for PLWHIV (g.4.d).",
+        "drawbacks": "No specific citation metrics or indicators of impact are provided (g.4.b). The description of practical impact is general and tied to the project goals rather than specific outcomes of past work (g.4.d). The evidence is team-focused, not applicant-specific.",
+        "rationale": "No specific citation metrics or indicators of impact are provided (g.4.b). The description of practical impact is general and tied to the project goals rather than specific outcomes of past work (g.4.d). The evidence is team-focused, not applicant-specific.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -241,9 +241,9 @@
             "sid": "g.5.b",
             "signal_text": "Evidence of increasing responsibility in previous roles (e.g., leading projects, mentoring)",
             "weight": 1.0,
-            "score": 2,
-            "score_0to5_raw": 2.0,
-            "score_0to5_weighted": 2.0
+            "score": 1,
+            "score_0to5_raw": 1.0,
+            "score_0to5_weighted": 1.0
           },
           {
             "sid": "g.5.c",
@@ -262,9 +262,9 @@
             "score_0to5_weighted": 1.0
           }
         ],
-        "pros": "The applicant is listed as a 'Joint lead applicant' and has led previous PhD research, suggesting some increasing responsibility (g.5.b). Membership in committees (e.g., BHIVA external relations) suggests some peer recognition (g.5.d).",
-        "drawbacks": "There are no explicit statements of long-term career ambitions or goals (g.5.a). No participation in specific leadership or professional development programs is mentioned (g.5.c). The evidence for leadership potential is inferred from current roles rather than a demonstrated trajectory of increasing responsibility over time.",
-        "rationale": "There are no explicit statements of long-term career ambitions or goals (g.5.a). No participation in specific leadership or professional development programs is mentioned (g.5.c). The evidence for leadership potential is inferred from current roles rather than a demonstrated trajectory of increasing responsibility over time.",
+        "pros": "The applicant is listed as a joint lead, suggesting some level of responsibility (g.5.b). Team members are involved in external relations committees, suggesting peer recognition (g.5.d).",
+        "drawbacks": "There are no explicit statements of the applicant's career ambitions or long-term goals (g.5.a). No evidence of participation in leadership or professional development programs is provided (g.5.c). The evidence of increasing responsibility is weak and inferred from the team list rather than a personal narrative.",
+        "rationale": "There are no explicit statements of the applicant's career ambitions or long-term goals (g.5.a). No evidence of participation in leadership or professional development programs is provided (g.5.c). The evidence of increasing responsibility is weak and inferred from the team list rather than a personal narrative.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -288,9 +288,9 @@
             "sid": "g.6.a",
             "signal_text": "Explicit statement of practitioner-academic career intentions",
             "weight": 1.0,
-            "score": 1,
-            "score_0to5_raw": 1.0,
-            "score_0to5_weighted": 1.0
+            "score": 0,
+            "score_0to5_raw": 0.0,
+            "score_0to5_weighted": 0.0
           },
           {
             "sid": "g.6.b",
@@ -304,9 +304,9 @@
             "sid": "g.6.c",
             "signal_text": "Evidence of balancing practice responsibilities with research activities",
             "weight": 1.0,
-            "score": 1,
-            "score_0to5_raw": 1.0,
-            "score_0to5_weighted": 1.0
+            "score": 0,
+            "score_0to5_raw": 0.0,
+            "score_0to5_weighted": 0.0
           },
           {
             "sid": "g.6.d",
@@ -317,9 +317,9 @@
             "score_0to5_weighted": 3.0
           }
         ],
-        "pros": "The team includes 'GP academics' and 'HIV specialists', demonstrating strong involvement in clinical and practice-based research (g.6.b). The applicant's role in analyzing electronic health records and focus groups for a PhD funded by NIHR indicates relevant professional network participation (g.6.d).",
-        "drawbacks": "There is no explicit statement of the applicant's intention to pursue a practitioner-academic career path (g.6.a). The text does not describe how the applicant balances clinical practice responsibilities with research activities (g.6.c).",
-        "rationale": "There is no explicit statement of the applicant's intention to pursue a practitioner-academic career path (g.6.a). The text does not describe how the applicant balances clinical practice responsibilities with research activities (g.6.c).",
+        "pros": "The research team includes GP academics and HIV specialists, demonstrating strong involvement in clinical and practice-based research (g.6.b). Team members are part of professional networks like BHIVA (g.6.d).",
+        "drawbacks": "There is no explicit statement from the applicant regarding their intentions to pursue a practitioner-academic career (g.6.a). No evidence is provided regarding how the applicant balances practice responsibilities with research activities (g.6.c).",
+        "rationale": "There is no explicit statement from the applicant regarding their intentions to pursue a practitioner-academic career (g.6.a). No evidence is provided regarding how the applicant balances practice responsibilities with research activities (g.6.c).",
         "missing_evidence": false,
         "if_applicable": true,
         "counts_toward_section_average": false
@@ -397,9 +397,9 @@
             "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "The Plain English Summary is highly readable (Flesch-Kincaid grade 5.3, Reading Ease 74.35) with very low jargon density (2.41%). It clearly articulates the problem (ageing PLWHIV, lack of GP guidance), objectives (develop care model), methods (review, database analysis, co-design), beneficiaries (PLWHIV, GPs), and impact (longer, healthier lives). The text aligns perfectly with the Detailed Research Plan, using accessible language throughout.",
-        "drawbacks": "None identified; the summary meets all criteria for clarity, simplicity, and alignment.",
-        "rationale": "None identified; the summary meets all criteria for clarity, simplicity, and alignment.",
+        "pros": "The Plain English Summary is highly readable (Flesch-Kincaid grade 5.3, reading ease 74.35) with very low jargon density (2.41%). It clearly articulates the problem (ageing PLWHIV, lack of GP guidance), aims, methods (three-part study), beneficiaries, and real-world impact (longer, healthier lives). The content aligns perfectly with the Detailed Research Plan, covering all required elements in accessible language.",
+        "drawbacks": "None identified; the summary is concise, coherent, and fully meets the criteria for a non-specialist audience.",
+        "rationale": "None identified; the summary is concise, coherent, and fully meets the criteria for a non-specialist audience.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -440,9 +440,9 @@
             "sid": "pr.2.c",
             "signal_text": "Identification of knowledge gaps",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           },
           {
             "sid": "pr.2.d",
@@ -453,9 +453,9 @@
             "score_0to5_weighted": 4.0
           }
         ],
-        "pros": "The application provides a robust review of existing evidence, citing specific reports (BHIVA 2017) and systematic reviews. It critically analyzes three care models (standard, shared, collaborative), noting limitations in evidence quality and consistency. It clearly identifies knowledge gaps regarding current GP practices and the need for an up-to-date scoping review.",
-        "drawbacks": "While the review is strong, the detailed plan relies heavily on a single scoping review (BHIVA 2017) as the primary baseline, though it acknowledges the need to update this. The critical analysis is strong but could be slightly more expansive on recent grey literature beyond the cited reviews.",
-        "rationale": "While the review is strong, the detailed plan relies heavily on a single scoping review (BHIVA 2017) as the primary baseline, though it acknowledges the need to update this. The critical analysis is strong but could be slightly more expansive on recent grey literature beyond the cited reviews.",
+        "pros": "The application provides a critical review of existing evidence, citing specific reports (e.g., BHIVA 2017) and identifying limitations (dated research, poor quality evidence for shared-care). It clearly identifies knowledge gaps regarding GP guidance and PLWHIV experiences, justifying the need for an updated scoping review.",
+        "drawbacks": "While the review is strong, the specific list of references is embedded in the text rather than presented as a formal bibliography, which slightly limits the immediate assessment of the breadth of citations, though the content is robust.",
+        "rationale": "While the review is strong, the specific list of references is embedded in the text rather than presented as a formal bibliography, which slightly limits the immediate assessment of the breadth of citations, though the content is robust.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -502,9 +502,9 @@
             "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "The scope is well-defined with three distinct workstreams (scoping review, database analysis, co-design) and clear timelines (months 2-16). The 18-month duration and £180k budget align well with the complexity of the tasks. The project is feasible, utilizing existing databases (CPRD) and established frameworks (PBA).",
-        "drawbacks": "No significant drawbacks; the scope is appropriately matched to the award level and resources.",
-        "rationale": "No significant drawbacks; the scope is appropriately matched to the award level and resources.",
+        "pros": "The project scope is well-defined with three distinct workstreams (scoping review, database analysis, co-design) and clear timelines (months 1-16). The 18-month duration and £180k budget align well with the complexity of the tasks, demonstrating high feasibility and appropriate scale for the award.",
+        "drawbacks": "No significant drawbacks; the scope is realistic and well-matched to the resources and timeframe.",
+        "rationale": "No significant drawbacks; the scope is realistic and well-matched to the resources and timeframe.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -559,9 +559,9 @@
             "score_0to5_weighted": 4.0
           }
         ],
-        "pros": "Methods are explicitly described: Arksey and O'Malley framework for the scoping review, CPRD Aurum database for quantitative analysis, and PBA for co-design. There is strong alignment between aims and methods. Sample size justification is provided (acknowledging HIV rarity), and statistical analysis (regression) is detailed.",
-        "drawbacks": "Sample size justification notes that a minimum cannot be prescribed due to the rarity of HIV and potential under-reporting in GP records, which is a limitation but is acknowledged and managed through the study design.",
-        "rationale": "Sample size justification notes that a minimum cannot be prescribed due to the rarity of HIV and potential under-reporting in GP records, which is a limitation but is acknowledged and managed through the study design.",
+        "pros": "Methods are explicitly described with high rigor: Arksey and O'Malley framework for the scoping review, CPRD Aurum database for quantitative analysis with specific inclusion criteria, and a structured Person-Based Approach for co-design. The alignment between aims and methods is logical and robust.",
+        "drawbacks": "The sample size justification for the CPRD analysis notes that HIV is uncommon and a minimum sample size is difficult to prescribe, relying on a previous cohort of ~3,000. While explained, this is a minor limitation in statistical power planning compared to a calculated power analysis.",
+        "rationale": "The sample size justification for the CPRD analysis notes that HIV is uncommon and a minimum sample size is difficult to prescribe, relying on a previous cohort of ~3,000. While explained, this is a minor limitation in statistical power planning compared to a calculated power analysis.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -573,13 +573,12 @@
         "group_name": null,
         "weight": 1.0,
         "used_chunk_ids": [
-          "secpesor__001_a",
           "secpesor__001_b",
           "secdrp__001_c",
           "secdrp__001_n",
           "secdrp__001_o"
         ],
-        "evidence_count": 5,
+        "evidence_count": 4,
         "evidence_status": "ok",
         "confidence_gap": 0.0,
         "confidence_label": "high_confidence",
@@ -609,9 +608,9 @@
             "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "The application clearly states benefits for PLWHIV (longer, healthier lives) and the NHS (effective resource use). It aligns with NHS priorities (Five Year Forward View, Long Term Plan). Expected outcomes are specific: a co-designed model of care ready for piloting and eventual adoption in clinical guidelines.",
-        "drawbacks": "None identified; impact is clearly articulated and directly linked to patient and system benefits.",
-        "rationale": "None identified; impact is clearly articulated and directly linked to patient and system benefits.",
+        "pros": "The application clearly articulates benefits for PLWHIV (longer, healthier lives) and the NHS (effective resource use). It aligns with national priorities (NHS Long Term Plan) and specifies expected outcomes: evidence-based clinical guidance and a co-designed care model ready for piloting.",
+        "drawbacks": "None identified; the impact pathway is clear and directly linked to patient and system benefits.",
+        "rationale": "None identified; the impact pathway is clear and directly linked to patient and system benefits.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -626,10 +625,9 @@
           "secpesor__001_a",
           "secpesor__001_b",
           "secdrp__001_h",
-          "secdrp__001_i",
-          "secdrp__001_n"
+          "secdrp__001_i"
         ],
-        "evidence_count": 5,
+        "evidence_count": 4,
         "evidence_status": "ok",
         "confidence_gap": 0.0,
         "confidence_label": "high_confidence",
@@ -659,9 +657,9 @@
             "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "Strong evidence of engagement using the Person-Based Approach (PBA). PLWHIV are co-applicants and co-lead the steering group. Engagement spans all stages: proposal writing, study design, focus groups, and dissemination. Ethical considerations and compensation for participants are explicitly mentioned.",
-        "drawbacks": "None identified; engagement is deep, meaningful, and integrated throughout the project lifecycle.",
-        "rationale": "None identified; engagement is deep, meaningful, and integrated throughout the project lifecycle.",
+        "pros": "Strong evidence of meaningful engagement: PLWHIV are co-applicants and co-lead the stakeholder group. The Person-Based Approach is used throughout all workstreams, with specific plans for focus groups, feedback loops, and compensation for participants. Involvement spans design, review, and dissemination.",
+        "drawbacks": "None identified; the engagement plan is comprehensive and integrated into the research lifecycle.",
+        "rationale": "None identified; the engagement plan is comprehensive and integrated into the research lifecycle.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -693,9 +691,9 @@
             "sid": "pr.7.b",
             "signal_text": "Budget proportionality to project scope",
             "weight": 1.0,
-            "score": 3,
-            "score_0to5_raw": 3.0,
-            "score_0to5_weighted": 3.0
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
           },
           {
             "sid": "pr.7.c",
@@ -706,9 +704,9 @@
             "score_0to5_weighted": 3.0
           }
         ],
-        "pros": "The total cost (£180,401.32) and duration (18 months) are clearly stated. The application mentions that compensation for stakeholder time and expenses is costed in the budget. The scope of work (three workstreams) appears proportional to the funding level.",
-        "drawbacks": "The application text does not provide a detailed breakdown of the budget (e.g., specific line items for staff, travel, or equipment) to fully justify the links between specific tasks and resources requested. The justification is inferred from the scope rather than explicitly detailed in a budget table.",
-        "rationale": "The application text does not provide a detailed breakdown of the budget (e.g., specific line items for staff, travel, or equipment) to fully justify the links between specific tasks and resources requested. The justification is inferred from the scope rather than explicitly detailed in a budget table.",
+        "pros": "The total cost (£180,401.32) and duration (18 months) are clearly stated. The application mentions that compensation for stakeholder time and expenses is costed in the budget, linking resources to specific engagement activities.",
+        "drawbacks": "The application text does not provide a detailed breakdown of the budget (e.g., staff costs vs. overheads vs. consumables) or explicit justification for the specific funding level relative to the tasks, limiting the ability to fully assess resource appropriateness beyond the total figure.",
+        "rationale": "The application text does not provide a detailed breakdown of the budget (e.g., staff costs vs. overheads vs. consumables) or explicit justification for the specific funding level relative to the tasks, limiting the ability to fully assess resource appropriateness beyond the total figure.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -753,9 +751,9 @@
             "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "The research team demonstrates strong prior experience: successful NIHR grant applications, publications on HIV care, and expertise in electronic health records and scoping reviews. Skills are well-aligned with the proposed work (e.g., RM's PhD on EHRs, SD's PBA expertise).",
-        "drawbacks": "While the team's track record is strong, the application does not list specific publication titles or citation counts for the lead applicant individually, relying more on general statements of 'track record' and 'successful applications'.",
-        "rationale": "While the team's track record is strong, the application does not list specific publication titles or citation counts for the lead applicant individually, relying more on general statements of 'track record' and 'successful applications'.",
+        "pros": "The research team demonstrates strong prior experience: joint leads and co-applicants have track records of successful NIHR grants, publications in HIV care, and expertise in electronic health records and scoping reviews. Skills are explicitly aligned with the proposed work (e.g., MTR for statistics, SD for PBA).",
+        "drawbacks": "While the team's collective experience is strong, the specific prior outputs of the lead applicant (Dr. Richard Ma) are mentioned generally (PhD research, NIHR fellowship) without a detailed list of specific publications or projects led solely by him, though the team context is robust.",
+        "rationale": "While the team's collective experience is strong, the specific prior outputs of the lead applicant (Dr. Richard Ma) are mentioned generally (PhD research, NIHR fellowship) without a detailed list of specific publications or projects led solely by him, though the team context is robust.",
         "missing_evidence": false,
         "if_applicable": true,
         "counts_toward_section_average": false
@@ -800,9 +798,9 @@
             "score_0to5_weighted": 4.0
           }
         ],
-        "pros": "The application explicitly addresses diversity, noting that PLWHIV are not homogenous and highlighting specific groups (MSM, Black African, trans). It plans to recruit underserved demographics for focus groups and ensure the stakeholder group reflects these demographics. Equity is a stated consideration in the analysis of care access.",
-        "drawbacks": "While strategies for diverse recruitment are mentioned, specific adaptive methods for accessibility (e.g., for disabled participants) are not detailed beyond general statements of 'extra efforts' and 'online options'.",
-        "rationale": "While strategies for diverse recruitment are mentioned, specific adaptive methods for accessibility (e.g., for disabled participants) are not detailed beyond general statements of 'extra efforts' and 'online options'.",
+        "pros": "The application explicitly identifies underrepresented groups (trans, Black African, rural) and plans 'extra efforts' to ensure their representation in focus groups and the stakeholder group. It acknowledges intersectionality (stigma, racism, sexism) and aims to address barriers to participation.",
+        "drawbacks": "While strategies for recruitment are mentioned, specific adaptive methods for accessibility (e.g., specific formats for disabled participants beyond general 'online' options) are not detailed in depth, though the general commitment is strong.",
+        "rationale": "While strategies for recruitment are mentioned, specific adaptive methods for accessibility (e.g., specific formats for disabled participants beyond general 'online' options) are not detailed in depth, though the general commitment is strong.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -859,9 +857,9 @@
             "score_0to5_weighted": 0.0
           }
         ],
-        "pros": "No evidence found in the provided text regarding a training plan.",
-        "drawbacks": "The application text provided is limited to summary information and does not contain a training section. There is no description of training activities, timelines, or links to skill acquisition.",
-        "rationale": "The application text provided is limited to summary information and does not contain a training section. There is no description of training activities, timelines, or links to skill acquisition.",
+        "pros": "No evidence found in the provided application text or belief state regarding a specific training plan.",
+        "drawbacks": "The application text provided is limited to summary information and does not contain a training section. The belief state explicitly lists 'td.1' as a missing signal. There is no description of training activities, timelines, or content.",
+        "rationale": "The application text provided is limited to summary information and does not contain a training section. The belief state explicitly lists 'td.1' as a missing signal. There is no description of training activities, timelines, or content.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -911,9 +909,9 @@
             "score_0to5_weighted": 0.0
           }
         ],
-        "pros": "No evidence found in the provided text regarding personal development needs or training suitability.",
-        "drawbacks": "The provided text lacks any mention of the applicant's skill gaps, specific training needs, or how training would support project delivery. The belief state explicitly lists td.2 as missing.",
-        "rationale": "The provided text lacks any mention of the applicant's skill gaps, specific training needs, or how training would support project delivery. The belief state explicitly lists td.2 as missing.",
+        "pros": "No evidence found in the provided application text or belief state regarding personal development needs or skill gaps.",
+        "drawbacks": "The application text provided is limited to summary information and does not contain a training section. The belief state explicitly lists 'td.2' as a missing signal. There is no identification of skill gaps or mapping of training to project tasks.",
+        "rationale": "The application text provided is limited to summary information and does not contain a training section. The belief state explicitly lists 'td.2' as a missing signal. There is no identification of skill gaps or mapping of training to project tasks.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -963,9 +961,9 @@
             "score_0to5_weighted": 0.0
           }
         ],
-        "pros": "No evidence found in the provided text regarding career aspirations or training support for them.",
-        "drawbacks": "The application text does not contain statements about career goals, connections between training and future trajectory, or professional practice components. The belief state explicitly lists td.3 as missing.",
-        "rationale": "The application text does not contain statements about career goals, connections between training and future trajectory, or professional practice components. The belief state explicitly lists td.3 as missing.",
+        "pros": "No evidence found in the provided application text or belief state regarding career aspirations linked to training.",
+        "drawbacks": "The application text provided is limited to summary information and does not contain a training section. The belief state explicitly lists 'td.3' as a missing signal. There is no statement of career goals or connection between training and future trajectory.",
+        "rationale": "The application text provided is limited to summary information and does not contain a training section. The belief state explicitly lists 'td.3' as a missing signal. There is no statement of career goals or connection between training and future trajectory.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1025,8 +1023,8 @@
           }
         ],
         "pros": "The application provides strong evidence of the team's track record, explicitly mentioning 'successful NIHR grant applications' and 'track record of publications' for key members (JH, WL, JVR) in the relevant field of HIV care and general practice. It also highlights specific prior outputs like a PhD funded by NIHR and published work on PBA and scoping reviews.",
-        "drawbacks": "While the team's individual track records are well-documented, the evidence focuses primarily on the researchers rather than the contracting organisation (Integrated Care Board) or the host institution's broader research achievements and infrastructure. The link between the specific organisation's history and the project is less explicit than the team's history.",
-        "rationale": "While the team's individual track records are well-documented, the evidence focuses primarily on the researchers rather than the contracting organisation (Integrated Care Board) or the host institution's broader research achievements and infrastructure. The link between the specific organisation's history and the project is less explicit than the team's history.",
+        "drawbacks": "While the team's individual track records are well-documented, the specific institutional track record of the 'Integrated Care Board' (the contracting organisation) is not detailed beyond its role as the host. The evidence focuses heavily on the researchers rather than the organisation's broader research achievements.",
+        "rationale": "While the team's individual track records are well-documented, the specific institutional track record of the 'Integrated Care Board' (the contracting organisation) is not detailed beyond its role as the host. The evidence focuses heavily on the researchers rather than the organisation's broader research achievements.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1079,9 +1077,9 @@
             "score_0to5_weighted": 3.0
           }
         ],
-        "pros": "The application clearly defines specific roles for supervision and mentorship, such as MTR providing 'methodological and statistical advice' and 'help supervise the senior research associate,' and SD providing 'expert advice' on PBA. The alignment between supervisor expertise (e.g., GP academics, HIV specialists, PBA experts) and project needs is excellent. A stakeholder group is established to oversee workstreams, providing a structured support mechanism.",
-        "drawbacks": "While roles are defined, the specific frequency, format, and accountability mechanisms for the formal supervision of the lead applicant or the research team (e.g., 'monthly meetings') are not explicitly detailed in the text, relying more on the description of the stakeholder group's quarterly meetings.",
-        "rationale": "While roles are defined, the specific frequency, format, and accountability mechanisms for the formal supervision of the lead applicant or the research team (e.g., 'monthly meetings') are not explicitly detailed in the text, relying more on the description of the stakeholder group's quarterly meetings.",
+        "pros": "The application clearly defines roles for methodological and statistical advice (MTR), PPI training (SD, ANe), and co-leadership of stakeholder groups. It explicitly states that training on PBA will be provided and that the stakeholder group will meet every four months, demonstrating a structured support framework aligned with project needs.",
+        "drawbacks": "While the support structure is robust, the specific frequency or format of direct academic supervision for the applicant (e.g., weekly meetings, formal review cycles) is not explicitly detailed, relying more on the description of project management and stakeholder engagement structures.",
+        "rationale": "While the support structure is robust, the specific frequency or format of direct academic supervision for the applicant (e.g., weekly meetings, formal review cycles) is not explicitly detailed, relying more on the description of project management and stakeholder engagement structures.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1134,9 +1132,9 @@
             "score_0to5_weighted": 1.0
           }
         ],
-        "pros": "The application identifies the contracting organisation as an 'INTEGRATED CARE BOARD' and notes that GP academics on the team will provide 'access to networks of primary care clinicians for study recruitment,' indicating some organisational support for access. The team's mix of clinical and research expertise suggests an environment capable of supporting the project.",
-        "drawbacks": "There is very limited specific evidence regarding the facilities, infrastructure, or resources provided by the contracting organisation itself. The text does not describe the organisation's specific alignment with the applicant's career trajectory or tailored support mechanisms for the award type (e.g., specific training facilities, administrative support structures). The evidence is largely inferred from the team's capabilities rather than the organisation's explicit offerings.",
-        "rationale": "There is very limited specific evidence regarding the facilities, infrastructure, or resources provided by the contracting organisation itself. The text does not describe the organisation's specific alignment with the applicant's career trajectory or tailored support mechanisms for the award type (e.g., specific training facilities, administrative support structures). The evidence is largely inferred from the team's capabilities rather than the organisation's explicit offerings.",
+        "pros": "The application identifies the contracting organisation as an Integrated Care Board, which implies access to NHS networks and primary care clinicians for recruitment. The team composition includes GP academics who provide access to these networks, linking organisational support to project success.",
+        "drawbacks": "There is very limited specific description of the facilities, infrastructure, or resources provided by the Integrated Care Board itself. The evidence for support is largely inferred from the team's existing networks rather than explicit statements about the organisation's capacity to support the award or the applicant's specific career trajectory.",
+        "rationale": "There is very limited specific description of the facilities, infrastructure, or resources provided by the Integrated Care Board itself. The evidence for support is largely inferred from the team's existing networks rather than explicit statements about the organisation's capacity to support the award or the applicant's specific career trajectory.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1148,8 +1146,8 @@
         "group_name": null,
         "weight": 1.0,
         "used_chunk_ids": [
-          "secdrp__001_i",
-          "secdrp__001_j"
+          "secdrp__001_j",
+          "secdrp__001_n"
         ],
         "evidence_count": 2,
         "evidence_status": "ok",
@@ -1189,9 +1187,9 @@
             "score_0to5_weighted": 3.0
           }
         ],
-        "pros": "The application demonstrates a strong commitment to inclusivity through the research design, explicitly stating that the stakeholder group will reflect demographics most affected by HIV (MSM, Black African, trans) and those underrepresented. It mentions 'Equality, diversity and inclusion' as a specific section and plans to recruit from underserved groups. The involvement of PLWHIV as co-applicants and in the stakeholder group shows a supportive culture for lived experience.",
-        "drawbacks": "The evidence for an inclusive culture is primarily project-specific (how the team will behave) rather than evidence of the contracting organisation's broader policies, institutional initiatives, or adherence to research integrity principles. There is no mention of the organisation's specific diversity policies or training programs for staff.",
-        "rationale": "The evidence for an inclusive culture is primarily project-specific (how the team will behave) rather than evidence of the contracting organisation's broader policies, institutional initiatives, or adherence to research integrity principles. There is no mention of the organisation's specific diversity policies or training programs for staff.",
+        "pros": "The application demonstrates a strong commitment to inclusivity through specific strategies to recruit underrepresented groups (trans, Black African, rural) and ensuring the stakeholder group reflects demographics most affected by HIV. It explicitly mentions compensation for time and expenses, supporting an equitable environment.",
+        "drawbacks": "The evidence for an inclusive culture is primarily project-specific (recruitment strategies) rather than describing broader organisational policies or initiatives. There is no explicit mention of the organisation's adherence to research integrity principles or specific institutional training programs for underrepresented groups beyond the project scope.",
+        "rationale": "The evidence for an inclusive culture is primarily project-specific (recruitment strategies) rather than describing broader organisational policies or initiatives. There is no explicit mention of the organisation's adherence to research integrity principles or specific institutional training programs for underrepresented groups beyond the project scope.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1245,9 +1243,9 @@
             "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "The application explicitly details the use of the Person-Based Approach (PBA) with PLWHIV as co-applicants and steering group co-leaders. It describes specific co-design activities (focus groups, steering group meetings) where lived experience directly shapes the intervention model and guiding principles.",
-        "drawbacks": "While the plan for co-design is robust, the application describes the *process* of making changes based on feedback rather than providing specific examples of *past* changes made to the study design prior to submission (though the iterative nature is clear).",
-        "rationale": "While the plan for co-design is robust, the application describes the *process* of making changes based on feedback rather than providing specific examples of *past* changes made to the study design prior to submission (though the iterative nature is clear).",
+        "pros": "The application explicitly details the use of the Person-Based Approach (PBA) with PLWHIV as co-applicants leading a stakeholder group to co-design the care model. It describes specific activities like focus groups and feedback loops where the model is refined based on input.",
+        "drawbacks": "While the plan for co-design is strong, the application describes the *process* of making changes rather than providing specific *examples* of changes already made to the design based on prior lived experience input (as this is a proposal for future work). This prevents a perfect score on wp.1.b.",
+        "rationale": "While the plan for co-design is strong, the application describes the *process* of making changes rather than providing specific *examples* of changes already made to the design based on prior lived experience input (as this is a proposal for future work). This prevents a perfect score on wp.1.b.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1260,10 +1258,9 @@
         "weight": 1.0,
         "used_chunk_ids": [
           "secdrp__001_f",
-          "secdrp__001_g",
-          "secdrp__001_i"
+          "secdrp__001_g"
         ],
-        "evidence_count": 3,
+        "evidence_count": 2,
         "evidence_status": "ok",
         "confidence_gap": 0.0,
         "confidence_label": "high_confidence",
@@ -1272,30 +1269,30 @@
             "sid": "wp.2.a",
             "signal_text": "Explicit mentions of team composition across gender, ethnicity, age, or other relevant characteristics",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 2,
+            "score_0to5_raw": 2.0,
+            "score_0to5_weighted": 2.0
           },
           {
             "sid": "wp.2.b",
             "signal_text": "Statements about inclusion in hiring or team-building",
             "weight": 1.0,
-            "score": 3,
-            "score_0to5_raw": 3.0,
-            "score_0to5_weighted": 3.0
+            "score": 1,
+            "score_0to5_raw": 1.0,
+            "score_0to5_weighted": 1.0
           },
           {
             "sid": "wp.2.c",
             "signal_text": "Evidence of equitable task allocation and collaboration",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 2,
+            "score_0to5_raw": 2.0,
+            "score_0to5_weighted": 2.0
           }
         ],
-        "pros": "The team composition is explicitly diverse, including two PLWHIV as co-applicants, GP academics, HIV specialists, and policy researchers. Roles are clearly allocated, with PLWHIV leading PPI/stakeholder engagement and co-leading the steering group.",
-        "drawbacks": "While the team includes diverse professional backgrounds and lived experience, there is no explicit statement regarding the demographic diversity (e.g., gender, ethnicity, age) of the academic/research staff themselves, only the participants they aim to recruit.",
-        "rationale": "While the team includes diverse professional backgrounds and lived experience, there is no explicit statement regarding the demographic diversity (e.g., gender, ethnicity, age) of the academic/research staff themselves, only the participants they aim to recruit.",
+        "pros": "The research team includes co-applicants with lived experience of HIV (ANa, THI) and a mix of clinical and research expertise. The team structure explicitly integrates these diverse perspectives into the leadership.",
+        "drawbacks": "There is no explicit mention of the team's demographic composition (gender, ethnicity, age) beyond the lived experience of HIV. There are no specific statements about inclusion in hiring practices or detailed evidence of equitable task allocation beyond the general role descriptions.",
+        "rationale": "There is no explicit mention of the team's demographic composition (gender, ethnicity, age) beyond the lived experience of HIV. There are no specific statements about inclusion in hiring practices or detailed evidence of equitable task allocation beyond the general role descriptions.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1307,11 +1304,12 @@
         "group_name": null,
         "weight": 1.0,
         "used_chunk_ids": [
+          "secpesor__001_b",
           "secpesor__001_c",
           "secdrp__001_o",
           "secdrp__001_p"
         ],
-        "evidence_count": 3,
+        "evidence_count": 4,
         "evidence_status": "ok",
         "confidence_gap": 0.0,
         "confidence_label": "high_confidence",
@@ -1341,9 +1339,9 @@
             "score_0to5_weighted": 4.0
           }
         ],
-        "pros": "A comprehensive dissemination strategy is outlined, targeting professionals, policymakers, and the public via journals, conferences, social media, and press releases. The link between the study objectives (optimizing care) and anticipated benefits (longer, healthier lives, clinical guidance) is explicit.",
-        "drawbacks": "While the plan mentions sharing findings with PLWHIV via peer networks, the specific mechanisms for ensuring the *actionable* outcomes are directly accessible and usable by the patient community (beyond general news stories) could be slightly more detailed.",
-        "rationale": "While the plan mentions sharing findings with PLWHIV via peer networks, the specific mechanisms for ensuring the *actionable* outcomes are directly accessible and usable by the patient community (beyond general news stories) could be slightly more detailed.",
+        "pros": "A comprehensive dissemination plan is outlined, targeting professionals, policymakers, and the public via journals, conferences, social media, and press releases. The application clearly links the study objectives to anticipated benefits: improved health, longer lives, and evidence-based clinical guidance for PLWHIV.",
+        "drawbacks": "While the plan is strong, the specific mechanisms for translating the co-designed model into immediate practice changes (beyond the future pilot study) are described as a future step, slightly limiting the immediacy of the actionable outcomes.",
+        "rationale": "While the plan is strong, the specific mechanisms for translating the co-designed model into immediate practice changes (beyond the future pilot study) are described as a future step, slightly limiting the immediacy of the actionable outcomes.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1356,10 +1354,9 @@
         "weight": 1.0,
         "used_chunk_ids": [
           "secdrp__001_j",
-          "secdrp__001_n",
-          "secdrp__001_o"
+          "secdrp__001_n"
         ],
-        "evidence_count": 3,
+        "evidence_count": 2,
         "evidence_status": "ok",
         "confidence_gap": 0.0,
         "confidence_label": "high_confidence",
@@ -1368,9 +1365,9 @@
             "sid": "wp.4.a",
             "signal_text": "Mention of specific demographic groups (age, race, ethnicity, disability, gender, sexual orientation, religion/belief, location, socioeconomic status)",
             "weight": 1.0,
-            "score": 5,
-            "score_0to5_raw": 5.0,
-            "score_0to5_weighted": 5.0
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
           },
           {
             "sid": "wp.4.b",
@@ -1384,14 +1381,14 @@
             "sid": "wp.4.c",
             "signal_text": "Discussion of barriers to participation and mitigation strategies",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 3,
+            "score_0to5_raw": 3.0,
+            "score_0to5_weighted": 3.0
           }
         ],
-        "pros": "The application explicitly identifies specific underserved groups (MSM, Black African, trans/gender diverse, non-metropolitan residents) and acknowledges barriers like stigma and racism. It details targeted recruitment strategies, including face-to-face meetings in different locations and online options.",
-        "drawbacks": "While barriers are identified and strategies mentioned, the specific mitigation tactics for overcoming deep-seated stigma or ensuring the safety of trans participants in focus groups are not elaborated in granular detail.",
-        "rationale": "While barriers are identified and strategies mentioned, the specific mitigation tactics for overcoming deep-seated stigma or ensuring the safety of trans participants in focus groups are not elaborated in granular detail.",
+        "pros": "The application explicitly identifies specific seldom-heard groups: men who have sex with men, Black African people, trans and gender diverse individuals, and those in non-metropolitan areas. It states a commitment to ensuring the stakeholder group reflects these demographics and plans 'extra efforts' to recruit them for focus groups.",
+        "drawbacks": "While barriers like stigma and racism are acknowledged, the specific mitigation strategies for overcoming these barriers during recruitment (beyond 'extra efforts') are not detailed in depth.",
+        "rationale": "While barriers like stigma and racism are acknowledged, the specific mitigation strategies for overcoming these barriers during recruitment (beyond 'extra efforts') are not detailed in depth.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1432,14 +1429,14 @@
             "sid": "wp.5.c",
             "signal_text": "Documented plans for ongoing evaluation and adaptation",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 3,
+            "score_0to5_raw": 3.0,
+            "score_0to5_weighted": 3.0
           }
         ],
-        "pros": "Inclusion is embedded across the lifecycle: PBA in design, diverse recruitment in focus groups, stakeholder feedback in analysis/refinement, and inclusive dissemination. The plan explicitly considers accessibility (online options, reimbursement) and equity.",
-        "drawbacks": "The plan for ongoing evaluation and adaptation of inclusion strategies during the project execution is implied through the iterative PBA process but not explicitly described as a standalone monitoring activity.",
-        "rationale": "The plan for ongoing evaluation and adaptation of inclusion strategies during the project execution is implied through the iterative PBA process but not explicitly described as a standalone monitoring activity.",
+        "pros": "Inclusion is embedded across the entire lifecycle: PPI advisors help write the proposal, co-applicants lead the stakeholder group for co-design, and focus groups are used for refinement. The PBA framework ensures views are systematically recorded and acted upon.",
+        "drawbacks": "The plan mentions ongoing evaluation and adaptation of the model, but specific metrics or documented plans for evaluating the *inclusivity* of the process itself (beyond the model refinement) are not explicitly detailed.",
+        "rationale": "The plan mentions ongoing evaluation and adaptation of the model, but specific metrics or documented plans for evaluating the *inclusivity* of the process itself (beyond the model refinement) are not explicitly detailed.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1484,9 +1481,9 @@
             "score_0to5_weighted": 4.0
           }
         ],
-        "pros": "The application explicitly states that compensation for time and expenses for the stakeholder group is costed in the budget. It also mentions training on PBA for the group and reimbursement for focus group participants.",
-        "drawbacks": "While the text confirms that costs are included in the budget, it does not provide a specific budget line item breakdown or the exact monetary amounts allocated for these inclusion activities, which limits the ability to verify the adequacy of the resources.",
-        "rationale": "While the text confirms that costs are included in the budget, it does not provide a specific budget line item breakdown or the exact monetary amounts allocated for these inclusion activities, which limits the ability to verify the adequacy of the resources.",
+        "pros": "The application explicitly states that compensation for time and expenses for the stakeholder group and focus group participants are costed in the budget. It also mentions training on PBA will be provided.",
+        "drawbacks": "While the text confirms costs are included, it does not provide specific budget line items or amounts for these inclusion activities, relying on the statement that they are 'costed in the budget' rather than showing the breakdown.",
+        "rationale": "While the text confirms costs are included, it does not provide specific budget line items or amounts for these inclusion activities, relying on the statement that they are 'costed in the budget' rather than showing the breakdown.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1545,9 +1542,9 @@
             "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "The application form analysis confirms the presence of 10 numbered heading-like lines and 22 bullet/numbered list markers, indicating strong use of headings and subheadings. A structured hierarchy is evident with distinct sections (Plain English Summary, Detailed Research Plan, etc.) and logical nesting. Text parsing detected 13 emphasis markers, supporting the use of formatting for key terms.",
-        "drawbacks": "The analysis notes a parser limitation where bold/emphasis markers may be lost during text extraction; while 13 markers were detected, the full extent of emphasis usage cannot be perfectly verified, preventing a perfect score for af.1.b.",
-        "rationale": "The analysis notes a parser limitation where bold/emphasis markers may be lost during text extraction; while 13 markers were detected, the full extent of emphasis usage cannot be perfectly verified, preventing a perfect score for af.1.b.",
+        "pros": "The application form analysis confirms the presence of 10 numbered heading-like lines and 22 bullet/numbered list markers, indicating strong use of headings and subheadings. The section order follows a logical hierarchy (context, summary, plan, PPI, training, budget). Extracted emphasis markers (13) are present, though the parser notes potential loss of bold formatting during extraction.",
+        "drawbacks": "While emphasis markers are detected, the parser limitation note suggests that specific bold/emphasis formatting may have been lost during text extraction, preventing a perfect score for signal af.1.b despite the presence of markers.",
+        "rationale": "While emphasis markers are detected, the parser limitation note suggests that specific bold/emphasis formatting may have been lost during text extraction, preventing a perfect score for signal af.1.b despite the presence of markers.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1591,7 +1588,7 @@
             "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "The analysis explicitly reports a duplicate sentence rate of 0.0 and a repeated line rate of 0.0. No high cross-section lexical overlap was detected at the 0.18 threshold, indicating strong novelty and lack of unnecessary repetition across sections.",
+        "pros": "The analysis explicitly reports a duplicate sentence rate of 0.0 and a repeated line rate of 0.0. No high cross-section lexical overlap was detected at the 0.18 threshold, indicating excellent avoidance of unnecessary repetition and high novelty across sections.",
         "drawbacks": "No drawbacks identified; the metrics for duplication and repetition are optimal.",
         "rationale": "No drawbacks identified; the metrics for duplication and repetition are optimal.",
         "missing_evidence": false,
@@ -1645,9 +1642,9 @@
             "score_0to5_weighted": 4.0
           }
         ],
-        "pros": "The application demonstrates logical flow with 7 transition phrases and 42 objective-method-budget link terms. The section order follows a standard logical progression from applicant context to research plan, PPI, training, and budget, supporting a coherent narrative thread.",
-        "drawbacks": "While the structural indicators (transition phrases, link terms) are strong, the analysis relies on keyword counts rather than deep semantic embedding analysis to confirm the narrative thread, leaving a minor gap in verifying the depth of semantic coherence.",
-        "rationale": "While the structural indicators (transition phrases, link terms) are strong, the analysis relies on keyword counts rather than deep semantic embedding analysis to confirm the narrative thread, leaving a minor gap in verifying the depth of semantic coherence.",
+        "pros": "The application demonstrates logical flow with 7 transition phrases and 42 objective-method-budget link terms. The section order moves logically from applicant context through the research plan to budget, establishing a clear narrative thread.",
+        "drawbacks": "While the structural indicators (transition phrases, link terms) are strong, the analysis relies on parser-derived counts rather than deep semantic embedding analysis of the narrative thread itself, leaving a minor gap in confirming the depth of semantic coherence across all sections.",
+        "rationale": "While the structural indicators (transition phrases, link terms) are strong, the analysis relies on parser-derived counts rather than deep semantic embedding analysis of the narrative thread itself, leaving a minor gap in confirming the depth of semantic coherence across all sections.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true

@@ -17,7 +17,7 @@
           "secsa__001_c"
         ],
         "bad_evidence_ids": [],
-        "implication": "Scientific Abstract: Details prospective multicentre design, ELISA assay, ROC curves, and blind endpoint review, demonstrating methodological rigor."
+        "implication": "Scientific Abstract: Details a prospective multicentre design, ELISA assay, ROC analysis, and blind endpoint adjudication, demonstrating methodological rigor."
       },
       {
         "sub_id": "pr.5",
@@ -26,7 +26,7 @@
           "secsa__001_c"
         ],
         "bad_evidence_ids": [],
-        "implication": "Scientific Abstract: Highlights reducing diagnostic error, unnecessary antibiotics, and parental stress, showing clear patient and public impact."
+        "implication": "Scientific Abstract: Highlights reducing diagnostic error, unnecessary antibiotics, and parental stress, with plans to update clinical guidelines."
       },
       {
         "sub_id": "pr.6",
@@ -34,14 +34,23 @@
           "secsa__001_c"
         ],
         "bad_evidence_ids": [],
-        "implication": "Scientific Abstract: Mentions an end-of-study lay report for families, indicating a commitment to engagement and dissemination."
+        "implication": "Scientific Abstract: Mentions an end-of-study lay report for participating families, indicating a commitment to engagement."
+      },
+      {
+        "sub_id": "pr.9",
+        "good_evidence_ids": [
+          "secsa__001_b"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Defines inclusion as infants requiring cardiac surgery for major congenital heart defects, specifying the target population."
       }
     ],
     "resolved_signals": [
       "pr.3",
       "pr.4",
       "pr.5",
-      "pr.6"
+      "pr.6",
+      "pr.9"
     ],
     "missing_signals_after": [
       "g.1",
@@ -54,7 +63,6 @@
       "pr.2",
       "pr.7",
       "pr.8",
-      "pr.9",
       "td.1",
       "td.2",
       "td.3",
@@ -81,7 +89,7 @@
           "secpesor__001_c"
         ],
         "bad_evidence_ids": [],
-        "implication": "Plain English Summary of Research: Clearly outlines aims, background, methods, and impact in accessible language, supporting pr.1."
+        "implication": "Plain English Summary of Research: Clearly articulates aims, background, methods, and impact in accessible language, supporting pr.1."
       },
       {
         "sub_id": "pr.5",
@@ -99,7 +107,7 @@
           "secpesor__001_c"
         ],
         "bad_evidence_ids": [],
-        "implication": "Plain English Summary of Research: Describes a Heart Advisory Parent Group advising on study aspects and an end-of-study leaflet for families, supporting pr.6."
+        "implication": "Plain English Summary of Research: Describes a Heart Advisory Parent Group advising on study aspects and sharing results via leaflets, supporting pr.6."
       },
       {
         "sub_id": "pr.8",
@@ -125,7 +133,6 @@
       "g.6",
       "pr.2",
       "pr.7",
-      "pr.9",
       "td.1",
       "td.2",
       "td.3",
@@ -155,11 +162,10 @@
       {
         "sub_id": "pr.3",
         "good_evidence_ids": [
-          "seccfps__001_d",
           "seccfps__001_l"
         ],
         "bad_evidence_ids": [],
-        "implication": "Changes from Previous Stage: Applicants simplified complex aims and provided a detailed feasibility analysis with recruitment targets and a Gantt chart, directly addressing scope and feasibility concerns."
+        "implication": "Changes from Previous Stage: Recruitment feasibility is demonstrated with specific national admission figures, a calculated target of 324 infants over 18 months, and a Gantt chart integration."
       },
       {
         "sub_id": "pr.4",
@@ -169,7 +175,17 @@
           "seccfps__001_g"
         ],
         "bad_evidence_ids": [],
-        "implication": "Changes from Previous Stage: Detailed responses clarify sensitivity/specificity thresholds, provide a full sample size calculation, and describe specific statistical analysis plans for each objective."
+        "implication": "Changes from Previous Stage: Methodological rigor is strengthened by clarifying sensitivity/specificity thresholds, detailing sample size calculations (n=300), and specifying analysis plans including ROC curves and regre"
+      },
+      {
+        "sub_id": "pr.6",
+        "good_evidence_ids": [
+          "seccfps__001_h",
+          "seccfps__001_i",
+          "seccfps__001_j"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Changes from Previous Stage: PPI engagement is significantly enhanced by appointing a PPI Co-Applicant with lived experience, defining their role in the Steering Group, and detailing payment and training policies."
       },
       {
         "sub_id": "pr.9",
@@ -179,26 +195,25 @@
           "seccfps__001_o"
         ],
         "bad_evidence_ids": [],
-        "implication": "Changes from Previous Stage: Applicants outline specific inclusive recruitment strategies, including interpretation services, deferred consent, and layered consent processes to ensure representative sampling."
+        "implication": "Changes from Previous Stage: Inclusive recruitment is supported by strategies for ethnic minority groups, including interpretation services, deferred consent, and simplified patient information sheets."
       },
       {
         "sub_id": "wp.1",
         "good_evidence_ids": [
-          "seccfps__001_h",
           "seccfps__001_i",
           "seccfps__001_j"
         ],
         "bad_evidence_ids": [],
-        "implication": "Changes from Previous Stage: Applicants added a PPI Co-Applicant with lived experience, defined their role in the Steering Group, and detailed their involvement in document review and study design."
+        "implication": "Changes from Previous Stage: Lived experience is integrated via a PPI Co-Applicant who contributed to pilot study design, outcome measures, and lay summaries, with ongoing involvement in the Steering Group."
       },
       {
         "sub_id": "wp.4",
         "good_evidence_ids": [
-          "seccfps__001_m",
-          "seccfps__001_n"
+          "seccfps__001_n",
+          "seccfps__001_o"
         ],
         "bad_evidence_ids": [],
-        "implication": "Changes from Previous Stage: Applicants address representation of ethnic minority groups by citing incidence data and implementing mitigating actions like interpretation services and deferred consent."
+        "implication": "Changes from Previous Stage: Representation of underserved groups is addressed through specific barriers analysis (language, socioeconomic) and mitigating actions like interpretation services and deferred consent."
       },
       {
         "sub_id": "wp.6",
@@ -207,13 +222,14 @@
           "seccfps__001_n"
         ],
         "bad_evidence_ids": [],
-        "implication": "Changes from Previous Stage: Applicants provide a costed plan for PPI (including payment and childcare) and ringfenced budget for interpretation services to support inclusive recruitment."
+        "implication": "Changes from Previous Stage: Inclusion activities are costed with specific budget lines for PPI Co-Applicant payments (£1080), childcare, and interpretation services (£600)."
       }
     ],
     "resolved_signals": [
       "pr.1",
       "pr.3",
       "pr.4",
+      "pr.6",
       "pr.9",
       "wp.1",
       "wp.4",
@@ -251,35 +267,36 @@
           "secdrp__001_{"
         ],
         "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: Describes a published pilot study (secdrp__001_h) and lists team expertise in NEC, statistics, and cardiac surgery (secdrp__001_z, secdrp__001_{), demonstrating relevant experience and training."
+        "implication": "Detailed Research Plan: Describes a published pilot study (secdrp__001_h) and lists team expertise in cardiac surgery, statistics, and NEC (secdrp__001_z, secdrp__001_{, secdrp__001_|), demonstrating relevant experience "
       },
       {
         "sub_id": "g.4",
         "good_evidence_ids": [
           "secdrp__001_h",
           "secdrp__001_s",
-          "secdrp__001_u"
+          "secdrp__001_t"
         ],
         "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: Cites a published pilot study (secdrp__001_h) and outlines specific dissemination outputs including peer-reviewed journals, conferences, and NIHR reports (secdrp__001_s, secdrp__001_u), supporting"
+        "implication": "Detailed Research Plan: Cites a published pilot study (secdrp__001_h) and outlines specific dissemination outputs including conferences, peer-reviewed journals, and guideline updates (secdrp__001_s, secdrp__001_t, secdrp"
       },
       {
         "sub_id": "g.5",
         "good_evidence_ids": [
           "secdrp__001_z",
-          "secdrp__001_x"
+          "secdrp__001_{",
+          "secdrp__001_|"
         ],
         "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: Highlights Dr. O'Connor's role as lead investigator in a prior pilot study and current responsibility for managing sites and PPI engagement (secdrp__001_z, secdrp__001_x), indicating increasing re"
+        "implication": "Detailed Research Plan: Highlights the applicant's role as lead investigator in a pilot study (secdrp__001_z) and involvement in national committees and networks (secdrp__001_{, secdrp__001_|), indicating increasing resp"
       },
       {
         "sub_id": "g.6",
         "good_evidence_ids": [
           "secdrp__001_z",
-          "secdrp__001_x"
+          "secdrp__001_|"
         ],
         "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: Identifies applicants as Consultant in Paediatric Cardiac Intensive Care and Consultant Surgeon (secdrp__001_z, secdrp__001_x), confirming practitioner-academic status."
+        "implication": "Detailed Research Plan: Identifies applicants as Consultant Cardiologists and Surgeons (secdrp__001_z, secdrp__001_|) leading clinical research, confirming a practitioner-academic career path."
       },
       {
         "sub_id": "pr.2",
@@ -289,17 +306,27 @@
           "secdrp__001_g"
         ],
         "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: Provides a comprehensive review of existing evidence on NEC incidence, diagnostic limitations, and calprotectin utility with numerous citations (secdrp__001_e-g), identifying clear knowledge gaps."
+        "implication": "Detailed Research Plan: Provides a comprehensive review of existing evidence on NEC, calprotectin, and diagnostic limitations (secdrp__001_e-g), citing specific studies and identifying gaps in current diagnostic accuracy"
+      },
+      {
+        "sub_id": "pr.3",
+        "good_evidence_ids": [
+          "secdrp__001_j",
+          "secdrp__001_q",
+          "secdrp__001_~"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Defines clear aims and objectives (secdrp__001_j), justifies sample size (n=300) with statistical precision (secdrp__001_q), and provides a 24-month timeline (secdrp__001_~), demonstrating appropr"
       },
       {
         "sub_id": "pr.4",
         "good_evidence_ids": [
           "secdrp__001_j",
           "secdrp__001_k",
-          "secdrp__001_q"
+          "secdrp__001_l"
         ],
         "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: Specifies a prospective multicentre cohort design, inclusion/exclusion criteria, sample size calculation (n=300), and statistical methods (ROC, logistic regression) (secdrp__001_j, secdrp__001_k, "
+        "implication": "Detailed Research Plan: Details a prospective multicentre cohort design (secdrp__001_j), specific inclusion/exclusion criteria (secdrp__001_k), data collection methods (secdrp__001_l), consent procedures (secdrp__001_m),"
       },
       {
         "sub_id": "pr.5",
@@ -309,17 +336,26 @@
           "secdrp__001_t"
         ],
         "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: Details specific patient benefits (reduced antibiotics, better nutrition) and health service impacts (cost reduction, guideline updates) (secdrp__001_d, secdrp__001_s, secdrp__001_t), supporting p"
+        "implication": "Detailed Research Plan: Explicitly links accurate diagnosis to reduced hospital stays, unnecessary antibiotics, and parental stress (secdrp__001_d), with anticipated impacts on clinical guidelines and patient outcomes (s"
       },
       {
         "sub_id": "pr.6",
         "good_evidence_ids": [
           "secdrp__001_l",
-          "secdrp__001_u",
-          "secdrp__001_z"
+          "secdrp__001_m",
+          "secdrp__001_u"
         ],
         "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: Describes deferred consent procedures, a PPI Co-Applicant on the Steering Group, and plans to share results with families (secdrp__001_l, secdrp__001_u, secdrp__001_z), demonstrating engagement."
+        "implication": "Detailed Research Plan: Describes deferred consent procedures (secdrp__001_l, secdrp__001_m) and plans to share results with families via lay summaries and newsletters (secdrp__001_u, secdrp__001_v), demonstrating engage"
+      },
+      {
+        "sub_id": "pr.7",
+        "good_evidence_ids": [
+          "secdrp__001_q",
+          "secdrp__001_~"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Justifies resource needs through sample size calculations (secdrp__001_q) and a detailed Gantt chart linking tasks to the 24-month timeline (secdrp__001_~), though specific budget figures are not "
       },
       {
         "sub_id": "pr.8",
@@ -328,87 +364,110 @@
           "secdrp__001_z"
         ],
         "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: References a published pilot study with significant findings (secdrp__001_h) and notes the applicant's role as lead investigator (secdrp__001_z), evidencing prior successful research."
+        "implication": "Detailed Research Plan: References a published pilot study with specific results (secdrp__001_h) and notes the applicant's role as lead investigator (secdrp__001_z), providing evidence of prior successful research."
       },
       {
         "sub_id": "pr.9",
         "good_evidence_ids": [
-          "secdrp__001_l",
-          "secdrp__001_k"
+          "secdrp__001_k",
+          "secdrp__001_l"
         ],
         "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: Outlines deferred consent to reduce burden on parents and broad inclusion criteria for infants with cardiac defects (secdrp__001_l, secdrp__001_k), supporting inclusive design."
+        "implication": "Detailed Research Plan: Defines inclusion criteria for infants with major congenital heart disease (secdrp__001_k) and outlines deferred consent to minimize barriers for vulnerable families (secdrp__001_l), supporting in"
       },
       {
         "sub_id": "ss.1",
         "good_evidence_ids": [
+          "secdrp__001_j",
           "secdrp__001_z",
-          "secdrp__001_|"
+          "secdrp__001_{"
         ],
         "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: Lists experienced co-applicants and collaborators from multiple specialist centres (GOSH, Alder Hey, Birmingham, Southampton) with relevant track records (secdrp__001_z, secdrp__001_|), supporting"
+        "implication": "Detailed Research Plan: Lists four specialist cardiac centers (secdrp__001_j) and highlights the track records of lead applicants and collaborators in national studies and committees (secdrp__001_z, secdrp__001_{, secdrp"
       },
       {
         "sub_id": "ss.2",
         "good_evidence_ids": [
           "secdrp__001_x",
+          "secdrp__001_y",
           "secdrp__001_z"
         ],
         "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: Defines clear supervisory roles (Prof Brown supervising Dr O'Connor), regular SSG meetings, and site training/monitoring (secdrp__001_x, secdrp__001_z), demonstrating suitable mentorship."
+        "implication": "Detailed Research Plan: Describes a structured Study Steering Group (secdrp__001_x), regular meetings (secdrp__001_y), and specific supervisory roles where Prof Brown mentors Dr O'Connor (secdrp__001_z), demonstrating st"
       },
       {
         "sub_id": "ss.3",
         "good_evidence_ids": [
           "secdrp__001_j",
+          "secdrp__001_l",
           "secdrp__001_m"
         ],
         "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: Identifies specialist cardiac centres with established research infrastructure (REDCAP, clinical labs) and governance (secdrp__001_j, secdrp__001_m), supporting organisational appropriateness."
+        "implication": "Detailed Research Plan: Identifies specialist hospitals with clinical laboratories for ELISA testing (secdrp__001_j, secdrp__001_m) and REDCAP for data collection (secdrp__001_l), confirming appropriate infrastructure."
+      },
+      {
+        "sub_id": "ss.4",
+        "good_evidence_ids": [
+          "secdrp__001_y",
+          "secdrp__001_z"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Mentions PPI involvement in the Steering Group (secdrp__001_y) and a PPI Co-Applicant with transferable skills (secdrp__001_z), indicating a commitment to inclusive culture."
       },
       {
         "sub_id": "wp.1",
         "good_evidence_ids": [
-          "secdrp__001_z",
-          "secdrp__001_x"
+          "secdrp__001_y",
+          "secdrp__001_z"
         ],
         "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: Includes a PPI Co-Applicant with lived experience who collaborated on the pilot and will co-chair SSG meetings (secdrp__001_z, secdrp__001_x), showing integration of lived experience."
+        "implication": "Detailed Research Plan: Details the PPI Co-Applicant's role in the Steering Group and prior collaboration on study design (secdrp__001_y, secdrp__001_z), confirming integration of lived experience."
+      },
+      {
+        "sub_id": "wp.2",
+        "good_evidence_ids": [
+          "secdrp__001_x",
+          "secdrp__001_y"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Lists a diverse team including clinicians, statisticians, research nurses, and PPI leads across four sites (secdrp__001_x, secdrp__001_y), though specific demographic data is not provided."
       },
       {
         "sub_id": "wp.3",
         "good_evidence_ids": [
           "secdrp__001_s",
+          "secdrp__001_t",
           "secdrp__001_u"
         ],
         "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: Outlines a robust dissemination plan including conferences, journals, and plain language summaries for families (secdrp__001_s, secdrp__001_u), maximizing public benefit."
+        "implication": "Detailed Research Plan: Outlines a comprehensive dissemination plan including conferences, journals, and lay summaries for families (secdrp__001_s-v), maximizing public and patient benefit."
       },
       {
         "sub_id": "wp.4",
         "good_evidence_ids": [
-          "secdrp__001_l",
-          "secdrp__001_k"
+          "secdrp__001_k",
+          "secdrp__001_l"
         ],
         "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: Uses deferred consent to accommodate vulnerable families and includes broad criteria for infants with cardiac defects (secdrp__001_l, secdrp__001_k), addressing representation of underserved group"
+        "implication": "Detailed Research Plan: Targets infants with congenital heart defects (secdrp__001_k) and uses deferred consent to accommodate vulnerable families (secdrp__001_l), addressing representation of underserved groups."
       },
       {
         "sub_id": "wp.5",
         "good_evidence_ids": [
           "secdrp__001_l",
-          "secdrp__001_u"
+          "secdrp__001_m",
+          "secdrp__001_v"
         ],
         "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: Incorporates PPI in design (secdrp__001_z) and plans for ongoing evaluation of dissemination effectiveness (secdrp__001_u), supporting inclusivity across the lifecycle."
+        "implication": "Detailed Research Plan: Incorporates inclusive consent procedures (secdrp__001_l, secdrp__001_m) and plans to evaluate communication effectiveness (secdrp__001_v), ensuring inclusivity across the lifecycle."
       },
       {
         "sub_id": "wp.6",
         "good_evidence_ids": [
-          "secdrp__001_x"
+          "secdrp__001_y"
         ],
         "bad_evidence_ids": [],
-        "implication": "Detailed Research Plan: Mentions PPI Co-Applicant involvement and site training, though specific budget lines for inclusion are not detailed in this section text alone."
+        "implication": "Detailed Research Plan: Mentions PPI involvement in the Steering Group (secdrp__001_y), but does not explicitly detail costed resources for inclusion activities in this section."
       }
     ],
     "resolved_signals": [
@@ -417,15 +476,19 @@
       "g.5",
       "g.6",
       "pr.2",
+      "pr.3",
       "pr.4",
       "pr.5",
       "pr.6",
+      "pr.7",
       "pr.8",
       "pr.9",
       "ss.1",
       "ss.2",
       "ss.3",
+      "ss.4",
       "wp.1",
+      "wp.2",
       "wp.3",
       "wp.4",
       "wp.5",
@@ -434,12 +497,9 @@
     "missing_signals_after": [
       "g.1",
       "g.2",
-      "pr.7",
       "td.1",
       "td.2",
-      "td.3",
-      "ss.4",
-      "wp.2"
+      "td.3"
     ]
   },
   {
@@ -449,11 +509,10 @@
         "sub_id": "wp.1",
         "good_evidence_ids": [
           "secppi__001_a",
-          "secppi__001_b",
-          "secppi__001_c"
+          "secppi__001_b"
         ],
         "bad_evidence_ids": [],
-        "implication": "Patient & Public Involvement: Details focus groups with parents that directly influenced study design (e.g., adding length of time to breastfeed, terminology changes) and establishes a PPI Co-Applicant and Advisory Group"
+        "implication": "Patient & Public Involvement: Details focus groups with parents that directly influenced study design, including adding 'length of time to bottle/breast feed' as an outcome and refining medical terminology."
       },
       {
         "sub_id": "wp.2",
@@ -461,7 +520,26 @@
           "secppi__001_d"
         ],
         "bad_evidence_ids": [],
-        "implication": "Patient & Public Involvement: Explicitly states the intention to ensure the PPI Team is representative of a diverse population regarding ethnicity and socioeconomic class."
+        "implication": "Patient & Public Involvement: Explicitly states the PPI Team will be representative of a diverse population regarding ethnicity and socioeconomic class."
+      },
+      {
+        "sub_id": "wp.3",
+        "good_evidence_ids": [
+          "secppi__001_b",
+          "secppi__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Patient & Public Involvement: PPI team roles include reviewing patient information sheets and end-of-study summaries, ensuring outputs are accessible and beneficial to families."
+      },
+      {
+        "sub_id": "wp.5",
+        "good_evidence_ids": [
+          "secppi__001_a",
+          "secppi__001_b",
+          "secppi__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Patient & Public Involvement: Demonstrates inclusivity across the lifecycle with involvement in proposal development, ongoing Steering Group meetings, and plans for focus groups to solve unforeseen problems."
       },
       {
         "sub_id": "wp.6",
@@ -470,33 +548,22 @@
           "secppi__001_d"
         ],
         "bad_evidence_ids": [],
-        "implication": "Patient & Public Involvement: Provides a costed plan including an honorary contract for the PPI Co-Applicant and £60 vouchers for Advisory Group members to cover time for meetings and preparation."
-      },
-      {
-        "sub_id": "pr.6",
-        "good_evidence_ids": [
-          "secppi__001_a",
-          "secppi__001_b",
-          "secppi__001_c"
-        ],
-        "bad_evidence_ids": [],
-        "implication": "Patient & Public Involvement: Describes active engagement through focus groups and a structured PPI team attending Steering Group meetings to review documents and address unforeseen problems."
+        "implication": "Patient & Public Involvement: Provides a costed plan with specific financial support, including an honorary contract for the PPI Co-Applicant and £60 vouchers for advisory group members."
       }
     ],
     "resolved_signals": [
       "wp.1",
       "wp.2",
-      "wp.6",
-      "pr.6"
+      "wp.3",
+      "wp.5",
+      "wp.6"
     ],
     "missing_signals_after": [
       "g.1",
       "g.2",
-      "pr.7",
       "td.1",
       "td.2",
-      "td.3",
-      "ss.4"
+      "td.3"
     ]
   },
   {
@@ -518,7 +585,7 @@
           "secac__001_b"
         ],
         "bad_evidence_ids": [],
-        "implication": "Applicant CV: Details multiple peer-reviewed publications (2014-2024) and secured grants (e.g., Nestle Health Science), demonstrating impactful research outputs."
+        "implication": "Applicant CV: Details multiple peer-reviewed publications (2014-2024) and secured grants (e.g., £80k Nestle), demonstrating impactful research outputs."
       },
       {
         "sub_id": "g.5",
@@ -526,7 +593,7 @@
           "secac__001_b"
         ],
         "bad_evidence_ids": [],
-        "implication": "Applicant CV: Shows increasing responsibility as Principal Investigator on a 2024 grant and Joint Lead on a 2023 grant, indicating trajectory towards research leadership."
+        "implication": "Applicant CV: Shows increasing responsibility as Principal Investigator on recent grants and Joint Lead on participatory studies, indicating trajectory towards leadership."
       },
       {
         "sub_id": "g.6",
@@ -535,7 +602,7 @@
           "secac__001_b"
         ],
         "bad_evidence_ids": [],
-        "implication": "Applicant CV: Identifies applicant as Paediatric Dietitian at Great Ormond Street Hospital with clinical qualifications (First Contact Practitioner), supporting practitioner-academic career."
+        "implication": "Applicant CV: Position as Paediatric Dietitian at Great Ormond Street combined with clinical research grants confirms a practitioner-academic career path."
       }
     ],
     "resolved_signals": [
@@ -547,11 +614,9 @@
     "missing_signals_after": [
       "g.1",
       "g.2",
-      "pr.7",
       "td.1",
       "td.2",
-      "td.3",
-      "ss.4"
+      "td.3"
     ]
   },
   {
@@ -565,7 +630,7 @@
           "secsb__001_i"
         ],
         "bad_evidence_ids": [],
-        "implication": "SUMMARY BUDGET: Provides detailed justification linking staff FTE, consumables (600 samples), and PPI costs to specific project tasks and sample sizes, supporting pr.7."
+        "implication": "SUMMARY BUDGET: Provides explicit justification linking staff FTE to trial management and data collection, and details consumable costs (600 samples at £60) and PPI expenses, directly supporting pr.7."
       },
       {
         "sub_id": "wp.6",
@@ -575,16 +640,17 @@
           "secsb__001_i"
         ],
         "bad_evidence_ids": [],
-        "implication": "SUMMARY BUDGET: Includes specific budget lines for PPI co-applicants, SSG meetings, childcare, and interpretation services, confirming a costed plan for inclusion (wp.6)."
+        "implication": "SUMMARY BUDGET: Includes specific budget lines for PPI Co-Applicants, SSG meetings, childcare, and interpretation services, confirming a costed and resourced plan for research inclusion."
       },
       {
         "sub_id": "ss.3",
         "good_evidence_ids": [
-          "secsb__001_i",
-          "secsb__001_f"
+          "secsb__001_e",
+          "secsb__001_f",
+          "secsb__001_i"
         ],
         "bad_evidence_ids": [],
-        "implication": "SUMMARY BUDGET: Allocates funds for multisite REDCAP and interpreter services, demonstrating organizational support for data infrastructure and accessibility (ss.3)."
+        "implication": "SUMMARY BUDGET: Allocates funds for multisite REDCAP data collection, Calprotectin analysis, and travel for monitoring, demonstrating appropriate infrastructure and resource support."
       }
     ],
     "resolved_signals": [
@@ -597,8 +663,7 @@
       "g.2",
       "td.1",
       "td.2",
-      "td.3",
-      "ss.4"
+      "td.3"
     ]
   },
   {
@@ -610,8 +675,7 @@
       "g.2",
       "td.1",
       "td.2",
-      "td.3",
-      "ss.4"
+      "td.3"
     ]
   },
   {
@@ -623,7 +687,7 @@
           "secpena__001"
         ],
         "bad_evidence_ids": [],
-        "implication": "Plain English NLP Analysis: NLP metrics show Flesch-Kincaid grade 7.4, 0% long sentences, and low jargon density (1.56%), strongly supporting readability and plain English quality."
+        "implication": "Plain English NLP Analysis: NLP metrics show Grade 7.4 readability, 0% long sentences, and low jargon density (1.56%), strongly supporting pr.1 quality criteria."
       }
     ],
     "resolved_signals": [
@@ -634,8 +698,7 @@
       "g.2",
       "td.1",
       "td.2",
-      "td.3",
-      "ss.4"
+      "td.3"
     ]
   },
   {
@@ -655,23 +718,7 @@
           "secafa__001"
         ],
         "bad_evidence_ids": [],
-        "implication": "Application Form Analysis: Identifies 109 table-like budget lines and 105 objective-method-budget link terms, suggesting strong structural justification for resources."
-      },
-      {
-        "sub_id": "pr.2",
-        "good_evidence_ids": [
-          "secafa__001"
-        ],
-        "bad_evidence_ids": [],
-        "implication": "Application Form Analysis: Notes 24 transition phrases and logical section ordering, indicating potential for coherent evidence review flow."
-      },
-      {
-        "sub_id": "pr.3",
-        "good_evidence_ids": [
-          "secafa__001"
-        ],
-        "bad_evidence_ids": [],
-        "implication": "Application Form Analysis: Word counts for Detailed Research Plan (5392) and Changes from Previous Stage (3170) suggest sufficient depth for scope and feasibility analysis."
+        "implication": "Application Form Analysis: Identifies a dedicated SUMMARY BUDGET section with 109 table-like lines, confirming the presence of costed resource justification."
       },
       {
         "sub_id": "pr.6",
@@ -679,7 +726,7 @@
           "secafa__001"
         ],
         "bad_evidence_ids": [],
-        "implication": "Application Form Analysis: Confirms a dedicated Patient & Public Involvement section (666 words), indicating explicit engagement planning."
+        "implication": "Application Form Analysis: Lists a specific 'Patient & Public Involvement' section, indicating dedicated content for community engagement criteria."
       },
       {
         "sub_id": "g.3",
@@ -687,7 +734,7 @@
           "secafa__001"
         ],
         "bad_evidence_ids": [],
-        "implication": "Application Form Analysis: Confirms an Applicant CV section (509 words), providing the structural basis for assessing research experience and training."
+        "implication": "Application Form Analysis: Confirms the presence of an 'Applicant CV' section, which is the primary source for assessing research experience and training."
       },
       {
         "sub_id": "g.4",
@@ -695,7 +742,7 @@
           "secafa__001"
         ],
         "bad_evidence_ids": [],
-        "implication": "Application Form Analysis: Confirms an Applicant CV section (509 words), providing the structural basis for assessing research outputs and impact."
+        "implication": "Application Form Analysis: The 'Applicant CV' section is present, providing the necessary structural container for evaluating research outputs and impact."
       },
       {
         "sub_id": "g.5",
@@ -703,71 +750,39 @@
           "secafa__001"
         ],
         "bad_evidence_ids": [],
-        "implication": "Application Form Analysis: Confirms an Applicant CV section (509 words), providing the structural basis for assessing career trajectory and leadership."
+        "implication": "Application Form Analysis: The 'Applicant CV' section is present, enabling the assessment of career trajectory and leadership potential."
       },
       {
-        "sub_id": "g.6",
+        "sub_id": "pr.3",
         "good_evidence_ids": [
           "secafa__001"
         ],
         "bad_evidence_ids": [],
-        "implication": "Application Form Analysis: Confirms an Applicant CV section (509 words), providing the structural basis for assessing practitioner-academic commitment."
+        "implication": "Application Form Analysis: Identifies a 'Detailed Research Plan' (5392 words) and 'Changes from Previous Stage', providing substantial content for scope and feasibility review."
       },
       {
-        "sub_id": "td.1",
+        "sub_id": "pr.4",
         "good_evidence_ids": [
           "secafa__001"
         ],
         "bad_evidence_ids": [],
-        "implication": "Application Form Analysis: Section order mentions 'training/support', indicating the presence of a training plan section for assessment."
+        "implication": "Application Form Analysis: The 'Detailed Research Plan' section is present and substantial, indicating where methodological rigor is described."
       },
       {
-        "sub_id": "td.2",
+        "sub_id": "pr.5",
         "good_evidence_ids": [
           "secafa__001"
         ],
         "bad_evidence_ids": [],
-        "implication": "Application Form Analysis: Section order mentions 'training/support', indicating the presence of a training plan section for assessment."
+        "implication": "Application Form Analysis: The 'Plain English Summary' and 'Patient & Public Involvement' sections are present, indicating where impact on patients/public is addressed."
       },
       {
-        "sub_id": "td.3",
+        "sub_id": "pr.9",
         "good_evidence_ids": [
           "secafa__001"
         ],
         "bad_evidence_ids": [],
-        "implication": "Application Form Analysis: Section order mentions 'training/support', indicating the presence of a training plan section for assessment."
-      },
-      {
-        "sub_id": "ss.1",
-        "good_evidence_ids": [
-          "secafa__001"
-        ],
-        "bad_evidence_ids": [],
-        "implication": "Application Form Analysis: Section order mentions 'training/support' and 'Application Context', indicating structural presence of support details."
-      },
-      {
-        "sub_id": "ss.2",
-        "good_evidence_ids": [
-          "secafa__001"
-        ],
-        "bad_evidence_ids": [],
-        "implication": "Application Form Analysis: Section order mentions 'training/support', indicating structural presence of mentorship details."
-      },
-      {
-        "sub_id": "ss.3",
-        "good_evidence_ids": [
-          "secafa__001"
-        ],
-        "bad_evidence_ids": [],
-        "implication": "Application Form Analysis: Section order mentions 'training/support', indicating structural presence of organizational support details."
-      },
-      {
-        "sub_id": "ss.4",
-        "good_evidence_ids": [
-          "secafa__001"
-        ],
-        "bad_evidence_ids": [],
-        "implication": "Application Form Analysis: Section order mentions 'training/support', indicating structural presence of culture and support details."
+        "implication": "Application Form Analysis: The 'Patient & Public Involvement' section is present, indicating where inclusive research design strategies are likely detailed."
       },
       {
         "sub_id": "wp.1",
@@ -775,23 +790,7 @@
           "secafa__001"
         ],
         "bad_evidence_ids": [],
-        "implication": "Application Form Analysis: Confirms a dedicated Patient & Public Involvement section (666 words), indicating structural basis for lived experience integration."
-      },
-      {
-        "sub_id": "wp.2",
-        "good_evidence_ids": [
-          "secafa__001"
-        ],
-        "bad_evidence_ids": [],
-        "implication": "Application Form Analysis: Confirms a dedicated Patient & Public Involvement section (666 words), indicating structural basis for team diversity assessment."
-      },
-      {
-        "sub_id": "wp.3",
-        "good_evidence_ids": [
-          "secafa__001"
-        ],
-        "bad_evidence_ids": [],
-        "implication": "Application Form Analysis: Confirms a dedicated Patient & Public Involvement section (666 words), indicating structural basis for public benefit assessment."
+        "implication": "Application Form Analysis: The 'Patient & Public Involvement' section is present, indicating where integration of lived experience is documented."
       },
       {
         "sub_id": "wp.4",
@@ -799,15 +798,7 @@
           "secafa__001"
         ],
         "bad_evidence_ids": [],
-        "implication": "Application Form Analysis: Confirms a dedicated Patient & Public Involvement section (666 words), indicating structural basis for representation assessment."
-      },
-      {
-        "sub_id": "wp.5",
-        "good_evidence_ids": [
-          "secafa__001"
-        ],
-        "bad_evidence_ids": [],
-        "implication": "Application Form Analysis: Confirms a dedicated Patient & Public Involvement section (666 words), indicating structural basis for lifecycle inclusivity."
+        "implication": "Application Form Analysis: The 'Patient & Public Involvement' section is present, indicating where representation of underserved groups is addressed."
       },
       {
         "sub_id": "wp.6",
@@ -815,36 +806,111 @@
           "secafa__001"
         ],
         "bad_evidence_ids": [],
-        "implication": "Application Form Analysis: Confirms a dedicated Patient & Public Involvement section (666 words) and SUMMARY BUDGET (1863 words), indicating structural basis for costed inclusion plans."
+        "implication": "Application Form Analysis: The presence of both 'Patient & Public Involvement' and 'SUMMARY BUDGET' sections allows for assessment of costed inclusion plans."
+      },
+      {
+        "sub_id": "ss.1",
+        "good_evidence_ids": [
+          "secafa__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Form Analysis: The 'Applicant CV' and 'Detailed Research Plan' sections are present, providing the structural basis for assessing organizational track record."
+      },
+      {
+        "sub_id": "ss.2",
+        "good_evidence_ids": [
+          "secafa__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Form Analysis: The 'Detailed Research Plan' section is present, indicating where supervisory support and mentorship arrangements are described."
+      },
+      {
+        "sub_id": "ss.3",
+        "good_evidence_ids": [
+          "secafa__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Form Analysis: The 'Detailed Research Plan' and 'SUMMARY BUDGET' sections are present, indicating where organizational support and resources are detailed."
+      },
+      {
+        "sub_id": "ss.4",
+        "good_evidence_ids": [
+          "secafa__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Form Analysis: The 'Patient & Public Involvement' section is present, indicating where inclusive research culture commitments are likely stated."
+      },
+      {
+        "sub_id": "pr.2",
+        "good_evidence_ids": [
+          "secafa__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Form Analysis: The 'Detailed Research Plan' section is present, indicating where evidence review and relevance are discussed."
+      },
+      {
+        "sub_id": "pr.8",
+        "good_evidence_ids": [
+          "secafa__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Form Analysis: The 'Applicant CV' and 'Detailed Research Plan' sections are present, indicating where quality of previous research is documented."
+      },
+      {
+        "sub_id": "wp.2",
+        "good_evidence_ids": [
+          "secafa__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Form Analysis: The 'Patient & Public Involvement' section is present, indicating where team diversity and inclusivity are addressed."
+      },
+      {
+        "sub_id": "wp.3",
+        "good_evidence_ids": [
+          "secafa__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Form Analysis: The 'Patient & Public Involvement' section is present, indicating where plans to maximize public and patient benefit are detailed."
+      },
+      {
+        "sub_id": "wp.5",
+        "good_evidence_ids": [
+          "secafa__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Form Analysis: The 'Patient & Public Involvement' section is present, indicating where inclusivity across the research lifecycle is described."
       }
     ],
     "resolved_signals": [
       "pr.1",
       "pr.7",
-      "pr.2",
-      "pr.3",
       "pr.6",
       "g.3",
       "g.4",
       "g.5",
-      "g.6",
-      "td.1",
-      "td.2",
-      "td.3",
+      "pr.3",
+      "pr.4",
+      "pr.5",
+      "pr.9",
+      "wp.1",
+      "wp.4",
+      "wp.6",
       "ss.1",
       "ss.2",
       "ss.3",
       "ss.4",
-      "wp.1",
+      "pr.2",
+      "pr.8",
       "wp.2",
       "wp.3",
-      "wp.4",
-      "wp.5",
-      "wp.6"
+      "wp.5"
     ],
     "missing_signals_after": [
       "g.1",
-      "g.2"
+      "g.2",
+      "td.1",
+      "td.2",
+      "td.3"
     ]
   }
 ]

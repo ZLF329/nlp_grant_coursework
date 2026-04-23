@@ -15,7 +15,7 @@
           "secarb__001_e",
           "secarb__001_f",
           "sectdars__001_a",
-          "sectdars__001_d"
+          "sectdars__001_f"
         ],
         "evidence_count": 5,
         "evidence_status": "ok",
@@ -26,9 +26,9 @@
             "sid": "g.1.a",
             "signal_text": "Clear research vision and career trajectory",
             "weight": 1.0,
-            "score": 5,
-            "score_0to5_raw": 5.0,
-            "score_0to5_weighted": 5.0
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
           },
           {
             "sid": "g.1.b",
@@ -42,22 +42,22 @@
             "sid": "g.1.c",
             "signal_text": "Well-justified training plan",
             "weight": 1.0,
-            "score": 5,
-            "score_0to5_raw": 5.0,
-            "score_0to5_weighted": 5.0
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
           },
           {
             "sid": "g.1.d",
             "signal_text": "Strong mentorship and institutional support",
             "weight": 1.0,
-            "score": 5,
-            "score_0to5_raw": 5.0,
-            "score_0to5_weighted": 5.0
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
           }
         ],
-        "pros": "The application demonstrates a clear research vision transitioning from clinical practice to independent academic leadership (g.1.a), with distinctive ideas combining health literacy, AI, and co-production (g.1.b). The training plan is exceptionally detailed, covering specific courses in qualitative methods, NVivo, and facilitator skills (g.1.c). Strong mentorship is evidenced by a structured framework with four named supervisors and a steering committee (g.1.d).",
-        "drawbacks": "While the vision is clear, the specific long-term career trajectory beyond the PhD (e.g., specific academic posts targeted) could be slightly more explicit, though the current evidence is strong.",
-        "rationale": "While the vision is clear, the specific long-term career trajectory beyond the PhD (e.g., specific academic posts targeted) could be slightly more explicit, though the current evidence is strong.",
+        "pros": "The application demonstrates a clear research vision (g.1.a) transitioning from patient experience to independent research leadership. It presents distinctive ideas (g.1.b) regarding health literacy in care workers and AI-driven discharge summaries. The training plan (g.1.c) is comprehensive, mapping specific courses to work packages. Mentorship (g.1.d) is robust, with named supervisors, defined meeting frequencies, and institutional support from UCL IHI.",
+        "drawbacks": "No material caveats or missing details identified; the application fully meets the criteria for common characteristics of good applications.",
+        "rationale": "No material caveats or missing details identified; the application fully meets the criteria for common characteristics of good applications.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -83,38 +83,38 @@
             "sid": "g.2.a",
             "signal_text": "Explain why this award is the right next step in your career (not just another project grant)",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           },
           {
             "sid": "g.2.b",
             "signal_text": "What difference would securing an award make to your career, and why now?",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           },
           {
             "sid": "g.2.c",
             "signal_text": "How will an award build on your existing experience and what new skills will it enable you to gain?",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           },
           {
             "sid": "g.2.d",
             "signal_text": "How will it develop your research partnerships within the NHS, public health or social care, charity organisations, industry or other organisations?",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "The applicant explicitly articulates why this award is the right next step, bridging the gap between clinical training and independent research leadership (g.2.a). The award will enable the acquisition of critical skills in qualitative research and AI, which are currently gaps (g.2.c). The proposal highlights how the award will build on existing experience in public health and patient engagement (g.2.b). Partnerships with NHS trusts and care home networks are clearly outlined as being developed through this award (g.2.d).",
-        "drawbacks": "The specific mechanisms for expanding partnerships beyond the current established networks (e.g., new industry or international partners) are less detailed than the existing ones.",
-        "rationale": "The specific mechanisms for expanding partnerships beyond the current established networks (e.g., new industry or international partners) are less detailed than the existing ones.",
+        "pros": "The applicant explicitly articulates why this award is the right next step (g.2.a), moving from an ACF to a PhD to build independence. The difference the award makes (g.2.b) is clear: enabling a career in academia and bridging health/social care. It builds on existing experience (g.2.c) by leveraging prior health literacy work and adding AI/qualitative skills. Partnerships (g.2.d) are well-developed through Vivaldi, HCIC, and NHS trusts.",
+        "drawbacks": "No significant drawbacks; the justification for the award is specific and directly linked to career progression.",
+        "rationale": "No significant drawbacks; the justification for the award is specific and directly linked to career progression.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -162,9 +162,9 @@
             "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "The applicant holds an MPH and MFPH and has held research internships at Public Health England (g.3.b). Prior projects include a national survey on men's health and a cross-sectional study on health literacy, demonstrating relevant methods (g.3.a). There is strong alignment between prior experience in public health and the proposed study's focus on health literacy and care home residents (g.3.c).",
-        "drawbacks": "No significant drawbacks; the evidence of prior experience and training is robust and directly relevant.",
-        "rationale": "No significant drawbacks; the evidence of prior experience and training is robust and directly relevant.",
+        "pros": "Strong evidence of previous projects (g.3.a) including a PI-led cross-sectional survey on health literacy. Formal training (g.3.b) is evidenced by an MPH with Distinction, MFPH, and specific courses in R and systematic reviews. Alignment (g.3.c) is perfect, as prior experience in health literacy and survey design directly prepares the applicant for the proposed study.",
+        "drawbacks": "No drawbacks; the applicant's background is highly relevant and well-documented.",
+        "rationale": "No drawbacks; the applicant's background is highly relevant and well-documented.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -220,9 +220,9 @@
             "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "The applicant lists multiple peer-reviewed publications in high-impact journals and has received several academic awards (g.4.a, g.4.c). Previous work has led to tangible practical impacts, such as changes to appointment letters and mandatory training programs (g.4.d). The applicant has successfully led a team of 7 and organized conferences, demonstrating leadership and output quality (g.4.a).",
-        "drawbacks": "Citation metrics are not explicitly quantified in the provided text, though the quality of journals implies impact (g.4.b).",
-        "rationale": "Citation metrics are not explicitly quantified in the provided text, though the quality of journals implies impact (g.4.b).",
+        "pros": "The applicant lists multiple high-quality publications (g.4.a) in journals like Anaesthesia and British Journal of Surgery. Awards (g.4.c) include the Doubleday Student Award and Patient and Public Involvement Award. Practical impact (g.4.d) is demonstrated by findings leading to changes in appointment letters and mandatory training. Citation metrics (g.4.b) are not explicitly quantified in the text, though the quality of journals implies impact.",
+        "drawbacks": "While publication quality is high, specific citation counts or impact factors are not explicitly listed in the text, preventing a perfect score for g.4.b.",
+        "rationale": "While publication quality is high, specific citation counts or impact factors are not explicitly listed in the text, preventing a perfect score for g.4.b.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -249,38 +249,38 @@
             "sid": "g.5.a",
             "signal_text": "Statements of career ambitions and long-term goals",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           },
           {
             "sid": "g.5.b",
             "signal_text": "Evidence of increasing responsibility in previous roles (e.g., leading projects, mentoring)",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           },
           {
             "sid": "g.5.c",
             "signal_text": "Participation in leadership or professional development programs",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           },
           {
             "sid": "g.5.d",
             "signal_text": "Recognition by peers or institutions suggesting leadership potential",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "The applicant shows increasing responsibility through roles as Visiting Lecturer, NIHR Fellow, and Project Lead (g.5.b). There is clear evidence of leadership in organizing conferences and serving as a judge for competitions (g.5.b). The applicant has participated in professional development programs and holds multiple awards suggesting leadership potential (g.5.c, g.5.d). Career ambitions are clearly stated as moving towards independent academic leadership (g.5.a).",
-        "drawbacks": "While leadership potential is strong, explicit mention of formal leadership training programs (beyond general professional development) is less detailed than the research leadership evidence.",
-        "rationale": "While leadership potential is strong, explicit mention of formal leadership training programs (beyond general professional development) is less detailed than the research leadership evidence.",
+        "pros": "Clear career ambitions (g.5.a) to become a public health academic. Increasing responsibility (g.5.b) is shown through roles as PI, Visiting Lecturer, and conference organizer. Participation in leadership programs (g.5.c) includes facilitator training and executive coaching. Recognition (g.5.d) is evidenced by multiple awards and being a trustee for the Doubleday Centre.",
+        "drawbacks": "No drawbacks; the trajectory towards research leadership is clearly evidenced and supported by multiple indicators.",
+        "rationale": "No drawbacks; the trajectory towards research leadership is clearly evidenced and supported by multiple indicators.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -331,14 +331,14 @@
             "sid": "g.6.d",
             "signal_text": "Participation in relevant professional networks or qualifications",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "The applicant is an MBChB graduate working as a Specialty Registrar and NIHR Academic Clinical Fellow, demonstrating a clear practitioner-academic career path (g.6.a). The applicant conducts research while training as a junior doctor, balancing practice and research (g.6.c). Involvement in clinical research is extensive, including work with NHS trusts and care homes (g.6.b).",
-        "drawbacks": "Specific details on how the applicant manages the time conflict between clinical duties and research could be slightly more elaborated, though the current evidence of successful balancing is strong.",
-        "rationale": "Specific details on how the applicant manages the time conflict between clinical duties and research could be slightly more elaborated, though the current evidence of successful balancing is strong.",
+        "pros": "Explicit statement (g.6.a) of a practitioner-academic career path via the NIHR Academic Clinical Fellowship. Involvement in clinical research (g.6.b) is demonstrated by conducting studies while training as a junior doctor. Balancing practice (g.6.c) is shown by completing research in spare time and during fellowship. Professional qualifications (g.6.d) include MBChB, MFPH, and active roles in medical education.",
+        "drawbacks": "No drawbacks; the commitment to a practitioner-academic career is explicit and well-supported by current roles and past experience.",
+        "rationale": "No drawbacks; the commitment to a practitioner-academic career is explicit and well-supported by current roles and past experience.",
         "missing_evidence": false,
         "if_applicable": true,
         "counts_toward_section_average": false
@@ -417,8 +417,8 @@
           }
         ],
         "pros": "The Plain English Summary is exceptionally clear, with NLP metrics confirming high readability (Flesch-Kincaid 6.86) and low jargon density (1.03%). It comprehensively covers the problem, objectives, methods, beneficiaries, and impact in accessible language, aligning perfectly with the detailed research plan.",
-        "drawbacks": "No material caveats or missing details identified; the summary is a model of clarity and alignment.",
-        "rationale": "No material caveats or missing details identified; the summary is a model of clarity and alignment.",
+        "drawbacks": "No material caveats or missing details found; the summary is perfectly executed for a non-specialist audience.",
+        "rationale": "No material caveats or missing details found; the summary is perfectly executed for a non-specialist audience.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -472,9 +472,9 @@
             "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "The application provides a critical review of existing literature, citing specific studies on health literacy and MDS readability. It explicitly identifies knowledge gaps regarding care workers' numeracy and the lack of accessible summaries, logically justifying the proposed study.",
-        "drawbacks": "No significant drawbacks; the evidence review is robust and directly supports the research questions.",
-        "rationale": "No significant drawbacks; the evidence review is robust and directly supports the research questions.",
+        "pros": "The application provides a robust evidence review citing 24 references, critically analyzing gaps in health literacy literature and MDS readability. It logically connects existing evidence to the specific knowledge gaps this study aims to fill.",
+        "drawbacks": "No significant drawbacks; the review is comprehensive and well-integrated into the proposal.",
+        "rationale": "No significant drawbacks; the review is comprehensive and well-integrated into the proposal.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -487,8 +487,8 @@
         "weight": 1.0,
         "used_chunk_ids": [
           "secpesor__001_b",
-          "secsa__001_a",
-          "secsa__001_b"
+          "secsa__001_b",
+          "secdrp__001_g"
         ],
         "evidence_count": 3,
         "evidence_status": "ok",
@@ -520,9 +520,9 @@
             "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "The project scope is well-aligned with a doctoral fellowship, featuring four distinct work packages (systematic review, survey, mixed methods, AI feasibility) that are feasible within the 3-year timeframe. The tasks are clearly defined and proportionate to the award level.",
-        "drawbacks": "No material caveats; the scope is appropriate and feasible.",
-        "rationale": "No material caveats; the scope is appropriate and feasible.",
+        "pros": "The project scope is well-aligned with a doctoral fellowship, featuring four distinct work packages (survey, mixed methods, Delphi, AI feasibility) that are feasible within the 36-month timeline. Sample sizes and recruitment strategies are clearly defined.",
+        "drawbacks": "No material caveats; the scope is appropriately ambitious yet realistic for the award level.",
+        "rationale": "No material caveats; the scope is appropriately ambitious yet realistic for the award level.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -577,9 +577,9 @@
             "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "The research design is rigorous, with explicit descriptions of methods including PRISMA guidelines for the systematic review, validated tools (FHLT, PEMAT) for surveys, sample size calculations, and a structured Delphi method. The alignment between aims and methods is logical and robust.",
-        "drawbacks": "No significant drawbacks; the methodological rigor is high and well-justified.",
-        "rationale": "No significant drawbacks; the methodological rigor is high and well-justified.",
+        "pros": "Methods are explicitly described with high rigor, including PRISMA guidelines for systematic reviews, validated tools (FHLT, PEMAT) for surveys and document analysis, and a modified Delphi method for consensus. Sample size calculations and analysis plans (R, NVivo) are detailed.",
+        "drawbacks": "No significant drawbacks; the methodological design is robust and logically aligned with aims.",
+        "rationale": "No significant drawbacks; the methodological design is robust and logically aligned with aims.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -591,9 +591,9 @@
         "group_name": null,
         "weight": 1.0,
         "used_chunk_ids": [
-          "secpesor__001_a",
           "secpesor__001_c",
-          "secsa__001_c"
+          "secsa__001_c",
+          "secdrp__001_w"
         ],
         "evidence_count": 3,
         "evidence_status": "ok",
@@ -625,9 +625,9 @@
             "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "The application clearly articulates potential benefits for patients (improved safety, reduced readmissions) and health services (reduced workload, cost savings). The expected outcomes are specific and directly linked to the research objectives.",
-        "drawbacks": "No material caveats; the impact is well-defined and relevant.",
-        "rationale": "No material caveats; the impact is well-defined and relevant.",
+        "pros": "The application clearly articulates direct benefits to patients (safety, reduced readmissions) and the NHS (cost savings, reduced workload). It aligns with societal needs regarding the aging population and health inequalities in social care.",
+        "drawbacks": "No material caveats; impact is specific and well-justified.",
+        "rationale": "No material caveats; impact is specific and well-justified.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -639,8 +639,8 @@
         "group_name": null,
         "weight": 1.0,
         "used_chunk_ids": [
-          "secpesor__001_b",
-          "secsa__001_b",
+          "secpesor__001_c",
+          "secsa__001_c",
           "secppi__001_a",
           "secppi__001_b"
         ],
@@ -674,9 +674,9 @@
             "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "Engagement is deeply integrated, with the research question co-produced with care workers and residents. The methodology was adapted based on community feedback (e.g., printed materials for Delphi), and a steering committee ensures ongoing involvement.",
-        "drawbacks": "No significant drawbacks; engagement is meaningful and spans multiple project stages.",
-        "rationale": "No significant drawbacks; engagement is meaningful and spans multiple project stages.",
+        "pros": "Engagement is deeply integrated, with the research question co-produced by care workers and residents. The methodology includes a steering committee with lived experience experts, focus groups, and adaptations (e.g., printed materials) based on public feedback.",
+        "drawbacks": "No significant drawbacks; engagement is meaningful and spans all project stages.",
+        "rationale": "No significant drawbacks; engagement is meaningful and spans all project stages.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -688,10 +688,10 @@
         "group_name": null,
         "weight": 1.0,
         "used_chunk_ids": [
+          "secdrp__001_k",
           "secsb__001_a",
           "secsb__001_b",
-          "secsb__001_c",
-          "secsb__001_d"
+          "secsb__001_c"
         ],
         "evidence_count": 4,
         "evidence_status": "ok",
@@ -723,9 +723,9 @@
             "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "The budget is detailed and explicitly linked to project tasks, including staff costs, participant incentives, travel, and equipment. The justification for each cost is clear and proportional to the scope of the work.",
-        "drawbacks": "No material caveats; the resource justification is strong and transparent.",
-        "rationale": "No material caveats; the resource justification is strong and transparent.",
+        "pros": "Resources are explicitly linked to tasks (e.g., NLP developer for WP4, travel for data collection). The budget is proportional to the scope, with detailed justifications for staff, equipment, and participant incentives.",
+        "drawbacks": "No material caveats; the budget is well-justified and comprehensive.",
+        "rationale": "No material caveats; the budget is well-justified and comprehensive.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -736,12 +736,8 @@
         "definition": "Prior relevant research experience demonstrating capability to deliver the proposed project.",
         "group_name": null,
         "weight": 1.0,
-        "used_chunk_ids": [
-          "secarb__001_b",
-          "secarb__001_c",
-          "secarb__001_d"
-        ],
-        "evidence_count": 3,
+        "used_chunk_ids": [],
+        "evidence_count": 0,
         "evidence_status": "ok",
         "confidence_gap": 0.0,
         "confidence_label": "high_confidence",
@@ -750,30 +746,30 @@
             "sid": "pr.8.a",
             "signal_text": "Number and relevance of publications or outputs",
             "weight": 1.0,
-            "score": 5,
-            "score_0to5_raw": 5.0,
-            "score_0to5_weighted": 5.0
+            "score": 0,
+            "score_0to5_raw": 0.0,
+            "score_0to5_weighted": 0.0
           },
           {
             "sid": "pr.8.b",
             "signal_text": "Evidence of prior successful projects",
             "weight": 1.0,
-            "score": 5,
-            "score_0to5_raw": 5.0,
-            "score_0to5_weighted": 5.0
+            "score": 0,
+            "score_0to5_raw": 0.0,
+            "score_0to5_weighted": 0.0
           },
           {
             "sid": "pr.8.c",
             "signal_text": "Skills alignment with proposed work",
             "weight": 1.0,
-            "score": 5,
-            "score_0to5_raw": 5.0,
-            "score_0to5_weighted": 5.0
+            "score": 0,
+            "score_0to5_raw": 0.0,
+            "score_0to5_weighted": 0.0
           }
         ],
-        "pros": "The applicant demonstrates strong prior research experience, including leading a national survey, publishing in peer-reviewed journals, and receiving awards. Their skills in health literacy and data analysis align perfectly with the proposed project.",
-        "drawbacks": "No significant drawbacks; the applicant's track record is impressive and relevant.",
-        "rationale": "No significant drawbacks; the applicant's track record is impressive and relevant.",
+        "pros": "No evidence provided in the 'Proposed Research' section regarding the applicant's previous research outputs or specific prior projects relevant to this proposal. This information is typically found in the Applicant CV or Research Background sections, which are outside the scope of this specific rubric section scoring.",
+        "drawbacks": "The 'Proposed Research' section does not contain evidence of the applicant's prior research quality or outputs. While the applicant likely has a strong background (as seen in other sections), this specific section does not demonstrate it.",
+        "rationale": "The 'Proposed Research' section does not contain evidence of the applicant's prior research quality or outputs. While the applicant likely has a strong background (as seen in other sections), this specific section does not demonstrate it.",
         "missing_evidence": false,
         "if_applicable": true,
         "counts_toward_section_average": false
@@ -785,9 +781,9 @@
         "group_name": null,
         "weight": 1.0,
         "used_chunk_ids": [
-          "secpesor__001_b",
+          "secdrp__001_p",
+          "secdrp__001_q",
           "secppi__001_b",
-          "secppi__001_c",
           "secsb__001_d"
         ],
         "evidence_count": 4,
@@ -820,9 +816,9 @@
             "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "The research design is highly inclusive, with strategies for diverse recruitment, adaptive methods (e.g., face-to-face options for older adults), and budgeted resources for accessibility (e.g., large print keyboards). Equity is considered throughout the lifecycle.",
-        "drawbacks": "No material caveats; inclusivity is well-integrated and resourced.",
-        "rationale": "No material caveats; inclusivity is well-integrated and resourced.",
+        "pros": "The design explicitly addresses inclusivity through purposive sampling for diversity, compensation for participants, and adaptive methods (printed materials, face-to-face options) to overcome digital barriers for older adults. Budget lines support these accessibility measures.",
+        "drawbacks": "No material caveats; inclusivity is well-considered and resourced.",
+        "rationale": "No material caveats; inclusivity is well-considered and resourced.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -856,17 +852,17 @@
             "sid": "td.1.a",
             "signal_text": "Completeness and clarity of training description",
             "weight": 1.0,
-            "score": 5,
-            "score_0to5_raw": 5.0,
-            "score_0to5_weighted": 5.0
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
           },
           {
             "sid": "td.1.b",
             "signal_text": "Alignment of training topics with project methods or techniques",
             "weight": 1.0,
-            "score": 5,
-            "score_0to5_raw": 5.0,
-            "score_0to5_weighted": 5.0
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
           },
           {
             "sid": "td.1.c",
@@ -880,14 +876,14 @@
             "sid": "td.1.d",
             "signal_text": "Explicit links between training content and skill acquisition",
             "weight": 1.0,
-            "score": 5,
-            "score_0to5_raw": 5.0,
-            "score_0to5_weighted": 5.0
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
           }
         ],
-        "pros": "The application provides a highly detailed and structured training plan (sectdars__001_a-d) that explicitly maps specific courses (e.g., NVivo, R, Plain English Diploma, Facilitator skills) to each Work Package (WP1-WP4). The plan is comprehensive, covering technical skills, qualitative methods, and broader academic skills, with clear links to skill acquisition and project delivery. The budget (secsb__001_i) confirms funding for these specific short courses.",
-        "drawbacks": "While the plan is excellent, the sequencing (timeline) is described by Work Package association rather than a strict chronological calendar, though the WP structure implies a logical flow. This minor lack of explicit temporal sequencing prevents a perfect 5 on td.1.c, though the evidence is otherwise strong.",
-        "rationale": "While the plan is excellent, the sequencing (timeline) is described by Work Package association rather than a strict chronological calendar, though the WP structure implies a logical flow. This minor lack of explicit temporal sequencing prevents a perfect 5 on td.1.c, though the evidence is otherwise strong.",
+        "pros": "The application provides a highly detailed and structured training plan (sectdars__001_a-d) that explicitly maps specific courses (e.g., NVivo, R, Plain English Diploma, Facilitator skills) to each work package (WP1-WP4). The budget section (secsb__001_i) corroborates this with specific line items for these courses, ensuring completeness and clarity. The plan covers the full spectrum of required skills from systematic reviews to AI and dissemination.",
+        "drawbacks": "While the plan is comprehensive, the sequencing for the AI training (WP4) is noted as dependent on the 'version of the model' and 'best course available' (sectdars__001_c), indicating a slight lack of fixed timeline certainty compared to the other modules, preventing a perfect score on timeline rigidity.",
+        "rationale": "While the plan is comprehensive, the sequencing for the AI training (WP4) is noted as dependent on the 'version of the model' and 'best course available' (sectdars__001_c), indicating a slight lack of fixed timeline certainty compared to the other modules, preventing a perfect score on timeline rigidity.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -903,7 +899,7 @@
           "sectdars__001_b",
           "sectdars__001_c",
           "sectdars__001_d",
-          "sectdars__001_e"
+          "secsb__001_i"
         ],
         "evidence_count": 5,
         "evidence_status": "ok",
@@ -914,38 +910,38 @@
             "sid": "td.2.a",
             "signal_text": "Identification of personal skill gaps",
             "weight": 1.0,
-            "score": 5,
-            "score_0to5_raw": 5.0,
-            "score_0to5_weighted": 5.0
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
           },
           {
             "sid": "td.2.b",
             "signal_text": "Clear mapping between training activities and project tasks",
             "weight": 1.0,
-            "score": 5,
-            "score_0to5_raw": 5.0,
-            "score_0to5_weighted": 5.0
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
           },
           {
             "sid": "td.2.c",
             "signal_text": "Evidence that proposed training is targeted rather than generic",
             "weight": 1.0,
-            "score": 5,
-            "score_0to5_raw": 5.0,
-            "score_0to5_weighted": 5.0
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
           },
           {
             "sid": "td.2.d",
             "signal_text": "Mention of mentorship, workshops, or formal courses relevant to development needs",
             "weight": 1.0,
-            "score": 5,
-            "score_0to5_raw": 5.0,
-            "score_0to5_weighted": 5.0
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
           }
         ],
-        "pros": "The applicant clearly identifies specific skill gaps (e.g., needing to refresh systematic review knowledge, learning RedCap, developing AI/NLP skills) and maps them directly to targeted training (sectdars__001_a-b). The plan is highly targeted rather than generic, citing specific providers (UCL DSDP, SRA, Plain English Campaign). Mentorship is explicitly detailed with named coaches (Dave Thornton, Emma Falkner) and supervisors providing specific support for qualitative methods and leadership (sectdars__001_e-f).",
-        "drawbacks": "No material drawbacks found; the evidence is complete, specific, and directly addresses the criteria.",
-        "rationale": "No material drawbacks found; the evidence is complete, specific, and directly addresses the criteria.",
+        "pros": "The applicant clearly identifies specific skill gaps (e.g., needing to 'refresh' systematic review knowledge, needing 'further' skills in R data visualization, needing 'better understanding' of AI models) and maps targeted training directly to these gaps (sectdars__001_a-b). The plan is highly targeted rather than generic, citing specific providers (UCL DSDP, SRA, Plain English Campaign) and linking them to project tasks like chairing the steering committee (facilitator course) and qualitative analysis (NVivo).",
+        "drawbacks": "No material drawbacks found; the identification of gaps and the mapping to specific, relevant training activities are explicit and well-evidenced throughout the text.",
+        "rationale": "No material drawbacks found; the identification of gaps and the mapping to specific, relevant training activities are explicit and well-evidenced throughout the text.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -960,9 +956,10 @@
           "sectdars__001_a",
           "sectdars__001_c",
           "sectdars__001_d",
+          "sectdars__001_e",
           "sectdars__001_f"
         ],
-        "evidence_count": 4,
+        "evidence_count": 5,
         "evidence_status": "ok",
         "confidence_gap": 0.0,
         "confidence_label": "high_confidence",
@@ -1000,9 +997,9 @@
             "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "The applicant explicitly states career goals (academia, public health leadership) and connects training activities (grant writing, facilitator skills, leadership coaching) directly to these long-term aspirations (sectdars__001_d, sectdars__001_f). The plan highlights transferable skills (e.g., facilitator skills for future work between academia and social care, Plain English for health literacy work) and includes experiential learning through coaching and steering committee chairing.",
-        "drawbacks": "No material drawbacks found; the evidence is complete, specific, and directly addresses the criteria.",
-        "rationale": "No material drawbacks found; the evidence is complete, specific, and directly addresses the criteria.",
+        "pros": "The application explicitly states the goal of developing skills for a 'future academic career' (sectdars__001_a) and details training in grant writing, leadership, and dissemination (sectdars__001_d) that are transferable beyond the PhD. It includes specific professional development elements like executive coaching (Dave Thornton) and facilitator skills (sectdars__001_c, sectdars__001_e) that support long-term career aspirations in public health and academia.",
+        "drawbacks": "No material drawbacks found; the connection between the training plan and long-term career trajectory is robust and clearly articulated.",
+        "rationale": "No material drawbacks found; the connection between the training plan and long-term career trajectory is robust and clearly articulated.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1024,7 +1021,7 @@
           "sectdars__001_f",
           "sectdars__001_g",
           "sectdars__001_l",
-          "sectdars__001_p"
+          "sectdars__001_q"
         ],
         "evidence_count": 4,
         "evidence_status": "ok",
@@ -1064,9 +1061,9 @@
             "score_0to5_weighted": 4.0
           }
         ],
-        "pros": "The application provides strong evidence of the contracting organisation's (UCL IHI) track record, citing Prof Shallcross's leadership of the Vivaldi study and her MBE award. It details extensive prior collaborations with care homes, NHS trusts, and national bodies (HCIC, Outstanding Society), demonstrating a robust history of relevant research and partnerships.",
-        "drawbacks": "While the track record is strong, specific metrics on previous funding success amounts or a comprehensive list of all relevant publications by the institute are not explicitly detailed in the provided text, though the qualitative evidence is very strong.",
-        "rationale": "While the track record is strong, specific metrics on previous funding success amounts or a comprehensive list of all relevant publications by the institute are not explicitly detailed in the provided text, though the qualitative evidence is very strong.",
+        "pros": "The application provides strong evidence of the contracting organisation's (UCL IHI) track record. It details the Vivaldi study led by the primary supervisor, the institute's history of supporting 400+ postgraduate students, and specific examples of ECR progression to funded posts (sectdars__001_q). It also highlights successful collaborations with NHS trusts and social care partners (sectdars__001_l).",
+        "drawbacks": "While the track record is extensive, specific citation metrics or a list of recent high-impact publications directly from the institute (beyond the Vivaldi study) are not explicitly enumerated in the text, though the general reputation is well-supported.",
+        "rationale": "While the track record is extensive, specific citation metrics or a list of recent high-impact publications directly from the institute (beyond the Vivaldi study) are not explicitly enumerated in the text, though the general reputation is well-supported.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1079,11 +1076,12 @@
         "weight": 1.0,
         "used_chunk_ids": [
           "sectdars__001_f",
+          "sectdars__001_g",
           "sectdars__001_h",
-          "sectdars__001_j",
-          "sectdars__001_k"
+          "sectdars__001_i",
+          "sectdars__001_j"
         ],
-        "evidence_count": 4,
+        "evidence_count": 5,
         "evidence_status": "ok",
         "confidence_gap": 0.0,
         "confidence_label": "high_confidence",
@@ -1121,9 +1119,9 @@
             "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "The application details a comprehensive supervisory team of four experts with specific, aligned expertise (Public Health, Qualitative Methods, AI/NLP, Health Literacy). It explicitly defines roles, meeting frequencies (fortnightly/monthly), and accountability mechanisms (risk register reviews), ensuring a robust mentorship framework.",
-        "drawbacks": "No material drawbacks; the supervision plan is exceptionally detailed and directly addresses all aspects of the project and career development.",
-        "rationale": "No material drawbacks; the supervision plan is exceptionally detailed and directly addresses all aspects of the project and career development.",
+        "pros": "The application details a robust supervisory team with four named supervisors, each with specific expertise aligned to the project's work packages (Public Health, Qualitative Methods, NLP/AI, Health Literacy). It explicitly defines meeting frequencies (fortnightly/monthly) and roles (sectdars__001_f, sectdars__001_y). It also includes a dedicated executive coach and a mentor for care workers on the steering committee, demonstrating a comprehensive mentorship plan.",
+        "drawbacks": "No significant drawbacks; the supervision plan is exceptionally detailed and well-aligned with project needs.",
+        "rationale": "No significant drawbacks; the supervision plan is exceptionally detailed and well-aligned with project needs.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1136,11 +1134,12 @@
         "weight": 1.0,
         "used_chunk_ids": [
           "sectdars__001_l",
-          "sectdars__001_m",
           "sectdars__001_p",
-          "sectdars__001_q"
+          "sectdars__001_q",
+          "secsb__001_d",
+          "secsb__001_e"
         ],
-        "evidence_count": 4,
+        "evidence_count": 5,
         "evidence_status": "ok",
         "confidence_gap": 0.0,
         "confidence_label": "high_confidence",
@@ -1178,9 +1177,9 @@
             "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "The application confirms access to critical infrastructure including the Vivaldi care home network, UCLH discharge summaries, AI/data science teams, and secure data storage (RedCap). It explicitly links these resources to project success and highlights institutional support for career progression (UCL Excellence Fellowships, bridging funding).",
-        "drawbacks": "No material drawbacks; the organisational support is comprehensive and directly tailored to the specific needs of the doctoral fellowship.",
-        "rationale": "No material drawbacks; the organisational support is comprehensive and directly tailored to the specific needs of the doctoral fellowship.",
+        "pros": "The application clearly outlines the infrastructure provided by UCL IHI, including access to the Vivaldi network, NHS trust links for data access, and specific equipment (laptops, software) budgeted for the project. It explicitly links these resources to project success (e.g., NLP team support for WP4) and career growth (e.g., UCL Excellence Fellowships, Adapt to Thrive programme).",
+        "drawbacks": "No material caveats; the support is comprehensive and directly tied to the project's specific requirements.",
+        "rationale": "No material caveats; the support is comprehensive and directly tied to the project's specific requirements.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1193,10 +1192,9 @@
         "weight": 1.0,
         "used_chunk_ids": [
           "sectdars__001_g",
-          "sectdars__001_s",
-          "sectdars__001_t"
+          "sectdars__001_s"
         ],
-        "evidence_count": 3,
+        "evidence_count": 2,
         "evidence_status": "ok",
         "confidence_gap": 0.0,
         "confidence_label": "high_confidence",
@@ -1234,9 +1232,9 @@
             "score_0to5_weighted": 4.0
           }
         ],
-        "pros": "The application provides strong evidence of an inclusive culture, citing UCL's Silver Athena Swan and Race Equality Charter Bronze awards. It details active EDI committees, diverse leadership, and specific initiatives to support underrepresented groups and ensure an inclusive research environment.",
-        "drawbacks": "While the commitment to diversity and inclusion is well-evidenced, explicit references to specific research integrity policies or training modules are less detailed compared to the EDI evidence, though the overall culture is clearly supportive.",
-        "rationale": "While the commitment to diversity and inclusion is well-evidenced, explicit references to specific research integrity policies or training modules are less detailed compared to the EDI evidence, though the overall culture is clearly supportive.",
+        "pros": "Strong evidence of an inclusive culture is provided through mentions of UCL's Silver Athena Swan and Race Equality Charter awards. The text details an active EDI committee, diverse senior leadership, and specific initiatives to support underrepresented groups and rotate leadership roles. It also highlights the supervisor's personal commitment to EDI.",
+        "drawbacks": "While policies and awards are cited, specific examples of how research integrity principles are enforced or monitored within the specific project context are less detailed than the EDI evidence, though the general institutional framework is strong.",
+        "rationale": "While policies and awards are cited, specific examples of how research integrity principles are enforced or monitored within the specific project context are less detailed than the EDI evidence, though the general institutional framework is strong.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1290,9 +1288,9 @@
             "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "The application provides exceptional evidence of co-production. The research question was directly suggested by a care worker during shadowing (secppi__001_a). Specific design changes were made based on community feedback, such as adapting the Delphi methodology to include printed materials and face-to-face discussions for older adults (secppi__001_b). A steering committee with residents and families is established to guide the project (secsa__001_c).",
-        "drawbacks": "No material caveats; the evidence is comprehensive, specific, and directly links lived experience to concrete design modifications.",
-        "rationale": "No material caveats; the evidence is comprehensive, specific, and directly links lived experience to concrete design modifications.",
+        "pros": "The application provides exceptional evidence of co-design. The research question was generated by a care worker during shadowing (secppi__001_a). Specific design changes were made based on community feedback, such as adapting the Delphi method to include printed versions and face-to-face discussions for older adults to overcome digital barriers (secppi__001_b). A steering committee with residents and families is established to guide the project (secsa__001_c).",
+        "drawbacks": "No material caveats; the integration of lived experience is comprehensive, specific, and directly evidenced across the proposal.",
+        "rationale": "No material caveats; the integration of lived experience is comprehensive, specific, and directly evidenced across the proposal.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1304,9 +1302,9 @@
         "group_name": null,
         "weight": 1.0,
         "used_chunk_ids": [
-          "secdrp__001_p",
-          "secdrp__001_s",
-          "secppi__001_c"
+          "secppi__001_c",
+          "sectdars__001_f",
+          "sectdars__001_s"
         ],
         "evidence_count": 3,
         "evidence_status": "ok",
@@ -1338,9 +1336,9 @@
             "score_0to5_weighted": 3.0
           }
         ],
-        "pros": "The application details a diverse steering committee including care workers, residents, families, and medical teams (secdrp__001_s). Recruitment strategies for focus groups explicitly aim for diversity in health literacy, care home size, and demographics (secdrp__001_p). Task allocation is equitable, with specific training and remuneration for lay members (secppi__001_c).",
-        "drawbacks": "While the team composition is diverse, there is no explicit statement regarding the demographic characteristics (e.g., ethnicity, gender) of the core research team itself, only the PPI contributors. The focus is on participant diversity rather than the research team's internal diversity metrics.",
-        "rationale": "While the team composition is diverse, there is no explicit statement regarding the demographic characteristics (e.g., ethnicity, gender) of the core research team itself, only the PPI contributors. The focus is on participant diversity rather than the research team's internal diversity metrics.",
+        "pros": "The research team includes a diverse mix of experts by experience (care workers, residents, families) alongside academic and clinical experts (sectdars__001_f). The steering committee is explicitly designed to include these groups (secppi__001_c). The host organization highlights an ethnically diverse senior leadership team (sectdars__001_s).",
+        "drawbacks": "While the inclusion of lived experience is strong, explicit demographic data (e.g., specific ethnicity, gender breakdown) of the core research team members is not detailed, limiting the score for wp.2.a. Task allocation is described generally but not in granular detail for every team member.",
+        "rationale": "While the inclusion of lived experience is strong, explicit demographic data (e.g., specific ethnicity, gender breakdown) of the core research team members is not detailed, limiting the score for wp.2.a. Task allocation is described generally but not in granular detail for every team member.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1387,9 +1385,9 @@
             "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "The application outlines a robust dissemination plan including scientific journals, conferences, and a video specifically for care workers (secpesor__001_c). It explicitly links the co-produced principles to actionable outcomes like reduced hospital readmissions and workload reduction (secsa__001_c). A knowledge share event co-led by care workers is planned to ensure direct benefit (secdrp__001_u).",
-        "drawbacks": "No significant drawbacks; the plan is highly specific and directly ties research outputs to tangible benefits for the target community.",
-        "rationale": "No significant drawbacks; the plan is highly specific and directly ties research outputs to tangible benefits for the target community.",
+        "pros": "The application details a robust dissemination plan including scientific journals, conferences, and a dedicated knowledge share event co-led with care workers (secdrp__001_u). Clear links are drawn between the co-produced principles and anticipated benefits like reduced hospital readmissions and improved patient safety (secsa__001_c). The plan emphasizes actionable outcomes, such as a 'best practice guide' and AI tools for lay summaries (secpesor__001_c).",
+        "drawbacks": "No material caveats; the plan for maximizing public benefit is specific, actionable, and well-integrated into the project design.",
+        "rationale": "No material caveats; the plan for maximizing public benefit is specific, actionable, and well-integrated into the project design.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1401,12 +1399,11 @@
         "group_name": null,
         "weight": 1.0,
         "used_chunk_ids": [
-          "secdrp__001_b",
           "secdrp__001_p",
-          "secppi__001_b",
-          "secsb__001_d"
+          "secdrp__001_q",
+          "sectdars__001_l"
         ],
-        "evidence_count": 4,
+        "evidence_count": 3,
         "evidence_status": "ok",
         "confidence_gap": 0.0,
         "confidence_label": "high_confidence",
@@ -1415,9 +1412,9 @@
             "sid": "wp.4.a",
             "signal_text": "Mention of specific demographic groups (age, race, ethnicity, disability, gender, sexual orientation, religion/belief, location, socioeconomic status)",
             "weight": 1.0,
-            "score": 5,
-            "score_0to5_raw": 5.0,
-            "score_0to5_weighted": 5.0
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
           },
           {
             "sid": "wp.4.b",
@@ -1431,14 +1428,14 @@
             "sid": "wp.4.c",
             "signal_text": "Discussion of barriers to participation and mitigation strategies",
             "weight": 1.0,
-            "score": 5,
-            "score_0to5_raw": 5.0,
-            "score_0to5_weighted": 5.0
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
           }
         ],
-        "pros": "The research explicitly targets older people in care homes, a group often underrepresented in research (secdrp__001_b). Recruitment strategies include purposive sampling for diversity and specific adaptations for those with lower digital literacy (secdrp__001_p). Barriers to participation are addressed through printed materials, face-to-face options, and travel cost coverage (secppi__001_b, secsb__001_d).",
-        "drawbacks": "While strategies for older adults are strong, there is less specific detail on how other dimensions of diversity (e.g., ethnicity, disability beyond age-related issues) will be actively recruited or supported, though general diversity is mentioned.",
-        "rationale": "While strategies for older adults are strong, there is less specific detail on how other dimensions of diversity (e.g., ethnicity, disability beyond age-related issues) will be actively recruited or supported, though general diversity is mentioned.",
+        "pros": "The proposal explicitly targets care home residents and staff, groups often underrepresented in research (sectdars__001_l). Recruitment strategies include purposive sampling to maximize diversity in health literacy, care home size, and region (secdrp__001_p). Barriers to participation are addressed through specific mitigation strategies like travel costs and flexible meeting formats (secdrp__001_q).",
+        "drawbacks": "While the focus on care home residents is strong, the application could provide more specific detail on how other dimensions of diversity (e.g., ethnicity, disability, sexual orientation) will be actively recruited or represented beyond general purposive sampling.",
+        "rationale": "While the focus on care home residents is strong, the application could provide more specific detail on how other dimensions of diversity (e.g., ethnicity, disability, sexual orientation) will be actively recruited or represented beyond general purposive sampling.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1451,11 +1448,10 @@
         "weight": 1.0,
         "used_chunk_ids": [
           "secdrp__001_s",
-          "secdrp__001_u",
-          "secppi__001_c",
-          "secppi__001_d"
+          "secppi__001_b",
+          "secppi__001_c"
         ],
-        "evidence_count": 4,
+        "evidence_count": 3,
         "evidence_status": "ok",
         "confidence_gap": 0.0,
         "confidence_label": "high_confidence",
@@ -1485,9 +1481,9 @@
             "score_0to5_weighted": 4.0
           }
         ],
-        "pros": "Inclusion is embedded across the lifecycle: from co-designing the question (secppi__001_a), to adaptive methods in data collection (printed vs digital) (secppi__001_b), to inclusive analysis (thematic analysis with diverse input) and dissemination (co-led events) (secdrp__001_u). Accessibility is prioritized with technical accessories and plain English materials (secppi__001_c).",
-        "drawbacks": "While plans for evaluation and adaptation are present (e.g., risk mitigation for attrition), there is no explicit mention of a formal, ongoing evaluation mechanism specifically for the inclusivity of the research process itself, though the steering committee serves this function.",
-        "rationale": "While plans for evaluation and adaptation are present (e.g., risk mitigation for attrition), there is no explicit mention of a formal, ongoing evaluation mechanism specifically for the inclusivity of the research process itself, though the steering committee serves this function.",
+        "pros": "Inclusion is embedded across the lifecycle: from co-designing the question (secppi__001_a) to adaptive methods in data collection (printed materials, face-to-face options for those with digital barriers) (secppi__001_b). Accessibility is prioritized in dissemination with plain English documents and technical accessories for steering committee members (secppi__001_c).",
+        "drawbacks": "While plans for evaluation and adaptation are present (e.g., risk register, quarterly reviews), explicit documentation of a formal mechanism for ongoing evaluation of inclusivity metrics specifically is less detailed than the operational inclusion strategies.",
+        "rationale": "While plans for evaluation and adaptation are present (e.g., risk register, quarterly reviews), explicit documentation of a formal mechanism for ongoing evaluation of inclusivity metrics specifically is less detailed than the operational inclusion strategies.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1499,13 +1495,12 @@
         "group_name": null,
         "weight": 1.0,
         "used_chunk_ids": [
-          "secdrp__001_k",
-          "secdrp__001_q",
+          "secsb__001_d",
           "secsb__001_f",
           "secsb__001_g",
           "secsb__001_h"
         ],
-        "evidence_count": 5,
+        "evidence_count": 4,
         "evidence_status": "ok",
         "confidence_gap": 0.0,
         "confidence_label": "high_confidence",
@@ -1535,9 +1530,9 @@
             "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "The budget explicitly includes line items for PPIE involvement, participant vouchers (£15-£25), travel costs, and training for care workers (secsb__001_f, secsb__001_g, secsb__001_h). Specific funds are allocated for technical accessories to support accessibility (secsb__001_d). The detailed research plan links these costs directly to specific work packages and inclusion activities (secdrp__001_k, secdrp__001_q).",
-        "drawbacks": "No drawbacks; the inclusion plan is fully costed with clear alignment between the activities described and the resources requested.",
-        "rationale": "No drawbacks; the inclusion plan is fully costed with clear alignment between the activities described and the resources requested.",
+        "pros": "The budget explicitly includes line items for PPIE involvement, participant vouchers (£15/£25), travel costs, and technical accessories (webcams, large print keyboards) for steering committee members (secsb__001_f, secsb__001_g, secsb__001_d). Staff time is allocated for training and coaching care workers (secsb__001_h). The resources align perfectly with the inclusion activities described in the research plan.",
+        "drawbacks": "No material caveats; the costed plan is comprehensive, specific, and fully aligned with the inclusion strategy.",
+        "rationale": "No material caveats; the costed plan is comprehensive, specific, and fully aligned with the inclusion strategy.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1567,9 +1562,9 @@
             "sid": "af.1.a",
             "signal_text": "Presence and consistency of headings and subheadings",
             "weight": 1.0,
-            "score": 5,
-            "score_0to5_raw": 5.0,
-            "score_0to5_weighted": 5.0
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
           },
           {
             "sid": "af.1.b",
@@ -1583,22 +1578,22 @@
             "sid": "af.1.c",
             "signal_text": "Structured hierarchy of sections (logical nesting of headings)",
             "weight": 1.0,
-            "score": 5,
-            "score_0to5_raw": 5.0,
-            "score_0to5_weighted": 5.0
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
           },
           {
             "sid": "af.1.d",
             "signal_text": "Patterns detected via text parsing for formatting markers",
             "weight": 1.0,
-            "score": 5,
-            "score_0to5_raw": 5.0,
-            "score_0to5_weighted": 5.0
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
           }
         ],
-        "pros": "The application demonstrates excellent structural organization with 10 detected parser sections, 26 numbered heading-like lines, and 34 bullet/numbered list markers, ensuring clear navigation. The presence of 17 extracted emphasis markers and 144 table-like budget lines indicates effective use of formatting to highlight key terms and data. The logical hierarchy is evident in the section ordering from applicant context to budget.",
-        "drawbacks": "While 17 emphasis markers were detected, the analysis notes that bold/emphasis may be lost during text extraction; therefore, the score for emphasis usage (af.1.b) is capped at 4 to account for potential parser limitations rather than absolute certainty of the original formatting's completeness.",
-        "rationale": "While 17 emphasis markers were detected, the analysis notes that bold/emphasis may be lost during text extraction; therefore, the score for emphasis usage (af.1.b) is capped at 4 to account for potential parser limitations rather than absolute certainty of the original formatting's completeness.",
+        "pros": "The application demonstrates excellent structural organization with 10 detected parser sections, 26 numbered heading-like lines, and 34 list markers, ensuring clear navigation. A substantial word count across sections (e.g., 5140 words in Research Plan) indicates comprehensive content. The analysis confirms the presence of 17 extracted emphasis markers, supporting the use of bolding for key terms.",
+        "drawbacks": "While emphasis markers are detected, the analysis notes a parser limitation where bold/emphasis may be lost during text extraction; therefore, the score for emphasis usage is slightly reduced to account for the inability to fully verify the visual hierarchy of bolded text in the final extracted format.",
+        "rationale": "While emphasis markers are detected, the analysis notes a parser limitation where bold/emphasis may be lost during text extraction; therefore, the score for emphasis usage is slightly reduced to account for the inability to fully verify the visual hierarchy of bolded text in the final extracted format.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1642,9 +1637,9 @@
             "score_0to5_weighted": 4.0
           }
         ],
-        "pros": "The application exhibits very low duplication rates, with a duplicate sentence rate of only 0.003 (excluding budget) and a repeated line rate of 0.067. Lexical overlap between major sections is moderate (e.g., 0.257 between Research Plan and Training), which is expected for coherent proposals, indicating that content is largely novel and not unnecessarily repetitive.",
-        "drawbacks": "While duplication is minimal, the lexical overlap of 0.257 between the Detailed Research Plan and Training & Development sections suggests some shared phrasing. While likely necessary for coherence, this prevents a perfect score for novelty (af.2.c) as there is measurable overlap between distinct sections.",
-        "rationale": "While duplication is minimal, the lexical overlap of 0.257 between the Detailed Research Plan and Training & Development sections suggests some shared phrasing. While likely necessary for coherence, this prevents a perfect score for novelty (af.2.c) as there is measurable overlap between distinct sections.",
+        "pros": "The application exhibits very low duplication with a duplicate sentence rate of 0.003 and a repeated line rate of 0.067, indicating high novelty and minimal redundancy. Lexical overlap between sections (e.g., 0.257 between Research Plan and Training) is moderate and likely reflects necessary thematic alignment rather than unnecessary repetition.",
+        "drawbacks": "While duplication is low, the lexical overlap between the Detailed Research Plan and Training sections (0.257) is the highest among section pairs, suggesting some content may be repeated to ensure alignment, which prevents a perfect score for novelty in every section.",
+        "rationale": "While duplication is low, the lexical overlap between the Detailed Research Plan and Training sections (0.257) is the highest among section pairs, suggesting some content may be repeated to ensure alignment, which prevents a perfect score for novelty in every section.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1696,9 +1691,9 @@
             "score_0to5_weighted": 4.0
           }
         ],
-        "pros": "The application demonstrates strong logical flow with 32 transition phrases and 95 objective-method-budget link terms, ensuring a clear thread connecting research aims to execution. The section order follows a standard, logical progression (Applicant -> Summary -> Plan -> PPI -> Training -> Budget), and the high count of linking terms confirms explicit connections between objectives, methods, and resources.",
-        "drawbacks": "No material caveats or missing details were identified in the structural analysis regarding logical flow; the evidence for coherence and linking is robust and complete.",
-        "rationale": "No material caveats or missing details were identified in the structural analysis regarding logical flow; the evidence for coherence and linking is robust and complete.",
+        "pros": "The application demonstrates strong logical flow with 32 transition phrases and 95 objective-method-budget link terms, ensuring a coherent narrative thread. The section order follows a logical progression from applicant context to research plan, PPI, training, and budget. High lexical overlap between related sections (e.g., Research Plan and Training) supports semantic coherence and alignment of objectives.",
+        "drawbacks": "No material caveats or missing details regarding logical flow were identified in the structural analysis; the evidence for coherence is robust and complete.",
+        "rationale": "No material caveats or missing details regarding logical flow were identified in the structural analysis; the evidence for coherence is robust and complete.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true

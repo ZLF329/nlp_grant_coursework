@@ -11,10 +11,10 @@
         "group_name": "Common Characteristics of Good Applications",
         "weight": 1.0,
         "used_chunk_ids": [
-          "seccfps__001_d",
-          "secdrp__001_x",
-          "secdrp__001_z",
-          "secac__001_a"
+          "secarb__001_a",
+          "secarb__001_f",
+          "sectdars__001_a",
+          "sectdars__001_n"
         ],
         "evidence_count": 4,
         "evidence_status": "ok",
@@ -25,42 +25,41 @@
             "sid": "g.1.a",
             "signal_text": "Clear research vision and career trajectory",
             "weight": 1.0,
-            "score": 2,
-            "score_0to5_raw": 2.0,
-            "score_0to5_weighted": 2.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           },
           {
             "sid": "g.1.b",
             "signal_text": "Distinctive ideas with an independent direction",
             "weight": 1.0,
-            "score": 3,
-            "score_0to5_raw": 3.0,
-            "score_0to5_weighted": 3.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           },
           {
             "sid": "g.1.c",
             "signal_text": "Well-justified training plan",
             "weight": 1.0,
-            "score": 1,
-            "score_0to5_raw": 1.0,
-            "score_0to5_weighted": 1.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           },
           {
             "sid": "g.1.d",
             "signal_text": "Strong mentorship and institutional support",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "The application demonstrates strong mentorship (g.1.d) with Prof Brown supervising Dr O'Connor, and distinctive ideas (g.1.b) evidenced by the specific focus on calprotectin in cardiac NEC following a pilot study. The applicant's career trajectory (g.1.a) is visible through progression from pilot lead to multicentre study lead.",
-        "drawbacks": "There is no explicit 'training plan' section or detailed description of training activities (g.1.c), which is a significant gap for a career development award. The research vision is project-specific rather than a broad long-term career statement.",
-        "rationale": "There is no explicit 'training plan' section or detailed description of training activities (g.1.c), which is a significant gap for a career development award. The research vision is project-specific rather than a broad long-term career statement.",
+        "pros": "",
+        "drawbacks": "",
+        "rationale": "",
         "missing_evidence": false,
-        "if_applicable": true,
-        "counts_toward_section_average": false,
-        "excluded_reason": "not_applicable_for_doc_type"
+        "if_applicable": false,
+        "counts_toward_section_average": true
       },
       {
         "sub_id": "g.2",
@@ -69,9 +68,9 @@
         "group_name": "Tell Us Why You Need This Award",
         "weight": 1.0,
         "used_chunk_ids": [
-          "seccfps__001_d",
-          "secdrp__001_v",
-          "secdrp__001_z"
+          "secarb__001_f",
+          "sectdars__001_c",
+          "sectdars__001_j"
         ],
         "evidence_count": 3,
         "evidence_status": "ok",
@@ -82,42 +81,41 @@
             "sid": "g.2.a",
             "signal_text": "Explain why this award is the right next step in your career (not just another project grant)",
             "weight": 1.0,
-            "score": 1,
-            "score_0to5_raw": 1.0,
-            "score_0to5_weighted": 1.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           },
           {
             "sid": "g.2.b",
             "signal_text": "What difference would securing an award make to your career, and why now?",
             "weight": 1.0,
-            "score": 1,
-            "score_0to5_raw": 1.0,
-            "score_0to5_weighted": 1.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           },
           {
             "sid": "g.2.c",
             "signal_text": "How will an award build on your existing experience and what new skills will it enable you to gain?",
             "weight": 1.0,
-            "score": 2,
-            "score_0to5_raw": 2.0,
-            "score_0to5_weighted": 2.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           },
           {
             "sid": "g.2.d",
             "signal_text": "How will it develop your research partnerships within the NHS, public health or social care, charity organisations, industry or other organisations?",
             "weight": 1.0,
-            "score": 3,
-            "score_0to5_raw": 3.0,
-            "score_0to5_weighted": 3.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "The application shows how the award builds on existing experience (g.2.c) by scaling a pilot study to a multicentre trial. It demonstrates development of research partnerships (g.2.d) across four specialist cardiac centres.",
-        "drawbacks": "The application lacks a dedicated section explicitly articulating why this specific award is the 'right next step' (g.2.a) or the specific difference it makes to the applicant's career trajectory (g.2.b). The focus is heavily on the project deliverables rather than the applicant's personal career development needs.",
-        "rationale": "The application lacks a dedicated section explicitly articulating why this specific award is the 'right next step' (g.2.a) or the specific difference it makes to the applicant's career trajectory (g.2.b). The focus is heavily on the project deliverables rather than the applicant's personal career development needs.",
+        "pros": "",
+        "drawbacks": "",
+        "rationale": "",
         "missing_evidence": false,
-        "if_applicable": true,
-        "counts_toward_section_average": false,
-        "excluded_reason": "not_applicable_for_doc_type"
+        "if_applicable": false,
+        "counts_toward_section_average": true
       },
       {
         "sub_id": "g.3",
@@ -126,12 +124,11 @@
         "group_name": "Applicant",
         "weight": 1.0,
         "used_chunk_ids": [
-          "secdrp__001_h",
-          "secdrp__001_z",
           "secac__001_a",
-          "secac__001_b"
+          "secarb__001_e",
+          "sectdars__001_a"
         ],
-        "evidence_count": 4,
+        "evidence_count": 3,
         "evidence_status": "ok",
         "confidence_gap": 0.0,
         "confidence_label": "high_confidence",
@@ -148,9 +145,9 @@
             "sid": "g.3.b",
             "signal_text": "Evidence of formal training, courses, or certifications",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           },
           {
             "sid": "g.3.c",
@@ -161,9 +158,9 @@
             "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "Strong evidence of previous projects (g.3.a) including a published pilot study on calprotectin and NEC. Formal training (g.3.b) is evidenced by a PhD in Refeeding/malnutrition and MSc in Dietetics. There is perfect alignment (g.3.c) between the applicant's background in nutrition/gut health and the proposed study on NEC diagnosis.",
-        "drawbacks": "No material caveats; the evidence is comprehensive and directly supports the signals.",
-        "rationale": "No material caveats; the evidence is comprehensive and directly supports the signals.",
+        "pros": "",
+        "drawbacks": "",
+        "rationale": "",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -175,10 +172,10 @@
         "group_name": "Applicant",
         "weight": 1.0,
         "used_chunk_ids": [
-          "secdrp__001_h",
-          "secdrp__001_s",
-          "secac__001_a",
-          "secac__001_b"
+          "secac__001_d",
+          "secac__001_n",
+          "secarb__001_a",
+          "secarb__001_d"
         ],
         "evidence_count": 4,
         "evidence_status": "ok",
@@ -189,38 +186,38 @@
             "sid": "g.4.a",
             "signal_text": "Number and quality of publications, reports, or presentations",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           },
           {
             "sid": "g.4.b",
             "signal_text": "Citation metrics or other indicators of impact (where mentioned)",
             "weight": 1.0,
-            "score": 1,
-            "score_0to5_raw": 1.0,
-            "score_0to5_weighted": 1.0
-          },
-          {
-            "sid": "g.4.c",
-            "signal_text": "Awards, grants, or recognitions linked to prior research",
-            "weight": 1.0,
             "score": 4,
             "score_0to5_raw": 4.0,
             "score_0to5_weighted": 4.0
           },
           {
+            "sid": "g.4.c",
+            "signal_text": "Awards, grants, or recognitions linked to prior research",
+            "weight": 1.0,
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
+          },
+          {
             "sid": "g.4.d",
             "signal_text": "Description of practical or societal impact of previous work",
             "weight": 1.0,
-            "score": 3,
-            "score_0to5_raw": 3.0,
-            "score_0to5_weighted": 3.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "The applicant lists multiple peer-reviewed publications (g.4.a) and secured grants (g.4.c) including a £80k Nestle grant. The practical impact (g.4.d) of previous work is described through the pilot study results informing the current proposal.",
-        "drawbacks": "Citation metrics (g.4.b) are not explicitly mentioned in the CV or text. The impact description is somewhat limited to the immediate research context rather than broader societal impact of past work.",
-        "rationale": "Citation metrics (g.4.b) are not explicitly mentioned in the CV or text. The impact description is somewhat limited to the immediate research context rather than broader societal impact of past work.",
+        "pros": "",
+        "drawbacks": "",
+        "rationale": "",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -232,10 +229,10 @@
         "group_name": "Applicant",
         "weight": 1.0,
         "used_chunk_ids": [
-          "secdrp__001_z",
-          "secdrp__001_{",
-          "secdrp__001_|",
-          "secac__001_b"
+          "secarb__001_c",
+          "secarb__001_d",
+          "sectdars__001_c",
+          "sectdars__001_n"
         ],
         "evidence_count": 4,
         "evidence_status": "ok",
@@ -246,38 +243,38 @@
             "sid": "g.5.a",
             "signal_text": "Statements of career ambitions and long-term goals",
             "weight": 1.0,
-            "score": 2,
-            "score_0to5_raw": 2.0,
-            "score_0to5_weighted": 2.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           },
           {
             "sid": "g.5.b",
             "signal_text": "Evidence of increasing responsibility in previous roles (e.g., leading projects, mentoring)",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           },
           {
             "sid": "g.5.c",
             "signal_text": "Participation in leadership or professional development programs",
             "weight": 1.0,
-            "score": 2,
-            "score_0to5_raw": 2.0,
-            "score_0to5_weighted": 2.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           },
           {
             "sid": "g.5.d",
             "signal_text": "Recognition by peers or institutions suggesting leadership potential",
             "weight": 1.0,
-            "score": 3,
-            "score_0to5_raw": 3.0,
-            "score_0to5_weighted": 3.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "Evidence of increasing responsibility (g.5.b) is strong, showing progression from pilot lead to joint lead of a multicentre study. Recognition (g.5.d) is shown through committee memberships (British Association of Paediatric Surgeons) and peer-reviewed publications.",
-        "drawbacks": "Explicit statements of long-term career ambitions (g.5.a) are weak; the focus remains on the current project. Participation in specific leadership development programs (g.5.c) is not detailed beyond general professional roles.",
-        "rationale": "Explicit statements of long-term career ambitions (g.5.a) are weak; the focus remains on the current project. Participation in specific leadership development programs (g.5.c) is not detailed beyond general professional roles.",
+        "pros": "",
+        "drawbacks": "",
+        "rationale": "",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -289,12 +286,11 @@
         "group_name": "Applicant",
         "weight": 1.0,
         "used_chunk_ids": [
-          "secdrp__001_x",
-          "secdrp__001_z",
-          "secdrp__001_|",
-          "secac__001_a"
+          "secarb__001_f",
+          "sectdars__001_e",
+          "sectdars__001_f"
         ],
-        "evidence_count": 4,
+        "evidence_count": 3,
         "evidence_status": "ok",
         "confidence_gap": 0.0,
         "confidence_label": "high_confidence",
@@ -303,9 +299,9 @@
             "sid": "g.6.a",
             "signal_text": "Explicit statement of practitioner-academic career intentions",
             "weight": 1.0,
-            "score": 3,
-            "score_0to5_raw": 3.0,
-            "score_0to5_weighted": 3.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           },
           {
             "sid": "g.6.b",
@@ -319,22 +315,22 @@
             "sid": "g.6.c",
             "signal_text": "Evidence of balancing practice responsibilities with research activities",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           },
           {
             "sid": "g.6.d",
             "signal_text": "Participation in relevant professional networks or qualifications",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "The applicant is a Paediatric Dietitian (g.6.a) and the team includes Consultant Cardiologists and Surgeons (g.6.b), demonstrating a clear practitioner-academic career path. The budget and project management (g.6.c) show balancing of clinical duties (e.g., 30% FTE for lead) with research. Professional networks (g.6.d) are evidenced by roles in national committees.",
-        "drawbacks": "While the practitioner-academic nature is evident, there is no explicit statement of 'intentions' to maintain this dual career path long-term (g.6.a), though it is strongly implied by the current role.",
-        "rationale": "While the practitioner-academic nature is evident, there is no explicit statement of 'intentions' to maintain this dual career path long-term (g.6.a), though it is strongly implied by the current role.",
+        "pros": "",
+        "drawbacks": "",
+        "rationale": "",
         "missing_evidence": false,
         "if_applicable": true,
         "counts_toward_section_average": false
@@ -356,10 +352,9 @@
           "secpesor__001_a",
           "secpesor__001_b",
           "secpesor__001_c",
-          "seccfps__001_q",
           "secpena__001"
         ],
-        "evidence_count": 5,
+        "evidence_count": 4,
         "evidence_status": "ok",
         "confidence_gap": 0.0,
         "confidence_label": "high_confidence",
@@ -413,9 +408,9 @@
             "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "The Plain English Summary is highly readable (Flesch-Kincaid Grade 7.4, 0% long sentences) and explicitly addresses feedback to remove jargon (e.g., replacing 'dissemination' with 'sharing results'). It clearly covers the problem (gut disease in heart defect babies), methods (poo samples), beneficiaries (babies, parents), and impact (better diagnosis, less stress). The content aligns perfectly with the Detailed Research Plan.",
-        "drawbacks": "No material caveats; the summary is concise, accessible, and fully responsive to previous reviewer feedback.",
-        "rationale": "No material caveats; the summary is concise, accessible, and fully responsive to previous reviewer feedback.",
+        "pros": "",
+        "drawbacks": "",
+        "rationale": "",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -449,9 +444,9 @@
             "sid": "pr.2.b",
             "signal_text": "Presence of critical analysis vs. mere summary",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           },
           {
             "sid": "pr.2.c",
@@ -470,9 +465,9 @@
             "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "The application provides a comprehensive review of NEC in cardiac infants, citing specific studies on incidence, diagnostic limitations, and calprotectin utility. It clearly identifies the knowledge gap: current diagnostic tools lead to high rates of false positives and unnecessary treatment. The logical flow from background to pilot study results is strong.",
-        "drawbacks": "While the review is extensive, the critical analysis of conflicting evidence regarding calprotectin specificity in non-NEC inflammatory states could be slightly more detailed, though the pilot data helps mitigate this.",
-        "rationale": "While the review is extensive, the critical analysis of conflicting evidence regarding calprotectin specificity in non-NEC inflammatory states could be slightly more detailed, though the pilot data helps mitigate this.",
+        "pros": "",
+        "drawbacks": "",
+        "rationale": "",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -484,12 +479,11 @@
         "group_name": null,
         "weight": 1.0,
         "used_chunk_ids": [
-          "secsa__001_b",
-          "seccfps__001_l",
-          "secdrp__001_q",
-          "secdrp__001_~"
+          "secdrp__001_j",
+          "secdrp__001_l",
+          "secdrp__001_w"
         ],
-        "evidence_count": 4,
+        "evidence_count": 3,
         "evidence_status": "ok",
         "confidence_gap": 0.0,
         "confidence_label": "high_confidence",
@@ -519,9 +513,9 @@
             "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "The scope is well-defined for a Stage 2 award: a prospective multicentre study with a clear 24-month timeline and a justified sample size (n=300) based on national admission rates. Feasibility is strongly supported by recruitment calculations (18 infants/month) and a detailed Gantt chart.",
-        "drawbacks": "No significant drawbacks; the project scope is ambitious yet realistic given the multicentre setup and deferred consent model.",
-        "rationale": "No significant drawbacks; the project scope is ambitious yet realistic given the multicentre setup and deferred consent model.",
+        "pros": "",
+        "drawbacks": "",
+        "rationale": "",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -533,13 +527,12 @@
         "group_name": null,
         "weight": 1.0,
         "used_chunk_ids": [
-          "secsa__001_b",
-          "seccfps__001_e",
-          "seccfps__001_f",
-          "seccfps__001_g",
-          "secdrp__001_j"
+          "secdrp__001_k",
+          "secdrp__001_n",
+          "secdrp__001_s",
+          "secdrp__001_v"
         ],
-        "evidence_count": 5,
+        "evidence_count": 4,
         "evidence_status": "ok",
         "confidence_gap": 0.0,
         "confidence_label": "high_confidence",
@@ -577,9 +570,9 @@
             "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "Methodological rigor is excellent. The design (prospective cohort), inclusion/exclusion criteria, and data collection (ELISA, gold standard adjudication) are explicitly detailed. Sample size calculation is robust (specificity 0.8, 5% precision), and the analysis plan (ROC, logistic regression) directly addresses the objectives. A blind endpoint review committee ensures diagnostic accuracy.",
-        "drawbacks": "No material caveats; the methodology is comprehensive and addresses previous reviewer concerns regarding sensitivity/specificity thresholds.",
-        "rationale": "No material caveats; the methodology is comprehensive and addresses previous reviewer concerns regarding sensitivity/specificity thresholds.",
+        "pros": "",
+        "drawbacks": "",
+        "rationale": "",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -591,13 +584,11 @@
         "group_name": null,
         "weight": 1.0,
         "used_chunk_ids": [
-          "secsa__001_a",
           "secsa__001_c",
-          "secpesor__001_a",
           "secdrp__001_d",
-          "secdrp__001_s"
+          "secdrp__001_|"
         ],
-        "evidence_count": 5,
+        "evidence_count": 3,
         "evidence_status": "ok",
         "confidence_gap": 0.0,
         "confidence_label": "high_confidence",
@@ -627,9 +618,9 @@
             "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "Impact is clearly articulated: reducing unnecessary antibiotics, avoiding milk withdrawal, and reducing parental stress. The proposal links accurate diagnosis to reduced hospital stays and costs (£13,900 per patient). Long-term impact includes updating international clinical guidelines.",
-        "drawbacks": "No significant drawbacks; the benefits are specific, patient-centered, and economically quantified.",
-        "rationale": "No significant drawbacks; the benefits are specific, patient-centered, and economically quantified.",
+        "pros": "",
+        "drawbacks": "",
+        "rationale": "",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -641,13 +632,11 @@
         "group_name": null,
         "weight": 1.0,
         "used_chunk_ids": [
-          "seccfps__001_h",
-          "seccfps__001_i",
-          "seccfps__001_j",
           "secppi__001_a",
-          "secppi__001_b"
+          "secppi__001_b",
+          "secppi__001_c"
         ],
-        "evidence_count": 5,
+        "evidence_count": 3,
         "evidence_status": "ok",
         "confidence_gap": 0.0,
         "confidence_label": "high_confidence",
@@ -677,9 +666,9 @@
             "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "PPI is deeply integrated with a Co-Applicant (Mrs. Gardner) who has lived experience and contributed to the pilot study design. The PPI team attends all Steering Group meetings, reviews patient documents, and is paid appropriately. Focus groups directly influenced study outcomes (e.g., feeding duration).",
-        "drawbacks": "No material caveats; the PPI plan is robust, costed, and goes beyond tokenism.",
-        "rationale": "No material caveats; the PPI plan is robust, costed, and goes beyond tokenism.",
+        "pros": "",
+        "drawbacks": "",
+        "rationale": "",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -691,10 +680,10 @@
         "group_name": null,
         "weight": 1.0,
         "used_chunk_ids": [
-          "secdrp__001_q",
+          "secsb__001_a",
+          "secsb__001_b",
           "secsb__001_g",
-          "secsb__001_h",
-          "secsb__001_i"
+          "secsb__001_j"
         ],
         "evidence_count": 4,
         "evidence_status": "ok",
@@ -726,9 +715,9 @@
             "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "The budget is fully justified with explicit links to tasks: staff FTE for data collection, consumables for 600 calprotectin assays (£60 each), and specific PPI costs. The total cost (£207k) is proportional to the multicentre scope and 24-month duration.",
-        "drawbacks": "No significant drawbacks; the budget breakdown is transparent and aligns with the research plan.",
-        "rationale": "No significant drawbacks; the budget breakdown is transparent and aligns with the research plan.",
+        "pros": "",
+        "drawbacks": "",
+        "rationale": "",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -740,9 +729,9 @@
         "group_name": null,
         "weight": 1.0,
         "used_chunk_ids": [
-          "secpesor__001_b",
-          "secdrp__001_h",
-          "secdrp__001_z"
+          "secac__001_c",
+          "secarb__001_a",
+          "secarb__001_b"
         ],
         "evidence_count": 3,
         "evidence_status": "ok",
@@ -774,9 +763,9 @@
             "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "The applicant led a published pilot study (n=30) demonstrating the relationship between calprotectin and NEC. This prior success provides a strong foundation for the proposed larger study. The team includes experts in cardiac surgery, statistics, and NEC.",
-        "drawbacks": "No material caveats; the prior research is directly relevant and demonstrates capability.",
-        "rationale": "No material caveats; the prior research is directly relevant and demonstrates capability.",
+        "pros": "",
+        "drawbacks": "",
+        "rationale": "",
         "missing_evidence": false,
         "if_applicable": true,
         "counts_toward_section_average": false
@@ -788,13 +777,11 @@
         "group_name": null,
         "weight": 1.0,
         "used_chunk_ids": [
-          "seccfps__001_m",
-          "seccfps__001_n",
-          "seccfps__001_o",
           "secdrp__001_k",
-          "secdrp__001_l"
+          "secdrp__001_n",
+          "secppi__001_a"
         ],
-        "evidence_count": 5,
+        "evidence_count": 3,
         "evidence_status": "ok",
         "confidence_gap": 0.0,
         "confidence_label": "high_confidence",
@@ -824,9 +811,9 @@
             "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "Inclusive recruitment strategies are explicit: interpretation services (£600 budget), deferred consent to reduce barriers, and simplified patient information sheets (reading level 10-12yrs). The proposal acknowledges higher CHD incidence in ethnic minority groups and plans to mitigate language and socioeconomic barriers.",
-        "drawbacks": "No significant drawbacks; the inclusivity plan is comprehensive and costed.",
-        "rationale": "No significant drawbacks; the inclusivity plan is comprehensive and costed.",
+        "pros": "",
+        "drawbacks": "",
+        "rationale": "",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -844,8 +831,12 @@
         "definition": "How well-structured, clear, and relevant the training plan is in relation to the project’s goals and the applicant’s research needs.",
         "group_name": null,
         "weight": 1.0,
-        "used_chunk_ids": [],
-        "evidence_count": 0,
+        "used_chunk_ids": [
+          "sectdars__001_a",
+          "sectdars__001_b",
+          "sectdars__001_c"
+        ],
+        "evidence_count": 3,
         "evidence_status": "ok",
         "confidence_gap": 0.0,
         "confidence_label": "high_confidence",
@@ -854,38 +845,38 @@
             "sid": "td.1.a",
             "signal_text": "Completeness and clarity of training description",
             "weight": 1.0,
-            "score": 0,
-            "score_0to5_raw": 0.0,
-            "score_0to5_weighted": 0.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           },
           {
             "sid": "td.1.b",
             "signal_text": "Alignment of training topics with project methods or techniques",
             "weight": 1.0,
-            "score": 0,
-            "score_0to5_raw": 0.0,
-            "score_0to5_weighted": 0.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           },
           {
             "sid": "td.1.c",
             "signal_text": "Structured timeline or sequencing of training activities",
             "weight": 1.0,
-            "score": 0,
-            "score_0to5_raw": 0.0,
-            "score_0to5_weighted": 0.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           },
           {
             "sid": "td.1.d",
             "signal_text": "Explicit links between training content and skill acquisition",
             "weight": 1.0,
-            "score": 0,
-            "score_0to5_raw": 0.0,
-            "score_0to5_weighted": 0.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "No evidence found in the provided application text or belief state regarding a specific training plan for the applicant.",
-        "drawbacks": "The application text provided is limited to summary information (title, dates, costs, lead applicant name) and does not contain a 'Training and Development' section or any description of training activities, timelines, or skill acquisition plans. The belief state explicitly lists 'td.1' as a missing signal.",
-        "rationale": "The application text provided is limited to summary information (title, dates, costs, lead applicant name) and does not contain a 'Training and Development' section or any description of training activities, timelines, or skill acquisition plans. The belief state explicitly lists 'td.1' as a missing signal.",
+        "pros": "",
+        "drawbacks": "",
+        "rationale": "",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -896,8 +887,12 @@
         "definition": "How well the proposed training addresses the applicant’s current skills gaps and supports successful project delivery.",
         "group_name": null,
         "weight": 1.0,
-        "used_chunk_ids": [],
-        "evidence_count": 0,
+        "used_chunk_ids": [
+          "sectdars__001_a",
+          "sectdars__001_b",
+          "sectdars__001_c"
+        ],
+        "evidence_count": 3,
         "evidence_status": "ok",
         "confidence_gap": 0.0,
         "confidence_label": "high_confidence",
@@ -906,38 +901,38 @@
             "sid": "td.2.a",
             "signal_text": "Identification of personal skill gaps",
             "weight": 1.0,
-            "score": 0,
-            "score_0to5_raw": 0.0,
-            "score_0to5_weighted": 0.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           },
           {
             "sid": "td.2.b",
             "signal_text": "Clear mapping between training activities and project tasks",
             "weight": 1.0,
-            "score": 0,
-            "score_0to5_raw": 0.0,
-            "score_0to5_weighted": 0.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           },
           {
             "sid": "td.2.c",
             "signal_text": "Evidence that proposed training is targeted rather than generic",
             "weight": 1.0,
-            "score": 0,
-            "score_0to5_raw": 0.0,
-            "score_0to5_weighted": 0.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           },
           {
             "sid": "td.2.d",
             "signal_text": "Mention of mentorship, workshops, or formal courses relevant to development needs",
             "weight": 1.0,
-            "score": 0,
-            "score_0to5_raw": 0.0,
-            "score_0to5_weighted": 0.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "No evidence found in the provided application text or belief state regarding the identification of personal skill gaps or mapping of training to project needs.",
-        "drawbacks": "The provided text contains only administrative summary data. There is no mention of the applicant's current skill gaps, specific training needs, or how proposed training would address project tasks. The belief state confirms 'td.2' is missing.",
-        "rationale": "The provided text contains only administrative summary data. There is no mention of the applicant's current skill gaps, specific training needs, or how proposed training would address project tasks. The belief state confirms 'td.2' is missing.",
+        "pros": "",
+        "drawbacks": "",
+        "rationale": "",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -948,8 +943,12 @@
         "definition": "The extent to which the training plan, and any professional practice components, contribute to the applicant’s long-term career goals.",
         "group_name": null,
         "weight": 1.0,
-        "used_chunk_ids": [],
-        "evidence_count": 0,
+        "used_chunk_ids": [
+          "sectdars__001_c",
+          "sectdars__001_d",
+          "sectdars__001_e"
+        ],
+        "evidence_count": 3,
         "evidence_status": "ok",
         "confidence_gap": 0.0,
         "confidence_label": "high_confidence",
@@ -958,38 +957,38 @@
             "sid": "td.3.a",
             "signal_text": "Explicit statement of career goals",
             "weight": 1.0,
-            "score": 0,
-            "score_0to5_raw": 0.0,
-            "score_0to5_weighted": 0.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           },
           {
             "sid": "td.3.b",
             "signal_text": "Connections between training activities and future career trajectory",
             "weight": 1.0,
-            "score": 0,
-            "score_0to5_raw": 0.0,
-            "score_0to5_weighted": 0.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           },
           {
             "sid": "td.3.c",
             "signal_text": "Indications of skill transferability beyond the current project",
             "weight": 1.0,
-            "score": 0,
-            "score_0to5_raw": 0.0,
-            "score_0to5_weighted": 0.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           },
           {
             "sid": "td.3.d",
             "signal_text": "Reference to professional practice or experiential learning where applicable",
             "weight": 1.0,
-            "score": 0,
-            "score_0to5_raw": 0.0,
-            "score_0to5_weighted": 0.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "No evidence found in the provided application text or belief state regarding career goals or the link between training and long-term aspirations.",
-        "drawbacks": "The application text provided does not include a career development plan or statements of career ambitions. While the belief state notes the applicant's practitioner-academic path (g.6), it explicitly lists 'td.3' as missing, indicating no specific training plan supporting these aspirations is present in the available text.",
-        "rationale": "The application text provided does not include a career development plan or statements of career ambitions. While the belief state notes the applicant's practitioner-academic path (g.6), it explicitly lists 'td.3' as missing, indicating no specific training plan supporting these aspirations is present in the available text.",
+        "pros": "",
+        "drawbacks": "",
+        "rationale": "",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1008,12 +1007,11 @@
         "group_name": null,
         "weight": 1.0,
         "used_chunk_ids": [
-          "secdrp__001_j",
-          "secdrp__001_z",
-          "secdrp__001_{",
-          "secdrp__001_|"
+          "sectdars__001_n",
+          "sectdars__001_p",
+          "sectdars__001_q"
         ],
-        "evidence_count": 4,
+        "evidence_count": 3,
         "evidence_status": "ok",
         "confidence_gap": 0.0,
         "confidence_label": "high_confidence",
@@ -1022,38 +1020,38 @@
             "sid": "ss.1.a",
             "signal_text": "Publication or project history in relevant research fields",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           },
           {
             "sid": "ss.1.b",
             "signal_text": "Previous funding success or awards in similar domains",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           },
           {
             "sid": "ss.1.c",
             "signal_text": "Mention of prior collaborations or partnerships",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           },
           {
             "sid": "ss.1.d",
             "signal_text": "Highlighted achievements or notable outputs",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "The application provides strong evidence of the contracting organisation's track record. It lists four specialist cardiac centres (GOSH, Alder Hey, Birmingham, Southampton) with specific expertise in paediatric cardiac surgery and NEC (secdrp__001_j). It details the lead applicants' experience leading national multicentre studies and their roles in national committees (secdrp__001_z, secdrp__001_{). Prior collaborations are explicitly mentioned, including a published pilot study and involvement in the James Lind Alliance Priority Setting Partnership (secdrp__001_|).",
-        "drawbacks": "While the track record of the individuals is excellent, the specific institutional history of the partner sites (Alder Hey, Birmingham, Southampton) regarding similar NEC research is less detailed than GOSH, though their specialist status is confirmed. No specific past funding awards for the partner sites are listed, only the individuals' roles.",
-        "rationale": "While the track record of the individuals is excellent, the specific institutional history of the partner sites (Alder Hey, Birmingham, Southampton) regarding similar NEC research is less detailed than GOSH, though their specialist status is confirmed. No specific past funding awards for the partner sites are listed, only the individuals' roles.",
+        "pros": "",
+        "drawbacks": "",
+        "rationale": "",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1065,11 +1063,12 @@
         "group_name": null,
         "weight": 1.0,
         "used_chunk_ids": [
-          "secdrp__001_x",
-          "secdrp__001_y",
-          "secdrp__001_z"
+          "sectdars__001_f",
+          "sectdars__001_g",
+          "sectdars__001_h",
+          "sectdars__001_i"
         ],
-        "evidence_count": 3,
+        "evidence_count": 4,
         "evidence_status": "ok",
         "confidence_gap": 0.0,
         "confidence_label": "high_confidence",
@@ -1078,38 +1077,38 @@
             "sid": "ss.2.a",
             "signal_text": "Explicit description of supervisor roles and responsibilities",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           },
           {
             "sid": "ss.2.b",
             "signal_text": "Evidence of mentorship plans, meetings, or training support",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           },
           {
             "sid": "ss.2.c",
             "signal_text": "Alignment between supervisor expertise and project needs",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           },
           {
             "sid": "ss.2.d",
             "signal_text": "Presence of structured supervision framework (frequency, format, accountability)",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "Supervisory support is clearly defined with explicit roles for Co-lead Dr O'Connor and Prof Brown (secdrp__001_x). Prof Brown is described as an experienced Consultant who will supervise, mentor, and support Dr O'Connor (secdrp__001_z). A structured framework is in place: a Study Steering Group (SSG) meeting six times over 24 months, bi-weekly virtual meetings with site leads, and specific training/monitoring responsibilities (secdrp__001_x, secdrp__001_y). The expertise of the supervisors (Cardiac Intensive Care, Paediatric Surgery, Statistics) aligns perfectly with the project needs.",
-        "drawbacks": "While the structure is robust, the specific frequency of one-on-one mentorship meetings between Prof Brown and Dr O'Connor is not explicitly quantified beyond the general SSG and site lead meetings, though the overall support structure is comprehensive.",
-        "rationale": "While the structure is robust, the specific frequency of one-on-one mentorship meetings between Prof Brown and Dr O'Connor is not explicitly quantified beyond the general SSG and site lead meetings, though the overall support structure is comprehensive.",
+        "pros": "",
+        "drawbacks": "",
+        "rationale": "",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1121,13 +1120,11 @@
         "group_name": null,
         "weight": 1.0,
         "used_chunk_ids": [
-          "secdrp__001_j",
-          "secdrp__001_l",
-          "secdrp__001_m",
-          "secsb__001_e",
-          "secsb__001_f"
+          "sectdars__001_p",
+          "sectdars__001_q",
+          "sectdars__001_r"
         ],
-        "evidence_count": 5,
+        "evidence_count": 3,
         "evidence_status": "ok",
         "confidence_gap": 0.0,
         "confidence_label": "high_confidence",
@@ -1136,38 +1133,38 @@
             "sid": "ss.3.a",
             "signal_text": "Description of facilities, infrastructure, or resources provided",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           },
           {
             "sid": "ss.3.b",
             "signal_text": "Links between organisational support and project success",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           },
           {
             "sid": "ss.3.c",
             "signal_text": "Alignment of organisational focus with applicant’s career trajectory",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           },
           {
             "sid": "ss.3.d",
             "signal_text": "Evidence of tailored support for award type (doctoral, postdoctoral)",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "The application details specific infrastructure: specialist hospitals with clinical laboratories capable of ELISA testing (secdrp__001_j, secdrp__001_m) and REDCAP for multisite data collection (secdrp__001_l). The budget explicitly funds these resources, including Calprotectin analysis (£36,000) and REDCAP support (£2,000) (secsb__001_e, secsb__001_f). The link between organisational support (specialist cardiac units) and project success (access to the specific patient population) is clear.",
-        "drawbacks": "The alignment of organisational focus with the applicant's specific career trajectory (e.g., specific career development opportunities provided by the institution beyond the project) is implied through the mentorship but not explicitly detailed as an institutional policy or program.",
-        "rationale": "The alignment of organisational focus with the applicant's specific career trajectory (e.g., specific career development opportunities provided by the institution beyond the project) is implied through the mentorship but not explicitly detailed as an institutional policy or program.",
+        "pros": "",
+        "drawbacks": "",
+        "rationale": "",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1179,11 +1176,10 @@
         "group_name": null,
         "weight": 1.0,
         "used_chunk_ids": [
-          "secdrp__001_l",
-          "secdrp__001_y",
-          "secdrp__001_z"
+          "sectdars__001_r",
+          "sectdars__001_s"
         ],
-        "evidence_count": 3,
+        "evidence_count": 2,
         "evidence_status": "ok",
         "confidence_gap": 0.0,
         "confidence_label": "high_confidence",
@@ -1192,38 +1188,38 @@
             "sid": "ss.4.a",
             "signal_text": "Mentions of policies or practices promoting diversity, equity, and inclusion",
             "weight": 1.0,
-            "score": 3,
-            "score_0to5_raw": 3.0,
-            "score_0to5_weighted": 3.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           },
           {
             "sid": "ss.4.b",
             "signal_text": "Evidence of inclusive recruitment, mentoring, or support initiatives",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           },
           {
             "sid": "ss.4.c",
             "signal_text": "References to adherence to research integrity principles",
             "weight": 1.0,
-            "score": 3,
-            "score_0to5_raw": 3.0,
-            "score_0to5_weighted": 3.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           },
           {
             "sid": "ss.4.d",
             "signal_text": "Statements on organisational culture, training, or initiatives supporting underrepresented groups",
             "weight": 1.0,
-            "score": 3,
-            "score_0to5_raw": 3.0,
-            "score_0to5_weighted": 3.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "There is evidence of an inclusive culture through the integration of a PPI Co-Applicant with lived experience into the Steering Group (secdrp__001_y, secdrp__001_z). The application mentions specific inclusive practices such as deferred consent to support vulnerable families (secdrp__001_l) and budgeting for interpretation services and childcare for PPI members (implied in budget justification).",
-        "drawbacks": "The application lacks explicit statements regarding the contracting organisation's broader policies on diversity, equity, and inclusion (DEI) or specific institutional initiatives supporting underrepresented groups. The evidence is largely project-specific (PPI involvement) rather than a demonstration of the wider organisational culture.",
-        "rationale": "The application lacks explicit statements regarding the contracting organisation's broader policies on diversity, equity, and inclusion (DEI) or specific institutional initiatives supporting underrepresented groups. The evidence is largely project-specific (PPI involvement) rather than a demonstration of the wider organisational culture.",
+        "pros": "",
+        "drawbacks": "",
+        "rationale": "",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1242,12 +1238,11 @@
         "group_name": null,
         "weight": 1.0,
         "used_chunk_ids": [
-          "seccfps__001_i",
-          "seccfps__001_j",
           "secppi__001_a",
-          "secppi__001_b"
+          "secppi__001_b",
+          "secppi__001_c"
         ],
-        "evidence_count": 4,
+        "evidence_count": 3,
         "evidence_status": "ok",
         "confidence_gap": 0.0,
         "confidence_label": "high_confidence",
@@ -1277,9 +1272,9 @@
             "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "The application provides robust evidence of lived experience integration. Focus groups with parents directly influenced study design, specifically adding 'length of time to bottle/breast feed' as an outcome and refining medical terminology (secppi__001_a). A PPI Co-Applicant with lived experience is formally integrated into the Study Steering Group with defined roles in reviewing documents and agenda setting (seccfps__001_i, secppi__001_b).",
-        "drawbacks": "No material caveats; the evidence is specific, grounded, and demonstrates clear impact on the research design.",
-        "rationale": "No material caveats; the evidence is specific, grounded, and demonstrates clear impact on the research design.",
+        "pros": "",
+        "drawbacks": "",
+        "rationale": "",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1291,11 +1286,10 @@
         "group_name": null,
         "weight": 1.0,
         "used_chunk_ids": [
-          "secdrp__001_x",
-          "secdrp__001_y",
-          "secppi__001_d"
+          "sectdars__001_r",
+          "sectdars__001_s"
         ],
-        "evidence_count": 3,
+        "evidence_count": 2,
         "evidence_status": "ok",
         "confidence_gap": 0.0,
         "confidence_label": "high_confidence",
@@ -1320,14 +1314,14 @@
             "sid": "wp.2.c",
             "signal_text": "Evidence of equitable task allocation and collaboration",
             "weight": 1.0,
-            "score": 3,
-            "score_0to5_raw": 3.0,
-            "score_0to5_weighted": 3.0
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
           }
         ],
-        "pros": "The application explicitly states an intention to ensure the PPI Team is representative of a diverse population regarding ethnicity and socioeconomic class (secppi__001_d). The team composition includes clinicians, statisticians, research nurses, and PPI leads across four sites (secdrp__001_x).",
-        "drawbacks": "While the intention for diversity is stated, there is no explicit demographic data provided for the research team members themselves (e.g., gender, ethnicity breakdown of the clinical team). Evidence of equitable task allocation is inferred from role descriptions but not explicitly detailed.",
-        "rationale": "While the intention for diversity is stated, there is no explicit demographic data provided for the research team members themselves (e.g., gender, ethnicity breakdown of the clinical team). Evidence of equitable task allocation is inferred from role descriptions but not explicitly detailed.",
+        "pros": "",
+        "drawbacks": "",
+        "rationale": "",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1339,12 +1333,11 @@
         "group_name": null,
         "weight": 1.0,
         "used_chunk_ids": [
-          "secdrp__001_s",
-          "secdrp__001_t",
-          "secdrp__001_u",
-          "secppi__001_c"
+          "secsa__001_d",
+          "secdrp__001_{",
+          "secppi__001_d"
         ],
-        "evidence_count": 4,
+        "evidence_count": 3,
         "evidence_status": "ok",
         "confidence_gap": 0.0,
         "confidence_label": "high_confidence",
@@ -1374,9 +1367,9 @@
             "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "A comprehensive dissemination plan is outlined, including conferences, peer-reviewed journals, and specific mechanisms to share results with participant families via lay summaries and newsletters (secdrp__001_u). The PPI team is tasked with reviewing patient information sheets and end-of-study summaries to ensure accessibility (secppi__001_c). Clear links are made between accurate diagnosis and reduced hospital stays/antibiotic use (secdrp__001_s).",
-        "drawbacks": "No material caveats; the plan is specific, actionable, and directly addresses patient benefit.",
-        "rationale": "No material caveats; the plan is specific, actionable, and directly addresses patient benefit.",
+        "pros": "",
+        "drawbacks": "",
+        "rationale": "",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1388,9 +1381,9 @@
         "group_name": null,
         "weight": 1.0,
         "used_chunk_ids": [
-          "seccfps__001_m",
-          "seccfps__001_n",
-          "seccfps__001_o"
+          "secdrp__001_k",
+          "secdrp__001_n",
+          "secppi__001_a"
         ],
         "evidence_count": 3,
         "evidence_status": "ok",
@@ -1422,9 +1415,9 @@
             "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "The application explicitly identifies barriers for ethnic minority groups (language, socioeconomic disadvantage) and provides targeted mitigation strategies, including ring-fenced budget for interpretation services (£600) and deferred consent models (seccfps__001_n, seccfps__001_o). It cites specific data on higher CHD incidence in Asian and Black ethnic groups to justify the focus (seccfps__001_m).",
-        "drawbacks": "No material caveats; the strategies are well-evidenced and directly address identified barriers.",
-        "rationale": "No material caveats; the strategies are well-evidenced and directly address identified barriers.",
+        "pros": "",
+        "drawbacks": "",
+        "rationale": "",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1436,12 +1429,11 @@
         "group_name": null,
         "weight": 1.0,
         "used_chunk_ids": [
-          "secdrp__001_l",
-          "secdrp__001_v",
-          "secppi__001_a",
-          "secppi__001_b"
+          "secdrp__001_n",
+          "secppi__001_c",
+          "secppi__001_d"
         ],
-        "evidence_count": 4,
+        "evidence_count": 3,
         "evidence_status": "ok",
         "confidence_gap": 0.0,
         "confidence_label": "high_confidence",
@@ -1450,30 +1442,30 @@
             "sid": "wp.5.a",
             "signal_text": "References to inclusion in study design, participant selection, and analysis",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           },
           {
             "sid": "wp.5.b",
             "signal_text": "Consideration of accessibility and equity in all project stages",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           },
           {
             "sid": "wp.5.c",
             "signal_text": "Documented plans for ongoing evaluation and adaptation",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "Inclusivity is demonstrated across the lifecycle: from initial focus groups shaping the proposal (secppi__001_a), to ongoing involvement in the Steering Group (secppi__001_b), inclusive consent procedures (secdrp__001_l), and plans to evaluate communication effectiveness (secdrp__001_v).",
-        "drawbacks": "While plans for evaluation exist, the specific metrics or methods for 'ongoing evaluation and adaptation' of inclusivity are less detailed than the recruitment strategies.",
-        "rationale": "While plans for evaluation exist, the specific metrics or methods for 'ongoing evaluation and adaptation' of inclusivity are less detailed than the recruitment strategies.",
+        "pros": "",
+        "drawbacks": "",
+        "rationale": "",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1485,12 +1477,11 @@
         "group_name": null,
         "weight": 1.0,
         "used_chunk_ids": [
-          "seccfps__001_k",
-          "seccfps__001_n",
-          "secsb__001_f",
-          "secsb__001_h"
+          "secsb__001_g",
+          "secsb__001_h",
+          "secsb__001_i"
         ],
-        "evidence_count": 4,
+        "evidence_count": 3,
         "evidence_status": "ok",
         "confidence_gap": 0.0,
         "confidence_label": "high_confidence",
@@ -1520,9 +1511,9 @@
             "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "The budget explicitly includes costed lines for PPI Co-Applicant payments (£1,500/year), PPI leads at partner sites (£550/year), childcare (£300), and interpretation services (£600) (secsb__001_f, secsb__001_h). The 'Changes from Previous Stage' section details the breakdown of these costs, including preparation time and travel (seccfps__001_k, seccfps__001_n).",
-        "drawbacks": "No material caveats; the financial support for inclusion is clearly quantified and aligned with the described activities.",
-        "rationale": "No material caveats; the financial support for inclusion is clearly quantified and aligned with the described activities.",
+        "pros": "",
+        "drawbacks": "",
+        "rationale": "",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1581,9 +1572,9 @@
             "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "The application demonstrates a robust structural hierarchy with 9 distinct sections detected, 46 numbered heading-like lines, and 65 list markers, ensuring high navigability. The presence of 109 table-like budget lines and 11 extracted emphasis markers indicates effective use of formatting to organize complex data and highlight key terms.",
-        "drawbacks": "While emphasis markers are present, the analysis notes a parser limitation where bold/emphasis may be lost during extraction; thus, the score for emphasis (af.1.b) is capped at 4 rather than 5 to account for potential formatting loss not visible in the derived text.",
-        "rationale": "While emphasis markers are present, the analysis notes a parser limitation where bold/emphasis may be lost during extraction; thus, the score for emphasis (af.1.b) is capped at 4 rather than 5 to account for potential formatting loss not visible in the derived text.",
+        "pros": "",
+        "drawbacks": "",
+        "rationale": "",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1606,30 +1597,30 @@
             "sid": "af.2.a",
             "signal_text": "Semantic similarity measures between sentences/paragraphs",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           },
           {
             "sid": "af.2.b",
             "signal_text": "Detection of repeated phrases or ideas",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           },
           {
             "sid": "af.2.c",
             "signal_text": "Novelty score for each section (unique content vs. overlap)",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "The application maintains low duplication rates, with a duplicate sentence rate of only 0.026 (excluding budget). Lexical overlap between major sections is moderate (0.319 between Changes and Research Plan), suggesting necessary alignment without excessive redundancy.",
-        "drawbacks": "A repeated line rate of 0.116 and a lexical overlap of 0.319 between 'Changes from Previous Stage' and 'Detailed Research Plan' indicate some repetition of content, likely due to the iterative nature of the application, preventing a perfect score.",
-        "rationale": "A repeated line rate of 0.116 and a lexical overlap of 0.319 between 'Changes from Previous Stage' and 'Detailed Research Plan' indicate some repetition of content, likely due to the iterative nature of the application, preventing a perfect score.",
+        "pros": "",
+        "drawbacks": "",
+        "rationale": "",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1641,10 +1632,12 @@
         "group_name": null,
         "weight": 1.0,
         "used_chunk_ids": [
+          "secdrp__001_j",
+          "secdrp__001_s",
           "secafa__001"
         ],
-        "evidence_count": 1,
-        "evidence_status": "sparse_evidence",
+        "evidence_count": 3,
+        "evidence_status": "ok",
         "confidence_gap": 0.0,
         "confidence_label": "high_confidence",
         "signals": [
@@ -1652,38 +1645,38 @@
             "sid": "af.3.a",
             "signal_text": "Semantic coherence between sections (using embeddings or similarity metrics)",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           },
           {
             "sid": "af.3.b",
             "signal_text": "Explicit linking of objectives to methods and work packages",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           },
           {
             "sid": "af.3.c",
             "signal_text": "Presence of transitional phrases or linking statements",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           },
           {
             "sid": "af.3.d",
             "signal_text": "Detectable narrative thread anchored on research aims",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "The application exhibits strong logical flow with 24 transition phrases and 105 terms linking objectives, methods, and budget. The section order follows a standard, logical progression from context and summaries to the research plan, PPI, and budget.",
-        "drawbacks": "While the structural indicators for coherence are strong, the derived text analysis does not provide direct semantic embedding scores to confirm the narrative thread's depth, limiting the score to 4 based on structural proxies rather than deep semantic verification.",
-        "rationale": "While the structural indicators for coherence are strong, the derived text analysis does not provide direct semantic embedding scores to confirm the narrative thread's depth, limiting the score to 4 based on structural proxies rather than deep semantic verification.",
+        "pros": "",
+        "drawbacks": "",
+        "rationale": "",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true

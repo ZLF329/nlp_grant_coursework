@@ -102,8 +102,8 @@
           }
         ],
         "pros": "No evidence found in the provided text.",
-        "drawbacks": "The text lacks any explanation of why this award is the right next step, the difference it would make, or how it builds on experience.",
-        "rationale": "The text lacks any explanation of why this award is the right next step, the difference it would make, or how it builds on experience.",
+        "drawbacks": "The text lacks any explanation of why this award is needed, the difference it would make, or how it builds on experience.",
+        "rationale": "The text lacks any explanation of why this award is needed, the difference it would make, or how it builds on experience.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -146,8 +146,8 @@
           }
         ],
         "pros": "No evidence found in the provided text.",
-        "drawbacks": "There are no mentions of previous projects, research methods, formal training, or alignment between experience and the proposed project.",
-        "rationale": "There are no mentions of previous projects, research methods, formal training, or alignment between experience and the proposed project.",
+        "drawbacks": "No mentions of previous projects, research methods, formal training, or alignment of skills are present in the text.",
+        "rationale": "No mentions of previous projects, research methods, formal training, or alignment of skills are present in the text.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -198,8 +198,8 @@
           }
         ],
         "pros": "No evidence found in the provided text.",
-        "drawbacks": "The text contains no information regarding publications, citation metrics, awards, or practical impact of previous work.",
-        "rationale": "The text contains no information regarding publications, citation metrics, awards, or practical impact of previous work.",
+        "drawbacks": "The text contains no information regarding publications, citations, awards, or practical impact of previous work.",
+        "rationale": "The text contains no information regarding publications, citations, awards, or practical impact of previous work.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -250,8 +250,8 @@
           }
         ],
         "pros": "No evidence found in the provided text.",
-        "drawbacks": "There are no statements of career ambitions, evidence of increasing responsibility, participation in leadership programs, or peer recognition.",
-        "rationale": "There are no statements of career ambitions, evidence of increasing responsibility, participation in leadership programs, or peer recognition.",
+        "drawbacks": "There are no statements of career ambitions, evidence of increasing responsibility, or participation in leadership programs.",
+        "rationale": "There are no statements of career ambitions, evidence of increasing responsibility, or participation in leadership programs.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -302,8 +302,8 @@
           }
         ],
         "pros": "No evidence found in the provided text.",
-        "drawbacks": "The text does not include any statements regarding practitioner-academic career intentions, clinical involvement, or balancing practice with research.",
-        "rationale": "The text does not include any statements regarding practitioner-academic career intentions, clinical involvement, or balancing practice with research.",
+        "drawbacks": "The text does not include any statements regarding practitioner-academic career intentions, clinical involvement, or professional networks.",
+        "rationale": "The text does not include any statements regarding practitioner-academic career intentions, clinical involvement, or professional networks.",
         "missing_evidence": false,
         "if_applicable": true,
         "counts_toward_section_average": false
@@ -377,8 +377,8 @@
           }
         ],
         "pros": "No evidence found in the provided text.",
-        "drawbacks": "The application text contains only applicant metadata (name, role) and lacks a Plain English Summary or Detailed Research Plan. Consequently, readability, jargon usage, problem statement, alignment, coherence, and societal relevance cannot be assessed.",
-        "rationale": "The application text contains only applicant metadata (name, role) and lacks a Plain English Summary or Detailed Research Plan. Consequently, readability, jargon usage, problem statement, alignment, coherence, and societal relevance cannot be assessed.",
+        "drawbacks": "The application text contains only applicant metadata (name, role) and lacks a Plain English Summary or Detailed Research Plan. Consequently, readability, jargon, problem statement, alignment, coherence, and societal relevance cannot be assessed.",
+        "rationale": "The application text contains only applicant metadata (name, role) and lacks a Plain English Summary or Detailed Research Plan. Consequently, readability, jargon, problem statement, alignment, coherence, and societal relevance cannot be assessed.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -473,8 +473,8 @@
           }
         ],
         "pros": "No evidence found in the provided text.",
-        "drawbacks": "The application text lacks research aims, scope, or feasibility indicators. It is impossible to determine alignment with award level or project complexity.",
-        "rationale": "The application text lacks research aims, scope, or feasibility indicators. It is impossible to determine alignment with award level or project complexity.",
+        "drawbacks": "The application text lacks a research proposal, making it impossible to assess scope, feasibility, or alignment with award expectations.",
+        "rationale": "The application text lacks a research proposal, making it impossible to assess scope, feasibility, or alignment with award expectations.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -525,8 +525,8 @@
           }
         ],
         "pros": "No evidence found in the provided text.",
-        "drawbacks": "The application text contains no description of research methods, study design, controls, or methodological justification.",
-        "rationale": "The application text contains no description of research methods, study design, controls, or methodological justification.",
+        "drawbacks": "No research design, methods, or methodological justification is present in the provided text.",
+        "rationale": "No research design, methods, or methodological justification is present in the provided text.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -569,8 +569,8 @@
           }
         ],
         "pros": "No evidence found in the provided text.",
-        "drawbacks": "The application text does not mention patient benefits, health priorities, or expected outcomes. No impact on patients or public health services is described.",
-        "rationale": "The application text does not mention patient benefits, health priorities, or expected outcomes. No impact on patients or public health services is described.",
+        "drawbacks": "The text contains no description of potential impact on patients, public, or health services.",
+        "rationale": "The text contains no description of potential impact on patients, public, or health services.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -613,8 +613,8 @@
           }
         ],
         "pros": "No evidence found in the provided text.",
-        "drawbacks": "The application text lacks any mention of patient engagement, co-design, ethical considerations, or community involvement.",
-        "rationale": "The application text lacks any mention of patient engagement, co-design, ethical considerations, or community involvement.",
+        "drawbacks": "There is no mention of engagement with people, communities, co-design, or ethical considerations.",
+        "rationale": "There is no mention of engagement with people, communities, co-design, or ethical considerations.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -657,8 +657,8 @@
           }
         ],
         "pros": "No evidence found in the provided text.",
-        "drawbacks": "The application text does not include a budget, resource list, or justification for costs. No link between tasks and resources is provided.",
-        "rationale": "The application text does not include a budget, resource list, or justification for costs. No link between tasks and resources is provided.",
+        "drawbacks": "The application text does not include a budget, resource list, or justification for costs.",
+        "rationale": "The application text does not include a budget, resource list, or justification for costs.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -701,8 +701,8 @@
           }
         ],
         "pros": "No evidence found in the provided text.",
-        "drawbacks": "The application text contains no information about the applicant's previous research outputs, successful projects, or specific skills relevant to the proposed work.",
-        "rationale": "The application text contains no information about the applicant's previous research outputs, successful projects, or specific skills relevant to the proposed work.",
+        "drawbacks": "While the applicant's name is listed, there is no description of previous research, publications, or skills alignment in the provided text.",
+        "rationale": "While the applicant's name is listed, there is no description of previous research, publications, or skills alignment in the provided text.",
         "missing_evidence": false,
         "if_applicable": true,
         "counts_toward_section_average": false
@@ -745,8 +745,8 @@
           }
         ],
         "pros": "No evidence found in the provided text.",
-        "drawbacks": "The application text does not describe strategies for diverse recruitment, accessibility considerations, or equity indicators.",
-        "rationale": "The application text does not describe strategies for diverse recruitment, accessibility considerations, or equity indicators.",
+        "drawbacks": "The text lacks any strategies for diverse recruitment, adaptive methods, or equity indicators.",
+        "rationale": "The text lacks any strategies for diverse recruitment, adaptive methods, or equity indicators.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -908,8 +908,8 @@
           }
         ],
         "pros": "No evidence found in the provided text.",
-        "drawbacks": "The text lacks any statement of career goals, connections between training and future trajectory, or references to professional practice.",
-        "rationale": "The text lacks any statement of career goals, connections between training and future trajectory, or references to professional practice.",
+        "drawbacks": "The application text lacks any statement of career goals, connections between training and future trajectory, or references to professional practice.",
+        "rationale": "The application text lacks any statement of career goals, connections between training and future trajectory, or references to professional practice.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1019,8 +1019,8 @@
           }
         ],
         "pros": "No evidence found in the provided text.",
-        "drawbacks": "The text does not identify any supervisors, describe mentorship arrangements, or outline supervision frameworks.",
-        "rationale": "The text does not identify any supervisors, describe mentorship arrangements, or outline supervision frameworks.",
+        "drawbacks": "The text does not identify any supervisors, mentors, or describe supervision arrangements, roles, or frameworks.",
+        "rationale": "The text does not identify any supervisors, mentors, or describe supervision arrangements, roles, or frameworks.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1071,8 +1071,8 @@
           }
         ],
         "pros": "No evidence found in the provided text.",
-        "drawbacks": "There is no description of facilities, infrastructure, or organisational support. The text does not link organisational capabilities to the project or career aspirations.",
-        "rationale": "There is no description of facilities, infrastructure, or organisational support. The text does not link organisational capabilities to the project or career aspirations.",
+        "drawbacks": "There is no description of facilities, infrastructure, resources, or organisational support provided by the contracting organisation.",
+        "rationale": "There is no description of facilities, infrastructure, resources, or organisational support provided by the contracting organisation.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1123,8 +1123,8 @@
           }
         ],
         "pros": "No evidence found in the provided text.",
-        "drawbacks": "The application text lacks any statements regarding inclusive culture, diversity policies, research integrity, or support initiatives.",
-        "rationale": "The application text lacks any statements regarding inclusive culture, diversity policies, research integrity, or support initiatives.",
+        "drawbacks": "The text contains no information regarding the organisation's commitment to inclusivity, research integrity, or supportive culture.",
+        "rationale": "The text contains no information regarding the organisation's commitment to inclusivity, research integrity, or supportive culture.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1262,8 +1262,8 @@
           }
         ],
         "pros": "No evidence found in the provided text.",
-        "drawbacks": "There is no mention of dissemination plans, knowledge translation, or specific benefits to patients, carers, or the public.",
-        "rationale": "There is no mention of dissemination plans, knowledge translation, or specific benefits to patients, carers, or the public.",
+        "drawbacks": "There is no mention of dissemination plans, knowledge translation, or anticipated benefits for patients, carers, or the public.",
+        "rationale": "There is no mention of dissemination plans, knowledge translation, or anticipated benefits for patients, carers, or the public.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1306,8 +1306,8 @@
           }
         ],
         "pros": "No evidence found in the provided text.",
-        "drawbacks": "The text does not mention any specific demographic groups, recruitment strategies, or barriers to participation for underserved populations.",
-        "rationale": "The text does not mention any specific demographic groups, recruitment strategies, or barriers to participation for underserved populations.",
+        "drawbacks": "The text does not mention specific demographic groups, recruitment strategies, or barriers to participation for underserved populations.",
+        "rationale": "The text does not mention specific demographic groups, recruitment strategies, or barriers to participation for underserved populations.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1449,14 +1449,14 @@
             "sid": "af.1.d",
             "signal_text": "Patterns detected via text parsing for formatting markers",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 2,
+            "score_0to5_raw": 2.0,
+            "score_0to5_weighted": 2.0
           }
         ],
-        "pros": "The parser analysis explicitly detects formatting markers (2 emphasis markers) and confirms the presence of section labels and headings, providing strong evidence for the detection of formatting patterns (af.1.d).",
-        "drawbacks": "The analysis indicates a lack of numbered headings (0) and bullet/numbered list markers (0), suggesting weak structural hierarchy (af.1.c) and limited use of headings/subheadings (af.1.a). While emphasis markers are detected, the parser notes potential loss of bold/emphasis during extraction, limiting confidence in the actual visual formatting (af.1.b).",
-        "rationale": "The analysis indicates a lack of numbered headings (0) and bullet/numbered list markers (0), suggesting weak structural hierarchy (af.1.c) and limited use of headings/subheadings (af.1.a). While emphasis markers are detected, the parser notes potential loss of bold/emphasis during extraction, limiting confidence in the actual visual formatting (af.1.b).",
+        "pros": "The analysis confirms the presence of extracted emphasis markers (2) and a detected section order, indicating some structural hierarchy exists.",
+        "drawbacks": "The analysis explicitly notes zero numbered heading-like lines and zero bullet/numbered list markers. The parser limitation regarding lost bold/emphasis markers suggests the detected emphasis may be incomplete. The structural indicators are minimal, relying on parser detection rather than rich formatting.",
+        "rationale": "The analysis explicitly notes zero numbered heading-like lines and zero bullet/numbered list markers. The parser limitation regarding lost bold/emphasis markers suggests the detected emphasis may be incomplete. The structural indicators are minimal, relying on parser detection rather than rich formatting.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1500,9 +1500,9 @@
             "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "The application text provides definitive metrics showing zero duplication (duplicate_sentence_rate_excluding_budget=0.0, repeated_line_rate=0.0) and no high cross-section lexical overlap, perfectly meeting the criteria for limited duplication and repetition.",
-        "drawbacks": "None; the evidence is complete and specific with no material caveats.",
-        "rationale": "None; the evidence is complete and specific with no material caveats.",
+        "pros": "The analysis explicitly reports a duplicate sentence rate of 0.0, a repeated line rate of 0.0, and no high cross-section lexical overlap detected. This provides strong, direct evidence of limited duplication and high novelty.",
+        "drawbacks": "None; the metrics provided in the analysis are definitive and indicate perfect performance on this criterion.",
+        "rationale": "None; the metrics provided in the analysis are definitive and indicate perfect performance on this criterion.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1541,9 +1541,9 @@
             "sid": "af.3.c",
             "signal_text": "Presence of transitional phrases or linking statements",
             "weight": 1.0,
-            "score": 0,
-            "score_0to5_raw": 0.0,
-            "score_0to5_weighted": 0.0
+            "score": 1,
+            "score_0to5_raw": 1.0,
+            "score_0to5_weighted": 1.0
           },
           {
             "sid": "af.3.d",
@@ -1554,9 +1554,9 @@
             "score_0to5_weighted": 2.0
           }
         ],
-        "pros": "The analysis notes a logical section order moving from context to budget, providing weak evidence of a narrative thread (af.3.d) and some semantic coherence (af.3.a).",
-        "drawbacks": "The analysis explicitly reports zero transition phrases (af.3.c) and zero objective-method-budget link terms (af.3.b), indicating a lack of explicit linking statements and weak logical flow between specific components.",
-        "rationale": "The analysis explicitly reports zero transition phrases (af.3.c) and zero objective-method-budget link terms (af.3.b), indicating a lack of explicit linking statements and weak logical flow between specific components.",
+        "pros": "The analysis notes a logical section order moving from applicant context to budget, suggesting a detectable narrative thread. The absence of high lexical overlap supports some level of semantic coherence.",
+        "drawbacks": "The analysis explicitly reports zero transition phrase counts and zero objective-method-budget link terms. This indicates a lack of explicit linking statements and transitional phrases, which are key signals for strong coherence.",
+        "rationale": "The analysis explicitly reports zero transition phrase counts and zero objective-method-budget link terms. This indicates a lack of explicit linking statements and transitional phrases, which are key signals for strong coherence.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
