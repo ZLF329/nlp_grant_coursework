@@ -936,7 +936,7 @@ def build_final_scoring_messages(
         "Do not omit a signal just because Stage 1 did not identify it.\n"
         "If your drawbacks mention any caveat, inference, missing detail, weak support, or partial support for a signal, "
         "that signal MUST NOT receive 5; use 4 or lower.\n"
-        f"`used_chunk_ids` must contain at most {USED_CHUNK_MAX} grounded chunk IDs.\n"
+        "`used_chunk_ids` must list all grounded chunk IDs that support the scoring.\n"
         "If evidence is missing, give a low score (0-3), not a high one (4-5).\n"
         "Keep pros and drawbacks concise and evidence-based."
     )
@@ -1012,7 +1012,6 @@ def build_scoring_schema(rubric_section: dict[str, Any], all_chunk_ids: list[str
                         "type": "string",
                         "enum": all_chunk_ids,
                     },
-                    "maxItems": USED_CHUNK_MAX,
                 },
                 "pros": {
                     "type": "string",
@@ -1187,7 +1186,7 @@ def _normalize_model_section_output(
             signals[signal["sid"]] = score
             has_positive = has_positive or score > 0
 
-        used_chunk_ids = _dedupe_preserve_order(used_ids_accum)[:USED_CHUNK_MAX]
+        used_chunk_ids = _dedupe_preserve_order(used_ids_accum)
 
         evidence_status = "ok"
         if has_positive and not used_chunk_ids:
@@ -1447,7 +1446,7 @@ def _build_scored_section(
     section_subs: list[dict[str, Any]] = []
     for sub in rubric_section["sub_criteria"]:
         normalized_sub = normalized_section.get(sub["sub_id"], {})
-        used_chunk_ids = _sort_chunk_ids(normalized_sub.get("used_chunk_ids", []), chunk_order)[:USED_CHUNK_MAX]
+        used_chunk_ids = _sort_chunk_ids(normalized_sub.get("used_chunk_ids", []), chunk_order)
         evidence_status = normalized_sub.get("evidence_status", "ok")
         signals: list[dict[str, Any]] = []
         for signal in sub["signals"]:
