@@ -1,8 +1,9 @@
 pdf_name,category,baseline_overall_score_100,baseline_general_score_100,baseline_general_evidence_count,baseline_proposed_research_score_100,baseline_proposed_research_evidence_count,baseline_training_development_score_100,baseline_training_development_evidence_count,baseline_sites_support_score_100,baseline_sites_support_evidence_count,baseline_wpcc_score_100,baseline_wpcc_evidence_count,baseline_application_form_score_100,baseline_application_form_evidence_count
-IC00001_DF_Doctoral.pdf,successful,49.03,88.33,30,90.0,45,0.0,0,0.0,0,0.0,0,60.0,10
-IC00011.pdf,successful,88.39,85.0,16,86.67,24,90.0,7,95.0,8,90.0,17,86.67,9
-IC00017.pdf,successful,3.55,0.0,1,0.0,1,0.0,0,0.0,0,0.0,0,36.67,3
-IC00029_RfPB.pdf,successful,85.48,85.0,19,86.67,29,80.0,7,87.5,11,85.0,17,86.67,8
-IC00047.pdf,successful,91.29,88.33,24,90.0,36,90.0,12,97.5,16,93.33,24,90.0,12
-IC00061.pdf,successful,60.69,36.67,13,64.29,21,23.33,3,75.0,12,88.33,22,63.33,3
-IC00091_AF_Postdoctoral.pdf,successful,17.42,90.0,58,0.0,0,0.0,0,0.0,0,0.0,0,0.0,0
+IC00001_DF_Doctoral.pdf,successful,98.7,97.0,23,100.0,32,100.0,12,100.0,16,96.7,18,98.3,11
+IC00011.pdf,successful,82.4,69.0,23,87.7,32,90.0,12,73.8,16,88.9,18,85.0,11
+IC00017.pdf,successful,7.2,0.0,23,0.0,32,0.0,12,0.0,16,0.0,18,43.3,11
+IC00029_RfPB.pdf,successful,91.1,74.4,23,97.5,32,61.7,12,96.2,16,95.5,18,91.7,11
+IC00047.pdf,successful,99.2,98.0,23,100.0,32,100.0,12,100.0,16,98.9,18,98.3,11
+IC00061.pdf,successful,41.0,11.7,23,46.2,32,23.3,12,38.8,16,78.9,18,47.2,11
+IC00091_AF_Postdoctoral.pdf,successful,83.2,99.0,23,100.0,32,100.0,12,100.0,16,0.0,18,100.0,11
+IC00096.pdf,successful,46.7,97.0,23,100.0,32,0.0,12,0.0,16,0.0,18,83.3,11
