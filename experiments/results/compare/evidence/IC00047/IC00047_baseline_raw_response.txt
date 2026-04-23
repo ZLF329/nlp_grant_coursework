@@ -1,0 +1,281 @@
+{
+  "general": {
+    "g.1": {
+      "signals": {
+        "g.1.a": 5,
+        "g.1.b": 5,
+        "g.1.c": 5,
+        "g.1.d": 5
+      },
+      "used_chunk_ids": ["secarb__001_a", "secarb__001_f", "sectdars__001_a", "sectdars__001_g", "sectdars__001_o"]
+    },
+    "g.2": {
+      "signals": {
+        "g.2.a": 5,
+        "g.2.b": 5,
+        "g.2.c": 5,
+        "g.2.d": 5
+      },
+      "used_chunk_ids": ["secarb__001_f", "secarb__001_e", "sectdars__001_l", "sectdars__001_m"]
+    },
+    "g.3": {
+      "signals": {
+        "g.3.a": 5,
+        "g.3.b": 5,
+        "g.3.c": 5
+      },
+      "used_chunk_ids": ["secarb__001_b", "secarb__001_c", "secac__001_a", "sectdars__001_a"]
+    },
+    "g.4": {
+      "signals": {
+        "g.4.a": 4,
+        "g.4.b": 2,
+        "g.4.c": 5,
+        "g.4.d": 5
+      },
+      "used_chunk_ids": ["secac__001_c", "secac__001_d", "secarb__001_c", "secarb__001_d"]
+    },
+    "g.5": {
+      "signals": {
+        "g.5.a": 5,
+        "g.5.b": 5,
+        "g.5.c": 5,
+        "g.5.d": 4
+      },
+      "used_chunk_ids": ["secarb__001_a", "secarb__001_d", "sectdars__001_e", "secac__001_d"]
+    },
+    "g.6": {
+      "signals": {
+        "g.6.a": 5,
+        "g.6.b": 5,
+        "g.6.c": 4,
+        "g.6.d": 5
+      },
+      "used_chunk_ids": ["secarb__001_a", "secarb__001_e", "secac__001_b", "sectdars__001_c"]
+    }
+  },
+  "proposed_research": {
+    "pr.1": {
+      "signals": {
+        "pr.1.a": 5,
+        "pr.1.b": 5,
+        "pr.1.c": 5,
+        "pr.1.d": 5,
+        "pr.1.e": 5,
+        "pr.1.f": 5
+      },
+      "used_chunk_ids": ["secpesor__001_a", "secpesor__001_b", "secpesor__001_c", "secpena__001"]
+    },
+    "pr.2": {
+      "signals": {
+        "pr.2.a": 5,
+        "pr.2.b": 5,
+        "pr.2.c": 5,
+        "pr.2.d": 5
+      },
+      "used_chunk_ids": ["secdrp__001_d", "secdrp__001_e", "secdrp__001_f"]
+    },
+    "pr.3": {
+      "signals": {
+        "pr.3.a": 5,
+        "pr.3.b": 5,
+        "pr.3.c": 5
+      },
+      "used_chunk_ids": ["secdrp__001_g", "secdrp__001_h", "secdrp__001_z"]
+    },
+    "pr.4": {
+      "signals": {
+        "pr.4.a": 5,
+        "pr.4.b": 5,
+        "pr.4.c": 5,
+        "pr.4.d": 5
+      },
+      "used_chunk_ids": ["secdrp__001_i", "secdrp__001_j", "secdrp__001_l", "secdrp__001_r", "secdrp__001_t"]
+    },
+    "pr.5": {
+      "signals": {
+        "pr.5.a": 5,
+        "pr.5.b": 5,
+        "pr.5.c": 5
+      },
+      "used_chunk_ids": ["secdrp__001_b", "secdrp__001_w", "secsa__001_c"]
+    },
+    "pr.6": {
+      "signals": {
+        "pr.6.a": 5,
+        "pr.6.b": 5,
+        "pr.6.c": 5
+      },
+      "used_chunk_ids": ["secppi__001_a", "secppi__001_b", "secppi__001_c"]
+    },
+    "pr.7": {
+      "signals": {
+        "pr.7.a": 5,
+        "pr.7.b": 5,
+        "pr.7.c": 5
+      },
+      "used_chunk_ids": ["secsb__001_a", "secsb__001_g", "secsb__001_i"]
+    },
+    "pr.8": {
+      "signals": {
+        "pr.8.a": 4,
+        "pr.8.b": 5,
+        "pr.8.c": 5
+      },
+      "used_chunk_ids": ["secac__001_c", "secarb__001_c", "secarb__001_d"]
+    },
+    "pr.9": {
+      "signals": {
+        "pr.9.a": 5,
+        "pr.9.b": 5,
+        "pr.9.c": 5
+      },
+      "used_chunk_ids": ["secdrp__001_p", "secppi__001_b", "secppi__001_c"]
+    }
+  },
+  "training_development": {
+    "td.1": {
+      "signals": {
+        "td.1.a": 5,
+        "td.1.b": 5,
+        "td.1.c": 5,
+        "td.1.d": 5
+      },
+      "used_chunk_ids": ["sectdars__001_a", "sectdars__001_b", "sectdars__001_c"]
+    },
+    "td.2": {
+      "signals": {
+        "td.2.a": 5,
+        "td.2.b": 5,
+        "td.2.c": 5,
+        "td.2.d": 5
+      },
+      "used_chunk_ids": ["sectdars__001_a", "sectdars__001_e", "sectdars__001_f"]
+    },
+    "td.3": {
+      "signals": {
+        "td.3.a": 5,
+        "td.3.b": 5,
+        "td.3.c": 5,
+        "td.3.d": 5
+      },
+      "used_chunk_ids": ["sectdars__001_c", "sectdars__001_d", "sectdars__001_e"]
+    }
+  },
+  "sites_support": {
+    "ss.1": {
+      "signals": {
+        "ss.1.a": 5,
+        "ss.1.b": 5,
+        "ss.1.c": 5,
+        "ss.1.d": 5
+      },
+      "used_chunk_ids": ["sectdars__001_g", "sectdars__001_l", "sectdars__001_p"]
+    },
+    "ss.2": {
+      "signals": {
+        "ss.2.a": 5,
+        "ss.2.b": 5,
+        "ss.2.c": 5,
+        "ss.2.d": 5
+      },
+      "used_chunk_ids": ["sectdars__001_g", "sectdars__001_h", "sectdars__001_i", "sectdars__001_j", "sectdars__001_k"]
+    },
+    "ss.3": {
+      "signals": {
+        "ss.3.a": 5,
+        "ss.3.b": 5,
+        "ss.3.c": 5,
+        "ss.3.d": 5
+      },
+      "used_chunk_ids": ["sectdars__001_p", "sectdars__001_q", "sectdars__001_r"]
+    },
+    "ss.4": {
+      "signals": {
+        "ss.4.a": 5,
+        "ss.4.b": 5,
+        "ss.4.c": 5,
+        "ss.4.d": 5
+      },
+      "used_chunk_ids": ["sectdars__001_s", "sectdars__001_g"]
+    }
+  },
+  "wpcc": {
+    "wp.1": {
+      "signals": {
+        "wp.1.a": 5,
+        "wp.1.b": 5,
+        "wp.1.c": 5
+      },
+      "used_chunk_ids": ["secppi__001_a", "secppi__001_b", "secppi__001_c"]
+    },
+    "wp.2": {
+      "signals": {
+        "wp.2.a": 3,
+        "wp.2.b": 4,
+        "wp.2.c": 4
+      },
+      "used_chunk_ids": ["sectdars__001_g", "sectdars__001_s", "secppi__001_c"]
+    },
+    "wp.3": {
+      "signals": {
+        "wp.3.a": 5,
+        "wp.3.b": 5,
+        "wp.3.c": 5
+      },
+      "used_chunk_ids": ["secdrp__001_u", "secdrp__001_w", "secsa__001_c"]
+    },
+    "wp.4": {
+      "signals": {
+        "wp.4.a": 5,
+        "wp.4.b": 5,
+        "wp.4.c": 5
+      },
+      "used_chunk_ids": ["secppi__001_b", "secppi__001_c", "secdrp__001_p"]
+    },
+    "wp.5": {
+      "signals": {
+        "wp.5.a": 5,
+        "wp.5.b": 5,
+        "wp.5.c": 5
+      },
+      "used_chunk_ids": ["secppi__001_b", "secppi__001_c", "secdrp__001_s"]
+    },
+    "wp.6": {
+      "signals": {
+        "wp.6.a": 5,
+        "wp.6.b": 5,
+        "wp.6.c": 5
+      },
+      "used_chunk_ids": ["secsb__001_f", "secsb__001_g", "secsb__001_h"]
+    }
+  },
+  "application_form": {
+    "af.1": {
+      "signals": {
+        "af.1.a": 5,
+        "af.1.b": 4,
+        "af.1.c": 5,
+        "af.1.d": 5
+      },
+      "used_chunk_ids": ["secafa__001"]
+    },
+    "af.2": {
+      "signals": {
+        "af.2.a": 5,
+        "af.2.b": 5,
+        "af.2.c": 5
+      },
+      "used_chunk_ids": ["secafa__001", "secdrp__001_a", "secdrp__001_g"]
+    },
+    "af.3": {
+      "signals": {
+        "af.3.a": 5,
+        "af.3.b": 5,
+        "af.3.c": 5,
+        "af.3.d": 5
+      },
+      "used_chunk_ids": ["secdrp__001_g", "secdrp__001_h", "secdrp__001_u"]
+    }
+  }
+}

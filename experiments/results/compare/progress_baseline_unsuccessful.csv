@@ -1,9 +1,12 @@
 pdf_name,category,baseline_overall_score_100,baseline_general_score_100,baseline_general_evidence_count,baseline_proposed_research_score_100,baseline_proposed_research_evidence_count,baseline_training_development_score_100,baseline_training_development_evidence_count,baseline_sites_support_score_100,baseline_sites_support_evidence_count,baseline_wpcc_score_100,baseline_wpcc_evidence_count,baseline_application_form_score_100,baseline_application_form_evidence_count
- IC00003.pdf,unsuccessful,71.5,56.1,23,83.9,32,40.0,12,61.2,16,71.1,18,85.0,11
-IC00021.pdf,unsuccessful,7.2,0.0,23,0.0,32,0.0,12,0.0,16,0.0,18,43.3,11
-IC00069.pdf,unsuccessful,92.2,86.7,23,90.8,32,98.3,12,97.5,16,90.0,18,90.0,11
-IC00080.pdf,unsuccessful,98.7,97.0,23,100.0,32,100.0,12,100.0,16,96.7,18,98.3,11
-IC00094.pdf,unsuccessful,3.9,0.0,23,0.0,32,0.0,12,0.0,16,0.0,18,23.3,11
-IC00137.pdf,unsuccessful,66.4,45.6,23,81.2,32,61.7,12,51.2,16,68.9,18,85.0,11
-IC00143_after.pdf,unsuccessful,97.7,96.0,23,100.0,32,100.0,12,95.0,16,96.7,18,98.3,11
-IC00176_after.pdf,unsuccessful,81.3,65.0,23,89.8,32,88.3,12,63.8,16,87.8,18,93.3,11
+ IC00003.pdf,unsuccessful,71.6,56.1,14,84.8,26,45.0,5,58.8,8,73.3,15,85.0,5
+IC00008 .pdf,unsuccessful,94.7,99.0,29,96.2,40,100.0,15,95.0,16,80.0,13,98.3,6
+IC00021.pdf,unsuccessful,3.9,0.0,0,0.0,0,0.0,0,0.0,0,0.0,0,23.3,3
+IC00069.pdf,unsuccessful,77.7,76.7,22,67.7,21,88.3,8,83.8,13,71.1,13,78.3,4
+IC00080.pdf,unsuccessful,97.4,97.0,25,98.3,42,100.0,14,100.0,17,91.1,19,98.3,8
+IC00094.pdf,unsuccessful,4.2,0.0,0,0.0,0,0.0,0,0.0,0,0.0,0,25.0,3
+IC00137.pdf,unsuccessful,67.9,40.6,15,81.4,23,61.7,6,56.2,8,71.1,13,90.0,4
+IC00143_after.pdf,unsuccessful,94.5,92.0,25,100.0,33,100.0,9,90.0,13,93.3,16,91.7,5
+IC00147_after.pdf,unsuccessful,98.0,99.0,25,98.3,34,100.0,14,100.0,15,92.2,23,98.3,6
+IC00176_after.pdf,unsuccessful,84.2,63.0,22,89.8,30,88.3,8,78.8,7,88.9,16,96.7,6
+IC00207_after.pdf,unsuccessful,96.2,91.0,30,100.0,44,100.0,15,100.0,18,94.4,29,91.7,7
