@@ -16,17 +16,37 @@
       ],
       "bad_evidence_ids": [],
       "implications": [
-        "Plain English Summary of Research: The section clearly outlines the problem, aims, methods, and beneficiaries in accessible language, supporting pr.1.",
-        "Plain English NLP Analysis: Flesch-Kincaid grade 5.3 and reading ease 74.35 indicate high readability; low jargon density (2.41%) and coverage of key elements (problem, objectives, methods, beneficiaries, impact) strongl"
+        "Plain English Summary of Research: The section provides a clear problem statement, objectives, methods, and beneficiaries in accessible language, strongly supporting pr.1.",
+        "Plain English NLP Analysis: Flesch-Kincaid grade 5.3 and 74.35 reading ease indicate high readability; low jargon density (2.41%) and coverage of key elements (problem, objectives, methods, beneficiaries, impact) strongl"
       ]
     },
     "pr.2": {
       "good_evidence_ids": [
-        "secpesor__001_a"
+        "secpesor__001_a",
+        "secdrp__001_c",
+        "secdrp__001_d",
+        "secdrp__001_e"
       ],
       "bad_evidence_ids": [],
       "implications": [
-        "Plain English Summary of Research: Identifies a knowledge gap regarding GP guidance for PLWHIV and plans a review of recent studies, supporting pr.2."
+        "Plain English Summary of Research: Identifies a knowledge gap regarding GP guidance for PLWHIV and lack of evidence on what works best, supporting pr.2.",
+        "Detailed Research Plan: Critically reviews existing care models and identifies gaps in clinical guidance and dated research, justifying the need for a new scoping review."
+      ]
+    },
+    "pr.3": {
+      "good_evidence_ids": [
+        "secpesor__001_a",
+        "secpesor__001_b",
+        "secdrp__001_j",
+        "secdrp__001_k",
+        "secdrp__001_m",
+        "secac__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Plain English Summary of Research: Outlines a three-part study design with review, database analysis, and model testing, indicating feasible scope for pr.3.",
+        "Detailed Research Plan: Defines a feasible three-workstream scope with specific timelines (months 1-16) and clear tasks for review, database analysis, and co-design.",
+        "Application Context: Specifies an 18-month duration and total cost of £180,401.32, providing concrete feasibility indicators for pr.3."
       ]
     },
     "pr.4": {
@@ -39,8 +59,8 @@
       ],
       "bad_evidence_ids": [],
       "implications": [
-        "Plain English Summary of Research: Describes a three-part methodology including literature review, database analysis, and co-design with a steering group, supporting pr.4.",
-        "Detailed Research Plan: Details rigorous methods including Arksey and O'Malley framework for scoping review, CPRD database parameters, and regression analysis."
+        "Plain English Summary of Research: Explicitly describes the Person-Based Approach, literature review, database analysis, and focus groups, supporting pr.4.",
+        "Detailed Research Plan: Specifies rigorous methods including Arksey and O'Malley framework for scoping review and CPRD database analysis with regression techniques."
       ]
     },
     "pr.5": {
@@ -53,8 +73,8 @@
       ],
       "bad_evidence_ids": [],
       "implications": [
-        "Plain English Summary of Research: Explicitly states the goal to improve healthcare for PLWHIV to help them live longer, healthier lives, supporting pr.5.",
-        "Detailed Research Plan: Explicitly links research to NHS priorities and aims to produce evidence-based guidance to improve care and resource use for PLWHIV."
+        "Plain English Summary of Research: Highlights benefits for PLWHIV over 50, addressing health inequalities and aiming for clinical guidance, supporting pr.5.",
+        "Detailed Research Plan: Outlines expected outcomes including evidence-based clinical guidance, improved care models, and alignment with NHS Long Term Plan priorities."
       ]
     },
     "pr.6": {
@@ -67,8 +87,8 @@
       ],
       "bad_evidence_ids": [],
       "implications": [
-        "Plain English Summary of Research: Details the Person-Based Approach, PPI involvement in proposal writing, steering group co-leadership, and feedback loops, strongly supporting pr.6.",
-        "Detailed Research Plan: Describes a Person-Based Approach with PLWHIV co-applicants leading a stakeholder group and focus groups for co-design."
+        "Plain English Summary of Research: Details PPI involvement in proposal writing, steering group co-leadership, and feedback loops, strongly supporting pr.6.",
+        "Detailed Research Plan: Details a Person-Based Approach with PLWHIV co-applicants, a stakeholder group, and focus groups to co-design the intervention."
       ]
     },
     "wp.1": {
@@ -81,18 +101,32 @@
       ],
       "bad_evidence_ids": [],
       "implications": [
-        "Plain English Summary of Research: Highlights central input from PLWHIV in planning, co-design of the care model, and feedback mechanisms, supporting wp.1.",
-        "Detailed Research Plan: Integrates PLWHIV as co-applicants and stakeholder group leaders to co-design the intervention, ensuring lived experience shapes the model."
+        "Plain English Summary of Research: Describes central input of PLWHIV in planning and a steering group including patients to design the care model, supporting wp.1.",
+        "Detailed Research Plan: Integrates lived experience through PLWHIV co-applicants leading the stakeholder group and co-designing the care model."
       ]
     },
     "wp.3": {
       "good_evidence_ids": [
         "secpesor__001_b",
-        "secpesor__001_c"
+        "secpesor__001_c",
+        "secdrp__001_p"
       ],
       "bad_evidence_ids": [],
       "implications": [
-        "Plain English Summary of Research: Outlines a dissemination plan including journals, conferences, social media, and press releases to share findings with the public and health workers, supporting wp.3."
+        "Plain English Summary of Research: Outlines dissemination plans including journals, conferences, social media, and press releases to reach public and health workers, supporting wp.3.",
+        "Detailed Research Plan: Outlines a comprehensive dissemination strategy targeting professionals, policymakers, and the public via journals, conferences, and media."
+      ]
+    },
+    "wp.4": {
+      "good_evidence_ids": [
+        "secpesor__001_a",
+        "secdrp__001_j",
+        "secdrp__001_n"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Plain English Summary of Research: Focuses on PLWHIV over 50 and addresses stigma barriers, indicating attention to underserved groups, supporting wp.4.",
+        "Detailed Research Plan: Identifies specific underserved groups (MSM, Black African, trans) and plans extra efforts to recruit them for focus groups."
       ]
     },
     "g.3": {
@@ -121,20 +155,7 @@
       ],
       "bad_evidence_ids": [],
       "implications": [
-        "Detailed Research Plan: Identifies joint leads and co-applicants as GP academics and HIV specialists, demonstrating a practitioner-academic team structure."
-      ]
-    },
-    "pr.3": {
-      "good_evidence_ids": [
-        "secdrp__001_j",
-        "secdrp__001_k",
-        "secdrp__001_m",
-        "secac__001"
-      ],
-      "bad_evidence_ids": [],
-      "implications": [
-        "Detailed Research Plan: Defines three workstreams with specific timelines (months 1-16) and methods (scoping review, CPRD analysis, co-design), showing feasible scope.",
-        "Application Context: Specifies an 18-month duration and total cost of £180,401.32, providing concrete feasibility indicators for the project scope."
+        "Detailed Research Plan: Identifies GP academics and HIV specialists as team members, demonstrating a practitioner-academic approach to the research."
       ]
     },
     "pr.9": {
@@ -144,7 +165,7 @@
       ],
       "bad_evidence_ids": [],
       "implications": [
-        "Detailed Research Plan: Identifies underrepresented groups (trans, Black African, rural) and plans extra efforts for their representation in focus groups."
+        "Detailed Research Plan: Explicitly addresses diversity by targeting underrepresented demographics in the stakeholder group and focus groups to ensure inclusive design."
       ]
     },
     "ss.1": {
@@ -153,7 +174,7 @@
       ],
       "bad_evidence_ids": [],
       "implications": [
-        "Detailed Research Plan: Highlights team members' track records of successful NIHR grants and publications in HIV care, indicating strong institutional capability."
+        "Detailed Research Plan: Highlights team members' track records of successful NIHR grants and publications, indicating strong institutional and partner capability."
       ]
     },
     "ss.2": {
@@ -163,28 +184,7 @@
       ],
       "bad_evidence_ids": [],
       "implications": [
-        "Detailed Research Plan: Assigns specific roles for methodological advice (MTR), PPI training (SD, ANe), and co-leadership of stakeholder groups, showing structured support."
-      ]
-    },
-    "wp.4": {
-      "good_evidence_ids": [
-        "secdrp__001_j",
-        "secdrp__001_n"
-      ],
-      "bad_evidence_ids": [],
-      "implications": [
-        "Detailed Research Plan: Explicitly targets men who have sex with men, Black African people, trans individuals, and those in non-metropolitan areas for inclusion."
-      ]
-    },
-    "wp.5": {
-      "good_evidence_ids": [
-        "secdrp__001_h",
-        "secdrp__001_i",
-        "secdrp__001_n"
-      ],
-      "bad_evidence_ids": [],
-      "implications": [
-        "Detailed Research Plan: Plans PPI involvement across all three workstreams, from planning to co-design and refinement, ensuring inclusivity throughout the lifecycle."
+        "Detailed Research Plan: Describes specific roles for supervisors and advisors (e.g., MTR for statistics, SD for PBA) and a Study Steering Group for management."
       ]
     },
     "wp.6": {
@@ -194,7 +194,7 @@
       ],
       "bad_evidence_ids": [],
       "implications": [
-        "Detailed Research Plan: States that compensation for time and expenses for the stakeholder group and focus group participants are costed in the budget."
+        "Detailed Research Plan: Confirms that compensation for time and expenses for stakeholder and focus group participants is costed in the budget."
       ]
     },
     "pr.7": {
@@ -203,7 +203,7 @@
       ],
       "bad_evidence_ids": [],
       "implications": [
-        "Application Context: States the total cost to NIHR as £180,401.32, establishing the funding level for resource justification."
+        "Application Context: States the total cost to NIHR as £180,401.32, establishing the funding level for pr.7."
       ]
     },
     "ss.3": {
@@ -212,7 +212,7 @@
       ],
       "bad_evidence_ids": [],
       "implications": [
-        "Application Context: Identifies the contracting organisation as an Integrated Care Board, indicating the institutional setting for the award."
+        "Application Context: Identifies the contracting organisation as an INTEGRATED CARE BOARD, indicating the institutional setting for ss.3."
       ]
     }
   },
@@ -225,6 +225,7 @@
     "td.2",
     "td.3",
     "ss.4",
-    "wp.2"
+    "wp.2",
+    "wp.5"
   ]
 }

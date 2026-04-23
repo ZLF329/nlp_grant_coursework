@@ -1,11 +1,12 @@
 pdf_name,category,pipeline_overall_score_100,pipeline_general_score_100,pipeline_general_evidence_count,pipeline_proposed_research_score_100,pipeline_proposed_research_evidence_count,pipeline_training_development_score_100,pipeline_training_development_evidence_count,pipeline_sites_support_score_100,pipeline_sites_support_evidence_count,pipeline_wpcc_score_100,pipeline_wpcc_evidence_count,pipeline_application_form_score_100,pipeline_application_form_evidence_count
 
 IC00021.pdf,unsuccessful,8.9,0.0,0,0.0,0,0.0,0,0.0,0,0.0,0,53.3,3
-
-
 IC00094.pdf,unsuccessful,11.7,0.0,0,0.0,9,0.0,0,0.0,0,0.0,0,70.0,3
 IC00137.pdf,unsuccessful,44.5,4.4,4,83.3,27,0.0,0,0.0,1,56.7,15,78.3,3
 IC00143_after.pdf,unsuccessful,91.6,97.0,28,97.5,34,86.7,12,91.2,19,87.8,21,89.4,3
 IC00147_after.pdf,unsuccessful,88.5,98.0,30,97.5,35,91.7,10,90.0,12,68.9,19,85.0,3
 
 IC00207_after.pdf,unsuccessful,86.5,88.0,25,97.5,34,80.0,15,90.0,15,75.5,21,88.3,3
+ IC00003.pdf,unsuccessful,70.9,31.7,12,95.8,34,10.0,4,58.8,7,73.3,23,95.0,7
+IC00008 .pdf,unsuccessful,89.4,94.0,40,95.4,46,93.3,18,86.2,19,68.9,16,98.3,8
+IC00069.pdf,unsuccessful,80.4,85.7,27,69.4,26,80.0,11,98.8,18,70.0,24,78.3,8
