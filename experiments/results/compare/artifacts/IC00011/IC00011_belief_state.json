@@ -22,8 +22,8 @@
       "bad_evidence_ids": [],
       "implications": [
         "Scientific Abstract: Clearly outlines problem, aims, methods, and impact, supporting pr.1.",
-        "Plain English Summary of Research: Clearly defines the problem (SMA), objectives, methods (3 parts), and beneficiaries in accessible language, strongly supporting pr.1.",
-        "Plain English NLP Analysis: NLP metrics show high readability (Flesch-Kincaid 4.79, Reading Ease 75.34), low jargon density (1.13%), and coverage of key elements (problem, objectives, methods, beneficiaries, impact), str"
+        "Plain English Summary of Research: Clearly defines the problem (SMA), objectives, methods (3 parts), beneficiaries, and impact in accessible language, strongly supporting pr.1.",
+        "Plain English NLP Analysis: Coverage hits confirm presence of problem, objectives, methods, beneficiaries, and impact, supporting pr.1 content requirements."
       ]
     },
     "pr.2": {
@@ -33,8 +33,8 @@
       ],
       "bad_evidence_ids": [],
       "implications": [
-        "Scientific Abstract: Identifies a knowledge gap regarding airway dynamics during MI-E, supporting pr.2.",
-        "Plain English Summary of Research: Explicitly identifies a knowledge gap regarding airway dynamics during cough-assist use, supporting pr.2."
+        "Scientific Abstract: Identifies knowledge gaps regarding airway dynamics and MI-E effectiveness, supporting pr.2.",
+        "Plain English Summary of Research: Identifies a specific knowledge gap regarding airway dynamics during cough-assist use, supporting pr.2."
       ]
     },
     "pr.3": {
@@ -57,7 +57,7 @@
       "bad_evidence_ids": [],
       "implications": [
         "Scientific Abstract: Details methods (TFL, OEP) and statistical analysis aligned with aims, supporting pr.4.",
-        "Plain English Summary of Research: Describes specific methods (2mm camera, motion capture stickers, visual scales) aligned with aims, supporting pr.4."
+        "Plain English Summary of Research: Describes explicit methods including endoscopic cameras, motion capture stickers, and visual scales, supporting pr.4."
       ]
     },
     "pr.5": {
@@ -69,8 +69,8 @@
       ],
       "bad_evidence_ids": [],
       "implications": [
-        "Scientific Abstract: States impact on reducing hospitalizations and improving wellbeing, supporting pr.5.",
-        "Plain English Summary of Research: Highlights potential benefits including reduced hospital visits, lower NHS costs, and improved quality of life, supporting pr.5."
+        "Scientific Abstract: Highlights reduced hospitalizations and improved wellbeing as key outcomes, supporting pr.5.",
+        "Plain English Summary of Research: Highlights direct patient benefits (reduced infections, hospital visits) and NHS cost savings, supporting pr.5."
       ]
     },
     "pr.6": {
@@ -84,8 +84,8 @@
       "bad_evidence_ids": [],
       "implications": [
         "Scientific Abstract: Mentions community steering groups and dissemination to parent groups, supporting pr.6.",
-        "Plain English Summary of Research: States commitment to including children and parents in guiding information sharing, supporting pr.6.",
-        "Patient & Public Involvement: Details extensive co-design, consultations with diverse groups, and specific design changes (e.g., TFL video, scheduling) based on feedback, strongly supporting pr.6."
+        "Plain English Summary of Research: States children and parents will guide information sharing, indicating engagement, supporting pr.6.",
+        "Patient & Public Involvement: Details extensive co-design, consultations, and feedback mechanisms with patients and carers, strongly supporting pr.6."
       ]
     },
     "pr.9": {
@@ -97,7 +97,7 @@
       "bad_evidence_ids": [],
       "implications": [
         "Scientific Abstract: Describes adaptations for communication styles and animated videos for inclusion, supporting pr.9.",
-        "Plain English Summary of Research: Mentions adaptive methods (marker count based on child size) and assessing tolerance/comfort, supporting pr.9."
+        "Plain English Summary of Research: Adapts methods for children (visual scales, non-invasive stickers) and includes their views, supporting pr.9."
       ]
     },
     "wp.1": {
@@ -109,9 +109,9 @@
       ],
       "bad_evidence_ids": [],
       "implications": [
-        "Scientific Abstract: Notes support from community steering groups, supporting wp.1.",
-        "Plain English Summary of Research: Describes involving children and parents in dissemination planning, supporting wp.1.",
-        "Patient & Public Involvement: Explicitly describes how patient concerns regarding equipment appearance and fatigue led to concrete study design revisions, supporting wp.1."
+        "Scientific Abstract: Notes support from community steering groups, indicating lived experience integration, supporting wp.1.",
+        "Plain English Summary of Research: Plans to include children and parents in guiding dissemination, supporting wp.1.",
+        "Patient & Public Involvement: Describes specific design changes (video creation, scheduling adjustments) based on patient feedback, strongly supporting wp.1."
       ]
     },
     "wp.3": {
@@ -123,8 +123,8 @@
       "bad_evidence_ids": [],
       "implications": [
         "Scientific Abstract: Outlines dissemination via podcasts and meetings with charities, supporting wp.3.",
-        "Plain English Summary of Research: Outlines dissemination via meetings, conferences, and journals to share findings, supporting wp.3.",
-        "Patient & Public Involvement: Outlines a plan for patient/charity groups to assist in writing reports and disseminating findings via their networks, supporting wp.3."
+        "Plain English Summary of Research: Outlines dissemination via meetings, conferences, and journals, supporting wp.3.",
+        "Patient & Public Involvement: Outlines patient involvement in writing reports and disseminating findings via charity networks, supporting wp.3."
       ]
     },
     "wp.4": {
@@ -136,8 +136,8 @@
       "bad_evidence_ids": [],
       "implications": [
         "Scientific Abstract: Focuses on SMA as a rare disease serving under-represented populations, supporting wp.4.",
-        "Plain English Summary of Research: Focuses on children with Spinal Muscular Atrophy, a rare disease affecting a specific underserved group, supporting wp.4.",
-        "Patient & Public Involvement: Confirms consultation with a group from diverse socio-economic and ethnic backgrounds, supporting wp.4."
+        "Plain English Summary of Research: Focuses on children with SMA, a rare disease affecting a specific underserved group, supporting wp.4.",
+        "Patient & Public Involvement: Explicitly mentions engagement with diverse socio-economic and ethnic backgrounds, supporting wp.4."
       ]
     },
     "wp.5": {
@@ -150,9 +150,9 @@
       ],
       "bad_evidence_ids": [],
       "implications": [
-        "Scientific Abstract: Details ongoing reviews for equality and diversity, supporting wp.5.",
-        "Plain English Summary of Research: Includes assessment of child/parent views and tolerance, indicating inclusivity across the research lifecycle, supporting wp.5.",
-        "Patient & Public Involvement: Demonstrates involvement across the lifecycle from initial planning and design adaptation to ongoing feedback meetings and dissemination, supporting wp.5."
+        "Scientific Abstract: Mentions ongoing reviews for equality and diversity, supporting wp.5.",
+        "Plain English Summary of Research: Includes children and parents in the study design and dissemination phases, supporting wp.5.",
+        "Patient & Public Involvement: Demonstrates inclusion across the lifecycle from planning and design to dissemination and ongoing advisory roles, supporting wp.5."
       ]
     },
     "pr.7": {
@@ -163,7 +163,7 @@
       ],
       "bad_evidence_ids": [],
       "implications": [
-        "SUMMARY BUDGET: Provides explicit links between tasks (e.g., laryngoscopes, video analysis) and resources requested with detailed costings, strongly supporting pr.7."
+        "SUMMARY BUDGET: Provides explicit links between tasks (e.g., laryngoscopes, video analysis) and resources requested, with detailed costings and justifications for equipment and consumables."
       ]
     },
     "td.1": {
@@ -173,7 +173,7 @@
       ],
       "bad_evidence_ids": [],
       "implications": [
-        "SUMMARY BUDGET: Details specific training courses (Kings Fund, Bronchoscopy, Beyond BASIC) and PhD tuition, demonstrating a complete and clear training plan, supporting td.1."
+        "SUMMARY BUDGET: Details specific training courses (Bronchoscopy, Airway Management, Leadership) and PhD tuition, demonstrating a clear and costed training plan aligned with project methods."
       ]
     },
     "td.2": {
@@ -183,7 +183,7 @@
       ],
       "bad_evidence_ids": [],
       "implications": [
-        "SUMMARY BUDGET: Maps training activities (e.g., airway management, leadership) directly to project needs and personal development, supporting td.2."
+        "SUMMARY BUDGET: Maps training activities (e.g., Kings Fund leadership, Royal Brompton courses) directly to project needs like team management and clinical skills acquisition."
       ]
     },
     "td.3": {
@@ -193,7 +193,7 @@
       ],
       "bad_evidence_ids": [],
       "implications": [
-        "SUMMARY BUDGET: Includes leadership and knowledge mobilisation courses that connect training to future career trajectory and skill transferability, supporting td.3."
+        "SUMMARY BUDGET: Includes leadership and knowledge mobilisation courses, indicating skill transferability and support for long-term career aspirations beyond the immediate project."
       ]
     },
     "wp.6": {
@@ -203,7 +203,7 @@
       ],
       "bad_evidence_ids": [],
       "implications": [
-        "SUMMARY BUDGET: Allocates specific funds for Talking Mats (£120) and refreshments for participants, providing a costed plan for research inclusion, supporting wp.6."
+        "SUMMARY BUDGET: Allocates specific funds for PPIE workshops, Talking Mats for consent, and refreshments for participants, demonstrating a costed plan for research inclusion."
       ]
     },
     "g.1": {
@@ -212,7 +212,7 @@
       ],
       "bad_evidence_ids": [],
       "implications": [
-        "Application Context: Supervisors describe a clear career trajectory from clinical practice to academic leadership, with specific plans for developing a clinical-academic role and leading research."
+        "Application Context: Supervisors describe a clear career trajectory from clinical practice to academic leadership, with specific plans for developing a clinical-academic role and leading research in respiratory managemen"
       ]
     },
     "g.3": {
@@ -221,7 +221,7 @@
       ],
       "bad_evidence_ids": [],
       "implications": [
-        "Application Context: Applicant has prior experience in large-scale clinical trials, developing respiratory outcome measures, and implementing assessment tools, aligning with project needs."
+        "Application Context: Applicant has prior experience in large-scale clinical trials, developing respiratory outcome measures, and implementing assessment tools, aligning with the proposed study's methods."
       ]
     },
     "g.4": {
@@ -230,7 +230,7 @@
       ],
       "bad_evidence_ids": [],
       "implications": [
-        "Application Context: Evidence of impactful outputs includes the Lea Rose Award, international recognition of respiratory tools, and publications/presentations at national and international conferences."
+        "Application Context: Evidence of impactful outputs includes the Lea Rose Award, international recognition of respiratory assessment tools, and authorship of publications and conference presentations."
       ]
     },
     "g.5": {
@@ -239,7 +239,7 @@
       ],
       "bad_evidence_ids": [],
       "implications": [
-        "Application Context: Supervisors identify the applicant as a future leader and national expert, noting her role in international consortia and her readiness to lead research and support others."
+        "Application Context: Supervisors identify the applicant as a future leader with increasing responsibility, noting her role in national stakeholder groups and her potential to lead research development."
       ]
     },
     "g.6": {
@@ -248,7 +248,7 @@
       ],
       "bad_evidence_ids": [],
       "implications": [
-        "Application Context: Applicant is a registered physiotherapist with extensive clinical experience in neuromuscular paediatrics, explicitly aiming to develop a clinical-academic career."
+        "Application Context: Applicant is a specialist physiotherapist at GOSH with a strong focus on clinical practice, explicitly aiming to develop a clinical-academic career through this fellowship."
       ]
     },
     "ss.1": {
@@ -257,7 +257,7 @@
       ],
       "bad_evidence_ids": [],
       "implications": [
-        "Application Context: Host institutions (GOSH, UCL) are described as world-leading centres with strong track records in neuromuscular research, including the largest paediatric neuromuscular centre in the UK."
+        "Application Context: Contracting organisation (GOSH/UCL) is described as the largest paediatric neuromuscular centre in the UK with a strong track record in research, publications, and international collaborations."
       ]
     },
     "ss.2": {
@@ -266,7 +266,7 @@
       ],
       "bad_evidence_ids": [],
       "implications": [
-        "Application Context: A robust supervisory team is detailed with specific roles: clinical training in endoscopy, statistical support, qualitative methods, and academic mentorship, ensuring comprehensive coverage."
+        "Application Context: Robust supervisory support is detailed with specific roles: clinical training in endoscopy, statistical guidance, qualitative study design, and mentorship for academic career development."
       ]
     },
     "ss.3": {
@@ -275,7 +275,7 @@
       ],
       "bad_evidence_ids": [],
       "implications": [
-        "Application Context: The applicant has direct access to the patient population, necessary equipment (laryngoscopy), and a thriving academic community with established research infrastructure."
+        "Application Context: Organisation provides access to patient populations, specialized equipment (laryngoscopy), research groups, and a thriving academic community with structured support for doctoral students."
       ]
     },
     "ss.4": {
@@ -284,7 +284,7 @@
       ],
       "bad_evidence_ids": [],
       "implications": [
-        "Application Context: The ORCHID research centre supports a diverse cohort of students and researchers, with a mission to improve health through inclusive research and established internship programmes."
+        "Application Context: The research centre (ORCHID) supports a diverse cohort of students and researchers, with established programs for mentoring and a commitment to inclusive research practices."
       ]
     },
     "wp.2": {
@@ -293,7 +293,7 @@
       ],
       "bad_evidence_ids": [],
       "implications": [
-        "Application Context: The research team includes diverse expertise: physiotherapists, ENT surgeons, statisticians, and medical doctors, with international collaboration across the UK, Norway, and Portugal."
+        "Application Context: The supervisory team includes diverse expertise (physiotherapists, ENT surgeons, statisticians, nurses) and international collaborators, reflecting a multidisciplinary and inclusive research environm"
       ]
     }
   },
