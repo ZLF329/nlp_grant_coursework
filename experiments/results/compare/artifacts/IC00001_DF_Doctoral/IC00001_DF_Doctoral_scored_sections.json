@@ -14,10 +14,24 @@
           "secarb__001_a",
           "secarb__001_f",
           "sectdars__001_a",
+          "sectdars__001_e",
           "sectdars__001_f",
-          "sectdars__001_g"
+          "sectdars__001_g",
+          "sectdars__001_h",
+          "sectdars__001_i",
+          "sectdars__001_j",
+          "sectdars__001_k",
+          "sectdars__001_l",
+          "sectdars__001_m",
+          "sectdars__001_n",
+          "sectdars__001_o",
+          "sectdars__001_p",
+          "sectdars__001_q",
+          "sectdars__001_r",
+          "sectdars__001_s",
+          "secac2__001"
         ],
-        "evidence_count": 5,
+        "evidence_count": 19,
         "evidence_status": "ok",
         "confidence_gap": 0.0,
         "confidence_label": "high_confidence",
@@ -55,9 +69,9 @@
             "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "The applicant clearly articulates a career trajectory from clinical training to independent Clinician Scientist (g.1.a). The training plan is comprehensive, covering systematic reviews, statistics, genetics, and qualitative methods (g.1.c). Strong mentorship is evidenced by four supervisors with specific expertise and defined meeting schedules (g.1.d). The research vision is distinctive, focusing on a specific gap in predicting long-term psoriasis control (g.1.b).",
-        "drawbacks": "While the vision is clear, the 'independent direction' (g.1.b) is heavily reliant on existing datasets and supervisor networks, though this is appropriate for a doctoral fellowship. No material caveats prevent a high score.",
-        "rationale": "While the vision is clear, the 'independent direction' (g.1.b) is heavily reliant on existing datasets and supervisor networks, though this is appropriate for a doctoral fellowship. No material caveats prevent a high score.",
+        "pros": "The application demonstrates a crystal-clear research vision to become an independent Clinician Scientist (g.1.a) with a well-defined trajectory from DRF to Clinical Lectureship. The training plan is bespoke, comprehensive, and directly linked to project needs (g.1.c). Mentorship is exceptionally strong, featuring a multidisciplinary team of four supervisors with specific expertise in dermatology, statistics, and genetics, supported by a world-renowned host institution (g.1.d). The project addresses a distinct gap in predicting long-term psoriasis control, showing independent direction (g.1.b).",
+        "drawbacks": "While the vision is clear, the 'distinctive ideas' (g.1.b) rely heavily on established methodologies (systematic review, predictive modeling) rather than novel theoretical frameworks, though the application of these to this specific clinical gap is well-justified.",
+        "rationale": "While the vision is clear, the 'distinctive ideas' (g.1.b) rely heavily on established methodologies (systematic review, predictive modeling) rather than novel theoretical frameworks, though the application of these to this specific clinical gap is well-justified.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -70,11 +84,15 @@
         "weight": 1.0,
         "used_chunk_ids": [
           "secarb__001_a",
-          "secarb__001_d",
           "secarb__001_f",
-          "sectdars__001_e"
+          "sectdars__001_a",
+          "sectdars__001_b",
+          "sectdars__001_c",
+          "sectdars__001_d",
+          "sectdars__001_e",
+          "sectdars__001_f"
         ],
-        "evidence_count": 4,
+        "evidence_count": 8,
         "evidence_status": "ok",
         "confidence_gap": 0.0,
         "confidence_label": "high_confidence",
@@ -112,9 +130,9 @@
             "score_0to5_weighted": 4.0
           }
         ],
-        "pros": "The applicant explicitly states the DRF is the 'natural next step' to hone interests and prepare for a Clinical Lectureship (g.2.a, g.2.b). The award will enable new skills in predictive modeling and qualitative co-design, building on existing systematic review and clinical experience (g.2.c). Partnerships with the Psoriasis Association and national registries (BADBIR, HPOS) are well-established (g.2.d).",
-        "drawbacks": "Evidence for developing *new* partnerships (g.2.d) is slightly weaker than existing ones, as the applicant leverages established networks rather than proposing novel industry or cross-sector collaborations, though this is sufficient for a strong score.",
-        "rationale": "Evidence for developing *new* partnerships (g.2.d) is slightly weaker than existing ones, as the applicant leverages established networks rather than proposing novel industry or cross-sector collaborations, though this is sufficient for a strong score.",
+        "pros": "The applicant explicitly articulates why the DRF is the 'natural next step' to transition from clinical training to independent research, enabling the time needed for complex data analysis (g.2.a, g.2.b). The training plan meticulously maps specific courses (e.g., meta-analysis, genetic epidemiology) to identified skill gaps, showing exactly how the award builds on existing experience (g.2.c). The project leverages existing partnerships with Cochrane, BADBIR, and HPOS, demonstrating how the award will deepen these research partnerships (g.2.d).",
+        "drawbacks": "While partnerships are strong, the specific expansion into *new* industry or social care partnerships beyond the existing academic/NHS networks is less explicitly detailed compared to the academic collaborations.",
+        "rationale": "While partnerships are strong, the specific expansion into *new* industry or social care partnerships beyond the existing academic/NHS networks is less explicitly detailed compared to the academic collaborations.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -127,11 +145,15 @@
         "weight": 1.0,
         "used_chunk_ids": [
           "secac__001_a",
+          "secac__001_b",
           "secarb__001_b",
           "secarb__001_c",
-          "sectdars__001_a"
+          "secarb__001_d",
+          "sectdars__001_a",
+          "sectdars__001_b",
+          "sectdars__001_c"
         ],
-        "evidence_count": 4,
+        "evidence_count": 8,
         "evidence_status": "ok",
         "confidence_gap": 0.0,
         "confidence_label": "high_confidence",
@@ -161,9 +183,9 @@
             "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "Extensive prior experience includes leading multicentre studies, systematic reviews (Cochrane), and single-cell RNA sequencing (g.3.a). Formal training includes a PGDip in Health Research (Distinction) and specific courses in R, Stata, and Good Clinical Practice (g.3.b). The alignment between prior skills (data extraction, survival analysis) and the proposed project (predictive modeling, systematic review) is perfect (g.3.c).",
-        "drawbacks": "No significant drawbacks; the applicant's background is exceptionally well-aligned with the project requirements.",
-        "rationale": "No significant drawbacks; the applicant's background is exceptionally well-aligned with the project requirements.",
+        "pros": "The applicant has extensive prior experience directly relevant to the proposal, including leading a multicentre cohort study, conducting systematic reviews for Cochrane, and performing single-cell RNA sequencing (g.3.a). Formal training is evidenced by a PGDip in Health Research (Distinction), MRCP, and specific courses in R, Stata, and Good Clinical Practice (g.3.b). There is a perfect alignment between these prior skills (data extraction, survival analysis, R programming) and the requirements of the proposed project (g.3.c).",
+        "drawbacks": "No significant drawbacks; the evidence of relevant experience and training is robust and comprehensive.",
+        "rationale": "No significant drawbacks; the evidence of relevant experience and training is robust and comprehensive.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -179,9 +201,10 @@
           "secac__001_c",
           "secac__001_f",
           "secarb__001_b",
+          "secarb__001_c",
           "secarb__001_d"
         ],
-        "evidence_count": 5,
+        "evidence_count": 6,
         "evidence_status": "ok",
         "confidence_gap": 0.0,
         "confidence_label": "high_confidence",
@@ -190,9 +213,9 @@
             "sid": "g.4.a",
             "signal_text": "Number and quality of publications, reports, or presentations",
             "weight": 1.0,
-            "score": 5,
-            "score_0to5_raw": 5.0,
-            "score_0to5_weighted": 5.0
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
           },
           {
             "sid": "g.4.b",
@@ -206,9 +229,9 @@
             "sid": "g.4.c",
             "signal_text": "Awards, grants, or recognitions linked to prior research",
             "weight": 1.0,
-            "score": 5,
-            "score_0to5_raw": 5.0,
-            "score_0to5_weighted": 5.0
+            "score": 4,
+            "score_0to5_raw": 4.0,
+            "score_0to5_weighted": 4.0
           },
           {
             "sid": "g.4.d",
@@ -219,9 +242,9 @@
             "score_0to5_weighted": 4.0
           }
         ],
-        "pros": "The applicant has 14 peer-reviewed publications (8 first author) in high-impact journals (g.4.a). An h-index of 9 is explicitly stated (g.4.b). Multiple awards are listed, including a UKDCTN Fellowship, Michael Hornstein Memorial Scholarship, and runner-up abstract prizes (g.4.c). Practical impact is described through contributions to guidelines and patient registries (g.4.d).",
-        "drawbacks": "Citation metrics (g.4.b) are limited to the h-index; specific citation counts for key papers are not provided, preventing a perfect score. Impact descriptions (g.4.d) are strong but could be more quantified regarding patient outcomes.",
-        "rationale": "Citation metrics (g.4.b) are limited to the h-index; specific citation counts for key papers are not provided, preventing a perfect score. Impact descriptions (g.4.d) are strong but could be more quantified regarding patient outcomes.",
+        "pros": "The applicant has a strong publication record with 14 peer-reviewed papers (8 first author) in high-impact journals (e.g., British Journal of Cancer, Nature Medicine) (g.4.a). An h-index of 9 is explicitly stated (g.4.b). The applicant has secured a Cancer Research UK grant and won multiple prestigious awards including the UKDCTN Fellowship and Michael Hornstein Memorial Scholarship (g.4.c). The work has practical impact, contributing to guidelines and informing clinical practice in psoriasis and melanoma (g.4.d).",
+        "drawbacks": "While the h-index is provided, broader citation metrics or specific impact factors for the journals are not detailed beyond the journal names, though the quality of the journals is evident.",
+        "rationale": "While the h-index is provided, broader citation metrics or specific impact factors for the journals are not detailed beyond the journal names, though the quality of the journals is evident.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -233,12 +256,15 @@
         "group_name": "Applicant",
         "weight": 1.0,
         "used_chunk_ids": [
-          "secarb__001_a",
+          "secac__001_a",
+          "secac__001_b",
+          "secarb__001_c",
           "secarb__001_e",
           "secarb__001_f",
-          "sectdars__001_e"
+          "sectdars__001_e",
+          "sectdars__001_f"
         ],
-        "evidence_count": 4,
+        "evidence_count": 7,
         "evidence_status": "ok",
         "confidence_gap": 0.0,
         "confidence_label": "high_confidence",
@@ -276,9 +302,9 @@
             "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "Clear long-term goal to become an independent Clinician Scientist (g.5.a). Evidence of increasing responsibility includes leading projects from conception, chairing clinicopathological meetings, and serving as a trainee representative for national registries (g.5.b). Participation in leadership programs (Emerging Clinical Leaders, Future Leaders Academy) is planned (g.5.c). Recognition includes prestigious fellowships and awards (g.5.d).",
-        "drawbacks": "No material caveats; the evidence for leadership potential is robust and multi-faceted.",
-        "rationale": "No material caveats; the evidence for leadership potential is robust and multi-faceted.",
+        "pros": "The applicant clearly states the ambition to become an independent Clinician Scientist (g.5.a). Evidence of increasing responsibility includes leading projects from conception, chairing clinicopathological meetings, serving on guideline development groups, and acting as a peer reviewer (g.5.b). The training plan includes specific leadership courses (Emerging Clinical Leaders, Future Leaders Academy) (g.5.c). Recognition is evidenced by winning the UKDCTN Fellowship (joint-highest score) and multiple academic prizes (g.5.d).",
+        "drawbacks": "No significant drawbacks; the trajectory towards leadership is well-supported by concrete examples of increasing responsibility and formal training.",
+        "rationale": "No significant drawbacks; the trajectory towards leadership is well-supported by concrete examples of increasing responsibility and formal training.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -291,12 +317,15 @@
         "weight": 1.0,
         "used_chunk_ids": [
           "secac__001_a",
+          "secac__001_b",
           "secarb__001_a",
           "secarb__001_b",
           "secarb__001_d",
+          "sectdars__001_a",
+          "sectdars__001_f",
           "secac2__001"
         ],
-        "evidence_count": 5,
+        "evidence_count": 8,
         "evidence_status": "ok",
         "confidence_gap": 0.0,
         "confidence_label": "high_confidence",
@@ -334,9 +363,9 @@
             "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "Explicit statement of aspiration to be an academic dermatologist (g.6.a). Involvement in clinical research is extensive, including work on BADBIR and guideline development groups (g.6.b). The applicant has a proven track record of balancing clinical registrar duties with research (g.6.c). Participation in professional networks (BAD, EULAR) and qualifications (MRCP, PGDip) is evident (g.6.d).",
-        "drawbacks": "No drawbacks; the commitment to a practitioner-academic career is clearly and comprehensively demonstrated.",
-        "rationale": "No drawbacks; the commitment to a practitioner-academic career is clearly and comprehensively demonstrated.",
+        "pros": "The applicant explicitly states the aspiration to be an 'academic dermatologist' and outlines a clear path combining clinical training with research (g.6.a). The CV and background show deep involvement in clinical practice (Specialty Registrar) alongside clinical research (BADBIR, guideline groups) (g.6.b). The applicant demonstrates a proven track record of balancing clinical duties (25-33% WTE) with significant research outputs (g.6.c). Participation in professional networks (BAD, EULAR, BritPACT) and holding relevant qualifications (MRCP, PGDip) confirms commitment (g.6.d).",
+        "drawbacks": "No significant drawbacks; the commitment to a practitioner-academic career is the central theme of the application and is thoroughly evidenced.",
+        "rationale": "No significant drawbacks; the commitment to a practitioner-academic career is the central theme of the application and is thoroughly evidenced.",
         "missing_evidence": false,
         "if_applicable": true,
         "counts_toward_section_average": false
@@ -358,9 +387,10 @@
           "secpesor__001_a",
           "secpesor__001_b",
           "secpesor__001_c",
+          "secpesor__001_d",
           "secpena__001"
         ],
-        "evidence_count": 4,
+        "evidence_count": 5,
         "evidence_status": "ok",
         "confidence_gap": 0.0,
         "confidence_label": "high_confidence",
@@ -414,7 +444,7 @@
             "score_0to5_weighted": 4.0
           }
         ],
-        "pros": "The Plain English Summary is exceptionally clear, with NLP metrics confirming high readability (Flesch-Kincaid 7.21) and low jargon density (2.68%). It comprehensively covers the problem, aim, methods, beneficiaries, and impact, explaining technical terms like 'biologics' and 'genetic data' in accessible language. The content aligns perfectly with the Detailed Research Plan.",
+        "pros": "The Plain English Summary is exceptionally clear, with NLP metrics confirming high readability (Flesch-Kincaid 7.21) and low jargon density (2.68%). It comprehensively covers the problem, aim, methods, PPI involvement, and impact in accessible language, aligning perfectly with the detailed research plan.",
         "drawbacks": "No material caveats or missing details found; the summary is a model of clarity and alignment.",
         "rationale": "No material caveats or missing details found; the summary is a model of clarity and alignment.",
         "missing_evidence": false,
@@ -431,9 +461,12 @@
           "secdrp__001_e",
           "secdrp__001_f",
           "secdrp__001_g",
-          "secdrp__001_h"
+          "secdrp__001_h",
+          "secdrp__001_i",
+          "secdrp__001_j",
+          "secdrp__001_k"
         ],
-        "evidence_count": 4,
+        "evidence_count": 7,
         "evidence_status": "ok",
         "confidence_gap": 0.0,
         "confidence_label": "high_confidence",
@@ -471,9 +504,9 @@
             "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "The application provides a critical review of existing literature, citing specific studies (e.g., BADBIR, Cochrane reviews) and highlighting limitations such as small sample sizes and lack of validation. It clearly identifies the knowledge gap regarding long-term prediction of disease control in psoriasis, justifying the need for the proposed systematic review and modeling.",
-        "drawbacks": "No significant drawbacks; the evidence review is comprehensive and critical.",
-        "rationale": "No significant drawbacks; the evidence review is comprehensive and critical.",
+        "pros": "The application provides a critical, comprehensive review of literature, citing specific studies (e.g., BADBIR, Cochrane reviews) and identifying clear knowledge gaps regarding long-term disease control prediction. The flow is logical, moving from problem definition to specific clinical and genetic factors.",
+        "drawbacks": "No significant drawbacks; the evidence review is robust and directly justifies the proposed systematic review and modeling phases.",
+        "rationale": "No significant drawbacks; the evidence review is robust and directly justifies the proposed systematic review and modeling phases.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -485,12 +518,14 @@
         "group_name": null,
         "weight": 1.0,
         "used_chunk_ids": [
-          "secsa__001_b",
           "secdrp__001_l",
-          "secdrp__001_u",
-          "secac2__001"
+          "secdrp__001_m",
+          "secdrp__001_o",
+          "secdrp__001_p",
+          "secdrp__001_q",
+          "secdrp__001_u"
         ],
-        "evidence_count": 4,
+        "evidence_count": 6,
         "evidence_status": "ok",
         "confidence_gap": 0.0,
         "confidence_label": "high_confidence",
@@ -520,9 +555,9 @@
             "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "The project scope is well-aligned with a 36-month doctoral fellowship, divided into three distinct phases (review, modeling, tool refinement). Feasibility is strongly supported by secured access to large datasets (BADBIR, HPOS) and a robust sample size justification using Riley et al. methods.",
-        "drawbacks": "No material caveats; the scope is ambitious yet feasible given the resources and timeline.",
-        "rationale": "No material caveats; the scope is ambitious yet feasible given the resources and timeline.",
+        "pros": "The scope is perfectly aligned with a 3-year Doctoral Fellowship, featuring three distinct phases (review, modeling, tool development) with realistic timelines. Feasibility is strongly supported by secured access to large datasets (BADBIR, HPOS) and detailed sample size calculations.",
+        "drawbacks": "No material caveats; the project scope is ambitious yet clearly achievable within the award constraints.",
+        "rationale": "No material caveats; the project scope is ambitious yet clearly achievable within the award constraints.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -536,10 +571,15 @@
         "used_chunk_ids": [
           "secdrp__001_n",
           "secdrp__001_r",
+          "secdrp__001_s",
           "secdrp__001_t",
-          "secdrp__001_u"
+          "secdrp__001_u",
+          "secdrp__001_v",
+          "secdrp__001_w",
+          "secdrp__001_x",
+          "secdrp__001_y"
         ],
-        "evidence_count": 4,
+        "evidence_count": 9,
         "evidence_status": "ok",
         "confidence_gap": 0.0,
         "confidence_label": "high_confidence",
@@ -577,9 +617,9 @@
             "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "Methods are explicitly described with high rigor, including PRISMA guidelines for the review, specific regression models (elastic net, lasso), and validation strategies (nested cross-validation, external validation). The plan addresses missing data, sample size, and controls for overfitting, demonstrating strong methodological alignment with aims.",
-        "drawbacks": "No significant drawbacks; the methodological design is robust and clearly articulated.",
-        "rationale": "No significant drawbacks; the methodological design is robust and clearly articulated.",
+        "pros": "Methodological rigor is excellent, with explicit descriptions of PRISMA guidelines, Kaplan-Meier survival analysis, penalized regression (elastic net/lasso), and nested cross-validation. The design logically aligns aims with methods, including robust handling of missing data and external validation strategies.",
+        "drawbacks": "No significant drawbacks; the methods are detailed, justified, and structured appropriately for the research questions.",
+        "rationale": "No significant drawbacks; the methods are detailed, justified, and structured appropriately for the research questions.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -591,12 +631,14 @@
         "group_name": null,
         "weight": 1.0,
         "used_chunk_ids": [
+          "secpesor__001_a",
           "secpesor__001_c",
           "secsa__001_c",
           "secdrp__001_b",
+          "secdrp__001_d",
           "secdrp__001_z"
         ],
-        "evidence_count": 4,
+        "evidence_count": 6,
         "evidence_status": "ok",
         "confidence_gap": 0.0,
         "confidence_label": "high_confidence",
@@ -626,9 +668,9 @@
             "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "The application clearly articulates specific benefits for patients (reduced anxiety, autonomy) and health services (efficient resource allocation, remote monitoring pathways). It aligns with NHS priorities and the Long Term Plan, with specific expected outcomes like cost savings and improved patient experience.",
-        "drawbacks": "No material caveats; the impact is well-defined and directly linked to the research outputs.",
-        "rationale": "No material caveats; the impact is well-defined and directly linked to the research outputs.",
+        "pros": "Impact is clearly articulated with specific benefits for patients (reduced anxiety, autonomy) and health services (efficient resource allocation, PIFU pathways). The proposal aligns with NHS Long Term Plan priorities and addresses a key unmet need identified by stakeholders.",
+        "drawbacks": "No material caveats; the impact statement is specific, realistic, and directly linked to the project outputs.",
+        "rationale": "No material caveats; the impact statement is specific, realistic, and directly linked to the project outputs.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -642,11 +684,15 @@
         "used_chunk_ids": [
           "secpesor__001_c",
           "secsa__001_b",
+          "secsa__001_c",
+          "secdrp__001_c",
           "secdrp__001_w",
+          "secdrp__001_x",
           "secppi__001_a",
+          "secppi__001_b",
           "secppi__001_c"
         ],
-        "evidence_count": 5,
+        "evidence_count": 9,
         "evidence_status": "ok",
         "confidence_gap": 0.0,
         "confidence_label": "high_confidence",
@@ -676,9 +722,9 @@
             "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "Patient and public involvement is integral, with co-design activities shaping the research questions, tool design, and dissemination. PPI collaborators are involved in focus groups, data analysis, and recruitment strategies, ensuring meaningful engagement across all project stages.",
-        "drawbacks": "No significant drawbacks; the engagement plan is comprehensive and well-resourced.",
-        "rationale": "No significant drawbacks; the engagement plan is comprehensive and well-resourced.",
+        "pros": "Engagement is integral and meaningful, with PPI collaborators involved from proposal refinement through to co-design of the tool and data analysis. Specific mechanisms (focus groups, advisory group) and ethical considerations (remuneration, training) are detailed.",
+        "drawbacks": "No significant drawbacks; the engagement plan is comprehensive and spans all project stages.",
+        "rationale": "No significant drawbacks; the engagement plan is comprehensive and spans all project stages.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -692,10 +738,22 @@
         "used_chunk_ids": [
           "secsb__001_a",
           "secsb__001_b",
+          "secsb__001_c",
           "secsb__001_d",
-          "secsb__001_f"
+          "secsb__001_e",
+          "secsb__001_f",
+          "secsb__001_g",
+          "secsb__001_h",
+          "secsb__001_i",
+          "secsb__001_j",
+          "secsb__001_k",
+          "secsb__001_l",
+          "secsb__001_m",
+          "secsb__001_n",
+          "secsb__001_o",
+          "secsb__001_p"
         ],
-        "evidence_count": 4,
+        "evidence_count": 16,
         "evidence_status": "ok",
         "confidence_gap": 0.0,
         "confidence_label": "high_confidence",
@@ -725,9 +783,9 @@
             "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "The budget provides explicit justifications linking costs to specific tasks (e.g., high-performance laptop for large datasets, PPI meetings for qualitative work). The costs are proportional to the project scope, with clear rationales for funding levels including training, equipment, and data management.",
-        "drawbacks": "No material caveats; the budget is well-justified and aligned with the research plan.",
-        "rationale": "No material caveats; the budget is well-justified and aligned with the research plan.",
+        "pros": "The budget is highly detailed with explicit justifications linking every cost to specific tasks (e.g., high-performance laptop for genetic data, dashboard development, PPI remuneration). Costs are proportional to the scope and aligned with NIHR guidance.",
+        "drawbacks": "No material caveats; the resource justification is clear and comprehensive.",
+        "rationale": "No material caveats; the resource justification is clear and comprehensive.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -738,8 +796,15 @@
         "definition": "Prior relevant research experience demonstrating capability to deliver the proposed project.",
         "group_name": null,
         "weight": 1.0,
-        "used_chunk_ids": [],
-        "evidence_count": 0,
+        "used_chunk_ids": [
+          "secac__001_b",
+          "secac__001_c",
+          "secac__001_d",
+          "secarb__001_b",
+          "secarb__001_c",
+          "secarb__001_d"
+        ],
+        "evidence_count": 6,
         "evidence_status": "ok",
         "confidence_gap": 0.0,
         "confidence_label": "high_confidence",
@@ -748,30 +813,30 @@
             "sid": "pr.8.a",
             "signal_text": "Number and relevance of publications or outputs",
             "weight": 1.0,
-            "score": 0,
-            "score_0to5_raw": 0.0,
-            "score_0to5_weighted": 0.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           },
           {
             "sid": "pr.8.b",
             "signal_text": "Evidence of prior successful projects",
             "weight": 1.0,
-            "score": 0,
-            "score_0to5_raw": 0.0,
-            "score_0to5_weighted": 0.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           },
           {
             "sid": "pr.8.c",
             "signal_text": "Skills alignment with proposed work",
             "weight": 1.0,
-            "score": 0,
-            "score_0to5_raw": 0.0,
-            "score_0to5_weighted": 0.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "No evidence provided in the 'Proposed Research' section regarding the applicant's previous research outputs or specific prior projects relevant to this proposal. This information is typically found in the Applicant CV or Research Background sections, which are outside the scope of this specific rubric section scoring.",
-        "drawbacks": "The 'Proposed Research' section does not contain evidence of the applicant's prior research quality, publications, or successful projects. Scoring is based strictly on the content within the target section, which focuses on the proposed work rather than the applicant's history.",
-        "rationale": "The 'Proposed Research' section does not contain evidence of the applicant's prior research quality, publications, or successful projects. Scoring is based strictly on the content within the target section, which focuses on the proposed work rather than the applicant's history.",
+        "pros": "The applicant demonstrates strong prior research capability with 14 peer-reviewed publications (8 first author), an h-index of 9, and experience leading projects from conception to completion. Skills in systematic reviews, R programming, and single-cell sequencing directly align with the proposed work.",
+        "drawbacks": "No significant drawbacks; the applicant's track record provides robust evidence of capability to deliver the project.",
+        "rationale": "No significant drawbacks; the applicant's track record provides robust evidence of capability to deliver the project.",
         "missing_evidence": false,
         "if_applicable": true,
         "counts_toward_section_average": false
@@ -784,11 +849,13 @@
         "weight": 1.0,
         "used_chunk_ids": [
           "secpesor__001_c",
+          "secsa__001_c",
+          "secdrp__001_q",
           "secdrp__001_x",
           "secppi__001_c",
           "secppi__001_d"
         ],
-        "evidence_count": 4,
+        "evidence_count": 6,
         "evidence_status": "ok",
         "confidence_gap": 0.0,
         "confidence_label": "high_confidence",
@@ -818,9 +885,9 @@
             "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "The application explicitly plans for diverse recruitment, targeting underserved groups (ethnic minorities, lower socioeconomic classes) using an inclusion toolkit. It addresses accessibility through virtual meetings and phone-in options, ensuring equity and participation across the research lifecycle.",
-        "drawbacks": "No significant drawbacks; the inclusive design is well-integrated and actionable.",
-        "rationale": "No significant drawbacks; the inclusive design is well-integrated and actionable.",
+        "pros": "Inclusivity is explicitly addressed with strategies to recruit underserved groups (lower socioeconomic classes, ethnic minorities, disabilities) using a skin research inclusion toolkit. Adaptive methods (virtual meetings, phone-in options) ensure accessibility.",
+        "drawbacks": "No material caveats; the inclusive design is well-integrated into the research lifecycle.",
+        "rationale": "No material caveats; the inclusive design is well-integrated into the research lifecycle.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -843,9 +910,15 @@
           "sectdars__001_b",
           "sectdars__001_c",
           "sectdars__001_d",
-          "sectdars__001_e"
+          "sectdars__001_e",
+          "secsb__001_i",
+          "secsb__001_j",
+          "secsb__001_k",
+          "secsb__001_l",
+          "secsb__001_m",
+          "secsb__001_n"
         ],
-        "evidence_count": 5,
+        "evidence_count": 11,
         "evidence_status": "ok",
         "confidence_gap": 0.0,
         "confidence_label": "high_confidence",
@@ -883,9 +956,9 @@
             "score_0to5_weighted": 4.0
           }
         ],
-        "pros": "The application provides a highly detailed, structured training plan covering systematic reviews, statistics, genetics, qualitative methods, dashboard development, PPI, and leadership. Each training activity is explicitly linked to specific project phases (e.g., 'In my first year', 'In Phase 2') and specific skill acquisition (e.g., 'practical toolkit for meta-analysis', 'fit different regression models'). The plan is comprehensive and directly aligned with the project's methodological requirements.",
-        "drawbacks": "No material caveats or missing details identified; the training plan is exceptionally complete and specific.",
-        "rationale": "No material caveats or missing details identified; the training plan is exceptionally complete and specific.",
+        "pros": "The application provides a highly detailed, structured training plan covering all methodological components of the project (systematic reviews, statistics, genetics, qualitative methods, dashboard development, PPI, and leadership). Specific courses are named with providers (e.g., LSHTM, UCL, Oxford, Bristol), durations, and timing (Year 1, 2, or 3). The plan explicitly links training to project phases, such as attending qualitative courses in Year 2 prior to conducting focus groups in Year 3.",
+        "drawbacks": "No material caveats or missing details found; the training plan is comprehensive and fully evidenced.",
+        "rationale": "No material caveats or missing details found; the training plan is comprehensive and fully evidenced.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -897,12 +970,14 @@
         "group_name": null,
         "weight": 1.0,
         "used_chunk_ids": [
+          "sectdars__001_a",
           "sectdars__001_b",
           "sectdars__001_c",
           "sectdars__001_d",
-          "sectdars__001_e"
+          "sectdars__001_e",
+          "sectdars__001_f"
         ],
-        "evidence_count": 4,
+        "evidence_count": 6,
         "evidence_status": "ok",
         "confidence_gap": 0.0,
         "confidence_label": "high_confidence",
@@ -940,9 +1015,9 @@
             "score_0to5_weighted": 4.0
           }
         ],
-        "pros": "The applicant explicitly identifies personal skill gaps (e.g., 'While this gave me a basic understanding... I would benefit from further formal training', 'To prepare for the predictive modelling component'). There is a clear mapping between these gaps and targeted courses (e.g., 'Statistical Methods for Risk Prediction', 'Introduction to Qualitative Research Methods'). The plan includes specific mentorship from named experts (Dr. Niamh Dooley, Dr. Sam Norton, Prof. Michael Simpson) and formal courses, demonstrating a highly targeted approach rather than generic training.",
-        "drawbacks": "No material caveats or missing details identified; the identification of gaps and targeted solutions is robust.",
-        "rationale": "No material caveats or missing details identified; the identification of gaps and targeted solutions is robust.",
+        "pros": "The applicant clearly identifies specific skill gaps (e.g., 'basic understanding' of statistical techniques, need for 'hands-on training' in regression and meta-analysis) and maps targeted courses to address them. The plan includes mentorship from specific experts (Dr. Niamh Dooley, Dr. Sam Norton) and leverages institutional resources (KCL Doctoral Development Programme). The training is highly targeted to the project's mixed-methods nature rather than generic.",
+        "drawbacks": "No material caveats or missing details found; the alignment between gaps and training is explicit and robust.",
+        "rationale": "No material caveats or missing details found; the alignment between gaps and training is explicit and robust.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -954,11 +1029,13 @@
         "group_name": null,
         "weight": 1.0,
         "used_chunk_ids": [
+          "secarb__001_a",
+          "secarb__001_f",
           "sectdars__001_a",
           "sectdars__001_e",
           "sectdars__001_f"
         ],
-        "evidence_count": 3,
+        "evidence_count": 5,
         "evidence_status": "ok",
         "confidence_gap": 0.0,
         "confidence_label": "high_confidence",
@@ -996,9 +1073,9 @@
             "score_0to5_weighted": 4.0
           }
         ],
-        "pros": "The applicant explicitly states the goal to 'support my development as an academic dermatologist' and links specific training (e.g., 'Emerging Clinical Leaders', 'Future Leaders Academy') to long-term career aspirations. The plan includes transferable skills (leadership, communication, teaching methods via KCL Doctoral Development Programme) and references professional practice components (PPI training, clinical leadership). The institutional support statement reinforces the environment for career growth.",
-        "drawbacks": "No material caveats or missing details identified; the connection between training and career trajectory is explicit and well-supported.",
-        "rationale": "No material caveats or missing details identified; the connection between training and career trajectory is explicit and well-supported.",
+        "pros": "The applicant explicitly states the career goal of becoming an 'independent Clinician Scientist' and an 'academic dermatologist'. The training plan directly supports this trajectory through leadership courses (Emerging Clinical Leaders, Future Leaders Academy), PPI training for future grant applications, and the KCL Doctoral Development Programme. The plan highlights skill transferability, noting how the fellowship positions the applicant for a Clinical Lectureship and future independent research.",
+        "drawbacks": "No material caveats or missing details found; the connection between training and long-term career aspirations is clear and well-supported.",
+        "rationale": "No material caveats or missing details found; the connection between training and long-term career aspirations is clear and well-supported.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1019,9 +1096,11 @@
         "used_chunk_ids": [
           "sectdars__001_f",
           "sectdars__001_o",
-          "sectdars__001_p"
+          "sectdars__001_p",
+          "sectdars__001_q",
+          "sectdars__001_r"
         ],
-        "evidence_count": 3,
+        "evidence_count": 5,
         "evidence_status": "ok",
         "confidence_gap": 0.0,
         "confidence_label": "high_confidence",
@@ -1059,9 +1138,9 @@
             "score_0to5_weighted": 4.0
           }
         ],
-        "pros": "The application provides robust evidence of the host's track record. St John's Institute is described as a 'world-renowned centre of excellence' with a >95% success rate for IAT fellows obtaining external funding (ss.1.b). It cites specific REF ratings (90% world-leading research) and high research income (>£3m/year) (ss.1.d). The text details specific prior collaborations and partnerships, including King's Health Partners and links to major charities and international consortia (ss.1.c). The supervisors' extensive publication and project history in psoriasis and dermatology is explicitly detailed (ss.1.a).",
-        "drawbacks": "No material caveats or missing details found; the evidence is comprehensive and specific.",
-        "rationale": "No material caveats or missing details found; the evidence is comprehensive and specific.",
+        "pros": "The application provides exceptional evidence of the contracting organisation's track record. St John's Institute of Dermatology is described as a 'world-renowned centre of excellence' with a >95% success rate for Integrated Academic Training Pathway fellows securing external funding (sectdars__001_p). It highlights significant research income (>£3m/year for the department, >£25m for the School) and REF ratings (90% world-leading/internationally excellent) (sectdars__001_p). The Head of Department's statement explicitly confirms the institute's leading status in dermatology and its commitment to supporting the applicant (sectdars__001_o, sectdars__001_r).",
+        "drawbacks": "No material caveats or missing details regarding the organisation's track record were identified; the evidence is comprehensive and specific.",
+        "rationale": "No material caveats or missing details regarding the organisation's track record were identified; the evidence is comprehensive and specific.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1073,13 +1152,19 @@
         "group_name": null,
         "weight": 1.0,
         "used_chunk_ids": [
+          "secdrp__001_|",
+          "sectdars__001_f",
           "sectdars__001_g",
           "sectdars__001_h",
           "sectdars__001_i",
           "sectdars__001_j",
-          "sectdars__001_k"
+          "sectdars__001_k",
+          "sectdars__001_l",
+          "sectdars__001_m",
+          "sectdars__001_n",
+          "secac2__001"
         ],
-        "evidence_count": 5,
+        "evidence_count": 11,
         "evidence_status": "ok",
         "confidence_gap": 0.0,
         "confidence_label": "high_confidence",
@@ -1088,38 +1173,38 @@
             "sid": "ss.2.a",
             "signal_text": "Explicit description of supervisor roles and responsibilities",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           },
           {
             "sid": "ss.2.b",
             "signal_text": "Evidence of mentorship plans, meetings, or training support",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           },
           {
             "sid": "ss.2.c",
             "signal_text": "Alignment between supervisor expertise and project needs",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           },
           {
             "sid": "ss.2.d",
             "signal_text": "Presence of structured supervision framework (frequency, format, accountability)",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "The application details four supervisors with clearly defined roles and specific expertise matching the project's needs (dermatology, statistics, genetics, rheumatology) (ss.2.a, ss.2.c). A structured supervision framework is explicitly described with specific meeting frequencies (weekly, fortnightly, monthly) and accountability measures (ss.2.d). Mentorship plans include direct statistical training, access to datasets, and guidance on PPI and career development (ss.2.b).",
-        "drawbacks": "No material caveats or missing details found; the supervision plan is highly detailed and specific.",
-        "rationale": "No material caveats or missing details found; the supervision plan is highly detailed and specific.",
+        "pros": "The application details a robust supervisory team of four experts with clearly defined roles and meeting frequencies. Dr. Mahil (Primary Supervisor) provides clinical and methodological oversight with weekly meetings (sectdars__001_g). Dr. Norton (Statistician) offers specific statistical training and fortnightly meetings (sectdars__001_h). Professor Smith provides access to datasets and strategic guidance with monthly meetings (sectdars__001_j). Professor Coates offers rheumatology expertise and PPI guidance (sectdars__001_l). The team's expertise aligns perfectly with the project's mixed-methods design (systematic review, predictive modelling, qualitative work). A structured framework including 6-monthly Progression Committee reviews at KCL is also described (secdrp__001_|).",
+        "drawbacks": "No significant drawbacks; the supervision plan is highly detailed, specific, and directly addresses the project's methodological needs.",
+        "rationale": "No significant drawbacks; the supervision plan is highly detailed, specific, and directly addresses the project's methodological needs.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1131,12 +1216,16 @@
         "group_name": null,
         "weight": 1.0,
         "used_chunk_ids": [
+          "secdrp__001_p",
+          "secdrp__001_q",
+          "secdrp__001_r",
           "sectdars__001_f",
           "sectdars__001_o",
           "sectdars__001_p",
-          "sectdars__001_q"
+          "sectdars__001_q",
+          "sectdars__001_r"
         ],
-        "evidence_count": 4,
+        "evidence_count": 8,
         "evidence_status": "ok",
         "confidence_gap": 0.0,
         "confidence_label": "high_confidence",
@@ -1145,38 +1234,38 @@
             "sid": "ss.3.a",
             "signal_text": "Description of facilities, infrastructure, or resources provided",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           },
           {
             "sid": "ss.3.b",
             "signal_text": "Links between organisational support and project success",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           },
           {
             "sid": "ss.3.c",
             "signal_text": "Alignment of organisational focus with applicant’s career trajectory",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           },
           {
             "sid": "ss.3.d",
             "signal_text": "Evidence of tailored support for award type (doctoral, postdoctoral)",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "The application describes state-of-the-art facilities (1,200 sqm lab space) and access to key datasets (BADBIR, HPOS) (ss.3.a). It explicitly links these resources to project success, noting the institute's role in supporting clinical academic training and the specific infrastructure available (ss.3.b). The organization's focus on inflammatory skin disorders aligns perfectly with the applicant's career trajectory as an academic dermatologist (ss.3.c). The text confirms tailored support for the award type, including the KCL Doctoral Development Programme and specific mentorship for NIHR DRF fellows (ss.3.d).",
-        "drawbacks": "No material caveats or missing details found; the support infrastructure is comprehensively described.",
-        "rationale": "No material caveats or missing details found; the support infrastructure is comprehensively described.",
+        "pros": "The application demonstrates strong alignment between organisational support and project needs. The host (St John's Institute) provides access to critical infrastructure including state-of-the-art laboratory space and, crucially, the large-scale datasets required for the project (BADBIR, HPOS, BSTOP) (sectdars__001_p, secdrp__001_p). The Head of Department confirms full institutional support, including equipment, facilities, and mentorship (sectdars__001_o, sectdars__001_r). The organisation's focus on inflammatory skin disorders directly matches the applicant's career trajectory as an academic dermatologist (sectdars__001_p). Specific support for the award type is evidenced by the institute's >95% success rate in securing external funding for IAT fellows (sectdars__001_p).",
+        "drawbacks": "No material caveats; the evidence for infrastructure, resources, and career alignment is explicit and comprehensive.",
+        "rationale": "No material caveats; the evidence for infrastructure, resources, and career alignment is explicit and comprehensive.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1188,10 +1277,11 @@
         "group_name": null,
         "weight": 1.0,
         "used_chunk_ids": [
+          "sectdars__001_p",
           "sectdars__001_q",
           "sectdars__001_r"
         ],
-        "evidence_count": 2,
+        "evidence_count": 3,
         "evidence_status": "ok",
         "confidence_gap": 0.0,
         "confidence_label": "high_confidence",
@@ -1200,38 +1290,38 @@
             "sid": "ss.4.a",
             "signal_text": "Mentions of policies or practices promoting diversity, equity, and inclusion",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           },
           {
             "sid": "ss.4.b",
             "signal_text": "Evidence of inclusive recruitment, mentoring, or support initiatives",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           },
           {
             "sid": "ss.4.c",
             "signal_text": "References to adherence to research integrity principles",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           },
           {
             "sid": "ss.4.d",
             "signal_text": "Statements on organisational culture, training, or initiatives supporting underrepresented groups",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "The Head of Department statement explicitly commits to an 'inclusive and supportive research culture' and adherence to research integrity (ss.4.a, ss.4.c). Specific evidence of inclusive initiatives is provided, including Athena SWAN Silver Awards for both the university and the faculty (ss.4.d). The text mentions a commitment to equality, diversity, and inclusion as core organizational values (ss.4.b).",
-        "drawbacks": "No material caveats or missing details found; the evidence for an inclusive culture is strong and specific.",
-        "rationale": "No material caveats or missing details found; the evidence for an inclusive culture is strong and specific.",
+        "pros": "The application provides strong evidence of a commitment to an inclusive and supportive culture. The Head of Department explicitly states KCL's commitment to 'creating and maintaining an inclusive and supportive research culture for all, championing equality, diversity and inclusion, and research integrity' (sectdars__001_q). Specific achievements are cited, including KCL's membership in the Athena SWAN Charter since 2007 and the receipt of a Silver Award in 2021, as well as a Faculty Athena SWAN Silver award (sectdars__001_q). The statement also mentions the provision of 'extensive personal support and mentorship' to embed the applicant's career (sectdars__001_r).",
+        "drawbacks": "No material caveats; the evidence regarding policies, awards, and cultural commitment is specific and well-grounded.",
+        "rationale": "No material caveats; the evidence regarding policies, awards, and cultural commitment is specific and well-grounded.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1250,12 +1340,19 @@
         "group_name": null,
         "weight": 1.0,
         "used_chunk_ids": [
+          "secarb__001_e",
+          "secarb__001_f",
+          "secpesor__001_c",
+          "secsa__001_b",
+          "secsa__001_c",
+          "secdrp__001_c",
           "secdrp__001_w",
           "secdrp__001_x",
           "secppi__001_a",
-          "secppi__001_b"
+          "secppi__001_b",
+          "secppi__001_c"
         ],
-        "evidence_count": 4,
+        "evidence_count": 11,
         "evidence_status": "ok",
         "confidence_gap": 0.0,
         "confidence_label": "high_confidence",
@@ -1285,9 +1382,9 @@
             "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "The application provides exceptional evidence of lived experience integration. Specific design changes are explicitly linked to PPI feedback, including defining the outcome as 'sustained disease control for ≥6 months' (secppi__001_b), deciding to compare models with and without genetic data (secppi__001_b), and shaping Phase 3 focus groups and tool design (secdrp__001_w). A Patient and Lay Advisory Group is established with clear roles in co-design and analysis (secppi__001_c).",
-        "drawbacks": "No material caveats; the evidence is comprehensive, specific, and directly addresses all aspects of the subcriterion.",
-        "rationale": "No material caveats; the evidence is comprehensive, specific, and directly addresses all aspects of the subcriterion.",
+        "pros": "The application provides exceptional evidence of integrating lived experience. Specific design changes are explicitly documented: the outcome definition was set to ≥6 months based on PPI feedback, the decision to explore genetic data was influenced by patient comfort levels, and the Phase 3 co-design approach (focus groups, beta testing) was shaped by PPI input on user interface and risk categories. A Patient and Lay Advisory Group is established with defined roles.",
+        "drawbacks": "No material caveats; the evidence is comprehensive, specific, and directly linked to proposal refinements.",
+        "rationale": "No material caveats; the evidence is comprehensive, specific, and directly linked to proposal refinements.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1301,7 +1398,7 @@
         "used_chunk_ids": [
           "secppi__001_a",
           "secppi__001_c",
-          "secac2__001"
+          "secppi__001_d"
         ],
         "evidence_count": 3,
         "evidence_status": "ok",
@@ -1333,9 +1430,9 @@
             "score_0to5_weighted": 3.0
           }
         ],
-        "pros": "The PPI team is explicitly recruited for diversity in age, ethnicity, location, and disease duration (secppi__001_a). The research team includes diverse expertise (dermatology, statistics, genetics, rheumatology) as shown in the Application Context (secac2__001).",
-        "drawbacks": "While PPI diversity is well-documented, there is limited explicit detail on the demographic diversity of the academic research team itself (e.g., gender, ethnicity of the supervisors) beyond their professional roles. Task allocation is described generally but not explicitly framed through an equity lens.",
-        "rationale": "While PPI diversity is well-documented, there is limited explicit detail on the demographic diversity of the academic research team itself (e.g., gender, ethnicity of the supervisors) beyond their professional roles. Task allocation is described generally but not explicitly framed through an equity lens.",
+        "pros": "The PPI group is explicitly recruited for diversity in age, ethnicity, geographical location, and disease duration. The team includes patients, carers, and family members. The research team itself is multidisciplinary (dermatologists, statisticians, rheumatologists), reflecting diverse skills.",
+        "drawbacks": "While the PPI group diversity is well-described, there is limited explicit detail on the demographic diversity of the core academic research team (e.g., gender, ethnicity of supervisors) beyond the PPI contributors. Task allocation is described generally but not explicitly framed through an equity lens.",
+        "rationale": "While the PPI group diversity is well-described, there is limited explicit detail on the demographic diversity of the core academic research team (e.g., gender, ethnicity of supervisors) beyond the PPI contributors. Task allocation is described generally but not explicitly framed through an equity lens.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1348,10 +1445,15 @@
         "weight": 1.0,
         "used_chunk_ids": [
           "secpesor__001_c",
+          "secpesor__001_d",
+          "secsa__001_c",
+          "secsa__001_d",
           "secdrp__001_z",
+          "secdrp__001_{",
+          "secdrp__001_|",
           "secppi__001_d"
         ],
-        "evidence_count": 3,
+        "evidence_count": 8,
         "evidence_status": "ok",
         "confidence_gap": 0.0,
         "confidence_label": "high_confidence",
@@ -1381,9 +1483,9 @@
             "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "A robust dissemination plan is detailed, targeting patients, clinicians, and policymakers. It includes Plain English Summaries, infographics, and social media shared via patient associations (secdrp__001_z, secppi__001_d). The link between objectives and benefits is clear: reducing anxiety, empowering patients, and improving NHS resource efficiency (secpesor__001_c).",
-        "drawbacks": "No significant drawbacks; the plan is actionable and directly tied to maximizing public benefit.",
-        "rationale": "No significant drawbacks; the plan is actionable and directly tied to maximizing public benefit.",
+        "pros": "A robust, multi-channel dissemination plan is detailed, targeting patients (Plain English summaries, infographics, social media, webinars), clinicians (conferences, journals), and policymakers (guideline updates). Clear links are made between the risk stratification tool and benefits like reduced anxiety, autonomy, and efficient resource allocation. PPI collaborators are invited to co-author and co-present.",
+        "drawbacks": "No significant drawbacks; the plan is specific, actionable, and covers all stakeholder groups.",
+        "rationale": "No significant drawbacks; the plan is specific, actionable, and covers all stakeholder groups.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1429,9 +1531,9 @@
             "score_0to5_weighted": 4.0
           }
         ],
-        "pros": "The application explicitly targets underserved groups including ethnic minorities, lower socioeconomic classes, and those with disabilities (secdrp__001_x). It references a specific 'skin research inclusion toolkit' to ensure representation (secdrp__001_x). Strategies to mitigate barriers include virtual meetings and phone-in options to reduce digital exclusion (secppi__001_d).",
-        "drawbacks": "While strategies are strong, the specific metrics for evaluating the success of these inclusion efforts (e.g., target recruitment numbers for specific demographics) are not explicitly quantified in the text.",
-        "rationale": "While strategies are strong, the specific metrics for evaluating the success of these inclusion efforts (e.g., target recruitment numbers for specific demographics) are not explicitly quantified in the text.",
+        "pros": "The application explicitly targets underserved groups including lower socioeconomic classes, ethnic minorities, and those with disabilities for focus groups. A 'skin research inclusion toolkit' is referenced to ensure representation. Strategies to mitigate barriers include virtual attendance, phone-in options, and practice calls to reduce digital exclusion.",
+        "drawbacks": "While strategies for focus groups are strong, the application relies on existing datasets (BADBIR, HPOS) for the quantitative modeling phase. While these are large, the specific strategies to ensure the *data* itself represents seldom-heard groups (beyond the general dataset description) are less detailed than the qualitative recruitment strategies.",
+        "rationale": "While strategies for focus groups are strong, the application relies on existing datasets (BADBIR, HPOS) for the quantitative modeling phase. While these are large, the specific strategies to ensure the *data* itself represents seldom-heard groups (beyond the general dataset description) are less detailed than the qualitative recruitment strategies.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1443,11 +1545,17 @@
         "group_name": null,
         "weight": 1.0,
         "used_chunk_ids": [
+          "secpesor__001_c",
+          "secsa__001_b",
+          "secsa__001_c",
+          "secdrp__001_c",
           "secdrp__001_w",
+          "secdrp__001_y",
+          "secppi__001_b",
           "secppi__001_c",
           "secppi__001_d"
         ],
-        "evidence_count": 3,
+        "evidence_count": 9,
         "evidence_status": "ok",
         "confidence_gap": 0.0,
         "confidence_label": "high_confidence",
@@ -1456,17 +1564,17 @@
             "sid": "wp.5.a",
             "signal_text": "References to inclusion in study design, participant selection, and analysis",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           },
           {
             "sid": "wp.5.b",
             "signal_text": "Consideration of accessibility and equity in all project stages",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           },
           {
             "sid": "wp.5.c",
@@ -1477,9 +1585,9 @@
             "score_0to5_weighted": 4.0
           }
         ],
-        "pros": "Inclusivity is demonstrated across the entire lifecycle: design (PPI shaping research questions), recruitment (strategies for underserved groups), conduct (co-facilitation of focus groups), analysis (PPI involvement in coding), and dissemination (co-authoring and plain English summaries) (secppi__001_c, secppi__001_d). Accessibility is considered via virtual/phone options (secppi__001_d).",
-        "drawbacks": "The plan for ongoing evaluation and adaptation of inclusion strategies during the project is implied through regular meetings but not explicitly detailed as a formal evaluation mechanism.",
-        "rationale": "The plan for ongoing evaluation and adaptation of inclusion strategies during the project is implied through regular meetings but not explicitly detailed as a formal evaluation mechanism.",
+        "pros": "Inclusion is demonstrated across the entire lifecycle: proposal refinement (design), variable selection (planning), recruitment strategies (conduct), co-facilitation and analysis (analysis), and dissemination (outputs). Accessibility is considered via virtual/phone options and training for PPI collaborators.",
+        "drawbacks": "The plan for ongoing evaluation and adaptation of inclusion strategies (signal wp.5.c) is implied through the advisory group meetings but could be more explicit about how inclusion metrics will be monitored and adjusted if targets are not met.",
+        "rationale": "The plan for ongoing evaluation and adaptation of inclusion strategies (signal wp.5.c) is implied through the advisory group meetings but could be more explicit about how inclusion metrics will be monitored and adjusted if targets are not met.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1491,12 +1599,13 @@
         "group_name": null,
         "weight": 1.0,
         "used_chunk_ids": [
+          "secdrp__001_w",
           "secppi__001_e",
           "secsb__001_d",
           "secsb__001_e",
           "secsb__001_f"
         ],
-        "evidence_count": 4,
+        "evidence_count": 5,
         "evidence_status": "ok",
         "confidence_gap": 0.0,
         "confidence_label": "high_confidence",
@@ -1526,9 +1635,9 @@
             "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "The budget explicitly details costs for PPI activities, including advisory group meetings, co-facilitation, training, and participant payments (secsb__001_d, secsb__001_e, secsb__001_f). Costs are aligned with NIHR guidance (£50/meeting + connection charges), ensuring the plan is fully resourced and compliant (secppi__001_e).",
-        "drawbacks": "No drawbacks; the budgeting is precise, comprehensive, and directly supports the inclusion plan.",
-        "rationale": "No drawbacks; the budgeting is precise, comprehensive, and directly supports the inclusion plan.",
+        "pros": "The budget contains explicit, detailed line items for PPI activities: advisory group meetings (£2640), co-facilitation (£330), training (£160), focus group payments (£2640), beta testing (£2200), and transcription (£999). All costs align with NIHR guidance. Staff time (0.1 WTE statistician) and training are also budgeted to support the inclusive research design.",
+        "drawbacks": "No drawbacks; the resourcing is comprehensive, specific, and fully aligned with the inclusion plan.",
+        "rationale": "No drawbacks; the resourcing is comprehensive, specific, and fully aligned with the inclusion plan.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1587,9 +1696,9 @@
             "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "The application form analysis confirms a robust structural hierarchy with 10 detected sections, 39 numbered heading-like lines, and 26 list markers, indicating consistent use of headings and subheadings. The presence of 180 table-like budget lines and 38 extracted emphasis markers demonstrates effective use of formatting to organize complex data and highlight key terms.",
-        "drawbacks": "While emphasis markers are detected, the analysis notes a parser limitation where bold/emphasis may be lost during text extraction; therefore, the score for emphasis (af.1.b) is capped at 4 rather than 5 to account for the inability to fully verify the visual weight of these markers in the original document.",
-        "rationale": "While emphasis markers are detected, the analysis notes a parser limitation where bold/emphasis may be lost during text extraction; therefore, the score for emphasis (af.1.b) is capped at 4 rather than 5 to account for the inability to fully verify the visual weight of these markers in the original document.",
+        "pros": "The Application Form Analysis confirms the presence of 39 numbered heading-like lines and 26 bullet/numbered list markers, indicating a robust and consistent use of headings and subheadings. The parser detected 38 extracted emphasis markers, suggesting effective use of bolding or emphasis for key terms. The structural analysis notes a logical section order and high word counts in key sections (e.g., Detailed Research Plan: 5382 words), supporting a clear hierarchical structure.",
+        "drawbacks": "While 38 emphasis markers were detected, the parser notes that bold/emphasis may be lost during text extraction; therefore, the score for emphasis (af.1.b) is slightly reduced to 4 to account for the possibility that some markers were parser-lost rather than absent in the original document.",
+        "rationale": "While 38 emphasis markers were detected, the parser notes that bold/emphasis may be lost during text extraction; therefore, the score for emphasis (af.1.b) is slightly reduced to 4 to account for the possibility that some markers were parser-lost rather than absent in the original document.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1612,30 +1721,30 @@
             "sid": "af.2.a",
             "signal_text": "Semantic similarity measures between sentences/paragraphs",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           },
           {
             "sid": "af.2.b",
             "signal_text": "Detection of repeated phrases or ideas",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           },
           {
             "sid": "af.2.c",
             "signal_text": "Novelty score for each section (unique content vs. overlap)",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "The application demonstrates low duplication rates, with a duplicate sentence rate of only 0.011 and a repeated line rate of 0.078. Lexical overlap between sections is moderate (ranging from 0.183 to 0.237), suggesting that while some thematic repetition exists (likely necessary for coherence), the content remains largely novel across sections.",
-        "drawbacks": "The lexical overlap scores (e.g., 0.237 between Research Plan and Training sections) indicate some degree of repetition, preventing a perfect score. While likely intentional for consistency, this suggests the application could be more concise in distinguishing content between these specific sections.",
-        "rationale": "The lexical overlap scores (e.g., 0.237 between Research Plan and Training sections) indicate some degree of repetition, preventing a perfect score. While likely intentional for consistency, this suggests the application could be more concise in distinguishing content between these specific sections.",
+        "pros": "The Application Form Analysis reports a very low duplicate sentence rate (0.011) and a low repeated line rate (0.078), indicating minimal unnecessary repetition. Lexical overlap between sections is moderate (e.g., 0.237 between Research Plan and Training), which is expected for coherent applications where training aligns with methods, rather than indicative of poor duplication. The high word counts across distinct sections suggest substantial unique content.",
+        "drawbacks": "No significant drawbacks identified; the low duplication metrics and structured sectioning strongly support a score of 5.",
+        "rationale": "No significant drawbacks identified; the low duplication metrics and structured sectioning strongly support a score of 5.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
@@ -1658,38 +1767,38 @@
             "sid": "af.3.a",
             "signal_text": "Semantic coherence between sections (using embeddings or similarity metrics)",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           },
           {
             "sid": "af.3.b",
             "signal_text": "Explicit linking of objectives to methods and work packages",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           },
           {
             "sid": "af.3.c",
             "signal_text": "Presence of transitional phrases or linking statements",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           },
           {
             "sid": "af.3.d",
             "signal_text": "Detectable narrative thread anchored on research aims",
             "weight": 1.0,
-            "score": 4,
-            "score_0to5_raw": 4.0,
-            "score_0to5_weighted": 4.0
+            "score": 5,
+            "score_0to5_raw": 5.0,
+            "score_0to5_weighted": 5.0
           }
         ],
-        "pros": "The application exhibits strong logical flow with 77 transition phrases and 150 objective-method-budget link terms, indicating a tightly integrated narrative. The section order follows a logical progression from applicant context to research plan, PPI, training, and budget, ensuring a clear thread linking the research question to the proposed work.",
-        "drawbacks": "No material caveats or missing details were identified in the structural analysis regarding logical flow; the evidence for coherence is comprehensive and directly supported by the metrics provided.",
-        "rationale": "No material caveats or missing details were identified in the structural analysis regarding logical flow; the evidence for coherence is comprehensive and directly supported by the metrics provided.",
+        "pros": "The analysis identifies 77 transition phrases and 150 objective-method-budget link terms, providing strong evidence of semantic coherence and explicit linking between objectives, methods, and work packages. The section order is logical (Applicant -> Summary -> Abstract -> Plan -> PPI -> Training -> Budget), and the high count of linking terms confirms a detectable narrative thread anchored on research aims.",
+        "drawbacks": "No drawbacks identified; the metrics for transitions and linking terms are exceptionally high, indicating perfect adherence to logical flow and coherence.",
+        "rationale": "No drawbacks identified; the metrics for transitions and linking terms are exceptionally high, indicating perfect adherence to logical flow and coherence.",
         "missing_evidence": false,
         "if_applicable": false,
         "counts_toward_section_average": true
