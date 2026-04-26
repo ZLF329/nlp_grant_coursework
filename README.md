@@ -234,26 +234,93 @@ Excluded sub-criteria can still appear in the output with `excluded_reason: "not
 
 ## Usage
 
-### 1. Parse a PDF
+The recommended way to run the full pipeline is the **end-to-end web server on a Linux/GPU host** (RunPod, EC2, university cluster, or any Ubuntu/Debian machine). The steps below mirror `Runpod_Instruction.ipynb` exactly and take you from a fresh pod to a browser-accessible scoring service.
+
+### A. Run the web pipeline on a fresh Linux/RunPod host
+
+Run each block in a shell on the host (RunPod web terminal, SSH, or local Linux). Pick a pod template that exposes HTTP port `8000`.
+
+**Step 1 — Install OS packages**
+
+```bash
+sed -i 's|http://archive.ubuntu.com/ubuntu|https://mirrors.aliyun.com/ubuntu|g' /etc/apt/sources.list.d/ubuntu.sources
+apt-get update && apt-get install -y git python3 python3-venv python3-pip curl
+```
+
+(The `sed` line swaps to a faster apt mirror; remove it if you are outside mainland China or on a non-Ubuntu base image.)
+
+**Step 2 — Install Ollama and pull the model**
+
+```bash
+curl -fsSL https://ollama.com/install.sh | sh
+ollama serve &
+sleep 3
+ollama pull qwen3.5:27b
+```
+
+`ollama serve &` starts the model server in the background. The pull is ~17 GB and takes a few minutes on a fast network. Switch the model tag if you want a smaller footprint (e.g. `qwen3:4b`).
+
+**Step 3 — Clone the project**
+
+```bash
+git clone https://github.com/ZLF329/nlp_grant_coursework.git
+cd nlp_grant_coursework
+```
+
+**Step 4 — Launch the web server**
+
+```bash
+chmod +x start.sh
+PORT=8000 ./start.sh
+```
+
+`start.sh` creates a virtual environment, installs Python dependencies, downloads the spaCy `en_core_web_sm` model and NLTK `punkt` data, then starts the Flask server on port 8000.
+
+**Step 5 — Open the UI**
+
+- Locally: navigate to `http://localhost:8000`.
+- On RunPod: in the pod's **Connect** panel, pick the HTTP service exposed on port 8000 to get a public proxy URL such as `https://<pod-id>-8000.proxy.runpod.net`.
+
+Upload a PDF, watch the progress bar through the three pipeline stages, and view the scored result.
+
+**`start.sh` configurable environment variables**
+
+| Variable      | Default                       | Purpose                                       |
+|---------------|-------------------------------|-----------------------------------------------|
+| `PORT`        | `8000`                        | HTTP port for the Flask server                |
+| `PYTHON`      | `python3`                     | Python interpreter used to create the venv    |
+| `VENV_DIR`    | `.venv`                       | Path of the virtual environment               |
+| `OLLAMA_HOST` | `http://127.0.0.1:11434`      | URL of the Ollama service (read by the app)   |
+| `OLLAMA_MODEL`| `qwen3.5:27b`                 | Model name passed to Ollama                   |
+
+The script is idempotent: subsequent runs reuse the venv and skip dependency installation (a `.deps_installed` marker is written inside the venv).
+
+---
+
+### B. Optional — direct CLI usage of the parser and scorer
+
+If you want to call the underlying components without the web server (e.g. for batch processing or experiments), they are exposed as plain Python modules.
+
+**Parse a PDF**
 
 ```bash
 python -m src.all_type_parser.all_type_parser path/to/application.pdf
 ```
 
-The parser automatically detects the document type where possible and writes a structured JSON file under a `json_data/` directory next to the input PDF.
+The parser auto-detects the document type where possible and writes a structured JSON file under a `json_data/` directory next to the input PDF.
 
-### 2. Score an application
+**Score a parsed application**
 
-The scoring step requires a running Ollama server with the selected model available locally.
+Requires a running Ollama server with the selected model available locally.
 
 ```bash
-OLLAMA_MODEL=qwen3.5:35b python qwen3_ollama.py \
+OLLAMA_MODEL=qwen3.5:27b python qwen3_ollama.py \
   data/successful/json_data/IC00029_RfPB.json \
   --criteria criteria_points.json \
   --out data/successful/json_data/IC00029_RfPB_scored.json
 ```
 
-### 3. Run experiments
+**Run experiments**
 
 Use `score_experiments.ipynb` for scoring experiments, including:
 
@@ -261,122 +328,207 @@ Use `score_experiments.ipynb` for scoring experiments, including:
 - A/B group comparisons between application sets
 - score distribution and hypothesis-test exploration
 
-### 4. Launch the web server with `start.sh`
+---
 
-`start.sh` is a one-shot launcher for the Flask web pipeline. It creates a virtual environment, installs Python dependencies, downloads the spaCy model and NLTK data, and starts the server.
+## macOS — Native Ollama (recommended on Mac, much faster than Docker)
 
-**Prerequisites:**
-- Python 3.10+ available as `python3`
-- A running Ollama instance reachable at `OLLAMA_HOST` (default `http://127.0.0.1:11434`) with the target model already pulled (`ollama pull <model>`)
+> **Why not Docker on Mac?** Docker Desktop on macOS runs containers inside a Linux VM, which **cannot access the Mac's Metal GPU**. LLM inference is forced onto CPU and ends up 5–10× slower than the native Ollama app. On Apple Silicon a single PDF can take 30–60 minutes through Docker; through native Ollama it typically finishes in 2–10 minutes (depending on model size).
 
-**Run:**
+Use this path when running on a MacBook (Intel or Apple Silicon). The web server still runs locally as a Python process — only Ollama is moved out of the container.
+
+### Step 1 — Install native Ollama
+
+Either route works:
 
 ```bash
+# Homebrew
+brew install ollama
+
+# or download the .dmg from https://ollama.com/download and drag to Applications
+```
+
+### Step 2 — Start Ollama and pull the model
+
+```bash
+ollama serve &
+ollama pull qwen3.5:27b      # paper configuration, ~17 GB
+# or, for faster local testing:
+ollama pull qwen3:4b         # ~2.6 GB
+```
+
+You can verify the model is loaded with:
+
+```bash
+ollama list
+curl http://localhost:11434/api/tags
+```
+
+### Step 3 — Install OS-level dependencies for the parser
+
+The parser uses `pdf2image` (poppler) and `pytesseract` (tesseract):
+
+```bash
+brew install poppler tesseract
+```
+
+### Step 4 — Launch the web server
+
+```bash
+cd /path/to/nlp_grant_coursework
 chmod +x start.sh
-./start.sh
+./start.sh                                  # uses qwen3.5:27b by default
+# or pick a different model:
+OLLAMA_MODEL=qwen3:4b ./start.sh
 ```
 
-Then open `http://localhost:8000` in a browser, upload a PDF, and view the scored result.
+`start.sh` creates a virtualenv on first run, installs dependencies, then serves at `http://localhost:8000`.
 
-**Configurable environment variables:**
+### Step 5 — Use it
 
-| Variable     | Default                       | Purpose                                       |
-|--------------|-------------------------------|-----------------------------------------------|
-| `PORT`       | `8000`                        | HTTP port for the Flask server                |
-| `PYTHON`     | `python3`                     | Python interpreter used to create the venv    |
-| `VENV_DIR`   | `.venv`                       | Path of the virtual environment               |
-| `OLLAMA_HOST`| `http://127.0.0.1:11434`      | URL of the Ollama service (read by the app)   |
-| `OLLAMA_MODEL`| `qwen3.5:27b`                | Model name passed to Ollama                   |
+Open `http://localhost:8000` in a browser, upload a PDF, and watch the three pipeline stages complete. Inference runs on Metal GPU automatically — no flags needed.
 
-**Examples:**
+### Stopping
 
-```bash
-# Run on a different port
-PORT=8080 ./start.sh
-
-# Point at a remote Ollama host
-OLLAMA_HOST=http://10.0.0.5:11434 OLLAMA_MODEL=qwen2.5:7b ./start.sh
-```
-
-The script is idempotent: on subsequent runs it skips dependency installation (a `.deps_installed` marker is written inside the venv) and reuses the existing virtual environment.
+- Web server: `Ctrl+C` in its terminal
+- Ollama background process: `pkill ollama` (or close the menu-bar Ollama app if installed via .dmg)
 
 ---
 
 ## Docker Deployment (All-in-One)
 
-For a self-contained deployment that bundles the Flask web server, all Python dependencies, the Ollama runtime, and the LLM weights into a single image.
+> **Note for macOS users:** prefer the **macOS — Native Ollama** section above. Docker on Mac forces CPU-only inference, which is several times slower than native Ollama on the same hardware. Use Docker on Mac only to verify the image builds correctly before delivering it to a Linux/GPU host.
+
+The image bundles the Flask web server, all Python dependencies, the Ollama runtime, and the LLM weights, so a single `docker run` is enough to start the full pipeline.
 
 ### Files
 
-- `Dockerfile` — builds the image
-- `docker-entrypoint.sh` — starts Ollama in the background, waits for it, then launches the web server
+- `Dockerfile` — image definition
+- `docker-entrypoint.sh` — starts Ollama in the background, waits for it, pulls the model on first start if needed, then launches the web server
 - `.dockerignore` — keeps notebooks, datasets, and dev artefacts out of the image
 
-### Build
+### Build arguments
 
-Default build pre-pulls the model into the image (the resulting image is ~20 GB and fully offline-capable):
+| Build arg     | Default        | Purpose                                                      |
+|---------------|----------------|--------------------------------------------------------------|
+| `OLLAMA_MODEL`| `qwen3.5:27b`  | Ollama model tag baked into the image and used at runtime    |
+| `BAKE_MODEL`  | `1`            | If `1`, pre-download the model during build (offline-ready). If `0`, pull on first container start instead. |
+
+---
+
+### Path A — Production image with `qwen3.5:27b` (paper configuration)
+
+This is the configuration used in the paper and the recommended build to deliver to the marker. The image is fully self-contained (no network needed at runtime) but is large.
+
+**Requirements**
+- Disk: ~25 GB during build, final image ~20 GB
+- Network: must reach `ollama.com` (model download) and Docker Hub during build
+- For inference: a GPU host is strongly recommended; CPU-only is far too slow for `27b`
+
+**Build**
 
 ```bash
 docker build -t grant-ai .
 ```
 
-To skip pre-pulling and let the model download on first container start instead (smaller image, requires network at first run):
+(Default args, equivalent to `--build-arg OLLAMA_MODEL=qwen3.5:27b --build-arg BAKE_MODEL=1`. Expect 30–60 min depending on network.)
 
-```bash
-docker build -t grant-ai --build-arg BAKE_MODEL=0 .
-```
-
-To bake a different model into the image:
-
-```bash
-docker build -t grant-ai \
-  --build-arg OLLAMA_MODEL=qwen2.5:7b \
-  --build-arg BAKE_MODEL=1 .
-```
-
-### Run
+**Run (CPU)**
 
 ```bash
 docker run --rm -p 8000:8000 grant-ai
 ```
 
-Then open `http://localhost:8000` in a browser.
-
-### Persist uploads and results across container restarts
-
-```bash
-docker run --rm -p 8000:8000 \
-  -v "$(pwd)/data:/app/data" \
-  grant-ai
-```
-
-### Override the model at runtime
-
-```bash
-docker run --rm -p 8000:8000 \
-  -e OLLAMA_MODEL=qwen2.5:7b \
-  grant-ai
-```
-
-If the requested model is not already inside the image, the entrypoint will pull it on first start.
-
-### GPU acceleration (optional)
-
-The default image is CPU-only. To use an NVIDIA GPU, install the NVIDIA Container Toolkit on the host and run:
+**Run (NVIDIA GPU)**
 
 ```bash
 docker run --rm --gpus all -p 8000:8000 grant-ai
 ```
 
-For maximum throughput, rebuild from a CUDA base image (e.g. `nvidia/cuda:12.4.0-runtime-ubuntu22.04`) instead of `python:3.11-slim`.
+Requires the NVIDIA Container Toolkit on the host. For maximum throughput, rebuild from a CUDA base image (e.g. `nvidia/cuda:12.4.0-runtime-ubuntu22.04`) instead of `python:3.11-slim`.
 
-### Distribute the image as a single file
+**Persist uploads and results across restarts**
 
 ```bash
+docker run --rm -p 8000:8000 -v "$(pwd)/data:/app/data" grant-ai
+```
+
+**Distribute the image as a single offline file**
+
+```bash
+# on the build host
 docker save grant-ai | gzip > grant-ai.tar.gz
-# on the target machine:
+# on the target machine
 gunzip -c grant-ai.tar.gz | docker load
 docker run --rm -p 8000:8000 grant-ai
+```
+
+Open `http://localhost:8000` after the container reports `Grant AI pipeline listening on http://0.0.0.0:8000`.
+
+---
+
+### Path B — Lightweight Mac local test with `qwen3:4b`
+
+Use this to verify the Docker pipeline end-to-end on a laptop (especially Apple Silicon, where the `27b` model is too slow for interactive testing).
+
+> Note: there is no `qwen3.5:4b` in the Ollama registry. The 4-billion-parameter option in the Qwen3 family is `qwen3:4b` (~2.6 GB).
+
+**Requirements**
+- Disk: ~10 GB during build, final image ~8 GB
+- Docker Desktop running
+- Network access during build
+
+**Build**
+
+```bash
+docker build -t grant-ai-test --build-arg OLLAMA_MODEL=qwen3:4b .
+```
+
+(Takes roughly 5–15 min; most of the time is `pip install` and the 2.6 GB model pull. The pip layer is cached on rebuilds.)
+
+**Run**
+
+```bash
+docker run --rm -p 8000:8000 grant-ai-test
+```
+
+Then open `http://localhost:8000`.
+
+**Override the model at runtime (optional)**
+
+```bash
+docker run --rm -p 8000:8000 -e OLLAMA_MODEL=qwen3:8b grant-ai-test
+```
+
+If the requested model is not already inside the image, the entrypoint pulls it on first start (requires network).
+
+---
+
+### Common operations
+
+**Stop a running container**
+
+```bash
+docker stop grant-ai            # by name (only if you used --name)
+# or find it:
+docker ps                       # list running containers
+docker stop <container_id>
+```
+
+If you started the container with `--rm` and **without** `-d`, it runs in the foreground — just press `Ctrl+C` to stop it.
+
+**Remove the image**
+
+```bash
+docker rmi grant-ai-test
+```
+
+**Inspect the container interactively (for debugging)**
+
+```bash
+docker run --rm -it grant-ai-test bash
+# inside:
+ollama list      # confirm the baked model is present
+ls /app          # confirm project files
 ```
 
 ---

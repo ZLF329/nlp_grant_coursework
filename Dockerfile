@@ -1,16 +1,19 @@
 FROM python:3.11-slim
 
+ARG OLLAMA_MODEL=qwen3.5:27b
+ARG BAKE_MODEL=1
+
 ENV DEBIAN_FRONTEND=noninteractive \
     PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
     PIP_NO_CACHE_DIR=1 \
     PORT=8000 \
     OLLAMA_HOST=http://127.0.0.1:11434 \
-    OLLAMA_MODEL=qwen3.5:27b
+    OLLAMA_MODEL=${OLLAMA_MODEL}
 
 # System deps: poppler (pdf2image), tesseract (pytesseract), curl (ollama installer)
 RUN apt-get update && apt-get install -y --no-install-recommends \
-        curl ca-certificates \
+        curl ca-certificates zstd \
         poppler-utils tesseract-ocr \
         build-essential \
     && rm -rf /var/lib/apt/lists/*
@@ -32,7 +35,6 @@ COPY . .
 
 # Pre-pull the LLM weights into the image so the container is fully self-contained.
 # Set BAKE_MODEL=0 at build time to skip and pull on first container start instead.
-ARG BAKE_MODEL=1
 RUN if [ "$BAKE_MODEL" = "1" ]; then \
         ollama serve & \
         SERVE_PID=$!; \
