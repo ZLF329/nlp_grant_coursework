@@ -1,0 +1,288 @@
+[
+  {
+    "section_name": "Raw Content",
+    "findings": [
+      {
+        "sub_id": "g.1",
+        "good_evidence_ids": [
+          "secrc__001_g",
+          "secrc__001_h"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Applicant articulates a clear vision to become a Professor of Primary Care using interdisciplinary qualitative methods, with a defined trajectory from PhD to post-doctoral funding."
+      },
+      {
+        "sub_id": "g.2",
+        "good_evidence_ids": [
+          "secrc__001_g",
+          "secrc__001_h"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: The fellowship is positioned as the critical step to develop complex qualitative skills and build a portfolio on medical overuse, enabling future leadership and post-doctoral funding."
+      },
+      {
+        "sub_id": "g.3",
+        "good_evidence_ids": [
+          "secrc__001_a",
+          "secrc__001_c",
+          "secrc__001_d"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Strong alignment shown with prior ethnographic work on stigma, MPhil in medical philosophy/sociology, and specific experience in overdiagnosis research and systematic reviews."
+      },
+      {
+        "sub_id": "g.4",
+        "good_evidence_ids": [
+          "secrc__001_b",
+          "secrc__001_d",
+          "secrc__001_e"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Extensive outputs listed including first-author papers in high-impact journals (Sociology of Health and Illness, PLOS Medicine), conference presentations, and awards (Sydney Selwyn prize, 1st prize at BSOG)."
+      },
+      {
+        "sub_id": "g.5",
+        "good_evidence_ids": [
+          "secrc__001_b",
+          "secrc__001_f",
+          "secrc__001_g"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Evidence of leadership includes leading research strands, chairing lecture committees, directing student policy groups, and explicit ambition to become a research leader and Professor."
+      },
+      {
+        "sub_id": "g.6",
+        "good_evidence_ids": [
+          "secrc__001_a",
+          "secrc__001_f"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Applicant is an Academic Clinical Fellow (practitioner) with experience in clinical audits and teaching, demonstrating a clear commitment to a practitioner-academic career."
+      },
+      {
+        "sub_id": "pr.1",
+        "good_evidence_ids": [
+          "secrc__001_h",
+          "secrc__001_i",
+          "secrc__001_j"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Plain English summary clearly outlines the problem (blood test overuse), aims, methods (observation, theatre), and impact in accessible language suitable for non-specialists."
+      },
+      {
+        "sub_id": "pr.2",
+        "good_evidence_ids": [
+          "secrc__001_p",
+          "secrc__001_q",
+          "secrc__001_w"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Detailed evidence review identifies specific knowledge gaps regarding communication in blood testing, citing relevant literature and highlighting the lack of naturalistic data."
+      },
+      {
+        "sub_id": "pr.3",
+        "good_evidence_ids": [
+          "secrc__001_n",
+          "secrc__001_o"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Scope is appropriate for a 3-year PhD with clear work packages, timelines, and deliverables including a meta-ethnography, ethnography, and co-produced resources."
+      },
+      {
+        "sub_id": "pr.4",
+        "good_evidence_ids": [
+          "secrc__001_y",
+          "secrc__001_|",
+          "secrc__001_"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Rigorous design described with specific methods (meta-ethnography, linguistic ethnography, VRE, Forum Theatre) and detailed data collection/analysis plans."
+      },
+      {
+        "sub_id": "pr.5",
+        "good_evidence_ids": [
+          "secrc__001_s",
+          "secrc__001_",
+          "secrc__001_"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Clear impact pathways identified for patients (better understanding), staff (confidence), and NHS (cost savings, reduced workload) through improved communication."
+      },
+      {
+        "sub_id": "pr.6",
+        "good_evidence_ids": [
+          "secrc__001_j",
+          "secrc__001_k",
+          "secrc__001_"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Strong PPI integration with a panel involved in design, analysis, and dissemination, plus co-production of resources via Forum Theatre with public contributors."
+      },
+      {
+        "sub_id": "pr.9",
+        "good_evidence_ids": [
+          "secrc__001_~",
+          "secrc__001_"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Inclusive design evident through recruitment of diverse GP practices (inner-city/suburban) and PPI participants from varied ethnic backgrounds and abilities."
+      },
+      {
+        "sub_id": "td.1",
+        "good_evidence_ids": [
+          "secrc__001_",
+          "secrc__001_",
+          "secrc__001_"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Comprehensive training plan with specific courses aligned to project methods (meta-ethnography, linguistic ethnography, Forum Theatre) and dissemination skills."
+      },
+      {
+        "sub_id": "td.2",
+        "good_evidence_ids": [
+          "secrc__001_",
+          "secrc__001_"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Training addresses specific skill gaps (e.g., advanced qualitative synthesis, applied theatre) directly required for the proposed work packages."
+      },
+      {
+        "sub_id": "td.3",
+        "good_evidence_ids": [
+          "secrc__001_",
+          "secrc__001_"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Training supports career aspirations through leadership courses, knowledge translation modules, and research visits to build networks for future independent research."
+      },
+      {
+        "sub_id": "ss.1",
+        "good_evidence_ids": [
+          "secrc__001_",
+          "secrc__001_¡",
+          "secrc__001_£"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Strong institutional track record with supervisors having extensive publications, funding success, and leadership in relevant fields (overdiagnosis, primary care ethnography)."
+      },
+      {
+        "sub_id": "ss.2",
+        "good_evidence_ids": [
+          "secrc__001_",
+          "secrc__001_¡",
+          "secrc__001_£"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Robust supervision framework with fortnightly/monthly meetings, clear division of expertise (methods, clinical context, VRE), and a Project Advisory Group."
+      },
+      {
+        "sub_id": "ss.3",
+        "good_evidence_ids": [
+          "secrc__001_",
+          "secrc__001_"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: QMUL provides strong support via the APOLLO team, doctoral college, and research networks, aligning with the applicant's career trajectory in primary care research."
+      },
+      {
+        "sub_id": "wp.1",
+        "good_evidence_ids": [
+          "secrc__001_",
+          "secrc__001_"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Lived experience deeply integrated; PPI workshops shaped research questions, methods (e.g., excluding GPs from play development), and dissemination strategies."
+      },
+      {
+        "sub_id": "wp.3",
+        "good_evidence_ids": [
+          "secrc__001_",
+          "secrc__001_"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Maximizing benefit through co-produced resources (workshop, online tool), public events, and dissemination via social media, podcasts, and conferences."
+      },
+      {
+        "sub_id": "wp.4",
+        "good_evidence_ids": [
+          "secrc__001_",
+          "secrc__001_"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Diverse representation in PPI (ethnicity, age, disability) and recruitment strategies targeting underserved communities via local charity partnerships."
+      },
+      {
+        "sub_id": "wp.5",
+        "good_evidence_ids": [
+          "secrc__001_",
+          "secrc__001_"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Inclusivity maintained across lifecycle from design (PPI workshops) to analysis (PPI panel involvement) and dissemination (public events, accessible resources)."
+      },
+      {
+        "sub_id": "wp.6",
+        "good_evidence_ids": [
+          "secrc__001_",
+          "secrc__001_"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Resourced inclusion plan with explicit budget for PPI payments, travel, childcare, training, and conference attendance for public contributors."
+      }
+    ],
+    "resolved_signals": [
+      "g.1",
+      "g.2",
+      "g.3",
+      "g.4",
+      "g.5",
+      "g.6",
+      "pr.1",
+      "pr.2",
+      "pr.3",
+      "pr.4",
+      "pr.5",
+      "pr.6",
+      "pr.9",
+      "td.1",
+      "td.2",
+      "td.3",
+      "ss.1",
+      "ss.2",
+      "ss.3",
+      "wp.1",
+      "wp.3",
+      "wp.4",
+      "wp.5",
+      "wp.6"
+    ],
+    "missing_signals_after": [
+      "pr.7",
+      "pr.8",
+      "ss.4",
+      "wp.2"
+    ]
+  },
+  {
+    "section_name": "Application Context",
+    "findings": [],
+    "resolved_signals": [],
+    "missing_signals_after": [
+      "pr.7",
+      "pr.8",
+      "ss.4",
+      "wp.2"
+    ]
+  },
+  {
+    "section_name": "Application Form Analysis",
+    "findings": [],
+    "resolved_signals": [],
+    "missing_signals_after": [
+      "pr.7",
+      "pr.8",
+      "ss.4",
+      "wp.2"
+    ]
+  }
+]

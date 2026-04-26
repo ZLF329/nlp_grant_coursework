@@ -1,0 +1,816 @@
+[
+  {
+    "section_name": "Applicant CV",
+    "findings": [
+      {
+        "sub_id": "g.3",
+        "good_evidence_ids": [
+          "secac__001_a",
+          "secac__001_b",
+          "secac__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Applicant CV: Lists MSc in Health Research Methods, qualitative study on mask-wearing, and feasibility study on telehealth, demonstrating relevant research experience and training."
+      },
+      {
+        "sub_id": "g.4",
+        "good_evidence_ids": [
+          "secac__001_b",
+          "secac__001_c",
+          "secac__001_d"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Applicant CV: Details two peer-reviewed publications, conference presentations, and multiple grants/awards, indicating impactful research outputs."
+      },
+      {
+        "sub_id": "g.5",
+        "good_evidence_ids": [
+          "secac__001_b",
+          "secac__001_d",
+          "secac__001_e"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Applicant CV: Shows progression to Research Assistant, PI role on a bursary, and leadership training (Future Leaders Programme), supporting trajectory towards research leadership."
+      },
+      {
+        "sub_id": "g.6",
+        "good_evidence_ids": [
+          "secac__001_a",
+          "secac__001_c",
+          "secac__001_e"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Applicant CV: Combines clinical roles (Speech and Language Therapist) with research grants and publications on clinical topics, demonstrating a practitioner-academic career."
+      },
+      {
+        "sub_id": "pr.8",
+        "good_evidence_ids": [
+          "secac__001_b",
+          "secac__001_c",
+          "secac__001_d"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Applicant CV: Provides evidence of prior successful projects (feasibility study, qualitative research) and relevant publications, supporting quality of previous research."
+      },
+      {
+        "sub_id": "wp.1",
+        "good_evidence_ids": [
+          "secac__001_b"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Applicant CV: Describes engaging with people living with Parkinson's and using consensus methods to identify research priorities, indicating integration of lived experience."
+      }
+    ],
+    "resolved_signals": [
+      "g.3",
+      "g.4",
+      "g.5",
+      "g.6",
+      "pr.8",
+      "wp.1"
+    ],
+    "missing_signals_after": [
+      "g.1",
+      "g.2",
+      "pr.1",
+      "pr.2",
+      "pr.3",
+      "pr.4",
+      "pr.5",
+      "pr.6",
+      "pr.7",
+      "pr.9",
+      "td.1",
+      "td.2",
+      "td.3",
+      "ss.1",
+      "ss.2",
+      "ss.3",
+      "ss.4",
+      "wp.2",
+      "wp.3",
+      "wp.4",
+      "wp.5",
+      "wp.6"
+    ]
+  },
+  {
+    "section_name": "Applicant Research Background",
+    "findings": [
+      {
+        "sub_id": "g.1",
+        "good_evidence_ids": [
+          "secarb__001_f",
+          "secarb__001_g"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Applicant Research Background: Clearly articulates a career trajectory from clinical SLT to independent practitioner-academic, with specific goals to lead a specialist centre and conduct full-scale trials."
+      },
+      {
+        "sub_id": "g.2",
+        "good_evidence_ids": [
+          "secarb__001_f",
+          "secarb__001_g"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Applicant Research Background: Explains the award is the right next step to gain mixed-methods and clinical trials skills necessary for a future full-scale trial and independence."
+      },
+      {
+        "sub_id": "g.3",
+        "good_evidence_ids": [
+          "secarb__001_b",
+          "secarb__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Applicant Research Background: Details specific prior projects (mask-wearing study, BCP-Telehealth feasibility) and methods (qualitative, feasibility study design), confirming relevant experience."
+      },
+      {
+        "sub_id": "g.4",
+        "good_evidence_ids": [
+          "secarb__001_b",
+          "secarb__001_d",
+          "secarb__001_e"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Applicant Research Background: Lists peer-reviewed publications (JMIR, Research for All), conference presentations, and a research training award, demonstrating impactful outputs."
+      },
+      {
+        "sub_id": "g.5",
+        "good_evidence_ids": [
+          "secarb__001_c",
+          "secarb__001_e"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Applicant Research Background: Shows increasing responsibility as sole Research Assistant, leading project design/evaluation, and completing a Leadership Programme."
+      },
+      {
+        "sub_id": "g.6",
+        "good_evidence_ids": [
+          "secarb__001_a",
+          "secarb__001_c",
+          "secarb__001_f"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Applicant Research Background: Explicitly states long-term aim to become a leading practitioner-academic, combining 8 years clinical SLT experience with research leadership."
+      },
+      {
+        "sub_id": "pr.8",
+        "good_evidence_ids": [
+          "secarb__001_b",
+          "secarb__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Applicant Research Background: Demonstrates quality of previous research through successful completion of a feasibility study and publication of a protocol in JMIR."
+      },
+      {
+        "sub_id": "wp.1",
+        "good_evidence_ids": [
+          "secarb__001_c",
+          "secarb__001_d"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Applicant Research Background: Describes co-producing the therapy programme and co-deciding research priorities with people living with Parkinson's, showing deep integration of lived experience."
+      }
+    ],
+    "resolved_signals": [
+      "g.1",
+      "g.2",
+      "g.3",
+      "g.4",
+      "g.5",
+      "g.6",
+      "pr.8",
+      "wp.1"
+    ],
+    "missing_signals_after": [
+      "pr.1",
+      "pr.2",
+      "pr.3",
+      "pr.4",
+      "pr.5",
+      "pr.6",
+      "pr.7",
+      "pr.9",
+      "td.1",
+      "td.2",
+      "td.3",
+      "ss.1",
+      "ss.2",
+      "ss.3",
+      "ss.4",
+      "wp.2",
+      "wp.3",
+      "wp.4",
+      "wp.5",
+      "wp.6"
+    ]
+  },
+  {
+    "section_name": "Plain English Summary of Research",
+    "findings": [
+      {
+        "sub_id": "pr.1",
+        "good_evidence_ids": [
+          "secpesor__001_a",
+          "secpesor__001_c",
+          "secpesor__001_d"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Clearly articulates the problem (communication challenges in Parkinson's), objectives (develop BCP), methods (three work packages including a trial), beneficiaries (plwP, carers, NHS), "
+      },
+      {
+        "sub_id": "pr.2",
+        "good_evidence_ids": [
+          "secpesor__001_a"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Identifies a specific knowledge gap regarding limited research on non-speech communication difficulties in Parkinson's, justifying the need for the proposed study."
+      },
+      {
+        "sub_id": "pr.3",
+        "good_evidence_ids": [
+          "secpesor__001_b",
+          "secpesor__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Outlines a feasible scope for a PhD with three distinct work packages (literature review, co-production, trial) and specific sample sizes (40 participants), aligning well with award exp"
+      },
+      {
+        "sub_id": "pr.4",
+        "good_evidence_ids": [
+          "secpesor__001_b",
+          "secpesor__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Describes a rigorous mixed-methods design including a randomized trial with control groups (standard therapy), specific outcome measures, and multiple data sources (questionnaires, vide"
+      },
+      {
+        "sub_id": "pr.5",
+        "good_evidence_ids": [
+          "secpesor__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Explicitly states expected outcomes including improved confidence, quality of life, reduced carer burden, and potential NHS cost savings, demonstrating clear societal and health service"
+      },
+      {
+        "sub_id": "pr.6",
+        "good_evidence_ids": [
+          "secpesor__001_b",
+          "secpesor__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Details extensive engagement through a PPI group and co-production activities where patient views are treated equally, involving them in setting priorities, modifying therapy, and selec"
+      },
+      {
+        "sub_id": "pr.9",
+        "good_evidence_ids": [
+          "secpesor__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Indicates an inclusive design by planning to update the therapy for people with a 'range of difficulties' and recruiting from four NHS sites, suggesting broad accessibility."
+      },
+      {
+        "sub_id": "wp.3",
+        "good_evidence_ids": [
+          "secpesor__001_c",
+          "secpesor__001_d"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Describes a robust dissemination plan including presentations to patient groups, a website, blog, publications, and free sharing of the therapy, maximizing public and patient benefit."
+      }
+    ],
+    "resolved_signals": [
+      "pr.1",
+      "pr.2",
+      "pr.3",
+      "pr.4",
+      "pr.5",
+      "pr.6",
+      "pr.9",
+      "wp.3"
+    ],
+    "missing_signals_after": [
+      "pr.7",
+      "td.1",
+      "td.2",
+      "td.3",
+      "ss.1",
+      "ss.2",
+      "ss.3",
+      "ss.4",
+      "wp.2",
+      "wp.4",
+      "wp.5",
+      "wp.6"
+    ]
+  },
+  {
+    "section_name": "Scientific Abstract",
+    "findings": [
+      {
+        "sub_id": "pr.1",
+        "good_evidence_ids": [
+          "secsa__001_a",
+          "secsa__001_b",
+          "secsa__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Clearly articulates the problem (communication difficulties in Parkinson's), objectives (refine BCP, establish feasibility), methods (scoping review, co-production, RCT), and beneficiaries (plwP, par"
+      },
+      {
+        "sub_id": "pr.3",
+        "good_evidence_ids": [
+          "secsa__001_b",
+          "secsa__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Outlines a feasible scope with three work packages over 4 years, specific sample size (40 pairs), and multi-centre delivery, aligning with award expectations for a feasibility study."
+      },
+      {
+        "sub_id": "pr.4",
+        "good_evidence_ids": [
+          "secsa__001_b",
+          "secsa__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Describes rigorous methods including scoping review, consensus methods, co-production, and a randomised controlled trial with descriptive statistics and thematic analysis, supporting pr.4."
+      },
+      {
+        "sub_id": "pr.5",
+        "good_evidence_ids": [
+          "secsa__001_a",
+          "secsa__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Highlights potential impact on quality of life, confidence, relationships, carer burden, and NHS costs, demonstrating clear patient and health service benefits."
+      },
+      {
+        "sub_id": "pr.6",
+        "good_evidence_ids": [
+          "secsa__001_a",
+          "secsa__001_b"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Details extensive PPI involvement in setting priorities, co-producing the intervention, and selecting outcome measures, showing deep engagement with people and communities."
+      },
+      {
+        "sub_id": "pr.9",
+        "good_evidence_ids": [
+          "secsa__001_a",
+          "secsa__001_b"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Explicitly aims to adapt the intervention for a range of impairments including cognitive change and purposively recruit under-served groups, supporting inclusive research design."
+      },
+      {
+        "sub_id": "wp.1",
+        "good_evidence_ids": [
+          "secsa__001_a",
+          "secsa__001_b"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Describes PPI group members identifying research priorities and co-producing the refined intervention, demonstrating integration of lived experience in design."
+      },
+      {
+        "sub_id": "wp.3",
+        "good_evidence_ids": [
+          "secsa__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Outlines dissemination via conferences, publications, social media, and a website with free resources, maximizing public and patient benefit."
+      }
+    ],
+    "resolved_signals": [
+      "pr.1",
+      "pr.3",
+      "pr.4",
+      "pr.5",
+      "pr.6",
+      "pr.9",
+      "wp.1",
+      "wp.3"
+    ],
+    "missing_signals_after": [
+      "pr.7",
+      "td.1",
+      "td.2",
+      "td.3",
+      "ss.1",
+      "ss.2",
+      "ss.3",
+      "ss.4",
+      "wp.2",
+      "wp.4",
+      "wp.5",
+      "wp.6"
+    ]
+  },
+  {
+    "section_name": "Detailed Research Plan",
+    "findings": [
+      {
+        "sub_id": "pr.2",
+        "good_evidence_ids": [
+          "secdrp__001_a",
+          "secdrp__001_f",
+          "secdrp__001_g"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Critically reviews existing evidence (LSVT limitations, lack of cognitive focus) and identifies specific gaps in standard provision for advanced Parkinson's, strongly supporting pr.2."
+      },
+      {
+        "sub_id": "pr.3",
+        "good_evidence_ids": [
+          "secdrp__001_k",
+          "secdrp__001_l",
+          "secdrp__001_s"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Defines a feasible scope with three work packages, a specific sample size of 40 over 18 months, and multi-centre delivery, aligning well with award expectations for a feasibility study."
+      },
+      {
+        "sub_id": "pr.4",
+        "good_evidence_ids": [
+          "secdrp__001_j",
+          "secdrp__001_r",
+          "secdrp__001_t"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Describes rigorous methods including a randomised feasibility study with control groups, covariate adaptive randomisation, specific outcome measures, and mixed-methods analysis."
+      },
+      {
+        "sub_id": "pr.5",
+        "good_evidence_ids": [
+          "secdrp__001_c",
+          "secdrp__001_e",
+          "secdrp__001_w"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Explicitly outlines impacts on quality of life, carer burden, and NHS cost savings (£700/person/year), demonstrating clear patient and health service benefits."
+      },
+      {
+        "sub_id": "pr.6",
+        "good_evidence_ids": [
+          "secdrp__001_d",
+          "secdrp__001_n",
+          "secdrp__001_o"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Details extensive co-production with plwP, families, and SLTs across all work packages, including a paid facilitator and consensus methods, showing deep engagement."
+      },
+      {
+        "sub_id": "pr.9",
+        "good_evidence_ids": [
+          "secdrp__001_e",
+          "secdrp__001_q",
+          "secdrp__001_|"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Explicitly targets under-served groups (ethnic minorities, cognitive impairment) with purposive sampling, specific recruitment strategies (Hema's café, Jewish Care), and inclusion targets."
+      },
+      {
+        "sub_id": "wp.1",
+        "good_evidence_ids": [
+          "secdrp__001_k",
+          "secdrp__001_o",
+          "secdrp__001_p"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Describes co-deciding research priorities and co-producing the intervention with PPI members, directly integrating lived experience into the study design."
+      },
+      {
+        "sub_id": "wp.3",
+        "good_evidence_ids": [
+          "secdrp__001_v",
+          "secdrp__001_w"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Outlines a comprehensive dissemination plan including free resources, presentations to patient groups, and publications, maximizing public and patient benefit."
+      },
+      {
+        "sub_id": "wp.4",
+        "good_evidence_ids": [
+          "secdrp__001_e",
+          "secdrp__001_q",
+          "secdrp__001_|"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Explicitly mentions recruiting from Jewish and Asian communities and targeting those with cognitive impairments, demonstrating representation of seldom-heard groups."
+      },
+      {
+        "sub_id": "wp.5",
+        "good_evidence_ids": [
+          "secdrp__001_n",
+          "secdrp__001_p",
+          "secdrp__001_r"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Ensures inclusivity across the lifecycle via flexible co-production methods, broad inclusion criteria for cognitive difficulties, and accessible information forms."
+      },
+      {
+        "sub_id": "wp.6",
+        "good_evidence_ids": [
+          "secdrp__001_p",
+          "secdrp__001_|"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Mentions paying a person with Parkinson's as a co-production facilitator and using specific resources for recruitment, indicating resourced inclusion activities."
+      },
+      {
+        "sub_id": "ss.2",
+        "good_evidence_ids": [
+          "secdrp__001_x",
+          "secdrp__001_y"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Describes a structured supervision framework with meetings every 2-4 weeks, a thesis committee, and mentorship from experts in diversity and trials."
+      },
+      {
+        "sub_id": "ss.3",
+        "good_evidence_ids": [
+          "secdrp__001_y",
+          "secdrp__001_{",
+          "secdrp__001_}"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Highlights UCL's established track record in grant management, secure data storage (Data Safe Haven), and access to expert mentors, supporting organisational appropriateness."
+      },
+      {
+        "sub_id": "ss.4",
+        "good_evidence_ids": [
+          "secdrp__001_e",
+          "secdrp__001_q",
+          "secdrp__001_|"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Demonstrates commitment to inclusive culture through purposive recruitment of minority groups, use of EDI toolkits, and mentorship from diversity experts."
+      }
+    ],
+    "resolved_signals": [
+      "pr.2",
+      "pr.3",
+      "pr.4",
+      "pr.5",
+      "pr.6",
+      "pr.9",
+      "wp.1",
+      "wp.3",
+      "wp.4",
+      "wp.5",
+      "wp.6",
+      "ss.2",
+      "ss.3",
+      "ss.4"
+    ],
+    "missing_signals_after": [
+      "pr.7",
+      "td.1",
+      "td.2",
+      "td.3",
+      "ss.1",
+      "wp.2"
+    ]
+  },
+  {
+    "section_name": "Patient & Public Involvement",
+    "findings": [
+      {
+        "sub_id": "wp.1",
+        "good_evidence_ids": [
+          "secppi__001_a",
+          "secppi__001_b",
+          "secppi__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Patient & Public Involvement: Details co-production of therapy aims, structure, and activities with plwP and family, and notes research aims arose directly from engagement group priorities, strongly supporting integratio"
+      },
+      {
+        "sub_id": "wp.4",
+        "good_evidence_ids": [
+          "secppi__001_b",
+          "secppi__001_c",
+          "secppi__001_d"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Patient & Public Involvement: Explicitly targets under-served groups including people from diverse ethnic origins (Jewish Care, Hema's café) and those with severe communication/cognitive deficits, demonstrating represent"
+      },
+      {
+        "sub_id": "wp.5",
+        "good_evidence_ids": [
+          "secppi__001_c",
+          "secppi__001_d"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Patient & Public Involvement: Describes involvement across the lifecycle (co-design, co-investigate, co-evaluate, dissemination) with flexible methods (face-to-face, online, travel) to ensure meaningful engagement for di"
+      },
+      {
+        "sub_id": "wp.6",
+        "good_evidence_ids": [
+          "secppi__001_d",
+          "secppi__001_e"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Patient & Public Involvement: Confirms budgeted compensation per NIHR guidance, 4-6 meetings per year, and a joint facilitator with Parkinson's, indicating a costed and resourced plan for inclusion."
+      },
+      {
+        "sub_id": "pr.6",
+        "good_evidence_ids": [
+          "secppi__001_a",
+          "secppi__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Patient & Public Involvement: Describes equal power in decision-making, co-production of resources and therapy, and evaluation using the Public Involvement Impact Assessment Framework, confirming deep engagement."
+      },
+      {
+        "sub_id": "pr.9",
+        "good_evidence_ids": [
+          "secppi__001_c",
+          "secppi__001_d"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Patient & Public Involvement: Uses NIHR EDI toolkit, purposive recruitment of under-served groups, and adaptive methods (travel, flexible meeting sizes) to ensure inclusive research design."
+      }
+    ],
+    "resolved_signals": [
+      "wp.1",
+      "wp.4",
+      "wp.5",
+      "wp.6",
+      "pr.6",
+      "pr.9"
+    ],
+    "missing_signals_after": [
+      "pr.7",
+      "td.1",
+      "td.2",
+      "td.3",
+      "ss.1",
+      "wp.2"
+    ]
+  },
+  {
+    "section_name": "Training & Development and Research Support",
+    "findings": [
+      {
+        "sub_id": "td.1",
+        "good_evidence_ids": [
+          "sectdars__001_a",
+          "sectdars__001_b",
+          "sectdars__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Training & Development and Research Support: Provides a comprehensive, year-by-year training plan covering research governance, statistics, qualitative methods, and economic evaluation, directly aligned with project work"
+      },
+      {
+        "sub_id": "td.2",
+        "good_evidence_ids": [
+          "sectdars__001_a",
+          "sectdars__001_b",
+          "sectdars__001_d"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Training & Development and Research Support: Explicitly maps specific courses (e.g., RCT design, co-production) to project tasks (WP3, WP1) and identifies skill gaps in mixed methods and trial design, demonstrating targe"
+      },
+      {
+        "sub_id": "td.3",
+        "good_evidence_ids": [
+          "sectdars__001_d",
+          "sectdars__001_e",
+          "sectdars__001_f"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Training & Development and Research Support: Links training in leadership, implementation science, and clinical placements to long-term career goals of becoming a lead SLT and research leader, supporting career aspiratio"
+      },
+      {
+        "sub_id": "ss.1",
+        "good_evidence_ids": [
+          "sectdars__001_g",
+          "sectdars__001_h",
+          "sectdars__001_s"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Training & Development and Research Support: Highlights UCL's REF2021 research power, supervisors' extensive funding history (NIHR, Parkinson's UK), and track record of supervising PhDs to completion, confirming strong i"
+      },
+      {
+        "sub_id": "ss.2",
+        "good_evidence_ids": [
+          "sectdars__001_g",
+          "sectdars__001_i",
+          "sectdars__001_l"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Training & Development and Research Support: Details a multidisciplinary supervisory team with specific expertise in conversation analysis, mixed methods, neuropsychology, and clinical practice, ensuring comprehensive me"
+      },
+      {
+        "sub_id": "ss.3",
+        "good_evidence_ids": [
+          "sectdars__001_s",
+          "sectdars__001_t",
+          "sectdars__001_w"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Training & Development and Research Support: Describes access to UCL's Better Conversations Lab, clinical trial units, and NHNN clinical services, providing the necessary infrastructure and clinical integration for the a"
+      },
+      {
+        "sub_id": "ss.4",
+        "good_evidence_ids": [
+          "sectdars__001_u",
+          "sectdars__001_w"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Training & Development and Research Support: Cites UCL's Silver Athena Swan award, dedicated Equity Leads, and NHNN's work with BAME/LGBTQIA+ networks, demonstrating a strong commitment to inclusive research culture."
+      },
+      {
+        "sub_id": "g.6",
+        "good_evidence_ids": [
+          "sectdars__001_e",
+          "sectdars__001_f",
+          "sectdars__001_w"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Training & Development and Research Support: Explicitly outlines supernumerary clinical placements at NHNN and Bristol Brain Centre alongside research training, reinforcing the commitment to a practitioner-academic caree"
+      }
+    ],
+    "resolved_signals": [
+      "td.1",
+      "td.2",
+      "td.3",
+      "ss.1",
+      "ss.2",
+      "ss.3",
+      "ss.4",
+      "g.6"
+    ],
+    "missing_signals_after": [
+      "pr.7",
+      "wp.2"
+    ]
+  },
+  {
+    "section_name": "SUMMARY BUDGET",
+    "findings": [
+      {
+        "sub_id": "pr.7",
+        "good_evidence_ids": [
+          "secsb__001_a",
+          "secsb__001_c",
+          "secsb__001_m"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "SUMMARY BUDGET: Provides detailed justifications linking specific costs (salary, conferences, equipment) to research tasks and project needs, explicitly referencing pay scales and project requirements."
+      },
+      {
+        "sub_id": "wp.6",
+        "good_evidence_ids": [
+          "secsb__001_s",
+          "secsb__001_t",
+          "secsb__001_v"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "SUMMARY BUDGET: Includes substantial, itemized budget lines for PPI member fees, facilitator training, and travel to support under-served groups, confirming a fully costed plan for research inclusion."
+      }
+    ],
+    "resolved_signals": [
+      "pr.7",
+      "wp.6"
+    ],
+    "missing_signals_after": [
+      "wp.2"
+    ]
+  },
+  {
+    "section_name": "Application Context",
+    "findings": [],
+    "resolved_signals": [],
+    "missing_signals_after": [
+      "wp.2"
+    ]
+  },
+  {
+    "section_name": "Plain English NLP Analysis",
+    "findings": [
+      {
+        "sub_id": "pr.1",
+        "good_evidence_ids": [
+          "secpena__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English NLP Analysis: NLP metrics show strong readability (Flesch-Kincaid 7.33, 0% long sentences) and low jargon density (4.2%), with coverage of problem, objectives, methods, beneficiaries, and impact, supporting"
+      }
+    ],
+    "resolved_signals": [
+      "pr.1"
+    ],
+    "missing_signals_after": [
+      "wp.2"
+    ]
+  },
+  {
+    "section_name": "Application Form Analysis",
+    "findings": [],
+    "resolved_signals": [],
+    "missing_signals_after": [
+      "wp.2"
+    ]
+  }
+]

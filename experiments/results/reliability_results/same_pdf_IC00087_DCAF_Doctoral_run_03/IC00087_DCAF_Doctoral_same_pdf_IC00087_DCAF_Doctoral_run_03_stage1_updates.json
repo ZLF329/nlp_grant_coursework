@@ -1,0 +1,918 @@
+[
+  {
+    "section_name": "Applicant CV",
+    "findings": [
+      {
+        "sub_id": "g.3",
+        "good_evidence_ids": [
+          "secac__001_b",
+          "secac__001_c",
+          "secac__001_d"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Applicant CV: Lists multiple research grants (NIHR, UCLH) and formal training (Biostatistics, MRes module), demonstrating relevant research experience and training."
+      },
+      {
+        "sub_id": "g.4",
+        "good_evidence_ids": [
+          "secac__001_d",
+          "secac__001_e",
+          "secac__001_f"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Applicant CV: Extensive publication record (10+ papers) and awards (Best Abstract, Dean's List) confirm impactful research outputs and recognitions."
+      },
+      {
+        "sub_id": "g.5",
+        "good_evidence_ids": [
+          "secac__001_a",
+          "secac__001_g"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Applicant CV: Progression from Band 5 to Band 8a Clinical Lead and Associate Principal Investigator roles shows increasing responsibility and leadership trajectory."
+      },
+      {
+        "sub_id": "g.6",
+        "good_evidence_ids": [
+          "secac__001_a",
+          "secac__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Applicant CV: Current role as Senior Specialist Dietitian alongside research grants and publications demonstrates a clear practitioner-academic career path."
+      },
+      {
+        "sub_id": "pr.8",
+        "good_evidence_ids": [
+          "secac__001_d",
+          "secac__001_e",
+          "secac__001_g"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Applicant CV: High volume of peer-reviewed publications and successful grant applications indicate strong quality of previous research."
+      },
+      {
+        "sub_id": "wp.1",
+        "good_evidence_ids": [
+          "secac__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Applicant CV: Secured a PPI starter-grant to form a group and conduct discussions, showing prior integration of lived experience in research design."
+      }
+    ],
+    "resolved_signals": [
+      "g.3",
+      "g.4",
+      "g.5",
+      "g.6",
+      "pr.8",
+      "wp.1"
+    ],
+    "missing_signals_after": [
+      "g.1",
+      "g.2",
+      "pr.1",
+      "pr.2",
+      "pr.3",
+      "pr.4",
+      "pr.5",
+      "pr.6",
+      "pr.7",
+      "pr.9",
+      "td.1",
+      "td.2",
+      "td.3",
+      "ss.1",
+      "ss.2",
+      "ss.3",
+      "ss.4",
+      "wp.2",
+      "wp.3",
+      "wp.4",
+      "wp.5",
+      "wp.6"
+    ]
+  },
+  {
+    "section_name": "Applicant Research Background",
+    "findings": [
+      {
+        "sub_id": "g.1",
+        "good_evidence_ids": [
+          "secarb__001_a",
+          "secarb__001_g"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Applicant Research Background: Clearly states a vision to improve nutritional care in HNC and a trajectory to become a clinical research leader, supporting g.1."
+      },
+      {
+        "sub_id": "g.2",
+        "good_evidence_ids": [
+          "secarb__001_g"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Applicant Research Background: Explicitly identifies the fellowship as the 'crucial next step' to transition from developing academic to research leader, supporting g.2."
+      },
+      {
+        "sub_id": "g.3",
+        "good_evidence_ids": [
+          "secarb__001_a",
+          "secarb__001_b",
+          "secarb__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Applicant Research Background: Details specific research methods (SPSS, thematic analysis, audits, clinical trials) and formal training (MRes, MSc), strongly supporting g.3."
+      },
+      {
+        "sub_id": "g.4",
+        "good_evidence_ids": [
+          "secarb__001_b",
+          "secarb__001_d",
+          "secarb__001_f"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Applicant Research Background: Lists multiple publications in peer-reviewed journals, conference presentations, and awards (Best Abstract, Dean's List), confirming impactful outputs."
+      },
+      {
+        "sub_id": "g.5",
+        "good_evidence_ids": [
+          "secarb__001_c",
+          "secarb__001_f",
+          "secarb__001_g"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Applicant Research Background: Demonstrates increasing responsibility through Associate-PI roles, supervising dissertations, and leading clinical teams, supporting leadership trajectory."
+      },
+      {
+        "sub_id": "g.6",
+        "good_evidence_ids": [
+          "secarb__001_a",
+          "secarb__001_b",
+          "secarb__001_d"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Applicant Research Background: Explicitly identifies as a 'developing clinical-academic' balancing full-time clinical work with research, strongly supporting g.6."
+      },
+      {
+        "sub_id": "pr.8",
+        "good_evidence_ids": [
+          "secarb__001_b",
+          "secarb__001_c",
+          "secarb__001_d"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Applicant Research Background: Provides concrete examples of successful prior projects (service evaluations, audits, trials) and high-quality publications, supporting pr.8."
+      },
+      {
+        "sub_id": "wp.1",
+        "good_evidence_ids": [
+          "secarb__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Applicant Research Background: Mentions securing a PPI starter-grant and incorporating patient feedback into proposal development, supporting wp.1."
+      }
+    ],
+    "resolved_signals": [
+      "g.1",
+      "g.2",
+      "g.3",
+      "g.4",
+      "g.5",
+      "g.6",
+      "pr.8",
+      "wp.1"
+    ],
+    "missing_signals_after": [
+      "pr.1",
+      "pr.2",
+      "pr.3",
+      "pr.4",
+      "pr.5",
+      "pr.6",
+      "pr.7",
+      "pr.9",
+      "td.1",
+      "td.2",
+      "td.3",
+      "ss.1",
+      "ss.2",
+      "ss.3",
+      "ss.4",
+      "wp.2",
+      "wp.3",
+      "wp.4",
+      "wp.5",
+      "wp.6"
+    ]
+  },
+  {
+    "section_name": "Plain English Summary of Research",
+    "findings": [
+      {
+        "sub_id": "pr.1",
+        "good_evidence_ids": [
+          "secpesor__001_a",
+          "secpesor__001_b",
+          "secpesor__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Clearly outlines the problem, aim, methods, and impact in accessible language, supporting pr.1."
+      },
+      {
+        "sub_id": "pr.2",
+        "good_evidence_ids": [
+          "secpesor__001_a",
+          "secpesor__001_b"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Cites previous research statistics (40-72% patients) and identifies a gap in current practice regarding tube removal timing, supporting pr.2."
+      },
+      {
+        "sub_id": "pr.3",
+        "good_evidence_ids": [
+          "secpesor__001_b",
+          "secpesor__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Describes a feasible multi-stage approach (review, survey, data collection) across 65 hospitals, supporting pr.3."
+      },
+      {
+        "sub_id": "pr.4",
+        "good_evidence_ids": [
+          "secpesor__001_b",
+          "secpesor__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Explicitly details methods including literature review, staff surveys, and hospital record analysis, supporting pr.4."
+      },
+      {
+        "sub_id": "pr.5",
+        "good_evidence_ids": [
+          "secpesor__001_a",
+          "secpesor__001_b",
+          "secpesor__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Highlights direct patient benefits (recovery, wound healing) and NHS cost savings, supporting pr.5."
+      },
+      {
+        "sub_id": "pr.6",
+        "good_evidence_ids": [
+          "secpesor__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Details patient involvement across all stages (design, data collection, review), supporting pr.6."
+      },
+      {
+        "sub_id": "wp.1",
+        "good_evidence_ids": [
+          "secpesor__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Describes specific co-design activities where patients checked information sheets and questions, supporting wp.1."
+      },
+      {
+        "sub_id": "wp.3",
+        "good_evidence_ids": [
+          "secpesor__001_c",
+          "secpesor__001_d"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Outlines dissemination plans via social media, blogs, and animated videos for patients, supporting wp.3."
+      }
+    ],
+    "resolved_signals": [
+      "pr.1",
+      "pr.2",
+      "pr.3",
+      "pr.4",
+      "pr.5",
+      "pr.6",
+      "wp.1",
+      "wp.3"
+    ],
+    "missing_signals_after": [
+      "pr.7",
+      "pr.9",
+      "td.1",
+      "td.2",
+      "td.3",
+      "ss.1",
+      "ss.2",
+      "ss.3",
+      "ss.4",
+      "wp.2",
+      "wp.4",
+      "wp.5",
+      "wp.6"
+    ]
+  },
+  {
+    "section_name": "Scientific Abstract",
+    "findings": [
+      {
+        "sub_id": "pr.2",
+        "good_evidence_ids": [
+          "secsa__001_a",
+          "secsa__001_b"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Identifies knowledge gaps regarding optimal feeding practices and proposes a scoping review to map current literature, supporting pr.2."
+      },
+      {
+        "sub_id": "pr.3",
+        "good_evidence_ids": [
+          "secsa__001_b"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Outlines a feasible 3-year mixed-methods design with specific sample sizes (n=65, n=90) and five workstreams, supporting pr.3."
+      },
+      {
+        "sub_id": "pr.4",
+        "good_evidence_ids": [
+          "secsa__001_b",
+          "secsa__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Details rigorous methods including scoping review, cross-sectional survey, prospective cohort with regression analysis, and qualitative framework analysis, supporting pr.4."
+      },
+      {
+        "sub_id": "pr.5",
+        "good_evidence_ids": [
+          "secsa__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Explicitly lists impacts on patients (nutrition, swallowing), professionals (toolkit), and NHS (reduced stays/costs), supporting pr.5."
+      },
+      {
+        "sub_id": "pr.6",
+        "good_evidence_ids": [
+          "secsa__001_b",
+          "secsa__001_c",
+          "secsa__001_d"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Includes patient interviews, stakeholder consultation for toolkit development, and PPI advice for dissemination, supporting pr.6."
+      },
+      {
+        "sub_id": "wp.1",
+        "good_evidence_ids": [
+          "secsa__001_c",
+          "secsa__001_d"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Mentions stakeholder consultation for toolkit development and PPI advice for dissemination materials, supporting wp.1."
+      },
+      {
+        "sub_id": "wp.3",
+        "good_evidence_ids": [
+          "secsa__001_c",
+          "secsa__001_d"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Describes dissemination via journals, conferences, social media, and animations tailored to patient audiences, supporting wp.3."
+      }
+    ],
+    "resolved_signals": [
+      "pr.2",
+      "pr.3",
+      "pr.4",
+      "pr.5",
+      "pr.6",
+      "wp.1",
+      "wp.3"
+    ],
+    "missing_signals_after": [
+      "pr.7",
+      "pr.9",
+      "td.1",
+      "td.2",
+      "td.3",
+      "ss.1",
+      "ss.2",
+      "ss.3",
+      "ss.4",
+      "wp.2",
+      "wp.4",
+      "wp.5",
+      "wp.6"
+    ]
+  },
+  {
+    "section_name": "Detailed Research Plan",
+    "findings": [
+      {
+        "sub_id": "pr.2",
+        "good_evidence_ids": [
+          "secdrp__001_e",
+          "secdrp__001_f",
+          "secdrp__001_g"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Critically reviews existing literature, identifying specific gaps such as selection bias, non-validated measures, and lack of data on protein intake, strongly supporting pr.2."
+      },
+      {
+        "sub_id": "pr.3",
+        "good_evidence_ids": [
+          "secdrp__001_j",
+          "secdrp__001_o",
+          "secdrp__001_q"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Outlines a feasible 36-month project with 5 workstreams, specific sample sizes (n=90), and realistic recruitment targets, supporting pr.3."
+      },
+      {
+        "sub_id": "pr.4",
+        "good_evidence_ids": [
+          "secdrp__001_k",
+          "secdrp__001_p",
+          "secdrp__001_r"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Provides explicit methodological details including Arksey & O'Malley framework, PG-SGA outcomes, regression models, and sample size justification, supporting pr.4."
+      },
+      {
+        "sub_id": "pr.5",
+        "good_evidence_ids": [
+          "secdrp__001_c",
+          "secdrp__001_d",
+          "secdrp__001_}"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Quantifies patient benefits (reduced malnutrition, improved QoL) and economic impact (£90k-£13m savings), clearly supporting pr.5."
+      },
+      {
+        "sub_id": "pr.6",
+        "good_evidence_ids": [
+          "secdrp__001_l",
+          "secdrp__001_m",
+          "secdrp__001_z"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Integrates PPI in review consultation, survey development, and toolkit refinement, demonstrating strong engagement with people and communities, supporting pr.6."
+      },
+      {
+        "sub_id": "pr.9",
+        "good_evidence_ids": [
+          "secdrp__001_o",
+          "secdrp__001_u",
+          "secdrp__001_"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Explicitly plans for diverse recruitment (ethnicity, age, disease stage) and includes costed interpreters to ensure inclusivity, supporting pr.9."
+      },
+      {
+        "sub_id": "td.1",
+        "good_evidence_ids": [
+          "secdrp__001_"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Identifies specific training needs (regression, rapid methods) and links them to project tasks and expert support, supporting td.1."
+      },
+      {
+        "sub_id": "td.2",
+        "good_evidence_ids": [
+          "secdrp__001_"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Maps training activities (statistician advice, rapid methods training) directly to identified skill gaps in analysis and qualitative work, supporting td.2."
+      },
+      {
+        "sub_id": "td.3",
+        "good_evidence_ids": [
+          "secdrp__001_|",
+          "secdrp__001_"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Links the PhD and toolkit development to future post-doctoral funding and career trajectory as a research leader, supporting td.3."
+      },
+      {
+        "sub_id": "ss.2",
+        "good_evidence_ids": [
+          "secdrp__001_~",
+          "secdrp__001_"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Describes structured supervision (monthly meetings, thesis committee) and specific supervisor roles (surgical perspective, recruitment support), supporting ss.2."
+      },
+      {
+        "sub_id": "ss.3",
+        "good_evidence_ids": [
+          "secdrp__001_o",
+          "secdrp__001_~"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Highlights UCLH as a centralised HNC centre with diverse patient populations and established networks, supporting ss.3."
+      },
+      {
+        "sub_id": "wp.1",
+        "good_evidence_ids": [
+          "secdrp__001_l",
+          "secdrp__001_m",
+          "secdrp__001_z"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Details PPI involvement in review consultation, survey design, and toolkit development, confirming integration of lived experience, supporting wp.1."
+      },
+      {
+        "sub_id": "wp.3",
+        "good_evidence_ids": [
+          "secdrp__001_z",
+          "secdrp__001_{",
+          "secdrp__001_}"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Outlines comprehensive dissemination plans including patient animations, social media, and professional conferences, supporting wp.3."
+      },
+      {
+        "sub_id": "wp.4",
+        "good_evidence_ids": [
+          "secdrp__001_o",
+          "secdrp__001_u",
+          "secdrp__001_"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Explicitly targets diverse demographics (ethnicity, age, disease stage) and plans for interpreters to mitigate barriers, supporting wp.4."
+      },
+      {
+        "sub_id": "wp.5",
+        "good_evidence_ids": [
+          "secdrp__001_l",
+          "secdrp__001_m",
+          "secdrp__001_z"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Ensures inclusivity across the lifecycle from PPI consultation in design to accessible dissemination formats, supporting wp.5."
+      },
+      {
+        "sub_id": "wp.6",
+        "good_evidence_ids": [
+          "secdrp__001_"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Explicitly mentions 'Costed for interpreters' to reach all patients, providing a resourced plan for inclusion, supporting wp.6."
+      }
+    ],
+    "resolved_signals": [
+      "pr.2",
+      "pr.3",
+      "pr.4",
+      "pr.5",
+      "pr.6",
+      "pr.9",
+      "td.1",
+      "td.2",
+      "td.3",
+      "ss.2",
+      "ss.3",
+      "wp.1",
+      "wp.3",
+      "wp.4",
+      "wp.5",
+      "wp.6"
+    ],
+    "missing_signals_after": [
+      "pr.7",
+      "ss.1",
+      "ss.4",
+      "wp.2"
+    ]
+  },
+  {
+    "section_name": "Patient & Public Involvement",
+    "findings": [
+      {
+        "sub_id": "wp.1",
+        "good_evidence_ids": [
+          "secppi__001_a",
+          "secppi__001_b",
+          "secppi__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Patient & Public Involvement: Details specific design changes (e.g., outcome measures, interview questions, staff inclusion) based on PPI feedback, strongly supporting integration of lived experience."
+      },
+      {
+        "sub_id": "wp.2",
+        "good_evidence_ids": [
+          "secppi__001_a"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Patient & Public Involvement: Explicitly describes PPI group composition across ethnicity, age, gender, and occupation, demonstrating diversity in the research team."
+      },
+      {
+        "sub_id": "wp.3",
+        "good_evidence_ids": [
+          "secppi__001_d",
+          "secppi__001_e"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Patient & Public Involvement: Outlines co-production of manuscripts, attendance at patient conferences, and dissemination strategies tailored to patient groups, supporting maximising public benefit."
+      },
+      {
+        "sub_id": "wp.4",
+        "good_evidence_ids": [
+          "secppi__001_a"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Patient & Public Involvement: Highlights targeted recruitment of diverse ethnicities and ages, noting cultural variation in diet as a key consideration for representation."
+      },
+      {
+        "sub_id": "wp.5",
+        "good_evidence_ids": [
+          "secppi__001_c",
+          "secppi__001_d"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Patient & Public Involvement: Confirms involvement across all stages from design to dissemination, including reviewing ethics applications and co-producing manuscripts."
+      },
+      {
+        "sub_id": "wp.6",
+        "good_evidence_ids": [
+          "secppi__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Patient & Public Involvement: Explicitly requests £11,712 to cover payment, subsistence, travel, and childcare for PPI activities, providing a costed plan for inclusion."
+      }
+    ],
+    "resolved_signals": [
+      "wp.1",
+      "wp.2",
+      "wp.3",
+      "wp.4",
+      "wp.5",
+      "wp.6"
+    ],
+    "missing_signals_after": [
+      "pr.7",
+      "ss.1",
+      "ss.4"
+    ]
+  },
+  {
+    "section_name": "Training & Development and Research Support",
+    "findings": [
+      {
+        "sub_id": "g.1",
+        "good_evidence_ids": [
+          "sectdars__001_a",
+          "sectdars__001_d"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Training & Development and Research Support: Clearly articulates a vision to become a Consultant Clinical Academic Dietitian leading a research group, with a detailed training plan supporting this trajectory."
+      },
+      {
+        "sub_id": "g.2",
+        "good_evidence_ids": [
+          "sectdars__001_a",
+          "sectdars__001_b",
+          "sectdars__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Training & Development and Research Support: Identifies specific skill gaps (e.g., PPI facilitation, scoping reviews, qualitative methods) and maps targeted training to bridge them, justifying the award as the necessary "
+      },
+      {
+        "sub_id": "g.3",
+        "good_evidence_ids": [
+          "sectdars__001_a",
+          "sectdars__001_b",
+          "sectdars__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Training & Development and Research Support: Details prior experience in quantitative research and statistics, while outlining a robust plan to acquire missing skills in qualitative methods and complex intervention desig"
+      },
+      {
+        "sub_id": "g.5",
+        "good_evidence_ids": [
+          "sectdars__001_a",
+          "sectdars__001_d",
+          "sectdars__001_e"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Training & Development and Research Support: Explicitly states career ambitions to lead an ERAS Centre of Excellence and includes leadership training (Rosalind Franklin Programme) and mentorship to support this trajector"
+      },
+      {
+        "sub_id": "g.6",
+        "good_evidence_ids": [
+          "sectdars__001_f",
+          "sectdars__001_d"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Training & Development and Research Support: Demonstrates commitment to a practitioner-academic career through planned clinical practice (1 day/fortnight), clinical governance meetings, and maintaining specialist dietiti"
+      },
+      {
+        "sub_id": "td.1",
+        "good_evidence_ids": [
+          "sectdars__001_a",
+          "sectdars__001_b",
+          "sectdars__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Training & Development and Research Support: Provides a comprehensive and clear training description covering quantitative, qualitative, and implementation science methods, directly relevant to the proposed mixed-methods"
+      },
+      {
+        "sub_id": "td.2",
+        "good_evidence_ids": [
+          "sectdars__001_a",
+          "sectdars__001_b",
+          "sectdars__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Training & Development and Research Support: Explicitly identifies personal skill gaps (e.g., PPI facilitation, ethnography, NVivo) and maps specific courses and workshops to address these needs for the project."
+      },
+      {
+        "sub_id": "td.3",
+        "good_evidence_ids": [
+          "sectdars__001_a",
+          "sectdars__001_d",
+          "sectdars__001_e"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Training & Development and Research Support: Connects training activities (ERAS courses, leadership academy) directly to long-term career goals of becoming a clinical academic leader and establishing an ERAS Centre."
+      },
+      {
+        "sub_id": "ss.1",
+        "good_evidence_ids": [
+          "sectdars__001_g",
+          "sectdars__001_h",
+          "sectdars__001_i"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Training & Development and Research Support: Highlights the strong track record of supervisors (Moonesinghe, Govender, Vindrola-Padros) with extensive publications, leadership roles, and successful PhD supervision."
+      },
+      {
+        "sub_id": "ss.2",
+        "good_evidence_ids": [
+          "sectdars__001_g",
+          "sectdars__001_h",
+          "sectdars__001_j"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Training & Development and Research Support: Describes a robust supervisory framework with monthly meetings, a thesis committee, and specific expertise alignment (e.g., rapid methods, clinical dietetics) for the project."
+      },
+      {
+        "sub_id": "ss.3",
+        "good_evidence_ids": [
+          "sectdars__001_s",
+          "sectdars__001_t",
+          "sectdars__001_v"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Training & Development and Research Support: UCLH and UCL provide extensive infrastructure, including the RDTI department, BRC funding, and specific support frameworks (CNMAR) aligned with the applicant's career aspirati"
+      },
+      {
+        "sub_id": "ss.4",
+        "good_evidence_ids": [
+          "sectdars__001_t",
+          "sectdars__001_u",
+          "sectdars__001_v"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Training & Development and Research Support: UCLH and UCL demonstrate strong commitment to inclusivity through Athena Swan awards, BAME/LGBTQ+ networks, and explicit strategies to support underrepresented groups in resea"
+      },
+      {
+        "sub_id": "wp.3",
+        "good_evidence_ids": [
+          "sectdars__001_p",
+          "sectdars__001_q",
+          "sectdars__001_r"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Training & Development and Research Support: Outlines extensive collaboration with patient groups (Young Tongues), professional bodies (BAHNO, BDA), and industry (Nutricia) to ensure dissemination and implementation of f"
+      }
+    ],
+    "resolved_signals": [
+      "g.1",
+      "g.2",
+      "g.3",
+      "g.5",
+      "g.6",
+      "td.1",
+      "td.2",
+      "td.3",
+      "ss.1",
+      "ss.2",
+      "ss.3",
+      "ss.4",
+      "wp.3"
+    ],
+    "missing_signals_after": [
+      "pr.7"
+    ]
+  },
+  {
+    "section_name": "SUMMARY BUDGET",
+    "findings": [
+      {
+        "sub_id": "pr.7",
+        "good_evidence_ids": [
+          "secsb__001_a",
+          "secsb__001_b",
+          "secsb__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "SUMMARY BUDGET: Details training costs (tuition, short courses) and NHS support costs (eligibility, consent) with clear links to project phases and regulatory requirements, supporting pr.7."
+      },
+      {
+        "sub_id": "wp.6",
+        "good_evidence_ids": [
+          "secsb__001_o",
+          "secsb__001_p",
+          "secsb__001_q"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "SUMMARY BUDGET: Costs for patient interview support (vouchers, travel, childcare, interpreters) are explicitly detailed, ensuring barriers to participation are financially addressed, supporting wp.6."
+      },
+      {
+        "sub_id": "pr.9",
+        "good_evidence_ids": [
+          "secsb__001_v",
+          "secsb__001_",
+          "secsb__001_"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "SUMMARY BUDGET: Provides financial support for patient participants (vouchers, travel, childcare, interpreters) to mitigate barriers to participation, supporting pr.9."
+      }
+    ],
+    "resolved_signals": [
+      "pr.7",
+      "wp.6",
+      "pr.9"
+    ],
+    "missing_signals_after": []
+  },
+  {
+    "section_name": "Application Context",
+    "findings": [],
+    "resolved_signals": [],
+    "missing_signals_after": []
+  },
+  {
+    "section_name": "Plain English NLP Analysis",
+    "findings": [
+      {
+        "sub_id": "pr.1",
+        "good_evidence_ids": [
+          "secpena__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English NLP Analysis: NLP metrics show high readability (Flesch-Kincaid 6.34, 65.47 ease), low jargon density (0.98%), and coverage of key elements (problem, objectives, methods, beneficiaries, impact), strongly su"
+      }
+    ],
+    "resolved_signals": [
+      "pr.1"
+    ],
+    "missing_signals_after": []
+  },
+  {
+    "section_name": "Application Form Analysis",
+    "findings": [
+      {
+        "sub_id": "pr.1",
+        "good_evidence_ids": [
+          "secafa__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Form Analysis: Confirms presence of Plain English Summary and NLP analysis sections, indicating structural compliance for readability and content checks."
+      },
+      {
+        "sub_id": "pr.7",
+        "good_evidence_ids": [
+          "secafa__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Form Analysis: Identifies a detailed SUMMARY BUDGET section with 415 table-like lines, confirming the presence of costed resource justification."
+      },
+      {
+        "sub_id": "td.1",
+        "good_evidence_ids": [
+          "secafa__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Form Analysis: Confirms a substantial 'Training & Development' section (4175 words), indicating a detailed training plan is provided."
+      },
+      {
+        "sub_id": "pr.6",
+        "good_evidence_ids": [
+          "secafa__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Form Analysis: Confirms a dedicated 'Patient & Public Involvement' section (804 words), indicating engagement strategies are explicitly addressed."
+      },
+      {
+        "sub_id": "pr.4",
+        "good_evidence_ids": [
+          "secafa__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Form Analysis: Confirms a 'Detailed Research Plan' (5532 words) with structured headings, indicating comprehensive methodological description."
+      }
+    ],
+    "resolved_signals": [
+      "pr.1",
+      "pr.7",
+      "td.1",
+      "pr.6",
+      "pr.4"
+    ],
+    "missing_signals_after": []
+  }
+]

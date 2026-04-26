@@ -1,0 +1,922 @@
+{
+  "doc_id": "32d892bb2d70_IC00137_before",
+  "run_info": {
+    "ran_at_utc": "2026-04-21T12:16:20.589560Z",
+    "model": "qwen3.5:27b",
+    "judge_model": null
+  },
+  "sections": [
+    {
+      "section_id": "application_form",
+      "section_name": "Application Form",
+      "average_score_10": 6.33,
+      "sub_criteria": [
+        {
+          "sub_id": "af.1",
+          "name": "Use of Formatting, Headings, and Subheadings",
+          "group_name": null,
+          "score_10": 4,
+          "pros": "The application text analysis confirms the presence of 6 bullet or numbered list markers and a logical section order (applicant/context, summary, research plan, PPI, training, budget), indicating some structural organization. The parser detected 1 section, suggesting a consolidated format.",
+          "drawbacks": "The analysis explicitly states 'numbered_heading_like_lines=0' and 'extracted_emphasis_markers=0', indicating a lack of visible headings and bold/emphasis markers in the extracted text. While the parser notes that bold/emphasis may be lost, the absence of detected headings and the low count of list markers suggest weak formatting hierarchy compared to a fully structured application.",
+          "signals": [
+            {
+              "sid": "af.1.a",
+              "score_0to5": 2,
+              "note": ""
+            },
+            {
+              "sid": "af.1.b",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "af.1.c",
+              "score_0to5": 2,
+              "note": ""
+            },
+            {
+              "sid": "af.1.d",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "af.2",
+          "name": "Limited Duplication and Repetition",
+          "group_name": null,
+          "score_10": 8,
+          "pros": "The application form analysis provides strong quantitative evidence of low duplication: 'duplicate_sentence_rate_excluding_budget=0.018' and 'repeated_line_rate=0.0'. It explicitly states 'No high cross-section lexical overlap detected at threshold 0.18', confirming high novelty and minimal repetition across sections.",
+          "drawbacks": "No material caveats or missing details regarding duplication; the metrics are clear and favorable.",
+          "signals": [
+            {
+              "sid": "af.2.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "af.2.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "af.2.c",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "af.3",
+          "name": "Logical Flow and Coherence Across Sections",
+          "group_name": null,
+          "score_10": 7,
+          "pros": "The analysis notes a 'transition_phrase_count=18' and 'objective_method_budget_link_terms=17', providing strong evidence of explicit linking between objectives, methods, and budget. The section order is described as moving logically from applicant context through to the budget, supporting a coherent narrative thread.",
+          "drawbacks": "While transition phrases and link terms are present, the analysis does not provide specific semantic coherence scores or embedding metrics to fully validate the depth of the narrative thread across all sections, limiting the score for semantic coherence and narrative anchoring to moderate levels.",
+          "signals": [
+            {
+              "sid": "af.3.a",
+              "score_0to5": 3,
+              "note": ""
+            },
+            {
+              "sid": "af.3.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "af.3.c",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "af.3.d",
+              "score_0to5": 3,
+              "note": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section_id": "general",
+      "section_name": "General",
+      "average_score_10": 2.33,
+      "sub_criteria": [
+        {
+          "sub_id": "g.1",
+          "name": "Common Characteristics of Good Applications",
+          "group_name": "Common Characteristics of Good Applications",
+          "score_10": 3.5,
+          "pros": "The application outlines a clear research vision regarding touch interactions in dementia care (g.1.a) and proposes a distinctive approach combining ethnography with co-design training (g.1.b). The training plan is justified by the need to address gaps in GP practice (g.1.c).",
+          "drawbacks": "There is no explicit mention of specific mentors, supervisors, or institutional support structures (g.1.d). The career trajectory is implied through the fellowship goal but lacks a detailed personal narrative of progression (g.1.a). The training plan is project-focused rather than a comprehensive personal development plan (g.1.c).",
+          "signals": [
+            {
+              "sid": "g.1.a",
+              "score_0to5": 2,
+              "note": ""
+            },
+            {
+              "sid": "g.1.b",
+              "score_0to5": 3,
+              "note": ""
+            },
+            {
+              "sid": "g.1.c",
+              "score_0to5": 2,
+              "note": ""
+            },
+            {
+              "sid": "g.1.d",
+              "score_0to5": 0,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "g.2",
+          "name": "Tell Us Why You Need This Award",
+          "group_name": "Tell Us Why You Need This Award",
+          "score_10": 4,
+          "pros": "The applicant states the award will support their development as a Primary Care Researcher and enable wider collaborations (g.2.a, g.2.d). The project aims to build on existing experience in the field (g.2.c).",
+          "drawbacks": "The application lacks a compelling narrative explaining why this specific award is the critical 'next step' compared to other funding routes (g.2.a). It does not explicitly detail the difference the award makes to the career trajectory or why the timing is critical (g.2.b). The description of new skills to be gained is generic (g.2.c).",
+          "signals": [
+            {
+              "sid": "g.2.a",
+              "score_0to5": 2,
+              "note": ""
+            },
+            {
+              "sid": "g.2.b",
+              "score_0to5": 2,
+              "note": ""
+            },
+            {
+              "sid": "g.2.c",
+              "score_0to5": 2,
+              "note": ""
+            },
+            {
+              "sid": "g.2.d",
+              "score_0to5": 2,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "g.3",
+          "name": "Relevant Research Experience and Training",
+          "group_name": "Applicant",
+          "score_10": 2.67,
+          "pros": "The applicant mentions prior work with PPI groups and co-authoring a book chapter, indicating some research experience (g.3.a). The proposed methods (ethnography, co-design) align with the described experience (g.3.c).",
+          "drawbacks": "There is no evidence of formal training, courses, or certifications relevant to the proposed methods (g.3.b). The description of previous projects is brief and lacks specific details on the applicant's role or the scale of prior work (g.3.a). The alignment is inferred rather than explicitly demonstrated (g.3.c).",
+          "signals": [
+            {
+              "sid": "g.3.a",
+              "score_0to5": 2,
+              "note": ""
+            },
+            {
+              "sid": "g.3.b",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "g.3.c",
+              "score_0to5": 2,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "g.4",
+          "name": "Impactful Research Outputs and Outcomes",
+          "group_name": "Applicant",
+          "score_10": 0.5,
+          "pros": "The applicant mentions co-authoring a book chapter (g.4.a).",
+          "drawbacks": "There is no list of publications, reports, or presentations (g.4.a). No citation metrics or impact indicators are provided (g.4.b). No awards or grants are mentioned (g.4.c). There is no description of the practical or societal impact of previous work (g.4.d).",
+          "signals": [
+            {
+              "sid": "g.4.a",
+              "score_0to5": 1,
+              "note": ""
+            },
+            {
+              "sid": "g.4.b",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "g.4.c",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "g.4.d",
+              "score_0to5": 0,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "g.5",
+          "name": "Trajectory Towards Research Leadership",
+          "group_name": "Applicant",
+          "score_10": 1,
+          "pros": "The applicant states an ambition to become a Primary Care Researcher and develop wider collaborations (g.5.a).",
+          "drawbacks": "There is no evidence of increasing responsibility in previous roles, such as leading projects or mentoring (g.5.b). No participation in leadership or professional development programs is mentioned (g.5.c). There is no recognition by peers or institutions suggesting leadership potential (g.5.d).",
+          "signals": [
+            {
+              "sid": "g.5.a",
+              "score_0to5": 2,
+              "note": ""
+            },
+            {
+              "sid": "g.5.b",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "g.5.c",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "g.5.d",
+              "score_0to5": 0,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "g.6",
+          "name": "Commitment to Practitioner-Academic Career (if applicable)",
+          "group_name": "Applicant",
+          "score_10": 2.5,
+          "pros": "The applicant identifies as a Primary Care Researcher and aims to support development of collaborations with interprofessional teams, indicating a practitioner-academic intent (g.6.a). The project involves clinical settings (GP practices, care homes) and practice-based research (g.6.b).",
+          "drawbacks": "There is no explicit statement of a long-term practitioner-academic career intention beyond the scope of this project (g.6.a). No evidence is provided regarding how the applicant balances practice responsibilities with research activities (g.6.c). No participation in relevant professional networks or qualifications is detailed (g.6.d).",
+          "signals": [
+            {
+              "sid": "g.6.a",
+              "score_0to5": 2,
+              "note": ""
+            },
+            {
+              "sid": "g.6.b",
+              "score_0to5": 3,
+              "note": ""
+            },
+            {
+              "sid": "g.6.c",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "g.6.d",
+              "score_0to5": 0,
+              "note": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section_id": "proposed_research",
+      "section_name": "Proposed Research",
+      "average_score_10": 6.56,
+      "sub_criteria": [
+        {
+          "sub_id": "pr.1",
+          "name": "Quality of the Plain English Summary",
+          "group_name": null,
+          "score_10": 7,
+          "pros": "The abstract and introduction clearly articulate the problem (touch deprivation in dementia), objectives, methods (scoping review, ethnography, co-design), and beneficiaries (GPs, care home residents). The text avoids excessive jargon in the summary sections and aligns well with the detailed proposal.",
+          "drawbacks": "The abstract is cut off mid-sentence ('Al\n<secrc__001_b>'), which disrupts sentence coherence and completeness. Some technical terms like 'CT unmyelinated afferents' appear in the background but are not fully explained in the plain English summary context, though the summary itself remains relatively accessible.",
+          "signals": [
+            {
+              "sid": "pr.1.a",
+              "score_0to5": 3,
+              "note": ""
+            },
+            {
+              "sid": "pr.1.b",
+              "score_0to5": 3,
+              "note": ""
+            },
+            {
+              "sid": "pr.1.c",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.1.d",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.1.e",
+              "score_0to5": 3,
+              "note": ""
+            },
+            {
+              "sid": "pr.1.f",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "pr.2",
+          "name": "Evidence Review Quality & Relevance",
+          "group_name": null,
+          "score_10": 8,
+          "pros": "The application cites extensive literature (over 30 references) covering neurobiology, dementia care, and GP interactions. It explicitly identifies a specific knowledge gap regarding the scarcity of literature on GP touch interactions in care home settings, justifying the need for the study.",
+          "drawbacks": "While the review is comprehensive, the critical analysis is somewhat descriptive in parts, summarizing existing findings on touch benefits before pivoting to the gap. The logical flow is strong but could more explicitly critique the limitations of the cited studies rather than just stating the gap.",
+          "signals": [
+            {
+              "sid": "pr.2.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.2.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.2.c",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.2.d",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "pr.3",
+          "name": "Research Scope & Award Appropriateness",
+          "group_name": null,
+          "score_10": 8,
+          "pros": "The four-phase plan (scoping review, focused ethnography, co-design, feasibility study) is well-structured and appropriate for a fellowship award. The scope is clearly defined within a specific setting (Exeter area dyad), making it feasible within the award timeframe.",
+          "drawbacks": "The timeline is not explicitly detailed (e.g., months per phase), which makes assessing the proportion of work relative to the award duration slightly less precise. The feasibility of recruiting specific dyads is assumed but not fully risk-assessed.",
+          "signals": [
+            {
+              "sid": "pr.3.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.3.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.3.c",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "pr.4",
+          "name": "Research Design & Methodological Rigor",
+          "group_name": null,
+          "score_10": 7.5,
+          "pros": "Methods are explicitly described, including focused ethnography, non-participant observation, semi-structured interviews, and the use of the 'Comfort with Touch Scale'. The design logically aligns with the aims to explore meanings and co-design training.",
+          "drawbacks": "Sample size calculations or specific inclusion/exclusion criteria for the ethnographic study are not detailed. The justification for the specific choice of 'focused ethnography' over other qualitative methods is brief, relying on citation rather than deep methodological argumentation.",
+          "signals": [
+            {
+              "sid": "pr.4.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.4.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.4.c",
+              "score_0to5": 3,
+              "note": ""
+            },
+            {
+              "sid": "pr.4.d",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "pr.5",
+          "name": "Potential Impact on Patients, Public, and Health Services",
+          "group_name": null,
+          "score_10": 8,
+          "pros": "The application details specific benefits: reduced anxiety, improved communication, reduced pharmacological interventions for agitation, and better relationships. It aligns with health priorities regarding non-pharmacological interventions for dementia.",
+          "drawbacks": "The outcomes are described as potential ('may suggest', 'could influence') rather than guaranteed, which is appropriate for a feasibility study but limits the strength of the impact claim. Specific metrics for measuring 'quality of life' improvements are mentioned generally but not specified.",
+          "signals": [
+            {
+              "sid": "pr.5.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.5.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.5.c",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "pr.6",
+          "name": "Engagement with People & Communities",
+          "group_name": null,
+          "score_10": 8,
+          "pros": "The proposal explicitly uses an 'Experience Based Co-design' approach. PPIE members are involved in multiple stages: initial discussion, training design, feedback, and advisory group participation. Ethical considerations regarding the delicate setting are acknowledged.",
+          "drawbacks": "While PPIE involvement is strong, the specific mechanisms for how PPIE feedback will alter the study design if conflicts arise are not detailed. The description of the PPIE member's background is general ('person with direct experience') rather than specifying the diversity of lived experience.",
+          "signals": [
+            {
+              "sid": "pr.6.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.6.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.6.c",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "pr.7",
+          "name": "Justification of Resources & Award Costs",
+          "group_name": null,
+          "score_10": 0,
+          "pros": "No evidence found in the provided text regarding budget, resources, or cost justification.",
+          "drawbacks": "The application text provided does not contain a budget section, resource breakdown, or justification for funding levels. Consequently, no assessment can be made on the appropriateness of requested resources.",
+          "signals": [
+            {
+              "sid": "pr.7.a",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "pr.7.b",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "pr.7.c",
+              "score_0to5": 0,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "pr.8",
+          "name": "Quality of Previous Research (if applicable)",
+          "group_name": null,
+          "score_10": 0,
+          "pros": "No evidence found in the provided text regarding the applicant's prior research outputs or specific past projects relevant to this proposal.",
+          "drawbacks": "The text focuses on the proposed project and background literature. It mentions the applicant has co-authored a book chapter with PPIE members, but does not provide a list of publications, prior successful projects, or a detailed CV to assess prior research quality.",
+          "signals": [
+            {
+              "sid": "pr.8.a",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "pr.8.b",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "pr.8.c",
+              "score_0to5": 0,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "pr.9",
+          "name": "Inclusive Research Design",
+          "group_name": null,
+          "score_10": 6,
+          "pros": "The applicant explicitly mentions their role as EDI director and commitment to ensuring inclusivity and equity. The project targets an underserved demographic (older people with dementia in care homes) and involves PPIE members with lived experience.",
+          "drawbacks": "Specific strategies for diverse recruitment beyond the general focus on care homes are not detailed. There is no explicit mention of adaptive methods for participants with severe cognitive impairment beyond the general context of the study.",
+          "signals": [
+            {
+              "sid": "pr.9.a",
+              "score_0to5": 3,
+              "note": ""
+            },
+            {
+              "sid": "pr.9.b",
+              "score_0to5": 3,
+              "note": ""
+            },
+            {
+              "sid": "pr.9.c",
+              "score_0to5": 3,
+              "note": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section_id": "sites_support",
+      "section_name": "Sites & Support",
+      "average_score_10": 0.75,
+      "sub_criteria": [
+        {
+          "sub_id": "ss.1",
+          "name": "Track Record of the Contracting Organisation (and Partners)",
+          "group_name": null,
+          "score_10": 1,
+          "pros": "The applicant mentions affiliation with the University of Exeter Medical School and the Exeter Academy of Nursing, and notes prior collaboration with PPIE members (secrc__001_o, secrc__001_p).",
+          "drawbacks": "There is no specific evidence of the contracting organisation's track record in this specific research area (touch in dementia/GP care), no mention of previous funding success or awards, and no detailed list of notable outputs or prior collaborations beyond the applicant's personal history.",
+          "signals": [
+            {
+              "sid": "ss.1.a",
+              "score_0to5": 1,
+              "note": ""
+            },
+            {
+              "sid": "ss.1.b",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "ss.1.c",
+              "score_0to5": 1,
+              "note": ""
+            },
+            {
+              "sid": "ss.1.d",
+              "score_0to5": 0,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "ss.2",
+          "name": "Suitability of Supervisory Support and Mentorship Arrangements",
+          "group_name": null,
+          "score_10": 0,
+          "pros": "No evidence found.",
+          "drawbacks": "The application text does not name any supervisors or mentors, nor does it describe their roles, responsibilities, expertise, or any structured supervision framework. There is no mention of mentorship plans or meetings.",
+          "signals": [
+            {
+              "sid": "ss.2.a",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "ss.2.b",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "ss.2.c",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "ss.2.d",
+              "score_0to5": 0,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "ss.3",
+          "name": "Appropriateness of the Contracting Organisation to Support the Award and Career Aspirations",
+          "group_name": null,
+          "score_10": 0.5,
+          "pros": "The applicant mentions seeking ethical approval from the University of Exeter Medical School Research Ethics Committee, implying institutional infrastructure exists (secrc__001_m).",
+          "drawbacks": "There is no description of specific facilities, resources, or infrastructure provided by the organisation to support the project. No links are made between organisational support and project success, and there is no evidence of tailored support for the award type.",
+          "signals": [
+            {
+              "sid": "ss.3.a",
+              "score_0to5": 1,
+              "note": ""
+            },
+            {
+              "sid": "ss.3.b",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "ss.3.c",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "ss.3.d",
+              "score_0to5": 0,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "ss.4",
+          "name": "Commitment to Inclusive and Supportive Research Culture",
+          "group_name": null,
+          "score_10": 1.5,
+          "pros": "The applicant states they will use their knowledge as the department EDI director to ensure principles of inclusivity and equity are respected (secrc__001_p).",
+          "drawbacks": "This is a personal commitment by the applicant rather than evidence of the organisation's broader policies or culture. There is no mention of organisational initiatives supporting underrepresented groups, research integrity principles, or inclusive recruitment practices at the institutional level.",
+          "signals": [
+            {
+              "sid": "ss.4.a",
+              "score_0to5": 2,
+              "note": ""
+            },
+            {
+              "sid": "ss.4.b",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "ss.4.c",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "ss.4.d",
+              "score_0to5": 1,
+              "note": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section_id": "training_development",
+      "section_name": "Training & Development",
+      "average_score_10": 5.67,
+      "sub_criteria": [
+        {
+          "sub_id": "td.1",
+          "name": "Quality and Relevance of Proposed Training",
+          "group_name": null,
+          "score_10": 6,
+          "pros": "The application describes a specific training intervention ('Awareness of Interpersonal physical contact') designed using an 'Experience Based Co-design' approach (secrc__001_k). It outlines the content as 'theoretical and experiential' with 'interactive discussions of real scenarios' (secrc__001_l) and links the training design to findings from a scoping review and ethnography (secrc__001_b, secrc__001_k).",
+          "drawbacks": "The training description lacks a detailed structured timeline or sequencing of specific training activities (td.1.c). While the general approach is clear, specific modules, duration, or a step-by-step curriculum are not explicitly detailed, preventing a perfect score.",
+          "signals": [
+            {
+              "sid": "td.1.a",
+              "score_0to5": 3,
+              "note": ""
+            },
+            {
+              "sid": "td.1.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "td.1.c",
+              "score_0to5": 2,
+              "note": ""
+            },
+            {
+              "sid": "td.1.d",
+              "score_0to5": 3,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "td.2",
+          "name": "Suitability to Personal Development and Project Needs",
+          "group_name": null,
+          "score_10": 5.5,
+          "pros": "The training is clearly mapped to project tasks, specifically addressing the identified gap in GP touch interactions (secrc__001_d) and utilizing co-design to ensure it meets staff training needs (secrc__001_k). The plan includes specific evaluation tools like the 'Comfort with Touch Scale' to measure skill acquisition (secrc__001_l).",
+          "drawbacks": "There is no explicit identification of the applicant's personal skill gaps (td.2.a); the focus is on the training needs of the target audience (GPs/staff) rather than the researcher's own development needs. Additionally, while co-design is mentioned, specific formal courses or mentorship arrangements for the applicant's personal development are not detailed (td.2.d).",
+          "signals": [
+            {
+              "sid": "td.2.a",
+              "score_0to5": 2,
+              "note": ""
+            },
+            {
+              "sid": "td.2.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "td.2.c",
+              "score_0to5": 3,
+              "note": ""
+            },
+            {
+              "sid": "td.2.d",
+              "score_0to5": 2,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "td.3",
+          "name": "Support for Career Aspirations",
+          "group_name": null,
+          "score_10": 5.5,
+          "pros": "The application explicitly states the research will support the researcher's development as a 'Primary Care Researcher' (secrc__001_m). It connects the training design experience to future career goals, including developing wider collaborations and submitting further grants (secrc__001_m). The skills gained in co-design and intervention development are transferable to other clinical conditions (secrc__001_n).",
+          "drawbacks": "While career goals are mentioned, the specific long-term trajectory is somewhat generic ('support development of wider collaborations') rather than a detailed roadmap (td.3.a). The link between the specific training activities and the applicant's future leadership role could be more explicit (td.3.b). There is limited detail on how the applicant will engage in professional practice components beyond the research scope (td.3.d).",
+          "signals": [
+            {
+              "sid": "td.3.a",
+              "score_0to5": 3,
+              "note": ""
+            },
+            {
+              "sid": "td.3.b",
+              "score_0to5": 3,
+              "note": ""
+            },
+            {
+              "sid": "td.3.c",
+              "score_0to5": 3,
+              "note": ""
+            },
+            {
+              "sid": "td.3.d",
+              "score_0to5": 2,
+              "note": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section_id": "wpcc",
+      "section_name": "Working with People & Communities",
+      "average_score_10": 4.22,
+      "sub_criteria": [
+        {
+          "sub_id": "wp.1",
+          "name": "Integration of Lived Experience in Research Design",
+          "group_name": null,
+          "score_10": 6.67,
+          "pros": "The application explicitly details an 'Experience Based Co-design' approach (secrc__001_k) and plans for a PPIE group to provide feedback on training design and participate in the advisory group (secrc__001_p). It mentions specific activities like initial meetings to discuss the project draft (secrc__001_p).",
+          "drawbacks": "While the plan for co-design is strong, the application does not provide specific examples of changes already made to the study design based on prior lived experience input (wp.1.b), as the project is in the proposal stage. The PPIE member is described as a carer, but the direct involvement of people with dementia in the design phase is less explicitly detailed than the carer's role.",
+          "signals": [
+            {
+              "sid": "wp.1.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "wp.1.b",
+              "score_0to5": 2,
+              "note": ""
+            },
+            {
+              "sid": "wp.1.c",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "wp.2",
+          "name": "Diversity and Inclusivity of the Research Team",
+          "group_name": null,
+          "score_10": 0,
+          "pros": "No evidence found in the provided text regarding the diversity of the research team itself.",
+          "drawbacks": "The application text focuses on the research topic and PPIE involvement but contains no information about the demographic composition (gender, ethnicity, etc.) of the research team, hiring practices, or task allocation within the team.",
+          "signals": [
+            {
+              "sid": "wp.2.a",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "wp.2.b",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "wp.2.c",
+              "score_0to5": 0,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "wp.3",
+          "name": "Commitment to Maximising Public and Patient Benefit",
+          "group_name": null,
+          "score_10": 8,
+          "pros": "The application outlines clear dissemination plans including peer-reviewed journals, conferences, and local events (secrc__001_o). It explicitly links objectives to benefits such as reduced anxiety, improved communication, and reduced pharmacological interventions (secrc__001_n).",
+          "drawbacks": "While the benefits are well-articulated, the specific mechanisms for translating findings into practice guidelines or policy changes beyond general dissemination are not detailed.",
+          "signals": [
+            {
+              "sid": "wp.3.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "wp.3.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "wp.3.c",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "wp.4",
+          "name": "Representation of Seldom Heard or Underserved Groups",
+          "group_name": null,
+          "score_10": 4.67,
+          "pros": "The project specifically targets older people with dementia in care homes, a group often underserved in primary care research (secrc__001_e). The PPIE representative is identified as a carer for a person with dementia, ensuring relevant lived experience (secrc__001_p).",
+          "drawbacks": "There is limited discussion of specific barriers to participation for this demographic (e.g., cognitive impairment, communication difficulties) and detailed mitigation strategies beyond general ethical considerations. Recruitment strategies are mentioned generally but lack specific detail on how to overcome barriers for this specific group.",
+          "signals": [
+            {
+              "sid": "wp.4.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "wp.4.b",
+              "score_0to5": 2,
+              "note": ""
+            },
+            {
+              "sid": "wp.4.c",
+              "score_0to5": 1,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "wp.5",
+          "name": "Inclusivity Across the Research Lifecycle",
+          "group_name": null,
+          "score_10": 6,
+          "pros": "Inclusion is integrated across multiple stages: co-design of the intervention (secrc__001_k), feedback during development (secrc__001_l), and participation in analysis and dissemination (secrc__001_p). The applicant mentions using their role as EDI director to ensure inclusivity principles are respected (secrc__001_p).",
+          "drawbacks": "While inclusion is planned for design and dissemination, specific plans for ongoing evaluation and adaptation of inclusion strategies during the conduct phase are less detailed. Accessibility considerations for participants with dementia during the ethnographic and training phases are implied but not explicitly detailed.",
+          "signals": [
+            {
+              "sid": "wp.5.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "wp.5.b",
+              "score_0to5": 3,
+              "note": ""
+            },
+            {
+              "sid": "wp.5.c",
+              "score_0to5": 2,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "wp.6",
+          "name": "Costed and Resourced Plan for Research Inclusion",
+          "group_name": null,
+          "score_10": 0,
+          "pros": "No evidence found in the provided text regarding budget or resources for inclusion.",
+          "drawbacks": "The application text does not contain a budget section or any mention of specific funding lines, staff time, or materials allocated for PPIE activities, outreach, or recruitment support.",
+          "signals": [
+            {
+              "sid": "wp.6.a",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "wp.6.b",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "wp.6.c",
+              "score_0to5": 0,
+              "note": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

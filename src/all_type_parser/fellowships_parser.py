@@ -10,6 +10,8 @@ Section mapping
 "1. Application Summary Information"    -> SUMMARY INFORMATION
 "4. Plain English Summary of Research"  -> APPLICATION DETAILS["Plain English Summary"]
 "5. Scientific Abstract"                -> APPLICATION DETAILS["Scientific Abstract"]
+"2. Applicant CV"                       -> APPLICATION DETAILS["Applicant CV"]
+"3. Applicant Research Background"      -> APPLICATION DETAILS["Applicant Research Background"]
 "7. Patient & Public Involvement"       -> APPLICATION DETAILS["Working with People and Communities Summary"]
 "9. Detailed Budget"                    -> SUMMARY BUDGET
 "11. Participants and Signatories"      -> LEAD APPLICANT & RESEARCH TEAM (supervisors as Co-Applicants)
@@ -17,12 +19,18 @@ Section mapping
 Lead Applicant name/title is extracted from the page-1 Summary overview.
 """
 
+import logging
 from dataclasses import dataclass
 from typing import List, Optional, Dict
 import pdfplumber
 import re
 import os
 import json
+
+from .pdf_utils import is_not_watermark as _is_not_watermark
+
+# Suppress noisy pdfminer FontBBox / encoding warnings
+logging.getLogger("pdfminer").setLevel(logging.ERROR)
 
 
 # ---------------------------------------------------------------------------
@@ -41,10 +49,12 @@ PAGE_FOOTER_TOP:    float = 805.0  # discard lines whose top    > this
 SECTION_APP_SUMMARY:  str = "Application Summary Information"
 SECTION_PES:          str = "Plain English Summary of Research"
 SECTION_ABSTRACT:     str = "Scientific Abstract"
+SECTION_PLAN:         str = "Detailed Research Plan"
 SECTION_PPI:          str = "Patient & Public Involvement"
 SECTION_BUDGET:       str = "Detailed Budget"
 SECTION_PARTICIPANTS: str = "Participants and Signatories"
 SECTION_APPLICANT_CV: str = "Applicant CV"
+SECTION_APPLICANT_RESEARCH_BACKGROUND: str = "Applicant Research Background"
 SECTION_TRAINING:     str = "Training & Development and Research Support"
 
 _STRIP_NUMBER_RE = re.compile(r'^\d+\.\s+')
@@ -102,6 +112,7 @@ def extract_lines_pdfplumber(
         }
 
         for pno, page in enumerate(pdf.pages):
+            page = page.filter(_is_not_watermark)
             words = page.extract_words(
                 x_tolerance=x_tolerance,
                 y_tolerance=y_tolerance,
@@ -219,7 +230,7 @@ def _get_section_raw_text(pdf_path: str, target_heading: str) -> str:
             )
 
             if has_blue_box:
-                words = page.extract_words(x_tolerance=1, y_tolerance=3)
+                words = page.filter(_is_not_watermark).extract_words(x_tolerance=1, y_tolerance=3)
                 heading_words = sorted(
                     [w for w in words
                      if BLUE_BOX_TOP_MIN <= w["top"] <= BLUE_BOX_TOP_MAX],
@@ -229,13 +240,13 @@ def _get_section_raw_text(pdf_path: str, target_heading: str) -> str:
 
                 if heading == target_heading:
                     in_section = True
-                    pages_text.append(page.extract_text() or "")
+                    pages_text.append(page.filter(_is_not_watermark).extract_text() or "")
                 elif in_section:
                     # Reached a new numbered section — stop
                     break
             elif in_section:
                 # Continuation page (no blue box) — still part of this section
-                pages_text.append(page.extract_text() or "")
+                pages_text.append(page.filter(_is_not_watermark).extract_text() or "")
 
     return "\n".join(pages_text)
 
@@ -444,17 +455,29 @@ def parse_application_details(lines: List[Line]) -> dict:
     """
     out: dict = {}
 
+    cv_lines = slice_section(lines, SECTION_APPLICANT_CV)
+    if cv_lines:
+        out["Applicant CV"] = parse_text_section(cv_lines)
+
+    research_background_lines = slice_section(lines, SECTION_APPLICANT_RESEARCH_BACKGROUND)
+    if research_background_lines:
+        out["Applicant Research Background"] = parse_text_section(research_background_lines)
+
     pes_lines = slice_section(lines, SECTION_PES)
     if pes_lines:
-        out["Plain English Summary"] = parse_text_section(pes_lines)
+        out["Plain English Summary of Research"] = parse_text_section(pes_lines)
 
     abstract_lines = slice_section(lines, SECTION_ABSTRACT)
     if abstract_lines:
         out["Scientific Abstract"] = parse_text_section(abstract_lines)
 
+    plan_lines = slice_section(lines, SECTION_PLAN)
+    if plan_lines:
+        out["Detailed Research Plan"] = parse_text_section(plan_lines)
+
     ppi_lines = slice_section(lines, SECTION_PPI)
     if ppi_lines:
-        out["Working with People and Communities Summary"] = parse_text_section(ppi_lines)
+        out["Patient & Public Involvement"] = parse_text_section(ppi_lines)
 
     training_lines = slice_section(lines, SECTION_TRAINING)
     if training_lines:
@@ -476,7 +499,7 @@ def extract_all_sections(pdf_path: str) -> dict:
     lines = extract_lines_pdfplumber(pdf_path)
     lines = filter_fellowship_lines(lines)
 
-    out: dict = {}
+    out: dict = {"doc_type": "fellowship"}
 
     # SUMMARY INFORMATION — regex-based on section 1 raw text
     summary_info = parse_summary_information(pdf_path)

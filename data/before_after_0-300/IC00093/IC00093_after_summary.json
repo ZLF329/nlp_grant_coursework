@@ -1,0 +1,922 @@
+{
+  "doc_id": "53508f1fa935_IC00093_after",
+  "run_info": {
+    "ran_at_utc": "2026-04-21T12:03:16.753495Z",
+    "model": "qwen3.5:27b",
+    "judge_model": null
+  },
+  "sections": [
+    {
+      "section_id": "application_form",
+      "section_name": "Application Form",
+      "average_score_10": 8.28,
+      "sub_criteria": [
+        {
+          "sub_id": "af.1",
+          "name": "Use of Formatting, Headings, and Subheadings",
+          "group_name": null,
+          "score_10": 9.5,
+          "pros": "The application form analysis confirms a robust structural hierarchy with 54 numbered heading-like lines and 9 distinct sections detected. Formatting markers are abundant, including 40 bullet/numbered list markers and 117 table-like budget lines, ensuring high navigability. The presence of 13 extracted emphasis markers indicates effective use of bolding or italics for key terms.",
+          "drawbacks": "While emphasis markers are present, the analysis notes a parser limitation where bold/emphasis may be lost during text extraction; thus, the score for emphasis (af.1.b) is slightly reduced to 4 to account for the inability to fully verify the visual weight of these markers in the raw text.",
+          "signals": [
+            {
+              "sid": "af.1.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "af.1.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "af.1.c",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "af.1.d",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "af.2",
+          "name": "Limited Duplication and Repetition",
+          "group_name": null,
+          "score_10": 7.33,
+          "pros": "The application demonstrates low duplication rates, with a duplicate sentence rate of only 0.04 (excluding budget). Repeated line rate is 0.173, which is acceptable for structured forms. Lexical overlap between major sections is moderate (e.g., 0.399 between 'Changes from Previous Stage' and 'Detailed Research Plan'), suggesting necessary alignment rather than excessive redundancy.",
+          "drawbacks": "The lexical overlap of 0.399 between 'Changes from Previous Stage' and 'Detailed Research Plan' is relatively high, indicating some repetition of content that could be tightened. Additionally, the repeated line rate of 0.173 suggests some structural repetition that may impact novelty scores slightly.",
+          "signals": [
+            {
+              "sid": "af.2.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "af.2.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "af.2.c",
+              "score_0to5": 3,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "af.3",
+          "name": "Logical Flow and Coherence Across Sections",
+          "group_name": null,
+          "score_10": 8,
+          "pros": "Strong evidence of logical flow is present, with 62 terms linking objectives, methods, and budget. The section order follows a logical progression from applicant context to research plan, PPI, and budget. There are 29 transition phrases detected, supporting a coherent narrative thread across the document.",
+          "drawbacks": "While the structural indicators for flow are strong, the analysis relies on keyword counts and section ordering rather than deep semantic embedding analysis of the narrative thread itself, preventing a perfect score of 5.",
+          "signals": [
+            {
+              "sid": "af.3.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "af.3.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "af.3.c",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "af.3.d",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section_id": "general",
+      "section_name": "General",
+      "average_score_10": 5.67,
+      "sub_criteria": [
+        {
+          "sub_id": "g.1",
+          "name": "Common Characteristics of Good Applications",
+          "group_name": "Common Characteristics of Good Applications",
+          "score_10": 3.5,
+          "pros": "The applicant demonstrates a clear research vision focused on pneumococcal antibody reference data (g.1.a) and has developed a distinctive approach using stored samples and PPI co-design (g.1.b). Strong institutional support is evident through the Oxford Vaccine Group and UCL collaboration (g.1.d).",
+          "drawbacks": "There is no explicit training plan described for the applicant or team members (g.1.c). The career trajectory is implied by the 'Senior epidemiologist' title but not explicitly articulated as a long-term vision in the text.",
+          "signals": [
+            {
+              "sid": "g.1.a",
+              "score_0to5": 2,
+              "note": ""
+            },
+            {
+              "sid": "g.1.b",
+              "score_0to5": 2,
+              "note": ""
+            },
+            {
+              "sid": "g.1.c",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "g.1.d",
+              "score_0to5": 3,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "g.2",
+          "name": "Tell Us Why You Need This Award",
+          "group_name": "Tell Us Why You Need This Award",
+          "score_10": 0,
+          "pros": "No evidence found in the application text regarding the applicant's personal career needs or why this specific award is the right next step.",
+          "drawbacks": "The application focuses entirely on the research project and clinical impact. It lacks any section or statement explaining why the applicant needs this specific award for their career progression, what difference it would make to their career, or how it builds on their experience in a personal development context.",
+          "signals": [
+            {
+              "sid": "g.2.a",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "g.2.b",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "g.2.c",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "g.2.d",
+              "score_0to5": 0,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "g.3",
+          "name": "Relevant Research Experience and Training",
+          "group_name": "Applicant",
+          "score_10": 8,
+          "pros": "The applicant holds a PhD and MSc in Epidemiology (g.3.b) and has extensive experience with large serological datasets and pneumococcal carriage studies (g.3.a). The CV lists publications directly relevant to the proposed study, showing perfect alignment between prior experience and required skills (g.3.c).",
+          "drawbacks": "While formal training is listed, specific recent courses or certifications related to the new methodologies (e.g., specific chart development techniques) are not explicitly detailed, though the existing expertise is strong.",
+          "signals": [
+            {
+              "sid": "g.3.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "g.3.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "g.3.c",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "g.4",
+          "name": "Impactful Research Outputs and Outcomes",
+          "group_name": "Applicant",
+          "score_10": 6,
+          "pros": "The applicant has a strong publication record in high-impact journals (g.4.a) and has already developed an early template of the guidance chart used in clinical practice (g.4.d).",
+          "drawbacks": "Citation metrics are not provided in the text (g.4.b). There is no mention of specific awards or grants linked to prior research in the CV section (g.4.c).",
+          "signals": [
+            {
+              "sid": "g.4.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "g.4.b",
+              "score_0to5": 3,
+              "note": ""
+            },
+            {
+              "sid": "g.4.c",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "g.4.d",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "g.5",
+          "name": "Trajectory Towards Research Leadership",
+          "group_name": "Applicant",
+          "score_10": 3,
+          "pros": "The applicant holds a 'Senior epidemiologist' position, indicating increasing responsibility (g.5.b). The involvement of a global expert (Prof Goldblatt) suggests peer recognition (g.5.d).",
+          "drawbacks": "There are no explicit statements of long-term career ambitions or goals (g.5.a). No participation in leadership or professional development programs is mentioned (g.5.c).",
+          "signals": [
+            {
+              "sid": "g.5.a",
+              "score_0to5": 1,
+              "note": ""
+            },
+            {
+              "sid": "g.5.b",
+              "score_0to5": 3,
+              "note": ""
+            },
+            {
+              "sid": "g.5.c",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "g.5.d",
+              "score_0to5": 2,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "g.6",
+          "name": "Commitment to Practitioner-Academic Career (if applicable)",
+          "group_name": "Applicant",
+          "score_10": 2,
+          "pros": "The team includes Dr. Dominic Kelly, a BRC Consultant in Paediatrics and Vaccinology, demonstrating strong involvement in clinical practice-based research (g.6.b).",
+          "drawbacks": "The lead applicant (Dr. Tiley) is an epidemiologist, not a clinician, and there is no explicit statement of practitioner-academic career intentions for the lead applicant (g.6.a). There is no evidence of balancing practice responsibilities with research for the lead applicant (g.6.c) or participation in relevant professional networks (g.6.d).",
+          "signals": [
+            {
+              "sid": "g.6.a",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "g.6.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "g.6.c",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "g.6.d",
+              "score_0to5": 0,
+              "note": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section_id": "proposed_research",
+      "section_name": "Proposed Research",
+      "average_score_10": 9,
+      "sub_criteria": [
+        {
+          "sub_id": "pr.1",
+          "name": "Quality of the Plain English Summary",
+          "group_name": null,
+          "score_10": 8,
+          "pros": "The Plain English Summary is highly readable (Flesch-Kincaid ~9.3, short sentences) and explicitly avoids acronyms like PCV13 as requested by the committee. It clearly covers the problem, objectives, methods, beneficiaries, and impact. The text explains technical terms (e.g., 'antibody', 'meningitis') in simple language. Alignment with the Detailed Research Plan is strong, covering the same scope and goals.",
+          "drawbacks": "While readability is high, the Flesch Reading Ease score of 46 is on the lower end of 'standard' readability, suggesting some complexity remains despite the simplification efforts. A few technical terms like 'serotypes' are implied but not explicitly defined in the summary text itself, though the context makes them understandable.",
+          "signals": [
+            {
+              "sid": "pr.1.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.1.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.1.c",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.1.d",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.1.e",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.1.f",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "pr.2",
+          "name": "Evidence Review Quality & Relevance",
+          "group_name": null,
+          "score_10": 8,
+          "pros": "The application cites 10 specific references to support the rationale, including studies on antibody kinetics and previous attempts at algorithms. It critically analyzes why existing data is insufficient (e.g., lack of normal ranges across ages, variation in serotypes). The knowledge gap is clearly identified: no reference data exists for healthy children across the full age range (0-10) to interpret pneumococcal antibody results.",
+          "drawbacks": "The review focuses heavily on the lack of normal ranges but could provide more depth on the specific limitations of the cited studies beyond just 'no normal ranges defined.' The flow is logical but dense in the Detailed Research Plan section.",
+          "signals": [
+            {
+              "sid": "pr.2.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.2.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.2.c",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.2.d",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "pr.3",
+          "name": "Research Scope & Award Appropriateness",
+          "group_name": null,
+          "score_10": 8,
+          "pros": "The scope is well-aligned with the award level (Tier 3), having been adjusted from Stage 1 to reduce costs and focus on specific age groups (3-10) using stored samples. The timeline (18 months) is realistic for secondary analysis and limited lab testing. The project uses existing datasets and stored samples, making it highly feasible.",
+          "drawbacks": "The reliance on stored samples from a specific study (STORY) introduces a potential limitation if the sample size for certain age bands is smaller than anticipated, though the applicant has justified the sample size (40 per age group) as sufficient for percentiles.",
+          "signals": [
+            {
+              "sid": "pr.3.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.3.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.3.c",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "pr.4",
+          "name": "Research Design & Methodological Rigor",
+          "group_name": null,
+          "score_10": 10,
+          "pros": "Methods are described in exceptional detail, including specific data sources (clinical trials, hospital database, STORY), standardized assays (WHO reference serum), and statistical validation plans. The analysis plan explicitly addresses variability by sex, ethnicity, and schedule changes. Independent statistical verification is planned to avoid bias.",
+          "drawbacks": "No significant drawbacks; the methodology is robust and directly addresses previous committee concerns regarding representativeness and bias.",
+          "signals": [
+            {
+              "sid": "pr.4.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.4.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.4.c",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.4.d",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "pr.5",
+          "name": "Potential Impact on Patients, Public, and Health Services",
+          "group_name": null,
+          "score_10": 8,
+          "pros": "Impact is clearly articulated: avoiding unnecessary booster vaccines, reducing parental anxiety, saving GP time, and standardizing clinical interpretation. The output (a reference chart) is a tangible tool for immediate clinical use. The trajectory to patient benefit is direct and well-explained.",
+          "drawbacks": "The long-term impact on reducing immunodeficiency diagnoses is implied but not quantified; however, the immediate benefits are strong.",
+          "signals": [
+            {
+              "sid": "pr.5.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.5.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.5.c",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "pr.6",
+          "name": "Engagement with People & Communities",
+          "group_name": null,
+          "score_10": 10,
+          "pros": "PPI is deeply integrated: six contributors (mixed demographics) consulted on design, edited the lay summary, and will co-design the chart in a workshop. The plan includes induction, mid-point, and end-of-project engagement. PPI feedback directly shaped the analysis plan (representativeness) and dissemination strategy.",
+          "drawbacks": "None identified; the PPI plan is comprehensive and costed.",
+          "signals": [
+            {
+              "sid": "pr.6.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.6.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.6.c",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "pr.7",
+          "name": "Justification of Resources & Award Costs",
+          "group_name": null,
+          "score_10": 10,
+          "pros": "Costs are explicitly justified by linking them to specific tasks (lab testing, PPI workshop) and demonstrating cost savings (reduced sample testing). The budget aligns with the reduced scope requested by the committee. The reliance on existing data sources minimizes costs.",
+          "drawbacks": "No significant drawbacks; the justification is clear and responsive to feedback.",
+          "signals": [
+            {
+              "sid": "pr.7.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.7.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.7.c",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "pr.8",
+          "name": "Quality of Previous Research (if applicable)",
+          "group_name": null,
+          "score_10": 10,
+          "pros": "The team has a strong track record with relevant publications on pneumococcal carriage and seroprevalence. The lead applicant has a PhD in Epidemiology and experience with large serological datasets. The team includes a global expert (Prof Goldblatt) and a consultant in paediatrics.",
+          "drawbacks": "None identified; the team's expertise is highly relevant and well-documented.",
+          "signals": [
+            {
+              "sid": "pr.8.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.8.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.8.c",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "pr.9",
+          "name": "Inclusive Research Design",
+          "group_name": null,
+          "score_10": 10,
+          "pros": "The study explicitly uses a nationally representative dataset (STORY) to ensure diversity in geography, ethnicity, and sex. The analysis plan includes stratification by sex and ethnicity to ensure generalisability. PPI feedback highlighted the importance of representativeness, which was incorporated into the design.",
+          "drawbacks": "None identified; inclusivity is a core component of the data selection and analysis strategy.",
+          "signals": [
+            {
+              "sid": "pr.9.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.9.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.9.c",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section_id": "sites_support",
+      "section_name": "Sites & Support",
+      "average_score_10": 5,
+      "sub_criteria": [
+        {
+          "sub_id": "ss.1",
+          "name": "Track Record of the Contracting Organisation (and Partners)",
+          "group_name": null,
+          "score_10": 6.5,
+          "pros": "The application demonstrates a strong track record through access to multiple specific datasets (NCT01996007, NCT03102840, etc.) from the Oxford Vaccine Group, UCL, and OUHFT (ss.1.a, ss.1.c). It highlights the use of the WHO reference laboratory and the Oxford Vaccine Centre BioBank, indicating established infrastructure and notable outputs (ss.1.d).",
+          "drawbacks": "While the access to data implies success, there is no explicit mention of specific previous funding awards or grants secured by the contracting organisation for similar projects (ss.1.b). The evidence relies heavily on data availability rather than a narrative of past funding success.",
+          "signals": [
+            {
+              "sid": "ss.1.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "ss.1.b",
+              "score_0to5": 2,
+              "note": ""
+            },
+            {
+              "sid": "ss.1.c",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "ss.1.d",
+              "score_0to5": 3,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "ss.2",
+          "name": "Suitability of Supervisory Support and Mentorship Arrangements",
+          "group_name": null,
+          "score_10": 6.5,
+          "pros": "The application clearly defines roles: Dr. Karen Tiley manages the project and statistical analysis, while Prof David Goldblatt oversees immunological testing (ss.2.a). The expertise of the team (Senior Epidemiologist, BRC Consultant, global expert on pneumococcal vaccines) aligns perfectly with the project's methodological needs (ss.2.c).",
+          "drawbacks": "There is no explicit description of a structured supervision framework, such as the frequency of meetings, specific mentorship plans, or formal accountability mechanisms (ss.2.b, ss.2.d). The text mentions 'regular team meetings' but lacks detail on the supervisory relationship specifically for the applicant's development.",
+          "signals": [
+            {
+              "sid": "ss.2.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "ss.2.b",
+              "score_0to5": 2,
+              "note": ""
+            },
+            {
+              "sid": "ss.2.c",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "ss.2.d",
+              "score_0to5": 2,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "ss.3",
+          "name": "Appropriateness of the Contracting Organisation to Support the Award and Career Aspirations",
+          "group_name": null,
+          "score_10": 7,
+          "pros": "The application provides strong evidence of facilities and resources, specifically citing the Oxford Vaccine Centre BioBank and the WHO reference laboratory for pneumococcal serology (ss.3.a). It explicitly links these resources to project success by noting they enable the testing of stored samples and standardized assays (ss.3.b).",
+          "drawbacks": "There is limited discussion on how the organisational focus specifically aligns with the applicant's long-term career trajectory beyond the immediate project needs (ss.3.c). Additionally, there is no specific mention of tailored support mechanisms for the specific award type (e.g., doctoral vs. postdoctoral support structures) (ss.3.d).",
+          "signals": [
+            {
+              "sid": "ss.3.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "ss.3.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "ss.3.c",
+              "score_0to5": 3,
+              "note": ""
+            },
+            {
+              "sid": "ss.3.d",
+              "score_0to5": 2,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "ss.4",
+          "name": "Commitment to Inclusive and Supportive Research Culture",
+          "group_name": null,
+          "score_10": 0,
+          "pros": "No evidence found in the provided text sections regarding the contracting organisation's commitment to inclusive culture, diversity policies, or research integrity initiatives.",
+          "drawbacks": "The application text contains no mentions of policies promoting diversity, equity, and inclusion (ss.4.a), inclusive recruitment or mentoring initiatives (ss.4.b), adherence to research integrity principles (ss.4.c), or statements on organisational culture supporting underrepresented groups (ss.4.d). The focus is entirely on technical and methodological capabilities.",
+          "signals": [
+            {
+              "sid": "ss.4.a",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "ss.4.b",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "ss.4.c",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "ss.4.d",
+              "score_0to5": 0,
+              "note": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section_id": "training_development",
+      "section_name": "Training & Development",
+      "average_score_10": 0,
+      "sub_criteria": [
+        {
+          "sub_id": "td.1",
+          "name": "Quality and Relevance of Proposed Training",
+          "group_name": null,
+          "score_10": 0,
+          "pros": "No evidence found in the provided application text or belief state regarding a specific training plan.",
+          "drawbacks": "The application text provided is limited to summary information and does not contain a training section. The belief state explicitly lists 'td.1' as a missing signal. There is no description of training activities, timelines, or links to skill acquisition.",
+          "signals": [
+            {
+              "sid": "td.1.a",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "td.1.b",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "td.1.c",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "td.1.d",
+              "score_0to5": 0,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "td.2",
+          "name": "Suitability to Personal Development and Project Needs",
+          "group_name": null,
+          "score_10": 0,
+          "pros": "No evidence found in the provided application text or belief state regarding personal development needs or skill gaps.",
+          "drawbacks": "The application text provided is limited to summary information and does not contain a training section. The belief state explicitly lists 'td.2' as a missing signal. There is no identification of skill gaps or mapping of training to project tasks.",
+          "signals": [
+            {
+              "sid": "td.2.a",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "td.2.b",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "td.2.c",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "td.2.d",
+              "score_0to5": 0,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "td.3",
+          "name": "Support for Career Aspirations",
+          "group_name": null,
+          "score_10": 0,
+          "pros": "No evidence found in the provided application text or belief state regarding career aspirations linked to training.",
+          "drawbacks": "The application text provided is limited to summary information and does not contain a training section. The belief state explicitly lists 'td.3' as a missing signal. There is no statement of career goals or connection between training and future trajectory.",
+          "signals": [
+            {
+              "sid": "td.3.a",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "td.3.b",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "td.3.c",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "td.3.d",
+              "score_0to5": 0,
+              "note": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section_id": "wpcc",
+      "section_name": "Working with People & Communities",
+      "average_score_10": 8.22,
+      "sub_criteria": [
+        {
+          "sub_id": "wp.1",
+          "name": "Integration of Lived Experience in Research Design",
+          "group_name": null,
+          "score_10": 10,
+          "pros": "The application provides robust evidence of integration. PPI contributors were consulted on research design, leading to specific changes: adapting the analysis plan to evaluate representativeness by ethnicity/sex, simplifying the lay summary, and establishing a chart development workshop. The PPI group is explicitly described as a standing group with mixed demographics.",
+          "drawbacks": "No material caveats; the evidence is specific, grounded, and demonstrates clear impact on the research design.",
+          "signals": [
+            {
+              "sid": "wp.1.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "wp.1.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "wp.1.c",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "wp.2",
+          "name": "Diversity and Inclusivity of the Research Team",
+          "group_name": null,
+          "score_10": 5.33,
+          "pros": "The PPI group is explicitly described as having a mix of genders and ethnicities, including parents of non-adult children. The research team includes a dedicated PPI Lead with experience in public engagement.",
+          "drawbacks": "Evidence is limited to the PPI group composition; there is no explicit statement regarding the diversity of the academic research team itself (e.g., gender/ethnicity of investigators) or specific hiring strategies for inclusivity.",
+          "signals": [
+            {
+              "sid": "wp.2.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "wp.2.b",
+              "score_0to5": 2,
+              "note": ""
+            },
+            {
+              "sid": "wp.2.c",
+              "score_0to5": 2,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "wp.3",
+          "name": "Commitment to Maximising Public and Patient Benefit",
+          "group_name": null,
+          "score_10": 10,
+          "pros": "Strong, specific links between objectives and benefits are detailed: avoiding unnecessary booster vaccines, reducing parental anxiety, saving GP resources, and standardizing clinical interpretation. A clear dissemination plan includes publication, conferences, and clinical training. PPI input directly shaped the chart to ensure it is understandable for parents.",
+          "drawbacks": "No material caveats; the plan is comprehensive and directly addresses patient and public benefit.",
+          "signals": [
+            {
+              "sid": "wp.3.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "wp.3.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "wp.3.c",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "wp.4",
+          "name": "Representation of Seldom Heard or Underserved Groups",
+          "group_name": null,
+          "score_10": 6,
+          "pros": "The application explicitly mentions including participants representative of the general population in terms of geography, ethnicity, and sex. PPI feedback specifically highlighted the need for data representativeness, leading to planned separate analyses by ethnicity and sex.",
+          "drawbacks": "While the data sources are representative, there is limited discussion of specific barriers to participation for seldom-heard groups or targeted recruitment strategies beyond using existing representative datasets.",
+          "signals": [
+            {
+              "sid": "wp.4.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "wp.4.b",
+              "score_0to5": 3,
+              "note": ""
+            },
+            {
+              "sid": "wp.4.c",
+              "score_0to5": 2,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "wp.5",
+          "name": "Inclusivity Across the Research Lifecycle",
+          "group_name": null,
+          "score_10": 8,
+          "pros": "Inclusion is demonstrated across the lifecycle: initial consultation on design, mid-point workshop for chart development, regular progress updates, and an end-of-project evaluation survey. The plan includes a framework to capture feedback and changes resulting from PPI.",
+          "drawbacks": "The evaluation framework is described generally; specific metrics for measuring the success of inclusivity adaptations are not detailed.",
+          "signals": [
+            {
+              "sid": "wp.5.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "wp.5.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "wp.5.c",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "wp.6",
+          "name": "Costed and Resourced Plan for Research Inclusion",
+          "group_name": null,
+          "score_10": 10,
+          "pros": "The budget includes a specific line item for PPI costs (£2,300) and explicitly funds an in-person chart development workshop. Staff time is allocated for a PPI Lead to manage the group, provide training, and administer needs assessments. Group members are compensated.",
+          "drawbacks": "No material caveats; the resourcing is explicit, costed, and aligned with the inclusion activities described.",
+          "signals": [
+            {
+              "sid": "wp.6.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "wp.6.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "wp.6.c",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

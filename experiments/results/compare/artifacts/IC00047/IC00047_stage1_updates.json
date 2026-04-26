@@ -1,0 +1,748 @@
+[
+  {
+    "section_name": "Applicant CV",
+    "findings": [
+      {
+        "sub_id": "g.3",
+        "good_evidence_ids": [
+          "secac__001_a",
+          "secac__001_b"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Applicant CV: Applicant holds an MPH and MFPH qualifications and has held research intern roles at Public Health England, demonstrating formal training and relevant research experience."
+      },
+      {
+        "sub_id": "g.4",
+        "good_evidence_ids": [
+          "secac__001_b",
+          "secac__001_c",
+          "secac__001_d"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Applicant CV: Applicant lists multiple peer-reviewed publications in journals like Anaesthesia and British Journal of Surgery, plus awards including a Best Poster Presentation and Academic Clinical Fellowship."
+      },
+      {
+        "sub_id": "g.5",
+        "good_evidence_ids": [
+          "secac__001_b",
+          "secac__001_d"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Applicant CV: Applicant shows increasing responsibility as Project Lead for PPI engagement and First Author on conference presentations, indicating a trajectory toward research leadership."
+      },
+      {
+        "sub_id": "g.6",
+        "good_evidence_ids": [
+          "secac__001_a",
+          "secac__001_b"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Applicant CV: Applicant holds an MBChB and MFPH, and currently works as a Public Health Specialty Registrar and Visiting Lecturer, confirming a practitioner-academic career path."
+      }
+    ],
+    "resolved_signals": [
+      "g.3",
+      "g.4",
+      "g.5",
+      "g.6"
+    ],
+    "missing_signals_after": [
+      "g.1",
+      "g.2",
+      "pr.1",
+      "pr.2",
+      "pr.3",
+      "pr.4",
+      "pr.5",
+      "pr.6",
+      "pr.7",
+      "pr.8",
+      "pr.9",
+      "td.1",
+      "td.2",
+      "td.3",
+      "ss.1",
+      "ss.2",
+      "ss.3",
+      "ss.4",
+      "wp.1",
+      "wp.2",
+      "wp.3",
+      "wp.4",
+      "wp.5",
+      "wp.6"
+    ]
+  },
+  {
+    "section_name": "Applicant Research Background",
+    "findings": [
+      {
+        "sub_id": "g.1",
+        "good_evidence_ids": [
+          "secarb__001_a",
+          "secarb__001_d",
+          "secarb__001_f"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Applicant Research Background: Describes a clear trajectory from student awards to leading independent research projects and pursuing a PhD, demonstrating a distinct research vision."
+      },
+      {
+        "sub_id": "g.2",
+        "good_evidence_ids": [
+          "secarb__001_d",
+          "secarb__001_f"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Applicant Research Background: Explicitly states the fellowship will build skills in qualitative research and AI, enabling a career in academia and bridging health/social care."
+      },
+      {
+        "sub_id": "g.3",
+        "good_evidence_ids": [
+          "secarb__001_b",
+          "secarb__001_c",
+          "secarb__001_d"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Applicant Research Background: Details experience leading a cross-sectional survey, analyzing data in R, and writing protocols, showing strong alignment with required research skills."
+      },
+      {
+        "sub_id": "g.4",
+        "good_evidence_ids": [
+          "secarb__001_a",
+          "secarb__001_c",
+          "secarb__001_d"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Applicant Research Background: Lists multiple awards (Doubleday Student Award, Patient and Public Involvement Award), conference presentations, and an accepted manuscript, demonstrating impactful outputs."
+      },
+      {
+        "sub_id": "g.5",
+        "good_evidence_ids": [
+          "secarb__001_a",
+          "secarb__001_c",
+          "secarb__001_e"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Applicant Research Background: Shows increasing responsibility as a Principal Investigator leading a team of 7, organizing conferences, and serving as a judge, indicating leadership potential."
+      },
+      {
+        "sub_id": "g.6",
+        "good_evidence_ids": [
+          "secarb__001_c",
+          "secarb__001_d",
+          "secarb__001_e"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Applicant Research Background: Confirms practitioner-academic commitment by conducting research while training as a junior doctor and teaching master's students."
+      },
+      {
+        "sub_id": "wp.1",
+        "good_evidence_ids": [
+          "secarb__001_a",
+          "secarb__001_e",
+          "secarb__001_f"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Applicant Research Background: Demonstrates deep integration of lived experience through co-developing projects with patients, shadowing care workers, and shaping the PhD question based on their input."
+      },
+      {
+        "sub_id": "wp.3",
+        "good_evidence_ids": [
+          "secarb__001_c",
+          "secarb__001_d"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Applicant Research Background: Highlights practical impact where study findings led to improved appointment letters, patient leaflets, and mandatory training for health professionals."
+      }
+    ],
+    "resolved_signals": [
+      "g.1",
+      "g.2",
+      "g.3",
+      "g.4",
+      "g.5",
+      "g.6",
+      "wp.1",
+      "wp.3"
+    ],
+    "missing_signals_after": [
+      "pr.1",
+      "pr.2",
+      "pr.3",
+      "pr.4",
+      "pr.5",
+      "pr.6",
+      "pr.7",
+      "pr.8",
+      "pr.9",
+      "td.1",
+      "td.2",
+      "td.3",
+      "ss.1",
+      "ss.2",
+      "ss.3",
+      "ss.4",
+      "wp.2",
+      "wp.4",
+      "wp.5",
+      "wp.6"
+    ]
+  },
+  {
+    "section_name": "Plain English Summary of Research",
+    "findings": [
+      {
+        "sub_id": "pr.1",
+        "good_evidence_ids": [
+          "secpesor__001_a",
+          "secpesor__001_b",
+          "secpesor__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Clearly defines the problem, objectives, methods, and beneficiaries in accessible language, supporting pr.1."
+      },
+      {
+        "sub_id": "pr.3",
+        "good_evidence_ids": [
+          "secpesor__001_b",
+          "secpesor__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Outlines a structured 4-question approach with specific tasks (survey, focus groups, AI training), indicating feasible scope for pr.3."
+      },
+      {
+        "sub_id": "pr.4",
+        "good_evidence_ids": [
+          "secpesor__001_b",
+          "secpesor__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Describes specific methods including national surveys, focus groups, and AI model training, supporting pr.4."
+      },
+      {
+        "sub_id": "pr.5",
+        "good_evidence_ids": [
+          "secpesor__001_a",
+          "secpesor__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Explicitly states the goal to improve care for patients in care homes and share results with care workers, supporting pr.5."
+      },
+      {
+        "sub_id": "pr.6",
+        "good_evidence_ids": [
+          "secpesor__001_b",
+          "secpesor__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Details engagement with care workers, residents, families, and public groups in design and feedback, supporting pr.6."
+      },
+      {
+        "sub_id": "wp.1",
+        "good_evidence_ids": [
+          "secpesor__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: States the project question was created with care workers and residents, confirming integration of lived experience for wp.1."
+      },
+      {
+        "sub_id": "wp.3",
+        "good_evidence_ids": [
+          "secpesor__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Describes dissemination via journals, conferences, and a video for care workers, supporting wp.3."
+      }
+    ],
+    "resolved_signals": [
+      "pr.1",
+      "pr.3",
+      "pr.4",
+      "pr.5",
+      "pr.6",
+      "wp.1",
+      "wp.3"
+    ],
+    "missing_signals_after": [
+      "pr.2",
+      "pr.7",
+      "pr.8",
+      "pr.9",
+      "td.1",
+      "td.2",
+      "td.3",
+      "ss.1",
+      "ss.2",
+      "ss.3",
+      "ss.4",
+      "wp.2",
+      "wp.4",
+      "wp.5",
+      "wp.6"
+    ]
+  },
+  {
+    "section_name": "Scientific Abstract",
+    "findings": [
+      {
+        "sub_id": "pr.1",
+        "good_evidence_ids": [
+          "secsa__001_a",
+          "secsa__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Clearly articulates the problem (MDS unsuitability), aims, methods (WP1-4), and impact (reduced readmissions), fulfilling pr.1 requirements for a comprehensive summary."
+      },
+      {
+        "sub_id": "pr.2",
+        "good_evidence_ids": [
+          "secsa__001_a"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Identifies a specific knowledge gap regarding the mismatch between MDS content and carer health literacy, supporting pr.2."
+      },
+      {
+        "sub_id": "pr.3",
+        "good_evidence_ids": [
+          "secsa__001_a",
+          "secsa__001_b"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Outlines four distinct work packages with specific tasks (survey, focus groups, Delphi, NLP), indicating a feasible and appropriately scoped project for pr.3."
+      },
+      {
+        "sub_id": "pr.4",
+        "good_evidence_ids": [
+          "secsa__001_a",
+          "secsa__001_b"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Details rigorous methods including systematic review, cross-sectional survey, mixed methods, modified Delphi, and NLP algorithm training, supporting pr.4."
+      },
+      {
+        "sub_id": "pr.5",
+        "good_evidence_ids": [
+          "secsa__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Explicitly links outcomes to safe care, reduced workloads, fewer medical events, and NHS cost savings, strongly supporting pr.5."
+      },
+      {
+        "sub_id": "pr.6",
+        "good_evidence_ids": [
+          "secsa__001_b",
+          "secsa__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Describes co-production with carers/residents, a public steering committee, and focus groups, demonstrating deep engagement for pr.6."
+      },
+      {
+        "sub_id": "pr.9",
+        "good_evidence_ids": [
+          "secsa__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Mentions methodology review by the public to ensure accessibility and inclusivity for a range of participants, supporting pr.9."
+      },
+      {
+        "sub_id": "wp.1",
+        "good_evidence_ids": [
+          "secsa__001_b",
+          "secsa__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Confirms project co-production with residents/carers and methodology review by the public, reinforcing wp.1."
+      },
+      {
+        "sub_id": "wp.3",
+        "good_evidence_ids": [
+          "secsa__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Highlights benefits of effective communication, reduced workloads, and cost savings, aligning with wp.3."
+      }
+    ],
+    "resolved_signals": [
+      "pr.1",
+      "pr.2",
+      "pr.3",
+      "pr.4",
+      "pr.5",
+      "pr.6",
+      "pr.9",
+      "wp.1",
+      "wp.3"
+    ],
+    "missing_signals_after": [
+      "pr.7",
+      "pr.8",
+      "td.1",
+      "td.2",
+      "td.3",
+      "ss.1",
+      "ss.2",
+      "ss.3",
+      "ss.4",
+      "wp.2",
+      "wp.4",
+      "wp.5",
+      "wp.6"
+    ]
+  },
+  {
+    "section_name": "Detailed Research Plan",
+    "findings": [
+      {
+        "sub_id": "pr.2",
+        "good_evidence_ids": [
+          "secdrp__001_c",
+          "secdrp__001_d",
+          "secdrp__001_e"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Identifies specific gaps in literature regarding health literacy of care workers and readability of MDS, citing multiple studies to justify the need for this research."
+      },
+      {
+        "sub_id": "pr.3",
+        "good_evidence_ids": [
+          "secdrp__001_g",
+          "secdrp__001_h",
+          "secdrp__001_k"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Outlines four distinct work packages with specific sample sizes (e.g., 156 surveys, 291 MDS) and clear objectives, demonstrating a feasible and appropriately scoped project."
+      },
+      {
+        "sub_id": "pr.4",
+        "good_evidence_ids": [
+          "secdrp__001_i",
+          "secdrp__001_l",
+          "secdrp__001_n"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Provides explicit methodological details including systematic review protocols (PRISMA), validated tools (FHLT, PEMAT), and statistical analysis plans (R, Flesch-Kincaid), ensuring rigor."
+      },
+      {
+        "sub_id": "pr.5",
+        "good_evidence_ids": [
+          "secdrp__001_b",
+          "secdrp__001_w",
+          "secdrp__001_x"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Explicitly links improved MDS to patient safety, reduced readmissions, and reduced workload for care workers, detailing anticipated impacts on patients, social care, and the NHS."
+      },
+      {
+        "sub_id": "pr.6",
+        "good_evidence_ids": [
+          "secdrp__001_c",
+          "secdrp__001_p",
+          "secdrp__001_s"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Describes co-production with carers and residents in WP3 (Delphi), focus groups in WP2, and a steering committee with diverse stakeholders, demonstrating deep engagement."
+      },
+      {
+        "sub_id": "pr.9",
+        "good_evidence_ids": [
+          "secdrp__001_p",
+          "secdrp__001_q",
+          "secdrp__001_s"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Includes strategies for diverse recruitment (purposive selection by health literacy, CQC ratings), accessibility measures (plain English documents), and compensation for participants."
+      },
+      {
+        "sub_id": "ss.2",
+        "good_evidence_ids": [
+          "secdrp__001_y",
+          "secdrp__001_z"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Details a structured supervision framework with fortnightly meetings with primary supervisors and monthly meetings with co-supervisors, plus a thesis committee."
+      },
+      {
+        "sub_id": "ss.3",
+        "good_evidence_ids": [
+          "secdrp__001_h",
+          "secdrp__001_m"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Confirms institutional support via UCL-led Vivaldi network, London HCIC, and established links with three NHS trusts for data access and recruitment."
+      },
+      {
+        "sub_id": "wp.1",
+        "good_evidence_ids": [
+          "secdrp__001_c",
+          "secdrp__001_s",
+          "secdrp__001_w"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Integrates lived experience through a steering committee of carers/residents, co-producing principles in WP3, and empowering carers to co-lead knowledge sharing events."
+      },
+      {
+        "sub_id": "wp.3",
+        "good_evidence_ids": [
+          "secdrp__001_u",
+          "secdrp__001_v",
+          "secdrp__001_w"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Outlines a comprehensive dissemination plan including scientific publications, grey literature for non-medical audiences, and a knowledge share event co-led with stakeholders."
+      },
+      {
+        "sub_id": "wp.6",
+        "good_evidence_ids": [
+          "secdrp__001_k",
+          "secdrp__001_q",
+          "secdrp__001_z"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Explicitly budgets for inclusion activities via £15 vouchers for survey participants and £25 e-gift cards plus travel costs for focus group participants."
+      }
+    ],
+    "resolved_signals": [
+      "pr.2",
+      "pr.3",
+      "pr.4",
+      "pr.5",
+      "pr.6",
+      "pr.9",
+      "ss.2",
+      "ss.3",
+      "wp.1",
+      "wp.3",
+      "wp.6"
+    ],
+    "missing_signals_after": [
+      "pr.7",
+      "pr.8",
+      "td.1",
+      "td.2",
+      "td.3",
+      "ss.1",
+      "ss.4",
+      "wp.2",
+      "wp.4",
+      "wp.5"
+    ]
+  },
+  {
+    "section_name": "Patient & Public Involvement",
+    "findings": [
+      {
+        "sub_id": "wp.1",
+        "good_evidence_ids": [
+          "secppi__001_a",
+          "secppi__001_b"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Patient & Public Involvement: Describes co-production where a carer suggested the PhD aim and a community group advised adapting the Delphi methodology to printed versions, directly supporting wp.1."
+      },
+      {
+        "sub_id": "wp.3",
+        "good_evidence_ids": [
+          "secppi__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Patient & Public Involvement: States the steering committee will influence work from protocol to dissemination, ensuring public benefit is maximized throughout the project lifecycle."
+      },
+      {
+        "sub_id": "wp.4",
+        "good_evidence_ids": [
+          "secppi__001_b",
+          "secppi__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Patient & Public Involvement: Explicitly addresses barriers for older adults and care home residents by offering printed materials and face-to-face meetings, supporting representation of underserved groups."
+      },
+      {
+        "sub_id": "wp.5",
+        "good_evidence_ids": [
+          "secppi__001_b",
+          "secppi__001_c",
+          "secppi__001_d"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Patient & Public Involvement: Details inclusive strategies across the lifecycle, including pre-meetings, technical accessories, plain English TORs, and face-to-face options for those struggling with online meetings."
+      },
+      {
+        "sub_id": "wp.6",
+        "good_evidence_ids": [
+          "secppi__001_c",
+          "secppi__001_d"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Patient & Public Involvement: Confirms residents and family members will be remunerated for their time and provided with technical accessories, demonstrating a costed plan for inclusion."
+      },
+      {
+        "sub_id": "td.2",
+        "good_evidence_ids": [
+          "secppi__001_d"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Patient & Public Involvement: Applicant plans to attend a facilitator course to support chairing the steering committee, addressing a specific skill gap for managing PPI engagement."
+      }
+    ],
+    "resolved_signals": [
+      "wp.1",
+      "wp.3",
+      "wp.4",
+      "wp.5",
+      "wp.6",
+      "td.2"
+    ],
+    "missing_signals_after": [
+      "pr.7",
+      "pr.8",
+      "td.1",
+      "td.3",
+      "ss.1",
+      "ss.4",
+      "wp.2"
+    ]
+  },
+  {
+    "section_name": "Training & Development and Research Support",
+    "findings": [
+      {
+        "sub_id": "td.1",
+        "good_evidence_ids": [
+          "sectdars__001_a",
+          "sectdars__001_b",
+          "sectdars__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Training & Development and Research Support: Provides a comprehensive, structured training plan covering systematic reviews, surveys, statistics, qualitative methods, AI, and facilitation, directly supporting td.1."
+      },
+      {
+        "sub_id": "td.3",
+        "good_evidence_ids": [
+          "sectdars__001_a",
+          "sectdars__001_d",
+          "sectdars__001_f"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Training & Development and Research Support: Explicitly links training to career goals in academia and public health leadership, including grant writing and dissemination skills, supporting td.3."
+      },
+      {
+        "sub_id": "ss.1",
+        "good_evidence_ids": [
+          "sectdars__001_f",
+          "sectdars__001_g",
+          "sectdars__001_q"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Training & Development and Research Support: Highlights UCL IHI's track record with 400+ students, supervisors' extensive publication and funding history, and successful past projects like VIVALDI, supporting ss.1."
+      },
+      {
+        "sub_id": "ss.4",
+        "good_evidence_ids": [
+          "sectdars__001_g",
+          "sectdars__001_s"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Training & Development and Research Support: Mentions UCL's Athena Swan Silver and Race Equality Charter Bronze awards, plus an active EDI committee and diverse leadership, supporting ss.4."
+      },
+      {
+        "sub_id": "wp.2",
+        "good_evidence_ids": [
+          "sectdars__001_f",
+          "sectdars__001_s"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Training & Development and Research Support: Describes a diverse team including care workers on the steering committee and an ethnically diverse senior leadership team, supporting wp.2."
+      }
+    ],
+    "resolved_signals": [
+      "td.1",
+      "td.3",
+      "ss.1",
+      "ss.4",
+      "wp.2"
+    ],
+    "missing_signals_after": [
+      "pr.7",
+      "pr.8"
+    ]
+  },
+  {
+    "section_name": "SUMMARY BUDGET",
+    "findings": [
+      {
+        "sub_id": "pr.7",
+        "good_evidence_ids": [
+          "secsb__001_a",
+          "secsb__001_b",
+          "secsb__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "SUMMARY BUDGET: Provides explicit justifications linking staff costs to specific work packages (WP1, WP4) and travel to data collection tasks, directly supporting pr.7."
+      },
+      {
+        "sub_id": "pr.8",
+        "good_evidence_ids": [
+          "secsb__001_a",
+          "secsb__001_i"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "SUMMARY BUDGET: Justifies the Lead Applicant's salary based on existing medical training and skills, and budgets for specific methodological training (NVivo, LLMs), supporting pr.8."
+      },
+      {
+        "sub_id": "wp.6",
+        "good_evidence_ids": [
+          "secsb__001_f",
+          "secsb__001_g",
+          "secsb__001_h"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "SUMMARY BUDGET: Details specific budget lines for PPIE involvement, participant vouchers, and technical accessories for steering committee members, confirming a costed plan for inclusion."
+      },
+      {
+        "sub_id": "pr.9",
+        "good_evidence_ids": [
+          "secsb__001_d",
+          "secsb__001_e"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "SUMMARY BUDGET: Allocates funds for specialist equipment (large print keyboards, webcams) for residents and care workers, demonstrating concrete accessibility considerations."
+      }
+    ],
+    "resolved_signals": [
+      "pr.7",
+      "pr.8",
+      "wp.6",
+      "pr.9"
+    ],
+    "missing_signals_after": []
+  },
+  {
+    "section_name": "Application Context",
+    "findings": [],
+    "resolved_signals": [],
+    "missing_signals_after": []
+  },
+  {
+    "section_name": "Plain English NLP Analysis",
+    "findings": [
+      {
+        "sub_id": "pr.1",
+        "good_evidence_ids": [
+          "secpena__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English NLP Analysis: Provides strong quantitative support for pr.1 via high readability scores (Flesch-Kincaid 6.86), low jargon density (1.03%), and confirmed coverage of problem, objectives, methods, beneficiari"
+      }
+    ],
+    "resolved_signals": [
+      "pr.1"
+    ],
+    "missing_signals_after": []
+  },
+  {
+    "section_name": "Application Form Analysis",
+    "findings": [],
+    "resolved_signals": [],
+    "missing_signals_after": []
+  }
+]

@@ -1,3 +1,4 @@
+import logging
 from dataclasses import dataclass
 from typing import List, Optional, Dict, Set
 import pdfplumber
@@ -5,11 +6,17 @@ import re
 import os
 import json
 
+# Suppress noisy pdfminer FontBBox / encoding warnings
+logging.getLogger("pdfminer").setLevel(logging.ERROR)
+
 
 TARGET_HEADINGS = [
     "Scientific Abstract",
     "Plain English Summary",
+    "Plain English Summary of Research",
     "Changes from Previous Stage",
+    "Detailed Research Plan",
+    "Patient & Public Involvement",
     "Working with People and Communities Summary"
 ]
 
@@ -444,20 +451,22 @@ def parse_application_details(
         ("" if heading present but no content).
         Headings that never appear are omitted.
     """
-    target_headings = [
-    "Scientific Abstract",
-    "Plain English Summary",
-    "Changes from Previous Stage",
-    "Working with People and Communities Summary"
-    ]
+    heading_to_output = {
+        normalize_heading("Scientific Abstract"): "Scientific Abstract",
+        normalize_heading("Plain English Summary"): "Plain English Summary of Research",
+        normalize_heading("Plain English Summary of Research"): "Plain English Summary of Research",
+        normalize_heading("Changes from Previous Stage"): "Changes from Previous Stage",
+        normalize_heading("Detailed Research Plan"): "Detailed Research Plan",
+        normalize_heading("Patient & Public Involvement"): "Patient & Public Involvement",
+        normalize_heading("Working with People and Communities Summary"): "Patient & Public Involvement",
+    }
 
     # Normalize target headings once and preserve order
-    normalized_targets = [normalize_heading(h) for h in target_headings]
-    heading_set: Set[str] = set(normalized_targets)
+    heading_set: Set[str] = set(heading_to_output)
 
     # Initialize output with all headings set to None (missing by default)
     collected: Dict[str, Optional[List[str]]] = {
-        h: None for h in normalized_targets
+        output_key: None for output_key in dict.fromkeys(heading_to_output.values())
     }
 
     current_heading: Optional[str] = None
@@ -467,7 +476,7 @@ def parse_application_details(
 
         # If this line is a heading we care about, start collecting for it
         if text_norm in heading_set:
-            current_heading = text_norm
+            current_heading = heading_to_output[text_norm]
             collected[current_heading] = []
             if keep_heading_line:
                 collected[current_heading].append(ln.text)
@@ -482,11 +491,9 @@ def parse_application_details(
     # - None stays None (heading never appeared)
     # - [] becomes "" (appeared but empty)
     # - list[str] becomes joined string
-    out: Dict[str, Optional[str]] = {}
+    out: Dict[str, str] = {}
     for h, parts in collected.items():
-        if parts is None:
-            out[h] = None
-        else:
+        if parts is not None:
             out[h] = join_with.join(parts).strip()
 
     return out

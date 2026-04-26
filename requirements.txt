@@ -1,0 +1,17 @@
+flask>=3.0
+transformers>=4.45
+spacy>=3.7
+pdfplumber>=0.11
+pymupdf>=1.24
+python-docx>=1.1
+pdf2image>=1.17
+pytesseract>=0.3.10
+Pillow>=10.0
+numpy>=1.26
+pandas>=2.1
+scikit-learn>=1.4
+sentence-transformers>=2.7
+textstat>=0.7
+nltk>=3.8
+requests>=2.31
+hnswlib>=0.8.0

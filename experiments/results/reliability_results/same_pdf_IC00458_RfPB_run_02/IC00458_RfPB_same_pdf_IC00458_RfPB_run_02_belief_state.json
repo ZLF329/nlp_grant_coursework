@@ -1,0 +1,255 @@
+{
+  "processed_sections": [
+    "Scientific Abstract",
+    "Plain English Summary of Research",
+    "Changes from Previous Stage",
+    "Patient & Public Involvement",
+    "SUMMARY BUDGET",
+    "Application Context",
+    "Plain English NLP Analysis",
+    "Application Form Analysis"
+  ],
+  "subcriteria_beliefs": {
+    "pr.1": {
+      "good_evidence_ids": [
+        "secsa__001_a",
+        "secsa__001_b",
+        "secsa__001_c",
+        "secpesor__001_a",
+        "secpesor__001_b",
+        "secpesor__001_c",
+        "seccfps__001_e",
+        "secpena__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Scientific Abstract: Clearly outlines problem, objectives, methods, and impact, meeting plain English summary requirements.",
+        "Plain English Summary of Research: Clearly articulates the problem, objectives, methods (Experience-Based Co-Design), and beneficiaries in accessible language, strongly supporting pr.1.",
+        "Changes from Previous Stage: Confirms the Plain English Summary was rewritten with survivor-experts to eliminate complex language and simplify sentences, directly addressing committee feedback on accessibility.",
+        "Plain English NLP Analysis: NLP metrics show strong readability (Flesch-Kincaid 7.45, 0% long sentences) and low jargon density (3.33%), with coverage of problem, objectives, methods, beneficiaries, and impact, strongly"
+      ]
+    },
+    "pr.2": {
+      "good_evidence_ids": [
+        "secsa__001_a"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Scientific Abstract: Identifies a knowledge gap regarding trauma-informed practices in EDs, supporting evidence review relevance."
+      ]
+    },
+    "pr.3": {
+      "good_evidence_ids": [
+        "secsa__001_b",
+        "secsa__001_c",
+        "seccfps__001_c",
+        "seccfps__001_d",
+        "secac__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Scientific Abstract: Defines a 24-month timeline with specific phases and sample sizes, indicating feasible scope.",
+        "Changes from Previous Stage: Addresses feasibility concerns by detailing staff time allocation (108 hours), recruitment strategies, and mitigation for high staff turnover in EDs, supporting project scope appropriateness.",
+        "Application Context: Defines a 24-month duration with specific start/end dates and total cost, providing clear feasibility indicators for project scope."
+      ]
+    },
+    "pr.4": {
+      "good_evidence_ids": [
+        "secsa__001_b",
+        "secsa__001_c",
+        "secpesor__001_b",
+        "seccfps__001_a",
+        "seccfps__001_b",
+        "seccfps__001_c"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Scientific Abstract: Describes specific methods (focus groups, narrative interviews, co-design) aligned with objectives.",
+        "Plain English Summary of Research: Explicitly describes the 'Experience-Based Co-Design' methodology and specific steps like creating outputs with survivor-artists, supporting pr.4.",
+        "Changes from Previous Stage: Clarifies the multi-level intervention design (patient, clinician, environment, systems) and details trauma-informed safeguards and recruitment methods, strengthening methodological rigor."
+      ]
+    },
+    "pr.5": {
+      "good_evidence_ids": [
+        "secsa__001_a",
+        "secsa__001_c",
+        "secpesor__001_a",
+        "secpesor__001_c"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Scientific Abstract: Highlights potential for quality improvement, policy change, and better health outcomes for survivors.",
+        "Plain English Summary of Research: Highlights potential to improve fairness, accessibility, survivors' health, and lower NHS costs, directly supporting pr.5."
+      ]
+    },
+    "pr.6": {
+      "good_evidence_ids": [
+        "secsa__001_b",
+        "secsa__001_c",
+        "secpesor__001_b",
+        "seccfps__001_a",
+        "seccfps__001_b",
+        "secppi__001_b",
+        "secppi__001_c"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Scientific Abstract: Explicitly details co-design with survivors and staff across multiple project phases.",
+        "Plain English Summary of Research: Details active involvement of survivors and community leaders in planning and co-leading the work, strongly supporting pr.6.",
+        "Changes from Previous Stage: Highlights PPI endorsement of creative outputs and the role of survivor-led facilitation, reinforcing the depth of engagement with people and communities.",
+        "Patient & Public Involvement: Details participatory action research with survivors embedded across all stages (design to dissemination) and specific roles for a survivor-led organisation, strongly supporting pr.6."
+      ]
+    },
+    "pr.9": {
+      "good_evidence_ids": [
+        "secsa__001_c",
+        "secpesor__001_b",
+        "seccfps__001_b",
+        "secppi__001_c",
+        "secsb__001_a",
+        "secsb__001_c"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Scientific Abstract: Includes a strategy to reach underserved communities at the intersection of sexual violence and marginalisation.",
+        "Plain English Summary of Research: Mentions advice on including survivors from a range of communities safely and fairly, supporting pr.9.",
+        "Changes from Previous Stage: Explicitly mentions the inclusion lead's expertise in engaging marginalized settings (e.g., Black and people of colour communities), supporting inclusive research design.",
+        "Patient & Public Involvement: Explicitly addresses intersecting identities (class, ethnicity, disability) and plans an Inclusion team to tackle barriers for marginalised groups, supporting pr.9.",
+        "SUMMARY BUDGET: Allocates specific funds for an inclusion lead, interpreters, translation, and travel for carers, demonstrating concrete strategies for diverse recruitment and accessibility."
+      ]
+    },
+    "wp.1": {
+      "good_evidence_ids": [
+        "secsa__001_b",
+        "secsa__001_c",
+        "secpesor__001_b",
+        "seccfps__001_a",
+        "seccfps__001_e",
+        "secppi__001_b",
+        "secsb__001_a",
+        "secsb__001_c"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Scientific Abstract: Integrates lived experience through co-design events and narrative interviews with survivors.",
+        "Plain English Summary of Research: Describes co-design with survivors and staff to agree goals and plan changes, supporting wp.1.",
+        "Changes from Previous Stage: Details how creative outputs (e.g., 5-min film) register collective effort and feed into intervention development, demonstrating integration of lived experience in design.",
+        "Patient & Public Involvement: Describes Survivors' Voices shaping intervention development, recruitment, and data analysis, evidencing integration of lived experience in research design.",
+        "SUMMARY BUDGET: Funds a PPI co-applicant and survivor-artist company for co-design events and intervention content, evidencing the integration of lived experience in research design."
+      ]
+    },
+    "wp.3": {
+      "good_evidence_ids": [
+        "secsa__001_c",
+        "secpesor__001_c"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Scientific Abstract: Plans to share findings in accessible formats with community and professional bodies.",
+        "Plain English Summary of Research: Plans to use creative outputs to explain findings and explore nationwide roll-out, supporting wp.3."
+      ]
+    },
+    "wp.4": {
+      "good_evidence_ids": [
+        "secsa__001_c",
+        "secpesor__001_b",
+        "secppi__001_c",
+        "secsb__001_a",
+        "secsb__001_c"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Scientific Abstract: Targets underserved communities and diverse NHS sites to ensure representation.",
+        "Plain English Summary of Research: Explicitly notes advice on including survivors from a range of communities, supporting wp.4.",
+        "Patient & Public Involvement: Identifies specific underserved groups (migrant women, cultural minorities, insecure housing) and strategies to ensure their representation, supporting wp.4.",
+        "SUMMARY BUDGET: Requests funds for interviewers reflecting participant identity, translation into 5 languages, and interpreters, supporting targeted strategies for underserved groups."
+      ]
+    },
+    "wp.5": {
+      "good_evidence_ids": [
+        "secsa__001_b",
+        "secsa__001_c",
+        "secpesor__001_b",
+        "secppi__001_b",
+        "secppi__001_c"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Scientific Abstract: Embeds inclusion strategies across discovery, co-design, and prototype development phases.",
+        "Plain English Summary of Research: Shows inclusion across planning, co-design, and output creation stages, supporting wp.5.",
+        "Patient & Public Involvement: Embeds inclusion across the lifecycle from design to dissemination, with specific measures for safety and fair power distribution, supporting wp.5."
+      ]
+    },
+    "pr.7": {
+      "good_evidence_ids": [
+        "seccfps__001_d",
+        "seccfps__001_e",
+        "secsb__001_a",
+        "secsb__001_b",
+        "secsb__001_c",
+        "secac__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Changes from Previous Stage: Justifies resource allocation by detailing increased PPI time (5-13%), staff incentives, and specific roles for co-applicants to ensure safe delivery and knowledge exchange.",
+        "SUMMARY BUDGET: Provides detailed cost breakdowns for staff, travel, and inclusion activities, explicitly linking resources to specific project tasks and justifying the funding level.",
+        "Application Context: Lists total cost to NIHR and NHS support costs, providing the financial basis for resource justification."
+      ]
+    },
+    "wp.6": {
+      "good_evidence_ids": [
+        "seccfps__001_e",
+        "secppi__001_c",
+        "secsb__001_a",
+        "secsb__001_c"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Changes from Previous Stage: Notes a specific budget change to increase PPI partner time from 5-13% for co-design and knowledge exchange, evidencing a costed plan for inclusion.",
+        "Patient & Public Involvement: Mentions using funding to monitor and tackle barriers to participation for diverse communities, indicating a resourced plan for inclusion.",
+        "SUMMARY BUDGET: Explicitly budgets for PPI partners, inclusive research training, and participant support costs, confirming a fully costed and resourced plan for research inclusion."
+      ]
+    },
+    "g.5": {
+      "good_evidence_ids": [
+        "secac__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Application Context: Lead applicant role includes strategic leadership, project governance, and oversight, indicating increasing responsibility and leadership trajectory."
+      ]
+    },
+    "g.6": {
+      "good_evidence_ids": [
+        "secac__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Application Context: Co-applicant from NHS Emergency Department and PPI partner from Survivors' Voices demonstrate strong practitioner-academic and community engagement."
+      ]
+    },
+    "wp.2": {
+      "good_evidence_ids": [
+        "secac__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Application Context: Research team includes diverse organisations (University, NHS Trust, Community Interest Company) and roles (academic, clinical, survivor-led), supporting team diversity."
+      ]
+    }
+  },
+  "missing_signals": [
+    "g.1",
+    "g.2",
+    "g.3",
+    "g.4",
+    "pr.8",
+    "td.1",
+    "td.2",
+    "td.3",
+    "ss.1",
+    "ss.2",
+    "ss.3",
+    "ss.4"
+  ]
+}

@@ -1,0 +1,666 @@
+[
+  {
+    "section_name": "Scientific Abstract",
+    "findings": [
+      {
+        "sub_id": "pr.1",
+        "good_evidence_ids": [
+          "secsa__001_a",
+          "secsa__001_b",
+          "secsa__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Clearly outlines problem, objectives, methods, and beneficiaries, supporting pr.1."
+      },
+      {
+        "sub_id": "pr.2",
+        "good_evidence_ids": [
+          "secsa__001_a"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Identifies a knowledge gap regarding PATH effectiveness for older women, supporting pr.2."
+      },
+      {
+        "sub_id": "pr.3",
+        "good_evidence_ids": [
+          "secsa__001_a",
+          "secsa__001_b"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Defines a feasible pilot RCT scope (n=76) and specific work streams, supporting pr.3."
+      },
+      {
+        "sub_id": "pr.4",
+        "good_evidence_ids": [
+          "secsa__001_b",
+          "secsa__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Details mixed-methods design, randomization, and outcome measures, supporting pr.4."
+      },
+      {
+        "sub_id": "pr.5",
+        "good_evidence_ids": [
+          "secsa__001_a",
+          "secsa__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Highlights societal impact on older women's wellbeing and future RCT foundation, supporting pr.5."
+      },
+      {
+        "sub_id": "pr.6",
+        "good_evidence_ids": [
+          "secsa__001_b"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Mentions Lived Experience Advisory Panel (LEAP) and survivor-led focus groups, supporting pr.6."
+      },
+      {
+        "sub_id": "pr.9",
+        "good_evidence_ids": [
+          "secsa__001_a",
+          "secsa__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Focuses on diverse older women and intersecting inequalities, supporting pr.9."
+      },
+      {
+        "sub_id": "wp.1",
+        "good_evidence_ids": [
+          "secsa__001_b"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Describes LEAP contribution and survivor-led focus groups for co-design, supporting wp.1."
+      },
+      {
+        "sub_id": "wp.3",
+        "good_evidence_ids": [
+          "secsa__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Plans accessible reports and public engagement events to share findings, supporting wp.3."
+      },
+      {
+        "sub_id": "wp.4",
+        "good_evidence_ids": [
+          "secsa__001_a",
+          "secsa__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Targets older women and those affected by multiple inequalities, supporting wp.4."
+      },
+      {
+        "sub_id": "wp.5",
+        "good_evidence_ids": [
+          "secsa__001_b",
+          "secsa__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Integrates lived experience in design, recruitment, and outcome exploration, supporting wp.5."
+      }
+    ],
+    "resolved_signals": [
+      "pr.1",
+      "pr.2",
+      "pr.3",
+      "pr.4",
+      "pr.5",
+      "pr.6",
+      "pr.9",
+      "wp.1",
+      "wp.3",
+      "wp.4",
+      "wp.5"
+    ],
+    "missing_signals_after": [
+      "g.1",
+      "g.2",
+      "g.3",
+      "g.4",
+      "g.5",
+      "g.6",
+      "pr.7",
+      "pr.8",
+      "td.1",
+      "td.2",
+      "td.3",
+      "ss.1",
+      "ss.2",
+      "ss.3",
+      "ss.4",
+      "wp.2",
+      "wp.6"
+    ]
+  },
+  {
+    "section_name": "Plain English Summary of Research",
+    "findings": [
+      {
+        "sub_id": "pr.1",
+        "good_evidence_ids": [
+          "secpesor__001_a",
+          "secpesor__001_b",
+          "secpesor__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Clearly articulates the problem, aims, methods (randomized groups), beneficiaries, and impact in accessible language, strongly supporting pr.1."
+      },
+      {
+        "sub_id": "pr.2",
+        "good_evidence_ids": [
+          "secpesor__001_a"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Identifies a specific gap where current services target younger women and fail older women, supporting pr.2."
+      },
+      {
+        "sub_id": "pr.3",
+        "good_evidence_ids": [
+          "secpesor__001_b"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Describes a feasible pilot study with a small group and specific intervention duration (8-12 weeks), supporting pr.3."
+      },
+      {
+        "sub_id": "pr.4",
+        "good_evidence_ids": [
+          "secpesor__001_b"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Explicitly details a randomized controlled trial design with control and intervention groups, supporting pr.4."
+      },
+      {
+        "sub_id": "pr.5",
+        "good_evidence_ids": [
+          "secpesor__001_a",
+          "secpesor__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Highlights direct benefits for older women's safety and well-being, and plans for policy influence, supporting pr.5."
+      },
+      {
+        "sub_id": "pr.6",
+        "good_evidence_ids": [
+          "secpesor__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Describes involvement of women with lived experience in shaping the project and an older woman researcher, supporting pr.6."
+      },
+      {
+        "sub_id": "pr.9",
+        "good_evidence_ids": [
+          "secpesor__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Explicitly mentions working with older women of different ages and backgrounds to ensure inclusivity, supporting pr.9."
+      },
+      {
+        "sub_id": "wp.1",
+        "good_evidence_ids": [
+          "secpesor__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: States that women with lived experience played a key role in shaping the project, supporting wp.1."
+      },
+      {
+        "sub_id": "wp.3",
+        "good_evidence_ids": [
+          "secpesor__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Outlines plans to share findings with participants, health professionals, and policymakers, supporting wp.3."
+      },
+      {
+        "sub_id": "wp.4",
+        "good_evidence_ids": [
+          "secpesor__001_a",
+          "secpesor__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Focuses specifically on older women (60+) and diverse backgrounds, addressing an underserved group, supporting wp.4."
+      },
+      {
+        "sub_id": "wp.5",
+        "good_evidence_ids": [
+          "secpesor__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Indicates involvement of public contributors throughout the project lifecycle, supporting wp.5."
+      }
+    ],
+    "resolved_signals": [
+      "pr.1",
+      "pr.2",
+      "pr.3",
+      "pr.4",
+      "pr.5",
+      "pr.6",
+      "pr.9",
+      "wp.1",
+      "wp.3",
+      "wp.4",
+      "wp.5"
+    ],
+    "missing_signals_after": [
+      "g.1",
+      "g.2",
+      "g.3",
+      "g.4",
+      "g.5",
+      "g.6",
+      "pr.7",
+      "pr.8",
+      "td.1",
+      "td.2",
+      "td.3",
+      "ss.1",
+      "ss.2",
+      "ss.3",
+      "ss.4",
+      "wp.2",
+      "wp.6"
+    ]
+  },
+  {
+    "section_name": "Changes from Previous Stage",
+    "findings": [
+      {
+        "sub_id": "pr.1",
+        "good_evidence_ids": [
+          "seccfps__001_d"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Changes from Previous Stage: Applicants revised the Plain English Summary for clarity and accessibility, involving PPI and lay members to ensure it is understandable to a general audience."
+      },
+      {
+        "sub_id": "pr.3",
+        "good_evidence_ids": [
+          "seccfps__001_b",
+          "seccfps__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Changes from Previous Stage: Applicants corrected the timeline and expanded to ten sites with an eight-month recruitment period, demonstrating feasibility and alignment with award scope."
+      },
+      {
+        "sub_id": "pr.4",
+        "good_evidence_ids": [
+          "seccfps__001_a",
+          "seccfps__001_e"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Changes from Previous Stage: Applicants clarified retention investigation, adherence definitions, and sample size calculations, strengthening methodological rigor and justification."
+      },
+      {
+        "sub_id": "pr.9",
+        "good_evidence_ids": [
+          "seccfps__001_b"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Changes from Previous Stage: Applicants detailed inclusive recruitment strategies for non-English speaking and ethnic communities, including culturally sensitive materials and community partnerships."
+      },
+      {
+        "sub_id": "wp.1",
+        "good_evidence_ids": [
+          "seccfps__001_c",
+          "seccfps__001_d",
+          "seccfps__001_e"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Changes from Previous Stage: Applicants integrated lived experience feedback into intervention development, plain language summaries, and outcome timepoint selection."
+      },
+      {
+        "sub_id": "wp.4",
+        "good_evidence_ids": [
+          "seccfps__001_b"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Changes from Previous Stage: Applicants explicitly addressed recruitment of under-represented groups through co-design with community representatives and partnerships with frontline services."
+      }
+    ],
+    "resolved_signals": [
+      "pr.1",
+      "pr.3",
+      "pr.4",
+      "pr.9",
+      "wp.1",
+      "wp.4"
+    ],
+    "missing_signals_after": [
+      "g.1",
+      "g.2",
+      "g.3",
+      "g.4",
+      "g.5",
+      "g.6",
+      "pr.7",
+      "pr.8",
+      "td.1",
+      "td.2",
+      "td.3",
+      "ss.1",
+      "ss.2",
+      "ss.3",
+      "ss.4",
+      "wp.2",
+      "wp.6"
+    ]
+  },
+  {
+    "section_name": "Patient & Public Involvement",
+    "findings": [
+      {
+        "sub_id": "wp.1",
+        "good_evidence_ids": [
+          "secppi__001_b",
+          "secppi__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Patient & Public Involvement: Details LEAP co-design of focus groups, data interpretation, and intervention adaptation, strongly supporting wp.1."
+      },
+      {
+        "sub_id": "wp.3",
+        "good_evidence_ids": [
+          "secppi__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Patient & Public Involvement: Describes co-produced plain language summaries and public engagement events to share results, supporting wp.3."
+      },
+      {
+        "sub_id": "wp.4",
+        "good_evidence_ids": [
+          "secppi__001_a",
+          "secppi__001_b"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Patient & Public Involvement: Explicitly targets older women (60+) with domestic abuse experience and uses accessible venues to mitigate barriers, supporting wp.4."
+      },
+      {
+        "sub_id": "wp.5",
+        "good_evidence_ids": [
+          "secppi__001_a",
+          "secppi__001_b"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Patient & Public Involvement: Outlines involvement across all stages (design, data interpretation, dissemination) with monitoring of retention and impact, supporting wp.5."
+      },
+      {
+        "sub_id": "pr.6",
+        "good_evidence_ids": [
+          "secppi__001_a",
+          "secppi__001_b"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Patient & Public Involvement: Describes a robust Lived Experience Advisory Panel and co-production approach, reinforcing pr.6."
+      },
+      {
+        "sub_id": "pr.9",
+        "good_evidence_ids": [
+          "secppi__001_b",
+          "secppi__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Patient & Public Involvement: Mentions accessible venues, culturally appropriate materials, and support for digital exclusion, supporting pr.9."
+      }
+    ],
+    "resolved_signals": [
+      "wp.1",
+      "wp.3",
+      "wp.4",
+      "wp.5",
+      "pr.6",
+      "pr.9"
+    ],
+    "missing_signals_after": [
+      "g.1",
+      "g.2",
+      "g.3",
+      "g.4",
+      "g.5",
+      "g.6",
+      "pr.7",
+      "pr.8",
+      "td.1",
+      "td.2",
+      "td.3",
+      "ss.1",
+      "ss.2",
+      "ss.3",
+      "ss.4",
+      "wp.2",
+      "wp.6"
+    ]
+  },
+  {
+    "section_name": "SUMMARY BUDGET",
+    "findings": [
+      {
+        "sub_id": "pr.7",
+        "good_evidence_ids": [
+          "secsb__001_a",
+          "secsb__001_b",
+          "secsb__001_d"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "SUMMARY BUDGET: Provides detailed cost breakdowns for staff, data capture, dissemination, and site costs, explicitly linking resources to project tasks and scope."
+      },
+      {
+        "sub_id": "ss.2",
+        "good_evidence_ids": [
+          "secsb__001_a",
+          "secsb__001_b",
+          "secsb__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "SUMMARY BUDGET: Details specific supervisory roles (Dr Orgeta, Dr Cramer) and mentorship for a junior researcher, demonstrating structured support arrangements."
+      },
+      {
+        "sub_id": "ss.3",
+        "good_evidence_ids": [
+          "secsb__001_d",
+          "secsb__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "SUMMARY BUDGET: Lists allocated costs for estate, infrastructure, and technician support, indicating organizational resources available for project delivery."
+      },
+      {
+        "sub_id": "wp.6",
+        "good_evidence_ids": [
+          "secsb__001_b",
+          "secsb__001_c",
+          "secsb__001_d"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "SUMMARY BUDGET: Includes specific budget lines for PPI strategy (Marion Goodchild), participant vouchers, and inclusive data collection methods, supporting a costed inclusion plan."
+      },
+      {
+        "sub_id": "td.1",
+        "good_evidence_ids": [
+          "secsb__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "SUMMARY BUDGET: Mentions a structured training plan and mentorship for a senior researcher role, indicating relevance to project methods."
+      }
+    ],
+    "resolved_signals": [
+      "pr.7",
+      "ss.2",
+      "ss.3",
+      "wp.6",
+      "td.1"
+    ],
+    "missing_signals_after": [
+      "g.1",
+      "g.2",
+      "g.3",
+      "g.4",
+      "g.5",
+      "g.6",
+      "pr.8",
+      "td.2",
+      "td.3",
+      "ss.1",
+      "ss.4",
+      "wp.2"
+    ]
+  },
+  {
+    "section_name": "Application Context",
+    "findings": [
+      {
+        "sub_id": "g.3",
+        "good_evidence_ids": [
+          "secac__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Context: Lists team members with prior experience in NIHR-funded clinical trials in dementia and domestic abuse, supporting g.3."
+      },
+      {
+        "sub_id": "g.5",
+        "good_evidence_ids": [
+          "secac__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Context: Describes lead applicants as Chief Co-lead investigators overseeing project management and recruitment, indicating increasing responsibility, supporting g.5."
+      },
+      {
+        "sub_id": "pr.3",
+        "good_evidence_ids": [
+          "secac__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Context: Responds to feedback by extending the timeline by six months to ensure feasibility and collecting 12-month data, supporting pr.3."
+      },
+      {
+        "sub_id": "pr.4",
+        "good_evidence_ids": [
+          "secac__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Context: Details collaboration with UCL's Priment Clinical Trials Unit for study design and data management, supporting pr.4."
+      },
+      {
+        "sub_id": "pr.9",
+        "good_evidence_ids": [
+          "secac__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Context: Outlines specific strategies to recruit diverse participants via community organizations like Shakti Women's Aid and Aanchal, supporting pr.9."
+      },
+      {
+        "sub_id": "ss.1",
+        "good_evidence_ids": [
+          "secac__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Context: Mentions team members with prior experience in NIHR-funded trials, indicating a track record of the contracting organization and partners, supporting ss.1."
+      },
+      {
+        "sub_id": "ss.2",
+        "good_evidence_ids": [
+          "secac__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Context: Describes lead applicant joining the Priment CTU Steering Group and receiving ongoing support from the Head of Clinical Trials Operations, supporting ss.2."
+      },
+      {
+        "sub_id": "ss.3",
+        "good_evidence_ids": [
+          "secac__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Context: Confirms access to UCL's Priment Clinical Trials Unit for guidance on study design and delivery, supporting ss.3."
+      },
+      {
+        "sub_id": "wp.1",
+        "good_evidence_ids": [
+          "secac__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Context: Includes a PPIE co-applicant (Ms Marion Goodchild) leading the engagement strategy and overseeing changes to training materials, supporting wp.1."
+      },
+      {
+        "sub_id": "wp.4",
+        "good_evidence_ids": [
+          "secac__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Context: Explicitly lists partnerships with organizations supporting ethnically diverse communities and South Asian women, supporting wp.4."
+      },
+      {
+        "sub_id": "wp.6",
+        "good_evidence_ids": [
+          "secac__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Application Context: Allocates 10% FTE to a PPIE lead and mentions developing a community network, indicating a resourced plan for inclusion, supporting wp.6."
+      }
+    ],
+    "resolved_signals": [
+      "g.3",
+      "g.5",
+      "pr.3",
+      "pr.4",
+      "pr.9",
+      "ss.1",
+      "ss.2",
+      "ss.3",
+      "wp.1",
+      "wp.4",
+      "wp.6"
+    ],
+    "missing_signals_after": [
+      "g.1",
+      "g.2",
+      "g.4",
+      "g.6",
+      "pr.8",
+      "td.2",
+      "td.3",
+      "ss.4",
+      "wp.2"
+    ]
+  },
+  {
+    "section_name": "Plain English NLP Analysis",
+    "findings": [
+      {
+        "sub_id": "pr.1",
+        "good_evidence_ids": [
+          "secpena__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English NLP Analysis: NLP metrics show high readability (Flesch-Kincaid 5.73, Reading Ease 71.92), low jargon density (1.3%), and coverage of key elements (problem, objectives, methods, beneficiaries, impact), stro"
+      }
+    ],
+    "resolved_signals": [
+      "pr.1"
+    ],
+    "missing_signals_after": [
+      "g.1",
+      "g.2",
+      "g.4",
+      "g.6",
+      "pr.8",
+      "td.2",
+      "td.3",
+      "ss.4",
+      "wp.2"
+    ]
+  },
+  {
+    "section_name": "Application Form Analysis",
+    "findings": [],
+    "resolved_signals": [],
+    "missing_signals_after": [
+      "g.1",
+      "g.2",
+      "g.4",
+      "g.6",
+      "pr.8",
+      "td.2",
+      "td.3",
+      "ss.4",
+      "wp.2"
+    ]
+  }
+]

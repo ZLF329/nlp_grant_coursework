@@ -1,0 +1,922 @@
+{
+  "doc_id": "64fcfa7dc2bf_IC00106_before",
+  "run_info": {
+    "ran_at_utc": "2026-04-21T13:11:23.273927Z",
+    "model": "qwen3.5:27b",
+    "judge_model": null
+  },
+  "sections": [
+    {
+      "section_id": "application_form",
+      "section_name": "Application Form",
+      "average_score_10": 8.5,
+      "sub_criteria": [
+        {
+          "sub_id": "af.1",
+          "name": "Use of Formatting, Headings, and Subheadings",
+          "group_name": null,
+          "score_10": 9.5,
+          "pros": "The application form analysis confirms a robust structural hierarchy with 10 detected sections, 14 numbered heading-like lines, and 27 list markers, indicating consistent use of headings and subheadings. The presence of 15 extracted emphasis markers and 269 table-like budget lines demonstrates effective use of formatting to enhance readability and navigation.",
+          "drawbacks": "While emphasis markers are present, the analysis notes a parser limitation where bold/emphasis may be lost during text extraction; therefore, the score for emphasis (af.1.b) is capped at 4 rather than 5 to account for potential loss of formatting fidelity in the extracted text.",
+          "signals": [
+            {
+              "sid": "af.1.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "af.1.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "af.1.c",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "af.1.d",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "af.2",
+          "name": "Limited Duplication and Repetition",
+          "group_name": null,
+          "score_10": 8,
+          "pros": "The application demonstrates low duplication with a sentence-level duplicate rate of only 0.002 (excluding budget). The repeated line rate is 0.102, which is acceptable given the structured nature of budget tables. Lexical overlap between major sections (Research Plan, Training, Budget) ranges from 0.196 to 0.217, indicating necessary thematic consistency without excessive redundancy.",
+          "drawbacks": "The lexical overlap between the Detailed Research Plan and Training & Development sections (0.217) suggests some repetition of content, likely due to the integration of training within the research plan. While not excessive, this prevents a perfect score of 5 as it indicates some lack of distinct novelty between these specific sections.",
+          "signals": [
+            {
+              "sid": "af.2.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "af.2.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "af.2.c",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "af.3",
+          "name": "Logical Flow and Coherence Across Sections",
+          "group_name": null,
+          "score_10": 8,
+          "pros": "The application exhibits strong logical flow with 28 transition phrases and 150 terms linking objectives, methods, and budget. The section order follows a standard, logical progression from applicant context to research plan, PPI, training, and budget. The high count of linking terms indicates a coherent narrative thread anchored on research aims.",
+          "drawbacks": "No material caveats or missing details regarding logical flow were identified in the structural analysis; the evidence for coherence is complete and specific.",
+          "signals": [
+            {
+              "sid": "af.3.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "af.3.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "af.3.c",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "af.3.d",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section_id": "general",
+      "section_name": "General",
+      "average_score_10": 9,
+      "sub_criteria": [
+        {
+          "sub_id": "g.1",
+          "name": "Common Characteristics of Good Applications",
+          "group_name": "Common Characteristics of Good Applications",
+          "score_10": 9.5,
+          "pros": "The application demonstrates a clear research vision and career trajectory (g.1.a) with explicit ambitions to become a leading researcher in exercise for Parkinson's, supported by a detailed 3-year timetable. Distinctive ideas (g.1.b) are evident in the proposal of a hybrid exercise intervention addressing specific accessibility gaps. The training plan (g.1.c) is exceptionally well-justified, mapping specific courses to project work packages and skill gaps. Strong mentorship (g.1.d) is confirmed by detailed descriptions of supervisor expertise and structured meeting frequencies.",
+          "drawbacks": "While the vision is clear, the 'distinctive' nature of the hybrid model relies heavily on the feasibility study results to prove its novelty compared to existing online interventions, though the proposal is strong.",
+          "signals": [
+            {
+              "sid": "g.1.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "g.1.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "g.1.c",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "g.1.d",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "g.2",
+          "name": "Tell Us Why You Need This Award",
+          "group_name": "Tell Us Why You Need This Award",
+          "score_10": 9.5,
+          "pros": "The applicant clearly articulates why this award is the right next step (g.2.a), building on MSc and PCAF experience to address service gaps. The difference the award makes (g.2.b) is explicit: enabling the transition from clinical practice to independent research leadership. The plan builds on existing skills (g.2.c) like vRDF and enables new capabilities in RCTs and implementation science. Partnerships (g.2.d) are developed through NHS collaborations and PPI advisory groups.",
+          "drawbacks": "The specific long-term impact on research partnerships beyond the immediate project duration could be elaborated further, though current plans are robust.",
+          "signals": [
+            {
+              "sid": "g.2.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "g.2.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "g.2.c",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "g.2.d",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "g.3",
+          "name": "Relevant Research Experience and Training",
+          "group_name": "Applicant",
+          "score_10": 10,
+          "pros": "Strong evidence of relevant research experience (g.3.a) including leading grants and specific projects on Parkinson's. Formal training (g.3.b) is extensive, covering MSc, PG Certificate in Research Methods, and GCP. There is perfect alignment (g.3.c) between prior experience in study design/ethics and the skills required for the proposed feasibility study and scoping review.",
+          "drawbacks": "No significant drawbacks; the applicant's background is highly aligned with the project requirements.",
+          "signals": [
+            {
+              "sid": "g.3.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "g.3.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "g.3.c",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "g.4",
+          "name": "Impactful Research Outputs and Outcomes",
+          "group_name": "Applicant",
+          "score_10": 8,
+          "pros": "The applicant has a strong record of impactful outputs (g.4.a) with peer-reviewed publications in relevant journals and a Higher Education Academy Fellowship. While specific citation metrics are not detailed in the text, the quality of journals (g.4.b) suggests impact. Recognition (g.4.c) includes the HEA Fellowship and successful grant leadership. Practical impact (g.4.d) is demonstrated through previous work influencing clinical practice and service provision.",
+          "drawbacks": "Explicit citation counts or h-index metrics are not provided in the text, though the quality of outputs compensates for this.",
+          "signals": [
+            {
+              "sid": "g.4.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "g.4.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "g.4.c",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "g.4.d",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "g.5",
+          "name": "Trajectory Towards Research Leadership",
+          "group_name": "Applicant",
+          "score_10": 8,
+          "pros": "Clear statements of career ambitions (g.5.a) to become a leading researcher. Evidence of increasing responsibility (g.5.b) is shown by progression from Band 5 to Band 7 and Senior Lecturer roles, plus leading research grants. Participation in leadership programs (g.5.c) includes the NHS Leadership Academy course. Peer recognition (g.5.d) is implied through successful grant awards and publications.",
+          "drawbacks": "Direct quotes or specific awards recognizing 'leadership potential' from peers are not explicitly detailed, though the trajectory is evident.",
+          "signals": [
+            {
+              "sid": "g.5.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "g.5.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "g.5.c",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "g.5.d",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "g.6",
+          "name": "Commitment to Practitioner-Academic Career (if applicable)",
+          "group_name": "Applicant",
+          "score_10": 10,
+          "pros": "The applicant explicitly states a commitment to a practitioner-academic career (g.6.a), balancing NHS clinical roles with university lecturing. Involvement in clinical research (g.6.b) is central to the proposal. The ability to balance practice and research (g.6.c) is demonstrated by concurrent roles and the training plan. Participation in professional networks (g.6.d) is shown through involvement with Parkinson's UK and clinical departments.",
+          "drawbacks": "No drawbacks identified; the commitment to the practitioner-academic pathway is a core strength of the application.",
+          "signals": [
+            {
+              "sid": "g.6.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "g.6.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "g.6.c",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "g.6.d",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section_id": "proposed_research",
+      "section_name": "Proposed Research",
+      "average_score_10": 8.96,
+      "sub_criteria": [
+        {
+          "sub_id": "pr.1",
+          "name": "Quality of the Plain English Summary",
+          "group_name": null,
+          "score_10": 9.67,
+          "pros": "The Plain English Summary demonstrates excellent readability with a Flesch-Kincaid grade of 6.37 and low jargon density (2.1%). It clearly articulates the problem (barriers to exercise for Parkinson's), objectives (scoping review and feasibility study), methods (hybrid intervention), beneficiaries (people with Parkinson's), and real-world impact (informing future RCTs).",
+          "drawbacks": "While the summary is strong, the lexical overlap with the detailed research plan is relatively low (0.093), suggesting some specific technical details in the detailed plan are not mirrored in the lay summary, though this is common for lay summaries.",
+          "signals": [
+            {
+              "sid": "pr.1.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.1.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.1.c",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.1.d",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.1.e",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.1.f",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "pr.2",
+          "name": "Evidence Review Quality & Relevance",
+          "group_name": null,
+          "score_10": 8,
+          "pros": "The application explicitly identifies a critical knowledge gap regarding the effectiveness of hybrid exercise formats for people with Parkinson's. It proposes a scoping review using JBI methodology to address this gap, demonstrating a clear understanding of the current evidence landscape and the need for this specific research.",
+          "drawbacks": "The detailed list of references cited is not fully visible in the provided text chunks, making it difficult to assess the sheer volume of literature reviewed, though the identification of the gap is clear.",
+          "signals": [
+            {
+              "sid": "pr.2.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.2.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.2.c",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.2.d",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "pr.3",
+          "name": "Research Scope & Award Appropriateness",
+          "group_name": null,
+          "score_10": 10,
+          "pros": "The project scope is highly appropriate for a doctoral award, structured into two distinct work packages (scoping review and feasibility study) over 3 years. The timeline is realistic, with specific progression criteria and sample sizes (e.g., 50 participants) clearly defined, ensuring feasibility.",
+          "drawbacks": "No significant drawbacks identified; the scope is well-matched to the award duration and complexity.",
+          "signals": [
+            {
+              "sid": "pr.3.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.3.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.3.c",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "pr.4",
+          "name": "Research Design & Methodological Rigor",
+          "group_name": null,
+          "score_10": 8,
+          "pros": "The research design is robust, utilizing JBI methodology for the scoping review and a non-randomised single-arm feasibility study with mixed methods for the intervention. Specific details on outcome measures, sample size justification, and data analysis plans (Stata, NVivo) are provided.",
+          "drawbacks": "The study design is a feasibility study rather than a full RCT, which is appropriate for the award but limits the ability to draw definitive conclusions on efficacy at this stage. However, this is explicitly acknowledged as a precursor to a future RCT.",
+          "signals": [
+            {
+              "sid": "pr.4.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.4.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.4.c",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.4.d",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "pr.5",
+          "name": "Potential Impact on Patients, Public, and Health Services",
+          "group_name": null,
+          "score_10": 10,
+          "pros": "The application clearly articulates potential benefits, including increased physical activity, improved symptom management, and enhanced self-efficacy for people with Parkinson's. It also highlights broader impacts on health services (reduced hospital admissions) and policy influence.",
+          "drawbacks": "As a feasibility study, the direct patient benefits are primarily related to the intervention experience rather than proven clinical outcomes, though the pathway to future benefits is well-defined.",
+          "signals": [
+            {
+              "sid": "pr.5.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.5.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.5.c",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "pr.6",
+          "name": "Engagement with People & Communities",
+          "group_name": null,
+          "score_10": 8,
+          "pros": "Patient and Public Involvement (PPI) is deeply integrated, with co-design of the intervention, outcome selection, and dissemination materials. The application details specific PPI activities across all three years, including advisory group meetings and workshops.",
+          "drawbacks": "While the plan is comprehensive, the specific ethical considerations regarding PPI data handling or feedback mechanisms are less detailed than the involvement activities themselves.",
+          "signals": [
+            {
+              "sid": "pr.6.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.6.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.6.c",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "pr.7",
+          "name": "Justification of Resources & Award Costs",
+          "group_name": null,
+          "score_10": 10,
+          "pros": "The budget is highly detailed and well-justified, with explicit links between tasks and resources. Costs for equipment, PPI payments (aligned with NIHR guidelines), and software licenses are clearly itemized and proportional to the project scope.",
+          "drawbacks": "No significant drawbacks; the budget justification is thorough and transparent.",
+          "signals": [
+            {
+              "sid": "pr.7.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.7.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.7.c",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "pr.8",
+          "name": "Quality of Previous Research (if applicable)",
+          "group_name": null,
+          "score_10": 10,
+          "pros": "The applicant has a strong track record of relevant research, including peer-reviewed publications in high-impact journals (e.g., Journal of Parkinson's Disease) and experience leading previous grants. This demonstrates the capability to deliver the proposed project.",
+          "drawbacks": "No significant drawbacks; the applicant's prior research experience is directly aligned with the proposed work.",
+          "signals": [
+            {
+              "sid": "pr.8.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.8.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.8.c",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "pr.9",
+          "name": "Inclusive Research Design",
+          "group_name": null,
+          "score_10": 8,
+          "pros": "The hybrid model is explicitly designed to improve inclusivity by removing barriers related to mobility and distance. The application also details strategies to recruit BAME and lower socioeconomic groups, including providing IT equipment to participants.",
+          "drawbacks": "While strategies for recruitment are strong, specific metrics for monitoring the diversity of the final participant sample or adaptive measures if recruitment targets are not met are less detailed.",
+          "signals": [
+            {
+              "sid": "pr.9.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.9.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.9.c",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section_id": "sites_support",
+      "section_name": "Sites & Support",
+      "average_score_10": 8.5,
+      "sub_criteria": [
+        {
+          "sub_id": "ss.1",
+          "name": "Track Record of the Contracting Organisation (and Partners)",
+          "group_name": null,
+          "score_10": 9,
+          "pros": "The application provides strong evidence of the contracting organisation's track record. UCL is described as a top 10 global university with a 100% 4* research score (ss.1.a, ss.1.d). The Queen Square Institute of Neurology is explicitly identified as a world-leading centre for neurology and movement disorders with strong clinical partnerships (ss.1.a, ss.1.d). Specific achievements like the Athena SWAN award and high citation rankings are cited (ss.1.d). Partnerships with NHS trusts and international experts (e.g., Prof Bas Bloem) are detailed (ss.1.c).",
+          "drawbacks": "While the institutional track record is excellent, specific details on previous funding success in the exact domain of 'hybrid exercise for Parkinson's' by the institution itself (distinct from the applicant's work) are less explicit than the general neuroscience reputation, preventing a perfect score on ss.1.b.",
+          "signals": [
+            {
+              "sid": "ss.1.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "ss.1.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "ss.1.c",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "ss.1.d",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "ss.2",
+          "name": "Suitability of Supervisory Support and Mentorship Arrangements",
+          "group_name": null,
+          "score_10": 8,
+          "pros": "The application details a robust supervisory team with explicit roles. Primary supervisor Prof Schrag has extensive experience in PD clinical trials and patient-centred outcomes (ss.2.a, ss.2.c). Secondary supervisor Prof Jones brings expertise in self-management and logic modelling (ss.2.a, ss.2.c). Clinical supervisor Dr Appel provides NHS context and research capacity building (ss.2.a). Meeting frequencies are clearly defined (monthly/bimonthly) and a structured framework for guidance is established (ss.2.d). The alignment between supervisor expertise and the project's specific needs (scoping review, feasibility, RCT design) is perfect (ss.2.c).",
+          "drawbacks": "No material caveats or missing details regarding the supervisory arrangement were found.",
+          "signals": [
+            {
+              "sid": "ss.2.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "ss.2.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "ss.2.c",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "ss.2.d",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "ss.3",
+          "name": "Appropriateness of the Contracting Organisation to Support the Award and Career Aspirations",
+          "group_name": null,
+          "score_10": 8,
+          "pros": "The application comprehensively describes the infrastructure and resources available. UCL provides access to 15 libraries, world-class resources, and a comprehensive doctoral training programme (ss.3.a). The Institute of Neurology offers a weekly teaching programme and seminar series (ss.3.a). Strong links between organisational support and project success are evident through the integration of clinical practice roles at CNSS and RFH (ss.3.b). The organisation's focus on clinical academic careers aligns perfectly with the applicant's trajectory (ss.3.c). Tailored support for the DCAF award type is confirmed through the joint statement of support from UCL and CNWL (ss.3.d).",
+          "drawbacks": "No material caveats or missing details regarding organisational support were found.",
+          "signals": [
+            {
+              "sid": "ss.3.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "ss.3.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "ss.3.c",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "ss.3.d",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "ss.4",
+          "name": "Commitment to Inclusive and Supportive Research Culture",
+          "group_name": null,
+          "score_10": 9,
+          "pros": "Strong evidence of an inclusive culture is provided. UCL holds a silver Athena SWAN award and has an EDI mission statement (ss.4.a, ss.4.d). The CNWL trust is committed to equality of opportunity and developing research from Allied Health Professions (ss.4.a). The statement of support explicitly mentions creating an inclusive culture for students and employees (ss.4.d). The environment is described as supportive for clinical academic research careers (ss.4.b).",
+          "drawbacks": "While policies and awards are cited, specific examples of recent inclusive recruitment initiatives or mentoring programs for underrepresented groups within the specific department (beyond the general institutional statement) are less detailed, slightly limiting the score for ss.4.b and ss.4.c compared to the other signals.",
+          "signals": [
+            {
+              "sid": "ss.4.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "ss.4.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "ss.4.c",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "ss.4.d",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section_id": "training_development",
+      "section_name": "Training & Development",
+      "average_score_10": 10,
+      "sub_criteria": [
+        {
+          "sub_id": "td.1",
+          "name": "Quality and Relevance of Proposed Training",
+          "group_name": null,
+          "score_10": 10,
+          "pros": "The application provides a highly detailed and structured training plan. It explicitly utilizes the Vitae research development framework (vRDF) to categorize training (sectdars__001_a). Specific courses are listed with clear links to project work packages (e.g., JBI scoping review for WP1, RCT course for WP2 protocol) (sectdars__001_b, sectdars__001_c). A comprehensive 3-year timetable integrates academic, clinical, and conference activities (sectdars__001_f).",
+          "drawbacks": "No material gaps or weaknesses identified; the plan is complete, specific, and directly evidenced.",
+          "signals": [
+            {
+              "sid": "td.1.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "td.1.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "td.1.c",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "td.1.d",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "td.2",
+          "name": "Suitability to Personal Development and Project Needs",
+          "group_name": null,
+          "score_10": 10,
+          "pros": "The applicant explicitly identifies skill gaps using the vRDF and maps training directly to project needs (sectdars__001_a). There is a clear, targeted mapping between specific courses and project tasks (e.g., 'Pilot and Feasibility Studies' to support WP2, 'Implementation Science' for complex intervention protocol) (sectdars__001_b, sectdars__001_c). The training is highly targeted rather than generic, addressing specific methodological needs like RCTs and scoping reviews.",
+          "drawbacks": "No material gaps or weaknesses identified; the alignment between training and project needs is explicit and robust.",
+          "signals": [
+            {
+              "sid": "td.2.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "td.2.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "td.2.c",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "td.2.d",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "td.3",
+          "name": "Support for Career Aspirations",
+          "group_name": null,
+          "score_10": 10,
+          "pros": "The applicant explicitly states career goals to become a 'world-leading clinician' and 'clinical academic' (sectdars__001_c). Training activities are directly connected to this trajectory, including the 'Emerging Clinical Leaders' course and 'Train the trainer' certification (sectdars__001_c, sectdars__001_d). The plan includes significant experiential learning through varied clinical practice roles (NHS, private sector) to build transferable management and clinical skills (sectdars__001_e, sectdars__001_f).",
+          "drawbacks": "No material gaps or weaknesses identified; the plan comprehensively addresses career aspirations with specific, transferable skill development.",
+          "signals": [
+            {
+              "sid": "td.3.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "td.3.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "td.3.c",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "td.3.d",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section_id": "wpcc",
+      "section_name": "Working with People & Communities",
+      "average_score_10": 8.33,
+      "sub_criteria": [
+        {
+          "sub_id": "wp.1",
+          "name": "Integration of Lived Experience in Research Design",
+          "group_name": null,
+          "score_10": 10,
+          "pros": "The application provides extensive evidence of co-design and consultation. Specific examples of changes made to the study design include refining recruitment processes, developing logic modelling, selecting outcome measures, and creating the self-management programme content based on advisory group feedback. A formal advisory group of 4 people with Parkinson's and 1 carer is established and actively involved.",
+          "drawbacks": "No material caveats; the evidence is comprehensive and specific.",
+          "signals": [
+            {
+              "sid": "wp.1.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "wp.1.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "wp.1.c",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "wp.2",
+          "name": "Diversity and Inclusivity of the Research Team",
+          "group_name": null,
+          "score_10": 0,
+          "pros": "No evidence found in the provided text regarding the diversity of the research team itself (gender, ethnicity, etc.).",
+          "drawbacks": "The application focuses heavily on participant diversity and PPI representation but does not explicitly describe the demographic composition of the research team, hiring strategies for team diversity, or equitable task allocation within the team.",
+          "signals": [
+            {
+              "sid": "wp.2.a",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "wp.2.b",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "wp.2.c",
+              "score_0to5": 0,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "wp.3",
+          "name": "Commitment to Maximising Public and Patient Benefit",
+          "group_name": null,
+          "score_10": 10,
+          "pros": "A robust dissemination plan is detailed, including scientific journals, conferences (World Parkinson's Congress), webinars with Parkinson's UK, and accessible infographics. Clear links are made between the study objectives (feasibility of hybrid exercise) and anticipated benefits (increased self-efficacy, reduced hospital admissions, policy influence).",
+          "drawbacks": "No material caveats; the plan is specific and actionable.",
+          "signals": [
+            {
+              "sid": "wp.3.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "wp.3.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "wp.3.c",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "wp.4",
+          "name": "Representation of Seldom Heard or Underserved Groups",
+          "group_name": null,
+          "score_10": 10,
+          "pros": "The application explicitly targets BAME and lower socioeconomic groups. Specific strategies include collaborating with general practices in high BAME areas, working with local support groups for trusted advocacy, and providing tablets/dongles to overcome IT barriers. Barriers such as technology illiteracy and socioeconomic status are discussed with clear mitigation strategies.",
+          "drawbacks": "No material caveats; the strategies are well-defined and directly address identified barriers.",
+          "signals": [
+            {
+              "sid": "wp.4.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "wp.4.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "wp.4.c",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "wp.5",
+          "name": "Inclusivity Across the Research Lifecycle",
+          "group_name": null,
+          "score_10": 10,
+          "pros": "Inclusion is demonstrated across the entire lifecycle: planning (proposal development), recruitment (advertising language), conduct (intervention refinement), analysis (outcome selection), and dissemination (review of summary documents). Accessibility is considered through the hybrid model and provision of equipment.",
+          "drawbacks": "No material caveats; the involvement is continuous and integrated.",
+          "signals": [
+            {
+              "sid": "wp.5.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "wp.5.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "wp.5.c",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "wp.6",
+          "name": "Costed and Resourced Plan for Research Inclusion",
+          "group_name": null,
+          "score_10": 10,
+          "pros": "The budget explicitly includes £15,000 for PPI payments, travel, and subsistence, plus costs for participant incentives and accessibility equipment (tablets/dongles). Staff time is allocated for PPI meetings and recruitment support. The resources align perfectly with the inclusion plan described in the text.",
+          "drawbacks": "No material caveats; the budget is detailed and fully supports the inclusion activities.",
+          "signals": [
+            {
+              "sid": "wp.6.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "wp.6.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "wp.6.c",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

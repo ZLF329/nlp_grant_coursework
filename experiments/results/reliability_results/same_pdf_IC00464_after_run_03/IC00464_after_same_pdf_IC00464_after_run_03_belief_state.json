@@ -1,0 +1,322 @@
+{
+  "processed_sections": [
+    "Scientific Abstract",
+    "Plain English Summary of Research",
+    "Changes from Previous Stage",
+    "Patient & Public Involvement",
+    "SUMMARY BUDGET",
+    "Application Context",
+    "Plain English NLP Analysis",
+    "Application Form Analysis"
+  ],
+  "subcriteria_beliefs": {
+    "pr.1": {
+      "good_evidence_ids": [
+        "secsa__001_a",
+        "secsa__001_b",
+        "secsa__001_c",
+        "secpesor__001_a",
+        "secpesor__001_b",
+        "secpesor__001_c",
+        "secpena__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Scientific Abstract: Clearly articulates problem, objectives, methods, and impact in a structured format suitable for a plain English summary.",
+        "Plain English Summary of Research: Clearly articulates the problem (MCI/hearing loss), objectives, methods (RCT), beneficiaries, and impact in accessible language.",
+        "Plain English NLP Analysis: NLP metrics show high readability (Flesch-Kincaid 5.27, Reading Ease 74.12) and low jargon density (2.02%), strongly supporting the quality of the Plain English Summary."
+      ]
+    },
+    "pr.2": {
+      "good_evidence_ids": [
+        "secsa__001_a"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Scientific Abstract: Cites specific trials (ACHIEVE) and pilot data to justify the intervention, identifying the gap in hearing aid uptake."
+      ]
+    },
+    "pr.3": {
+      "good_evidence_ids": [
+        "secsa__001_b",
+        "secsa__001_c",
+        "secpesor__001_b",
+        "seccfps__001_a",
+        "seccfps__001_d",
+        "seccfps__001_e"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Scientific Abstract: Outlines a phased approach (co-design, feasibility, RCT) with specific timelines and sample sizes, indicating feasibility.",
+        "Plain English Summary of Research: Outlines a 5-year timeline with specific phases (setup, trial, analysis), indicating feasibility and scope alignment.",
+        "Changes from Previous Stage: Justifies revised timeline (66 months) and sample size (n=424) as feasible, addressing scope and award appropriateness."
+      ]
+    },
+    "pr.4": {
+      "good_evidence_ids": [
+        "secsa__001_b",
+        "secsa__001_c",
+        "secpesor__001_b",
+        "seccfps__001_b",
+        "seccfps__001_c",
+        "seccfps__001_d"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Scientific Abstract: Describes a rigorous two-arm RCT with masked assessors, specific eligibility criteria, and defined primary/secondary outcomes.",
+        "Plain English Summary of Research: Describes a two-arm trial design with specific intervention (hearing aids + coach) and control (usual care) groups.",
+        "Changes from Previous Stage: Details methodological shifts to MoCA, supported self-fitting, and 18-month readouts, demonstrating rigorous design justification."
+      ]
+    },
+    "pr.5": {
+      "good_evidence_ids": [
+        "secsa__001_a",
+        "secsa__001_c",
+        "secpesor__001_a",
+        "secpesor__001_b"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Scientific Abstract: Explicitly targets cognitive decline reduction, dementia prevention, and health inequalities in deprived communities.",
+        "Plain English Summary of Research: Explicitly targets patient benefits including better hearing, mood, social life, and potential delay of dementia."
+      ]
+    },
+    "pr.6": {
+      "good_evidence_ids": [
+        "secsa__001_b",
+        "secsa__001_c",
+        "secpesor__001_c"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Scientific Abstract: Plans co-design workshops and stakeholder interviews, with outputs including PPIE resources and lay summaries.",
+        "Plain English Summary of Research: Details a lived experience panel involved in co-design, recruitment, and dissemination planning."
+      ]
+    },
+    "pr.9": {
+      "good_evidence_ids": [
+        "secsa__001_b",
+        "secsa__001_c",
+        "secpesor__001_c",
+        "seccfps__001_c",
+        "secsb__001_d"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Scientific Abstract: Includes equity strategies in feasibility testing and targets underserved groups and ethnic minorities in dissemination.",
+        "Plain English Summary of Research: States commitment to including people from all backgrounds and those often left out of research.",
+        "Changes from Previous Stage: Describes specific strategies for underserved populations (IMD 1-4, 4G tablets, co-produced materials) to ensure inclusive design.",
+        "SUMMARY BUDGET: Allocates specific funds for 278 tablet devices and SIM cards for participants lacking digital access, directly supporting inclusive research design."
+      ]
+    },
+    "wp.1": {
+      "good_evidence_ids": [
+        "secsa__001_b",
+        "secsa__001_c",
+        "secpesor__001_c",
+        "seccfps__001_c",
+        "seccfps__001_d",
+        "secppi__001_a",
+        "secppi__001_b"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Scientific Abstract: Integrates lived experience through co-design workshops and co-created lay summaries and policy briefs.",
+        "Plain English Summary of Research: Confirms integration of lived experience via a panel shaping the project from the start and co-designing the intervention.",
+        "Changes from Previous Stage: Confirms PPIE shaped design, outcomes, and materials, with public contributors as co-applicants guiding governance.",
+        "Patient & Public Involvement: Details co-creation of intervention in WS1 and accessibility reviews led by lived experience partners, confirming integration of lived experience in design."
+      ]
+    },
+    "wp.3": {
+      "good_evidence_ids": [
+        "secsa__001_c",
+        "secpesor__001_c",
+        "secppi__001_b",
+        "secppi__001_c"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Scientific Abstract: Details a dissemination plan involving open-source code, commissioning briefs, and partnerships to maximize public benefit.",
+        "Plain English Summary of Research: Describes a dissemination plan involving public, charities, patient groups, websites, and NHS implementation.",
+        "Patient & Public Involvement: Outlines co-development of accessible outputs (Easy Read, subtitled videos) and public engagement in WS5, maximizing public benefit."
+      ]
+    },
+    "wp.4": {
+      "good_evidence_ids": [
+        "secsa__001_c",
+        "secpesor__001_c",
+        "seccfps__001_c",
+        "secppi__001_b"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Scientific Abstract: Explicitly focuses on reaching deprived PCNs and ethnic minority communities to address representation gaps.",
+        "Plain English Summary of Research: Explicitly mentions commitment to including people from all backgrounds and those often left out of research.",
+        "Changes from Previous Stage: Explicitly targets high-deprivation areas and INCLUDE groups with specific recruitment and accessibility measures.",
+        "Patient & Public Involvement: Explicitly plans sessions with people from high-deprivation areas and ethnic minority backgrounds to ensure representation of seldom-heard groups."
+      ]
+    },
+    "pr.7": {
+      "good_evidence_ids": [
+        "seccfps__001_a",
+        "seccfps__001_e",
+        "secsb__001_a",
+        "secsb__001_b",
+        "secsb__001_c"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Changes from Previous Stage: Explains budget reduction (£50K less) despite expanded scope via efficiency gains, justifying resource allocation.",
+        "SUMMARY BUDGET: Provides detailed cost breakdowns for personnel, digital infrastructure, and equipment, explicitly linking resources to trial deliverables and benchmarking against NIHR guidance."
+      ]
+    },
+    "td.1": {
+      "good_evidence_ids": [
+        "seccfps__001_d",
+        "secsb__001_b"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Changes from Previous Stage: Outlines training for two PhDs and two RAs with mentorship, aligning training with project needs in audiology and implementation.",
+        "SUMMARY BUDGET: Funds 2.0 FTE PhD fees and stipends with explicit mention of formal training plans, supporting the quality and relevance of proposed training."
+      ]
+    },
+    "ss.1": {
+      "good_evidence_ids": [
+        "seccfps__001_e",
+        "secac__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Changes from Previous Stage: Highlights existing partnerships with RDNs and active recruitment in ENHANCE, demonstrating strong organizational track record.",
+        "Application Context: UCL CCTU and BRC partners highlighted for operational excellence; team members cite successful delivery of ENHANCE, TACT pilot, and national scale-up of Tympa technology, confirming strong track reco"
+      ]
+    },
+    "wp.2": {
+      "good_evidence_ids": [
+        "secppi__001_a"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Patient & Public Involvement: Describes a PPIE team with diverse lived experiences (hearing loss, cognitive impairment) and professional backgrounds, supporting team diversity."
+      ]
+    },
+    "wp.5": {
+      "good_evidence_ids": [
+        "secppi__001_b",
+        "secppi__001_c"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Patient & Public Involvement: Maps PPIE involvement across all five workstreams (Design to Dissemination), ensuring inclusivity across the full research lifecycle."
+      ]
+    },
+    "wp.6": {
+      "good_evidence_ids": [
+        "secppi__001_b",
+        "secppi__001_c",
+        "secsb__001_e",
+        "secsb__001_d"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Patient & Public Involvement: Provides a specific £30,331 budget breakdown for contributor payments, access costs, and coordination, demonstrating a costed plan for inclusion.",
+        "SUMMARY BUDGET: Includes a dedicated £30.3k line for PPI fees and £34.8k for participant vouchers, demonstrating a fully costed plan for research inclusion."
+      ]
+    },
+    "g.3": {
+      "good_evidence_ids": [
+        "secac__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Application Context: Lead applicant details decade of MCI treatment, ENHANCE programme leadership, and TACT pilot experience, demonstrating strong alignment between prior experience and project skills."
+      ]
+    },
+    "g.4": {
+      "good_evidence_ids": [
+        "secac__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Application Context: Lead applicant cites £8m portfolio, 27,000 citations, and Lancet Dementia Commission involvement; co-applicants list specific high-impact publications (e.g., Yu et al., Dunne et al.), supporting stro"
+      ]
+    },
+    "g.5": {
+      "good_evidence_ids": [
+        "secac__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Application Context: Lead applicant describes directing ENHANCE and shaping policy; Prof Livingston oversees PhD studentships; multiple co-applicants hold senior roles (NIHR Senior Investigator, Directors), indicating in"
+      ]
+    },
+    "g.6": {
+      "good_evidence_ids": [
+        "secac__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Application Context: Lead applicant is a consultant psychiatrist; Co-applicants include Consultant ENT surgeons, Consultant Psychiatrists, and practising GPs, demonstrating deep involvement in clinical practice alongside"
+      ]
+    },
+    "ss.2": {
+      "good_evidence_ids": [
+        "secac__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Application Context: Prof Livingston explicitly named for overseeing PhD studentships and research associates; Dr Yu supported by UCL CCTU trial coordinator; Prof Freemantle provides methodological oversight, indicating"
+      ]
+    },
+    "ss.3": {
+      "good_evidence_ids": [
+        "secac__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Application Context: UCL CCTU provides senior operational oversight and infrastructure for multi-site RCT; BRC Hearing Health Theme offers established networks and governance support, aligning organisational resources wi"
+      ]
+    },
+    "ss.4": {
+      "good_evidence_ids": [
+        "secac__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Application Context: Dedicated PPIE and EDI Lead (Ms Khatun) with lived experience; team includes public co-applicants (Mr Emery, Ms Kirby) and focus on underserved communities, demonstrating commitment to inclusive cult"
+      ]
+    },
+    "pr.8": {
+      "good_evidence_ids": [
+        "secac__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Application Context: Lead applicant cites TACT pilot success (75% uptake); co-applicants reference specific prior trials (STAMINA, IMP2ART) and consensus statements, providing evidence of prior successful projects releva"
+      ]
+    },
+    "td.2": {
+      "good_evidence_ids": [
+        "secac__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Application Context: Dr Yu's role includes developing PM expertise through mentored practice; Prof Livingston oversees early career researchers; training is mapped to specific project tasks like trial operations and impl"
+      ]
+    },
+    "td.3": {
+      "good_evidence_ids": [
+        "secac__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Application Context: Prof Livingston's oversight of PhDs and research associates supports career trajectory; Dr Yu's transition to Programme Manager and Dr Steed's implementation leadership align with long-term career go"
+      ]
+    }
+  },
+  "missing_signals": [
+    "g.1",
+    "g.2"
+  ]
+}

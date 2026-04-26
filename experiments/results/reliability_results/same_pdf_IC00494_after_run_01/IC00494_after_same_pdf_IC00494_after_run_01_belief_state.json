@@ -1,0 +1,280 @@
+{
+  "processed_sections": [
+    "Scientific Abstract",
+    "Plain English Summary of Research",
+    "Changes from Previous Stage",
+    "Patient & Public Involvement",
+    "SUMMARY BUDGET",
+    "Application Context",
+    "Plain English NLP Analysis",
+    "Application Form Analysis"
+  ],
+  "subcriteria_beliefs": {
+    "pr.1": {
+      "good_evidence_ids": [
+        "secsa__001_a",
+        "secsa__001_b",
+        "secsa__001_c",
+        "secpesor__001_a",
+        "secpesor__001_b",
+        "secpesor__001_c",
+        "seccfps__001_d",
+        "secpena__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Scientific Abstract: Clearly outlines the problem (DA in older women), objectives (adapt PATH), methods (mixed-methods, 3 work streams), and impact (future RCT, improved care), meeting plain English summary requirements.",
+        "Plain English Summary of Research: Clearly articulates the problem (abuse in older women), objectives (adapt PATH), methods (randomized groups, therapy), and impact (future funding, policy), using accessible language.",
+        "Changes from Previous Stage: Applicants revised the Plain English Summary for clarity and accessibility, involving PPI members and lay experts to ensure it is understandable to a general audience.",
+        "Plain English NLP Analysis: NLP metrics show high readability (Flesch-Kincaid 5.73, Reading Ease 71.92), low jargon density (1.3%), and coverage of key summary elements (problem, objectives, methods, beneficiaries, impac"
+      ]
+    },
+    "pr.2": {
+      "good_evidence_ids": [
+        "secsa__001_a",
+        "secpesor__001_a"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Scientific Abstract: Identifies a specific knowledge gap regarding the effectiveness of the PATH programme for older women, justifying the proposed research.",
+        "Plain English Summary of Research: Identifies a specific gap where current services target younger women and fail to meet the needs of older women living with abusers."
+      ]
+    },
+    "pr.3": {
+      "good_evidence_ids": [
+        "secsa__001_a",
+        "secsa__001_b",
+        "secpesor__001_b",
+        "secpesor__001_c",
+        "seccfps__001_b",
+        "seccfps__001_c",
+        "secac__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Scientific Abstract: Proposes a feasible scope (feasibility and acceptability pilot RCT with n=76) appropriate for a preparatory award before a large-scale trial.",
+        "Plain English Summary of Research: Describes a feasible small-scale study (pilot) to test the A-PATH programme, with plans to apply for further funding for a larger study if successful.",
+        "Changes from Previous Stage: Applicants corrected the timeline and expanded to ten sites with an eight-month recruitment period, demonstrating feasibility and alignment with award scope.",
+        "Application Context: Addresses feedback on timeline feasibility by extending the project by six months to ensure 12-month follow-up data collection, supporting scope appropriateness."
+      ]
+    },
+    "pr.4": {
+      "good_evidence_ids": [
+        "secsa__001_b",
+        "secsa__001_c",
+        "secpesor__001_b",
+        "seccfps__001_a",
+        "seccfps__001_e",
+        "seccfps__001_d",
+        "secac__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Scientific Abstract: Details a rigorous mixed-methods design including focus groups, interviews, shadowing, and a pilot RCT with specific sample sizes and outcome measures.",
+        "Plain English Summary of Research: Outlines a randomized design with two groups (usual support vs. support plus weekly therapy) to evaluate the intervention's effectiveness.",
+        "Changes from Previous Stage: Applicants clarified retention investigation, adherence definitions, and the rationale for the 4-month follow-up, strengthening methodological rigor and justification.",
+        "Application Context: Specifies minimum participant numbers for focus groups (6-8) and interviews (10-15) and mentions monitoring data saturation, supporting methodological rigor."
+      ]
+    },
+    "pr.5": {
+      "good_evidence_ids": [
+        "secsa__001_a",
+        "secsa__001_c",
+        "secpesor__001_a",
+        "secpesor__001_c"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Scientific Abstract: Highlights societal impact by addressing overlooked barriers for older women and generating evidence to improve trauma-informed care and support services.",
+        "Plain English Summary of Research: Emphasizes societal impact by aiming to improve safety and well-being for older women and influence policymakers for lasting improvements."
+      ]
+    },
+    "pr.6": {
+      "good_evidence_ids": [
+        "secsa__001_b",
+        "secpesor__001_b",
+        "secpesor__001_c",
+        "seccfps__001_b",
+        "seccfps__001_d",
+        "seccfps__001_e",
+        "secppi__001_a",
+        "secppi__001_b",
+        "secppi__001_c"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Scientific Abstract: Explicitly includes a Lived Experience Advisory Panel (LEAP) contributing throughout and survivor-led focus groups, demonstrating strong community engagement.",
+        "Plain English Summary of Research: Details engagement with older women and supporters to shape the programme, including an older woman researcher with lived experience and the charity Hourglass.",
+        "Changes from Previous Stage: Applicants detailed engagement strategies including co-design with community representatives, PPI group review of summaries, and consultation with lived experience experts.",
+        "Patient & Public Involvement: Details a Lived Experience Advisory Panel (LEAP) co-designing agendas, interpreting data, and shaping the intervention, strongly supporting engagement with people and communities."
+      ]
+    },
+    "pr.9": {
+      "good_evidence_ids": [
+        "secsa__001_a",
+        "secsa__001_c",
+        "secpesor__001_c",
+        "seccfps__001_b",
+        "seccfps__001_c",
+        "secppi__001_b",
+        "secppi__001_c",
+        "secsb__001_c",
+        "secac__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Scientific Abstract: Focuses on an underserved demographic (older women) and explicitly plans to engage women affected by multiple inequalities to ensure inclusive design.",
+        "Plain English Summary of Research: Explicitly targets older women of different ages and backgrounds, ensuring the programme meets diverse needs through inclusive design.",
+        "Changes from Previous Stage: Applicants described specific strategies for recruiting non-English speaking and ethnic minority communities, including culturally sensitive materials and partnerships with frontline services",
+        "Patient & Public Involvement: Explicitly addresses barriers like digital exclusion and uses accessible venues (Age UK, GP practices) to ensure inclusive participation for older women.",
+        "SUMMARY BUDGET: Details a blended data collection approach (phone and in-person via CRN sites) to prioritize accessibility and inclusivity for participants needing assistance.",
+        "Application Context: Details recruitment strategies involving diverse community organizations (e.g., Shakti Women's Aid, London Black Women's Project) to ensure inclusion of ethnically diverse groups."
+      ]
+    },
+    "wp.1": {
+      "good_evidence_ids": [
+        "secsa__001_b",
+        "secpesor__001_c",
+        "seccfps__001_b",
+        "seccfps__001_d",
+        "seccfps__001_e",
+        "secppi__001_b",
+        "secppi__001_c",
+        "secac__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Scientific Abstract: Integrates lived experience via a Lived Experience Advisory Panel (LEAP) and survivor-led focus groups to tailor the intervention.",
+        "Plain English Summary of Research: Highlights that older women with lived experience played a key role in shaping the project and will be involved throughout.",
+        "Changes from Previous Stage: Lived experience experts informed the choice of outcome timepoints, co-designed recruitment strategies, and reviewed the plain English summary, showing deep integration.",
+        "Patient & Public Involvement: Describes LEAP members co-designing focus group agendas, adapting PATH content, and co-producing plain language summaries, demonstrating deep integration of lived experience.",
+        "Application Context: Includes a PPIE co-applicant leading the engagement strategy and overseeing changes to training materials, confirming integration of lived experience."
+      ]
+    },
+    "wp.3": {
+      "good_evidence_ids": [
+        "secsa__001_c",
+        "secpesor__001_c",
+        "secppi__001_c"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Scientific Abstract: Plans to share findings through accessible reports and a public engagement event, ensuring knowledge translation to diverse audiences.",
+        "Plain English Summary of Research: Plans to share findings with participants, healthcare professionals, and organizations, and work with policymakers to drive improvements.",
+        "Patient & Public Involvement: Plans a public engagement event with partners (Hourglass, Age UK) and co-produced summaries to share results and foster social change, maximizing public benefit."
+      ]
+    },
+    "wp.4": {
+      "good_evidence_ids": [
+        "secsa__001_a",
+        "secsa__001_c",
+        "secpesor__001_a",
+        "secpesor__001_c",
+        "seccfps__001_b",
+        "seccfps__001_c",
+        "secppi__001_a",
+        "secppi__001_b",
+        "secac__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Scientific Abstract: Targets older women (age) and those facing multiple inequalities, addressing barriers specific to these seldom-heard groups.",
+        "Plain English Summary of Research: Focuses on older women (60+), a group often overlooked by services aimed at younger women, addressing a specific underserved demographic.",
+        "Changes from Previous Stage: Applicants explicitly address underserved groups by expanding sites and implementing inclusive recruitment strategies for ethnic minority and non-English speaking communities.",
+        "Patient & Public Involvement: Specifically targets women aged 60+ with domestic abuse experience, a seldom-heard group, and monitors diversity of contributors to ensure representation.",
+        "Application Context: Explicitly targets older women and plans to engage with organizations supporting South Asian women and other diverse groups to address representation."
+      ]
+    },
+    "wp.5": {
+      "good_evidence_ids": [
+        "secppi__001_a",
+        "secppi__001_b"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Patient & Public Involvement: Ensures involvement across all stages (design, data interpretation, dissemination) and evaluates engagement strength through retention and impact metrics."
+      ]
+    },
+    "wp.6": {
+      "good_evidence_ids": [
+        "secppi__001_c",
+        "secsb__001_b",
+        "secsb__001_d"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Patient & Public Involvement: Provides participation vouchers, flexible scheduling, and training for lived experience experts, demonstrating a resourced plan for inclusion.",
+        "SUMMARY BUDGET: Allocates specific costs for a Lived Experience co-applicant (20 days) and participant vouchers (£25), confirming a costed plan for research inclusion and PPI."
+      ]
+    },
+    "pr.7": {
+      "good_evidence_ids": [
+        "secsb__001_a",
+        "secsb__001_b",
+        "secsb__001_d"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "SUMMARY BUDGET: Provides detailed cost breakdowns for staff (FTE/days), data capture, training, and dissemination, explicitly linking resources to project tasks and justifying the total request of £335,383.92."
+      ]
+    },
+    "ss.2": {
+      "good_evidence_ids": [
+        "secsb__001_b",
+        "secsb__001_c"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "SUMMARY BUDGET: Describes a senior researcher role with a structured training plan and mentorship by senior leaders (Dr Orgeta, Dr Cramer), demonstrating clear supervisory support arrangements."
+      ]
+    },
+    "g.3": {
+      "good_evidence_ids": [
+        "secac__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Application Context: Lists team members with prior experience in NIHR-funded clinical trials in dementia, domestic abuse, and end-of-life care, supporting relevant research experience."
+      ]
+    },
+    "g.5": {
+      "good_evidence_ids": [
+        "secac__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Application Context: Describes lead applicants as 'Chief Co-lead investigator' overseeing project management, recruitment, and dissemination, indicating increasing responsibility and leadership."
+      ]
+    },
+    "ss.1": {
+      "good_evidence_ids": [
+        "secac__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Application Context: Mentions collaboration with UCL's Priment Clinical Trials Unit and team members with prior NIHR trial experience, supporting organizational track record."
+      ]
+    },
+    "ss.3": {
+      "good_evidence_ids": [
+        "secac__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Application Context: Describes access to UCL's Priment CTU for study design and data management support, demonstrating appropriate organizational infrastructure."
+      ]
+    }
+  },
+  "missing_signals": [
+    "g.1",
+    "g.2",
+    "g.4",
+    "g.6",
+    "pr.8",
+    "td.1",
+    "td.2",
+    "td.3",
+    "ss.4",
+    "wp.2"
+  ]
+}

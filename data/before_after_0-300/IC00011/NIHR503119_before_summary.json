@@ -1,0 +1,922 @@
+{
+  "doc_id": "fb3b79de3d25_NIHR503119_before",
+  "run_info": {
+    "ran_at_utc": "2026-04-21T10:55:45.795350Z",
+    "model": "qwen3.5:27b",
+    "judge_model": null
+  },
+  "sections": [
+    {
+      "section_id": "application_form",
+      "section_name": "Application Form",
+      "average_score_10": 7.33,
+      "sub_criteria": [
+        {
+          "sub_id": "af.1",
+          "name": "Use of Formatting, Headings, and Subheadings",
+          "group_name": null,
+          "score_10": 7.5,
+          "pros": "The application form analysis confirms the presence of 5 distinct sections with 4 numbered heading-like lines and 23 list markers, indicating a structured hierarchy and consistent use of headings. The parser detected 14 emphasis markers, suggesting effective use of formatting to highlight key terms.",
+          "drawbacks": "The analysis notes a parser limitation where bold/emphasis markers may be lost during text extraction, meaning the count of 14 emphasis markers might be an underestimate of the actual formatting used. While structure is strong, the exact visual hierarchy cannot be fully verified due to this extraction constraint.",
+          "signals": [
+            {
+              "sid": "af.1.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "af.1.b",
+              "score_0to5": 3,
+              "note": ""
+            },
+            {
+              "sid": "af.1.c",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "af.1.d",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "af.2",
+          "name": "Limited Duplication and Repetition",
+          "group_name": null,
+          "score_10": 8,
+          "pros": "Quantitative metrics show very low duplication rates (0.014 for sentences, 0.015 for lines), indicating minimal unnecessary repetition. The lexical overlap between the Scientific Abstract and Plain English Summary is 0.268, which suggests distinct content rather than verbatim copying.",
+          "drawbacks": "While the duplication metrics are excellent, the analysis does not provide a specific 'novelty score' for every section, relying instead on aggregate rates. The low overlap is strong evidence, but a section-by-section novelty breakdown is not explicitly detailed in the provided text.",
+          "signals": [
+            {
+              "sid": "af.2.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "af.2.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "af.2.c",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "af.3",
+          "name": "Logical Flow and Coherence Across Sections",
+          "group_name": null,
+          "score_10": 6.5,
+          "pros": "The analysis identifies 15 terms linking objectives, methods, and budget, providing strong evidence of logical alignment between these components. The section order is described as moving logically from applicant context through research plan to budget, supporting a coherent narrative thread.",
+          "drawbacks": "The evidence for semantic coherence relies on the presence of linking terms and section order rather than deep embedding analysis. The count of transition phrases is low (5), which may indicate a somewhat rigid structure rather than fluid narrative transitions between sections.",
+          "signals": [
+            {
+              "sid": "af.3.a",
+              "score_0to5": 3,
+              "note": ""
+            },
+            {
+              "sid": "af.3.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "af.3.c",
+              "score_0to5": 3,
+              "note": ""
+            },
+            {
+              "sid": "af.3.d",
+              "score_0to5": 3,
+              "note": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section_id": "general",
+      "section_name": "General",
+      "average_score_10": 1.5,
+      "sub_criteria": [
+        {
+          "sub_id": "g.1",
+          "name": "Common Characteristics of Good Applications",
+          "group_name": "Common Characteristics of Good Applications",
+          "score_10": 3.5,
+          "pros": "Strong mentorship and institutional support are evidenced by the explicit naming of a Practice Supervisor and Mentor with defined roles (g.1.d). The application demonstrates a clear research vision regarding airway dynamics in SMA (g.1.a) and distinctive ideas involving specific assessment techniques (g.1.b).",
+          "drawbacks": "There is no evidence of a well-justified training plan (g.1.c) as no specific training activities or courses are described. The career trajectory (g.1.a) is implied by the project but not explicitly articulated as a long-term path. Distinctive ideas (g.1.b) are present but lack a broader context of independence from existing work.",
+          "signals": [
+            {
+              "sid": "g.1.a",
+              "score_0to5": 1,
+              "note": ""
+            },
+            {
+              "sid": "g.1.b",
+              "score_0to5": 2,
+              "note": ""
+            },
+            {
+              "sid": "g.1.c",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "g.1.d",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "g.2",
+          "name": "Tell Us Why You Need This Award",
+          "group_name": "Tell Us Why You Need This Award",
+          "score_10": 0,
+          "pros": "No evidence found in the provided text.",
+          "drawbacks": "The application text contains no section or statement explaining why this specific award is the right next step for the applicant's career, what difference it would make, how it builds on existing experience, or how it will develop research partnerships. All signals are missing.",
+          "signals": [
+            {
+              "sid": "g.2.a",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "g.2.b",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "g.2.c",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "g.2.d",
+              "score_0to5": 0,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "g.3",
+          "name": "Relevant Research Experience and Training",
+          "group_name": "Applicant",
+          "score_10": 4,
+          "pros": "Evidence of formal training and professional registration (HCPC) is provided (g.3.b). The applicant's background as a Physiotherapist aligns with the clinical nature of the proposed study (g.3.c).",
+          "drawbacks": "There are no specific mentions of previous research projects, methods, or techniques used by the applicant (g.3.a). The alignment between prior experience and the specific research skills required (e.g., statistical analysis, TFL/OEP operation) is inferred from the job title rather than explicitly detailed (g.3.c).",
+          "signals": [
+            {
+              "sid": "g.3.a",
+              "score_0to5": 1,
+              "note": ""
+            },
+            {
+              "sid": "g.3.b",
+              "score_0to5": 3,
+              "note": ""
+            },
+            {
+              "sid": "g.3.c",
+              "score_0to5": 2,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "g.4",
+          "name": "Impactful Research Outputs and Outcomes",
+          "group_name": "Applicant",
+          "score_10": 0,
+          "pros": "No evidence found in the provided text.",
+          "drawbacks": "The application text does not list any publications, reports, presentations, citation metrics, awards, or descriptions of practical impact from previous work. All signals are missing.",
+          "signals": [
+            {
+              "sid": "g.4.a",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "g.4.b",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "g.4.c",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "g.4.d",
+              "score_0to5": 0,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "g.5",
+          "name": "Trajectory Towards Research Leadership",
+          "group_name": "Applicant",
+          "score_10": 0,
+          "pros": "No evidence found in the provided text.",
+          "drawbacks": "There are no statements regarding career ambitions, long-term goals, increasing responsibility, leadership programs, or peer recognition. All signals are missing.",
+          "signals": [
+            {
+              "sid": "g.5.a",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "g.5.b",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "g.5.c",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "g.5.d",
+              "score_0to5": 0,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "g.6",
+          "name": "Commitment to Practitioner-Academic Career (if applicable)",
+          "group_name": "Applicant",
+          "score_10": 2,
+          "pros": "The applicant is a registered Physiotherapist conducting research at a children's hospital, which demonstrates involvement in clinical or practice-based research (g.6.b).",
+          "drawbacks": "There is no explicit statement of practitioner-academic career intentions (g.6.a). No evidence is provided regarding how the applicant balances practice responsibilities with research (g.6.c). Participation in professional networks is implied by the hospital setting but not explicitly detailed (g.6.d).",
+          "signals": [
+            {
+              "sid": "g.6.a",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "g.6.b",
+              "score_0to5": 3,
+              "note": ""
+            },
+            {
+              "sid": "g.6.c",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "g.6.d",
+              "score_0to5": 1,
+              "note": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section_id": "proposed_research",
+      "section_name": "Proposed Research",
+      "average_score_10": 6.35,
+      "sub_criteria": [
+        {
+          "sub_id": "pr.1",
+          "name": "Quality of the Plain English Summary",
+          "group_name": null,
+          "score_10": 8,
+          "pros": "The Plain English Summary is highly readable (Flesch-Kincaid grade 6.23) and clearly explains the problem (SMA, phlegm), methods (cough-assist, nasal camera, markers), beneficiaries (patients, NHS), and impact (reduced admissions). It aligns perfectly with the Scientific Abstract. Jargon is minimal and well-explained (e.g., 'cough-assist' described as mimicking a cough).",
+          "drawbacks": "While readability is excellent, a few technical terms like 'peer-reviewed' and 'respiratory' are present without explicit lay definitions, though context makes them understandable. Sentence structure is simple but occasionally repetitive.",
+          "signals": [
+            {
+              "sid": "pr.1.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.1.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.1.c",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.1.d",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.1.e",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.1.f",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "pr.2",
+          "name": "Evidence Review Quality & Relevance",
+          "group_name": null,
+          "score_10": 2,
+          "pros": "The application clearly identifies a specific knowledge gap: the lack of understanding regarding airway dynamics and potential collapse during MIE use in children with SMA. This gap is explicitly stated in both the Scientific Abstract and Plain English Summary.",
+          "drawbacks": "There is no evidence of a formal literature review, citation of specific references, or critical analysis of existing studies. The 'Evidence Review' section is effectively missing from the provided text, limiting the score for reference quality and critical analysis.",
+          "signals": [
+            {
+              "sid": "pr.2.a",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "pr.2.b",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "pr.2.c",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.2.d",
+              "score_0to5": 0,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "pr.3",
+          "name": "Research Scope & Award Appropriateness",
+          "group_name": null,
+          "score_10": 7.33,
+          "pros": "The scope is well-defined with 50 patients and three distinct work packages (TFL, OEP, tolerance) over a 36-month period. The tasks are specific and appear feasible for a doctoral or postdoctoral award.",
+          "drawbacks": "While the scope is clear, there is limited discussion on how the workload is proportioned relative to the specific award type or potential risks to feasibility if recruitment is slow.",
+          "signals": [
+            {
+              "sid": "pr.3.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.3.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.3.c",
+              "score_0to5": 3,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "pr.4",
+          "name": "Research Design & Methodological Rigor",
+          "group_name": null,
+          "score_10": 7.5,
+          "pros": "Methods are explicitly described with high detail: Transnasal Fibreoptic Laryngoscope (TFL), Opto-electronic Plethysmography (OEP) with 24-52 markers, and visual scales for tolerance. The methods align logically with the aims to assess airway response and breathing patterns.",
+          "drawbacks": "The proposal mentions 'Statistical analysis will be conducted' but lacks specific details on the statistical tests, power calculations, or control groups, which limits the rigor score slightly.",
+          "signals": [
+            {
+              "sid": "pr.4.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.4.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.4.c",
+              "score_0to5": 3,
+              "note": ""
+            },
+            {
+              "sid": "pr.4.d",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "pr.5",
+          "name": "Potential Impact on Patients, Public, and Health Services",
+          "group_name": null,
+          "score_10": 8,
+          "pros": "Impact is clearly articulated: improved secretion management, reduced chest infections, better quality of life, and reduced NHS costs/hospital admissions. The benefits to patients and the health service are specific and directly linked to the research outcomes.",
+          "drawbacks": "While the benefits are clear, the specific mechanisms for translating findings into clinical guidelines or policy changes are not detailed.",
+          "signals": [
+            {
+              "sid": "pr.5.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.5.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.5.c",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "pr.6",
+          "name": "Engagement with People & Communities",
+          "group_name": null,
+          "score_10": 10,
+          "pros": "Extensive evidence of meaningful engagement: co-design with parents/patients led to specific changes (child-friendly video, single-visit scheduling). A formal steering group (10 participants) is established for ongoing guidance, ethical review, and dissemination.",
+          "drawbacks": "No significant drawbacks; the engagement plan is comprehensive and integrated throughout the project lifecycle.",
+          "signals": [
+            {
+              "sid": "pr.6.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.6.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.6.c",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "pr.7",
+          "name": "Justification of Resources & Award Costs",
+          "group_name": null,
+          "score_10": 0,
+          "pros": "No evidence found in the provided text sections regarding budget, resource justification, or cost breakdown.",
+          "drawbacks": "The provided application text does not contain a budget section or justification of resources. Therefore, no evidence exists to score this criterion.",
+          "signals": [
+            {
+              "sid": "pr.7.a",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "pr.7.b",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "pr.7.c",
+              "score_0to5": 0,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "pr.8",
+          "name": "Quality of Previous Research (if applicable)",
+          "group_name": null,
+          "score_10": 0,
+          "pros": "No evidence found in the provided text sections regarding the applicant's previous research outputs or specific prior projects.",
+          "drawbacks": "The provided text focuses on the proposed research and PPI, not the applicant's past research track record. While professional registration is mentioned in Application Context, specific prior research outputs are not detailed in the scoped sections.",
+          "signals": [
+            {
+              "sid": "pr.8.a",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "pr.8.b",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "pr.8.c",
+              "score_0to5": 0,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "pr.9",
+          "name": "Inclusive Research Design",
+          "group_name": null,
+          "score_10": 8,
+          "pros": "Strong inclusive design: adaptations for communication styles, animated videos for explanation, and flexible testing schedules based on patient feedback. The study explicitly targets an under-represented population (SMA) and includes ongoing reviews for equality and diversity.",
+          "drawbacks": "While strategies are present, specific metrics for tracking diversity in recruitment or detailed plans for handling behavioral concerns beyond the initial adaptations are not fully elaborated.",
+          "signals": [
+            {
+              "sid": "pr.9.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.9.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.9.c",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section_id": "sites_support",
+      "section_name": "Sites & Support",
+      "average_score_10": 1.75,
+      "sub_criteria": [
+        {
+          "sub_id": "ss.1",
+          "name": "Track Record of the Contracting Organisation (and Partners)",
+          "group_name": null,
+          "score_10": 0,
+          "pros": "None.",
+          "drawbacks": "The application text identifies the contracting organisation (Great Ormond Street Hospital) but provides no specific evidence of its track record, publication history, previous funding success, or notable achievements in the relevant research field. The belief state explicitly lists ss.1 as a missing signal.",
+          "signals": [
+            {
+              "sid": "ss.1.a",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "ss.1.b",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "ss.1.c",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "ss.1.d",
+              "score_0to5": 0,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "ss.2",
+          "name": "Suitability of Supervisory Support and Mentorship Arrangements",
+          "group_name": null,
+          "score_10": 5,
+          "pros": "The application explicitly names a Practice Supervisor (Dr Martin Samuels) and a Mentor (Dr Ema Swingwood) with defined roles. Dr Samuels provides 'advice and guidance on the respiratory aspects,' demonstrating alignment between supervisor expertise and project needs. The presence of both a supervisor and a mentor indicates a structured support arrangement.",
+          "drawbacks": "While roles are named, the description of support is brief ('Advice and guidance') and lacks detail on the frequency, format, or specific accountability mechanisms of the supervision (ss.2.d). The mentor's specific support description is missing in the text provided. The lack of a detailed mentorship plan prevents a perfect score.",
+          "signals": [
+            {
+              "sid": "ss.2.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "ss.2.b",
+              "score_0to5": 2,
+              "note": ""
+            },
+            {
+              "sid": "ss.2.c",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "ss.2.d",
+              "score_0to5": 0,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "ss.3",
+          "name": "Appropriateness of the Contracting Organisation to Support the Award and Career Aspirations",
+          "group_name": null,
+          "score_10": 2,
+          "pros": "The contracting organisation is Great Ormond Street Hospital for Children NHS Foundation Trust, a specialist paediatric centre. This aligns strongly with the project's focus on children with Spinal Muscular Atrophy, indicating the organisation is appropriate to support the clinical aspects of the award.",
+          "drawbacks": "The application does not describe specific facilities, infrastructure, or resources provided by the organisation (ss.3.a). There is no explicit link made between organisational support and project success beyond the general alignment of the hospital's specialty. No evidence is provided regarding tailored support for the specific award type (ss.3.d).",
+          "signals": [
+            {
+              "sid": "ss.3.a",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "ss.3.b",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "ss.3.c",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "ss.3.d",
+              "score_0to5": 0,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "ss.4",
+          "name": "Commitment to Inclusive and Supportive Research Culture",
+          "group_name": null,
+          "score_10": 0,
+          "pros": "None.",
+          "drawbacks": "The application text contains no mentions of policies or practices promoting diversity, equity, and inclusion, nor any evidence of inclusive recruitment, mentoring, or support initiatives. There are no references to research integrity principles or statements on organisational culture supporting underrepresented groups. The belief state lists ss.4 as a missing signal.",
+          "signals": [
+            {
+              "sid": "ss.4.a",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "ss.4.b",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "ss.4.c",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "ss.4.d",
+              "score_0to5": 0,
+              "note": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section_id": "training_development",
+      "section_name": "Training & Development",
+      "average_score_10": 0,
+      "sub_criteria": [
+        {
+          "sub_id": "td.1",
+          "name": "Quality and Relevance of Proposed Training",
+          "group_name": null,
+          "score_10": 0,
+          "pros": "No evidence found in the provided text regarding a specific training plan.",
+          "drawbacks": "The application text contains only summary information and team details; it lacks any description of training activities, timelines, or skill acquisition plans required for this section.",
+          "signals": [
+            {
+              "sid": "td.1.a",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "td.1.b",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "td.1.c",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "td.1.d",
+              "score_0to5": 0,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "td.2",
+          "name": "Suitability to Personal Development and Project Needs",
+          "group_name": null,
+          "score_10": 0,
+          "pros": "No evidence found in the provided text regarding personal development needs or training suitability.",
+          "drawbacks": "The text does not identify skill gaps, map training to project tasks, or mention specific workshops or courses. While mentors are listed, their role in training is not detailed.",
+          "signals": [
+            {
+              "sid": "td.2.a",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "td.2.b",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "td.2.c",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "td.2.d",
+              "score_0to5": 0,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "td.3",
+          "name": "Support for Career Aspirations",
+          "group_name": null,
+          "score_10": 0,
+          "pros": "No evidence found in the provided text regarding career aspirations or how training supports them.",
+          "drawbacks": "The application text does not contain statements of career goals, connections between training and future trajectory, or references to professional practice components beyond the applicant's current job title.",
+          "signals": [
+            {
+              "sid": "td.3.a",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "td.3.b",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "td.3.c",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "td.3.d",
+              "score_0to5": 0,
+              "note": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section_id": "wpcc",
+      "section_name": "Working with People & Communities",
+      "average_score_10": 5.67,
+      "sub_criteria": [
+        {
+          "sub_id": "wp.1",
+          "name": "Integration of Lived Experience in Research Design",
+          "group_name": null,
+          "score_10": 10,
+          "pros": "The application provides robust evidence of co-design and consultation. Specific design changes are explicitly linked to patient feedback, including the creation of a child-friendly video to address concerns about the transnasal fibreoptic laryngoscope and restructuring visits to mitigate fatigue. A formal steering group comprising parents, patients, and charity partners is established to guide the project.",
+          "drawbacks": "No material caveats; the evidence is specific, grounded, and directly addresses the integration of lived experience into the study design.",
+          "signals": [
+            {
+              "sid": "wp.1.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "wp.1.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "wp.1.c",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "wp.2",
+          "name": "Diversity and Inclusivity of the Research Team",
+          "group_name": null,
+          "score_10": 0,
+          "pros": "No evidence found in the provided text regarding the diversity of the research team itself.",
+          "drawbacks": "The application text focuses entirely on patient and public involvement (PPI) and participant inclusion. There is no mention of the demographic composition (gender, ethnicity, age) of the research team, nor any statements regarding inclusive hiring practices or equitable task allocation within the team.",
+          "signals": [
+            {
+              "sid": "wp.2.a",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "wp.2.b",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "wp.2.c",
+              "score_0to5": 0,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "wp.3",
+          "name": "Commitment to Maximising Public and Patient Benefit",
+          "group_name": null,
+          "score_10": 10,
+          "pros": "The application details a comprehensive dissemination plan involving podcasts, meetings with parent support groups, and peer-reviewed journals. The steering group is explicitly tasked with assisting in writing final reports and facilitating publication on charity websites. Clear links are drawn between the study objectives (optimizing MIE settings) and anticipated benefits (reduced hospital admissions, improved quality of life).",
+          "drawbacks": "No material caveats; the plan for maximizing public benefit is well-resourced and clearly articulated.",
+          "signals": [
+            {
+              "sid": "wp.3.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "wp.3.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "wp.3.c",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "wp.4",
+          "name": "Representation of Seldom Heard or Underserved Groups",
+          "group_name": null,
+          "score_10": 6,
+          "pros": "The study explicitly targets children with Spinal Muscular Atrophy (SMA), identified as a rare disease serving an under-represented population. The text notes that adjustments have been made for patients with behavioral and communicative concerns, and patient information sheets are adapted for different communication styles.",
+          "drawbacks": "While the target group (SMA) is clearly identified as underserved, there is limited detail on specific strategies to recruit diverse subgroups within this population (e.g., specific ethnic or socioeconomic backgrounds) beyond general statements about 'all cultural backgrounds'. The mitigation strategies are present but could be more detailed regarding specific barriers faced by this rare disease community.",
+          "signals": [
+            {
+              "sid": "wp.4.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "wp.4.b",
+              "score_0to5": 2,
+              "note": ""
+            },
+            {
+              "sid": "wp.4.c",
+              "score_0to5": 3,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "wp.5",
+          "name": "Inclusivity Across the Research Lifecycle",
+          "group_name": null,
+          "score_10": 8,
+          "pros": "Inclusivity is demonstrated across the entire lifecycle: from initial co-design (consultations on plain English summary) to recruitment adaptations (animated videos, adjusted visit schedules) and ongoing evaluation (steering group meetings, feedback mechanisms). The application explicitly mentions ongoing reviews to ensure equality, diversity, and inclusion are considered.",
+          "drawbacks": "While the plan for ongoing evaluation is strong, the specific metrics or methods for 'ongoing reviews' of equality and diversity are not fully detailed, preventing a perfect score on the evaluation aspect.",
+          "signals": [
+            {
+              "sid": "wp.5.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "wp.5.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "wp.5.c",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "wp.6",
+          "name": "Costed and Resourced Plan for Research Inclusion",
+          "group_name": null,
+          "score_10": 0,
+          "pros": "No evidence found in the provided text regarding budgeting for inclusion activities.",
+          "drawbacks": "The provided application text (Scientific Abstract, Plain English Summary, PPI, Application Context) does not contain a budget section or any mention of specific budget lines, staff time, or financial resources allocated to inclusion activities (e.g., payment for PPI contributors, travel costs, materials for accessibility).",
+          "signals": [
+            {
+              "sid": "wp.6.a",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "wp.6.b",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "wp.6.c",
+              "score_0to5": 0,
+              "note": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

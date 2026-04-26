@@ -1,0 +1,22 @@
+{
+  "score_10": 0.42,
+  "final_score_0to100": 4.2,
+  "quality_score_0to100": 4.2,
+  "coverage_score_0to100": 10.34,
+  "evidence_score_0to100": 100.0,
+  "quality_score_avg_0to10": 0.42,
+  "avg_confidence_0to2": 2.0,
+  "avg_plausibility_0to5": 5.0,
+  "high_confidence_subcriterion_count": 29,
+  "medium_confidence_subcriterion_count": 0,
+  "low_confidence_subcriterion_count": 0,
+  "weak_signal_count": 0,
+  "total_items": 31,
+  "scored_items": 29,
+  "signal_count": 112,
+  "evidence_count": 3,
+  "good_items": 0,
+  "positive_items": 3,
+  "expected_items": 29,
+  "target_evidence_per_item": 5
+}

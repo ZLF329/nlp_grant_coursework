@@ -1,0 +1,228 @@
+[
+  {
+    "section_name": "Raw Content",
+    "findings": [
+      {
+        "sub_id": "g.1",
+        "good_evidence_ids": [
+          "secrc__001_²"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Mentions a 'professorship steering committee' and 'career trajectory' advice, indicating a clear vision and trajectory (g.1.a, g.1.b)."
+      },
+      {
+        "sub_id": "g.2",
+        "good_evidence_ids": [
+          "secrc__001_²",
+          "secrc__001_³",
+          "secrc__001_´"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Describes how the award will 'extend established and successful partnerships' and 'create important new collaborations' (g.2.d), and mentions gaining 'in-depth understanding' of interventions to inform works"
+      },
+      {
+        "sub_id": "g.3",
+        "good_evidence_ids": [
+          "secrc__001_³",
+          "secrc__001_´"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: References previous trials (HONOR, GOALs, WATCHFUL, ENERGISE, MOSAIC2) and specific methods (mhealth, activity trackers, behaviour change), demonstrating relevant experience (g.3.a, g.3.c)."
+      },
+      {
+        "sub_id": "g.4",
+        "good_evidence_ids": [
+          "secrc__001_·",
+          "secrc__001_¸",
+          "secrc__001_¹"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Provides an extensive list of 94 references including high-impact journals (JAMA, Lancet, BMJ) and systematic reviews, demonstrating a strong track record of impactful outputs (g.4.a, g.4.b)."
+      },
+      {
+        "sub_id": "g.5",
+        "good_evidence_ids": [
+          "secrc__001_²",
+          "secrc__001_³"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: The applicant is applying for a 'Professorship' and plans to lead 'workstream 1-2' and 'spark/lead onto other avenues', indicating increasing responsibility and leadership potential (g.5.a, g.5.b)."
+      },
+      {
+        "sub_id": "g.6",
+        "good_evidence_ids": [
+          "secrc__001_³",
+          "secrc__001_´",
+          "secrc__001_µ"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Explicitly mentions working with 'clinicians', 'vascular surgeons', and 'clinical exercise physiologists', and links research to 'real-world settings' and 'service planners', supporting a practitioner-academ"
+      },
+      {
+        "sub_id": "pr.2",
+        "good_evidence_ids": [
+          "secrc__001_·",
+          "secrc__001_¸",
+          "secrc__001_¹"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: The extensive reference list (94 items) covers epidemiology, guidelines, systematic reviews, and specific trials, providing a robust evidence base (pr.2.a, pr.2.d)."
+      },
+      {
+        "sub_id": "pr.5",
+        "good_evidence_ids": [
+          "secrc__001_³",
+          "secrc__001_´",
+          "secrc__001_µ"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Mentions addressing 'health inequalities', 'underserved groups', and ensuring research is 'relevant to local and national community-based needs', highlighting potential impact on patients and public (pr.5.a,"
+      },
+      {
+        "sub_id": "pr.6",
+        "good_evidence_ids": [
+          "secrc__001_µ",
+          "secrc__001_·"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Explicitly mentions 'national vascular public advisory group', 'patient organisations', and 'user driven' research, demonstrating engagement with people and communities (pr.6.a, pr.6.c)."
+      },
+      {
+        "sub_id": "pr.9",
+        "good_evidence_ids": [
+          "secrc__001_³",
+          "secrc__001_µ"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Discusses working with 'ethnic communities', 'Romanian and Eastern European Hub', 'Caribbean & African Health Network', and 'underserved groups', showing an inclusive research design (pr.9.a, pr.9.c)."
+      },
+      {
+        "sub_id": "ss.1",
+        "good_evidence_ids": [
+          "secrc__001_³",
+          "secrc__001_´",
+          "secrc__001_µ"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Lists extensive collaborations with major institutions (Northwestern, Penn State, Charles University, King's College London, etc.), indicating a strong track record of partnerships (ss.1.c)."
+      },
+      {
+        "sub_id": "ss.2",
+        "good_evidence_ids": [
+          "secrc__001_²"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Mentions a 'professorship steering committee' that meets twice a year and provides 'ad hoc remote advice', indicating structured mentorship and support (ss.2.b, ss.2.d)."
+      },
+      {
+        "sub_id": "ss.3",
+        "good_evidence_ids": [
+          "secrc__001_·"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Mentions working with 'Southwest London Integrated Care Board' and 'service planners' to ensure research is 'fit for purpose', showing organizational alignment (ss.3.b, ss.3.c)."
+      },
+      {
+        "sub_id": "ss.4",
+        "good_evidence_ids": [
+          "secrc__001_µ"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Explicitly mentions consolidating relationships with 'Centre for Ethnic health research' and organizations addressing 'health inequalities', indicating a commitment to inclusive culture (ss.4.a, ss.4.d)."
+      },
+      {
+        "sub_id": "wp.1",
+        "good_evidence_ids": [
+          "secrc__001_µ"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Mentions 'national vascular public advisory group' and 'user driven' research, indicating integration of lived experience (wp.1.a, wp.1.c)."
+      },
+      {
+        "sub_id": "wp.4",
+        "good_evidence_ids": [
+          "secrc__001_³",
+          "secrc__001_µ"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Specifically targets 'ethnic communities', 'Romanian and Eastern European Hub', 'Caribbean & African Health Network', and 'underserved groups', addressing representation of seldom heard groups (wp.4.a, wp.4."
+      },
+      {
+        "sub_id": "wp.5",
+        "good_evidence_ids": [
+          "secrc__001_µ"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Mentions 'maximise research inclusion' and working with diverse communities, suggesting inclusivity across the lifecycle (wp.5.a)."
+      }
+    ],
+    "resolved_signals": [
+      "g.1",
+      "g.2",
+      "g.3",
+      "g.4",
+      "g.5",
+      "g.6",
+      "pr.2",
+      "pr.5",
+      "pr.6",
+      "pr.9",
+      "ss.1",
+      "ss.2",
+      "ss.3",
+      "ss.4",
+      "wp.1",
+      "wp.4",
+      "wp.5"
+    ],
+    "missing_signals_after": [
+      "pr.1",
+      "pr.3",
+      "pr.4",
+      "pr.7",
+      "pr.8",
+      "td.1",
+      "td.2",
+      "td.3",
+      "wp.2",
+      "wp.3",
+      "wp.6"
+    ]
+  },
+  {
+    "section_name": "Application Context",
+    "findings": [],
+    "resolved_signals": [],
+    "missing_signals_after": [
+      "pr.1",
+      "pr.3",
+      "pr.4",
+      "pr.7",
+      "pr.8",
+      "td.1",
+      "td.2",
+      "td.3",
+      "wp.2",
+      "wp.3",
+      "wp.6"
+    ]
+  },
+  {
+    "section_name": "Application Form Analysis",
+    "findings": [],
+    "resolved_signals": [],
+    "missing_signals_after": [
+      "pr.1",
+      "pr.3",
+      "pr.4",
+      "pr.7",
+      "pr.8",
+      "td.1",
+      "td.2",
+      "td.3",
+      "wp.2",
+      "wp.3",
+      "wp.6"
+    ]
+  }
+]

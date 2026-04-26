@@ -1,0 +1,312 @@
+[
+  {
+    "section_name": "Raw Content",
+    "findings": [
+      {
+        "sub_id": "g.1",
+        "good_evidence_ids": [
+          "secrc__001_k",
+          "secrc__001_l",
+          "secrc__001_d"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Applicant articulates a clear vision to become a leading methodologist in women's health, with a distinctive focus on standardizing MBL measurement and improving meta-analyses."
+      },
+      {
+        "sub_id": "g.2",
+        "good_evidence_ids": [
+          "secrc__001_e",
+          "secrc__001_f",
+          "secrc__001_k"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Applicant explains the award is the right next step to expand on a previously fundable pre-doctoral proposal, enabling independence and complex methodological skills."
+      },
+      {
+        "sub_id": "g.3",
+        "good_evidence_ids": [
+          "secrc__001_f",
+          "secrc__001_h",
+          "secrc__001_i"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Strong alignment between prior experience in systematic reviews, meta-analysis, and trial management and the skills required for the proposed research."
+      },
+      {
+        "sub_id": "g.4",
+        "good_evidence_ids": [
+          "secrc__001_g",
+          "secrc__001_j",
+          "secrc__001_k"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Evidence of impactful outputs including co-authorship on manuscripts, a WHO-commissioned Cochrane review, and presentations at departmental meetings."
+      },
+      {
+        "sub_id": "g.5",
+        "good_evidence_ids": [
+          "secrc__001_i",
+          "secrc__001_j",
+          "secrc__001_k"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Demonstrates increasing responsibility through supervising MSc students, organizing research days, and leading data extraction for large meta-analyses."
+      },
+      {
+        "sub_id": "g.6",
+        "good_evidence_ids": [
+          "secrc__001_d"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Applicant explicitly states they are 'Not a Health or Care Practitioner', indicating this criterion is not applicable to their career path."
+      },
+      {
+        "sub_id": "pr.1",
+        "good_evidence_ids": [
+          "secrc__001_l",
+          "secrc__001_m",
+          "secrc__001_n"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Plain English Summary clearly outlines the problem, aims, methods, and patient relevance in accessible language, supported by PPI feedback on simplification."
+      },
+      {
+        "sub_id": "pr.2",
+        "good_evidence_ids": [
+          "secrc__001_x",
+          "secrc__001_z",
+          "secrc__001_|"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Comprehensive review of existing evidence identifies specific gaps in MBL measurement standardization and the limitations of current meta-analyses."
+      },
+      {
+        "sub_id": "pr.3",
+        "good_evidence_ids": [
+          "secrc__001_r",
+          "secrc__001_",
+          "secrc__001_"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Research scope is appropriate for a doctoral award, with three distinct work packages covering systematic review, statistical methods, and qualitative inquiry."
+      },
+      {
+        "sub_id": "pr.4",
+        "good_evidence_ids": [
+          "secrc__001_",
+          "secrc__001_",
+          "secrc__001_"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Detailed methodological rigor demonstrated through specific plans for COSMIN appraisal, Bayesian priors, and reflexive thematic analysis."
+      },
+      {
+        "sub_id": "pr.5",
+        "good_evidence_ids": [
+          "secrc__001_u",
+          "secrc__001_v",
+          "secrc__001_w"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Clear articulation of impact on patients, public, and health services by reducing research waste and improving treatment guidelines for HMB."
+      },
+      {
+        "sub_id": "pr.6",
+        "good_evidence_ids": [
+          "secrc__001_o",
+          "secrc__001_",
+          "secrc__001_"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Robust engagement plan including a PPI committee, interviews with women with lived experience, and feedback mechanisms at multiple stages."
+      },
+      {
+        "sub_id": "pr.8",
+        "good_evidence_ids": [
+          "secrc__001_f",
+          "secrc__001_i",
+          "secrc__001_j"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: High quality of previous research evidenced by involvement in international trials, systematic reviews, and a WHO-commissioned Cochrane review."
+      },
+      {
+        "sub_id": "pr.9",
+        "good_evidence_ids": [
+          "secrc__001_o",
+          "secrc__001_",
+          "secrc__001_"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Inclusive design strategies include purposive sampling for diverse demographics and specific consideration of cultural backgrounds in recruitment."
+      },
+      {
+        "sub_id": "td.1",
+        "good_evidence_ids": [
+          "secrc__001_",
+          "secrc__001_",
+          "secrc__001_"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Comprehensive training plan with specific courses aligned to project methods (search strategies, meta-analysis, qualitative analysis) and leadership skills."
+      },
+      {
+        "sub_id": "td.2",
+        "good_evidence_ids": [
+          "secrc__001_",
+          "secrc__001_",
+          "secrc__001_"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Training is highly targeted to address specific skill gaps in complex statistical methods and qualitative research required for the project."
+      },
+      {
+        "sub_id": "td.3",
+        "good_evidence_ids": [
+          "secrc__001_k",
+          "secrc__001_",
+          "secrc__001_"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Training supports career aspirations through work placements at MHRA and research visits, fostering independence and regulatory insight."
+      },
+      {
+        "sub_id": "ss.1",
+        "good_evidence_ids": [
+          "secrc__001_ª",
+          "secrc__001_«",
+          "secrc__001_¬"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Host organization (UCL/ICTM) has a strong track record in clinical trials methodology, with world-renowned meta-analysis programs and guideline influence."
+      },
+      {
+        "sub_id": "ss.2",
+        "good_evidence_ids": [
+          "secrc__001_",
+          "secrc__001_",
+          "secrc__001_"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Suitable supervisory support with a clear framework of weekly/monthly meetings and supervisors with expertise in meta-analysis, qualitative methods, and statistics."
+      },
+      {
+        "sub_id": "ss.3",
+        "good_evidence_ids": [
+          "secrc__001_©",
+          "secrc__001_ª",
+          "secrc__001_«"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Organization provides tailored support including the Early Careers Network, seminars, and embedding within the Meta-Analysis programme."
+      },
+      {
+        "sub_id": "ss.4",
+        "good_evidence_ids": [
+          "secrc__001_¬"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Strong commitment to inclusive culture evidenced by Athena Swan, Race Equality Charter, and mandatory EDI training."
+      },
+      {
+        "sub_id": "wp.1",
+        "good_evidence_ids": [
+          "secrc__001_",
+          "secrc__001_",
+          "secrc__001_"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Lived experience integrated into design through consultations that led to specific changes in sampling and language simplification."
+      },
+      {
+        "sub_id": "wp.2",
+        "good_evidence_ids": [
+          "secrc__001_",
+          "secrc__001_",
+          "secrc__001_¡"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Research team includes diverse expertise (statisticians, qualitative researchers, clinicians) and PPI members, though specific demographic data on the team is not detailed."
+      },
+      {
+        "sub_id": "wp.3",
+        "good_evidence_ids": [
+          "secrc__001_",
+          "secrc__001_",
+          "secrc__001_"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Strong commitment to public benefit with detailed dissemination plans involving social media, podcasts, and PPI-guided communication strategies."
+      },
+      {
+        "sub_id": "wp.4",
+        "good_evidence_ids": [
+          "secrc__001_",
+          "secrc__001_"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Explicit strategies to represent seldom-heard groups through purposive sampling for diverse ages, races, and cultural backgrounds."
+      },
+      {
+        "sub_id": "wp.5",
+        "good_evidence_ids": [
+          "secrc__001_",
+          "secrc__001_",
+          "secrc__001_"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Inclusivity embedded across the lifecycle from design (PPI input) to analysis (data clinics) and dissemination (public-friendly outputs)."
+      }
+    ],
+    "resolved_signals": [
+      "g.1",
+      "g.2",
+      "g.3",
+      "g.4",
+      "g.5",
+      "g.6",
+      "pr.1",
+      "pr.2",
+      "pr.3",
+      "pr.4",
+      "pr.5",
+      "pr.6",
+      "pr.8",
+      "pr.9",
+      "td.1",
+      "td.2",
+      "td.3",
+      "ss.1",
+      "ss.2",
+      "ss.3",
+      "ss.4",
+      "wp.1",
+      "wp.2",
+      "wp.3",
+      "wp.4",
+      "wp.5"
+    ],
+    "missing_signals_after": [
+      "pr.7",
+      "wp.6"
+    ]
+  },
+  {
+    "section_name": "Application Context",
+    "findings": [],
+    "resolved_signals": [],
+    "missing_signals_after": [
+      "pr.7",
+      "wp.6"
+    ]
+  },
+  {
+    "section_name": "Application Form Analysis",
+    "findings": [],
+    "resolved_signals": [],
+    "missing_signals_after": [
+      "pr.7",
+      "wp.6"
+    ]
+  }
+]

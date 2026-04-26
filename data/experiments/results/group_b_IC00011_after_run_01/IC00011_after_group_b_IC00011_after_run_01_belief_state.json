@@ -1,0 +1,287 @@
+{
+  "processed_sections": [
+    "Scientific Abstract",
+    "Plain English Summary of Research",
+    "Patient & Public Involvement",
+    "SUMMARY BUDGET",
+    "Application Context",
+    "Plain English NLP Analysis",
+    "Application Form Analysis"
+  ],
+  "subcriteria_beliefs": {
+    "pr.1": {
+      "good_evidence_ids": [
+        "secsa__001_a",
+        "secsa__001_b",
+        "secsa__001_c",
+        "secpesor__001_a",
+        "secpesor__001_b",
+        "secpesor__001_c",
+        "secpena__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Scientific Abstract: Clearly outlines problem, aims, methods, and impact, supporting pr.1.",
+        "Plain English Summary of Research: Clearly defines the problem (SMA), objectives, methods (3 parts), beneficiaries, and impact in accessible language, strongly supporting pr.1.",
+        "Plain English NLP Analysis: NLP metrics show high readability (Flesch-Kincaid 4.79, Reading Ease 75.34), low jargon density (1.13%), and coverage of key elements (problem, objectives, methods, beneficiaries, impact), str"
+      ]
+    },
+    "pr.2": {
+      "good_evidence_ids": [
+        "secsa__001_a",
+        "secpesor__001_a"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Scientific Abstract: Identifies a knowledge gap regarding airway dynamics during MI-E, supporting pr.2.",
+        "Plain English Summary of Research: Identifies a specific knowledge gap regarding airway dynamics during cough-assist use, supporting pr.2."
+      ]
+    },
+    "pr.3": {
+      "good_evidence_ids": [
+        "secsa__001_b",
+        "secpesor__001_b"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Scientific Abstract: Defines scope with 45 patients and 9-18 month timeline, supporting pr.3.",
+        "Plain English Summary of Research: Outlines a feasible three-part study design with specific tasks (camera, stickers, surveys), supporting pr.3."
+      ]
+    },
+    "pr.4": {
+      "good_evidence_ids": [
+        "secsa__001_b",
+        "secpesor__001_b",
+        "secpesor__001_c"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Scientific Abstract: Details specific methods (TFL, OEP) and statistical analysis, supporting pr.4.",
+        "Plain English Summary of Research: Describes explicit methods including endoscopy, motion capture with stickers, and visual scales, supporting pr.4."
+      ]
+    },
+    "pr.5": {
+      "good_evidence_ids": [
+        "secsa__001_c",
+        "secpesor__001_a",
+        "secpesor__001_b"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Scientific Abstract: States expected outcomes of reduced hospitalisations and improved wellbeing, supporting pr.5.",
+        "Plain English Summary of Research: Highlights potential benefits including reduced hospital visits, improved quality of life, and NHS cost savings, supporting pr.5."
+      ]
+    },
+    "pr.6": {
+      "good_evidence_ids": [
+        "secsa__001_c",
+        "secpesor__001_c"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Scientific Abstract: Mentions support from community steering groups and dissemination to parent groups, supporting pr.6.",
+        "Plain English Summary of Research: States plans to include children and parents in guiding information sharing, supporting pr.6."
+      ]
+    },
+    "pr.9": {
+      "good_evidence_ids": [
+        "secsa__001_c",
+        "secpesor__001_b",
+        "secpesor__001_c"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Scientific Abstract: Describes adaptations for communication styles and animated videos for inclusion, supporting pr.9.",
+        "Plain English Summary of Research: Mentions adaptive methods (marker count based on child size) and assessing tolerance/comfort, supporting pr.9."
+      ]
+    },
+    "wp.3": {
+      "good_evidence_ids": [
+        "secsa__001_c",
+        "secpesor__001_c",
+        "secppi__001_c"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Scientific Abstract: Outlines dissemination via podcasts, meetings, and journals to maximize benefit, supporting wp.3.",
+        "Plain English Summary of Research: Details dissemination plans via meetings, conferences, and journals to maximize public benefit, supporting wp.3.",
+        "Patient & Public Involvement: Outlines plans for steering groups to assist with writing reports and disseminating findings via charity networks, supporting wp.3."
+      ]
+    },
+    "wp.4": {
+      "good_evidence_ids": [
+        "secsa__001_c",
+        "secpesor__001_a",
+        "secppi__001_a"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Scientific Abstract: Focuses on SMA as a rare disease serving an under-represented population, supporting wp.4.",
+        "Plain English Summary of Research: Focuses on children with Spinal Muscular Atrophy, a rare disease affecting an underserved group, supporting wp.4.",
+        "Patient & Public Involvement: Confirms engagement with diverse socio-economic and ethnic backgrounds, addressing representation of underserved groups, supporting wp.4."
+      ]
+    },
+    "wp.5": {
+      "good_evidence_ids": [
+        "secsa__001_c",
+        "secpesor__001_c",
+        "secppi__001_a",
+        "secppi__001_b",
+        "secppi__001_c"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Scientific Abstract: Details inclusive recruitment strategies and ongoing reviews for equality, supporting wp.5.",
+        "Plain English Summary of Research: Includes engagement in study design (Part 3) and dissemination, supporting inclusivity across the lifecycle, supporting wp.5.",
+        "Patient & Public Involvement: Describes involvement across the lifecycle from planning and design to feedback mechanisms and dissemination, supporting wp.5."
+      ]
+    },
+    "wp.1": {
+      "good_evidence_ids": [
+        "secppi__001_a",
+        "secppi__001_b"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Patient & Public Involvement: Details co-design activities where patient feedback directly revised study design (e.g., TFL video, scheduling), strongly supporting wp.1."
+      ]
+    },
+    "wp.2": {
+      "good_evidence_ids": [
+        "secppi__001_a"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Patient & Public Involvement: Explicitly mentions a diverse group of parents, patients, and charity partners from varied socio-economic and ethnic backgrounds, supporting wp.2."
+      ]
+    },
+    "pr.7": {
+      "good_evidence_ids": [
+        "secsb__001_a",
+        "secsb__001_b",
+        "secsb__001_d"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "SUMMARY BUDGET: Provides explicit links between tasks (e.g., TFL, OEP, video analysis) and resources requested, with detailed costings and justifications for equipment and consumables, strongly supporting pr.7."
+      ]
+    },
+    "td.1": {
+      "good_evidence_ids": [
+        "secsb__001_b",
+        "secsb__001_c"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "SUMMARY BUDGET: Details specific training courses (Kings Fund, Bronchoscopy, Beyond BASIC) and PhD tuition fees, demonstrating a clear and costed training plan aligned with project methods, supporting td.1."
+      ]
+    },
+    "td.2": {
+      "good_evidence_ids": [
+        "secsb__001_b",
+        "secsb__001_c"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "SUMMARY BUDGET: Maps training activities (leadership, bronchoscopy, airway management) directly to project tasks and skill gaps, showing targeted development rather than generic courses, supporting td.2."
+      ]
+    },
+    "td.3": {
+      "good_evidence_ids": [
+        "secsb__001_b",
+        "secsb__001_c"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "SUMMARY BUDGET: Includes leadership and knowledge mobilisation courses that build transferable skills for career progression beyond the immediate project, supporting td.3."
+      ]
+    },
+    "wp.6": {
+      "good_evidence_ids": [
+        "secsb__001_c",
+        "secsb__001_d"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "SUMMARY BUDGET: Allocates specific funds for PPIE workshops, Talking Mats for inclusive consent, and refreshments for participants, providing a costed plan for research inclusion, supporting wp.6."
+      ]
+    },
+    "g.1": {
+      "good_evidence_ids": [
+        "secac__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Application Context: Supervisors describe a clear career trajectory from clinical practice to academic leadership, with specific plans for developing a clinical-academic role, supporting g.1."
+      ]
+    },
+    "g.3": {
+      "good_evidence_ids": [
+        "secac__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Application Context: Applicant has prior experience in large-scale clinical trials, developing respiratory outcome measures, and implementing assessment tools, demonstrating relevant research experience and training, sup"
+      ]
+    },
+    "g.4": {
+      "good_evidence_ids": [
+        "secac__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Application Context: Mentions receiving the Lea Rose Award, authoring publications, and presenting at international conferences, providing evidence of impactful research outputs, supporting g.4."
+      ]
+    },
+    "g.5": {
+      "good_evidence_ids": [
+        "secac__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Application Context: Supervisors highlight the applicant's role as a national expert, her leadership in research networks, and her readiness to lead more research, indicating a trajectory towards research leadership, sup"
+      ]
+    },
+    "g.6": {
+      "good_evidence_ids": [
+        "secac__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Application Context: Applicant is a specialist physiotherapist at GOSH with a focus on clinical research, and supervisors explicitly support her development of a clinical-academic career, strongly supporting g.6."
+      ]
+    },
+    "ss.1": {
+      "good_evidence_ids": [
+        "secac__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Application Context: Describes GOSH and UCL as having the largest concentration of children's health research and a leading neuromuscular centre, demonstrating a strong track record of the contracting organisation, suppo"
+      ]
+    },
+    "ss.2": {
+      "good_evidence_ids": [
+        "secac__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Application Context: Details a multi-disciplinary supervisory team with specific roles (clinical, academic, statistical) and extensive prior supervision experience, providing strong evidence of suitable mentorship arrang"
+      ]
+    },
+    "ss.3": {
+      "good_evidence_ids": [
+        "secac__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Application Context: Confirms access to patient populations, specific equipment (endoscopy), and a thriving academic community with research support services, demonstrating the organisation's appropriateness to support t"
+      ]
+    }
+  },
+  "missing_signals": [
+    "g.2",
+    "pr.8",
+    "ss.4"
+  ]
+}

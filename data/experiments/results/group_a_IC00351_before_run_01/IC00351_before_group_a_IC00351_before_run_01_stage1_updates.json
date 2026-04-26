@@ -1,0 +1,296 @@
+[
+  {
+    "section_name": "Raw Content",
+    "findings": [
+      {
+        "sub_id": "g.1",
+        "good_evidence_ids": [
+          "secrc__001_v",
+          "secrc__001_º"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Applicant clearly states a vision to become a Clinician Scientist and attain a Chair, with a defined trajectory from PhD to post-doctoral fellowship."
+      },
+      {
+        "sub_id": "g.2",
+        "good_evidence_ids": [
+          "secrc__001_v",
+          "secrc__001_º",
+          "secrc__001_Á"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: The award is framed as a springboard for independence, providing protected time to develop expertise in XAI and data science, building on existing clinical and research experience."
+      },
+      {
+        "sub_id": "g.3",
+        "good_evidence_ids": [
+          "secrc__001_o",
+          "secrc__001_p",
+          "secrc__001_r"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Applicant demonstrates relevant experience in data science (MSc Health Data Science), qualitative research (MSc Medical Education), and prior work on ventilation and CDSS."
+      },
+      {
+        "sub_id": "g.4",
+        "good_evidence_ids": [
+          "secrc__001_d",
+          "secrc__001_e",
+          "secrc__001_m"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Strong track record with 12 publications, 12 abstracts, a co-edited book, and multiple awards including prizes for innovation and teaching excellence."
+      },
+      {
+        "sub_id": "g.5",
+        "good_evidence_ids": [
+          "secrc__001_s",
+          "secrc__001_t",
+          "secrc__001_u"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Evidence of leadership through roles as Trainee Editor, Chair of Pan-London Perioperative Audit Network, and EDI Representative, plus a Clinical Leadership Fellowship."
+      },
+      {
+        "sub_id": "g.6",
+        "good_evidence_ids": [
+          "secrc__001_o",
+          "secrc__001_À"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Applicant is a medically qualified Anaesthesia & Intensive Care Medicine registrar, explicitly aiming for a dual specialist career as a Clinician Scientist."
+      },
+      {
+        "sub_id": "pr.1",
+        "good_evidence_ids": [
+          "secrc__001_w",
+          "secrc__001_x",
+          "secrc__001_z"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Plain English summary clearly outlines the problem (ventilator weaning), solution (ML and visualisation), and benefits to patients and the NHS in accessible language."
+      },
+      {
+        "sub_id": "pr.2",
+        "good_evidence_ids": [
+          "secrc__001_",
+          "secrc__001_",
+          "secrc__001_"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Comprehensive evidence review citing a narrative review, national survey, and specific gaps in CDSS implementation and explainability."
+      },
+      {
+        "sub_id": "pr.3",
+        "good_evidence_ids": [
+          "secrc__001_",
+          "secrc__001_",
+          "secrc__001_"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Research scope is appropriate for a PhD, with clear objectives, defined datasets (MIMIC-IV, NHS trusts), and a realistic 3-year timeline."
+      },
+      {
+        "sub_id": "pr.4",
+        "good_evidence_ids": [
+          "secrc__001_",
+          "secrc__001_",
+          "secrc__001_"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Detailed methodological rigor described, including specific ML architectures (TFT, TCN, LSTM), data curation steps, and validation strategies."
+      },
+      {
+        "sub_id": "pr.5",
+        "good_evidence_ids": [
+          "secrc__001_",
+          "secrc__001_",
+          "secrc__001_"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Clear impact on patients (reduced ventilator time, safety), clinicians (reduced heterogeneity), and NHS (cost reduction), aligned with NHS Long Term Plan."
+      },
+      {
+        "sub_id": "pr.6",
+        "good_evidence_ids": [
+          "secrc__001_",
+          "secrc__001_",
+          "secrc__001_"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Strong engagement plan including a Patient and Family Advisory Group, co-design workshops, and a patient co-applicant involved in design and dissemination."
+      },
+      {
+        "sub_id": "pr.9",
+        "good_evidence_ids": [
+          "secrc__001_",
+          "secrc__001_"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Inclusive design strategies include bias assessment in ML models, adherence to SAGER/NIHR-INCLUDE frameworks, and purposive sampling for diversity in workshops."
+      },
+      {
+        "sub_id": "td.1",
+        "good_evidence_ids": [
+          "secrc__001_¼",
+          "secrc__001_½",
+          "secrc__001_¾"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Comprehensive training plan covering qualitative methods, implementation science, machine learning, and data visualisation through specific courses and institutes."
+      },
+      {
+        "sub_id": "td.2",
+        "good_evidence_ids": [
+          "secrc__001_º",
+          "secrc__001_¼"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Training is targeted to address specific skill gaps in XAI and complex intervention evaluation, directly mapped to project objectives."
+      },
+      {
+        "sub_id": "td.3",
+        "good_evidence_ids": [
+          "secrc__001_À",
+          "secrc__001_Á"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Training supports long-term career aspirations to become an independent Clinician Scientist, with plans for post-doctoral fellowships and faculty positions."
+      },
+      {
+        "sub_id": "ss.1",
+        "good_evidence_ids": [
+          "secrc__001_Â",
+          "secrc__001_Ã",
+          "secrc__001_É"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Strong institutional track record with supervisors holding significant grants, high publication counts, and established collaborations with Imperial DSI and NIHR HRC."
+      },
+      {
+        "sub_id": "ss.2",
+        "good_evidence_ids": [
+          "secrc__001_º",
+          "secrc__001_Â",
+          "secrc__001_Ç"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Robust supervisory team with clear roles: clinical expertise (Patel, Ramnarayan), methodology (Ni), and data science (Serban), with weekly meetings planned."
+      },
+      {
+        "sub_id": "ss.3",
+        "good_evidence_ids": [
+          "secrc__001_º",
+          "secrc__001_É"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Imperial College provides appropriate infrastructure including the Data Science Institute, Healthtech Research Centre, and access to large clinical datasets."
+      },
+      {
+        "sub_id": "wp.1",
+        "good_evidence_ids": [
+          "secrc__001_³",
+          "secrc__001_´",
+          "secrc__001_·"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Lived experience integrated via PFAG and co-applicant, influencing lay summary, recruitment criteria, and study design to address bias and transparency."
+      },
+      {
+        "sub_id": "wp.2",
+        "good_evidence_ids": [
+          "secrc__001_·"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: PFAG is purposively recruited for diversity (age, gender, ethnicity, lived experience) to ensure inclusive representation."
+      },
+      {
+        "sub_id": "wp.3",
+        "good_evidence_ids": [
+          "secrc__001_§",
+          "secrc__001_¨"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Clear dissemination plan involving patient groups, media teams, and conferences to maximize public and patient benefit."
+      },
+      {
+        "sub_id": "wp.4",
+        "good_evidence_ids": [
+          "secrc__001_·",
+          "secrc__001_"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Strategies to include underrepresented groups via diverse PFAG recruitment and specific checks for bias in ML models regarding ethnicity and gender."
+      },
+      {
+        "sub_id": "wp.5",
+        "good_evidence_ids": [
+          "secrc__001_",
+          "secrc__001_·"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Inclusivity embedded across the lifecycle from co-design workshops to dissemination, with regular PFAG meetings to guide the project."
+      },
+      {
+        "sub_id": "wp.6",
+        "good_evidence_ids": [
+          "secrc__001_¹"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Raw Content: Budget explicitly includes costs for PFAG time and co-applicant in accordance with NIHR guidelines, ensuring resourced inclusion."
+      }
+    ],
+    "resolved_signals": [
+      "g.1",
+      "g.2",
+      "g.3",
+      "g.4",
+      "g.5",
+      "g.6",
+      "pr.1",
+      "pr.2",
+      "pr.3",
+      "pr.4",
+      "pr.5",
+      "pr.6",
+      "pr.9",
+      "td.1",
+      "td.2",
+      "td.3",
+      "ss.1",
+      "ss.2",
+      "ss.3",
+      "wp.1",
+      "wp.2",
+      "wp.3",
+      "wp.4",
+      "wp.5",
+      "wp.6"
+    ],
+    "missing_signals_after": [
+      "pr.7",
+      "pr.8",
+      "ss.4"
+    ]
+  },
+  {
+    "section_name": "Application Context",
+    "findings": [],
+    "resolved_signals": [],
+    "missing_signals_after": [
+      "pr.7",
+      "pr.8",
+      "ss.4"
+    ]
+  },
+  {
+    "section_name": "Application Form Analysis",
+    "findings": [],
+    "resolved_signals": [],
+    "missing_signals_after": [
+      "pr.7",
+      "pr.8",
+      "ss.4"
+    ]
+  }
+]

@@ -10,9 +10,10 @@ Section mapping
 Page 1 summary table               -> SUMMARY INFORMATION
 "1. The Research Team"             -> LEAD APPLICANT & RESEARCH TEAM
 "3. Scientific abstract"           -> APPLICATION DETAILS["Scientific Abstract"]
-"4. Plain English Summary"         -> APPLICATION DETAILS["Plain English Summary"]
+"4. Plain English Summary"         -> APPLICATION DETAILS["Plain English Summary of Research"]
 "5. Changes from first stage"      -> APPLICATION DETAILS["Changes from Previous Stage"]
-"7. Patient & Public Involvement"  -> APPLICATION DETAILS["Working with People and Communities Summary"]
+"6. Detailed Research plan"        -> APPLICATION DETAILS["Detailed Research Plan"]
+"7. Patient & Public Involvement"  -> APPLICATION DETAILS["Patient & Public Involvement"]
 "8. Detailed Budget"               -> SUMMARY BUDGET
 
 Key structural difference from fellowships_parser:
@@ -22,12 +23,18 @@ Key structural difference from fellowships_parser:
                via in_section_box flag rather than a per-page flag.
 """
 
+import logging
 from dataclasses import dataclass
 from typing import List, Optional, Dict
 import pdfplumber
 import re
 import os
 import json
+
+from .pdf_utils import is_not_watermark as _is_not_watermark
+
+# Suppress noisy pdfminer FontBBox / encoding warnings
+logging.getLogger("pdfminer").setLevel(logging.ERROR)
 
 
 # ---------------------------------------------------------------------------
@@ -43,21 +50,46 @@ PAGE_HEADER_BOTTOM: float = 58.0
 PAGE_FOOTER_TOP:    float = 805.0
 
 # Known section headings (without number prefix — matches any "N. Heading" variant)
-SECTION_TEAM:     str = "The Research Team"
-SECTION_HISTORY:  str = "History of application"
-SECTION_ABSTRACT: str = "Scientific abstract"
-SECTION_PES:      str = "Plain English Summary"
-SECTION_CHANGES:  str = "Changes from first stage"
-SECTION_PLAN:     str = "Detailed Research plan"
-SECTION_PPI:      str = "Patient & Public Involvement"
-SECTION_BUDGET:   str = "Detailed Budget"
-SECTION_MGMT:     str = "Management & Governance"
-SECTION_UPLOADS:  str = "Uploads"
-SECTION_ADMIN:    str = "Administrative contact details"
-SECTION_RD:       str = "Research & Development office contact"
-SECTION_ACK:      str = "Acknowledgement review and submit"
-SECTION_CV_LEAD:  str = "CV - Lead Applicant(s)"
-SECTION_CV_CO:    str = "CV - Co-applicants"
+SECTION_TEAM:          str = "The Research Team"
+SECTION_HISTORY:       str = "History of application"
+SECTION_ABSTRACT:      str = "Scientific abstract"
+SECTION_PES:           str = "Plain English Summary"
+SECTION_CHANGES:       str = "Changes from first stage"
+SECTION_PLAN:          str = "Detailed Research plan"
+SECTION_PLAN_S1:       str = "Research Plan"          # Stage 1 unnumbered variant
+SECTION_PPI:           str = "Patient & Public Involvement"
+SECTION_BUDGET:        str = "Detailed Budget"
+SECTION_MGMT:          str = "Management & Governance"
+SECTION_UPLOADS:       str = "Uploads"
+SECTION_ADMIN:         str = "Administrative contact details"
+SECTION_RD:            str = "Research & Development office contact"
+SECTION_RD_S1:         str = "Research and Development office contact details"  # Stage 1 variant
+SECTION_ACK:           str = "Acknowledgement review and submit"
+SECTION_CV_LEAD:       str = "CV - Lead Applicant(s)"
+SECTION_CV_CO:         str = "CV - Co-applicants"
+SECTION_TEAM_LEAD_S1:  str = "Lead Applicant Details"  # Stage 1 variant
+SECTION_TEAM_S1:       str = "Research Team Details"   # Stage 1 variant
+KNOWN_SECTION_HEADINGS = {
+    SECTION_TEAM,
+    SECTION_HISTORY,
+    SECTION_ABSTRACT,
+    SECTION_PES,
+    SECTION_CHANGES,
+    SECTION_PLAN,
+    SECTION_PLAN_S1,
+    SECTION_PPI,
+    SECTION_BUDGET,
+    SECTION_MGMT,
+    SECTION_UPLOADS,
+    SECTION_ADMIN,
+    SECTION_RD,
+    SECTION_RD_S1,
+    SECTION_ACK,
+    SECTION_CV_LEAD,
+    SECTION_CV_CO,
+    SECTION_TEAM_LEAD_S1,
+    SECTION_TEAM_S1,
+}
 
 
 _STRIP_NUMBER_RE = re.compile(r'^\d+\.\s+')
@@ -65,6 +97,11 @@ _STRIP_NUMBER_RE = re.compile(r'^\d+\.\s+')
 def _strip_number(s: str) -> str:
     """Strip leading 'N. ' prefix from a heading string."""
     return _STRIP_NUMBER_RE.sub('', s.strip())
+
+
+def _heading_key(s: str) -> str:
+    """Normalize headings for robust RfPB section matching."""
+    return re.sub(r'[^a-z0-9]+', '', _strip_number(s).lower())
 
 
 # ---------------------------------------------------------------------------
@@ -133,6 +170,7 @@ def extract_lines_pdfplumber(
 
     with pdfplumber.open(pdf_path) as pdf:
         for pno, page in enumerate(pdf.pages):
+            page = page.filter(_is_not_watermark)
             section_boxes = _page_section_boxes(page)
 
             words = page.extract_words(
@@ -185,12 +223,19 @@ def filter_rfpb_lines(lines: List[Line]) -> List[Line]:
 
 def is_rfpb_heading(line: Line) -> bool:
     """
-    True when this line is a numbered section heading inside a wide blue box.
+    True when this line is a section heading inside a wide blue box.
     Requires the line to overlap a wide filled rect AND the text to match a
-    known RfPB section heading.
+    known RfPB section heading.  Number prefix (e.g. "4. ") is optional —
+    Stage 1 PDFs use unnumbered headings.
     """
-    # Purely visual — any line inside a wide filled rect is a section heading.
-    return line.in_section_box
+    if not line.in_section_box:
+        return False
+    key = _heading_key(line.text.strip())
+    for known in KNOWN_SECTION_HEADINGS:
+        known_key = _heading_key(known)
+        if key == known_key or key.startswith(known_key):
+            return True
+    return False
 
 
 def find_section_ranges(lines: List[Line]) -> List[int]:
@@ -209,11 +254,11 @@ def slice_section(lines: List[Line], section_title: str) -> List[Line]:
     Slice ends at the next section heading (or end of document).
     """
     section_idxs = find_section_ranges(lines)
-    norm_target = re.sub(r'\s+', ' ', section_title.strip())
+    norm_target = _heading_key(section_title)
 
     start_idx: Optional[int] = None
     for idx in section_idxs:
-        if re.sub(r'\s+', ' ', _strip_number(lines[idx].text.strip())) == norm_target:
+        if _heading_key(lines[idx].text.strip()).startswith(norm_target):
             start_idx = idx
             break
 
@@ -236,7 +281,7 @@ def _get_page1_raw_text(pdf_path: str) -> str:
     """Return pdfplumber extract_text() output for page 1."""
     with pdfplumber.open(pdf_path) as pdf:
         if pdf.pages:
-            return pdf.pages[0].extract_text() or ""
+            return pdf.pages[0].filter(_is_not_watermark).extract_text() or ""
     return ""
 
 
@@ -257,7 +302,7 @@ def _get_section_raw_text(pdf_path: str, target_heading: str) -> str:
 
             if boxes:
                 # Find all section headings on this page
-                words = page.extract_words(x_tolerance=1, y_tolerance=3)
+                words = page.filter(_is_not_watermark).extract_words(x_tolerance=1, y_tolerance=3)
                 headings_found: List[str] = []
                 for box in boxes:
                     box_words = sorted(
@@ -272,12 +317,12 @@ def _get_section_raw_text(pdf_path: str, target_heading: str) -> str:
 
                 if any(norm_target in h for h in headings_found):
                     in_section = True
-                    pages_text.append(page.extract_text() or "")
+                    pages_text.append(page.filter(_is_not_watermark).extract_text() or "")
                 elif in_section:
                     # Any page that opens a new section box ends the current one
                     break
             elif in_section:
-                pages_text.append(page.extract_text() or "")
+                pages_text.append(page.filter(_is_not_watermark).extract_text() or "")
 
     return "\n".join(pages_text)
 
@@ -297,17 +342,31 @@ def parse_summary_information(pdf_path: str) -> dict:
     raw = _get_page1_raw_text(pdf_path)
     out: dict = {}
 
-    # Application Title
-    m = re.search(r'Research Title[:\s]*\n?(.+)', raw)
-    if m:
-        out["Application Title"] = m.group(1).strip()
+    # Application Title — two layout variants:
+    # Stage 2: "Research Title\nThe actual title..."
+    # Stage 1: "First part of title\nResearch Title\nSecond part of title"
+    m_split = re.search(r'([^\n]+)\nResearch Title[^\n]*\n(.+)', raw)
+    m_inline = re.search(r'Research Title[:\s]*\n?(.+)', raw)
+    if m_split and m_split.group(1).strip() and not re.search(
+        r'(Programme|Call|Reference|Lead Applicant|Host|Start Date)',
+        m_split.group(1), re.IGNORECASE
+    ):
+        out["Application Title"] = m_split.group(1).strip() + ' ' + m_split.group(2).strip()
+    elif m_split:
+        out["Application Title"] = m_split.group(2).strip()
+    elif m_inline:
+        out["Application Title"] = m_inline.group(1).strip()
 
-    # Contracting Organisation
-    m = re.search(r'Host organisation[^\n]*\n([^\n]+)', raw)
-    if m:
-        candidate = m.group(1).strip()
-        if candidate and not re.match(r'^[Pp]artner|^applicable', candidate):
-            out["Contracting Organisation"] = candidate
+    # Contracting Organisation — value may be inline ("Host organisation NHS Trust")
+    # or on the next line (Stage 2 two-column layout)
+    m_inline = re.search(r'Host organisation\s+([^\n]+)', raw)
+    m_nextln = re.search(r'Host organisation[^\n]*\n([^\n]+)', raw)
+    for m, grp in [(m_inline, 1), (m_nextln, 1)]:
+        if m:
+            candidate = m.group(grp).strip()
+            if candidate and not re.match(r'^[Pp]artner|^applicable|^\d', candidate):
+                out["Contracting Organisation"] = candidate
+                break
 
     # Start Date
     m = re.search(r'Start Date[:\s]*\n?([0-9]{2}/[0-9]{2}/[0-9]{4})', raw)
@@ -319,13 +378,15 @@ def parse_summary_information(pdf_path: str) -> dict:
     if m:
         out["End Date"] = m.group(1)
 
-    # Duration (months) — from "Grant Duration" field
-    m = re.search(r'(?:Grant\s+)?Duration[^\n]*\n?(\d+)\s*(?:months?)?', raw, re.IGNORECASE)
+    # Duration (months) — use non-greedy match to get the first integer on the line
+    m = re.search(r'(?:Grant\s+)?Duration[^\n]*?(\d+)\s*(?:months?)?(?:\s|$|\n)', raw, re.IGNORECASE)
     if m:
         out["Duration (months)"] = m.group(1)
 
-    # Total Cost to NIHR — from "Research Costs" field
-    m = re.search(r'(?:Research\s+)?Costs?[^\n]*\n?([\£\$]?[\d,]+(?:\.\d{2})?)', raw, re.IGNORECASE)
+    # Total Cost to NIHR — match £/$ amount on the same line (non-greedy to avoid backtrack truncation)
+    m = re.search(r'(?:Estimated\s+)?(?:Research\s+)?Costs?[^\n]*?([\£\$][\d,]+\.\d{2})', raw, re.IGNORECASE)
+    if not m:
+        m = re.search(r'(?:Estimated\s+)?(?:Research\s+)?Costs?[^\n]*?([\d,]+\.\d{2})', raw, re.IGNORECASE)
     if m:
         out["Total Cost to NIHR"] = m.group(1).strip()
 
@@ -479,9 +540,11 @@ def parse_application_details(lines: List[Line]) -> dict:
     Build APPLICATION DETAILS dict from the relevant RfPB sections.
 
     Section 3  -> Scientific Abstract
-    Section 4  -> Plain English Summary
+    Section 4  -> Plain English Summary of Research
     Section 5  -> Changes from Previous Stage
-    Section 7  -> Working with People and Communities Summary
+    Section 6  -> Detailed Research Plan
+    Section 7  -> Patient & Public Involvement
+    Section 14 -> Applicant CV
     """
     out: dict = {}
 
@@ -491,15 +554,23 @@ def parse_application_details(lines: List[Line]) -> dict:
 
     pes_lines = slice_section(lines, SECTION_PES)
     if pes_lines:
-        out["Plain English Summary"] = parse_text_section(pes_lines)
+        out["Plain English Summary of Research"] = parse_text_section(pes_lines)
 
     changes_lines = slice_section(lines, SECTION_CHANGES)
     if changes_lines:
         out["Changes from Previous Stage"] = parse_text_section(changes_lines)
 
+    plan_lines = slice_section(lines, SECTION_PLAN) or slice_section(lines, SECTION_PLAN_S1)
+    if plan_lines:
+        out["Detailed Research Plan"] = parse_text_section(plan_lines)
+
     ppi_lines = slice_section(lines, SECTION_PPI)
     if ppi_lines:
-        out["Working with People and Communities Summary"] = parse_text_section(ppi_lines)
+        out["Patient & Public Involvement"] = parse_text_section(ppi_lines)
+
+    cv_lines = slice_section(lines, SECTION_CV_LEAD)
+    if cv_lines:
+        out["Applicant CV"] = parse_text_section(cv_lines)
 
     return out
 
@@ -524,7 +595,7 @@ def extract_all_sections(pdf_path: str) -> dict:
     if not find_section_ranges(lines):
         return {}
 
-    out: dict = {}
+    out: dict = {"doc_type": "rfpb"}
 
     # SUMMARY INFORMATION — regex on page-1 raw text
     summary_info = parse_summary_information(pdf_path)
@@ -536,7 +607,7 @@ def extract_all_sections(pdf_path: str) -> dict:
     if team.get("Lead Applicant") or team.get("Co-Applicants"):
         out["LEAD APPLICANT & RESEARCH TEAM"] = team
 
-    # APPLICATION DETAILS — sections 3, 4, 5, 7
+    # APPLICATION DETAILS — sections 3, 4, 5, 6, 7
     app_details = parse_application_details(lines)
     if app_details:
         out["APPLICATION DETAILS"] = app_details

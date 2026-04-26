@@ -1,0 +1,922 @@
+{
+  "doc_id": "34c125494f88_IC00065_after",
+  "run_info": {
+    "ran_at_utc": "2026-04-21T11:52:03.436702Z",
+    "model": "qwen3.5:27b",
+    "judge_model": null
+  },
+  "sections": [
+    {
+      "section_id": "application_form",
+      "section_name": "Application Form",
+      "average_score_10": 7.67,
+      "sub_criteria": [
+        {
+          "sub_id": "af.1",
+          "name": "Use of Formatting, Headings, and Subheadings",
+          "group_name": null,
+          "score_10": 7.5,
+          "pros": "The application form analysis confirms the presence of 13 numbered heading-like lines and 25 bullet/numbered list markers, indicating a structured hierarchy and consistent use of headings. The parser detected 16 emphasis markers, suggesting effective use of formatting to highlight key terms.",
+          "drawbacks": "The analysis notes a parser limitation where bold/emphasis markers may be lost during text extraction, meaning the count of 16 emphasis markers might be an undercount or rely on other formatting cues rather than explicit bolding. This introduces a minor caveat regarding the completeness of emphasis evidence.",
+          "signals": [
+            {
+              "sid": "af.1.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "af.1.b",
+              "score_0to5": 3,
+              "note": ""
+            },
+            {
+              "sid": "af.1.c",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "af.1.d",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "af.2",
+          "name": "Limited Duplication and Repetition",
+          "group_name": null,
+          "score_10": 8,
+          "pros": "The application text provides strong quantitative evidence of limited duplication: a duplicate sentence rate of 0.009 and a repeated line rate of 0.01. Additionally, no high cross-section lexical overlap was detected at the 0.18 threshold, confirming high novelty and low repetition across sections.",
+          "drawbacks": "No material caveats or missing details were identified regarding duplication; the metrics are specific and directly support the criteria.",
+          "signals": [
+            {
+              "sid": "af.2.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "af.2.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "af.2.c",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "af.3",
+          "name": "Logical Flow and Coherence Across Sections",
+          "group_name": null,
+          "score_10": 7.5,
+          "pros": "The analysis indicates a logical section order moving from applicant context to research plan and budget. There is strong evidence of linking objectives to methods and budget with 43 'objective_method_budget_link_terms' detected. The presence of 5 transition phrases supports the existence of linking statements.",
+          "drawbacks": "While the link terms are numerous, the count of transition phrases (5) is relatively low for a document of this size, suggesting that while the structural flow is present, the explicit transitional language might be sparse in some areas. The evidence for semantic coherence is inferred from structural metrics rather than direct text analysis of the narrative thread.",
+          "signals": [
+            {
+              "sid": "af.3.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "af.3.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "af.3.c",
+              "score_0to5": 3,
+              "note": ""
+            },
+            {
+              "sid": "af.3.d",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section_id": "general",
+      "section_name": "General",
+      "average_score_10": 1.06,
+      "sub_criteria": [
+        {
+          "sub_id": "g.1",
+          "name": "Common Characteristics of Good Applications",
+          "group_name": "Common Characteristics of Good Applications",
+          "score_10": 2.5,
+          "pros": "The application identifies the Lead Applicant (Dr. Walumbe) and mentions her prior role as CI for doctoral work and co-applicant on other projects (secdrp__001_w), suggesting some career trajectory. The research vision is clear regarding chronic pain service models (secdrp__001_i).",
+          "drawbacks": "There is no explicit statement of the applicant's long-term career vision or how this specific award fits into a distinct career trajectory (g.1.a). The training plan is entirely absent from the text (g.1.c). Mentorship is described via a Research Advisory Group (secdrp__001_v), but specific supervisory roles and responsibilities for the applicant's development are not detailed (g.1.d).",
+          "signals": [
+            {
+              "sid": "g.1.a",
+              "score_0to5": 1,
+              "note": ""
+            },
+            {
+              "sid": "g.1.b",
+              "score_0to5": 2,
+              "note": ""
+            },
+            {
+              "sid": "g.1.c",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "g.1.d",
+              "score_0to5": 2,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "g.2",
+          "name": "Tell Us Why You Need This Award",
+          "group_name": "Tell Us Why You Need This Award",
+          "score_10": 0.5,
+          "pros": "The application mentions existing relationships and a Research Advisory Group with diverse members (secdrp__001_v), which hints at potential partnership development (g.2.d).",
+          "drawbacks": "The text completely lacks a section explaining why this specific award is the right next step for the applicant's career (g.2.a). There is no discussion of the difference securing the award would make to the applicant's career or why it is needed now (g.2.b). No new skills to be gained or how the award builds on existing experience are described (g.2.c).",
+          "signals": [
+            {
+              "sid": "g.2.a",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "g.2.b",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "g.2.c",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "g.2.d",
+              "score_0to5": 1,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "g.3",
+          "name": "Relevant Research Experience and Training",
+          "group_name": "Applicant",
+          "score_10": 2.67,
+          "pros": "The applicant mentions prior experience as a CI for doctoral work and co-applicant on recent projects (secdrp__001_w), indicating some relevant research experience. The proposed methods (Institutional Ethnography) align with the team's stated expertise (secdrp__001_i).",
+          "drawbacks": "There is no evidence of formal training, courses, or certifications relevant to the proposed study (g.3.b). The description of previous projects is brief and lacks specific details on methods or techniques used in those prior works (g.3.a). The alignment between prior experience and the specific skills required for this complex ethnographic study is implied but not explicitly detailed (g.3.c).",
+          "signals": [
+            {
+              "sid": "g.3.a",
+              "score_0to5": 2,
+              "note": ""
+            },
+            {
+              "sid": "g.3.b",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "g.3.c",
+              "score_0to5": 2,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "g.4",
+          "name": "Impactful Research Outputs and Outcomes",
+          "group_name": "Applicant",
+          "score_10": 0,
+          "pros": "No evidence found in the provided text.",
+          "drawbacks": "The application text contains no list of publications, reports, or presentations by the applicant (g.4.a). There are no citation metrics or impact indicators mentioned (g.4.b). No awards, grants, or recognitions linked to prior research are listed (g.4.c). There is no description of the practical or societal impact of the applicant's previous work (g.4.d).",
+          "signals": [
+            {
+              "sid": "g.4.a",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "g.4.b",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "g.4.c",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "g.4.d",
+              "score_0to5": 0,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "g.5",
+          "name": "Trajectory Towards Research Leadership",
+          "group_name": "Applicant",
+          "score_10": 0.5,
+          "pros": "The applicant is described as taking on a 'Lead Applicant' role for the first time, having previously been a CI for doctoral work (secdrp__001_w), which suggests a step towards increasing responsibility (g.5.b).",
+          "drawbacks": "There are no explicit statements of career ambitions or long-term goals (g.5.a). No evidence of participation in leadership or professional development programs is provided (g.5.c). There is no mention of recognition by peers or institutions suggesting leadership potential beyond the current application (g.5.d).",
+          "signals": [
+            {
+              "sid": "g.5.a",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "g.5.b",
+              "score_0to5": 1,
+              "note": ""
+            },
+            {
+              "sid": "g.5.c",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "g.5.d",
+              "score_0to5": 0,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "g.6",
+          "name": "Commitment to Practitioner-Academic Career (if applicable)",
+          "group_name": "Applicant",
+          "score_10": 0.5,
+          "pros": "The Research Advisory Group includes a Clinical Pharmacist and a Consultant in Pain Medicine (secdrp__001_v), and the applicant has a background in clinical work (implied by 'clinical work' relationships in secdrp__001_l), suggesting some involvement in practice-based contexts (g.6.b).",
+          "drawbacks": "There is no explicit statement of a practitioner-academic career intention (g.6.a). The text does not describe how the applicant balances practice responsibilities with research activities (g.6.c). No participation in relevant professional networks or qualifications is explicitly detailed for the applicant (g.6.d).",
+          "signals": [
+            {
+              "sid": "g.6.a",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "g.6.b",
+              "score_0to5": 1,
+              "note": ""
+            },
+            {
+              "sid": "g.6.c",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "g.6.d",
+              "score_0to5": 0,
+              "note": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section_id": "proposed_research",
+      "section_name": "Proposed Research",
+      "average_score_10": 7.38,
+      "sub_criteria": [
+        {
+          "sub_id": "pr.1",
+          "name": "Quality of the Plain English Summary",
+          "group_name": null,
+          "score_10": 8.33,
+          "pros": "The summary clearly outlines the problem (chronic pain, medication risks), objectives, methods (Institutional Ethnography), beneficiaries, and impact. It aligns well with the detailed proposal. NLP metrics show short sentences (avg 10.39 words) and no long sentences, aiding readability despite a moderate Flesch-Kincaid grade (12.06).",
+          "drawbacks": "The Flesch-Kincaid grade of 12.06 and Reading Ease of 27.09 suggest the text is somewhat dense for a general audience. Some technical terms like 'Institutional Ethnography' and 'exemplar service models' are used without full lay explanation, though context helps.",
+          "signals": [
+            {
+              "sid": "pr.1.a",
+              "score_0to5": 3,
+              "note": ""
+            },
+            {
+              "sid": "pr.1.b",
+              "score_0to5": 3,
+              "note": ""
+            },
+            {
+              "sid": "pr.1.c",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.1.d",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.1.e",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.1.f",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "pr.2",
+          "name": "Evidence Review Quality & Relevance",
+          "group_name": null,
+          "score_10": 8,
+          "pros": "The application provides an extensive literature review with numerous citations (e.g., Treede et al., Fayaz et al., Price et al.) covering the problem, existing evidence, and gaps. It critically analyzes the limitations of current pharmacological approaches and the inequities in service provision.",
+          "drawbacks": "While the review is comprehensive, the critical analysis occasionally leans heavily on summarizing existing studies rather than synthesizing a unique theoretical argument beyond the established gaps.",
+          "signals": [
+            {
+              "sid": "pr.2.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.2.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.2.c",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.2.d",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "pr.3",
+          "name": "Research Scope & Award Appropriateness",
+          "group_name": null,
+          "score_10": 8.67,
+          "pros": "The scope is well-defined with three specific research questions and a clear methodology (three case studies). The project aims to produce a typology and policy analysis, which is appropriate for the award level. Feasibility is supported by identified sites and preliminary agreements.",
+          "drawbacks": "One of the three case study sites is 'To be determined' (Site 3), relying on future recruitment via the Clinical Research Network, which introduces a minor risk to the timeline and scope certainty.",
+          "signals": [
+            {
+              "sid": "pr.3.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.3.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.3.c",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "pr.4",
+          "name": "Research Design & Methodological Rigor",
+          "group_name": null,
+          "score_10": 8,
+          "pros": "The methodology is explicitly described as Institutional Ethnography with detailed plans for ethnographic case studies, interviews, observations, and document analysis. The alignment between aims and methods is strong, with clear steps for data collection and analysis (first and second order interpretations).",
+          "drawbacks": "While the qualitative design is robust, there is no discussion of specific controls or sample size justification beyond anticipated numbers (up to 54 participants), which is typical for qualitative work but lacks statistical power analysis (not required here but noted as a limitation in rigor description).",
+          "signals": [
+            {
+              "sid": "pr.4.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.4.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.4.c",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.4.d",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "pr.5",
+          "name": "Potential Impact on Patients, Public, and Health Services",
+          "group_name": null,
+          "score_10": 8,
+          "pros": "The application details significant potential benefits: improved patient outcomes, reduced reliance on medications, decreased A&E visits, and cost savings. It aligns with health priorities regarding the opioid crisis and chronic pain management inequities.",
+          "drawbacks": "The specific mechanisms by which the typology will directly lead to these outcomes are somewhat aspirational; the pathway from research findings to systemic change is described but relies on successful dissemination and adoption by policymakers.",
+          "signals": [
+            {
+              "sid": "pr.5.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.5.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.5.c",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "pr.6",
+          "name": "Engagement with People & Communities",
+          "group_name": null,
+          "score_10": 10,
+          "pros": "Strong evidence of engagement: a Research Advisory Group chaired by a person with lived experience, co-design of service models at Site 2, and dissemination workshops involving stakeholders. The plan includes patient participants in the intervention delivery.",
+          "drawbacks": "No significant drawbacks; the engagement plan is comprehensive across design, conduct, and dissemination phases.",
+          "signals": [
+            {
+              "sid": "pr.6.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.6.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.6.c",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "pr.7",
+          "name": "Justification of Resources & Award Costs",
+          "group_name": null,
+          "score_10": 0,
+          "pros": "No evidence found in the provided text sections regarding budget, resource justification, or cost breakdown.",
+          "drawbacks": "The provided application text does not contain a budget section or justification of resources. Therefore, no evidence exists to score these signals.",
+          "signals": [
+            {
+              "sid": "pr.7.a",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "pr.7.b",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "pr.7.c",
+              "score_0to5": 0,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "pr.8",
+          "name": "Quality of Previous Research (if applicable)",
+          "group_name": null,
+          "score_10": 0,
+          "pros": "No evidence found in the provided text sections regarding the applicant's prior research outputs or specific past projects relevant to this proposal.",
+          "drawbacks": "The provided text focuses on the proposed research plan and background, not the applicant's CV or publication history. While the text mentions the lead applicant's role, it does not detail prior successful projects or publications to assess this criterion.",
+          "signals": [
+            {
+              "sid": "pr.8.a",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "pr.8.b",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "pr.8.c",
+              "score_0to5": 0,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "pr.9",
+          "name": "Inclusive Research Design",
+          "group_name": null,
+          "score_10": 8,
+          "pros": "The design explicitly addresses intersectional issues (racism, inequity) and targets sites with high deprivation. Recruitment strategies include no language requirement and provision of interpreters, ensuring accessibility for diverse populations.",
+          "drawbacks": "While strategies for diversity are strong, the specific metrics for measuring equity and participation indicators in the final analysis are not detailed, though the theoretical framework (IE) supports this focus.",
+          "signals": [
+            {
+              "sid": "pr.9.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.9.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.9.c",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section_id": "sites_support",
+      "section_name": "Sites & Support",
+      "average_score_10": 0,
+      "sub_criteria": [
+        {
+          "sub_id": "ss.1",
+          "name": "Track Record of the Contracting Organisation (and Partners)",
+          "group_name": null,
+          "score_10": 0,
+          "pros": "The contracting organisation is identified as University College London Hospitals NHS Foundation Trust, which is a major NHS trust.",
+          "drawbacks": "The provided text contains only summary metadata (title, dates, lead applicant). There is no evidence regarding the organisation's publication history, previous funding success, specific collaborations, or notable research achievements in the field of chronic pain or primary care service models.",
+          "signals": [
+            {
+              "sid": "ss.1.a",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "ss.1.b",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "ss.1.c",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "ss.1.d",
+              "score_0to5": 0,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "ss.2",
+          "name": "Suitability of Supervisory Support and Mentorship Arrangements",
+          "group_name": null,
+          "score_10": 0,
+          "pros": "The lead applicant is identified as Dr. Jacqueline Walumbe.",
+          "drawbacks": "The text does not list any supervisors, mentors, or support staff. There is no description of supervision roles, mentorship plans, meeting frequencies, or alignment of supervisor expertise with the project.",
+          "signals": [
+            {
+              "sid": "ss.2.a",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "ss.2.b",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "ss.2.c",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "ss.2.d",
+              "score_0to5": 0,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "ss.3",
+          "name": "Appropriateness of the Contracting Organisation to Support the Award and Career Aspirations",
+          "group_name": null,
+          "score_10": 0,
+          "pros": "The application identifies the contracting organisation and the project duration (27 months).",
+          "drawbacks": "No details are provided regarding facilities, infrastructure, or specific resources the organisation will provide. There is no evidence linking organisational support to project success or describing tailored support for the award type.",
+          "signals": [
+            {
+              "sid": "ss.3.a",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "ss.3.b",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "ss.3.c",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "ss.3.d",
+              "score_0to5": 0,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "ss.4",
+          "name": "Commitment to Inclusive and Supportive Research Culture",
+          "group_name": null,
+          "score_10": 0,
+          "pros": "The application is submitted by an NHS Foundation Trust, which typically adheres to standard research integrity frameworks.",
+          "drawbacks": "The provided text contains no specific mentions of policies or practices promoting diversity, equity, and inclusion. There is no evidence of inclusive recruitment initiatives, research integrity statements, or organisational culture descriptions within the available text.",
+          "signals": [
+            {
+              "sid": "ss.4.a",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "ss.4.b",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "ss.4.c",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "ss.4.d",
+              "score_0to5": 0,
+              "note": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section_id": "training_development",
+      "section_name": "Training & Development",
+      "average_score_10": 0,
+      "sub_criteria": [
+        {
+          "sub_id": "td.1",
+          "name": "Quality and Relevance of Proposed Training",
+          "group_name": null,
+          "score_10": 0,
+          "pros": "No evidence found in the provided application text or belief state regarding a training plan.",
+          "drawbacks": "The application text provided is limited to summary information (title, applicant name, dates) and does not contain a training section. The belief state explicitly lists 'td.1' as a missing signal. There is no description of training activities, timelines, or links to skill acquisition.",
+          "signals": [
+            {
+              "sid": "td.1.a",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "td.1.b",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "td.1.c",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "td.1.d",
+              "score_0to5": 0,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "td.2",
+          "name": "Suitability to Personal Development and Project Needs",
+          "group_name": null,
+          "score_10": 0,
+          "pros": "No evidence found in the provided application text or belief state regarding personal development needs or training suitability.",
+          "drawbacks": "The provided text contains only administrative summary data. The belief state confirms 'td.2' is missing. There is no identification of skill gaps, mapping of training to project tasks, or mention of mentorship/workshops.",
+          "signals": [
+            {
+              "sid": "td.2.a",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "td.2.b",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "td.2.c",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "td.2.d",
+              "score_0to5": 0,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "td.3",
+          "name": "Support for Career Aspirations",
+          "group_name": null,
+          "score_10": 0,
+          "pros": "No evidence found in the provided application text or belief state regarding career aspirations or training support for them.",
+          "drawbacks": "The application text is restricted to summary metadata. The belief state lists 'td.3' as missing. There are no statements of career goals, connections between training and future trajectory, or references to professional practice components.",
+          "signals": [
+            {
+              "sid": "td.3.a",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "td.3.b",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "td.3.c",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "td.3.d",
+              "score_0to5": 0,
+              "note": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section_id": "wpcc",
+      "section_name": "Working with People & Communities",
+      "average_score_10": 5,
+      "sub_criteria": [
+        {
+          "sub_id": "wp.1",
+          "name": "Integration of Lived Experience in Research Design",
+          "group_name": null,
+          "score_10": 6.67,
+          "pros": "The application explicitly establishes a Research Advisory Group chaired by a person with lived experience (secdrp__001_v) and notes that Site 1's intervention is delivered by a patient with lived experience (secdrp__001_m). Dissemination workshops are planned to refine findings with stakeholders (secdrp__001_w).",
+          "drawbacks": "While the presence of lived experience in governance and delivery is clear, the text does not provide specific examples of how the research design or questions were altered based on this input prior to the application (wp.1.b). The evidence suggests involvement is planned or ongoing rather than a retrospective account of design changes.",
+          "signals": [
+            {
+              "sid": "wp.1.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "wp.1.b",
+              "score_0to5": 2,
+              "note": ""
+            },
+            {
+              "sid": "wp.1.c",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "wp.2",
+          "name": "Diversity and Inclusivity of the Research Team",
+          "group_name": null,
+          "score_10": 0,
+          "pros": "No evidence found in the provided text regarding the demographic diversity of the research team itself.",
+          "drawbacks": "The application text focuses on the diversity of participants and the inclusion of a public co-applicant, but provides no information on the gender, ethnicity, or demographic composition of the academic research team (Dr Walumbe, Dr Finlay, etc.). There is no mention of hiring strategies or equitable task allocation within the team.",
+          "signals": [
+            {
+              "sid": "wp.2.a",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "wp.2.b",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "wp.2.c",
+              "score_0to5": 0,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "wp.3",
+          "name": "Commitment to Maximising Public and Patient Benefit",
+          "group_name": null,
+          "score_10": 8.67,
+          "pros": "A comprehensive dissemination strategy is detailed, targeting academic, NHS, and public audiences via open-access papers, briefing papers, and engagement with support groups (secdrp__001_w, secdrp__001_x). The plan explicitly links outcomes to improved patient care, reduced medication reliance, and cost savings (secdrp__001_h).",
+          "drawbacks": "While the plan is robust, the specific mechanisms for translating the 'typology' into immediate practice changes are somewhat high-level, relying on workshops and briefing papers rather than a detailed implementation pathway.",
+          "signals": [
+            {
+              "sid": "wp.3.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "wp.3.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "wp.3.c",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "wp.4",
+          "name": "Representation of Seldom Heard or Underserved Groups",
+          "group_name": null,
+          "score_10": 7.33,
+          "pros": "The study explicitly targets underserved groups by selecting a site in an inner-city area with high deprivation (secdrp__001_n) and aims to understand intersectional issues like racism (secdrp__001_j). Recruitment strategies include no English language requirement and provision of interpreters (secdrp__001_o).",
+          "drawbacks": "While barriers like language are addressed, there is limited discussion on other potential barriers to participation for these specific groups (e.g., transport, digital exclusion, or trust issues) beyond the interpreter provision.",
+          "signals": [
+            {
+              "sid": "wp.4.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "wp.4.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "wp.4.c",
+              "score_0to5": 3,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "wp.5",
+          "name": "Inclusivity Across the Research Lifecycle",
+          "group_name": null,
+          "score_10": 7.33,
+          "pros": "Inclusivity is embedded across the lifecycle: accessible recruitment (interpreters, no language requirement) (secdrp__001_o), ethical considerations regarding informed consent and translation (secdrp__001_t), and iterative refinement of findings with stakeholders (secdrp__001_s).",
+          "drawbacks": "The plan for ongoing evaluation and adaptation of inclusion strategies during the study is implied through the iterative nature of Institutional Ethnography but not explicitly detailed as a standalone monitoring mechanism.",
+          "signals": [
+            {
+              "sid": "wp.5.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "wp.5.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "wp.5.c",
+              "score_0to5": 3,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "wp.6",
+          "name": "Costed and Resourced Plan for Research Inclusion",
+          "group_name": null,
+          "score_10": 0,
+          "pros": "The text mentions a request for budget to facilitate translation (secdrp__001_t), indicating some awareness of resource needs for inclusion.",
+          "drawbacks": "The provided text does not contain a budget section or specific line items. There is no explicit evidence of a costed plan for inclusion activities (e.g., PPI payments, outreach costs, interpreter fees) or dedicated staff time for these activities. The mention of translation is a single reference without financial detail.",
+          "signals": [
+            {
+              "sid": "wp.6.a",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "wp.6.b",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "wp.6.c",
+              "score_0to5": 0,
+              "note": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

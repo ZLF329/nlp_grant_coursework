@@ -1,0 +1,378 @@
+{
+  "doc_id": "IC00001_DF_Doctoral_baseline_IC00001_DF_Doctoral_run_03",
+  "source_pdf": "d:\\MSc_AI\\SWE_group_project\\nlp_grant_coursework\\data\\experiments\\same_pdf\\IC00001_DF_Doctoral.pdf",
+  "parsed_json": "d:\\MSc_AI\\SWE_group_project\\nlp_grant_coursework\\data\\experiments\\results\\parsed_cache\\IC00001_DF_Doctoral.json",
+  "features": {
+    "general": {
+      "score_10": 8.83,
+      "weight": 1.0,
+      "sub_criteria": [
+        {
+          "sub_id": "g.1",
+          "name": "Common Characteristics of Good Applications",
+          "weight": 1.0,
+          "score_10": 9.0,
+          "is_na": false,
+          "counts_toward_section_average": true
+        },
+        {
+          "sub_id": "g.2",
+          "name": "Tell Us Why You Need This Award",
+          "weight": 1.0,
+          "score_10": 9.0,
+          "is_na": false,
+          "counts_toward_section_average": true
+        },
+        {
+          "sub_id": "g.3",
+          "name": "Relevant Research Experience and Training",
+          "weight": 1.0,
+          "score_10": 9.0,
+          "is_na": false,
+          "counts_toward_section_average": true
+        },
+        {
+          "sub_id": "g.4",
+          "name": "Impactful Research Outputs and Outcomes",
+          "weight": 1.0,
+          "score_10": 8.0,
+          "is_na": false,
+          "counts_toward_section_average": true
+        },
+        {
+          "sub_id": "g.5",
+          "name": "Trajectory Towards Research Leadership",
+          "weight": 1.0,
+          "score_10": 9.0,
+          "is_na": false,
+          "counts_toward_section_average": true
+        },
+        {
+          "sub_id": "g.6",
+          "name": "Commitment to Practitioner-Academic Career (if applicable)",
+          "weight": 1.0,
+          "score_10": 9.0,
+          "is_na": false,
+          "counts_toward_section_average": true
+        }
+      ],
+      "overall": {
+        "score_10": 8.83,
+        "final_score_0to100": 88.3,
+        "positive_items": 6,
+        "scored_items": 6,
+        "total_items": 6,
+        "signal_count": 23
+      }
+    },
+    "proposed_research": {
+      "score_10": 8.67,
+      "weight": 1.0,
+      "sub_criteria": [
+        {
+          "sub_id": "pr.1",
+          "name": "Quality of the Plain English Summary",
+          "weight": 1.0,
+          "score_10": 9.0,
+          "is_na": false,
+          "counts_toward_section_average": true
+        },
+        {
+          "sub_id": "pr.2",
+          "name": "Evidence Review Quality & Relevance",
+          "weight": 1.0,
+          "score_10": 9.0,
+          "is_na": false,
+          "counts_toward_section_average": true
+        },
+        {
+          "sub_id": "pr.3",
+          "name": "Research Scope & Award Appropriateness",
+          "weight": 1.0,
+          "score_10": 9.0,
+          "is_na": false,
+          "counts_toward_section_average": true
+        },
+        {
+          "sub_id": "pr.4",
+          "name": "Research Design & Methodological Rigor",
+          "weight": 1.0,
+          "score_10": 9.0,
+          "is_na": false,
+          "counts_toward_section_average": true
+        },
+        {
+          "sub_id": "pr.5",
+          "name": "Potential Impact on Patients, Public, and Health Services",
+          "weight": 1.0,
+          "score_10": 9.0,
+          "is_na": false,
+          "counts_toward_section_average": true
+        },
+        {
+          "sub_id": "pr.6",
+          "name": "Engagement with People & Communities",
+          "weight": 1.0,
+          "score_10": 9.0,
+          "is_na": false,
+          "counts_toward_section_average": true
+        },
+        {
+          "sub_id": "pr.7",
+          "name": "Justification of Resources & Award Costs",
+          "weight": 1.0,
+          "score_10": 8.0,
+          "is_na": false,
+          "counts_toward_section_average": true
+        },
+        {
+          "sub_id": "pr.8",
+          "name": "Quality of Previous Research (if applicable)",
+          "weight": 1.0,
+          "score_10": 8.0,
+          "is_na": false,
+          "counts_toward_section_average": true
+        },
+        {
+          "sub_id": "pr.9",
+          "name": "Inclusive Research Design",
+          "weight": 1.0,
+          "score_10": 8.0,
+          "is_na": false,
+          "counts_toward_section_average": true
+        }
+      ],
+      "overall": {
+        "score_10": 8.67,
+        "final_score_0to100": 86.7,
+        "positive_items": 9,
+        "scored_items": 9,
+        "total_items": 9,
+        "signal_count": 32
+      }
+    },
+    "training_development": {
+      "score_10": 9.0,
+      "weight": 1.0,
+      "sub_criteria": [
+        {
+          "sub_id": "td.1",
+          "name": "Quality and Relevance of Proposed Training",
+          "weight": 1.0,
+          "score_10": 9.0,
+          "is_na": false,
+          "counts_toward_section_average": true
+        },
+        {
+          "sub_id": "td.2",
+          "name": "Suitability to Personal Development and Project Needs",
+          "weight": 1.0,
+          "score_10": 9.0,
+          "is_na": false,
+          "counts_toward_section_average": true
+        },
+        {
+          "sub_id": "td.3",
+          "name": "Support for Career Aspirations",
+          "weight": 1.0,
+          "score_10": 9.0,
+          "is_na": false,
+          "counts_toward_section_average": true
+        }
+      ],
+      "overall": {
+        "score_10": 9.0,
+        "final_score_0to100": 90.0,
+        "positive_items": 3,
+        "scored_items": 3,
+        "total_items": 3,
+        "signal_count": 12
+      }
+    },
+    "sites_support": {
+      "score_10": 9.75,
+      "weight": 1.0,
+      "sub_criteria": [
+        {
+          "sub_id": "ss.1",
+          "name": "Track Record of the Contracting Organisation (and Partners)",
+          "weight": 1.0,
+          "score_10": 10.0,
+          "is_na": false,
+          "counts_toward_section_average": true
+        },
+        {
+          "sub_id": "ss.2",
+          "name": "Suitability of Supervisory Support and Mentorship Arrangements",
+          "weight": 1.0,
+          "score_10": 10.0,
+          "is_na": false,
+          "counts_toward_section_average": true
+        },
+        {
+          "sub_id": "ss.3",
+          "name": "Appropriateness of the Contracting Organisation to Support the Award and Career Aspirations",
+          "weight": 1.0,
+          "score_10": 10.0,
+          "is_na": false,
+          "counts_toward_section_average": true
+        },
+        {
+          "sub_id": "ss.4",
+          "name": "Commitment to Inclusive and Supportive Research Culture",
+          "weight": 1.0,
+          "score_10": 9.0,
+          "is_na": false,
+          "counts_toward_section_average": true
+        }
+      ],
+      "overall": {
+        "score_10": 9.75,
+        "final_score_0to100": 97.5,
+        "positive_items": 4,
+        "scored_items": 4,
+        "total_items": 4,
+        "signal_count": 16
+      }
+    },
+    "wpcc": {
+      "score_10": 8.5,
+      "weight": 1.0,
+      "sub_criteria": [
+        {
+          "sub_id": "wp.1",
+          "name": "Integration of Lived Experience in Research Design",
+          "weight": 1.0,
+          "score_10": 9.0,
+          "is_na": false,
+          "counts_toward_section_average": true
+        },
+        {
+          "sub_id": "wp.2",
+          "name": "Diversity and Inclusivity of the Research Team",
+          "weight": 1.0,
+          "score_10": 7.0,
+          "is_na": false,
+          "counts_toward_section_average": true
+        },
+        {
+          "sub_id": "wp.3",
+          "name": "Commitment to Maximising Public and Patient Benefit",
+          "weight": 1.0,
+          "score_10": 9.0,
+          "is_na": false,
+          "counts_toward_section_average": true
+        },
+        {
+          "sub_id": "wp.4",
+          "name": "Representation of Seldom Heard or Underserved Groups",
+          "weight": 1.0,
+          "score_10": 8.0,
+          "is_na": false,
+          "counts_toward_section_average": true
+        },
+        {
+          "sub_id": "wp.5",
+          "name": "Inclusivity Across the Research Lifecycle",
+          "weight": 1.0,
+          "score_10": 9.0,
+          "is_na": false,
+          "counts_toward_section_average": true
+        },
+        {
+          "sub_id": "wp.6",
+          "name": "Costed and Resourced Plan for Research Inclusion",
+          "weight": 1.0,
+          "score_10": 9.0,
+          "is_na": false,
+          "counts_toward_section_average": true
+        }
+      ],
+      "overall": {
+        "score_10": 8.5,
+        "final_score_0to100": 85.0,
+        "positive_items": 6,
+        "scored_items": 6,
+        "total_items": 6,
+        "signal_count": 18
+      }
+    },
+    "application_form": {
+      "score_10": 8.33,
+      "weight": 1.0,
+      "sub_criteria": [
+        {
+          "sub_id": "af.1",
+          "name": "Use of Formatting, Headings, and Subheadings",
+          "weight": 1.0,
+          "score_10": 8.0,
+          "is_na": false,
+          "counts_toward_section_average": true
+        },
+        {
+          "sub_id": "af.2",
+          "name": "Limited Duplication and Repetition",
+          "weight": 1.0,
+          "score_10": 8.0,
+          "is_na": false,
+          "counts_toward_section_average": true
+        },
+        {
+          "sub_id": "af.3",
+          "name": "Logical Flow and Coherence Across Sections",
+          "weight": 1.0,
+          "score_10": 9.0,
+          "is_na": false,
+          "counts_toward_section_average": true
+        }
+      ],
+      "overall": {
+        "score_10": 8.33,
+        "final_score_0to100": 83.3,
+        "positive_items": 3,
+        "scored_items": 3,
+        "total_items": 3,
+        "signal_count": 11
+      }
+    }
+  },
+  "overall": {
+    "score_10": 8.85,
+    "final_score_0to100": 88.5
+  },
+  "avg_signal_score_0to5": 4.4032,
+  "raw_sub_scores": {
+    "g.1": 9,
+    "g.2": 9,
+    "g.3": 9,
+    "g.4": 8,
+    "g.5": 9,
+    "g.6": 9,
+    "pr.1": 9,
+    "pr.2": 9,
+    "pr.3": 9,
+    "pr.4": 9,
+    "pr.5": 9,
+    "pr.6": 9,
+    "pr.7": 8,
+    "pr.8": 8,
+    "pr.9": 8,
+    "td.1": 9,
+    "td.2": 9,
+    "td.3": 9,
+    "ss.1": 10,
+    "ss.2": 10,
+    "ss.3": 10,
+    "ss.4": 9,
+    "wp.1": 9,
+    "wp.2": 7,
+    "wp.3": 9,
+    "wp.4": 8,
+    "wp.5": 9,
+    "wp.6": 9,
+    "af.1": 8,
+    "af.2": 8,
+    "af.3": 9
+  },
+  "raw_llm_response": "{\n  \"g.1\": 9,\n  \"g.2\": 9,\n  \"g.3\": 9,\n  \"g.4\": 8,\n  \"g.5\": 9,\n  \"g.6\": 9,\n  \"pr.1\": 9,\n  \"pr.2\": 9,\n  \"pr.3\": 9,\n  \"pr.4\": 9,\n  \"pr.5\": 9,\n  \"pr.6\": 9,\n  \"pr.7\": 8,\n  \"pr.8\": 8,\n  \"pr.9\": 8,\n  \"td.1\": 9,\n  \"td.2\": 9,\n  \"td.3\": 9,\n  \"ss.1\": 10,\n  \"ss.2\": 10,\n  \"ss.3\": 10,\n  \"ss.4\": 9,\n  \"wp.1\": 9,\n  \"wp.2\": 7,\n  \"wp.3\": 9,\n  \"wp.4\": 8,\n  \"wp.5\": 9,\n  \"wp.6\": 9,\n  \"af.1\": 8,\n  \"af.2\": 8,\n  \"af.3\": 9\n}"
+}

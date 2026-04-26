@@ -1,0 +1,922 @@
+{
+  "doc_id": "4cd2bd811d70_NIHR503119_after",
+  "run_info": {
+    "ran_at_utc": "2026-04-21T11:02:42.548099Z",
+    "model": "qwen3.5:27b",
+    "judge_model": null
+  },
+  "sections": [
+    {
+      "section_id": "application_form",
+      "section_name": "Application Form",
+      "average_score_10": 9.11,
+      "sub_criteria": [
+        {
+          "sub_id": "af.1",
+          "name": "Use of Formatting, Headings, and Subheadings",
+          "group_name": null,
+          "score_10": 9.5,
+          "pros": "The application form analysis confirms the presence of 6 distinct sections with clear labels (Scientific Abstract, Plain English Summary, etc.), 18 list markers, and 21 extracted emphasis markers. The structural hierarchy is logical, moving from context to research plan, PPI, and budget. The parser explicitly detected numbered heading-like lines and table-like budget lines, indicating strong formatting.",
+          "drawbacks": "While 21 emphasis markers were detected, the analysis notes a parser limitation where bold/emphasis may be lost during text extraction. Therefore, while the evidence for emphasis is strong, it is not perfectly verified as intentional formatting in the original document versus parser artifacts, preventing a perfect 5 for af.1.b.",
+          "signals": [
+            {
+              "sid": "af.1.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "af.1.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "af.1.c",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "af.1.d",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "af.2",
+          "name": "Limited Duplication and Repetition",
+          "group_name": null,
+          "score_10": 9.33,
+          "pros": "The analysis reports extremely low duplication metrics: a duplicate sentence rate of 0.008 and a repeated line rate of 0.014. The lexical overlap between the Scientific Abstract and Plain English Summary is only 0.207, indicating that the content is distinct and tailored to each section rather than simply copied.",
+          "drawbacks": "While the metrics for duplication are excellent, the 'novelty score' (af.2.c) is inferred from the low overlap rate rather than a direct novelty metric provided in the text. The low overlap is strong evidence, but the specific calculation of a novelty score is not explicitly detailed in the chunk.",
+          "signals": [
+            {
+              "sid": "af.2.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "af.2.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "af.2.c",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "af.3",
+          "name": "Logical Flow and Coherence Across Sections",
+          "group_name": null,
+          "score_10": 8.5,
+          "pros": "The application demonstrates strong logical flow with 29 terms linking objectives, methods, and budget. The section order is described as logical (applicant/context -> summary/abstract -> research plan -> PPI -> training -> budget). There are 10 transition phrases detected, supporting coherence.",
+          "drawbacks": "The evidence for semantic coherence (af.3.a) and the narrative thread (af.3.d) relies on the parser's detection of linking terms and section order rather than a deep semantic embedding analysis of the text content itself. While the structural indicators are strong, the actual narrative thread is inferred from the structure rather than explicitly analyzed for semantic continuity in the provided chunk.",
+          "signals": [
+            {
+              "sid": "af.3.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "af.3.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "af.3.c",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "af.3.d",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section_id": "general",
+      "section_name": "General",
+      "average_score_10": 8.27,
+      "sub_criteria": [
+        {
+          "sub_id": "g.1",
+          "name": "Common Characteristics of Good Applications",
+          "group_name": "Common Characteristics of Good Applications",
+          "score_10": 9.5,
+          "pros": "The application demonstrates a clear research vision and career trajectory (g.1.a) with supervisors explicitly identifying the applicant as a 'future leader' and 'national expert' (secac__001). Distinctive ideas are evident in the proposal to use TFL during MI-E, a method developed by the supervisor and adapted for this specific population (g.1.b). The training plan is well-justified (g.1.c) with specific courses listed in the budget (Kings Fund, Bronchoscopy, Beyond BASIC) directly linked to project needs (secsb__001_b, secsb__001_c). Mentorship is exceptionally strong (g.1.d) with five detailed supervisor statements covering clinical, academic, statistical, and qualitative expertise (secac__001).",
+          "drawbacks": "While the distinctive ideas are strong, the specific 'independent direction' of the applicant's own novel methodology versus the supervisor's established method could be slightly more explicitly differentiated, though the application implies this through the adaptation to SMA (g.1.b).",
+          "signals": [
+            {
+              "sid": "g.1.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "g.1.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "g.1.c",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "g.1.d",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "g.2",
+          "name": "Tell Us Why You Need This Award",
+          "group_name": "Tell Us Why You Need This Award",
+          "score_10": 7,
+          "pros": "The application strongly articulates how the award builds on existing experience (g.2.c) by leveraging the applicant's background in clinical trials and respiratory outcome measures to undertake this specific PhD (secac__001). It clearly outlines new skills to be gained, such as endoscopy techniques and advanced statistics, supported by a costed training plan (secsb__001_b, secsb__001_c). Partnerships are well-developed (g.2.d) with international collaborators (Western Norway, Milan) and charity partners involved in the design (secac__001).",
+          "drawbacks": "The explicit statement of why this specific award is the 'right next step' (g.2.a) and the specific difference it makes 'now' (g.2.b) is inferred from the supervisor statements and the career stage rather than a dedicated narrative from the applicant explaining the timing and necessity of this specific fellowship versus other funding routes.",
+          "signals": [
+            {
+              "sid": "g.2.a",
+              "score_0to5": 3,
+              "note": ""
+            },
+            {
+              "sid": "g.2.b",
+              "score_0to5": 3,
+              "note": ""
+            },
+            {
+              "sid": "g.2.c",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "g.2.d",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "g.3",
+          "name": "Relevant Research Experience and Training",
+          "group_name": "Applicant",
+          "score_10": 9.33,
+          "pros": "The applicant has extensive prior experience in large-scale clinical trials and developing respiratory outcome measures (g.3.a), directly relevant to the proposed study (secac__001). Formal training is evidenced by the planned courses (Bronchoscopy, Statistics) and the PhD tuition itself (g.3.b) (secsb__001_c). There is a perfect alignment between prior experience in neuromuscular respiratory management and the skills required for the project (g.3.c) (secac__001).",
+          "drawbacks": "While the training plan is robust, the evidence of *completed* formal training specifically in the advanced techniques (like TFL) prior to the award is limited to the supervisor's offer to teach, rather than the applicant having already completed such certifications (g.3.b).",
+          "signals": [
+            {
+              "sid": "g.3.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "g.3.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "g.3.c",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "g.4",
+          "name": "Impactful Research Outputs and Outcomes",
+          "group_name": "Applicant",
+          "score_10": 7,
+          "pros": "The applicant has authored publications and presented at national/international conferences (g.4.a) (secac__001). Recognition is evidenced by the Lea Rose Award and international recognition of her respiratory assessment tool (g.4.c) (secac__001). The practical impact of previous work is highlighted by the implementation of her assessment tool in clinical settings worldwide (g.4.d) (secac__001).",
+          "drawbacks": "There is no mention of specific citation metrics or quantitative indicators of impact for the publications mentioned (g.4.b). The number of publications is described as 'a few' rather than a comprehensive list, which limits the strength of evidence for volume (g.4.a).",
+          "signals": [
+            {
+              "sid": "g.4.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "g.4.b",
+              "score_0to5": 2,
+              "note": ""
+            },
+            {
+              "sid": "g.4.c",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "g.4.d",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "g.5",
+          "name": "Trajectory Towards Research Leadership",
+          "group_name": "Applicant",
+          "score_10": 8.5,
+          "pros": "Supervisors explicitly recognize the applicant as a 'future leader' and 'national expert' (g.5.d) (secac__001). Evidence of increasing responsibility is shown through her role in developing tools used internationally and her involvement in national stakeholder groups (g.5.b) (secac__001). Participation in professional development is evident through the planned leadership courses (Kings Fund) and her current role in the ORCHID research centre (g.5.c) (secac__001).",
+          "drawbacks": "While the trajectory is clear, explicit personal statements of long-term career goals from the applicant themselves are less prominent than the endorsements from supervisors (g.5.a).",
+          "signals": [
+            {
+              "sid": "g.5.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "g.5.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "g.5.c",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "g.5.d",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "g.6",
+          "name": "Commitment to Practitioner-Academic Career (if applicable)",
+          "group_name": "Applicant",
+          "score_10": 9.5,
+          "pros": "The applicant is a registered physiotherapist (HCPC) with a clear intention to pursue a clinical-academic career (g.6.a) (secac__001). The project is deeply embedded in clinical practice at GOSH, involving direct patient care and assessment (g.6.b) (secac__001). She is part of a thriving academic community (ORCHID) that supports balancing practice and research (g.6.c) (secac__001). Participation in professional networks is evidenced by her membership in the International SMA Consortium and national respiratory stakeholder groups (g.6.d) (secac__001).",
+          "drawbacks": "The specific mechanisms for balancing clinical workload with the intensive research demands of the PhD are implied through the supportive environment but not explicitly detailed in terms of time allocation or protected time arrangements (g.6.c).",
+          "signals": [
+            {
+              "sid": "g.6.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "g.6.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "g.6.c",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "g.6.d",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section_id": "proposed_research",
+      "section_name": "Proposed Research",
+      "average_score_10": 8.94,
+      "sub_criteria": [
+        {
+          "sub_id": "pr.1",
+          "name": "Quality of the Plain English Summary",
+          "group_name": null,
+          "score_10": 8,
+          "pros": "The Plain English Summary is exceptionally clear, with NLP metrics confirming high readability (Flesch-Kincaid 4.79) and low jargon density (1.13%). It comprehensively covers the problem (SMA/mucus), objectives, methods (camera, stickers), beneficiaries, and impact (reduced hospital visits). Technical terms like 'cough-assist' are explained simply, and the narrative flows logically for a non-specialist.",
+          "drawbacks": "No material caveats or missing details found; the summary perfectly meets all criteria for a lay audience.",
+          "signals": [
+            {
+              "sid": "pr.1.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.1.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.1.c",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.1.d",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.1.e",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.1.f",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "pr.2",
+          "name": "Evidence Review Quality & Relevance",
+          "group_name": null,
+          "score_10": 5.5,
+          "pros": "The application clearly identifies a specific knowledge gap: the lack of understanding regarding airway dynamics during MI-E use in children with SMA. The Scientific Abstract explicitly states 'there is limited understanding of what occurs in the child's airway', justifying the need for the study.",
+          "drawbacks": "The application lacks a formal literature review section with citations. While the gap is identified, there is no critical analysis of existing studies or a list of references to support the claim of limited understanding, limiting the score for evidence review quality.",
+          "signals": [
+            {
+              "sid": "pr.2.a",
+              "score_0to5": 2,
+              "note": ""
+            },
+            {
+              "sid": "pr.2.b",
+              "score_0to5": 2,
+              "note": ""
+            },
+            {
+              "sid": "pr.2.c",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.2.d",
+              "score_0to5": 3,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "pr.3",
+          "name": "Research Scope & Award Appropriateness",
+          "group_name": null,
+          "score_10": 10,
+          "pros": "The scope is well-defined for a doctoral award, involving 45 patients over 9-18 months. The work is broken into three clear packages (TFL, OEP, tolerance), which are feasible and appropriately scaled for a PhD project.",
+          "drawbacks": "No significant drawbacks; the scope aligns perfectly with the award level and timeline.",
+          "signals": [
+            {
+              "sid": "pr.3.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.3.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.3.c",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "pr.4",
+          "name": "Research Design & Methodological Rigor",
+          "group_name": null,
+          "score_10": 8,
+          "pros": "Methods are explicitly described: Transnasal Fibreoptic Laryngoscopy (TFL) for airway dynamics and Opto-electronic Plethysmography (OEP) for lung volumes. The design logically aligns with aims to optimize MI-E settings. Statistical analysis is mentioned.",
+          "drawbacks": "While the methods are clear, specific details on sample size calculation or power analysis are not explicitly detailed in the provided text, though the number of patients (45) is stated.",
+          "signals": [
+            {
+              "sid": "pr.4.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.4.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.4.c",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.4.d",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "pr.5",
+          "name": "Potential Impact on Patients, Public, and Health Services",
+          "group_name": null,
+          "score_10": 10,
+          "pros": "The impact is clearly articulated: improved secretion management will reduce hospitalizations, improve quality of life, and reduce NHS costs. The study addresses a life-limiting condition (SMA) with direct patient benefits.",
+          "drawbacks": "No material caveats; the impact is specific and directly linked to the research outcomes.",
+          "signals": [
+            {
+              "sid": "pr.5.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.5.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.5.c",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "pr.6",
+          "name": "Engagement with People & Communities",
+          "group_name": null,
+          "score_10": 10,
+          "pros": "Extensive evidence of meaningful involvement: a community group of parents/patients co-designed the study. Specific feedback led to design changes (e.g., creating a child-friendly video for TFL, adjusting scheduling for fatigue). Involvement spans planning, design, and dissemination.",
+          "drawbacks": "No material caveats; the engagement is deep, specific, and integrated throughout the project lifecycle.",
+          "signals": [
+            {
+              "sid": "pr.6.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.6.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.6.c",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "pr.7",
+          "name": "Justification of Resources & Award Costs",
+          "group_name": null,
+          "score_10": 10,
+          "pros": "The budget provides explicit links between tasks and resources, including detailed costings for equipment rental vs. purchase, consumables (stickers, cleaning), and software. Justifications are clear (e.g., rental for 6 months vs purchase).",
+          "drawbacks": "No material caveats; the resource justification is thorough and proportional.",
+          "signals": [
+            {
+              "sid": "pr.7.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.7.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.7.c",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "pr.8",
+          "name": "Quality of Previous Research (if applicable)",
+          "group_name": null,
+          "score_10": 6.67,
+          "pros": "Supervisors mention the applicant's prior experience in large-scale clinical trials, development of respiratory outcome measures, and implementation of assessment tools. The applicant has authored publications and received the Lea Rose Award.",
+          "drawbacks": "The application text does not provide a list of specific publications or detailed descriptions of previous projects within the 'Proposed Research' section itself; evidence is primarily found in supervisor statements in the Application Context. This limits the direct evidence within the research proposal section.",
+          "signals": [
+            {
+              "sid": "pr.8.a",
+              "score_0to5": 3,
+              "note": ""
+            },
+            {
+              "sid": "pr.8.b",
+              "score_0to5": 3,
+              "note": ""
+            },
+            {
+              "sid": "pr.8.c",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "pr.9",
+          "name": "Inclusive Research Design",
+          "group_name": null,
+          "score_10": 10,
+          "pros": "The proposal explicitly addresses inclusivity: adaptations for behavioral/communicative concerns, patient information sheets adapted for different communication styles, and an animated video. The OEP method adapts marker numbers based on child size.",
+          "drawbacks": "No material caveats; inclusive strategies are well-integrated into the design.",
+          "signals": [
+            {
+              "sid": "pr.9.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.9.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.9.c",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section_id": "sites_support",
+      "section_name": "Sites & Support",
+      "average_score_10": 8.12,
+      "sub_criteria": [
+        {
+          "sub_id": "ss.1",
+          "name": "Track Record of the Contracting Organisation (and Partners)",
+          "group_name": null,
+          "score_10": 8,
+          "pros": "The application provides strong evidence of the contracting organisation's track record. GOSH and UCL are described as world-leading centers with the largest concentration of children's health research outside North America. Specific achievements include the Dubowitz Neuromuscular Centre, international collaborations, and successful supervision of numerous PhD students. The text explicitly mentions prior funding (NIHR SCPRA, Western Norway Health Authorities grants) and notable outputs like the Lea Rose Award and international guidelines.",
+          "drawbacks": "While the track record is extensive, specific details on the contracting organisation's own recent funding success rates or specific awards won by the institution (distinct from the supervisors' personal grants) are less explicit, though heavily implied through the supervisors' roles.",
+          "signals": [
+            {
+              "sid": "ss.1.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "ss.1.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "ss.1.c",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "ss.1.d",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "ss.2",
+          "name": "Suitability of Supervisory Support and Mentorship Arrangements",
+          "group_name": null,
+          "score_10": 8,
+          "pros": "The application details a robust supervisory team of five experts with clearly defined roles (Primary Academic, Practice, Academic Supervisors). Expertise aligns perfectly with project needs: endoscopy training (Dr. Andersen, Dr. Butler), statistics (Dr. Ridout), neuromuscular clinical expertise (Prof. Baranello), and qualitative methods (Prof. Gibson). Supervisors explicitly describe their mentorship plans, including specific training in techniques, regular meetings, and access to research groups.",
+          "drawbacks": "While the framework is strong, the specific frequency of supervision meetings (e.g., weekly vs. monthly) is not explicitly quantified for the primary academic supervisor, though 'regular supervision' is mentioned.",
+          "signals": [
+            {
+              "sid": "ss.2.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "ss.2.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "ss.2.c",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "ss.2.d",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "ss.3",
+          "name": "Appropriateness of the Contracting Organisation to Support the Award and Career Aspirations",
+          "group_name": null,
+          "score_10": 10,
+          "pros": "The application explicitly confirms access to the necessary patient population (children with SMA at GOSH) and specialized equipment (transnasal fibreoptic laryngoscopy). The ORCHID research centre is described as a thriving academic community supporting 16 DCAF students and others, providing a tailored environment for a clinical academic career. The text links organisational support directly to project success through access to the ENT research group and statistical support services.",
+          "drawbacks": "No significant drawbacks; the evidence for facilities, resources, and career alignment is comprehensive and specific.",
+          "signals": [
+            {
+              "sid": "ss.3.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "ss.3.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "ss.3.c",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "ss.3.d",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "ss.4",
+          "name": "Commitment to Inclusive and Supportive Research Culture",
+          "group_name": null,
+          "score_10": 6.5,
+          "pros": "The application describes a supportive environment with a diverse team (nurses, AHPs, social scientists, medical doctors) and regular research meetings. Prof. Gibson highlights the ORCHID centre's support for nurses and allied health professionals, indicating a culture that values diverse career pathways. The involvement of PPI and diverse backgrounds in the research team is noted.",
+          "drawbacks": "There is limited explicit mention of specific institutional policies regarding diversity, equity, and inclusion (DEI) or formal research integrity training programs. The evidence relies more on the description of the team's composition and the supportive nature of the supervisors rather than formal policy statements.",
+          "signals": [
+            {
+              "sid": "ss.4.a",
+              "score_0to5": 3,
+              "note": ""
+            },
+            {
+              "sid": "ss.4.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "ss.4.c",
+              "score_0to5": 2,
+              "note": ""
+            },
+            {
+              "sid": "ss.4.d",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section_id": "training_development",
+      "section_name": "Training & Development",
+      "average_score_10": 7.33,
+      "sub_criteria": [
+        {
+          "sub_id": "td.1",
+          "name": "Quality and Relevance of Proposed Training",
+          "group_name": null,
+          "score_10": 7,
+          "pros": "The application provides a highly specific and costed list of training activities, including the Kings Fund leadership course, Bronchoscopy course, Beyond BASIC Airway Management, and Impact Acceleration Unit training. These are directly linked to project needs (e.g., bronchoscopy for airway management, leadership for team management). The description clearly identifies the skills to be gained (e.g., 'manage a team', 'build resilience', 'use of bronchoscopies').",
+          "drawbacks": "While the specific courses are well-described, the application lacks a structured timeline or sequencing of when these training activities will occur relative to the project phases (e.g., Year 1 vs Year 3). The training plan is presented primarily within the budget justification rather than as a standalone chronological development plan.",
+          "signals": [
+            {
+              "sid": "td.1.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "td.1.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "td.1.c",
+              "score_0to5": 2,
+              "note": ""
+            },
+            {
+              "sid": "td.1.d",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "td.2",
+          "name": "Suitability to Personal Development and Project Needs",
+          "group_name": null,
+          "score_10": 7.5,
+          "pros": "There is strong evidence of targeted training mapped to specific project tasks. The budget explicitly links the Bronchoscopy and Beyond BASIC courses to the need for 'transnasal fibreoptic laryngoscopes' and 'management of the upper airway' described in the work packages. The inclusion of a statistics course and PPIE workshops addresses specific methodological and ethical needs. Supervisors in the Application Context confirm the applicant's need for specific technical training (e.g., 'learn the method of transnasal fibreoptic laryngoscopy').",
+          "drawbacks": "The application does not explicitly articulate the applicant's current skill gaps in a dedicated narrative section; rather, the gaps are inferred from the training requested and the supervisors' descriptions of what the applicant will learn. While the mapping is clear, the explicit 'before and after' skill gap analysis is implicit rather than stated.",
+          "signals": [
+            {
+              "sid": "td.2.a",
+              "score_0to5": 3,
+              "note": ""
+            },
+            {
+              "sid": "td.2.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "td.2.c",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "td.2.d",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "td.3",
+          "name": "Support for Career Aspirations",
+          "group_name": null,
+          "score_10": 7.5,
+          "pros": "The training plan includes components that extend beyond the immediate project, such as the Kings Fund leadership course and the Impact Acceleration Unit course on knowledge mobilisation. These directly support long-term career aspirations in clinical leadership and academic dissemination. Supervisors explicitly state the goal is to develop a 'clinical academic role' and that the applicant is a 'future leader', aligning the training with these career goals.",
+          "drawbacks": "While the training supports career aspirations, the application does not contain a dedicated, explicit statement from the applicant detailing their long-term career goals (e.g., 'I aim to become a consultant academic...'). The career trajectory is primarily described by the supervisors in the support letters rather than by the applicant in a personal statement or career development plan section.",
+          "signals": [
+            {
+              "sid": "td.3.a",
+              "score_0to5": 3,
+              "note": ""
+            },
+            {
+              "sid": "td.3.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "td.3.c",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "td.3.d",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section_id": "wpcc",
+      "section_name": "Working with People & Communities",
+      "average_score_10": 8.89,
+      "sub_criteria": [
+        {
+          "sub_id": "wp.1",
+          "name": "Integration of Lived Experience in Research Design",
+          "group_name": null,
+          "score_10": 10,
+          "pros": "The application provides exceptional evidence of integration. It details specific consultations with a diverse group of parents, patients, and charity partners (secppi__001_a). Crucially, it lists concrete design changes made in response to feedback, such as creating a child-friendly video for the TFL procedure and adjusting the testing schedule to manage fatigue (secppi__001_b). A formal community group is established to guide the project (secppi__001_c).",
+          "drawbacks": "No material caveats; the evidence is comprehensive, specific, and directly addresses all aspects of lived experience integration.",
+          "signals": [
+            {
+              "sid": "wp.1.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "wp.1.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "wp.1.c",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "wp.2",
+          "name": "Diversity and Inclusivity of the Research Team",
+          "group_name": null,
+          "score_10": 6,
+          "pros": "The supervisory team is multidisciplinary, including physiotherapists, ENT surgeons, statisticians, and nurses, with international collaborators (secac__001). The PPI group is described as having diverse socio-economic and ethnic backgrounds (secppi__001_a).",
+          "drawbacks": "While the team's professional diversity is clear, there is no explicit statement regarding the demographic diversity (e.g., gender, ethnicity) of the core research team members themselves, only the PPI group. Task allocation is implied through roles but not explicitly detailed as an equity strategy.",
+          "signals": [
+            {
+              "sid": "wp.2.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "wp.2.b",
+              "score_0to5": 2,
+              "note": ""
+            },
+            {
+              "sid": "wp.2.c",
+              "score_0to5": 3,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "wp.3",
+          "name": "Commitment to Maximising Public and Patient Benefit",
+          "group_name": null,
+          "score_10": 10,
+          "pros": "The application outlines a robust dissemination plan involving podcasts, meetings with parent support groups, and charity networks (secsa__001_c, secppi__001_c). There are clear links between the study objectives (optimizing MI-E) and anticipated benefits (reduced hospitalizations, improved quality of life) (secpesor__001_b). The plan emphasizes actionable outcomes, with PPI partners assisting in writing reports and facilitating publication on charity websites (secppi__001_c).",
+          "drawbacks": "No material caveats; the plan is specific, well-resourced, and directly tied to patient benefit.",
+          "signals": [
+            {
+              "sid": "wp.3.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "wp.3.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "wp.3.c",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "wp.4",
+          "name": "Representation of Seldom Heard or Underserved Groups",
+          "group_name": null,
+          "score_10": 7.33,
+          "pros": "The study explicitly targets children with Spinal Muscular Atrophy, a rare disease affecting an under-represented population (secsa__001_c). The PPI group includes members from diverse socio-economic and ethnic backgrounds (secppi__001_a). Specific barriers (e.g., behavioral concerns, communication styles) are identified and mitigated through adapted information sheets and animated videos (secsa__001_c, secppi__001_b).",
+          "drawbacks": "While barriers are addressed, the specific recruitment strategies to ensure the final sample reflects the diversity of the broader SMA population (beyond the PPI group) are less detailed than the PPI composition.",
+          "signals": [
+            {
+              "sid": "wp.4.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "wp.4.b",
+              "score_0to5": 3,
+              "note": ""
+            },
+            {
+              "sid": "wp.4.c",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "wp.5",
+          "name": "Inclusivity Across the Research Lifecycle",
+          "group_name": null,
+          "score_10": 10,
+          "pros": "Inclusion is demonstrated across the entire lifecycle: planning (co-design of proposal), conduct (adaptations for behavioral concerns, visual scales for feedback), and dissemination (PPI involvement in writing reports) (secppi__001_a, secppi__001_c). Accessibility is prioritized through Talking Mats and adapted materials (secsa__001_c). Ongoing evaluation is planned via regular feedback meetings and a community group (secppi__001_b).",
+          "drawbacks": "No material caveats; the application provides a holistic view of inclusion from start to finish.",
+          "signals": [
+            {
+              "sid": "wp.5.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "wp.5.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "wp.5.c",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "wp.6",
+          "name": "Costed and Resourced Plan for Research Inclusion",
+          "group_name": null,
+          "score_10": 10,
+          "pros": "The budget explicitly includes line items for inclusion activities: PPIE workshops, Talking Mats subscription for consent/feedback (£120), and refreshments for participants (secsb__001_c). Staff time and training for the community group are accounted for (secsb__001_c). The resources align perfectly with the detailed inclusion plan described in the PPI section.",
+          "drawbacks": "No material caveats; the costed plan is specific and fully supports the inclusion activities.",
+          "signals": [
+            {
+              "sid": "wp.6.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "wp.6.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "wp.6.c",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

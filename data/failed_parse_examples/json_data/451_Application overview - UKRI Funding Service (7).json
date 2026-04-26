@@ -1,0 +1,76 @@
+{
+  "application_id": "APP97101",
+  "title": "Personalising Colorectal Cancer Treatment through Integrated Tumour Dynamics Modelling and AI-Enabled Molecular Stratification",
+  "applicant": "Carina Eifler",
+  "institution": "University of Liverpool",
+  "submission_date": "14 January 2026",
+  "start_date": "August 2026",
+  "duration_months": 36,
+  "summary": "Bowel cancer kills around 16,800 people each year in the UK. Although many patients receive the same chemotherapy, their outcomes vary widely. Some people benefit for a long time, while others relapse quickly. This is because tumours contain groups of cells that respond differently to treatment and change over time. Better prediction tools could help doctors match patients to more effective treatments sooner, but current tools do not capture this complexity well.",
+  "challenges": [
+    "Existing computer models (pharmacokinetic/pharmacodynamic models) often assume all tumours behave in the same way, describing short-term changes but failing to predict long-term changes or resistance.",
+    "Classifying bowel cancers into consensus molecular subtypes (CMS) requires expensive laboratory tests not routinely available in the NHS.",
+    "Many studies focus on single genes, overlooking how groups of genes interact within biological pathways to drive tumour growth and resistance."
+  ],
+  "aims_and_objectives": [
+    "Use patient data from the MRC-funded FOCUS trial to examine how tumour response differs between the four recognised biological subtypes of bowel cancer and estimate subtype-specific drug-response measures.",
+    "Combine drug-response modelling with AI-based tumour classification (imCMS) as a scalable alternative to assess whether this improves long-term response prediction.",
+    "Apply a machine-learning method (NBS²) that analyses groups of genes together to identify biological pathways influencing tumour growth, shrinkage, and treatment resistance.",
+    "Rigorously test the combined model across different patient groups to ensure predictions are reliable.",
+    "Develop a prototype web-based tool allowing clinicians to enter basic patient information and generate personalised forecasts."
+  ],
+  "applications_and_benefits": "This project will deliver a reliable tool for predicting how an individual patient's bowel cancer is likely to respond to treatment over time. This could help clinicians identify which patients are most likely to benefit from specific chemotherapies, supporting more informed conversations about treatment options. It could also help answer questions that matter most to patients, such as 'How long is this treatment likely to work for me?'. The methods could be extended to other cancer types, support more personalised treatment decisions, reduce unnecessary side effects, and improve NHS resource use.",
+  "vision": {
+    "excellence_and_originality": "The project aims to deliver a step-change in predicting long-term tumour response by uniting mechanistic PK/PD tumour-dynamics modelling, AI-enabled digital pathology, and pathway-level genomic stratification within a single framework. It will be the first to infer subtype-specific PK/PD parameters for consensus molecular subtypes (CMS), harness image-based CMS (imCMS) from routine H&E slides for low-cost classification, and identify novel predictive genomic biomarkers.",
+    "beneficiaries": {
+      "patients": "Earlier identification of non-responders can spare patients harm and preserve quality of life by providing individualised predictions.",
+      "clinicians": "Provides tools to forecast treatment response duration and optimal continuation timing, enabling matching of the right treatment to the right patient.",
+      "researchers": "Establishes a generalisable methodology for combining multimodal biomarkers in precision oncology research transferable to other solid tumours.",
+      "trials_and_industry": "Pathway-based biomarkers and model-derived endpoints inform enrichment, dose optimisation, and sequencing strategies.",
+      "nhs_and_economy": "Potential to reduce futile treatments and associated costs, improving resource allocation across oncology services."
+    },
+    "timeliness": "Digital pathology is entering routine workflows, multi-omic repositories are maturing, and regulators encourage model-informed precision dosing. Leveraging existing trial datasets enables rapid iteration without additional patient burden.",
+    "dissemination": "Development of freely installable software, Zenodo DOI archiving, open-access publication, submission to international meetings (PAGE, ESMO), and co-development of plain-language summaries with patient representatives."
+  },
+  "approach": {
+    "background": "Colorectal cancer causes over 17,000 UK deaths annually. Outcomes vary widely due to biological complexity and heterogeneous cell populations. Conventional PK/PD models assume tumour homogeneity, while genomic biomarker discovery often focuses on individual genes. Consensus molecular subtypes (CMS) provide a classification framework but require costly RNA-based testing. Recent advances include image-based CMS (imCMS) and network-based supervised stratification (NBS²).",
+    "central_hypothesis": "Image-based molecular stratification and pathway-level genomic signatures explain between-subject variability in tumour dynamics and treatment resistance by serving as biologically informed covariates on pharmacodynamic parameters within mechanistic PK/PD models.",
+    "data_resources": "Access to curated, anonymised datasets from the S:CORT consortium (FOCUS, FOXTROT, New EPOC trials) via cBioPortal. Includes linked multi-omic, digital pathology, and clinical data. Primary training cohort: FOCUS trial (467 patients). External validation: FOXTROT (n=100) and New EPOC (n=180).",
+    "methodology": {
+      "objective_1": "Classify patients by treatment response and infer CMS-specific pharmacodynamic parameters using PK/PD models on the FOCUS dataset.",
+      "objective_2": "Evaluate digital pathology-based CMS stratification (imCMS) to test if it matches or surpasses RNA-based CMS for pharmacodynamic stratification.",
+      "objective_3": "Identify predictive biomarkers using pathway-level genomics (NBS²) to explain variability beyond CMS/imCMS.",
+      "objective_4": "Externally validate the integrated model using held-out FOCUS patients and FOXTROT/New EPOC cohorts.",
+      "objective_5": "Translate the predictive modelling framework into a prototype clinical decision-support tool using R Shiny."
+    },
+    "feasibility": "Preliminary work includes validated PK/PD models for pancreatic cancer, validated imCMS on large histopathology datasets, and application of NBS² for lung cancer. Access to University of Liverpool's Computational Biology Facility HPC cluster (3000 cores/6 GPU servers).",
+    "risk_management": [
+      {
+        "risk": "Slide preparation differences affects imCMS classification.",
+        "mitigation": "Apply published imCMS classifier validated across independent cohorts; verify consistent performance."
+      },
+      {
+        "risk": "Indistinguishable tumour dynamics between imCMS subtypes.",
+        "mitigation": "Merge subtypes with indistinguishable parameters to maintain model parsimony and precision."
+      },
+      {
+        "risk": "NBS² does not explain variability in tumour dynamics.",
+        "mitigation": "Use alternative methods (e.g. elastic net) to identify genomic features."
+      },
+      {
+        "risk": "Integrated model biological interpretability unclear.",
+        "mitigation": "Link tumour dynamics parameters to 28 hallmarks of cancer pathways via NBS²."
+      },
+      {
+        "risk": "Overfitting from high-dimensional data and limited cohort size.",
+        "mitigation": "Control dimensionality via pathway-level aggregation (NBS²)."
+      }
+    ],
+    "diversity_and_inclusion": "S:CORT datasets include sex and age distributions consistent with UK advanced CRC populations. Demographic breakdowns will be reported and pharmacodynamic parameters assessed for variation by sex and age."
+  },
+  "reproducibility_and_statistical_design": {
+    "framework": "Analytical framework developed with expert pharmacometric input from Dr You, aligning with ICH M15 and MRC's Framework for Stratified Medicine Research.",
+    "modelling": "Development of an empirical exponential growth model as a baseline comparator to describe intrinsic resistance, incorporating parameters for resistant fraction (RF), growth rate (g), and death rate (d)."
+  },
+  "doc_type": "llm_fallback"
+}

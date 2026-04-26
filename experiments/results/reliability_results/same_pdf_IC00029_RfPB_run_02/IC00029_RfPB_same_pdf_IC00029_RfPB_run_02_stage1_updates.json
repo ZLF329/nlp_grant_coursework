@@ -1,0 +1,695 @@
+[
+  {
+    "section_name": "Scientific Abstract",
+    "findings": [
+      {
+        "sub_id": "pr.3",
+        "good_evidence_ids": [
+          "secsa__001_b",
+          "secsa__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Specifies a 24-month timeline, n=270 sample size, and multicentre design, indicating clear feasibility and scope alignment."
+      },
+      {
+        "sub_id": "pr.4",
+        "good_evidence_ids": [
+          "secsa__001_b",
+          "secsa__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Details prospective methods, index/reference tests, ROC analysis, and independent adjudication, demonstrating strong methodological rigor."
+      },
+      {
+        "sub_id": "pr.5",
+        "good_evidence_ids": [
+          "secsa__001_a",
+          "secsa__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Highlights reducing diagnostic error, unnecessary antibiotics, and parental stress, with plans to update international guidelines."
+      },
+      {
+        "sub_id": "pr.6",
+        "good_evidence_ids": [
+          "secsa__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Scientific Abstract: Mentions an end-of-study lay report for participating families, indicating a commitment to public engagement."
+      }
+    ],
+    "resolved_signals": [
+      "pr.3",
+      "pr.4",
+      "pr.5",
+      "pr.6"
+    ],
+    "missing_signals_after": [
+      "g.1",
+      "g.2",
+      "g.3",
+      "g.4",
+      "g.5",
+      "g.6",
+      "pr.1",
+      "pr.2",
+      "pr.7",
+      "pr.8",
+      "pr.9",
+      "td.1",
+      "td.2",
+      "td.3",
+      "ss.1",
+      "ss.2",
+      "ss.3",
+      "ss.4",
+      "wp.1",
+      "wp.2",
+      "wp.3",
+      "wp.4",
+      "wp.5",
+      "wp.6"
+    ]
+  },
+  {
+    "section_name": "Plain English Summary of Research",
+    "findings": [
+      {
+        "sub_id": "pr.1",
+        "good_evidence_ids": [
+          "secpesor__001_a",
+          "secpesor__001_b",
+          "secpesor__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Clearly outlines aims, background, methods, and impact in accessible language, supporting pr.1."
+      },
+      {
+        "sub_id": "pr.5",
+        "good_evidence_ids": [
+          "secpesor__001_a",
+          "secpesor__001_b"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Highlights benefits like improved diagnosis accuracy, reduced unnecessary antibiotics, and better patient care, supporting pr.5."
+      },
+      {
+        "sub_id": "pr.6",
+        "good_evidence_ids": [
+          "secpesor__001_b",
+          "secpesor__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Describes parent involvement in a steering group and sharing results via leaflets, supporting pr.6."
+      },
+      {
+        "sub_id": "pr.8",
+        "good_evidence_ids": [
+          "secpesor__001_b"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English Summary of Research: Mentions a previous small study finding a relationship between the marker and gut disease, supporting pr.8."
+      }
+    ],
+    "resolved_signals": [
+      "pr.1",
+      "pr.5",
+      "pr.6",
+      "pr.8"
+    ],
+    "missing_signals_after": [
+      "g.1",
+      "g.2",
+      "g.3",
+      "g.4",
+      "g.5",
+      "g.6",
+      "pr.2",
+      "pr.7",
+      "pr.9",
+      "td.1",
+      "td.2",
+      "td.3",
+      "ss.1",
+      "ss.2",
+      "ss.3",
+      "ss.4",
+      "wp.1",
+      "wp.2",
+      "wp.3",
+      "wp.4",
+      "wp.5",
+      "wp.6"
+    ]
+  },
+  {
+    "section_name": "Changes from Previous Stage",
+    "findings": [
+      {
+        "sub_id": "pr.1",
+        "good_evidence_ids": [
+          "seccfps__001_q"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Changes from Previous Stage: Applicants explicitly edited the Plain English Summary to remove overgeneralization and replace jargon ('dissemination') with plain English alternatives, directly addressing assessor feedback"
+      },
+      {
+        "sub_id": "pr.3",
+        "good_evidence_ids": [
+          "seccfps__001_d",
+          "seccfps__001_l"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Changes from Previous Stage: Applicants simplified complex aims/objectives and provided a detailed recruitment feasibility calculation with a Gantt chart, strengthening the scope and feasibility assessment."
+      },
+      {
+        "sub_id": "pr.4",
+        "good_evidence_ids": [
+          "seccfps__001_e",
+          "seccfps__001_f",
+          "seccfps__001_g"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Changes from Previous Stage: Applicants clarified sensitivity/specificity thresholds, detailed sample size calculations with attrition assumptions, and specified statistical analysis plans (ROC, regression) for each obje"
+      },
+      {
+        "sub_id": "pr.6",
+        "good_evidence_ids": [
+          "seccfps__001_h",
+          "seccfps__001_i",
+          "seccfps__001_j"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Changes from Previous Stage: Applicants added a PPI Co-Applicant with lived experience, detailed their role in the Steering Group, and outlined a payment policy and training plan, significantly strengthening patient enga"
+      },
+      {
+        "sub_id": "pr.9",
+        "good_evidence_ids": [
+          "seccfps__001_m",
+          "seccfps__001_n",
+          "seccfps__001_o"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Changes from Previous Stage: Applicants detailed inclusive recruitment strategies including NHS interpretation services, ring-fenced budget for interpreters, deferred consent models, and layered consent processes to supp"
+      },
+      {
+        "sub_id": "wp.1",
+        "good_evidence_ids": [
+          "seccfps__001_i",
+          "seccfps__001_j"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Changes from Previous Stage: The inclusion of a PPI Co-Applicant with specific lived experience and defined responsibilities in study design and document review demonstrates strong integration of lived experience."
+      },
+      {
+        "sub_id": "wp.4",
+        "good_evidence_ids": [
+          "seccfps__001_n",
+          "seccfps__001_o"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Changes from Previous Stage: Applicants explicitly address barriers for ethnic minority groups (language, socioeconomic) and propose mitigating actions like interpretation services and deferred consent to ensure represen"
+      },
+      {
+        "sub_id": "wp.6",
+        "good_evidence_ids": [
+          "seccfps__001_k",
+          "seccfps__001_n"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Changes from Previous Stage: Applicants provide a costed plan for PPI (total £1080) and ring-fenced funds for interpretation services (£600), ensuring resources are allocated for inclusion activities."
+      }
+    ],
+    "resolved_signals": [
+      "pr.1",
+      "pr.3",
+      "pr.4",
+      "pr.6",
+      "pr.9",
+      "wp.1",
+      "wp.4",
+      "wp.6"
+    ],
+    "missing_signals_after": [
+      "g.1",
+      "g.2",
+      "g.3",
+      "g.4",
+      "g.5",
+      "g.6",
+      "pr.2",
+      "pr.7",
+      "td.1",
+      "td.2",
+      "td.3",
+      "ss.1",
+      "ss.2",
+      "ss.3",
+      "ss.4",
+      "wp.2",
+      "wp.3",
+      "wp.5"
+    ]
+  },
+  {
+    "section_name": "Detailed Research Plan",
+    "findings": [
+      {
+        "sub_id": "g.3",
+        "good_evidence_ids": [
+          "secdrp__001_h",
+          "secdrp__001_z",
+          "secdrp__001_{"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Describes a published pilot study (secdrp__001_h) and lists team expertise in NEC, statistics, and cardiac surgery (secdrp__001_z, secdrp__001_{, secdrp__001_|), demonstrating relevant prior exper"
+      },
+      {
+        "sub_id": "g.4",
+        "good_evidence_ids": [
+          "secdrp__001_h",
+          "secdrp__001_s",
+          "secdrp__001_t"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Cites a published pilot study (secdrp__001_h) and outlines specific dissemination outputs including conferences, peer-reviewed journals, and guideline updates (secdrp__001_s, secdrp__001_t, secdrp"
+      },
+      {
+        "sub_id": "g.5",
+        "good_evidence_ids": [
+          "secdrp__001_z",
+          "secdrp__001_{",
+          "secdrp__001_|"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Highlights the applicant's role as lead investigator in a pilot study (secdrp__001_z) and lists senior collaborators with leadership roles in national committees (secdrp__001_{, secdrp__001_|), in"
+      },
+      {
+        "sub_id": "g.6",
+        "good_evidence_ids": [
+          "secdrp__001_z",
+          "secdrp__001_|"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Identifies the lead applicant as a Consultant in Paediatric Cardiac Intensive Care (secdrp__001_z) and includes consultant collaborators (secdrp__001_|), confirming a practitioner-academic career "
+      },
+      {
+        "sub_id": "pr.2",
+        "good_evidence_ids": [
+          "secdrp__001_e",
+          "secdrp__001_f",
+          "secdrp__001_g"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Provides a comprehensive review of existing evidence on NEC, calprotectin, and diagnostic limitations with numerous citations (secdrp__001_e-g), and identifies a specific knowledge gap regarding c"
+      },
+      {
+        "sub_id": "pr.3",
+        "good_evidence_ids": [
+          "secdrp__001_j",
+          "secdrp__001_q",
+          "secdrp__001_~"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Defines clear aims and objectives (secdrp__001_j), justifies a sample size of 300 with statistical precision (secdrp__001_q), and provides a 24-month Gantt chart (secdrp__001_~), demonstrating app"
+      },
+      {
+        "sub_id": "pr.4",
+        "good_evidence_ids": [
+          "secdrp__001_j",
+          "secdrp__001_k",
+          "secdrp__001_l"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Details a prospective multicentre cohort design (secdrp__001_j), specific inclusion/exclusion criteria (secdrp__001_k), primary/secondary outcomes (secdrp__001_l), data collection methods (secdrp_"
+      },
+      {
+        "sub_id": "pr.5",
+        "good_evidence_ids": [
+          "secdrp__001_d",
+          "secdrp__001_s",
+          "secdrp__001_t"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Explicitly links accurate diagnosis to reduced hospital stays, unnecessary antibiotics, and parental stress (secdrp__001_d), and outlines anticipated impacts on patient care and international guid"
+      },
+      {
+        "sub_id": "pr.6",
+        "good_evidence_ids": [
+          "secdrp__001_l",
+          "secdrp__001_m",
+          "secdrp__001_u"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Describes a deferred consent process (secdrp__001_l, secdrp__001_m), plans to share results with families (secdrp__001_u), and includes a PPI Co-Applicant in the team (secdrp__001_z), demonstratin"
+      },
+      {
+        "sub_id": "pr.8",
+        "good_evidence_ids": [
+          "secdrp__001_h",
+          "secdrp__001_z"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: References a published pilot study with specific results (secdrp__001_h) and notes the applicant was the lead investigator (secdrp__001_z), providing evidence of prior successful research."
+      },
+      {
+        "sub_id": "pr.9",
+        "good_evidence_ids": [
+          "secdrp__001_k",
+          "secdrp__001_l",
+          "secdrp__001_m"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Specifies inclusion criteria for infants up to 3 months (secdrp__001_k) and outlines a deferred consent model to minimize burden on parents during critical care (secdrp__001_l, secdrp__001_m), sup"
+      },
+      {
+        "sub_id": "ss.1",
+        "good_evidence_ids": [
+          "secdrp__001_j",
+          "secdrp__001_z",
+          "secdrp__001_{"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Lists four specialist cardiac centres (secdrp__001_j) and highlights the track record of the lead applicant and collaborators in national studies and committees (secdrp__001_z, secdrp__001_{, secd"
+      },
+      {
+        "sub_id": "ss.2",
+        "good_evidence_ids": [
+          "secdrp__001_x",
+          "secdrp__001_z"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Describes joint lead applicants with specific responsibilities for supervision, training, and site monitoring (secdrp__001_x), and notes the mentorship of an early career researcher by an experien"
+      },
+      {
+        "sub_id": "ss.3",
+        "good_evidence_ids": [
+          "secdrp__001_j",
+          "secdrp__001_l",
+          "secdrp__001_m"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Identifies specialist hospitals with clinical laboratories for ELISA testing (secdrp__001_j, secdrp__001_m) and REDCAP for data collection (secdrp__001_l), demonstrating appropriate infrastructure"
+      },
+      {
+        "sub_id": "ss.4",
+        "good_evidence_ids": [
+          "secdrp__001_x",
+          "secdrp__001_z"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Mentions a PPI Co-Applicant and a Cardiac Parent Advisory Group (secdrp__001_x, secdrp__001_z), indicating a commitment to inclusive and supportive research culture."
+      },
+      {
+        "sub_id": "wp.1",
+        "good_evidence_ids": [
+          "secdrp__001_x",
+          "secdrp__001_z"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Includes a PPI Co-Applicant who collaborated on the pilot study design and will co-chair meetings (secdrp__001_x, secdrp__001_z), demonstrating integration of lived experience."
+      },
+      {
+        "sub_id": "wp.3",
+        "good_evidence_ids": [
+          "secdrp__001_s",
+          "secdrp__001_t",
+          "secdrp__001_u"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Outlines specific dissemination plans including conferences, journals, and plain language summaries for families (secdrp__001_s, secdrp__001_t, secdrp__001_u), maximizing public and patient benefi"
+      },
+      {
+        "sub_id": "wp.4",
+        "good_evidence_ids": [
+          "secdrp__001_k",
+          "secdrp__001_l",
+          "secdrp__001_m"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Focuses on infants with cardiac defects, a vulnerable group, and uses deferred consent to accommodate the stress of parents (secdrp__001_k, secdrp__001_l, secdrp__001_m), addressing representation"
+      },
+      {
+        "sub_id": "wp.5",
+        "good_evidence_ids": [
+          "secdrp__001_x",
+          "secdrp__001_u"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Includes PPI in the Steering Group (secdrp__001_x) and plans to evaluate communication methods for dissemination (secdrp__001_u), showing inclusivity across the research lifecycle."
+      },
+      {
+        "sub_id": "wp.6",
+        "good_evidence_ids": [
+          "secdrp__001_x",
+          "secdrp__001_z"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Detailed Research Plan: Assigns specific roles and time for PPI engagement (secdrp__001_x) and includes a PPI Co-Applicant (secdrp__001_z), indicating a resourced plan for inclusion."
+      }
+    ],
+    "resolved_signals": [
+      "g.3",
+      "g.4",
+      "g.5",
+      "g.6",
+      "pr.2",
+      "pr.3",
+      "pr.4",
+      "pr.5",
+      "pr.6",
+      "pr.8",
+      "pr.9",
+      "ss.1",
+      "ss.2",
+      "ss.3",
+      "ss.4",
+      "wp.1",
+      "wp.3",
+      "wp.4",
+      "wp.5",
+      "wp.6"
+    ],
+    "missing_signals_after": [
+      "g.1",
+      "g.2",
+      "pr.7",
+      "td.1",
+      "td.2",
+      "td.3",
+      "wp.2"
+    ]
+  },
+  {
+    "section_name": "Patient & Public Involvement",
+    "findings": [
+      {
+        "sub_id": "wp.1",
+        "good_evidence_ids": [
+          "secppi__001_a",
+          "secppi__001_b",
+          "secppi__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Patient & Public Involvement: Details focus groups influencing study design (e.g., feeding duration, terminology) and defines PPI roles in SSG meetings and document review, strongly supporting integration of lived experi"
+      },
+      {
+        "sub_id": "wp.2",
+        "good_evidence_ids": [
+          "secppi__001_d"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Patient & Public Involvement: Explicitly states the goal to ensure the PPI Team is representative of diverse ethnicity and socioeconomic classes, supporting diversity and inclusivity of the research team."
+      },
+      {
+        "sub_id": "wp.6",
+        "good_evidence_ids": [
+          "secppi__001_c",
+          "secppi__001_d"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Patient & Public Involvement: Specifies financial support including honorary contracts, invoicing for the Co-Applicant, and £60 vouchers for advisory group members, confirming a costed and resourced plan for inclusion."
+      },
+      {
+        "sub_id": "pr.6",
+        "good_evidence_ids": [
+          "secppi__001_a",
+          "secppi__001_b",
+          "secppi__001_c"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Patient & Public Involvement: Describes active engagement through focus groups, a PPI Co-Applicant, and an Advisory Group attending Steering Group meetings, demonstrating robust engagement with people and communities."
+      },
+      {
+        "sub_id": "ss.4",
+        "good_evidence_ids": [
+          "secppi__001_d"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Patient & Public Involvement: Mentions support from a PPI Manager and INVOLVE, alongside a commitment to diversity in the PPI team, indicating a supportive research culture."
+      }
+    ],
+    "resolved_signals": [
+      "wp.1",
+      "wp.2",
+      "wp.6",
+      "pr.6",
+      "ss.4"
+    ],
+    "missing_signals_after": [
+      "g.1",
+      "g.2",
+      "pr.7",
+      "td.1",
+      "td.2",
+      "td.3"
+    ]
+  },
+  {
+    "section_name": "Applicant CV",
+    "findings": [
+      {
+        "sub_id": "g.3",
+        "good_evidence_ids": [
+          "secac__001_a",
+          "secac__001_b"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Applicant CV: Lists PhD, MSc, and BSc qualifications alongside specific research grants and publications in paediatric nutrition, confirming relevant training and experience."
+      },
+      {
+        "sub_id": "g.4",
+        "good_evidence_ids": [
+          "secac__001_a",
+          "secac__001_b"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Applicant CV: Details multiple peer-reviewed publications (2014-2024) and secured grants (e.g., Nestle Health Science), demonstrating a strong track record of research outputs."
+      },
+      {
+        "sub_id": "g.5",
+        "good_evidence_ids": [
+          "secac__001_b"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Applicant CV: Shows progression to 'Principal Investigator' and 'Joint Lead' roles on recent grants, indicating increasing research leadership responsibility."
+      },
+      {
+        "sub_id": "g.6",
+        "good_evidence_ids": [
+          "secac__001_a",
+          "secac__001_b"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Applicant CV: Identifies the applicant as a 'Paediatric Dietitian' at a major NHS Trust with a PhD and clinical research grants, confirming a practitioner-academic career path."
+      }
+    ],
+    "resolved_signals": [
+      "g.3",
+      "g.4",
+      "g.5",
+      "g.6"
+    ],
+    "missing_signals_after": [
+      "g.1",
+      "g.2",
+      "pr.7",
+      "td.1",
+      "td.2",
+      "td.3"
+    ]
+  },
+  {
+    "section_name": "SUMMARY BUDGET",
+    "findings": [
+      {
+        "sub_id": "pr.7",
+        "good_evidence_ids": [
+          "secsb__001_g",
+          "secsb__001_h",
+          "secsb__001_i"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "SUMMARY BUDGET: Provides detailed justification linking staff FTE to specific tasks (e.g., data collection, statistical analysis), consumables to sample numbers (600 samples), and PPI costs to meeting frequency, strongly"
+      },
+      {
+        "sub_id": "wp.6",
+        "good_evidence_ids": [
+          "secsb__001_f",
+          "secsb__001_h",
+          "secsb__001_g"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "SUMMARY BUDGET: Explicitly budgets for PPI co-applicants, SSG meetings, childcare, and interpreter services, confirming a costed and resourced plan for research inclusion (wp.6)."
+      },
+      {
+        "sub_id": "ss.3",
+        "good_evidence_ids": [
+          "secsb__001_e",
+          "secsb__001_i"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "SUMMARY BUDGET: Allocates funds for multisite REDCAP data collection and Calprotectin analysis consumables, demonstrating appropriate infrastructure and resource support (ss.3)."
+      }
+    ],
+    "resolved_signals": [
+      "pr.7",
+      "wp.6",
+      "ss.3"
+    ],
+    "missing_signals_after": [
+      "g.1",
+      "g.2",
+      "td.1",
+      "td.2",
+      "td.3"
+    ]
+  },
+  {
+    "section_name": "Application Context",
+    "findings": [],
+    "resolved_signals": [],
+    "missing_signals_after": [
+      "g.1",
+      "g.2",
+      "td.1",
+      "td.2",
+      "td.3"
+    ]
+  },
+  {
+    "section_name": "Plain English NLP Analysis",
+    "findings": [
+      {
+        "sub_id": "pr.1",
+        "good_evidence_ids": [
+          "secpena__001"
+        ],
+        "bad_evidence_ids": [],
+        "implication": "Plain English NLP Analysis: NLP metrics show Flesch-Kincaid grade 7.4, 0% long sentences, and low jargon density (1.56%), strongly supporting readability and plain English quality."
+      }
+    ],
+    "resolved_signals": [
+      "pr.1"
+    ],
+    "missing_signals_after": [
+      "g.1",
+      "g.2",
+      "td.1",
+      "td.2",
+      "td.3"
+    ]
+  },
+  {
+    "section_name": "Application Form Analysis",
+    "findings": [],
+    "resolved_signals": [],
+    "missing_signals_after": [
+      "g.1",
+      "g.2",
+      "td.1",
+      "td.2",
+      "td.3"
+    ]
+  }
+]

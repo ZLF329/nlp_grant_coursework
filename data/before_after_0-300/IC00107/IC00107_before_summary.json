@@ -1,0 +1,922 @@
+{
+  "doc_id": "2f7fd4c19200_IC00107_before",
+  "run_info": {
+    "ran_at_utc": "2026-04-21T13:24:17.561855Z",
+    "model": "qwen3.5:27b",
+    "judge_model": null
+  },
+  "sections": [
+    {
+      "section_id": "application_form",
+      "section_name": "Application Form",
+      "average_score_10": 0,
+      "sub_criteria": [
+        {
+          "sub_id": "af.1",
+          "name": "Use of Formatting, Headings, and Subheadings",
+          "group_name": null,
+          "score_10": 0,
+          "pros": "No evidence available to assess formatting, headings, or emphasis.",
+          "drawbacks": "The application text contains no retrieved chunks, making it impossible to verify the presence of headings, subheadings, bold text, or structural hierarchy.",
+          "signals": [
+            {
+              "sid": "af.1.a",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "af.1.b",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "af.1.c",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "af.1.d",
+              "score_0to5": 0,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "af.2",
+          "name": "Limited Duplication and Repetition",
+          "group_name": null,
+          "score_10": 0,
+          "pros": "No evidence available to assess duplication or repetition.",
+          "drawbacks": "The application text contains no retrieved chunks, preventing any analysis of semantic similarity, repeated phrases, or content novelty.",
+          "signals": [
+            {
+              "sid": "af.2.a",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "af.2.b",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "af.2.c",
+              "score_0to5": 0,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "af.3",
+          "name": "Logical Flow and Coherence Across Sections",
+          "group_name": null,
+          "score_10": 0,
+          "pros": "No evidence available to assess logical flow or coherence.",
+          "drawbacks": "The application text contains no retrieved chunks, making it impossible to evaluate semantic coherence, linking of objectives, transitional phrases, or narrative threads.",
+          "signals": [
+            {
+              "sid": "af.3.a",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "af.3.b",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "af.3.c",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "af.3.d",
+              "score_0to5": 0,
+              "note": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section_id": "general",
+      "section_name": "General",
+      "average_score_10": 0,
+      "sub_criteria": [
+        {
+          "sub_id": "g.1",
+          "name": "Common Characteristics of Good Applications",
+          "group_name": "Common Characteristics of Good Applications",
+          "score_10": 0,
+          "pros": "No evidence found in the application text.",
+          "drawbacks": "The application text is empty; no research vision, distinctive ideas, training plan, or mentorship details are provided.",
+          "signals": [
+            {
+              "sid": "g.1.a",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "g.1.b",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "g.1.c",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "g.1.d",
+              "score_0to5": 0,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "g.2",
+          "name": "Tell Us Why You Need This Award",
+          "group_name": "Tell Us Why You Need This Award",
+          "score_10": 0,
+          "pros": "No evidence found in the application text.",
+          "drawbacks": "The application text is empty; no justification for the award, career impact, skill development, or partnership building is provided.",
+          "signals": [
+            {
+              "sid": "g.2.a",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "g.2.b",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "g.2.c",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "g.2.d",
+              "score_0to5": 0,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "g.3",
+          "name": "Relevant Research Experience and Training",
+          "group_name": "Applicant",
+          "score_10": 0,
+          "pros": "No evidence found in the application text.",
+          "drawbacks": "The application text is empty; no prior research experience, formal training, or alignment of skills is mentioned.",
+          "signals": [
+            {
+              "sid": "g.3.a",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "g.3.b",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "g.3.c",
+              "score_0to5": 0,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "g.4",
+          "name": "Impactful Research Outputs and Outcomes",
+          "group_name": "Applicant",
+          "score_10": 0,
+          "pros": "No evidence found in the application text.",
+          "drawbacks": "The application text is empty; no publications, citation metrics, awards, or descriptions of practical impact are provided.",
+          "signals": [
+            {
+              "sid": "g.4.a",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "g.4.b",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "g.4.c",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "g.4.d",
+              "score_0to5": 0,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "g.5",
+          "name": "Trajectory Towards Research Leadership",
+          "group_name": "Applicant",
+          "score_10": 0,
+          "pros": "No evidence found in the application text.",
+          "drawbacks": "The application text is empty; no career ambitions, evidence of increasing responsibility, leadership programs, or peer recognition are mentioned.",
+          "signals": [
+            {
+              "sid": "g.5.a",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "g.5.b",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "g.5.c",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "g.5.d",
+              "score_0to5": 0,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "g.6",
+          "name": "Commitment to Practitioner-Academic Career (if applicable)",
+          "group_name": "Applicant",
+          "score_10": 0,
+          "pros": "No evidence found in the application text.",
+          "drawbacks": "The application text is empty; no statements regarding practitioner-academic career intentions, clinical involvement, balancing practice, or professional networks are provided.",
+          "signals": [
+            {
+              "sid": "g.6.a",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "g.6.b",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "g.6.c",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "g.6.d",
+              "score_0to5": 0,
+              "note": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section_id": "proposed_research",
+      "section_name": "Proposed Research",
+      "average_score_10": 0,
+      "sub_criteria": [
+        {
+          "sub_id": "pr.1",
+          "name": "Quality of the Plain English Summary",
+          "group_name": null,
+          "score_10": 0,
+          "pros": "No evidence available to assess the quality of the Plain English Summary.",
+          "drawbacks": "The application text is empty ('no retrieved chunks'), so no Plain English Summary exists to evaluate for readability, jargon, problem statement, alignment, coherence, or societal relevance.",
+          "signals": [
+            {
+              "sid": "pr.1.a",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "pr.1.b",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "pr.1.c",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "pr.1.d",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "pr.1.e",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "pr.1.f",
+              "score_0to5": 0,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "pr.2",
+          "name": "Evidence Review Quality & Relevance",
+          "group_name": null,
+          "score_10": 0,
+          "pros": "No evidence available to assess the evidence review.",
+          "drawbacks": "The application text is empty, preventing any assessment of reference quality, critical analysis, knowledge gaps, or logical flow.",
+          "signals": [
+            {
+              "sid": "pr.2.a",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "pr.2.b",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "pr.2.c",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "pr.2.d",
+              "score_0to5": 0,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "pr.3",
+          "name": "Research Scope & Award Appropriateness",
+          "group_name": null,
+          "score_10": 0,
+          "pros": "No evidence available to assess research scope.",
+          "drawbacks": "The application text is empty, so there is no information on aims, feasibility, or proportion of work relative to the award.",
+          "signals": [
+            {
+              "sid": "pr.3.a",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "pr.3.b",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "pr.3.c",
+              "score_0to5": 0,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "pr.4",
+          "name": "Research Design & Methodological Rigor",
+          "group_name": null,
+          "score_10": 0,
+          "pros": "No evidence available to assess research design.",
+          "drawbacks": "The application text is empty, meaning no methods, alignment, controls, or structured sections can be evaluated.",
+          "signals": [
+            {
+              "sid": "pr.4.a",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "pr.4.b",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "pr.4.c",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "pr.4.d",
+              "score_0to5": 0,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "pr.5",
+          "name": "Potential Impact on Patients, Public, and Health Services",
+          "group_name": null,
+          "score_10": 0,
+          "pros": "No evidence available to assess potential impact.",
+          "drawbacks": "The application text is empty, so no patient benefits, alignment with priorities, or expected outcomes are described.",
+          "signals": [
+            {
+              "sid": "pr.5.a",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "pr.5.b",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "pr.5.c",
+              "score_0to5": 0,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "pr.6",
+          "name": "Engagement with People & Communities",
+          "group_name": null,
+          "score_10": 0,
+          "pros": "No evidence available to assess engagement.",
+          "drawbacks": "The application text is empty, providing no evidence of co-design, ethical considerations, or community involvement.",
+          "signals": [
+            {
+              "sid": "pr.6.a",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "pr.6.b",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "pr.6.c",
+              "score_0to5": 0,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "pr.7",
+          "name": "Justification of Resources & Award Costs",
+          "group_name": null,
+          "score_10": 0,
+          "pros": "No evidence available to assess resource justification.",
+          "drawbacks": "The application text is empty, so no links between tasks and resources, budget proportionality, or funding rationale exist.",
+          "signals": [
+            {
+              "sid": "pr.7.a",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "pr.7.b",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "pr.7.c",
+              "score_0to5": 0,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "pr.8",
+          "name": "Quality of Previous Research (if applicable)",
+          "group_name": null,
+          "score_10": 0,
+          "pros": "No evidence available to assess previous research quality.",
+          "drawbacks": "The application text is empty, preventing assessment of prior publications, successful projects, or skills alignment.",
+          "signals": [
+            {
+              "sid": "pr.8.a",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "pr.8.b",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "pr.8.c",
+              "score_0to5": 0,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "pr.9",
+          "name": "Inclusive Research Design",
+          "group_name": null,
+          "score_10": 0,
+          "pros": "No evidence available to assess inclusive design.",
+          "drawbacks": "The application text is empty, so no strategies for diverse recruitment, adaptive methods, or equity indicators are present.",
+          "signals": [
+            {
+              "sid": "pr.9.a",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "pr.9.b",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "pr.9.c",
+              "score_0to5": 0,
+              "note": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section_id": "sites_support",
+      "section_name": "Sites & Support",
+      "average_score_10": 0,
+      "sub_criteria": [
+        {
+          "sub_id": "ss.1",
+          "name": "Track Record of the Contracting Organisation (and Partners)",
+          "group_name": null,
+          "score_10": 0,
+          "pros": "No evidence provided in the application text.",
+          "drawbacks": "The application text contains no retrieved chunks, resulting in a complete absence of evidence regarding the contracting organisation's track record, publications, funding history, or partnerships.",
+          "signals": [
+            {
+              "sid": "ss.1.a",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "ss.1.b",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "ss.1.c",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "ss.1.d",
+              "score_0to5": 0,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "ss.2",
+          "name": "Suitability of Supervisory Support and Mentorship Arrangements",
+          "group_name": null,
+          "score_10": 0,
+          "pros": "No evidence provided in the application text.",
+          "drawbacks": "The application text contains no retrieved chunks, resulting in a complete absence of evidence regarding supervisory roles, mentorship plans, supervisor expertise, or structured supervision frameworks.",
+          "signals": [
+            {
+              "sid": "ss.2.a",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "ss.2.b",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "ss.2.c",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "ss.2.d",
+              "score_0to5": 0,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "ss.3",
+          "name": "Appropriateness of the Contracting Organisation to Support the Award and Career Aspirations",
+          "group_name": null,
+          "score_10": 0,
+          "pros": "No evidence provided in the application text.",
+          "drawbacks": "The application text contains no retrieved chunks, resulting in a complete absence of evidence regarding facilities, infrastructure, organisational alignment, or tailored support for the award.",
+          "signals": [
+            {
+              "sid": "ss.3.a",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "ss.3.b",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "ss.3.c",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "ss.3.d",
+              "score_0to5": 0,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "ss.4",
+          "name": "Commitment to Inclusive and Supportive Research Culture",
+          "group_name": null,
+          "score_10": 0,
+          "pros": "No evidence provided in the application text.",
+          "drawbacks": "The application text contains no retrieved chunks, resulting in a complete absence of evidence regarding diversity policies, inclusive initiatives, research integrity adherence, or supportive culture statements.",
+          "signals": [
+            {
+              "sid": "ss.4.a",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "ss.4.b",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "ss.4.c",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "ss.4.d",
+              "score_0to5": 0,
+              "note": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section_id": "training_development",
+      "section_name": "Training & Development",
+      "average_score_10": 0,
+      "sub_criteria": [
+        {
+          "sub_id": "td.1",
+          "name": "Quality and Relevance of Proposed Training",
+          "group_name": null,
+          "score_10": 0,
+          "pros": "No evidence found in the application text to support any signals for this subcriterion.",
+          "drawbacks": "The application text contains no retrieved chunks, resulting in a complete absence of information regarding the quality, relevance, or structure of the proposed training plan.",
+          "signals": [
+            {
+              "sid": "td.1.a",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "td.1.b",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "td.1.c",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "td.1.d",
+              "score_0to5": 0,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "td.2",
+          "name": "Suitability to Personal Development and Project Needs",
+          "group_name": null,
+          "score_10": 0,
+          "pros": "No evidence found in the application text to support any signals for this subcriterion.",
+          "drawbacks": "The application text contains no retrieved chunks, resulting in a complete absence of information regarding the suitability of training for personal development or project needs.",
+          "signals": [
+            {
+              "sid": "td.2.a",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "td.2.b",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "td.2.c",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "td.2.d",
+              "score_0to5": 0,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "td.3",
+          "name": "Support for Career Aspirations",
+          "group_name": null,
+          "score_10": 0,
+          "pros": "No evidence found in the application text to support any signals for this subcriterion.",
+          "drawbacks": "The application text contains no retrieved chunks, resulting in a complete absence of information regarding how the training plan supports career aspirations.",
+          "signals": [
+            {
+              "sid": "td.3.a",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "td.3.b",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "td.3.c",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "td.3.d",
+              "score_0to5": 0,
+              "note": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section_id": "wpcc",
+      "section_name": "Working with People & Communities",
+      "average_score_10": 0,
+      "sub_criteria": [
+        {
+          "sub_id": "wp.1",
+          "name": "Integration of Lived Experience in Research Design",
+          "group_name": null,
+          "score_10": 0,
+          "pros": "No evidence found in the application text.",
+          "drawbacks": "The application text is empty; no mention of consultation, co-design, or advisory groups.",
+          "signals": [
+            {
+              "sid": "wp.1.a",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "wp.1.b",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "wp.1.c",
+              "score_0to5": 0,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "wp.2",
+          "name": "Diversity and Inclusivity of the Research Team",
+          "group_name": null,
+          "score_10": 0,
+          "pros": "No evidence found in the application text.",
+          "drawbacks": "The application text is empty; no description of team composition or inclusion strategies.",
+          "signals": [
+            {
+              "sid": "wp.2.a",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "wp.2.b",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "wp.2.c",
+              "score_0to5": 0,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "wp.3",
+          "name": "Commitment to Maximising Public and Patient Benefit",
+          "group_name": null,
+          "score_10": 0,
+          "pros": "No evidence found in the application text.",
+          "drawbacks": "The application text is empty; no dissemination plans or links to public benefit.",
+          "signals": [
+            {
+              "sid": "wp.3.a",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "wp.3.b",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "wp.3.c",
+              "score_0to5": 0,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "wp.4",
+          "name": "Representation of Seldom Heard or Underserved Groups",
+          "group_name": null,
+          "score_10": 0,
+          "pros": "No evidence found in the application text.",
+          "drawbacks": "The application text is empty; no mention of underserved groups or recruitment strategies.",
+          "signals": [
+            {
+              "sid": "wp.4.a",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "wp.4.b",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "wp.4.c",
+              "score_0to5": 0,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "wp.5",
+          "name": "Inclusivity Across the Research Lifecycle",
+          "group_name": null,
+          "score_10": 0,
+          "pros": "No evidence found in the application text.",
+          "drawbacks": "The application text is empty; no evidence of inclusivity across the research lifecycle.",
+          "signals": [
+            {
+              "sid": "wp.5.a",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "wp.5.b",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "wp.5.c",
+              "score_0to5": 0,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "wp.6",
+          "name": "Costed and Resourced Plan for Research Inclusion",
+          "group_name": null,
+          "score_10": 0,
+          "pros": "No evidence found in the application text.",
+          "drawbacks": "The application text is empty; no budget lines or resources allocated for inclusion.",
+          "signals": [
+            {
+              "sid": "wp.6.a",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "wp.6.b",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "wp.6.c",
+              "score_0to5": 0,
+              "note": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,380 @@
+{
+  "processed_sections": [
+    "Applicant CV",
+    "Applicant Research Background",
+    "Plain English Summary of Research",
+    "Scientific Abstract",
+    "Detailed Research Plan",
+    "Patient & Public Involvement",
+    "Training & Development and Research Support",
+    "SUMMARY BUDGET",
+    "Application Context",
+    "Plain English NLP Analysis",
+    "Application Form Analysis"
+  ],
+  "subcriteria_beliefs": {
+    "g.3": {
+      "good_evidence_ids": [
+        "secac__001_b",
+        "secac__001_c",
+        "secac__001_d",
+        "secarb__001_a",
+        "secarb__001_b"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Applicant CV: CV details extensive research experience including PhD in Pharmacokinetics, multiple grants as Chief Investigator, and specific techniques like population PK modelling, strongly supporting relevant experien",
+        "Applicant Research Background: Details extensive experience in population pharmacokinetic modelling (PPM), NONMEM, R, and leading clinical trials, providing strong evidence of relevant research experience and training."
+      ]
+    },
+    "g.4": {
+      "good_evidence_ids": [
+        "secac__001_f",
+        "secac__001_g",
+        "secac__001_h",
+        "secarb__001_b",
+        "secarb__001_c"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Applicant CV: CV lists a substantial publication record (20+ papers) in high-impact journals and details multiple secured grants, demonstrating impactful research outputs.",
+        "Applicant Research Background: Highlights >70 publications, REF 2021 outstanding evaluation, and guideline changes, demonstrating high-quality impactful research outputs and outcomes."
+      ]
+    },
+    "g.5": {
+      "good_evidence_ids": [
+        "secac__001_b",
+        "secac__001_c",
+        "secac__001_e",
+        "secarb__001_c",
+        "secarb__001_d",
+        "secarb__001_e",
+        "sectdars__001_a",
+        "sectdars__001_c",
+        "sectdars__001_e"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Applicant CV: CV shows increasing responsibility from Research Training Fellow to Reader and Honorary Consultant, with roles as Primary Supervisor for doctoral students and Chief Investigator on major grants.",
+        "Applicant Research Background: Shows increasing leadership through supervising 7 doctoral students, leading research groups, and serving on national guideline writing groups and advisory panels.",
+        "Training & Development and Research Support: Outlines a clear trajectory towards international research leadership through targeted training, mentorship, and strategic collaborations with international bodies."
+      ]
+    },
+    "g.6": {
+      "good_evidence_ids": [
+        "secac__001_b",
+        "secac__001_c",
+        "secarb__001_a",
+        "secarb__001_c",
+        "secarb__001_d",
+        "sectdars__001_b",
+        "sectdars__001_c"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Applicant CV: CV confirms dual roles as Consultant Pharmacist and Academic (Reader/Senior Lecturer) with WTE split between clinical and research, evidencing a practitioner-academic career.",
+        "Applicant Research Background: Confirms active professional registration as a Pharmacist and dual role as a clinical academic leading research groups, strongly supporting a practitioner-academic career commitment.",
+        "Training & Development and Research Support: Confirms commitment to practitioner-academic career by maintaining clinical practice (ward rounds, clinics) alongside research and engaging a practice development mentor."
+      ]
+    },
+    "pr.8": {
+      "good_evidence_ids": [
+        "secac__001_c",
+        "secac__001_d",
+        "secac__001_e",
+        "secarb__001_a",
+        "secarb__001_b",
+        "secarb__001_c"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Applicant CV: CV provides evidence of prior successful projects with specific grant amounts, durations, and outputs (DOIs), demonstrating a strong track record of research quality.",
+        "Applicant Research Background: Provides detailed evidence of prior successful projects including specific study names, roles (CI/PI), and outcomes like guideline changes, confirming high quality of previous research."
+      ]
+    },
+    "g.1": {
+      "good_evidence_ids": [
+        "secarb__001_f",
+        "secarb__001_g"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Applicant Research Background: Clearly articulates a research vision focused on anticoagulation safety and a career trajectory towards international leadership, supported by a plan to address previous feedback on impleme"
+      ]
+    },
+    "g.2": {
+      "good_evidence_ids": [
+        "secarb__001_f",
+        "secarb__001_g"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Applicant Research Background: Explains the award is needed to gain implementation science skills and transition from single-centre to multi-centre work, directly addressing prior reviewer feedback."
+      ]
+    },
+    "pr.1": {
+      "good_evidence_ids": [
+        "secpesor__001_a",
+        "secpesor__001_b",
+        "secpesor__001_c",
+        "secpena__001",
+        "secafa__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Plain English Summary of Research: Clearly defines the problem (UFH bleeding risks), objectives (new dosing protocol), methods (3 studies), and beneficiaries (patients, public), using accessible language with minimal jar",
+        "Plain English NLP Analysis: NLP metrics show strong readability (Flesch-Kincaid 7.96, 0% long sentences) and low jargon density (3.4%), supporting the quality of the Plain English Summary.",
+        "Application Form Analysis: Confirms presence of Plain English Summary and NLP analysis sections, supporting structural completeness for pr.1."
+      ]
+    },
+    "pr.3": {
+      "good_evidence_ids": [
+        "secpesor__001_b",
+        "secpesor__001_c",
+        "secdrp__001_h",
+        "secdrp__001_i",
+        "secdrp__001_j",
+        "secafa__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Plain English Summary of Research: Outlines three distinct studies with clear timeframes (3-year, 10-year) and specific tasks (analysis, co-development, implementation), indicating a feasible scope appropriate for a fell",
+        "Detailed Research Plan: Provides specific timelines, sample sizes (870+ patients), and multi-site feasibility data, confirming the scope is appropriate and feasible for the award.",
+        "Application Form Analysis: Confirms a Detailed Research Plan section with 5036 words, supporting pr.3."
+      ]
+    },
+    "pr.4": {
+      "good_evidence_ids": [
+        "secpesor__001_b",
+        "secpesor__001_c",
+        "secsa__001_b",
+        "secdrp__001_j",
+        "secdrp__001_k",
+        "secdrp__001_l"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Plain English Summary of Research: Explicitly describes methods including Population Pharmacokinetic Modelling, analysis of adverse incident data, and implementation science principles, showing logical alignment with the",
+        "Scientific Abstract: Explicitly details a three-study programme including population pharmacokinetic modelling, retrospective incident analysis, and co-development, demonstrating strong methodological rigor.",
+        "Detailed Research Plan: Explicitly details rigorous PPM methods (NONMEM, covariate analysis, bootstrap validation) and structured implementation phases, demonstrating high methodological rigor."
+      ]
+    },
+    "pr.5": {
+      "good_evidence_ids": [
+        "secpesor__001_a",
+        "secpesor__001_b",
+        "secpesor__001_c",
+        "secsa__001_c",
+        "secdrp__001_c",
+        "secdrp__001_d",
+        "secdrp__001_w"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Plain English Summary of Research: Highlights direct patient benefits (safety, better care) and societal impact (reducing serious bleeding/death), with clear dissemination plans to ensure uptake in hospitals.",
+        "Scientific Abstract: States the research will lead to a 'step-change' in dosing and monitoring for safer care, with plans to become the standard protocol, indicating high potential impact on patients and health services.",
+        "Detailed Research Plan: Clearly links the protocol to reduced adverse events, improved safety, and cost savings, with a plan for NHS-wide penetration, showing strong potential impact."
+      ]
+    },
+    "pr.6": {
+      "good_evidence_ids": [
+        "secpesor__001_b",
+        "secpesor__001_c",
+        "secsa__001_b",
+        "secdrp__001_c",
+        "secdrp__001_p",
+        "secdrp__001_q",
+        "secppi__001_a",
+        "secppi__001_b",
+        "secppi__001_c",
+        "secafa__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Plain English Summary of Research: Details active Patient and Public Involvement (PPI) including a panel for co-developing the protocol and patient-facing materials, with evaluation of PPI effectiveness.",
+        "Scientific Abstract: Describes co-developing the protocol with input from patients, public, carers, and clinical staff, showing strong engagement with people and communities.",
+        "Detailed Research Plan: Describes a multidisciplinary stakeholder group including patients and carers who will co-develop the protocol and materials, ensuring deep engagement.",
+        "Patient & Public Involvement: Documents active engagement through preparatory events and a standing panel involved in protocol co-development and dissemination, showing strong engagement with people and communities.",
+        "Application Form Analysis: Confirms a dedicated Patient & Public Involvement section with 741 words, supporting pr.6."
+      ]
+    },
+    "wp.1": {
+      "good_evidence_ids": [
+        "secpesor__001_b",
+        "secpesor__001_c",
+        "secsa__001_b",
+        "secdrp__001_c",
+        "secdrp__001_p",
+        "secdrp__001_q",
+        "secppi__001_a",
+        "secppi__001_b",
+        "secppi__001_c"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Plain English Summary of Research: Explicitly mentions co-design with a PPI panel comprising patients, carers, and public members to develop the protocol and materials, integrating lived experience into the research desi",
+        "Scientific Abstract: Explicitly mentions co-developing the protocol with patients, carers, and public members, integrating lived experience directly into the research design.",
+        "Detailed Research Plan: Explicitly integrates lived experience through a PPI panel that co-develops the protocol and materials, meeting integration criteria.",
+        "Patient & Public Involvement: Details two PPI events that directly influenced the proposal, including clarifying study 2 outcomes and ensuring staff/patient involvement in protocol development, confirming integration of"
+      ]
+    },
+    "wp.3": {
+      "good_evidence_ids": [
+        "secpesor__001_c",
+        "secpesor__001_d",
+        "secsa__001_c",
+        "secdrp__001_x",
+        "secdrp__001_y",
+        "secppi__001_c",
+        "secppi__001_d"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Plain English Summary of Research: Describes a robust dissemination strategy including a study website, journal publications, conferences, and partnerships with organizations like Thrombosis UK to maximize public and pat",
+        "Scientific Abstract: Outlines a comprehensive dissemination plan via websites, social media, and professional societies to ensure immediate clinical relevance and translation for patient benefit.",
+        "Detailed Research Plan: Outlines a comprehensive dissemination plan including a public website, social media, and guideline updates to maximize public and patient benefit.",
+        "Patient & Public Involvement: Describes a PPI panel co-developing dissemination materials in plain English for a website and Thrombosis UK channels, and presenting findings at a conference, maximizing public benefit."
+      ]
+    },
+    "pr.2": {
+      "good_evidence_ids": [
+        "secsa__001_a",
+        "secdrp__001_e",
+        "secdrp__001_f"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Scientific Abstract: Identifies a critical knowledge gap where the current APTT test is unreliable for UFH monitoring, justifying the need for anti-Xa assays and Population Pharmacokinetic Modelling.",
+        "Detailed Research Plan: Critically reviews existing evidence on APTT vs anti-Xa assays and identifies a specific gap where no PPM studies use anti-Xa, justifying the novel approach."
+      ]
+    },
+    "pr.9": {
+      "good_evidence_ids": [
+        "secdrp__001_h",
+        "secdrp__001_i"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Detailed Research Plan: Plans to collect data on ethnicity and serve diverse populations across London and the Southeast, supporting inclusive research design."
+      ]
+    },
+    "ss.1": {
+      "good_evidence_ids": [
+        "secdrp__001_h"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Detailed Research Plan: Identifies partner sites as major trauma, kidney, and heart/lung centers, indicating strong institutional capacity and track record in relevant fields."
+      ]
+    },
+    "ss.2": {
+      "good_evidence_ids": [
+        "secdrp__001_y",
+        "secdrp__001_z",
+        "sectdars__001_b",
+        "sectdars__001_f",
+        "sectdars__001_g"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Detailed Research Plan: Mentions regular meetings with research support mentors and a structured stakeholder group, providing evidence of mentorship and supervisory support.",
+        "Training & Development and Research Support: Describes a structured mentorship framework with regular group meetings (4-6 weeks), ad-hoc access, and specific mentors (Standing, Franklin, Rose) aligned with project needs."
+      ]
+    },
+    "wp.6": {
+      "good_evidence_ids": [
+        "secppi__001_d",
+        "secsb__001_f",
+        "secsb__001_g",
+        "secsb__001_h"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Patient & Public Involvement: Explicitly states PPI panel members will receive training via Imperial College London and be recompensed per NIHR guidelines, demonstrating a costed and resourced plan for inclusion.",
+        "SUMMARY BUDGET: Details a comprehensive costed plan for PPI including training fees, panel member compensation, travel for conference presentation, and co-production of materials, confirming a resourced inclusion strateg"
+      ]
+    },
+    "td.1": {
+      "good_evidence_ids": [
+        "sectdars__001_c",
+        "sectdars__001_d",
+        "sectdars__001_e",
+        "secsb__001_l",
+        "secsb__001_m",
+        "secafa__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Training & Development and Research Support: Details specific modules (Oxford Implementation Science, LSHTM Epidemiology) with clear learning outcomes and assignments, demonstrating high quality and relevance of proposed",
+        "SUMMARY BUDGET: Allocates specific funds for Implementation Science (Oxford), Epidemiology (LSHTM), and Leadership Coaching, providing concrete evidence of a structured and costed training plan.",
+        "Application Form Analysis: Confirms a dedicated Training & Development section with 3758 words, supporting td.1."
+      ]
+    },
+    "td.2": {
+      "good_evidence_ids": [
+        "sectdars__001_a",
+        "sectdars__001_e",
+        "sectdars__001_f",
+        "secsb__001_l",
+        "secsb__001_m"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Training & Development and Research Support: Explicitly identifies gaps in implementation science and epidemiology, mapping specific courses to address these gaps and support project tasks (Study 2, UFH protocol implemen",
+        "SUMMARY BUDGET: Budget items for specific modules (Implementation Science, Epidemiology) and an overseas research visit directly map to the project's methodological needs and personal development goals."
+      ]
+    },
+    "td.3": {
+      "good_evidence_ids": [
+        "sectdars__001_a",
+        "sectdars__001_c",
+        "sectdars__001_e",
+        "secsb__001_l",
+        "secsb__001_m"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Training & Development and Research Support: Links training to career goals of becoming an international leader, with plans for leadership modules, coaching, and international practice visits to build transferable skills",
+        "SUMMARY BUDGET: Includes funding for leadership coaching and international practice development visits, supporting career aspirations towards research leadership and independent practice."
+      ]
+    },
+    "ss.3": {
+      "good_evidence_ids": [
+        "sectdars__001_p",
+        "sectdars__001_q",
+        "sectdars__001_r"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Training & Development and Research Support: Host organisation (KCHFT/KCL) provides robust infrastructure including research groups, PhD supervision, and access to King's Health Partners resources, aligning with career a"
+      ]
+    },
+    "ss.4": {
+      "good_evidence_ids": [
+        "sectdars__001_s"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "Training & Development and Research Support: Explicitly states commitment to EDI initiatives, supporting underrepresented groups, and zero tolerance for bullying, demonstrating an inclusive research culture."
+      ]
+    },
+    "pr.7": {
+      "good_evidence_ids": [
+        "secsb__001_a",
+        "secsb__001_e",
+        "secsb__001_f",
+        "secafa__001"
+      ],
+      "bad_evidence_ids": [],
+      "implications": [
+        "SUMMARY BUDGET: Provides explicit justifications linking costs to specific tasks (e.g., laptop for PPM modelling, NONMEM licence for Study 1, PPI support), demonstrating clear links between resources and project scope.",
+        "Application Form Analysis: Identifies 185 table-like budget lines and links between objectives/methods/budget terms, supporting pr.7."
+      ]
+    }
+  },
+  "missing_signals": [
+    "wp.2",
+    "wp.4",
+    "wp.5"
+  ]
+}

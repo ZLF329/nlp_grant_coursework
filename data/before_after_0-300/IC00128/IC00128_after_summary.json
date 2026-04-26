@@ -1,0 +1,922 @@
+{
+  "doc_id": "224cf0416129_IC00128_after",
+  "run_info": {
+    "ran_at_utc": "2026-04-21T13:52:34.819996Z",
+    "model": "qwen3.5:27b",
+    "judge_model": null
+  },
+  "sections": [
+    {
+      "section_id": "application_form",
+      "section_name": "Application Form",
+      "average_score_10": 8,
+      "sub_criteria": [
+        {
+          "sub_id": "af.1",
+          "name": "Use of Formatting, Headings, and Subheadings",
+          "group_name": null,
+          "score_10": 8,
+          "pros": "The application form analysis confirms a robust structural hierarchy with 10 detected sections, 32 numbered heading-like lines, and 45 list markers, indicating consistent use of headings and subheadings. The presence of 22 extracted emphasis markers and 233 table-like budget lines demonstrates effective use of formatting to enhance navigability and clarity.",
+          "drawbacks": "While emphasis markers are present, the analysis notes a parser limitation where bold/emphasis may be lost during text extraction; therefore, the score for emphasis usage is slightly reduced to account for potential under-detection rather than absence.",
+          "signals": [
+            {
+              "sid": "af.1.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "af.1.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "af.1.c",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "af.1.d",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "af.2",
+          "name": "Limited Duplication and Repetition",
+          "group_name": null,
+          "score_10": 8,
+          "pros": "The application demonstrates low duplication with a sentence-level duplicate rate of only 0.007 (excluding budget). While there is some lexical overlap between sections (e.g., 0.274 between Research Plan and Training), this is likely necessary for coherence in grant applications, and the repeated line rate is low at 0.09.",
+          "drawbacks": "There is moderate lexical overlap (0.20–0.27) between several major sections (Research Plan, Training, Background, Budget), which, while potentially intentional for consistency, indicates some repetition of content that prevents a perfect score for novelty and distinctiveness across sections.",
+          "signals": [
+            {
+              "sid": "af.2.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "af.2.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "af.2.c",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "af.3",
+          "name": "Logical Flow and Coherence Across Sections",
+          "group_name": null,
+          "score_10": 8,
+          "pros": "The application exhibits strong logical flow with 37 transition phrases and 131 terms linking objectives, methods, and budget. The section order follows a standard, logical progression from applicant context to research plan, PPI, training, and budget, creating a clear narrative thread anchored on research aims.",
+          "drawbacks": "No material caveats or missing details regarding logical flow were identified in the structural analysis; the evidence for coherence and linking is comprehensive.",
+          "signals": [
+            {
+              "sid": "af.3.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "af.3.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "af.3.c",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "af.3.d",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section_id": "general",
+      "section_name": "General",
+      "average_score_10": 9.3,
+      "sub_criteria": [
+        {
+          "sub_id": "g.1",
+          "name": "Common Characteristics of Good Applications",
+          "group_name": "Common Characteristics of Good Applications",
+          "score_10": 9.5,
+          "pros": "The application demonstrates a clear research vision combining clinical practice and academic research (g.1.a) with a distinctive focus on the therapeutic milieu for children (g.1.b). The training plan is exceptionally well-justified, using the VITAE framework to map specific courses (e.g., Ethnography, Survey Design) to project needs (g.1.c). Strong mentorship is evidenced by a defined supervisory team, thesis committee, and institutional support from GOSH and UCL (g.1.d).",
+          "drawbacks": "While the vision is clear, the specific 'independent direction' (g.1.b) is heavily reliant on the existing GOSH infrastructure, though this is appropriate for a fellowship. No significant drawbacks identified.",
+          "signals": [
+            {
+              "sid": "g.1.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "g.1.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "g.1.c",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "g.1.d",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "g.2",
+          "name": "Tell Us Why You Need This Award",
+          "group_name": "Tell Us Why You Need This Award",
+          "score_10": 9.5,
+          "pros": "The applicant clearly articulates why this award is the right next step: it provides the necessary time and training to complete a PhD while maintaining clinical practice (g.2.a, g.2.b). The award will build on existing experience by enabling the acquisition of advanced methodological skills (ethnography, realist evaluation) and leadership capabilities (g.2.c). It explicitly aims to develop research partnerships within the NHS and with charities (g.2.d).",
+          "drawbacks": "The description of specific new partnerships beyond the existing GOSH/UCL network could be slightly more detailed, though the current plan is robust.",
+          "signals": [
+            {
+              "sid": "g.2.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "g.2.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "g.2.c",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "g.2.d",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "g.3",
+          "name": "Relevant Research Experience and Training",
+          "group_name": "Applicant",
+          "score_10": 10,
+          "pros": "The applicant has extensive relevant experience, including roles as Research Assistant and Academic Fellow, with specific training in scoping reviews, complex interventions, and PPI (g.3.a, g.3.b). There is strong alignment between prior experience (clinical psychology, mixed methods) and the skills required for the proposed study (g.3.c).",
+          "drawbacks": "No significant drawbacks; the applicant's background is highly relevant and well-documented.",
+          "signals": [
+            {
+              "sid": "g.3.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "g.3.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "g.3.c",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "g.4",
+          "name": "Impactful Research Outputs and Outcomes",
+          "group_name": "Applicant",
+          "score_10": 8,
+          "pros": "The applicant lists multiple peer-reviewed publications in high-quality journals and has received awards like the Herchel Smith Scholarship (g.4.a, g.4.c). Evidence of impact includes a successful funding bid for a charity project and conference presentations (g.4.d). While specific citation metrics are not explicitly detailed in the text, the quality of journals suggests impact (g.4.b).",
+          "drawbacks": "Explicit citation metrics or h-index are not provided in the text, though the quality of outputs compensates for this.",
+          "signals": [
+            {
+              "sid": "g.4.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "g.4.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "g.4.c",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "g.4.d",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "g.5",
+          "name": "Trajectory Towards Research Leadership",
+          "group_name": "Applicant",
+          "score_10": 9.5,
+          "pros": "The applicant demonstrates a clear trajectory towards research leadership, progressing from Trainee to Principal Clinical Psychologist and Locality Lead (g.5.a, g.5.b). Participation in leadership training (e.g., Tavistock Consulting) and supervising students/research assistants further supports this (g.5.c). Recognition through grants and awards indicates peer validation (g.5.d).",
+          "drawbacks": "No significant drawbacks; the evidence for leadership potential is strong and multi-faceted.",
+          "signals": [
+            {
+              "sid": "g.5.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "g.5.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "g.5.c",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "g.5.d",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "g.6",
+          "name": "Commitment to Practitioner-Academic Career (if applicable)",
+          "group_name": "Applicant",
+          "score_10": 10,
+          "pros": "The applicant explicitly states a commitment to a practitioner-academic career, using the scientist-practitioner model to address clinical questions (g.6.a). The proposal integrates clinical practice (inpatient CAMHS) with research activities (g.6.b). The training plan includes courses specifically designed to translate research into practice (e.g., MBT, AMBIT) and balance responsibilities (g.6.c, g.6.d).",
+          "drawbacks": "No significant drawbacks; the integration of practice and research is a core strength of the application.",
+          "signals": [
+            {
+              "sid": "g.6.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "g.6.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "g.6.c",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "g.6.d",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section_id": "proposed_research",
+      "section_name": "Proposed Research",
+      "average_score_10": 9.75,
+      "sub_criteria": [
+        {
+          "sub_id": "pr.1",
+          "name": "Quality of the Plain English Summary",
+          "group_name": null,
+          "score_10": 8,
+          "pros": "The Plain English Summary is exceptionally clear, with NLP metrics confirming high readability (Flesch-Kincaid 4.81, Reading Ease 77.05) and very low jargon density (1.33%). It comprehensively covers the problem, aims, three-part plan, beneficiaries, and impact. Terms like 'therapeutic milieu' and 'ethnography' are clearly explained in context. The content aligns perfectly with the Detailed Research Plan.",
+          "drawbacks": "No material caveats or missing details found; the summary is a model of accessibility and alignment.",
+          "signals": [
+            {
+              "sid": "pr.1.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.1.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.1.c",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.1.d",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.1.e",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.1.f",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "pr.2",
+          "name": "Evidence Review Quality & Relevance",
+          "group_name": null,
+          "score_10": 10,
+          "pros": "The application provides a critical review of existing literature, distinguishing between clinical/theoretical papers and empirical research. It explicitly identifies knowledge gaps regarding the therapeutic milieu for children under 13 and the lack of qualitative meta-synthesis in this specific area. The flow is logical, moving from general milieu concepts to specific gaps in children's inpatient care.",
+          "drawbacks": "No significant drawbacks; the evidence review is robust and directly justifies the proposed study.",
+          "signals": [
+            {
+              "sid": "pr.2.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.2.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.2.c",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.2.d",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "pr.3",
+          "name": "Research Scope & Award Appropriateness",
+          "group_name": null,
+          "score_10": 10,
+          "pros": "The scope is well-defined for a doctoral fellowship (45 months), comprising three distinct workstreams: a systematic review, a national survey, and an ethnography at two sites. Feasibility is supported by risk management strategies (e.g., contingency sites, extended recruitment windows) and a clear timeline. The workload is proportionate to the award duration.",
+          "drawbacks": "No material caveats; the scope is ambitious yet clearly feasible within the proposed timeframe.",
+          "signals": [
+            {
+              "sid": "pr.3.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.3.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.3.c",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "pr.4",
+          "name": "Research Design & Methodological Rigor",
+          "group_name": null,
+          "score_10": 10,
+          "pros": "Methods are explicitly described with high rigor: a realist process evaluation framework, qualitative meta-synthesis, a tailored national survey using the Ward Atmosphere Scale, and in-depth ethnography with Framework Analysis. The design logically aligns with the aims to understand 'how' and 'why' change occurs. Sample sizes and recruitment strategies are justified with reference to information power and previous studies.",
+          "drawbacks": "No significant drawbacks; the methodological justification is thorough and appropriate for the research questions.",
+          "signals": [
+            {
+              "sid": "pr.4.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.4.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.4.c",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.4.d",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "pr.5",
+          "name": "Potential Impact on Patients, Public, and Health Services",
+          "group_name": null,
+          "score_10": 10,
+          "pros": "The application clearly articulates benefits for patients (shorter admissions, better care), families (understanding treatment), and health services (efficiency savings, evidence-based guidelines). Specific outputs like a co-produced animation and national workshops demonstrate a strong plan for translating research into practice. The impact is directly linked to the identified problem of under-served research in this area.",
+          "drawbacks": "No material caveats; the impact pathway is clear and specific.",
+          "signals": [
+            {
+              "sid": "pr.5.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.5.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.5.c",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "pr.6",
+          "name": "Engagement with People & Communities",
+          "group_name": null,
+          "score_10": 10,
+          "pros": "PPI is deeply integrated, with 'experts by experience' involved in developing research questions, writing the summary, and supporting data collection/analysis. The plan includes an advisory group, working groups, and co-researchers. Ethical considerations regarding power dynamics and distress are explicitly addressed. Involvement spans all stages from design to dissemination.",
+          "drawbacks": "No material caveats; the engagement plan is comprehensive and well-resourced.",
+          "signals": [
+            {
+              "sid": "pr.6.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.6.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.6.c",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "pr.7",
+          "name": "Justification of Resources & Award Costs",
+          "group_name": null,
+          "score_10": 10,
+          "pros": "The budget provides explicit links between tasks and resources, with detailed justifications for travel, equipment, PPI payments, and transcription. Costs are proportional to the scope (e.g., 45-month duration, 6 sites). The rationale for funding levels is clear, including specific line items for animation production and international visits.",
+          "drawbacks": "No material caveats; the budget is detailed and well-justified.",
+          "signals": [
+            {
+              "sid": "pr.7.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.7.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.7.c",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "pr.8",
+          "name": "Quality of Previous Research (if applicable)",
+          "group_name": null,
+          "score_10": 8,
+          "pros": "The applicant demonstrates strong prior experience, having already begun a scoping review and possessing relevant clinical and research roles (Principal Clinical Psychologist, Academic Fellow). Skills in qualitative methods and systematic reviews are aligned with the proposed work. The applicant has a track record of publications and successful funding bids.",
+          "drawbacks": "While the applicant has strong relevant experience, the specific 'previous research' in the exact context of children's therapeutic milieu ethnography is limited (as noted in the literature review), but the applicant's broader methodological and clinical experience compensates well. Score is 4 rather than 5 as the specific prior project outputs in this exact niche are not yet fully realized (the current proposal is the first of its kind).",
+          "signals": [
+            {
+              "sid": "pr.8.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.8.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.8.c",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "pr.9",
+          "name": "Inclusive Research Design",
+          "group_name": null,
+          "score_10": 10,
+          "pros": "The application explicitly addresses structural inequalities and barriers to access for minoritized groups. Strategies for diverse recruitment include iterative review of participant demographics, smartphone-accessible surveys, and provision of interpreters. Accessibility considerations for neurodiverse participants are integrated into PPI and data collection methods.",
+          "drawbacks": "No material caveats; the inclusive design is robust and well-integrated.",
+          "signals": [
+            {
+              "sid": "pr.9.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.9.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.9.c",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section_id": "sites_support",
+      "section_name": "Sites & Support",
+      "average_score_10": 8,
+      "sub_criteria": [
+        {
+          "sub_id": "ss.1",
+          "name": "Track Record of the Contracting Organisation (and Partners)",
+          "group_name": null,
+          "score_10": 8,
+          "pros": "The application provides robust evidence of the contracting organisations' track records. GOSH is highlighted as an NIHR Biomedical Research Centre (BRC) with a specific history of supporting 33 AHPs in fellowships, 17 of which were doctoral, with several leading to post-doctoral awards. UCL is described as top-ranked in Psychology and Psychiatry, with specific research units (EBPU, ChAPTRe) directly relevant to the project. The text explicitly mentions the organisations' research power, funding success, and established partnerships.",
+          "drawbacks": "No material caveats or missing details regarding the track record of the host organisations were identified.",
+          "signals": [
+            {
+              "sid": "ss.1.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "ss.1.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "ss.1.c",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "ss.1.d",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "ss.2",
+          "name": "Suitability of Supervisory Support and Mentorship Arrangements",
+          "group_name": null,
+          "score_10": 8,
+          "pros": "The application details a comprehensive supervisory team with explicit roles and responsibilities. The primary academic supervisor (Prof Edbrooke-Childs) has extensive experience in the specific field (CAMHS, realist evaluations) and a track record of supervising doctoral students. Additional academic supervisors (Prof Midgley, Prof Vindrola) provide specific methodological expertise (qualitative/mixed methods, ethnography). Clinical supervisors (Dr Murphy, Dr Marriott) offer support for the practitioner-academic balance, with Dr Marriott identified as the line manager. The text specifies meeting frequencies (fortnightly, monthly, termly) and the existence of a thesis committee, demonstrating a structured framework.",
+          "drawbacks": "No material caveats or missing details regarding the supervisory arrangements were identified.",
+          "signals": [
+            {
+              "sid": "ss.2.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "ss.2.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "ss.2.c",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "ss.2.d",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "ss.3",
+          "name": "Appropriateness of the Contracting Organisation to Support the Award and Career Aspirations",
+          "group_name": null,
+          "score_10": 8,
+          "pros": "The application strongly evidences the appropriateness of the contracting organisations. GOSH provides access to the Mildred Creak Unit (MCU), the primary research site, and supports the applicant's transition to a research role while maintaining clinical training. The ORCHID team and GOSH BRC offer specific infrastructure for early career researchers. UCL provides access to the EBPU and ChAPTRe, library services, and specific training courses. The text explicitly links these resources to project success (e.g., access to units, methodological support) and career aspirations (clinical-academic pathway, leadership training).",
+          "drawbacks": "No material caveats or missing details regarding organisational support were identified.",
+          "signals": [
+            {
+              "sid": "ss.3.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "ss.3.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "ss.3.c",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "ss.3.d",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "ss.4",
+          "name": "Commitment to Inclusive and Supportive Research Culture",
+          "group_name": null,
+          "score_10": 8,
+          "pros": "The application provides extensive evidence of a commitment to inclusive and supportive research culture. GOSH is described as a Disability Confident Employer and Stonewall Diversity Champion, with active staff forums (REACH, Pride, ENABLED). UCL is a signatory of the Race Equality Charter (Bronze award) and has a hardwired EDI strategy. The text mentions specific initiatives like staff-led working groups, safe spaces for reflection, and adherence to the Concordat to Support the Career Development of Researchers. Research integrity training and safeguarding practices are also explicitly mentioned.",
+          "drawbacks": "No material caveats or missing details regarding the inclusive culture were identified.",
+          "signals": [
+            {
+              "sid": "ss.4.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "ss.4.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "ss.4.c",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "ss.4.d",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section_id": "training_development",
+      "section_name": "Training & Development",
+      "average_score_10": 8,
+      "sub_criteria": [
+        {
+          "sub_id": "td.1",
+          "name": "Quality and Relevance of Proposed Training",
+          "group_name": null,
+          "score_10": 8,
+          "pros": "The application provides a highly detailed training plan structured around the VITAE framework (Domains A-D) with specific courses listed (e.g., 'Essentials of Survey Research Design', 'Qualitative Analysis course'). It explicitly links training to project methods (e.g., Framework analysis for qualitative data) and sequences activities across Year 1 and Year 2, ensuring completeness and clarity.",
+          "drawbacks": "No material caveats or missing details identified; the plan is comprehensive and directly evidenced.",
+          "signals": [
+            {
+              "sid": "td.1.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "td.1.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "td.1.c",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "td.1.d",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "td.2",
+          "name": "Suitability to Personal Development and Project Needs",
+          "group_name": null,
+          "score_10": 8,
+          "pros": "The applicant explicitly identifies skill gaps (e.g., need for 'Framework' approach, advanced therapeutic skills in MBT) and maps specific training to project tasks (e.g., 'Qualitative and Mixed Method Systematic Reviews' for the PhD). The plan includes targeted formal courses, workshops, and mentorship (supervisors with specific expertise in MBT and ethnography), demonstrating a highly tailored approach rather than generic training.",
+          "drawbacks": "No material caveats or missing details identified; the mapping between training and project needs is explicit and robust.",
+          "signals": [
+            {
+              "sid": "td.2.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "td.2.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "td.2.c",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "td.2.d",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "td.3",
+          "name": "Support for Career Aspirations",
+          "group_name": null,
+          "score_10": 8,
+          "pros": "The applicant clearly states career goals (clinical-academic leader, supervisor) and connects training activities directly to this trajectory (e.g., leadership training to translate skills from NHS to academic contexts, MBT training for specialist practice and supervision). The plan includes experiential learning (visits to Children's Units, practice development groups) and emphasizes skill transferability for a future career.",
+          "drawbacks": "No material caveats or missing details identified; the connection between training and long-term career aspirations is strong and well-evidenced.",
+          "signals": [
+            {
+              "sid": "td.3.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "td.3.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "td.3.c",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "td.3.d",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section_id": "wpcc",
+      "section_name": "Working with People & Communities",
+      "average_score_10": 8.89,
+      "sub_criteria": [
+        {
+          "sub_id": "wp.1",
+          "name": "Integration of Lived Experience in Research Design",
+          "group_name": null,
+          "score_10": 9.33,
+          "pros": "The application provides robust evidence of lived experience integration. A parent's comment directly inspired the study idea (secpesor__001_c). Six young people and parents helped develop research questions and review the Plain English Summary (secppi__001_a). Specific changes were made based on feedback, such as shifting from focus groups to 1:1 meetings to accommodate differing ages and preferences (secppi__001_b). An advisory group of experts by experience is established to support all stages (secppi__001_d).",
+          "drawbacks": "While specific examples of design changes are provided (e.g., meeting format), the application could further detail how specific methodological choices (e.g., specific interview questions) were altered based on this feedback to fully maximize the score.",
+          "signals": [
+            {
+              "sid": "wp.1.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "wp.1.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "wp.1.c",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "wp.2",
+          "name": "Diversity and Inclusivity of the Research Team",
+          "group_name": null,
+          "score_10": 6,
+          "pros": "The application demonstrates a strong commitment to equitable collaboration by budgeting significant funds for 'Experts by Experience' in advisory groups, thesis committees, and working groups (secsb__001_h, secsb__001_i, secsb__001_j). It explicitly plans for a separate Lived Experience Research Advisory Group to avoid power imbalances with professionals (secppi__001_d).",
+          "drawbacks": "There is limited explicit mention of the demographic diversity (gender, ethnicity, age) of the core research team itself (wp.2.a). The focus is primarily on the inclusion of patients/public rather than the diversity of the academic/clinical staff team.",
+          "signals": [
+            {
+              "sid": "wp.2.a",
+              "score_0to5": 2,
+              "note": ""
+            },
+            {
+              "sid": "wp.2.b",
+              "score_0to5": 3,
+              "note": ""
+            },
+            {
+              "sid": "wp.2.c",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "wp.3",
+          "name": "Commitment to Maximising Public and Patient Benefit",
+          "group_name": null,
+          "score_10": 10,
+          "pros": "The application outlines a comprehensive plan to maximize public benefit. It includes creating a co-produced animation for children and parents to ensure accessibility (secpesor__001_c, secdrp__001_u). It plans to share results via national workshops and visits to all units to improve care and reduce admission lengths (secsa__001_c, secdrp__001_v). The link between objectives (understanding the milieu) and benefits (better guidelines, shorter stays) is clear and specific.",
+          "drawbacks": "No significant drawbacks; the plan is highly detailed and directly addresses patient and public benefit.",
+          "signals": [
+            {
+              "sid": "wp.3.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "wp.3.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "wp.3.c",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "wp.4",
+          "name": "Representation of Seldom Heard or Underserved Groups",
+          "group_name": null,
+          "score_10": 8.67,
+          "pros": "The application explicitly targets children under 13 and their families, a vulnerable and under-served group (secdrp__001_h). It acknowledges structural inequalities and barriers for minoritized groups (secdrp__001_i). Specific strategies include providing interpreters, covering expenses, and considering neurodiverse needs (secppi__001_d). The sampling plan aims for diverse diagnoses and family structures (secdrp__001_p).",
+          "drawbacks": "While strategies are mentioned, the application relies on 'reviewing' representation if diverse voices are not initially represented, rather than detailing proactive recruitment partnerships with specific community organizations to guarantee inclusion.",
+          "signals": [
+            {
+              "sid": "wp.4.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "wp.4.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "wp.4.c",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "wp.5",
+          "name": "Inclusivity Across the Research Lifecycle",
+          "group_name": null,
+          "score_10": 9.33,
+          "pros": "Inclusion is embedded across the entire lifecycle: design (consultation), data collection (co-researchers in interviews), analysis (sharing themes with experts), and dissemination (co-produced animation) (secppi__001_c, secppi__001_d). Accessibility is considered through multi-modal interviews and translation support (secppi__001_d).",
+          "drawbacks": "The plan for ongoing evaluation and adaptation of inclusion strategies (wp.5.c) is implied through iterative analysis but could be more explicitly defined as a formal monitoring mechanism.",
+          "signals": [
+            {
+              "sid": "wp.5.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "wp.5.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "wp.5.c",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "wp.6",
+          "name": "Costed and Resourced Plan for Research Inclusion",
+          "group_name": null,
+          "score_10": 10,
+          "pros": "The budget is highly detailed and fully costed for inclusion activities. Specific line items exist for PPI vouchers, advisory group payments, working groups, training for experts by experience, childcare, and carer payments (secsb__001_h, secsb__001_i, secsb__001_j). The payment policy follows NIHR guidelines (secppi__001_d).",
+          "drawbacks": "No significant drawbacks; the alignment between the inclusion plan and allocated resources is excellent.",
+          "signals": [
+            {
+              "sid": "wp.6.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "wp.6.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "wp.6.c",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

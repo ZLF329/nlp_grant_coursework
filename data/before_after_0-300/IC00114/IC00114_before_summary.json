@@ -1,0 +1,922 @@
+{
+  "doc_id": "a8fb00877237_IC00114_before",
+  "run_info": {
+    "ran_at_utc": "2026-04-21T13:31:55.790355Z",
+    "model": "qwen3.5:27b",
+    "judge_model": null
+  },
+  "sections": [
+    {
+      "section_id": "application_form",
+      "section_name": "Application Form",
+      "average_score_10": 9.17,
+      "sub_criteria": [
+        {
+          "sub_id": "af.1",
+          "name": "Use of Formatting, Headings, and Subheadings",
+          "group_name": null,
+          "score_10": 9.5,
+          "pros": "The application form analysis confirms the presence of 6 distinct sections with 4 numbered heading-like lines and 37 list markers, indicating a strong, consistent hierarchy and effective use of formatting to structure the content. The parser detected 15 emphasis markers, suggesting key terms are highlighted, though the analysis notes potential parser loss of bolding.",
+          "drawbacks": "While emphasis markers are detected, the analysis explicitly states that bold/emphasis may be lost during text extraction, meaning the full extent of emphasis usage cannot be perfectly verified from the derived text alone.",
+          "signals": [
+            {
+              "sid": "af.1.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "af.1.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "af.1.c",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "af.1.d",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "af.2",
+          "name": "Limited Duplication and Repetition",
+          "group_name": null,
+          "score_10": 10,
+          "pros": "The analysis reports a duplicate sentence rate of 0.0 and a repeated line rate of 0.0, with no high cross-section lexical overlap detected. This provides perfect evidence that the application avoids unnecessary repetition and maintains novelty across sections.",
+          "drawbacks": "None; the metrics provided are definitive and indicate no duplication issues.",
+          "signals": [
+            {
+              "sid": "af.2.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "af.2.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "af.2.c",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "af.3",
+          "name": "Logical Flow and Coherence Across Sections",
+          "group_name": null,
+          "score_10": 8,
+          "pros": "The application demonstrates strong logical flow with 8 transition phrases and 33 terms linking objectives, methods, and budget. The section order follows a logical progression from context to summary, research plan, PPI, and budget, supporting a coherent narrative thread.",
+          "drawbacks": "While the structural indicators (transition counts, linking terms) are strong, the analysis relies on keyword detection rather than deep semantic embedding analysis to confirm the narrative thread, preventing a perfect score of 5.",
+          "signals": [
+            {
+              "sid": "af.3.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "af.3.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "af.3.c",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "af.3.d",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section_id": "general",
+      "section_name": "General",
+      "average_score_10": 7.4,
+      "sub_criteria": [
+        {
+          "sub_id": "g.1",
+          "name": "Common Characteristics of Good Applications",
+          "group_name": "Common Characteristics of Good Applications",
+          "score_10": 9,
+          "pros": "The application demonstrates a clear career trajectory from Clinical Research Practitioner to independent clinical academic (g.1.a), supported by a robust mentorship plan with defined meeting frequencies and specific developmental goals (g.1.d). The training plan is well-justified, linking specific courses (R, omics, health economics) and placements to skill gaps and project needs (g.1.c). The research direction is distinctive, focusing on gut microbiome in ITP, building on the applicant's unique patient-led insights (g.1.b).",
+          "drawbacks": "While the vision is clear, the 'distinctive ideas' (g.1.b) rely heavily on the applicant's pre-doctoral work; the specific novelty of the proposed PhD methodology compared to existing literature is implied but not explicitly detailed in the 'General' sections. The training plan (g.1.c) is strong but could be more granular regarding the sequencing of specific skill acquisition relative to project milestones.",
+          "signals": [
+            {
+              "sid": "g.1.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "g.1.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "g.1.c",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "g.1.d",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "g.2",
+          "name": "Tell Us Why You Need This Award",
+          "group_name": "Tell Us Why You Need This Award",
+          "score_10": 9,
+          "pros": "The applicant clearly articulates why this award is the right next step, explicitly linking the salary to managing the project while delegating operational tasks to focus on acquiring new skills (g.2.a, g.2.c). The application details how the award will build on existing experience (research delivery since 2017) to gain advanced data analysis and trial design skills (g.2.c). It also outlines how the award will develop partnerships, specifically mentioning future feasibility trials and collaborations with microbiome experts (g.2.d).",
+          "drawbacks": "The explanation of 'why now' (g.2.b) is strong but could be more explicit about the immediate consequences of not securing this specific award versus a standard project grant. The development of partnerships (g.2.d) is well-supported by the supervisor network but could benefit from more specific details on how the award itself (rather than the supervisors) will catalyze new industry or charity partnerships.",
+          "signals": [
+            {
+              "sid": "g.2.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "g.2.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "g.2.c",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "g.2.d",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "g.3",
+          "name": "Relevant Research Experience and Training",
+          "group_name": "Applicant",
+          "score_10": 8,
+          "pros": "The applicant demonstrates strong alignment between prior experience and project needs, having coordinated clinical trials and led the Non-Malignant Haematology Clinical Research Unit (g.3.c). There is clear evidence of previous projects and methods, including a pre-doctoral fellowship and patient consultations that shaped the current study (g.3.a). The training plan explicitly addresses the need for formal courses in R, omics, and clinical trials to complement existing operational skills (g.3.b).",
+          "drawbacks": "While the applicant mentions 'extensive experience in research delivery' (g.3.a), specific details on the technical execution of previous microbiome or multi-omics projects are limited, as the focus has been on trial coordination. The evidence for formal training (g.3.b) is prospective (planned courses) rather than retrospective, though the plan is robust.",
+          "signals": [
+            {
+              "sid": "g.3.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "g.3.b",
+              "score_0to5": 3,
+              "note": ""
+            },
+            {
+              "sid": "g.3.c",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "g.4",
+          "name": "Impactful Research Outputs and Outcomes",
+          "group_name": "Applicant",
+          "score_10": 3,
+          "pros": "The application highlights the practical impact of previous work through patient engagement and the establishment of a Patient Steering Committee, which directly influenced study design (g.4.d). The applicant's role in leading the Non-Malignant Haematology Clinical Research Unit suggests significant contribution to the field (g.4.a).",
+          "drawbacks": "There is no explicit mention of the applicant's own publications, citation metrics, or specific awards linked to their prior research (g.4.a, g.4.b, g.4.c). The 'Impactful Research Outputs' section relies heavily on the supervisors' track record (mentioned in secac__001) rather than the applicant's independent outputs. The applicant's specific contributions to publications are not detailed.",
+          "signals": [
+            {
+              "sid": "g.4.a",
+              "score_0to5": 2,
+              "note": ""
+            },
+            {
+              "sid": "g.4.b",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "g.4.c",
+              "score_0to5": 1,
+              "note": ""
+            },
+            {
+              "sid": "g.4.d",
+              "score_0to5": 3,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "g.5",
+          "name": "Trajectory Towards Research Leadership",
+          "group_name": "Applicant",
+          "score_10": 8,
+          "pros": "The applicant clearly states career ambitions to become an independent clinical academic and lead interventional trials (g.5.a). There is strong evidence of increasing responsibility, from coordinating trials to leading the Non-Malignant Haematology Clinical Research Unit (g.5.b). The applicant is actively participating in professional development through a pre-doctoral fellowship and planned placements (g.5.c).",
+          "drawbacks": "Recognition by peers or institutions specifically for leadership potential (g.5.d) is less explicit; while the applicant has a strong mentorship network, there is no mention of external awards or specific peer recognition of their leadership capabilities outside of their current role. The trajectory is clear, but external validation of leadership potential is limited.",
+          "signals": [
+            {
+              "sid": "g.5.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "g.5.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "g.5.c",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "g.5.d",
+              "score_0to5": 3,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "g.6",
+          "name": "Commitment to Practitioner-Academic Career (if applicable)",
+          "group_name": "Applicant",
+          "score_10": 9,
+          "pros": "The applicant explicitly states their intention to pursue a practitioner-academic career as a Clinical Research Practitioner (CRP) transitioning to an independent researcher (g.6.a). There is strong evidence of involvement in clinical research, including leading a clinical research unit and coordinating trials (g.6.b). The budget explicitly requests NHS salary and support costs, demonstrating a commitment to balancing practice and research (g.6.c). The applicant is registered with the Academy for Healthcare Science (g.6.d).",
+          "drawbacks": "While the commitment is clear, the specific strategies for balancing the dual demands of clinical practice and PhD research during the 3-year period could be more detailed (g.6.c). The application mentions the unique barriers for CRPs but does not fully elaborate on how the specific award structure mitigates these beyond the salary support.",
+          "signals": [
+            {
+              "sid": "g.6.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "g.6.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "g.6.c",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "g.6.d",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section_id": "proposed_research",
+      "section_name": "Proposed Research",
+      "average_score_10": 8.94,
+      "sub_criteria": [
+        {
+          "sub_id": "pr.1",
+          "name": "Quality of the Plain English Summary",
+          "group_name": null,
+          "score_10": 8,
+          "pros": "The Plain English Summary is exceptionally clear, with a Flesch-Kincaid grade of 4.73 and high reading ease (76.79). It comprehensively covers the problem (ITP), objectives, methods (stool/blood samples, metagenomics), beneficiaries, and impact. Technical terms like 'metagenomics' and 'NMR' are explained simply ('bugs that live in our gut', 'chemicals they make'). The content aligns perfectly with the Scientific Abstract and Detailed Research Plan.",
+          "drawbacks": "No material caveats or missing details found; the summary is a model of accessibility and completeness.",
+          "signals": [
+            {
+              "sid": "pr.1.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.1.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.1.c",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.1.d",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.1.e",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.1.f",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "pr.2",
+          "name": "Evidence Review Quality & Relevance",
+          "group_name": null,
+          "score_10": 5.5,
+          "pros": "The application clearly identifies a knowledge gap: while early studies suggest a link between gut microbiome dysbiosis and ITP, findings remain inconclusive. It notes that current treatments are costly and ineffective due to limited understanding of underlying mechanisms. The Scientific Abstract and Plain English Summary both articulate this gap effectively.",
+          "drawbacks": "The provided text snippets do not contain a comprehensive literature review with specific citations or a critical analysis of existing studies beyond general statements. The evidence review is limited to the abstract and summary, lacking the depth of a full 'Evidence Review' section.",
+          "signals": [
+            {
+              "sid": "pr.2.a",
+              "score_0to5": 2,
+              "note": ""
+            },
+            {
+              "sid": "pr.2.b",
+              "score_0to5": 2,
+              "note": ""
+            },
+            {
+              "sid": "pr.2.c",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.2.d",
+              "score_0to5": 3,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "pr.3",
+          "name": "Research Scope & Award Appropriateness",
+          "group_name": null,
+          "score_10": 10,
+          "pros": "The scope is highly appropriate for a 3-year PhD. It defines a clear cross-sectional case-control study with 30 patient-control pairs, specific milestones (recruitment in Year 1, analysis in Year 2, framework in Year 3), and a logical progression from characterization to a feasibility trial framework. The sample size and tasks are realistic for the award duration.",
+          "drawbacks": "No significant drawbacks; the scope is well-defined and feasible.",
+          "signals": [
+            {
+              "sid": "pr.3.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.3.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.3.c",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "pr.4",
+          "name": "Research Design & Methodological Rigor",
+          "group_name": null,
+          "score_10": 8,
+          "pros": "Methods are explicitly described: cross-sectional case-control design, age/sex-matched household controls to minimize confounding, shotgun metagenomic sequencing, and NMR spectroscopy. The alignment between aims (characterizing differences, identifying profiles) and methods is logical and robust. The use of household controls is a strong methodological justification.",
+          "drawbacks": "While the methods are clear, the text does not explicitly detail the statistical power calculation or specific inclusion/exclusion criteria beyond the general matching strategy, which slightly limits the 'perfect' score for methodology justification.",
+          "signals": [
+            {
+              "sid": "pr.4.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.4.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.4.c",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "pr.4.d",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "pr.5",
+          "name": "Potential Impact on Patients, Public, and Health Services",
+          "group_name": null,
+          "score_10": 10,
+          "pros": "Expected impacts are specific and directly linked to patient needs: better quality of life, reduced treatment burden, and lower NHS costs. The application explicitly mentions reducing the need for expensive long-term medication and improving daily life (fatigue, cognitive impairment). The alignment with health priorities (cost-effective interventions) is clear.",
+          "drawbacks": "No material caveats; the impact is well-articulated and specific.",
+          "signals": [
+            {
+              "sid": "pr.5.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.5.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.5.c",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "pr.6",
+          "name": "Engagement with People & Communities",
+          "group_name": null,
+          "score_10": 10,
+          "pros": "Patient involvement is central and meaningful. A Patient Steering Committee (diverse demographics) guides study design, inclusion criteria, and dissemination. Specific examples include co-designing recruitment materials and the feasibility trial. Involvement spans the entire lifecycle from inspiration to future trial design.",
+          "drawbacks": "No material caveats; the engagement is robust and well-integrated.",
+          "signals": [
+            {
+              "sid": "pr.6.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.6.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.6.c",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "pr.7",
+          "name": "Justification of Resources & Award Costs",
+          "group_name": null,
+          "score_10": 10,
+          "pros": "The budget provides explicit links between resources and tasks: high-performance laptops for multi-omics analysis, specific consumables for sample collection, and software licenses for analysis. Costs for translation and interpreting are included to support inclusive recruitment. The rationale for funding is clear and proportional to the complex, participant-facing nature of the study.",
+          "drawbacks": "No material caveats; the justification is thorough and specific.",
+          "signals": [
+            {
+              "sid": "pr.7.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.7.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.7.c",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "pr.8",
+          "name": "Quality of Previous Research (if applicable)",
+          "group_name": null,
+          "score_10": 6,
+          "pros": "The applicant mentions having results from a small pre-doctoral study showing gut microbiome differences in ITP patients, which directly informs this proposal. This demonstrates prior successful project experience and skills alignment with the proposed work (microbiome analysis).",
+          "drawbacks": "The provided text does not list specific publications or detailed outputs from the prior small study, limiting the evidence for 'number and quality of publications' to a general mention. The evidence is strong for capability but weaker for a formal publication record within the provided snippets.",
+          "signals": [
+            {
+              "sid": "pr.8.a",
+              "score_0to5": 2,
+              "note": ""
+            },
+            {
+              "sid": "pr.8.b",
+              "score_0to5": 3,
+              "note": ""
+            },
+            {
+              "sid": "pr.8.c",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "pr.9",
+          "name": "Inclusive Research Design",
+          "group_name": null,
+          "score_10": 10,
+          "pros": "The application explicitly prioritizes Equity, Diversity, and Inclusion (EDI) in recruitment, ensuring representation across ethnicity, gender, and socioeconomic backgrounds. Adaptive methods include engaging translators for non-English speakers and translating patient-facing materials. The Patient Steering Committee is demographically diverse, ensuring inclusive oversight.",
+          "drawbacks": "No material caveats; the inclusive design is comprehensive and actionable.",
+          "signals": [
+            {
+              "sid": "pr.9.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.9.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "pr.9.c",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section_id": "sites_support",
+      "section_name": "Sites & Support",
+      "average_score_10": 8.38,
+      "sub_criteria": [
+        {
+          "sub_id": "ss.1",
+          "name": "Track Record of the Contracting Organisation (and Partners)",
+          "group_name": null,
+          "score_10": 8,
+          "pros": "The application provides strong evidence of the contracting organisation's track record. Imperial College London and Imperial College Healthcare NHS Trust are highlighted as leaders in the field, with specific mentions of the NIHR Imperial Biomedical Research Centre (BRC), the European Research Consortium on ITP, and extensive publication histories (e.g., Prof Cooper's work in Nature Immunology, Prof Marchesi's 280+ articles). The text explicitly details prior collaborations and notable outputs, including leading the largest ITP cohort in the UK.",
+          "drawbacks": "While the track record of the supervisors and the institution is well-documented, there is no specific mention of previous funding success or awards secured by the organisation specifically for *microbiome-targeted* ITP therapies, though general funding success is implied through the BRC leadership.",
+          "signals": [
+            {
+              "sid": "ss.1.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "ss.1.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "ss.1.c",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "ss.1.d",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "ss.2",
+          "name": "Suitability of Supervisory Support and Mentorship Arrangements",
+          "group_name": null,
+          "score_10": 10,
+          "pros": "The application details a robust supervisory framework with three distinct experts: a primary academic supervisor (Prof Cooper) with expertise in ITP, a co-supervisor (Prof Marchesi) with microbiome expertise, and two mentors (Prof Wells, Ms Georgiou) focusing on career development and service transformation. Specific meeting frequencies are defined (weekly individual, monthly joint, bi-monthly mentor meetings). The alignment between supervisor expertise and project needs is explicit, covering clinical trials, metagenomics, and career progression for NMAHPs.",
+          "drawbacks": "No material caveats; the supervision plan is comprehensive, specific, and directly evidenced in the text.",
+          "signals": [
+            {
+              "sid": "ss.2.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "ss.2.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "ss.2.c",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "ss.2.d",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "ss.3",
+          "name": "Appropriateness of the Contracting Organisation to Support the Award and Career Aspirations",
+          "group_name": null,
+          "score_10": 8,
+          "pros": "The application clearly describes the infrastructure and resources provided, including access to the Haematology CTU, Imperial College's TRAC methodology for indirect costs, and specific equipment (high-performance laptop, -80°C storage). The budget explicitly links organisational support (NHS staff for eligibility, CTU support) to project success. The organisation's focus on clinical academic pathways (CARIN, NIHR DCAF) aligns perfectly with the applicant's career trajectory as a CRP transitioning to an independent researcher.",
+          "drawbacks": "While the support for the award type is strong, the specific mechanisms for 'tailored support' beyond the standard PhD structure and mentorship are implied through the budget and mentor descriptions rather than a dedicated institutional policy document being cited.",
+          "signals": [
+            {
+              "sid": "ss.3.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "ss.3.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "ss.3.c",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "ss.3.d",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "ss.4",
+          "name": "Commitment to Inclusive and Supportive Research Culture",
+          "group_name": null,
+          "score_10": 7.5,
+          "pros": "Strong evidence of a commitment to inclusive culture is present. Mentors explicitly support inclusive pathways for NMAHPs and CRPs, addressing barriers to academic careers. The budget includes specific lines for translation services, interpreting, and diverse recruitment strategies. The application highlights the involvement of a diverse Patient Steering Committee and the organisation's role in supporting underrepresented groups in clinical research.",
+          "drawbacks": "While the application demonstrates inclusive practices and initiatives, it lacks explicit references to specific institutional policies on research integrity or diversity, equity, and inclusion (DEI) by name, relying instead on the described actions and mentor commitments to evidence the culture.",
+          "signals": [
+            {
+              "sid": "ss.4.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "ss.4.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "ss.4.c",
+              "score_0to5": 3,
+              "note": ""
+            },
+            {
+              "sid": "ss.4.d",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section_id": "training_development",
+      "section_name": "Training & Development",
+      "average_score_10": 7.83,
+      "sub_criteria": [
+        {
+          "sub_id": "td.1",
+          "name": "Quality and Relevance of Proposed Training",
+          "group_name": null,
+          "score_10": 7.5,
+          "pros": "The application provides a highly specific list of training activities including specialist courses (R, microbiome/omics, clinical trials, health economics) and international placements (San Diego, Toulouse). These are explicitly linked to the project's multi-omics and trial design requirements, demonstrating a complete and relevant plan.",
+          "drawbacks": "While the specific courses and placements are detailed, the application lacks a structured timeline or sequencing of these training activities (e.g., which courses occur in Year 1 vs Year 3), preventing a perfect score for the timeline signal.",
+          "signals": [
+            {
+              "sid": "td.1.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "td.1.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "td.1.c",
+              "score_0to5": 3,
+              "note": ""
+            },
+            {
+              "sid": "td.1.d",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "td.2",
+          "name": "Suitability to Personal Development and Project Needs",
+          "group_name": null,
+          "score_10": 8,
+          "pros": "The applicant explicitly identifies skill gaps in 'advanced data analysis and trial design' and maps the proposed training directly to these needs. The plan is highly targeted, leveraging specific placements and courses to address the transition from operational research delivery to independent academic research.",
+          "drawbacks": "No material caveats or missing details were found; the evidence is complete and directly supported by the text.",
+          "signals": [
+            {
+              "sid": "td.2.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "td.2.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "td.2.c",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "td.2.d",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "td.3",
+          "name": "Support for Career Aspirations",
+          "group_name": null,
+          "score_10": 8,
+          "pros": "The application clearly connects the training to long-term career goals, specifically mentioning a 'Postdoctoral plan' and a 'future feasibility trial.' The skills acquired (trial design, data analysis) are explicitly framed as essential for building expertise to lead future interventional research, demonstrating strong transferability.",
+          "drawbacks": "No material caveats or missing details were found; the evidence is complete and directly supported by the text.",
+          "signals": [
+            {
+              "sid": "td.3.a",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "td.3.b",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "td.3.c",
+              "score_0to5": 4,
+              "note": ""
+            },
+            {
+              "sid": "td.3.d",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section_id": "wpcc",
+      "section_name": "Working with People & Communities",
+      "average_score_10": 8.11,
+      "sub_criteria": [
+        {
+          "sub_id": "wp.1",
+          "name": "Integration of Lived Experience in Research Design",
+          "group_name": null,
+          "score_10": 10,
+          "pros": "The application provides robust evidence of co-design and consultation. Specific design changes are explicitly detailed, such as the adoption of home stool collection kits based on patient feedback to reduce clinic visits. A Patient Steering Committee (PSC) with diverse representation is established and has actively shaped inclusion criteria, recruitment strategies, and the plain English summary.",
+          "drawbacks": "No material caveats; the evidence is specific, grounded in the text, and covers consultation, specific design changes, and advisory group involvement comprehensively.",
+          "signals": [
+            {
+              "sid": "wp.1.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "wp.1.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "wp.1.c",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "wp.2",
+          "name": "Diversity and Inclusivity of the Research Team",
+          "group_name": null,
+          "score_10": 0,
+          "pros": "No evidence found in the provided text regarding the diversity of the research team itself (investigators/supervisors). The text focuses on the diversity of the Patient Steering Committee and participants, not the research team composition.",
+          "drawbacks": "The application text does not contain information about the demographic composition (gender, ethnicity, etc.) of the research team (applicant and supervisors) or statements regarding inclusive hiring practices for the team. While the PSC is diverse, this does not satisfy the specific criterion for the research team.",
+          "signals": [
+            {
+              "sid": "wp.2.a",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "wp.2.b",
+              "score_0to5": 0,
+              "note": ""
+            },
+            {
+              "sid": "wp.2.c",
+              "score_0to5": 0,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "wp.3",
+          "name": "Commitment to Maximising Public and Patient Benefit",
+          "group_name": null,
+          "score_10": 10,
+          "pros": "Strong, specific dissemination plans are outlined, including events, newsletters via the UK ITP Patient Support Group, and co-design of results summaries with the PSC. Clear links are made between study objectives (understanding gut microbiome) and anticipated benefits (reduced medication costs, improved quality of life, NHS savings).",
+          "drawbacks": "No material caveats; the plan is actionable and directly links research outputs to patient and public benefit.",
+          "signals": [
+            {
+              "sid": "wp.3.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "wp.3.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "wp.3.c",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "wp.4",
+          "name": "Representation of Seldom Heard or Underserved Groups",
+          "group_name": null,
+          "score_10": 9.33,
+          "pros": "The application explicitly commits to recruiting across ethnicity, gender, and socioeconomic backgrounds. It details the use of translators and translated materials to support non-English speakers. The PSC was formed with specific attention to demographic diversity (age, ethnicity, background).",
+          "drawbacks": "While strategies for recruitment and support are strong, there is limited discussion of specific barriers to participation for these groups beyond language (e.g., transport, digital exclusion) and how they are mitigated, preventing a perfect score on wp.4.c.",
+          "signals": [
+            {
+              "sid": "wp.4.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "wp.4.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "wp.4.c",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "wp.5",
+          "name": "Inclusivity Across the Research Lifecycle",
+          "group_name": null,
+          "score_10": 9.33,
+          "pros": "Inclusion is demonstrated across the entire lifecycle: from the initial inspiration and protocol design (home kits) to recruitment, data interpretation, and dissemination. Accessibility is addressed through translation services and diverse PSC representation.",
+          "drawbacks": "The plan for ongoing evaluation and adaptation of inclusion strategies (wp.5.c) is mentioned via reflective logs and feedback, but the specific mechanisms for adapting the study design based on this evaluation are less detailed than the initial design phase.",
+          "signals": [
+            {
+              "sid": "wp.5.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "wp.5.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "wp.5.c",
+              "score_0to5": 4,
+              "note": ""
+            }
+          ]
+        },
+        {
+          "sub_id": "wp.6",
+          "name": "Costed and Resourced Plan for Research Inclusion",
+          "group_name": null,
+          "score_10": 10,
+          "pros": "The budget explicitly includes line items for PPI activities, including reimbursement for patient representatives, translation services, interpreting, and participant travel/time. Staff time is allocated for PPI coordination, and the plan aligns resources directly with the inclusion activities described in the PPI section.",
+          "drawbacks": "No material caveats; the costed plan is comprehensive and directly supports the inclusion activities outlined.",
+          "signals": [
+            {
+              "sid": "wp.6.a",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "wp.6.b",
+              "score_0to5": 5,
+              "note": ""
+            },
+            {
+              "sid": "wp.6.c",
+              "score_0to5": 5,
+              "note": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

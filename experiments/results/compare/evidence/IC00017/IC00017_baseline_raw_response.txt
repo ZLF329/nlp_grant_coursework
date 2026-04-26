@@ -1,0 +1,281 @@
+{
+  "general": {
+    "g.1": {
+      "signals": {
+        "g.1.a": 0,
+        "g.1.b": 0,
+        "g.1.c": 0,
+        "g.1.d": 0
+      },
+      "used_chunk_ids": []
+    },
+    "g.2": {
+      "signals": {
+        "g.2.a": 0,
+        "g.2.b": 0,
+        "g.2.c": 0,
+        "g.2.d": 0
+      },
+      "used_chunk_ids": []
+    },
+    "g.3": {
+      "signals": {
+        "g.3.a": 0,
+        "g.3.b": 0,
+        "g.3.c": 0
+      },
+      "used_chunk_ids": []
+    },
+    "g.4": {
+      "signals": {
+        "g.4.a": 0,
+        "g.4.b": 0,
+        "g.4.c": 0,
+        "g.4.d": 0
+      },
+      "used_chunk_ids": []
+    },
+    "g.5": {
+      "signals": {
+        "g.5.a": 0,
+        "g.5.b": 0,
+        "g.5.c": 0,
+        "g.5.d": 0
+      },
+      "used_chunk_ids": []
+    },
+    "g.6": {
+      "signals": {
+        "g.6.a": 0,
+        "g.6.b": 0,
+        "g.6.c": 0,
+        "g.6.d": 0
+      },
+      "used_chunk_ids": []
+    }
+  },
+  "proposed_research": {
+    "pr.1": {
+      "signals": {
+        "pr.1.a": 0,
+        "pr.1.b": 0,
+        "pr.1.c": 0,
+        "pr.1.d": 0,
+        "pr.1.e": 0,
+        "pr.1.f": 0
+      },
+      "used_chunk_ids": []
+    },
+    "pr.2": {
+      "signals": {
+        "pr.2.a": 0,
+        "pr.2.b": 0,
+        "pr.2.c": 0,
+        "pr.2.d": 0
+      },
+      "used_chunk_ids": []
+    },
+    "pr.3": {
+      "signals": {
+        "pr.3.a": 0,
+        "pr.3.b": 0,
+        "pr.3.c": 0
+      },
+      "used_chunk_ids": []
+    },
+    "pr.4": {
+      "signals": {
+        "pr.4.a": 0,
+        "pr.4.b": 0,
+        "pr.4.c": 0,
+        "pr.4.d": 0
+      },
+      "used_chunk_ids": []
+    },
+    "pr.5": {
+      "signals": {
+        "pr.5.a": 0,
+        "pr.5.b": 0,
+        "pr.5.c": 0
+      },
+      "used_chunk_ids": []
+    },
+    "pr.6": {
+      "signals": {
+        "pr.6.a": 0,
+        "pr.6.b": 0,
+        "pr.6.c": 0
+      },
+      "used_chunk_ids": []
+    },
+    "pr.7": {
+      "signals": {
+        "pr.7.a": 0,
+        "pr.7.b": 0,
+        "pr.7.c": 0
+      },
+      "used_chunk_ids": []
+    },
+    "pr.8": {
+      "signals": {
+        "pr.8.a": 0,
+        "pr.8.b": 0,
+        "pr.8.c": 0
+      },
+      "used_chunk_ids": []
+    },
+    "pr.9": {
+      "signals": {
+        "pr.9.a": 0,
+        "pr.9.b": 0,
+        "pr.9.c": 0
+      },
+      "used_chunk_ids": []
+    }
+  },
+  "training_development": {
+    "td.1": {
+      "signals": {
+        "td.1.a": 0,
+        "td.1.b": 0,
+        "td.1.c": 0,
+        "td.1.d": 0
+      },
+      "used_chunk_ids": []
+    },
+    "td.2": {
+      "signals": {
+        "td.2.a": 0,
+        "td.2.b": 0,
+        "td.2.c": 0,
+        "td.2.d": 0
+      },
+      "used_chunk_ids": []
+    },
+    "td.3": {
+      "signals": {
+        "td.3.a": 0,
+        "td.3.b": 0,
+        "td.3.c": 0,
+        "td.3.d": 0
+      },
+      "used_chunk_ids": []
+    }
+  },
+  "sites_support": {
+    "ss.1": {
+      "signals": {
+        "ss.1.a": 0,
+        "ss.1.b": 0,
+        "ss.1.c": 0,
+        "ss.1.d": 0
+      },
+      "used_chunk_ids": []
+    },
+    "ss.2": {
+      "signals": {
+        "ss.2.a": 0,
+        "ss.2.b": 0,
+        "ss.2.c": 0,
+        "ss.2.d": 0
+      },
+      "used_chunk_ids": []
+    },
+    "ss.3": {
+      "signals": {
+        "ss.3.a": 0,
+        "ss.3.b": 0,
+        "ss.3.c": 0,
+        "ss.3.d": 0
+      },
+      "used_chunk_ids": []
+    },
+    "ss.4": {
+      "signals": {
+        "ss.4.a": 0,
+        "ss.4.b": 0,
+        "ss.4.c": 0,
+        "ss.4.d": 0
+      },
+      "used_chunk_ids": []
+    }
+  },
+  "wpcc": {
+    "wp.1": {
+      "signals": {
+        "wp.1.a": 0,
+        "wp.1.b": 0,
+        "wp.1.c": 0
+      },
+      "used_chunk_ids": []
+    },
+    "wp.2": {
+      "signals": {
+        "wp.2.a": 0,
+        "wp.2.b": 0,
+        "wp.2.c": 0
+      },
+      "used_chunk_ids": []
+    },
+    "wp.3": {
+      "signals": {
+        "wp.3.a": 0,
+        "wp.3.b": 0,
+        "wp.3.c": 0
+      },
+      "used_chunk_ids": []
+    },
+    "wp.4": {
+      "signals": {
+        "wp.4.a": 0,
+        "wp.4.b": 0,
+        "wp.4.c": 0
+      },
+      "used_chunk_ids": []
+    },
+    "wp.5": {
+      "signals": {
+        "wp.5.a": 0,
+        "wp.5.b": 0,
+        "wp.5.c": 0
+      },
+      "used_chunk_ids": []
+    },
+    "wp.6": {
+      "signals": {
+        "wp.6.a": 0,
+        "wp.6.b": 0,
+        "wp.6.c": 0
+      },
+      "used_chunk_ids": []
+    }
+  },
+  "application_form": {
+    "af.1": {
+      "signals": {
+        "af.1.a": 1,
+        "af.1.b": 1,
+        "af.1.c": 1,
+        "af.1.d": 2
+      },
+      "used_chunk_ids": ["secafa__001"]
+    },
+    "af.2": {
+      "signals": {
+        "af.2.a": 2,
+        "af.2.b": 2,
+        "af.2.c": 2
+      },
+      "used_chunk_ids": ["secafa__001"]
+    },
+    "af.3": {
+      "signals": {
+        "af.3.a": 1,
+        "af.3.b": 0,
+        "af.3.c": 0,
+        "af.3.d": 0
+      },
+      "used_chunk_ids": ["secafa__001"]
+    }
+  }
+}
