@@ -35,5 +35,8 @@ mkdir -p data/uploads/json_data data/results
 # 4. run -----------------------------------------------------------------------
 export PYTHONPATH="$(pwd):$(pwd)/src:${PYTHONPATH:-}"
 export PORT
+export OLLAMA_NUM_CTX="${OLLAMA_NUM_CTX:-128000}"
+export STAGE1_MAX_TOKENS="${STAGE1_MAX_TOKENS:-50000}"
+export STAGE2_MAX_TOKENS="${STAGE2_MAX_TOKENS:-50000}"
 echo "[start.sh] launching server on http://0.0.0.0:${PORT}"
 exec python web/server.py
