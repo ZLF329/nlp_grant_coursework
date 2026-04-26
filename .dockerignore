@@ -1,0 +1,25 @@
+.git
+.gitignore
+.DS_Store
+.tmp.driveupload
+.venv
+__pycache__
+**/__pycache__
+*.pyc
+*.pyo
+
+# notebooks & analysis (not needed at runtime)
+*.ipynb
+experiments/
+score_experiments.ipynb
+
+# datasets / artifacts (mount at runtime if needed)
+data/
+outputs/
+
+# dev only
+tests/
+nlp_feature/
+
+# docs
+README.md

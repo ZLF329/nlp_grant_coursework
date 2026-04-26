@@ -261,6 +261,124 @@ Use `score_experiments.ipynb` for scoring experiments, including:
 - A/B group comparisons between application sets
 - score distribution and hypothesis-test exploration
 
+### 4. Launch the web server with `start.sh`
+
+`start.sh` is a one-shot launcher for the Flask web pipeline. It creates a virtual environment, installs Python dependencies, downloads the spaCy model and NLTK data, and starts the server.
+
+**Prerequisites:**
+- Python 3.10+ available as `python3`
+- A running Ollama instance reachable at `OLLAMA_HOST` (default `http://127.0.0.1:11434`) with the target model already pulled (`ollama pull <model>`)
+
+**Run:**
+
+```bash
+chmod +x start.sh
+./start.sh
+```
+
+Then open `http://localhost:8000` in a browser, upload a PDF, and view the scored result.
+
+**Configurable environment variables:**
+
+| Variable     | Default                       | Purpose                                       |
+|--------------|-------------------------------|-----------------------------------------------|
+| `PORT`       | `8000`                        | HTTP port for the Flask server                |
+| `PYTHON`     | `python3`                     | Python interpreter used to create the venv    |
+| `VENV_DIR`   | `.venv`                       | Path of the virtual environment               |
+| `OLLAMA_HOST`| `http://127.0.0.1:11434`      | URL of the Ollama service (read by the app)   |
+| `OLLAMA_MODEL`| `qwen3.5:27b`                | Model name passed to Ollama                   |
+
+**Examples:**
+
+```bash
+# Run on a different port
+PORT=8080 ./start.sh
+
+# Point at a remote Ollama host
+OLLAMA_HOST=http://10.0.0.5:11434 OLLAMA_MODEL=qwen2.5:7b ./start.sh
+```
+
+The script is idempotent: on subsequent runs it skips dependency installation (a `.deps_installed` marker is written inside the venv) and reuses the existing virtual environment.
+
+---
+
+## Docker Deployment (All-in-One)
+
+For a self-contained deployment that bundles the Flask web server, all Python dependencies, the Ollama runtime, and the LLM weights into a single image.
+
+### Files
+
+- `Dockerfile` — builds the image
+- `docker-entrypoint.sh` — starts Ollama in the background, waits for it, then launches the web server
+- `.dockerignore` — keeps notebooks, datasets, and dev artefacts out of the image
+
+### Build
+
+Default build pre-pulls the model into the image (the resulting image is ~20 GB and fully offline-capable):
+
+```bash
+docker build -t grant-ai .
+```
+
+To skip pre-pulling and let the model download on first container start instead (smaller image, requires network at first run):
+
+```bash
+docker build -t grant-ai --build-arg BAKE_MODEL=0 .
+```
+
+To bake a different model into the image:
+
+```bash
+docker build -t grant-ai \
+  --build-arg OLLAMA_MODEL=qwen2.5:7b \
+  --build-arg BAKE_MODEL=1 .
+```
+
+### Run
+
+```bash
+docker run --rm -p 8000:8000 grant-ai
+```
+
+Then open `http://localhost:8000` in a browser.
+
+### Persist uploads and results across container restarts
+
+```bash
+docker run --rm -p 8000:8000 \
+  -v "$(pwd)/data:/app/data" \
+  grant-ai
+```
+
+### Override the model at runtime
+
+```bash
+docker run --rm -p 8000:8000 \
+  -e OLLAMA_MODEL=qwen2.5:7b \
+  grant-ai
+```
+
+If the requested model is not already inside the image, the entrypoint will pull it on first start.
+
+### GPU acceleration (optional)
+
+The default image is CPU-only. To use an NVIDIA GPU, install the NVIDIA Container Toolkit on the host and run:
+
+```bash
+docker run --rm --gpus all -p 8000:8000 grant-ai
+```
+
+For maximum throughput, rebuild from a CUDA base image (e.g. `nvidia/cuda:12.4.0-runtime-ubuntu22.04`) instead of `python:3.11-slim`.
+
+### Distribute the image as a single file
+
+```bash
+docker save grant-ai | gzip > grant-ai.tar.gz
+# on the target machine:
+gunzip -c grant-ai.tar.gz | docker load
+docker run --rm -p 8000:8000 grant-ai
+```
+
 ---
 
 ## Output Structure
